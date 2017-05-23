@@ -5,6 +5,5 @@ export default function() {
 		{title:"Javascript" , pages : 101 },
 		{title:"Harry Potter" , pages : 320 },
 		{title:"The Dark Tower", pages : 400 },
-		{title:"Lorf of the Rings", pages : 652 }
 	]
 }
