@@ -6,6 +6,10 @@ import { bindActionCreators } from 'redux';
 
 class PublicationList extends Component {
 
+	componentDidMount(){
+		this.props.getAllPublications();
+	}
+
 	renderList() {
 		return this.props.publications.map((publication)=> {
 			return (
@@ -20,7 +24,7 @@ class PublicationList extends Component {
 
 	render() {
 		return(
-				<ul onEnter={() => this.props.getAllPublications()} className="list-group col-sm-4">
+				<ul className="list-group col-sm-4">
 					{this.renderList()}
 				</ul>
 			)
