@@ -1,4 +1,3 @@
-//book-list.js
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAllPublications } from '../actions/resolvedGetAllPublications';
@@ -24,7 +23,7 @@ class PublicationList extends Component {
 
 	render() {
 		return(
-				<ul className="list-group col-sm-4">
+				<ul className="publication-list">
 					{this.renderList()}
 				</ul>
 			)
@@ -34,7 +33,6 @@ class PublicationList extends Component {
 function mapStateToProps(state){
 	//whatever is returned will show up
 	// as props inside of BookList
-	console.log(state)
 	return {
 		publications : state.publications
 	};
