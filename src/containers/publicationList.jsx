@@ -12,10 +12,17 @@ class PublicationList extends Component {
 	renderList() {
 		return this.props.publications.map((publication)=> {
 			return (
-					<li
-						key={publication.title}
-						className="list-group-item">
-						{publication.title}
+					<li key={publication.publication_id}>
+							<div className="product-meta">
+								<div className="title">
+									<a href="#books?book_id=1">{publication.title}</a>
+								</div>
+								<div className="product-writers">
+									<a >
+										{publication.writers}
+									</a>
+								</div>
+							</div>
 					</li>
 				);
 		});
