@@ -1,5 +1,18 @@
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const argv = require('yargs').argv;
+
 let extractCSS = new ExtractTextPlugin('style.css');
+let UglifyJSP = new UglifyJSPlugin();
+
+const isProd = argv.env === 'prod';
+const isDev = argv.env === 'dev';
+
+let plugins = [extractCSS];
+
+if (isProd) {
+  plugins.push(UglifyJSP)
+}
 
 module.exports = {
   entry: [
@@ -33,7 +46,5 @@ module.exports = {
     historyApiFallback: true,
     contentBase: './'
   },
-  plugins: [
-		extractCSS
-	]
+  plugins: plugins
 };

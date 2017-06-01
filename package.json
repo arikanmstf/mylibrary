@@ -5,9 +5,8 @@
   "main": "index.js",
   "repository": "git@github.com:arikanmstf/mylibrary.git",
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
-    "test:watch": "npm run test -- --watch"
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --env=prod",
+    "dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --env=dev"
   },
   "author": "Mustafa Arikan",
   "license": "MIT",
@@ -27,8 +26,10 @@
     "react-addons-test-utils": "^0.14.7",
     "sass-loader": "^6.0.5",
     "style-loader": "^0.18.1",
+    "uglifyjs-webpack-plugin": "^0.4.3",
     "webpack": "^1.15.0",
-    "webpack-dev-server": "^1.14.0"
+    "webpack-dev-server": "^1.14.0",
+    "yargs": "^8.0.1"
   },
   "dependencies": {
     "axios": "^0.16.1",
