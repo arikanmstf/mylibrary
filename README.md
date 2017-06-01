@@ -8,5 +8,5 @@ Checkout this repo, install dependencies, then start the gulp process with the f
 	> git clone git@github.com:arikanmstf/mylibrary.git
 	> cd MyLibraryV2
 	> npm install
-	> npm start
+	> npm run start
 ```
