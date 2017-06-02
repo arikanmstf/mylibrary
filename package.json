@@ -18,7 +18,7 @@
     "chai": "^3.5.0",
     "chai-jquery": "^2.0.0",
     "css-loader": "^0.28.4",
-    "extract-text-webpack-plugin": "^1.0.1",
+    "extract-text-webpack-plugin": "^2.1.0",
     "jquery": "^2.2.1",
     "jsdom": "^8.1.0",
     "mocha": "^2.4.5",
@@ -27,18 +27,18 @@
     "sass-loader": "^6.0.5",
     "style-loader": "^0.18.1",
     "uglifyjs-webpack-plugin": "^0.4.3",
-    "webpack": "^1.15.0",
-    "webpack-dev-server": "^1.14.0",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5",
     "yargs": "^8.0.1"
   },
   "dependencies": {
     "axios": "^0.16.1",
     "babel-preset-stage-1": "^6.1.18",
-    "react": "^0.14.3",
-    "react-dom": "^0.14.3",
-    "react-redux": "^4.0.0",
-    "react-router": "^2.0.1",
-    "redux": "^3.0.4",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.5",
+    "react-router": "^4.1.1",
+    "redux": "^3.6.0",
     "redux-thunk": "^2.2.0"
   }
 }
