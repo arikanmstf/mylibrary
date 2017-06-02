@@ -5,7 +5,20 @@ import InputPassword from "../components/input/InputPassword";
 
 export default class LoginPage extends Component {
 
+	constructor(props) {
+    super(props);
+
+    this.state = {
+      username: '',
+      password: ''
+    };
+  }
+
+	makeLogin() {
+		console.log(this)
+	}
 	render() {
+		let self = this;
 		return(
 				<div className="login-page">
 					<img
@@ -13,10 +26,14 @@ export default class LoginPage extends Component {
 						width="180"
 						height="180"/>
 					<div className="form-group">
-						<InputText placeholder="Enter your username" />
+						<InputText
+							onChange={(e)=>this.setState({username:e})}
+							placeholder="Enter your username" />
 					</div>
 					<div className="form-group">
-						<InputPassword placeholder="Enter your password" />
+						<InputPassword
+							onChange={(e)=>this.setState({password:e})}
+							placeholder="Enter your password" />
 					</div>
 					<div className="form-group">
 						<div className="alert alert-info">
@@ -26,6 +43,11 @@ export default class LoginPage extends Component {
 							Password : 123
 						</div>
 					</div>
+					<button
+						className="btn btn-info btn-block"
+						onClick={ () => this.makeLogin() }>
+						Login
+					</button>
 				</div>
 			)
 	}

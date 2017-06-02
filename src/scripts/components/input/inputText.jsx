@@ -5,15 +5,13 @@ export default class InputText extends Component {
     super(props);
 
     this.state = {
-      value: '',
       placeholder: props.placeholder
     };
     this.handleChange = this.handleChange.bind(this);
-
-  };
+  }
 
   handleChange(event) {
-    this.setState({ value: event.target.value });
+    this.props.onChange(event.target.value);
   }
 
   render() {

@@ -10,10 +10,10 @@ export default class InputPassword extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
 
-  };
+  }
 
   handleChange(event) {
-    this.setState({ value: event.target.value });
+    this.props.onChange(event.target.value);
   }
 
   render() {

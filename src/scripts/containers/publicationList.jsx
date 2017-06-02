@@ -4,7 +4,7 @@ import { getAllPublications } from '../actions/resolvedGetAllPublications';
 
 class PublicationList extends Component {
 
-	componentDidMount(){
+	componentDidMount() {
 		this.props.getAllPublications();
 	}
 
