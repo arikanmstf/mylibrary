@@ -21,7 +21,7 @@ export default class InputPassword extends Component {
 
       <input
         type="password"
-        className="input input-text"
+        className="form-control input input-password"
         placeholder= { this.state.placeholder }
         onChange={ this.handleChange }/>
     );

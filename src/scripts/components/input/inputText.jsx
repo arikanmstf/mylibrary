@@ -21,7 +21,7 @@ export default class InputText extends Component {
 
       <input
         type="text"
-        className="input input-text"
+        className="form-control input input-text"
         placeholder= { this.state.placeholder }
         onChange={ this.handleChange }/>
     );
