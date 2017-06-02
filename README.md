@@ -4,7 +4,7 @@
 
 ```
 	> git clone git@github.com:arikanmstf/mylibrary.git
-	> cd MyLibraryV2
+	> cd mylibrary
 	> npm install
 	> npm run dev
 ```
