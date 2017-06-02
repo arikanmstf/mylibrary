@@ -1,7 +1,6 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAllPublications } from '../actions/resolvedGetAllPublications';
-import { bindActionCreators } from 'redux';
 
 class PublicationList extends Component {
 
@@ -12,14 +11,14 @@ class PublicationList extends Component {
 	renderList() {
 		return this.props.publications.map((publication)=> {
 			return (
-					<li key={publication.publication_id}>
+					<li key={ publication.publication_id }>
 							<div className="product-meta">
 								<div className="title">
-									<a href="#books?book_id=1">{publication.title}</a>
+									<a href="#books?book_id=1">{ publication.title }</a>
 								</div>
 								<div className="product-writers">
 									<a >
-										{publication.writers}
+										{ publication.writers }
 									</a>
 								</div>
 							</div>
@@ -31,7 +30,7 @@ class PublicationList extends Component {
 	render() {
 		return(
 				<ul className="publication-list">
-					{this.renderList()}
+					{ this.renderList() }
 				</ul>
 			)
 	}
