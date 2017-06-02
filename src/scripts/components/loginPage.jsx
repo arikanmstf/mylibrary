@@ -2,8 +2,9 @@ import React , { Component } from 'react';
 import { connect } from 'react-redux';
 import InputText from "../components/input/inputText";
 import InputPassword from "../components/input/InputPassword";
+import { getLogin } from '../actions/resolvedGetLogin';
 
-export default class LoginPage extends Component {
+class LoginPage extends Component {
 
 	constructor(props) {
     super(props);
@@ -14,8 +15,8 @@ export default class LoginPage extends Component {
     };
   }
 
-	makeLogin() {
-		console.log(this)
+	getLogin() {
+		this.props.getLogin();
 	}
 	render() {
 		let self = this;
@@ -45,10 +46,32 @@ export default class LoginPage extends Component {
 					</div>
 					<button
 						className="btn btn-info btn-block"
-						onClick={ () => this.makeLogin() }>
+						onClick={ () => this.getLogin() }>
 						Login
 					</button>
 				</div>
 			)
 	}
 }
+
+function mapStateToProps(state){
+	//whatever is returned will show up
+	// as props inside of BookList
+	return {
+		username : state.publications,
+		password : state.password
+	};
+}
+
+// Anything returned from this function will end up as props
+// on the BookList container
+const mapDispatchToProps = dispatch => {
+  return { getLogin: () => dispatch(getLogin()) }
+}
+
+
+
+// Promote BookList from a component to a container - it needs to know
+// about this new dispatch method , selectBook
+// Make it avaible as a prop
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
