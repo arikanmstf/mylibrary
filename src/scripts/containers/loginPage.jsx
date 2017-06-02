@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import InputText from "../components/input/inputText";
 import InputPassword from "../components/input/InputPassword";
 import { getLogin } from '../actions/resolvedGetLogin';
+import loginPageReducer from '../reducers/loginPageReducer';
+
 
 class LoginPage extends Component {
 
@@ -58,7 +60,7 @@ function mapStateToProps(state){
 	//whatever is returned will show up
 	// as props inside of BookList
 	return {
-		username : state.publications,
+		username : state.username,
 		password : state.password
 	};
 }

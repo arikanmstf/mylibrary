@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PublicationList from '../containers/publicationList';
-import LoginPage from './loginPage';
+import LoginPage from '../containers/loginPage';
 
 export default class App extends Component {
   render() {

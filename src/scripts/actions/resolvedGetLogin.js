@@ -1,6 +1,6 @@
 import axios from "axios";
 import qs from "qs";
-import { API } from "../config/api";
+import { API } from "../common/config";
 
 export function getLogin(data) {
 	return function (dispatch) {

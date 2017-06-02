@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API } from "../config/api";
+import { API } from "../common/config";
 
 export function getAllPublications() {
 	return function (dispatch) {
