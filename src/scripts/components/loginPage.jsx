@@ -16,7 +16,7 @@ class LoginPage extends Component {
   }
 
 	getLogin() {
-		this.props.getLogin();
+		this.props.getLogin(this.state);
 	}
 	render() {
 		let self = this;
@@ -66,7 +66,7 @@ function mapStateToProps(state){
 // Anything returned from this function will end up as props
 // on the BookList container
 const mapDispatchToProps = dispatch => {
-  return { getLogin: () => dispatch(getLogin()) }
+  return { getLogin: (data) => dispatch(getLogin(data)) }
 }
 
 

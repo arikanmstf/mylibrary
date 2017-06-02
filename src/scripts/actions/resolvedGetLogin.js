@@ -1,9 +1,13 @@
 import axios from "axios";
+import qs from "qs";
 import { API } from "../config/api";
 
-export function getLogin() {
+export function getLogin(data) {
 	return function (dispatch) {
-		axios.get(API.getLogin)
+		axios.post(API.getLogin,qs.stringify({
+			username: data.username,
+			password: data.password
+		}))
 		.then(response => dispatch(resolvedGetLogin(response)))
 	};
 }
