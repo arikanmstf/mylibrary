@@ -8,6 +8,10 @@ export default class LoginPage extends Component {
 	render() {
 		return(
 				<div className="login-page">
+					<img
+						src="./assets/img/react-logo.png"
+						width="180"
+						height="180"/>
 					<div className="form-group">
 						<InputText placeholder="Enter your username" />
 					</div>
