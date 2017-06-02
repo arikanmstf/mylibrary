@@ -1,8 +1,9 @@
-import axios from 'axios';
+import axios from "axios";
+import { API } from "../config/api";
 
 export function getAllPublications() {
 	return function (dispatch) {
-		axios.get("http://localhost/MyLibraryV2_Services/publications/get_all")
+		axios.get(API.getAllPublications)
 		.then(response => dispatch(resolvedGetAllPublications(response)))
 	};
 }
