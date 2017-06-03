@@ -1,4 +1,4 @@
-const home = "http://localhost/mylibrary-api";
+const home = "http://localhost/mylibrary/api";
 const publications = "/publications";
 const membership = "/membership";
 

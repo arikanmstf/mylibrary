@@ -1,5 +1,6 @@
 /node_modules
 /assets
+/api
 bundle.js
 npm-debug.log
 
