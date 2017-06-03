@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import InputText from "../components/input/inputText";
 import InputPassword from "../components/input/InputPassword";
 import { getLogin } from '../actions/resolvedGetLogin';
-import loginPageReducer from '../reducers/loginPageReducer';
 
 
 class LoginPage extends Component {
