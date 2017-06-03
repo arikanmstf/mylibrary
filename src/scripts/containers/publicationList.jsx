@@ -23,7 +23,7 @@ class PublicationList extends Component {
 
 
 	renderList() {
-		return this.props.publications.map((publication)=> {
+		return this.props.publications.map(publication => {
 			return (
 					<li key={ publication.publication_id }>
 							<div className="publication-meta">

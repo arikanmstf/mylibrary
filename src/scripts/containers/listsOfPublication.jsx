@@ -16,15 +16,23 @@ class ListsOfPublication extends Component {
 		this.props.getListsOfPublication(this.state.publicationId);
 	}
 
+	renderList() {
+
+		return this.props.lists.map(list => {
+			return <li key={ list.list_id }>{ list.list_id }</li>
+		});
+	}
+
 	render() {
 		let lists = this.props.lists;
-		console.log(lists);
-
-		return (
+		console.log(this.props)
+		return lists ? (
 			<div className="lists-of-publication">
-
+				<ul>
+					{ this.renderList() }
+				</ul>
 			</div>
-		)
+		) : null
 	}
 }
 
