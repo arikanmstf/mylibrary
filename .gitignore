@@ -1,7 +1,7 @@
 /node_modules
 /assets
 /api
-bundle.js
+/dist
 npm-debug.log
 
 # IntelliJ
