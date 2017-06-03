@@ -4,7 +4,6 @@ import InputText from "../components/input/inputText";
 import InputPassword from "../components/input/InputPassword";
 import { getLogin } from '../actions/resolvedGetLogin';
 
-
 class LoginPage extends Component {
 
 	constructor(props) {
