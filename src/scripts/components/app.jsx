@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import PublicationList from '../containers/publicationList';
-import LoginPage from '../containers/loginPage';
-import storage from '../common/storage';
-import NavbarHeader from '../containers/navbarHeader';
 import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom';
+
+import PublicationList from '../containers/publicationList';
+import LoginPage from '../containers/loginPage';
+import NavbarHeader from '../containers/navbarHeader';
+import storage from '../common/storage';
+import InputSearch from './input/inputSearch';
+import SideNavigation from './sideNavigation';
 
 let s = new storage();
 let isLoggedIn = s.get("login_key");
@@ -35,7 +38,8 @@ class Home extends Component {
   render() {
     return (
           <div>
-            <NavbarHeader onSearchChange={ this.setSearchTitle } />
+            <NavbarHeader />
+            <InputSearch onSearchChange={ this.setSearchTitle } />
             <PublicationList
               search={this.state.search} />
           </div>
@@ -47,6 +51,8 @@ class Admin extends Component {
   render() {
     return (
       <div>
+          <NavbarHeader />
+          <SideNavigation />
           <h1>This is admin page.</h1>
       </div>
     );
