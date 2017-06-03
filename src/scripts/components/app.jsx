@@ -64,7 +64,7 @@ class Admin extends Component {
 const PublicationDetails = ({ match }) => (
   <div>
     <NavbarHeader />
-    <PublicationDetailsPage publicationId={ match.params.publicationID }/>
+    <PublicationDetailsPage publicationId={ match.params.publicationId }/>
   </div>
 )
 
@@ -79,7 +79,7 @@ export default class App extends Component {
               <div>
                 <Route exact path="/" component={ Home } />
                 <Route path="/admin" component={ Admin } />
-                <Route path={`/publications/:publicationID`} component={ PublicationDetails }/>
+                <Route path={`/publications/:publicationId`} component={ PublicationDetails }/>
               </div>
             </Router>
           </div>
