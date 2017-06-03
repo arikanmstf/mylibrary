@@ -3,6 +3,11 @@
 @import "loginPage.scss";
 @import "publicationList.scss";
 
-.alert {
-  padding: 5px !important;
+body {
+
+  background-image: url(/assets/img/pattern/pattern11.png);
+  background-repeat: repeat;
+  .alert {
+    padding: 5px;
+  }
 }

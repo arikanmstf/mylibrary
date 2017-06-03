@@ -10,9 +10,14 @@
   display: flex;
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
+  justify-content: center;
+
+  padding: 0;
 
   li {
-    margin-left: 5px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #DDD;
+    padding: 10px;
 
     .publication-meta {
 
