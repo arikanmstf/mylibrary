@@ -19,7 +19,12 @@ class PublicationList extends Component {
 										src={`http://mustafaarikan.net/mylibrary/cover/${publication.publication_id}.jpg`} />
 								</div>
 								<div className="publication-info">
+									<div className="publication-title">
+										{ publication.title }
+									</div>
+									<div className="publication-writers">
 										{ publication.writers }
+									</div>
 								</div>
 							</div>
 					</li>
