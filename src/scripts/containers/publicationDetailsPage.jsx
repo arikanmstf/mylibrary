@@ -32,6 +32,7 @@ class PublicationDetailsPage extends Component {
 
 	render() {
 		let publication = this.props.publication;
+		const linkStyle = {color:'#AAAAAA'};
 		return publication && (
 			<div className="publication-details-page">
 				<div className="publication-details-container">
@@ -48,7 +49,7 @@ class PublicationDetailsPage extends Component {
 							{ this.setWriters(publication.writers, publication.writer_ids) }
 						</div>
 						<div className="publication-publisher">
-							<span>{ publication.publisher_name }</span>
+							<span><Link style={linkStyle} to={`/publishers/${publication.publisher_id}`}>{ publication.publisher_name }</Link></span>
 						</div>
 						<p className="publication-description">
 							{ publication.description }
