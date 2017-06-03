@@ -3,15 +3,16 @@
 
 @import "loginPage.scss";
 @import "publicationList.scss";
+@import "publicationDetailsPage.scss";
 @import "navbarHeader.scss";
 @import "inputSearch.scss";
 @import "sideNavigation.scss";
 
 body {
-
   background-image: url(/assets/img/pattern/pattern11.png);
   background-repeat: repeat;
-  .alert {
-    padding: 5px;
-  }
+
+}
+.alert {
+  padding: 5px;
 }

@@ -22,8 +22,19 @@ class PublicationDetailsPage extends Component {
 		let publication = this.props.publication;
 		return(
 			<div className="publication-details-page">
-				<h1>{publication.title}</h1>
-				<h2>{publication.writers}</h2>
+				<div className="publication-details-container">
+					<div className="col-md-6 col-sm-6 publication-info">
+						<img
+							className="publication-image"
+							src={`http://mustafaarikan.net/mylibrary/cover/${publication.publication_id}.jpg`} />
+					</div>
+					<div className="col-md-6 col-sm-6 publication-info">
+						<div className="publication-title">
+							<span>{publication.title}</span>
+						</div>
+					</div>
+				</div>
+				<div className="clearfix"></div>
 			</div>
 			)
 	}

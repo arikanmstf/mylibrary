@@ -1,0 +1,24 @@
+.publication-details-page {
+  max-width: 768px;
+  background-color: $white;
+  margin: 0 auto;
+  width: 100%;
+
+  .publication-details-container {
+
+    .publication-info {
+      overflow: hidden;
+      padding-left: 4px;
+      padding-right: 4px;
+
+      .publication-title {
+        font-size: $bigFontSize;
+        text-align: center;
+      }
+
+      .publication-image {
+        max-width: 398px;
+      }
+    }
+  }
+}
