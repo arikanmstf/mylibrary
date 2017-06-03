@@ -16,10 +16,17 @@
 
   li {
     margin-bottom: 30px;
-    border-bottom: 1px solid #DDD;
+    border-bottom: 1px solid $lightBlack;
     padding: 10px;
 
     .publication-meta {
+      background-color: $white;
+      -webkit-border-bottom-right-radius: 5px;
+      -webkit-border-bottom-left-radius: 5px;
+      -moz-border-radius-bottomright: 5px;
+      -moz-border-radius-bottomleft: 5px;
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
 
       .publication-image-mask {
         height: 260px;
@@ -28,14 +35,21 @@
         .publication-image {
           width: $publicationWidth;
           text-align: center;
+          cursor: pointer;
         }
       }
 
       .publication-info {
         width: $publicationWidth;
+
+        padding: 8px;
         text-align: center;
 
+        .publication-title {
+          font-size: $mediumFontSize;
+        }
         .publication-writers {
+          color: $lightBlack;
           font-size: $smallFontSize;
         }
       }
