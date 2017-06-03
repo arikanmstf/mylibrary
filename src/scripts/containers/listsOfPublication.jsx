@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { getListsOfPublication } from '../actions/resolvedGetListsOfPublication';
+import List from './list';
 
 class ListsOfPublication extends Component {
 
@@ -19,18 +20,15 @@ class ListsOfPublication extends Component {
 	renderList() {
 
 		return this.props.lists.map(list => {
-			return <li key={ list.list_id }>{ list.list_id }</li>
+			return <List key={ list.list_id } listId={ list.list_id } />
 		});
 	}
 
 	render() {
 		let lists = this.props.lists;
-		console.log(this.props)
 		return lists ? (
 			<div className="lists-of-publication">
-				<ul>
 					{ this.renderList() }
-				</ul>
 			</div>
 		) : null
 	}
@@ -47,7 +45,7 @@ function mapStateToProps(state){
 // Anything returned from this function will end up as props
 // on the BookList container
 const mapDispatchToProps = dispatch => {
-  return { getListsOfPublication: (search) => dispatch(getListsOfPublication(search)) }
+  return { getListsOfPublication: (publicationId) => dispatch(getListsOfPublication(publicationId)) }
 }
 
 
