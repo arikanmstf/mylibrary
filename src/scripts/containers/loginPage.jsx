@@ -18,6 +18,7 @@ class LoginPage extends Component {
 	getLogin() {
 		this.props.getLogin(this.state);
 	}
+
 	render() {
 		let self = this;
 		return(
@@ -28,12 +29,12 @@ class LoginPage extends Component {
 						height="180"/>
 					<div className="form-group">
 						<InputText
-							onChange={(e)=>this.setState({username:e})}
+							onChange={ (e)=>this.setState({ username:e }) }
 							placeholder="Enter your username" />
 					</div>
 					<div className="form-group">
 						<InputPassword
-							onChange={(e)=>this.setState({password:e})}
+							onChange={ (e)=>this.setState({ password:e }) }
 							placeholder="Enter your password" />
 					</div>
 					<div className="form-group">

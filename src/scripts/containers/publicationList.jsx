@@ -4,9 +4,21 @@ import { getAllPublications } from '../actions/resolvedGetAllPublications';
 
 class PublicationList extends Component {
 
+	constructor(props) {
+    super(props);
+
+    this.state = props.search;
+  }
+
 	componentDidMount() {
-		this.props.getAllPublications();
+		this.props.getAllPublications(this.state);
 	}
+
+	componentWillReceiveProps(nextProps) {
+    this.setState(nextProps.search);
+		console.log(nextProps)
+  }
+
 
 	renderList() {
 		return this.props.publications.map((publication)=> {
@@ -52,7 +64,7 @@ function mapStateToProps(state){
 // Anything returned from this function will end up as props
 // on the BookList container
 const mapDispatchToProps = dispatch => {
-  return { getAllPublications: () => dispatch(getAllPublications()) }
+  return { getAllPublications: (search) => dispatch(getAllPublications(search)) }
 }
 
 

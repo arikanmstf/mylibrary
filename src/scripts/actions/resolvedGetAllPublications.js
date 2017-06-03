@@ -1,9 +1,13 @@
 import axios from "axios";
 import { API } from "../common/config";
 
-export function getAllPublications() {
+export function getAllPublications(search) {
 	return function (dispatch) {
-		axios.get(API.getAllPublications)
+		axios.get(API.getAllPublications,{
+				params: {
+					title: search.title
+				}
+			})
 		.then(response => dispatch(resolvedGetAllPublications(response)))
 	};
 }

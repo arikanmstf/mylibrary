@@ -1,7 +1,25 @@
 import React, { Component } from 'react';
-import InputText from './input/inputText';
+import { connect } from 'react-redux';
+import InputText from '../components/input/inputText';
 
 export default class NavbarHeader extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      title: ''
+    };
+
+    this.handleSearchChange = this.handleSearchChange.bind(this);
+
+  }
+
+  handleSearchChange(value) {
+    if(this.props.onSearchChange) {
+      this.props.onSearchChange(value);
+    }
+  }
+
   render() {
     return (
       <div className="navbar-header-container">
@@ -15,6 +33,7 @@ export default class NavbarHeader extends Component {
         </nav>
         <div className="input-search-container">
             <InputText
+              onChange={ this.handleSearchChange }
               className="navbar-header-search"
               placeholder="Type to search a book..."/>
         </div>
