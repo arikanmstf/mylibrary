@@ -12,27 +12,27 @@ class PublicationDetailsPage extends Component {
     super(props);
 
     this.state = props;
-		this.setWriters = this.setWriters.bind(this);
   }
 
 	componentDidMount() {
 		this.props.getPublicationDetails(this.state.publicationId);
 	}
 
-	setWriters(writers) {
+	setWriters(writers,writer_ids) {
 
 		if(!writers) return null;
 		let writerArr = writers.split(",");
+		let writerIdsArr = writer_ids.split(",");
 		const rowLen = writerArr.length;
 
 		return writerArr = writerArr.map((w,i)=>{
-			return <span key={w}><Link to={`/writers/${w}`}>{w}</Link>{rowLen === i+1 ? null : ', '}</span>
+			return <span key={w}><Link to={`/writers/${writerIdsArr[i]}`}>{w}</Link>{rowLen === i+1 ? null : ', '}</span>
 		});
 	}
 
 	render() {
 		let publication = this.props.publication;
-		return(
+		return publication && (
 			<div className="publication-details-page">
 				<div className="publication-details-container">
 					<div className="col-md-3 col-sm-3 publication-info image-container">
@@ -45,7 +45,7 @@ class PublicationDetailsPage extends Component {
 							<span>{ publication.title }</span>
 						</div>
 						<div className="publication-writers">
-							{ this.setWriters(publication.writers) }
+							{ this.setWriters(publication.writers, publication.writer_ids) }
 						</div>
 						<div className="publication-publisher">
 							<span>{ publication.publisher_name }</span>
@@ -56,10 +56,11 @@ class PublicationDetailsPage extends Component {
 						<div className="publication-table">
 							<table className="table table-responsive">
 								<tbody>
+									{ publication.isbn &&
 									<tr>
 										<td>ISBN</td>
 										<td>{ publication.isbn }</td>
-									</tr>
+									</tr> }
 									<tr>
 										<td>Cilt Numarası</td>
 										<td>{ publication.cover_no }</td>
@@ -78,7 +79,7 @@ class PublicationDetailsPage extends Component {
 					</div>
 				</div>
 			</div>
-			)
+		)
 	}
 }
 
