@@ -8,16 +8,29 @@
 
     .publication-info {
       overflow: hidden;
-      padding-left: 4px;
-      padding-right: 4px;
+
+      &.image-container {
+        padding: 10px;
+        background-image: url(/assets/img/pattern/pattern27.png);
+      }
 
       .publication-title {
         font-size: $bigFontSize;
-        text-align: center;
+        text-align: left;
+        border-bottom: 1px solid $gray;
+      }
+
+      .publication-writers {
+        font-size: $smallFontSize;
+        text-align: left;
+      }
+
+      .publication-publisher {
+        color: $lightGray;
       }
 
       .publication-image {
-        max-width: 398px;
+        width: 100%;
       }
     }
   }

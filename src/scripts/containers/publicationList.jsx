@@ -28,9 +28,11 @@ class PublicationList extends Component {
 					<li key={ publication.publication_id }>
 							<div className="publication-meta">
 								<div className="publication-image-mask">
-									<img
+									<Link to={`/publications/${publication.publication_id}`}>
+										<img
 										className="publication-image"
 										src={`http://mustafaarikan.net/mylibrary/cover/${publication.publication_id}.jpg`} />
+									</Link>
 								</div>
 								<div className="publication-info">
 									<div className="publication-title">
