@@ -4,7 +4,7 @@ const webpack = require("webpack");
 const argv = require("yargs").argv;
 
 
-const extractCSS = new ExtractTextPlugin("style.css");
+const extractCSS = new ExtractTextPlugin("dist/style.css");
 
 const isProd = argv.env === 'prod';
 const isDev = argv.env === 'dev';
@@ -30,7 +30,7 @@ module.exports = {
   output: {
     path: __dirname,
     publicPath: "/",
-    filename: "bundle.js"
+    filename: "dist/bundle.js"
   },
   module: {
     rules: [

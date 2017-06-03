@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "git@github.com:arikanmstf/mylibrary.git",
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --env=prod",
+    "prod": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --env=prod & webpack --watch --env=prod",
     "dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --env=dev"
   },
   "author": "Mustafa Arikan",
