@@ -3,11 +3,13 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom';
+import storage from '../common/storage';
 
 import PublicationList from '../containers/publicationList';
 import LoginPage from '../containers/loginPage';
 import NavbarHeader from '../containers/navbarHeader';
-import storage from '../common/storage';
+import PublicationDetailsPage from '../containers/publicationDetailsPage';
+
 import InputSearch from './input/inputSearch';
 import SideNavigation from './sideNavigation';
 
@@ -59,6 +61,13 @@ class Admin extends Component {
   }
 }
 
+const PublicationDetails = ({ match }) => (
+  <div>
+    <NavbarHeader />
+    <PublicationDetailsPage publicationId={ match.params.publicationID }/>
+  </div>
+)
+
 export default class App extends Component {
 
   render() {
@@ -68,8 +77,9 @@ export default class App extends Component {
           <div>
             <Router>
               <div>
-                <Route exact path="/" component={ Home }/>
-                <Route path="/admin" component={ Admin }/>
+                <Route exact path="/" component={ Home } />
+                <Route path="/admin" component={ Admin } />
+                <Route path={`/publications/:publicationID`} component={ PublicationDetails }/>
               </div>
             </Router>
           </div>

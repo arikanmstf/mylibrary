@@ -1,5 +1,7 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 import { getAllPublications } from '../actions/resolvedGetAllPublications';
 
 class PublicationList extends Component {
@@ -32,7 +34,7 @@ class PublicationList extends Component {
 								</div>
 								<div className="publication-info">
 									<div className="publication-title">
-										{ publication.title }
+										<Link to={`/publications/${publication.publication_id}`}>{ publication.title }</Link>
 									</div>
 									<div className="publication-writers">
 										{ publication.writers }

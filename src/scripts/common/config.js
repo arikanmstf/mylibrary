@@ -5,5 +5,6 @@ const membership = "/membership";
 export const API = {
 
   getAllPublications: home + publications + "/get_all",
+  getPublicationDetails: home + publications + "/get_one",
   getLogin: home + membership + "/get_login"
 }
