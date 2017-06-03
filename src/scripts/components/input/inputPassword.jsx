@@ -5,7 +5,6 @@ export default class InputPassword extends Component {
     super(props);
 
     this.state = {
-      value: '',
       placeholder: props.placeholder
     };
     this.handleChange = this.handleChange.bind(this);
@@ -13,7 +12,9 @@ export default class InputPassword extends Component {
   }
 
   handleChange(event) {
-    this.props.onChange(event.target.value);
+    if(this.props.onChange) {
+      this.props.onChange(event.target.value);
+    }
   }
 
   render() {

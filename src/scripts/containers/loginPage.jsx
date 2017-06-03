@@ -1,7 +1,7 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
 import InputText from "../components/input/inputText";
-import InputPassword from "../components/input/InputPassword";
+import InputPassword from "../components/input/inputPassword";
 import { getLogin } from '../actions/resolvedGetLogin';
 
 class LoginPage extends Component {
