@@ -1,0 +1,25 @@
+.publication-list {
+  list-style: none;
+  display: flex;
+
+  li {
+    margin-left: 5px;
+
+    .publication-meta {
+
+      .publication-image-mask {
+        height: 260px;
+        overflow: hidden;
+
+        .publication-image {
+          width: 200px;
+          text-align: center;
+        }
+
+        .publication-info {
+
+        }
+      }
+    }
+  }
+}

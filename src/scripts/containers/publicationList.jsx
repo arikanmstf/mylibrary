@@ -12,14 +12,14 @@ class PublicationList extends Component {
 		return this.props.publications.map((publication)=> {
 			return (
 					<li key={ publication.publication_id }>
-							<div className="product-meta">
-								<div className="title">
-									<a href="#books?book_id=1">{ publication.title }</a>
+							<div className="publication-meta">
+								<div className="publication-image-mask">
+									<img
+										className="publication-image"
+										src={`http://mustafaarikan.net/mylibrary/cover/${publication.publication_id}.jpg`} />
 								</div>
-								<div className="product-writers">
-									<a >
+								<div className="publication-info">
 										{ publication.writers }
-									</a>
 								</div>
 							</div>
 					</li>
