@@ -1,10 +1,11 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import axios from "axios";
+import { API } from "../common/config";
 
-import { getListById } from '../actions/resolvedGetListById';
 
-class List extends Component {
+export default class List extends Component {
 
 	constructor(props) {
     super(props);
@@ -12,13 +13,21 @@ class List extends Component {
     this.state = props;
   }
 
+  getListById(list_id) {
+    axios.get(API.getListById,{
+				params: {
+					list_id: list_id
+				}
+			})
+		.then( response => this.setState({ list: response.data.response }))
+  }
+
 	componentDidMount() {
-		this.props.getListById(this.state.listId);
+		this.getListById(this.state.listId);
 	}
 
 	render() {
-		let list = this.props.list;
-    console.log(list);
+		let list = this.state.list;
 
 		return list ? (
 			<div className="list">
@@ -27,24 +36,3 @@ class List extends Component {
 		) : null
 	}
 }
-
-function mapStateToProps(state){
-	//whatever is returned will show up
-	// as props inside of BookList
-	return {
-		list: state.list
-	};
-}
-
-// Anything returned from this function will end up as props
-// on the BookList container
-const mapDispatchToProps = dispatch => {
-  return { getListById: (listId) => dispatch(getListById(listId)) }
-}
-
-
-
-// Promote BookList from a component to a container - it needs to know
-// about this new dispatch method , selectBook
-// Make it avaible as a prop
-export default connect(mapStateToProps, mapDispatchToProps)(List);

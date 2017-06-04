@@ -18,9 +18,12 @@ class ListsOfPublication extends Component {
 	}
 
 	renderList() {
-
 		return this.props.lists.map(list => {
-			return <List key={ list.list_id } listId={ list.list_id } />
+			return (
+				<div key={ list.list_id } className="col-md-6 col-sm-6 list">
+					<List  listId={ list.list_id } />
+				</div>
+				)
 		});
 	}
 
@@ -28,7 +31,7 @@ class ListsOfPublication extends Component {
 		let lists = this.props.lists;
 		return lists ? (
 			<div className="lists-of-publication">
-					{ this.renderList() }
+						{ this.renderList() }
 			</div>
 		) : null
 	}
