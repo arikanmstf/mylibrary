@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
-  Route
+  Route,
+  Switch
 } from 'react-router-dom';
 import storage from '../common/storage';
 
@@ -95,13 +96,13 @@ export default class App extends Component {
         { isLoggedIn ?
           <div>
             <Router>
-              <div>
+              <Switch>
                 <Route exact path="/" component={ Home } />
                 <Route path="/admin" component={ Admin } />
                 <Route path={`/publications/:publicationId`} component={ PublicationDetails }/>
                 <Route path={`/writers/:writerId`} component={ WriterDetails }/>
                 <Route path='*' component={ NotFound } />
-              </div>
+              </Switch>
             </Router>
           </div>
           :
