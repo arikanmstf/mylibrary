@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { getPublicationDetails } from '../actions/resolvedGetPublicationDetails';
 import ListsOfPublication from '../containers/listsOfPublication';
+import { commaListItems } from '../common/helpers';
 
 class PublicationDetailsPage extends Component {
 
@@ -15,18 +16,6 @@ class PublicationDetailsPage extends Component {
 
 	componentDidMount() {
 		this.props.getPublicationDetails(this.state.publicationId);
-	}
-
-	setWriters(writers,writer_ids) {
-
-		if(!writers) return null;
-		let writerArr = writers.split(",");
-		let writerIdsArr = writer_ids.split(",");
-		const rowLen = writerArr.length;
-
-		return writerArr = writerArr.map((w,i)=>{
-			return <span key={w}><Link to={`/writers/${writerIdsArr[i]}`}>{w}</Link>{rowLen === i+1 ? null : ', '}</span>
-		});
 	}
 
 	render() {
@@ -45,7 +34,7 @@ class PublicationDetailsPage extends Component {
 							<span>{ publication.title }</span>
 						</div>
 						<div className="item-small-title">
-							{ this.setWriters(publication.writers, publication.writer_ids) }
+							{ commaListItems(publication.writers, publication.writer_ids, "writers") }
 						</div>
 						<div className="item-light-title">
 							<span><Link style={linkStyle} to={`/publishers/${publication.publisher_id}`}>{ publication.publisher_name }</Link></span>

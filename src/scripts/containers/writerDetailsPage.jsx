@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { getWriterDetails } from '../actions/resolvedGetWriterDetails';
+import { commaListItems } from '../common/helpers';
 
 class WriterDetailsPage extends Component {
 
@@ -15,18 +16,6 @@ class WriterDetailsPage extends Component {
 	componentDidMount() {
 		this.props.getWriterDetails(this.state.writerId);
 	}
-
-  setBooks(books,book_ids) {
-
-    if(!books) return null;
-    let booksArr = books.split(",");
-    let bookIdsArr = book_ids.split(",");
-    const rowLen = booksArr.length;
-
-    return booksArr = booksArr.map((w,i)=>{
-      return <span key={w}><Link to={`/books/${bookIdsArr[i]}`}>{w}</Link>{rowLen === i+1 ? null : ', '}</span>
-    });
-  }
 
 	render() {
 		let writer = this.props.writer;
@@ -46,7 +35,7 @@ class WriterDetailsPage extends Component {
 						</p>
             <span className="item-light-title">Books of the Writer</span>
             <div className="item-small-title">
-							{ this.setBooks(writer.books, writer.book_ids) }
+							{ commaListItems(writer.books, writer.book_ids, "books") }
 						</div>
 					</div>
 					<div className="clearfix"></div>

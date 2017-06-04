@@ -1,8 +1,8 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import { getBookDetails } from '../actions/resolvedGetBookDetails';
+import { commaListItems } from '../common/helpers';
 
 class BookDetailsPage extends Component {
 
@@ -16,21 +16,8 @@ class BookDetailsPage extends Component {
 		this.props.getBookDetails(this.state.bookId);
 	}
 
-	setWriters(writers,writer_ids) {
-
-		if(!writers) return null;
-		let writerArr = writers.split(",");
-		let writerIdsArr = writer_ids.split(",");
-		const rowLen = writerArr.length;
-
-		return writerArr = writerArr.map((w,i)=>{
-			return <span key={w}><Link to={`/writers/${writerIdsArr[i]}`}>{w}</Link>{rowLen === i+1 ? null : ', '}</span>
-		});
-	}
-
 	render() {
 		let book = this.props.book;
-		const linkStyle = {color:'#AAAAAA'};
 		return book ? (
 			<div className="item-details-page">
 				<div className="item-details-container">
@@ -38,12 +25,13 @@ class BookDetailsPage extends Component {
 						<div className="item-title">
 							<span>{ book.title }</span>
 						</div>
-						<div className="item-small-title">
-							{ this.setWriters(book.writers, book.writer_ids) }
-						</div>
 						<p className="item-description">
 							{ book.description }
 						</p>
+						<span className="item-light-title">Publications of the Book</span>
+						<div className="item-small-title">
+							{ commaListItems(book.publishers, book.publication_ids, "publications") }
+						</div>
 					</div>
 					<div className="clearfix"></div>
 					<div className="col-md-12">
