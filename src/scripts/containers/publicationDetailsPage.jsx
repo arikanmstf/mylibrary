@@ -38,7 +38,7 @@ class PublicationDetailsPage extends Component {
 					<div className="col-md-3 col-sm-3 publication-info image-container">
 						<img
 							className="publication-image"
-							src={`http://mustafaarikan.net/mylibrary/cover/${ publication.publication_id }.jpg`} />
+							src={`/assets/img/cover/${ publication.publication_id }.jpg`} />
 					</div>
 					<div className="col-md-9 col-sm-9 publication-info">
 						<div className="publication-title">

@@ -20,8 +20,10 @@ class ListsOfPublication extends Component {
 	renderList() {
 		return this.props.lists.map(list => {
 			return (
-				<div key={ list.list_id } className="col-md-6 col-sm-6 list">
-					<List  listId={ list.list_id } />
+				<div key={ list.list_id }>
+					<Link to={ `/lists/${list.list_id}` }>
+						<List  listId={ list.list_id } />
+					</Link>
 				</div>
 				)
 		});

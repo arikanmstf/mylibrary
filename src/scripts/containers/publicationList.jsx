@@ -31,7 +31,7 @@ class PublicationList extends Component {
 									<Link to={`/publications/${publication.publication_id}`}>
 										<img
 										className="publication-image"
-										src={`http://mustafaarikan.net/mylibrary/cover/${publication.publication_id}.jpg`} />
+										src={`/assets/img/cover/${publication.publication_id}.jpg`} />
 									</Link>
 								</div>
 								<div className="publication-info">

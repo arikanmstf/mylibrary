@@ -19,7 +19,7 @@ export default class SideNavigation extends Component {
               </div>
               <div className="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
                 <ul className="nav navbar-nav">
-                  <li className="active"><a href="#">Home<span className="pull-right hidden-xs showopacity"></span></a></li>
+                  <li className="active"><a href="#">Home<span className="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
                   <li className="dropdown">
                     <a href="#" className="dropdown-toggle" data-toggle="dropdown">Usuarios <span className="caret"></span><span className="pull-right hidden-xs showopacity"></span></a>
                     <ul className="dropdown-menu forAnimate" role="menu">

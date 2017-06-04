@@ -6,7 +6,7 @@
   "repository": "git@github.com:arikanmstf/mylibrary.git",
   "scripts": {
     "prod": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --env=prod & webpack --watch --env=prod",
-    "dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --env=dev"
+    "dev": " rm ./dist/style.css & rm ./dist/bundle.js & node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --env=dev"
   },
   "author": "Mustafa Arikan",
   "license": "MIT",
