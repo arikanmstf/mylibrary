@@ -1,12 +1,12 @@
-.publication-details-page {
+.item-details-page {
   max-width: 768px;
   background-color: $white;
   margin: 0 auto;
   width: 100%;
 
-  .publication-details-container {
+  .item-details-container {
 
-    .publication-info {
+    .item-info {
       overflow: hidden;
 
       &.image-container {
@@ -14,18 +14,18 @@
         background-image: url(/assets/img/pattern/pattern27.png);
       }
 
-      .publication-title {
+      .item-title {
         font-size: $bigFontSize;
         text-align: left;
         border-bottom: 1px solid $gray;
       }
 
-      .publication-writers {
+      .item-small-title {
         font-size: $smallFontSize;
         text-align: left;
       }
 
-      .publication-publisher {
+      .item-light-title {
         color: $lightGray;
 
         a {
@@ -33,13 +33,13 @@
         }
       }
 
-      .publication-table {
+      .item-table {
         td{
           padding-left: 0px;
         }
       }
 
-      .publication-lists {
+      .item-lists {
         .lists-of-publication {
           .list {
             padding-left: 0px;
@@ -48,7 +48,7 @@
         }
       }
 
-      .publication-image {
+      .item-image {
         width: 100%;
       }
     }

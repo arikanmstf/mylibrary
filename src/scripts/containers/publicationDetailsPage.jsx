@@ -33,27 +33,27 @@ class PublicationDetailsPage extends Component {
 		let publication = this.props.publication;
 		const linkStyle = {color:'#AAAAAA'};
 		return publication && (
-			<div className="publication-details-page">
-				<div className="publication-details-container">
-					<div className="col-md-3 col-sm-3 publication-info image-container">
+			<div className="item-details-page">
+				<div className="item-details-container">
+					<div className="col-md-3 col-sm-3 item-info image-container">
 						<img
-							className="publication-image"
+							className="item-image"
 							src={`/assets/img/cover/${ publication.publication_id }.jpg`} />
 					</div>
-					<div className="col-md-9 col-sm-9 publication-info">
-						<div className="publication-title">
+					<div className="col-md-9 col-sm-9 item-info">
+						<div className="item-title">
 							<span>{ publication.title }</span>
 						</div>
-						<div className="publication-writers">
+						<div className="item-small-title">
 							{ this.setWriters(publication.writers, publication.writer_ids) }
 						</div>
-						<div className="publication-publisher">
+						<div className="item-light-title">
 							<span><Link style={linkStyle} to={`/publishers/${publication.publisher_id}`}>{ publication.publisher_name }</Link></span>
 						</div>
-						<p className="publication-description">
+						<p className="item-description">
 							{ publication.description }
 						</p>
-						<div className="publication-table">
+						<div className="item-table">
 							<table className="table table-responsive">
 								<tbody>
 									{ publication.isbn &&
@@ -72,7 +72,7 @@ class PublicationDetailsPage extends Component {
 								</tbody>
 							</table>
 						</div>
-						<div className="publication-lists">
+						<div className="item-lists">
 							<ListsOfPublication publicationId={ this.state.publicationId } />
 						</div>
 					</div>
