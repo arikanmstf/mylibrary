@@ -44,6 +44,7 @@ class WriterDetailsPage extends Component {
 						<p className="item-description">
 							{ writer.description }
 						</p>
+            <span className="item-light-title">Books of the Writer</span>
             <div className="item-small-title">
 							{ this.setBooks(writer.books, writer.book_ids) }
 						</div>

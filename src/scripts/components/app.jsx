@@ -62,6 +62,18 @@ class Admin extends Component {
   }
 }
 
+class NotFound extends Component {
+  render() {
+    return (
+      <div>
+          <NavbarHeader />
+          <h1>404</h1>
+          <h2>Requested page not found.</h2>
+      </div>
+    );
+  }
+}
+
 const PublicationDetails = ({ match }) => (
   <div>
     <NavbarHeader />
@@ -88,6 +100,7 @@ export default class App extends Component {
                 <Route path="/admin" component={ Admin } />
                 <Route path={`/publications/:publicationId`} component={ PublicationDetails }/>
                 <Route path={`/writers/:writerId`} component={ WriterDetails }/>
+                <Route path='*' component={ NotFound } />
               </div>
             </Router>
           </div>
