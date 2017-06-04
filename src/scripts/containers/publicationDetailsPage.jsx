@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { getPublicationDetails } from '../actions/resolvedGetPublicationDetails';
-import ListsOfPublication from '../containers/listsOfPublication';
+import ListsOfPublication from '../components/listsOfPublication';
 import { commaListItems } from '../common/helpers';
 
 class PublicationDetailsPage extends Component {
@@ -62,7 +62,7 @@ class PublicationDetailsPage extends Component {
 							</table>
 						</div>
 						<div className="item-lists">
-							<ListsOfPublication publicationId={ this.state.publicationId } />
+							<ListsOfPublication lists={ publication.lists } />
 						</div>
 					</div>
 					<div className="clearfix"></div>
