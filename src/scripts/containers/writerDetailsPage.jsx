@@ -33,7 +33,7 @@ class WriterDetailsPage extends Component {
 		return writer ? (
       <div className="item-details-page">
 				<div className="item-details-container">
-					<div className="col-md-9 col-sm-9 item-info">
+					<div className="col-md-12 col-sm-12 item-info">
 						<div className="item-title">
 							<span>{ writer.full_name }</span>
 						</div>

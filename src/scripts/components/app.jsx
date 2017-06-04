@@ -11,6 +11,7 @@ import LoginPage from '../containers/loginPage';
 import NavbarHeader from '../containers/navbarHeader';
 import PublicationDetailsPage from '../containers/publicationDetailsPage';
 import WriterDetailsPage from '../containers/writerDetailsPage';
+import BookDetailsPage from '../containers/bookDetailsPage';
 
 import InputSearch from './input/inputSearch';
 import SideNavigation from './sideNavigation';
@@ -87,6 +88,12 @@ const WriterDetails = ({ match }) => (
     <WriterDetailsPage writerId={ match.params.writerId }/>
   </div>
 )
+const BookDetails = ({ match }) => (
+  <div>
+    <NavbarHeader />
+    <BookDetailsPage bookId={ match.params.bookId }/>
+  </div>
+)
 
 export default class App extends Component {
 
@@ -101,6 +108,7 @@ export default class App extends Component {
                 <Route path="/admin" component={ Admin } />
                 <Route path={`/publications/:publicationId`} component={ PublicationDetails }/>
                 <Route path={`/writers/:writerId`} component={ WriterDetails }/>
+                <Route path={`/books/:bookId`} component={ BookDetails }/>
                 <Route path='*' component={ NotFound } />
               </Switch>
             </Router>
