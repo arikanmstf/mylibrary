@@ -9,6 +9,7 @@ import PublicationList from '../containers/publicationList';
 import LoginPage from '../containers/loginPage';
 import NavbarHeader from '../containers/navbarHeader';
 import PublicationDetailsPage from '../containers/publicationDetailsPage';
+import WriterDetailsPage from '../containers/writerDetailsPage';
 
 import InputSearch from './input/inputSearch';
 import SideNavigation from './sideNavigation';
@@ -67,6 +68,12 @@ const PublicationDetails = ({ match }) => (
     <PublicationDetailsPage publicationId={ match.params.publicationId }/>
   </div>
 )
+const WriterDetails = ({ match }) => (
+  <div>
+    <NavbarHeader />
+    <WriterDetailsPage writerId={ match.params.writerId }/>
+  </div>
+)
 
 export default class App extends Component {
 
@@ -80,6 +87,7 @@ export default class App extends Component {
                 <Route exact path="/" component={ Home } />
                 <Route path="/admin" component={ Admin } />
                 <Route path={`/publications/:publicationId`} component={ PublicationDetails }/>
+                <Route path={`/writers/:writerId`} component={ WriterDetails }/>
               </div>
             </Router>
           </div>
