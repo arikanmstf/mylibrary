@@ -10,6 +10,27 @@ const isProd = argv.env === 'prod';
 const isDev = argv.env === 'dev';
 
 let plugins = [extractCSS];
+let rules = [
+  {
+    exclude: /node_modules/,
+    loader: "babel-loader",
+    query: {
+      presets: ["react", "es2015", "stage-1"]
+    }
+  },
+  {
+    test: /\.scss$/,
+    use: extractCSS.extract({
+      fallback: "style-loader",
+      use: [{
+        loader: "css-loader",
+        options: { minimize: isProd }
+      },
+        "sass-loader"
+      ]
+    })
+  }
+];
 
 if (isProd) {
   plugins.push(
@@ -20,6 +41,17 @@ if (isProd) {
       }
     })
   );
+} else {
+  rules.push({
+    test: /\.jsx?$/,
+    exclude: /node_modules/,
+    enforce: 'pre',
+    loader: 'eslint-loader',
+    options: {
+      failOnWarning: isDev,
+      failOnError: isDev
+    }
+  });
 }
 
 module.exports = {
@@ -33,37 +65,7 @@ module.exports = {
     filename: "dist/bundle.js"
   },
   module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        enforce: 'pre',
-        loader: 'eslint-loader',
-        options: {
-          failOnWarning: isDev,
-          failOnError: isDev
-        }
-      },
-      {
-        exclude: /node_modules/,
-        loader: "babel-loader",
-        query: {
-          presets: ["react", "es2015", "stage-1"]
-        }
-      },
-      {
-        test: /\.scss$/,
-        use: extractCSS.extract({
-          fallback: "style-loader",
-          use: [{
-            loader: "css-loader",
-            options: { minimize: isProd }
-          },
-            "sass-loader"
-          ]
-        })
-      }
-    ]
+    rules: rules
   },
   resolve: {
     extensions: [".js", ".jsx"]
