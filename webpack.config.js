@@ -24,7 +24,7 @@ if (isProd) {
 
 module.exports = {
   entry: [
-    "./src/scripts/index.js",
+    "./src/scripts/index.jsx",
     "./src/style/index.scss"
   ],
   output: {

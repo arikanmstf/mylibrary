@@ -5,10 +5,10 @@ import writerDetailsReducer from './writerDetailsReducer';
 import bookDetailsReducer from './bookDetailsReducer';
 
 const rootReducer = combineReducers({
-	publications: publicationReducer,
-	publication: publicationDetailsReducer,
-	writer: writerDetailsReducer,
-	book: bookDetailsReducer
+  publications: publicationReducer,
+  publication: publicationDetailsReducer,
+  writer: writerDetailsReducer,
+  book: bookDetailsReducer
 });
 
 export default rootReducer;

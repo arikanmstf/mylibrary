@@ -16,8 +16,8 @@ import BookDetailsPage from '../containers/bookDetailsPage';
 import InputSearch from './input/inputSearch';
 import SideNavigation from './sideNavigation';
 
-let s = new storage();
-let isLoggedIn = s.get("login_key");
+const s = new storage();
+const isLoggedIn = s.get('login_key');
 
 class Home extends Component {
   constructor(props) {
@@ -32,22 +32,21 @@ class Home extends Component {
     this.setSearchTitle = this.setSearchTitle.bind(this);
   }
 
-  setSearchTitle(e){
+  setSearchTitle(e) {
     this.setState({
-      search:{
-        title:e
+      search: {
+        title: e
       }
-    })
+    });
   }
 
   render() {
     return (
-          <div>
-            <NavbarHeader />
-            <InputSearch onSearchChange={ this.setSearchTitle } />
-            <PublicationList
-              search={this.state.search} />
-          </div>
+      <div>
+        <NavbarHeader />
+        <InputSearch onSearchChange={this.setSearchTitle} />
+        <PublicationList search={this.state.search} />
+      </div>
     );
   }
 }
