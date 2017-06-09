@@ -56,6 +56,10 @@ class PublicationDetailsPage extends Component {
 										<td>{ publication.cover_no }</td>
 									</tr>
 									<tr>
+										<td>Page Number</td>
+										<td>{ publication.page_number }</td>
+									</tr>
+									<tr>
 										<td>Added By</td>
 										<td>{ publication.added_by }</td>
 									</tr>

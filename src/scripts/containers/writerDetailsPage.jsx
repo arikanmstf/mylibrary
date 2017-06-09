@@ -19,6 +19,10 @@ class WriterDetailsPage extends Component {
 
 	render() {
 		let writer = this.props.writer;
+		let writer_birth = (writer.birth_date ? "Birth: " + writer.birth_date : "");
+		let writer_death = (writer.death_date ? ", Death: " + writer.death_date : "");
+
+		const writer_life_string = writer_birth + writer_death;
 		return writer ? (
       <div className="item-details-page">
 				<div className="item-details-container">
@@ -26,7 +30,9 @@ class WriterDetailsPage extends Component {
 						<div className="item-title">
 							<span>{ writer.full_name }</span>
 						</div>
-
+						<div className="item-light-title">
+							{ writer_life_string }
+						</div>
 						<div className="item-light-title">
 							<span>{ writer.citizenship }</span>
 						</div>
