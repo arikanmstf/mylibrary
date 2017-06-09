@@ -48,7 +48,7 @@ if (isProd) {
     enforce: 'pre',
     loader: 'eslint-loader',
     options: {
-      failOnWarning: isDev,
+      failOnWarning: false,
       failOnError: isDev
     }
   });

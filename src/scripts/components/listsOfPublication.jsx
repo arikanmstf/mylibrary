@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 class ListsOfPublication extends Component {
 
-	renderList(){
+	renderList() {
 		return this.props.lists.map((list) => {
 			return (
 				<div key={list.list_id}>
@@ -13,12 +13,12 @@ class ListsOfPublication extends Component {
 						</div>
 					</Link>
 				</div>
-				)
+			);
 		});
 	}
 
-	render(){
-		let lists = this.props.lists;
+	render() {
+		const lists = this.props.lists;
 		return lists ? (
 			<div className="lists-of-publication">
 						{ this.renderList() }

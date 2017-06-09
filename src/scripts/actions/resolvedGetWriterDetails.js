@@ -6,14 +6,14 @@ export function resolvedGetWriterDetails(response) {
   return {
     type: 'RESOLVED_GET_WRITER_DETAILS',
     data: response.data.response
-  }
+  };
 }
 
-export function getWriterDetails(writer_id) {
+export function getWriterDetails(writerId) {
 	return function (dispatch) {
 		axios.get(API.getWriterDetails, {
 				params: {
-					writer_id: writer_id,
+					writer_id: writerId,
 					login_key: Storage.get('login_key')
 				}
 			})

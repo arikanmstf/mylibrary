@@ -6,17 +6,17 @@ export function resolvedGetPublicationDetails(response) {
   return {
     type: 'RESOLVED_GET_PUBLICATION_DETAILS',
     data: response.data.response
-  }
+  };
 }
 
-export function getPublicationDetails(publication_id) {
+export function getPublicationDetails(publicationId) {
 	return function () {
 		axios.get(API.getPublicationDetails, {
 				params: {
-					publication_id: publication_id,
+					publication_id: publicationId,
 					login_key: Storage.get('login_key')
 				}
 			})
-		.then(response => dispatch(resolvedGetPublicationDetails(response)))
+		.then((response) => dispatch(resolvedGetPublicationDetails(response)));
 	};
 }
