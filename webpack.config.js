@@ -42,7 +42,7 @@ if (isProd) {
     })
   );
 } else {
-  rules.push({
+  /*rules.push({
     test: /\.jsx?$/,
     exclude: /node_modules/,
     enforce: 'pre',
@@ -51,7 +51,7 @@ if (isProd) {
       failOnWarning: isDev,
       failOnError: isDev
     }
-  });
+  });*/
 }
 
 module.exports = {
