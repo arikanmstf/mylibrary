@@ -1,6 +1,5 @@
 import React , { Component } from 'react';
 import { Link } from 'react-router-dom';
-import List from './list';
 
 export default class ListsOfPublication extends Component {
 
@@ -9,7 +8,9 @@ export default class ListsOfPublication extends Component {
 			return (
 				<div key={ list.list_id }>
 					<Link to={ `/lists/${list.list_id}` }>
-						<List  list={ list } />
+						<div className="list">
+								{ list.title }
+						</div>
 					</Link>
 				</div>
 				)

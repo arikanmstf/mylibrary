@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { getPublicationDetails } from '../actions/resolvedGetPublicationDetails';
 import ListsOfPublication from '../components/listsOfPublication';
+import TagsOfPublication from '../components/tagsOfPublication';
 import { commaListItems } from '../common/helpers';
 
 class PublicationDetailsPage extends Component {
@@ -61,8 +62,15 @@ class PublicationDetailsPage extends Component {
 								</tbody>
 							</table>
 						</div>
-						<div className="item-lists">
-							<ListsOfPublication lists={ publication.lists } />
+						<div className="item-lists-container">
+							<div className="item-lists">
+								<h5>Lists</h5>
+								<ListsOfPublication lists={ publication.lists } />
+							</div>
+							<div className="item-lists">
+								<h5>Tags</h5>
+								<TagsOfPublication tags={ publication.tags } />
+							</div>
 						</div>
 					</div>
 					<div className="clearfix"></div>

@@ -39,11 +39,19 @@
         }
       }
 
-      .item-lists {
-        .lists-of-publication {
-          .list {
-            padding-left: 0px;
-            padding-right: 0px;
+      .item-lists-container {
+
+        display: flex;
+        justify-content: left;
+        flex-wrap: wrap;
+
+        .item-lists {
+          padding-right: 30px;
+          .lists-of-publication {
+            .list {
+              padding-left: 0px;
+              padding-right: 0px;
+            }
           }
         }
       }
