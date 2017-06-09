@@ -1,4 +1,4 @@
-import React , { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { getBookDetails } from '../actions/resolvedGetBookDetails';
@@ -17,7 +17,7 @@ class BookDetailsPage extends Component {
 	}
 
 	render() {
-		let book = this.props.book;
+		const book = this.props.book;
 		return book ? (
 			<div className="item-details-page">
 				<div className="item-details-container">
@@ -30,21 +30,23 @@ class BookDetailsPage extends Component {
 						</p>
 						<span className="item-light-title">Publications of the Book</span>
 						<div className="item-small-title">
-							{ commaListItems(book.publishers, book.publication_ids, "publications") }
+							{ commaListItems(book.publishers, book.publication_ids, 'publications') }
 						</div>
 					</div>
-					<div className="clearfix"></div>
-					<div className="col-md-12">
-
-					</div>
+					<div className="clearfix" />
+					<div className="col-md-12" />
 				</div>
 			</div>
-		) : null
+		) : null;
 	}
 }
+BookDetailsPage.propTypes = {
+  getBookDetails: propTypes.Object.isRequired,
+	book: propTypes.Object.isRequired
+};
 
-function mapStateToProps(state){
-	//whatever is returned will show up
+function mapStateToProps(state) {
+	// whatever is returned will show up
 	// as props inside of BookList
 	return {
 		book: state.book
@@ -53,11 +55,9 @@ function mapStateToProps(state){
 
 // Anything returned from this function will end up as props
 // on the BookList container
-const mapDispatchToProps = dispatch => {
-  return { getBookDetails: (book_id) => dispatch(getBookDetails(book_id)) }
-}
-
-
+const mapDispatchToProps = (dispatch) => {
+  return { getBookDetails: (bookId) => dispatch(getBookDetails(bookId)) };
+};
 
 // Promote BookList from a component to a container - it needs to know
 // about this new dispatch method , selectBook

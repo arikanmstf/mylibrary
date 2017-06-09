@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class InputPassword extends Component {
+class InputPassword extends Component {
   constructor(props) {
     super(props);
 
@@ -8,23 +8,37 @@ export default class InputPassword extends Component {
       placeholder: props.placeholder
     };
     this.handleChange = this.handleChange.bind(this);
-
   }
 
   handleChange(event) {
-    if(this.props.onChange) {
+    if (this.props.onChange) {
       this.props.onChange(event.target.value);
     }
   }
 
+  defaultOnChange() {
+    return true;
+  }
+
   render() {
     return (
-
       <input
         type="password"
         className="form-control input input-password"
-        placeholder= { this.state.placeholder }
-        onChange={ this.handleChange }/>
+        placeholder={this.state.placeholder}
+        onChange={this.handleChange}
+      />
     );
   }
 }
+InputPassword.propTypes = {
+  placeholder: PropTypes.string,
+  onChange: PropTypes.Object
+};
+
+InputPassword.defaultProps = {
+  placeholder: '',
+  onChange: InputPassword.defaultOnChange
+};
+
+export default InputPassword;

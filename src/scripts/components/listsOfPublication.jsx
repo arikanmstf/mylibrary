@@ -1,15 +1,15 @@
-import React , { Component } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-export default class ListsOfPublication extends Component {
+class ListsOfPublication extends Component {
 
-	renderList() {
-		return this.props.lists.map(list => {
+	renderList(){
+		return this.props.lists.map((list) => {
 			return (
-				<div key={ list.list_id }>
-					<Link to={ `/lists/${list.list_id}` }>
+				<div key={list.list_id}>
+					<Link to={`/lists/${list.list_id}`} >
 						<div className="list">
-								{ list.title }
+								{list.title}
 						</div>
 					</Link>
 				</div>
@@ -17,12 +17,17 @@ export default class ListsOfPublication extends Component {
 		});
 	}
 
-	render() {
+	render(){
 		let lists = this.props.lists;
 		return lists ? (
 			<div className="lists-of-publication">
 						{ this.renderList() }
 			</div>
-		) : null
+		) : null;
 	}
 }
+ListsOfPublication.propTypes = {
+	lists: propTypes.ArrayOf(Object).isRequired
+};
+
+export default ListsOfPublication;

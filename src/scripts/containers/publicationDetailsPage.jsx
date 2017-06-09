@@ -1,4 +1,4 @@
-import React , { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -20,25 +20,26 @@ class PublicationDetailsPage extends Component {
 	}
 
 	render() {
-		let publication = this.props.publication;
-		const linkStyle = {color:'#AAAAAA'};
+		const publication = this.props.publication;
+		const linkStyle = { color: '#AAAAAA' };
 		return publication && (
 			<div className="item-details-page">
 				<div className="item-details-container">
 					<div className="col-md-3 col-sm-3 item-info image-container">
 						<img
 							className="item-image"
-							src={`/assets/img/cover/${ publication.publication_id }.jpg`} />
+							src={`/assets/img/cover/${publication.publication_id}.jpg`}
+						/>
 					</div>
 					<div className="col-md-9 col-sm-9 item-info">
 						<div className="item-title">
 							<span>{ publication.title }</span>
 						</div>
 						<div className="item-small-title">
-							{ commaListItems(publication.writers, publication.writer_ids, "writers") }
+							{ commaListItems(publication.writers, publication.writer_ids, 'writers') }
 						</div>
 						<div className="item-light-title">
-							<span><Link style={linkStyle} to={`/publishers/${publication.publisher_id}`}>{ publication.publisher_name }</Link></span>
+							<span><Link style={linkStyle} to={`/publishers/${publication.publisher_id}`}>{publication.publisher_name}</Link></span>
 						</div>
 						<p className="item-description">
 							{ publication.description }
@@ -69,26 +70,28 @@ class PublicationDetailsPage extends Component {
 						<div className="item-lists-container">
 							<div className="item-lists">
 								<h5>Lists</h5>
-								<ListsOfPublication lists={ publication.lists } />
+								<ListsOfPublication lists={publication.lists} />
 							</div>
 							<div className="item-lists">
 								<h5>Tags</h5>
-								<TagsOfPublication tags={ publication.tags } />
+								<TagsOfPublication tags={publication.tags} />
 							</div>
 						</div>
 					</div>
-					<div className="clearfix"></div>
-					<div className="col-md-12">
-
-					</div>
+					<div className="clearfix" />
+					<div className="col-md-12" />
 				</div>
 			</div>
-		)
+		);
 	}
 }
+PublicationDetailsPage.propTypes = {
+  getPublicationDetails: propTypes.Object.isRequired,
+	publication: propTypes.Object.isRequired
+};
 
-function mapStateToProps(state){
-	//whatever is returned will show up
+function mapStateToProps(state) {
+	// whatever is returned will show up
 	// as props inside of BookList
 	return {
 		publication: state.publication
@@ -97,11 +100,9 @@ function mapStateToProps(state){
 
 // Anything returned from this function will end up as props
 // on the BookList container
-const mapDispatchToProps = dispatch => {
-  return { getPublicationDetails: (search) => dispatch(getPublicationDetails(search)) }
-}
-
-
+const mapDispatchToProps = (dispatch) => {
+  return { getPublicationDetails: (search) => dispatch(getPublicationDetails(search)) };
+};
 
 // Promote BookList from a component to a container - it needs to know
 // about this new dispatch method , selectBook

@@ -1,6 +1,8 @@
+import React from 'react';
+
 import NavbarHeader from '../containers/navbarHeader';
 
-export default class NotFound extends Component {
+class NotFound extends Component {
   render() {
     return (
       <div>
@@ -11,3 +13,4 @@ export default class NotFound extends Component {
     );
   }
 }
+export default NotFound;

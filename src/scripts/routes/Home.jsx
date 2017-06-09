@@ -5,7 +5,7 @@ import PublicationList from '../containers/publicationList';
 
 import InputSearch from '../components/input/inputSearch';
 
-export default class Home extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
 
@@ -36,3 +36,4 @@ export default class Home extends Component {
     );
   }
 }
+export default Home;

@@ -1,26 +1,24 @@
-import axios from "axios";
-import qs from "qs";
-import storage from "../common/storage";
-import { API } from "../common/config";
-
-let s = new storage();
-
-export function getLogin(data) {
-	return function (dispatch) {
-		axios.post(API.getLogin,qs.stringify({
-			username: data.username,
-			password: data.password
-		}))
-		.then(response => {
-			s.set("login_key",response.data.response);
-			window.location.href = window.location.href;
-		})
-	};
-}
+import axios from 'axios';
+import qs from 'qs';
+import Storage from '../common/storage';
+import { API } from '../common/config';
 
 export function resolvedGetLogin(response) {
   return {
-    type: "RESOLVED_GET_LOGIN",
+    type: 'RESOLVED_GET_LOGIN',
     data: response.data.response
-  }
+  };
+}
+
+export function getLogin(data) {
+	return function () {
+		axios.post(API.getLogin, qs.stringify({
+			username: data.username,
+			password: data.password
+		}))
+		.then((response) => {
+			Storage.set('login_key', response.data.response);
+			window.location.href = window.location.href;
+		});
+	};
 }

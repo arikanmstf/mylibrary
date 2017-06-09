@@ -1,23 +1,22 @@
-import axios from "axios";
-import { API } from "../common/config";
-import storage from "../common/storage";
-
-let s = new storage();
-export function getBookDetails (book_id) {
-	return function (dispatch) {
-		axios.get(API.getBookDetails,{
-				params: {
-					book_id: book_id,
-					login_key: s.get("login_key")
-				}
-			})
-		.then(response => dispatch(resolvedGetBookDetails(response)))
-	};
-}
+import axios from 'axios';
+import Storage from '../common/storage';
+import { API } from '../common/config';
 
 export function resolvedGetBookDetails(response) {
   return {
-    type: "RESOLVED_GET_BOOK_DETAILS",
+    type: 'RESOLVED_GET_BOOK_DETAILS',
     data: response.data.response
-  }
+  };
+}
+
+export function getBookDetails(bookId) {
+	return function (dispatch) {
+		axios.get(API.getBookDetails, {
+				params: {
+					book_id: bookId,
+					login_key: Storage.get('login_key')
+				}
+			})
+		.then((response) => dispatch(resolvedGetBookDetails(response)));
+	};
 }
