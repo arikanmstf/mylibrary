@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class InputText extends Component {
+class InputText extends Component {
   constructor(props) {
     super(props);
 
@@ -11,9 +11,13 @@ export default class InputText extends Component {
   }
 
   handleChange(event) {
-    if(this.props.onChange) {
+    if (this.props.onChange) {
       this.props.onChange(event.target.value);
     }
+  }
+
+  defaultOnChange() {
+    return true;
   }
 
   render() {
@@ -22,8 +26,21 @@ export default class InputText extends Component {
       <input
         type="text"
         className="form-control input input-text"
-        placeholder= { this.state.placeholder }
-        onChange={ this.handleChange }/>
+        placeholder={this.state.placeholder}
+        onChange={this.handleChange}
+      />
     );
   }
 }
+
+InputText.propTypes = {
+  placeholder: PropTypes.string,
+  onChange: PropTypes.Object
+};
+
+InputText.defaultProps = {
+  placeholder: '',
+  onChange: InputText.defaultOnChange
+};
+
+export default InputText;

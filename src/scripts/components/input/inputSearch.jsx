@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import InputText from './inputText';
 
-export default class InputSearch extends Component {
+class InputSearch extends Component {
   constructor(props) {
     super(props);
 
@@ -12,23 +10,37 @@ export default class InputSearch extends Component {
     };
 
     this.handleSearchChange = this.handleSearchChange.bind(this);
-
   }
 
   handleSearchChange(value) {
-    if(this.props.onSearchChange) {
+    if (this.props.onSearchChange) {
       this.props.onSearchChange(value);
     }
+  }
+
+  defaultOnChange() {
+    return true;
   }
 
   render() {
     return (
       <div className="input-search">
         <InputText
-          onChange={ this.handleSearchChange }
+          onChange={this.handleSearchChange}
           className="navbar-header-search"
-          placeholder="Type to search a book..."/>
+          placeholder="Type to search a book..."
+        />
       </div>
     );
   }
 }
+
+InputSearch.propTypes = {
+  onSearchChange: PropTypes.Object,
+};
+
+InputSearch.defaultProps = {
+  onSearchChange: InputSearch.defaultOnChange,
+};
+
+export default InputSearch;

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import InputText from '../components/input/inputText';
 
 export default class NavbarHeader extends Component {
   render() {

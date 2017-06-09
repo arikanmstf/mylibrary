@@ -39,6 +39,15 @@
     }],
     "no-unused-vars": ["error", {
       "ignoreRestSiblings": true
-    }]
+    }],
+    "react/prefer-stateless-function": [0],
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "new-cap": [0],
+    "arrow-body-style": [0],
+    "no-tabs": [0],
+    "indent": [0],
+    "react/jsx-indent": [0],
+    "jsx-a11y/alt-text": [0],
+    "react/jsx-indent-props": [0]
   }
 }
