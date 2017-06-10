@@ -17,6 +17,6 @@ export function getPublicationDetails(publicationId) {
 					login_key: Storage.get('login_key')
 				}
 			})
-		.then((response) => dispatch(resolvedGetPublicationDetails(response)));
+		.then((response) => dispatch(ResolvedGetPublicationDetails(response)));
 	};
 }

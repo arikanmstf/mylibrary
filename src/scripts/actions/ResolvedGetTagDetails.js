@@ -2,21 +2,21 @@ import axios from 'axios';
 import Storage from '../common/Storage';
 import { API } from '../common/Config';
 
-export function ResolvedGetListDetails(response) {
+export function ResolvedGetTagDetails(response) {
   return {
-    type: 'RESOLVED_GET_LIST_DETAILS',
+    type: 'RESOLVED_GET_TAG_DETAILS',
     data: response.data.response
   };
 }
 
-export function getListDetails(listId) {
+export function getTagDetails(tagId) {
 	return function (dispatch) {
-		axios.get(API.getListDetails, {
+		axios.get(API.getTagDetails, {
 				params: {
-					list_id: listId,
+					tag_id: tagId,
 					login_key: Storage.get('login_key')
 				}
 			})
-		.then((response) => dispatch(ResolvedGetListDetails(response)));
+		.then((response) => dispatch(ResolvedGetTagDetails(response)));
 	};
 }

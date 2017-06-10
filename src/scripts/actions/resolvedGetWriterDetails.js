@@ -17,6 +17,6 @@ export function getWriterDetails(writerId) {
 					login_key: Storage.get('login_key')
 				}
 			})
-		.then((response) => dispatch(resolvedGetWriterDetails(response)));
+		.then((response) => dispatch(ResolvedGetWriterDetails(response)));
 	};
 }

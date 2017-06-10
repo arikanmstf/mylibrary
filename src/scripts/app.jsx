@@ -11,6 +11,7 @@ import NotFound from './routes/NotFound';
 import PublicationDetails from './routes/PublicationDetails';
 import WriterDetails from './routes/WriterDetails';
 import ListDetails from './routes/ListDetails';
+import TagDetails from './routes/TagDetails';
 
 import LoginPage from './containers/LoginPage';
 
@@ -32,6 +33,7 @@ export default class App extends Component {
                 <Route path={`/writers/:writerId`} component={WriterDetails} />
                 <Route path={`/lists/:listId`} component={ListDetails} />
                 <Route path={`/books/:bookId`} component={BookDetails} />
+                <Route path={`/tags/:tagId`} component={TagDetails} />
                 <Route path="*" component={NotFound} />
               </Switch>
             </Router>

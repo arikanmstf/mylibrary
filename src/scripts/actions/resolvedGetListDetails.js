@@ -17,6 +17,6 @@ export function getListDetails(listId) {
 					login_key: Storage.get('login_key')
 				}
 			})
-		.then((response) => dispatch(resolvedGetListDetails(response)));
+		.then((response) => dispatch(ResolvedGetListDetails(response)));
 	};
 }

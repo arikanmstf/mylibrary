@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { API } from '../common/Config';
 import Storage from '../common/Storage';
+import { API } from '../common/Config';
 
 export function ResolvedGetAllPublications(response) {
   return {
@@ -18,6 +18,6 @@ export function getAllPublications(search) {
           page: search.pageNo
 				}
 			})
-		.then((response) => dispatch(resolvedGetAllPublications(response)));
+		.then((response) => dispatch(ResolvedGetAllPublications(response)));
 	};
 }

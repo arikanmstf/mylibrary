@@ -2,7 +2,7 @@ import axios from 'axios';
 import Storage from '../common/Storage';
 import { API } from '../common/Config';
 
-export function resolvedGetBookDetails(response) {
+export function ResolvedGetBookDetails(response) {
   return {
     type: 'RESOLVED_GET_BOOK_DETAILS',
     data: response.data.response
@@ -17,6 +17,6 @@ export function getBookDetails(bookId) {
 					login_key: Storage.get('login_key')
 				}
 			})
-		.then((response) => dispatch(resolvedGetBookDetails(response)));
+		.then((response) => dispatch(ResolvedGetBookDetails(response)));
 	};
 }

@@ -4,13 +4,15 @@ import PublicationDetailsReducer from './PublicationDetailsReducer';
 import WriterDetailsReducer from './WriterDetailsReducer';
 import BookDetailsReducer from './BookDetailsReducer';
 import ListDetailsReducer from './ListDetailsReducer';
+import TagDetailsReducer from './TagDetailsReducer';
 
 const rootReducer = combineReducers({
   publications: PublicationReducer,
   publication: PublicationDetailsReducer,
   writer: WriterDetailsReducer,
   list: ListDetailsReducer,
-  book: BookDetailsReducer
+  book: BookDetailsReducer,
+  tag: TagDetailsReducer
 });
 
 export default rootReducer;
