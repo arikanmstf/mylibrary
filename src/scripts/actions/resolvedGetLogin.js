@@ -1,7 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
-import Storage from '../common/storage';
-import { API } from '../common/config';
+import Storage from '../common/Storage';
+import { API } from '../common/Config';
 
 export function resolvedGetLogin(response) {
   return {

@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { getPublicationDetails } from '../actions/resolvedGetPublicationDetails';
-import ListsOfPublication from '../components/listsOfPublication';
-import TagsOfPublication from '../components/tagsOfPublication';
-import { commaListItems } from '../common/helpers';
+import { getPublicationDetails } from '../actions/ResolvedGetPublicationDetails';
+import ListsOfPublication from '../components/ListsOfPublication';
+import TagsOfPublication from '../components/TagsOfPublication';
+import { commaListItems } from '../common/Helpers';
 
 class PublicationDetailsPage extends Component {
 

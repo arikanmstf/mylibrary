@@ -1,6 +1,6 @@
 import axios from 'axios';
-import Storage from '../common/storage';
-import { API } from '../common/config';
+import Storage from '../common/Storage';
+import { API } from '../common/Config';
 
 export function resolvedGetPublicationDetails(response) {
   return {

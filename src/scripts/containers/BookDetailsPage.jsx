@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getBookDetails } from '../actions/resolvedGetBookDetails';
-import { commaListItems } from '../common/helpers';
+import { getBookDetails } from '../actions/ResolvedGetBookDetails';
+import { commaListItems } from '../common/Helpers';
 
 class BookDetailsPage extends Component {
 

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import NavbarHeader from '../containers/NavbarHeader';
 import PublicationList from '../containers/PublicationList';
 
-import InputSearch from '../components/input/inputSearch';
+import InputSearch from '../components/input/InputSearch';
 
 class Pages extends Component {
   constructor(props) {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import NavbarHeader from '../containers/NavbarHeader';
 
-import SideNavigation from '../components/sideNavigation';
+import SideNavigation from '../components/SideNavigation';
 
 export default class Admin extends Component {
   render() {

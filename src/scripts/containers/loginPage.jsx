@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import InputText from '../components/input/inputText';
-import InputPassword from '../components/input/inputPassword';
-import { getLogin } from '../actions/resolvedGetLogin';
+import InputText from '../components/input/InputText';
+import InputPassword from '../components/input/InputPassword';
+import { getLogin } from '../actions/ResolvedGetLogin';
 
 class LoginPage extends Component {
 

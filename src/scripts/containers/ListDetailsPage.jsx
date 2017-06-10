@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getListDetails } from '../actions/resolvedGetListDetails';
-import { commaListItems } from '../common/helpers';
+import { getListDetails } from '../actions/ResolvedGetListDetails';
+import { commaListItems } from '../common/Helpers';
 
 class ListDetailsPage extends Component {
 
