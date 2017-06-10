@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import NavbarHeader from '../containers/navbarHeader';
+import NavbarHeader from '../containers/NavbarHeader';
 import BookDetailsPage from '../containers/BookDetailsPage';
 
 const BookDetails = ({ match }) => (

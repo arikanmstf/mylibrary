@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import NavbarHeader from '../containers/navbarHeader';
+import NavbarHeader from '../containers/NavbarHeader';
 
 import SideNavigation from '../components/sideNavigation';
 

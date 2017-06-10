@@ -1,16 +1,16 @@
 import { combineReducers } from 'redux';
-import publicationReducer from './publicationReducer';
-import publicationDetailsReducer from './publicationDetailsReducer';
-import writerDetailsReducer from './writerDetailsReducer';
-import bookDetailsReducer from './bookDetailsReducer';
-import listDetailsReducer from './listDetailsReducer';
+import PublicationReducer from './PublicationReducer';
+import PublicationDetailsReducer from './PublicationDetailsReducer';
+import WriterDetailsReducer from './WriterDetailsReducer';
+import BookDetailsReducer from './BookDetailsReducer';
+import ListDetailsReducer from './ListDetailsReducer';
 
 const rootReducer = combineReducers({
-  publications: publicationReducer,
-  publication: publicationDetailsReducer,
-  writer: writerDetailsReducer,
-  list: listDetailsReducer,
-  book: bookDetailsReducer
+  publications: PublicationReducer,
+  publication: PublicationDetailsReducer,
+  writer: WriterDetailsReducer,
+  list: ListDetailsReducer,
+  book: BookDetailsReducer
 });
 
 export default rootReducer;

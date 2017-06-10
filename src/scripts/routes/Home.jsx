@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import NavbarHeader from '../containers/navbarHeader';
-import PublicationList from '../containers/publicationList';
+import NavbarHeader from '../containers/NavbarHeader';
+import PublicationList from '../containers/PublicationList';
 
 import InputSearch from '../components/input/inputSearch';
 

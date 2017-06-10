@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import NavbarHeader from '../containers/navbarHeader';
-import PublicationDetailsPage from '../containers/publicationDetailsPage';
+import NavbarHeader from '../containers/NavbarHeader';
+import PublicationDetailsPage from '../containers/PublicationDetailsPage';
 
 const PublicationDetails = ({ match }) => (
   <div>
