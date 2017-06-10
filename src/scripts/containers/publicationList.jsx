@@ -68,24 +68,23 @@ class PublicationList extends Component {
     const pageNo = parseInt(this.props.search.pageNo, 10);
     const result = [];
     if (totalPage > 10) {
-      for (let i = 0; i < 3; i++) {
-        result.push(this.renderLi(i));
+      for (let i = 0; i < 6; i++) {
+        if (i < pageNo - 2 || pageNo < 6) result.push(this.renderLi(i));
       }
-      if(pageNo > 2) {
-        for (let i = pageNo-2; i < pageNo+1; i++) {
-          result.push(this.renderLi(i));
+      if (pageNo > 5) {
+        for (let i = pageNo - 2; i < pageNo + 1; i++) {
+          if (i < totalPage) result.push(this.renderLi(i));
         }
       }
 
-      for (let i = totalPage-3; i < totalPage; i++) {
-        result.push(this.renderLi(i));
+      for (let i = totalPage - 1; i < totalPage; i++) {
+        if (pageNo < i && i < totalPage) result.push(this.renderLi(i));
       }
     } else {
       for (let i = 0; i < totalPage; i++) {
         result.push(this.renderLi(i));
       }
     }
-
 
     return (
       <div className="pagination-list-container">
