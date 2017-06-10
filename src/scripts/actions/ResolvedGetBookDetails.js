@@ -2,21 +2,21 @@ import axios from 'axios';
 import Storage from '../common/Storage';
 import { API } from '../common/Config';
 
-export function ResolvedGetListDetails(response) {
+export function resolvedGetBookDetails(response) {
   return {
-    type: 'RESOLVED_GET_LIST_DETAILS',
+    type: 'RESOLVED_GET_BOOK_DETAILS',
     data: response.data.response
   };
 }
 
-export function getListDetails(listId) {
+export function getBookDetails(bookId) {
 	return function (dispatch) {
-		axios.get(API.getListDetails, {
+		axios.get(API.getBookDetails, {
 				params: {
-					list_id: listId,
+					book_id: bookId,
 					login_key: Storage.get('login_key')
 				}
 			})
-		.then((response) => dispatch(resolvedGetListDetails(response)));
+		.then((response) => dispatch(resolvedGetBookDetails(response)));
 	};
 }
