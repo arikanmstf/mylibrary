@@ -11,10 +11,10 @@ class Home extends Component {
 
     this.state = {
       search: {
-        title: ''
+        title: '',
+        pageNo: 3
       }
     };
-
     this.setSearchTitle = this.setSearchTitle.bind(this);
   }
 

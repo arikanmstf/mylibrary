@@ -14,7 +14,8 @@ export function getAllPublications(search) {
 		axios.get(API.getAllPublications, {
 				params: {
 					title: search.title,
-					login_key: Storage.get('login_key')
+					login_key: Storage.get('login_key'),
+          page: search.pageNo
 				}
 			})
 		.then((response) => dispatch(resolvedGetAllPublications(response)));

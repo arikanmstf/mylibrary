@@ -49,11 +49,26 @@ class PublicationList extends Component {
 		});
 	}
 
+  renderPagination() {
+    return (
+      <div className="pagination-list-container">
+        <li className="active">1</li>
+        <li>2</li>
+        <li>3</li>
+      </div>
+    );
+  }
+
 	render() {
 		return (
-			<ul className="publication-list">
-				{this.renderList()}
-			</ul>
+      <div>
+        <ul className="pagination-list">
+          {this.renderPagination()}
+        </ul>
+        <ul className="publication-list">
+          {this.renderList()}
+        </ul>
+      </div>
 		);
 	}
 }
@@ -65,7 +80,7 @@ PublicationList.propTypes = {
 };
 
 PublicationList.defaultProps = {
-  search: '',
+  search: {},
 	publications: []
 };
 
