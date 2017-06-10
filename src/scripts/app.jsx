@@ -6,9 +6,11 @@ import Storage from './common/storage';
 import Admin from './routes/Admin';
 import BookDetails from './routes/BookDetails';
 import Home from './routes/Home';
+import Pages from './routes/Pages';
 import NotFound from './routes/NotFound';
 import PublicationDetails from './routes/PublicationDetails';
 import WriterDetails from './routes/WriterDetails';
+import ListDetails from './routes/ListDetails';
 
 import LoginPage from './containers/LoginPage';
 
@@ -24,10 +26,11 @@ export default class App extends Component {
             <Router>
               <Switch>
                 <Route exact path="/" component={Home} />
-                <Route exact path="/pages/:pageNo" component={Home} />
+                <Route exact path="/pages/:pageNo" component={Pages} />
                 <Route path="/admin" component={Admin} />
                 <Route path={`/publications/:publicationId`} component={PublicationDetails} />
                 <Route path={`/writers/:writerId`} component={WriterDetails} />
+                <Route path={`/lists/:listId`} component={ListDetails} />
                 <Route path={`/books/:bookId`} component={BookDetails} />
                 <Route path="*" component={NotFound} />
               </Switch>

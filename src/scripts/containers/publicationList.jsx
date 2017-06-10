@@ -105,7 +105,7 @@ class PublicationList extends Component {
     const pageNo = parseInt(this.props.search.pageNo, 10);
     const result = [];
     if (totalPage > 10) {
-      for (let i = pageNo-3; (i >= pageNo - 3) && (i < pageNo + 2); i++) {
+      for (let i = pageNo - 3; (i >= pageNo - 3) && (i < pageNo + 2); i++) {
         if (i > -1 && i < totalPage) result.push(this.renderLi(i));
       }
     } else {

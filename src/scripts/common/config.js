@@ -10,9 +10,9 @@ export const API = { // eslint-disable-line import/prefer-default-export
   getAllPublications: home + publications + '/get_all',
   getPublicationDetails: home + publications + '/get_one',
   getLogin: home + membership + '/get_login',
-  getListById: home + lists + '/get_one',
   getWriterDetails: home + writers + '/get_one',
-  getBookDetails: home + books + '/get_one'
+  getBookDetails: home + books + '/get_one',
+  getListDetails: home + lists + '/get_one'
 };
 
 export const PAGINATION = {
