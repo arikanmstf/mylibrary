@@ -25,6 +25,43 @@ class PublicationList extends Component {
     this.setState(this.props.search);
   }
 
+  nextPage() {
+    const recordsPerPage = PAGINATION.recordsPerPage;
+    const totalPage = parseInt(this.props.total / recordsPerPage, 10) + 1;
+    const pageNo = parseInt(this.props.search.pageNo, 10);
+
+    if (totalPage !== pageNo) {
+      return (<Link to={`/pages/${pageNo + 1}`} onClick={this.onLiClick}>{`>`}</Link>);
+    }
+    return null;
+  }
+  lastPage() {
+    const recordsPerPage = PAGINATION.recordsPerPage;
+    const totalPage = parseInt(this.props.total / recordsPerPage, 10) + 1;
+    const pageNo = parseInt(this.props.search.pageNo, 10);
+
+    if (totalPage !== pageNo) {
+      return (<Link to={`/pages/${totalPage}`} onClick={this.onLiClick}>{`>>`}</Link>);
+    }
+    return null;
+  }
+  prevPage() {
+    const pageNo = parseInt(this.props.search.pageNo, 10);
+
+    if (pageNo > 1) {
+      return (<Link to={`/pages/${pageNo - 1}`} onClick={this.onLiClick}>{`<`}</Link>);
+    }
+    return null;
+  }
+  firstPage() {
+    const pageNo = parseInt(this.props.search.pageNo, 10);
+
+    if (pageNo > 1) {
+      return (<Link to={`/pages/1`} onClick={this.onLiClick}>{`<<`}</Link>);
+    }
+    return null;
+  }
+
 	renderList() {
 		return this.props.publications.map((publication) => {
 			return (
@@ -68,17 +105,8 @@ class PublicationList extends Component {
     const pageNo = parseInt(this.props.search.pageNo, 10);
     const result = [];
     if (totalPage > 10) {
-      for (let i = 0; i < 6; i++) {
-        if (i < pageNo - 2 || pageNo < 6) result.push(this.renderLi(i));
-      }
-      if (pageNo > 5) {
-        for (let i = pageNo - 2; i < pageNo + 1; i++) {
-          if (i < totalPage) result.push(this.renderLi(i));
-        }
-      }
-
-      for (let i = totalPage - 1; i < totalPage; i++) {
-        if (pageNo < i && i < totalPage) result.push(this.renderLi(i));
+      for (let i = pageNo-3; (i >= pageNo - 3) && (i < pageNo + 2); i++) {
+        if (i > -1 && i < totalPage) result.push(this.renderLi(i));
       }
     } else {
       for (let i = 0; i < totalPage; i++) {
@@ -88,7 +116,11 @@ class PublicationList extends Component {
 
     return (
       <div className="pagination-list-container">
+        {this.firstPage()}
+        {this.prevPage()}
         {result}
+        {this.nextPage()}
+        {this.lastPage()}
       </div>
     );
   }
