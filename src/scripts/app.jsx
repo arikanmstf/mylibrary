@@ -12,6 +12,7 @@ import PublicationDetails from './routes/PublicationDetails';
 import WriterDetails from './routes/WriterDetails';
 import ListDetails from './routes/ListDetails';
 import TagDetails from './routes/TagDetails';
+import PublisherDetails from './routes/PublisherDetails';
 
 import LoginPage from './containers/LoginPage';
 
@@ -34,6 +35,7 @@ export default class App extends Component {
                 <Route path={`/lists/:listId`} component={ListDetails} />
                 <Route path={`/books/:bookId`} component={BookDetails} />
                 <Route path={`/tags/:tagId`} component={TagDetails} />
+                <Route path={`/publishers/:publisherId`} component={PublisherDetails} />
                 <Route path="*" component={NotFound} />
               </Switch>
             </Router>

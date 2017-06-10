@@ -5,6 +5,7 @@ const lists = '/lists';
 const writers = '/writers';
 const books = '/books';
 const tags = '/tags';
+const publishers = '/publishers';
 
 export const API = { // eslint-disable-line import/prefer-default-export
 
@@ -14,7 +15,8 @@ export const API = { // eslint-disable-line import/prefer-default-export
   getWriterDetails: home + writers + '/get_one',
   getBookDetails: home + books + '/get_one',
   getListDetails: home + lists + '/get_one',
-  getTagDetails: home + tags + '/get_one'
+  getTagDetails: home + tags + '/get_one',
+  getPublisherDetails: home + publishers + '/get_one'
 };
 
 export const PAGINATION = {
