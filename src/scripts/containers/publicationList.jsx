@@ -64,11 +64,29 @@ class PublicationList extends Component {
 
   renderPagination() {
     const recordsPerPage = PAGINATION.recordsPerPage;
-    const totalPage = parseInt(this.props.total / recordsPerPage, 10);
+    const totalPage = parseInt(this.props.total / recordsPerPage, 10) + 1;
+    const pageNo = parseInt(this.props.search.pageNo, 10);
     const result = [];
-    for (let i = 0; i < totalPage; i++) {
-      result.push(this.renderLi(i));
+    if (totalPage > 10) {
+      for (let i = 0; i < 3; i++) {
+        result.push(this.renderLi(i));
+      }
+      if(pageNo > 2) {
+        for (let i = pageNo-2; i < pageNo+1; i++) {
+          result.push(this.renderLi(i));
+        }
+      }
+
+      for (let i = totalPage-3; i < totalPage; i++) {
+        result.push(this.renderLi(i));
+      }
+    } else {
+      for (let i = 0; i < totalPage; i++) {
+        result.push(this.renderLi(i));
+      }
     }
+
+
     return (
       <div className="pagination-list-container">
         {result}
