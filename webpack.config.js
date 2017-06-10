@@ -41,18 +41,18 @@ if (isProd) {
       }
     })
   );
-} else {
-  rules.push({
-    test: /\.jsx?$/,
-    exclude: /node_modules/,
-    enforce: 'pre',
-    loader: 'eslint-loader',
-    options: {
-      failOnWarning: false,
-      failOnError: isDev
-    }
-  });
 }
+
+rules.push({
+  test: /\.jsx?$/,
+  exclude: /node_modules/,
+  enforce: 'pre',
+  loader: 'eslint-loader',
+  options: {
+    failOnWarning: false,
+    failOnError: isProd
+  }
+});
 
 module.exports = {
   entry: [
