@@ -42,7 +42,7 @@ class BookDetailsPage extends Component {
 	}
 }
 BookDetailsPage.propTypes = {
-  getBookDetails: PropTypes.object.isRequired,
+  getBookDetails: PropTypes.func.isRequired,
 	book: PropTypes.object.isRequired
 };
 

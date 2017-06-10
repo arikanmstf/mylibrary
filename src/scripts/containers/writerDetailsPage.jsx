@@ -52,7 +52,7 @@ class WriterDetailsPage extends Component {
 	}
 }
 WriterDetailsPage.propTypes = {
-  getWriterDetails: PropTypes.object.isRequired,
+  getWriterDetails: PropTypes.func.isRequired,
 	writer: PropTypes.object.isRequired
 };
 
