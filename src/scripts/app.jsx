@@ -24,6 +24,7 @@ export default class App extends Component {
             <Router>
               <Switch>
                 <Route exact path="/" component={Home} />
+                <Route exact path="/pages/:pageNo" component={Home} />
                 <Route path="/admin" component={Admin} />
                 <Route path={`/publications/:publicationId`} component={PublicationDetails} />
                 <Route path={`/writers/:writerId`} component={WriterDetails} />

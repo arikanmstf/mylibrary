@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { PAGINATION } from '../common/config';
 
 import { getAllPublications } from '../actions/resolvedGetAllPublications';
 
@@ -19,6 +20,10 @@ class PublicationList extends Component {
 	componentWillReceiveProps(nextProps) {
 		this.setState(nextProps.search);
 	}
+
+  onLiClick() {
+    this.setState(this.props.search);
+  }
 
 	renderList() {
 		return this.props.publications.map((publication) => {
@@ -49,12 +54,24 @@ class PublicationList extends Component {
 		});
 	}
 
+  renderLi(index) {
+    const pageNo = parseInt(this.props.search.pageNo, 10);
+    const i = index + 1;
+    let className;
+    if (i === pageNo) className = 'active';
+    return (<Link to={`/pages/${i}`} className={className} key={i} onClick={this.onLiClick}>{i}</Link>);
+  }
+
   renderPagination() {
+    const recordsPerPage = PAGINATION.recordsPerPage;
+    const totalPage = parseInt(this.props.total / recordsPerPage, 10);
+    const result = [];
+    for (let i = 0; i < totalPage; i++) {
+      result.push(this.renderLi(i));
+    }
     return (
       <div className="pagination-list-container">
-        <li className="active">1</li>
-        <li>2</li>
-        <li>3</li>
+        {result}
       </div>
     );
   }
@@ -76,19 +93,22 @@ class PublicationList extends Component {
 PublicationList.propTypes = {
   search: PropTypes.object,
   getAllPublications: PropTypes.func.isRequired,
-  publications: PropTypes.arrayOf(Object)
+  publications: PropTypes.arrayOf(Object),
+  total: PropTypes.number
 };
 
 PublicationList.defaultProps = {
   search: {},
-	publications: []
+	publications: [],
+	total: 0
 };
 
 function mapStateToProps(state) {
   // whatever is returned will show up
   // as props inside of BookList
   return {
-   publications: state.publications
+   publications: state.publications.list,
+   total: parseInt(state.publications.total, 10)
   };
 }
 

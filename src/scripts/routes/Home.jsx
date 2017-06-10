@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import NavbarHeader from '../containers/navbarHeader';
 import PublicationList from '../containers/publicationList';
@@ -12,7 +13,7 @@ class Home extends Component {
     this.state = {
       search: {
         title: '',
-        pageNo: 3
+        pageNo: props.match.params.pageNo || 1
       }
     };
     this.setSearchTitle = this.setSearchTitle.bind(this);
@@ -36,4 +37,8 @@ class Home extends Component {
     );
   }
 }
+Home.propTypes = {
+  match: PropTypes.object.isRequired
+};
+
 export default Home;

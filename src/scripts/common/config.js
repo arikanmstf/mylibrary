@@ -14,3 +14,7 @@ export const API = { // eslint-disable-line import/prefer-default-export
   getWriterDetails: home + writers + '/get_one',
   getBookDetails: home + books + '/get_one'
 };
+
+export const PAGINATION = {
+  recordsPerPage: 36
+};
