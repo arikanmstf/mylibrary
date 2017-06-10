@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { getAllPublications } from '../actions/resolvedGetAllPublications';
 
@@ -58,9 +59,9 @@ class PublicationList extends Component {
 }
 
 PublicationList.propTypes = {
-  search: PropTypes.string,
-  getAllPublications: PropTypes.Object.isRequired,
-  publications: PropTypes.ArrayOf(Object)
+  search: PropTypes.object,
+  getAllPublications: PropTypes.func.isRequired,
+  publications: PropTypes.arrayOf(Object)
 };
 
 PublicationList.defaultProps = {

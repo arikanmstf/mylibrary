@@ -5,7 +5,7 @@ const lists = '/lists';
 const writers = '/writers';
 const books = '/books';
 
-const API = {
+export const API = { // eslint-disable-line import/prefer-default-export
 
   getAllPublications: home + publications + '/get_all',
   getPublicationDetails: home + publications + '/get_one',
@@ -14,5 +14,3 @@ const API = {
   getWriterDetails: home + writers + '/get_one',
   getBookDetails: home + books + '/get_one'
 };
-
-export default API;

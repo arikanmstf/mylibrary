@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class ListsOfPublication extends Component {
 
@@ -27,7 +28,10 @@ class ListsOfPublication extends Component {
 	}
 }
 ListsOfPublication.propTypes = {
-	lists: propTypes.ArrayOf(Object).isRequired
+	lists: PropTypes.arrayOf(Object).isRequired
+};
+ListsOfPublication.defaultProps = {
+  lists: [],
 };
 
 export default ListsOfPublication;

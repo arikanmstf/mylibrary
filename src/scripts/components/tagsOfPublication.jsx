@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class TagsOfPublication extends Component {
 
@@ -27,7 +28,10 @@ class TagsOfPublication extends Component {
 	}
 }
 TagsOfPublication.propTypes = {
-	tags: propTypes.ArrayOf(Object).isRequired
+	tags: PropTypes.arrayOf(Object).isRequired
+};
+TagsOfPublication.defaultProps = {
+  tags: [],
 };
 
 export default TagsOfPublication;

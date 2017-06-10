@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function commaListItems(item, ids, route) {
+export function commaListItems(item, ids, route) { // eslint-disable-line import/prefer-default-export
   if (!item) return null;
   let itemArr = item.split(',');
   const idsArr = ids.split(',');

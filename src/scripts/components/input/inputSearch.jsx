@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import InputText from './inputText';
 
 class InputSearch extends Component {
@@ -36,7 +38,7 @@ class InputSearch extends Component {
 }
 
 InputSearch.propTypes = {
-  onSearchChange: PropTypes.Object,
+  onSearchChange: PropTypes.func,
 };
 
 InputSearch.defaultProps = {

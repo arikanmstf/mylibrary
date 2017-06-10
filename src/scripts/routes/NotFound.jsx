@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import NavbarHeader from '../containers/navbarHeader';
 

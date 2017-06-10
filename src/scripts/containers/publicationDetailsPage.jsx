@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { getPublicationDetails } from '../actions/resolvedGetPublicationDetails';
 import ListsOfPublication from '../components/listsOfPublication';
@@ -86,8 +87,8 @@ class PublicationDetailsPage extends Component {
 	}
 }
 PublicationDetailsPage.propTypes = {
-  getPublicationDetails: propTypes.Object.isRequired,
-	publication: propTypes.Object.isRequired
+  getPublicationDetails: PropTypes.func.isRequired,
+	publication: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {

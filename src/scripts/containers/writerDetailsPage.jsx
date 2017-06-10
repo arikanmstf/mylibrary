@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { getWriterDetails } from '../actions/resolvedGetWriterDetails';
 import { commaListItems } from '../common/helpers';
@@ -51,8 +52,8 @@ class WriterDetailsPage extends Component {
 	}
 }
 WriterDetailsPage.propTypes = {
-  getWriterDetails: propTypes.Object.isRequired,
-	writer: propTypes.Object.isRequired
+  getWriterDetails: PropTypes.object.isRequired,
+	writer: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {

@@ -10,7 +10,7 @@ export function resolvedGetPublicationDetails(response) {
 }
 
 export function getPublicationDetails(publicationId) {
-	return function () {
+	return function (dispatch) {
 		axios.get(API.getPublicationDetails, {
 				params: {
 					publication_id: publicationId,

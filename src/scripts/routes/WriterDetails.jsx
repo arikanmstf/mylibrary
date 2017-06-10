@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import NavbarHeader from '../containers/navbarHeader';
 import WriterDetailsPage from '../containers/WriterDetailsPage';
@@ -11,6 +12,6 @@ const WriterDetails = ({ match }) => (
 );
 
 WriterDetails.propTypes = {
-  match: propTypes.Object.isRequired
+  match: PropTypes.object.isRequired
 };
 export default WriterDetails;

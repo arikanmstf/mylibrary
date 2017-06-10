@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import NavbarHeader from '../containers/navbarHeader';
 import BookDetailsPage from '../containers/BookDetailsPage';
@@ -11,6 +12,6 @@ const BookDetails = ({ match }) => (
 );
 
 BookDetails.propTypes = {
-  match: propTypes.Object.isRequired
+  match: PropTypes.object.isRequired
 };
 export default BookDetails;

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import InputText from '../components/input/inputText';
 import InputPassword from '../components/input/inputPassword';
 import { getLogin } from '../actions/resolvedGetLogin';
@@ -56,7 +58,7 @@ class LoginPage extends Component {
 }
 
 LoginPage.propTypes = {
-  getLogin: propTypes.Object.isRequired
+  getLogin: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {

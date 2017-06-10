@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { getBookDetails } from '../actions/resolvedGetBookDetails';
 import { commaListItems } from '../common/helpers';
@@ -41,8 +42,8 @@ class BookDetailsPage extends Component {
 	}
 }
 BookDetailsPage.propTypes = {
-  getBookDetails: propTypes.Object.isRequired,
-	book: propTypes.Object.isRequired
+  getBookDetails: PropTypes.object.isRequired,
+	book: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {

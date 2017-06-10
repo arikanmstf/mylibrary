@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class InputText extends Component {
   constructor(props) {
@@ -35,7 +36,7 @@ class InputText extends Component {
 
 InputText.propTypes = {
   placeholder: PropTypes.string,
-  onChange: PropTypes.Object
+  onChange: PropTypes.func
 };
 
 InputText.defaultProps = {

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import NavbarHeader from '../containers/navbarHeader';
 import PublicationDetailsPage from '../containers/publicationDetailsPage';
@@ -11,6 +12,6 @@ const PublicationDetails = ({ match }) => (
 );
 
 PublicationDetails.propTypes = {
-  match: propTypes.Object.isRequired
+  match: PropTypes.object.isRequired
 };
 export default PublicationDetails;
