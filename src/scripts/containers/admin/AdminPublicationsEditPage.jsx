@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import { getPublicationDetails } from '../../actions/ResolvedGetPublicationDetails';
 import { getWriterBySearch, resetGetWriterBySearch } from '../../actions/ResolvedGetWriterBySearch';
+import { getBookBySearch, resetGetBookBySearch } from '../../actions/ResolvedGetBookBySearch';
 import { updatePublicationDetails } from '../../actions/ResolvedSetAdminForm';
 import ListsOfPublicationEdit from '../../components/ListsOfPublicationEdit';
 import TagsOfPublication from '../../components/TagsOfPublication';
@@ -35,6 +36,7 @@ class AdminPublicationsEditPage extends Component {
     this.onPageChange = this.onPageChange.bind(this);
     this.onNewWriterChange = this.onNewWriterChange.bind(this);
     this.searchWriters = this.searchWriters.bind(this);
+    this.searchBooks = this.searchBooks.bind(this);
     this.addNewWriter = this.addNewWriter.bind(this);
     this.removeWriter = this.removeWriter.bind(this);
     this.saveForm = this.saveForm.bind(this);
@@ -103,6 +105,9 @@ class AdminPublicationsEditPage extends Component {
   searchWriters() {
     this.props.getWriterBySearch(this.state.new_writer);
   }
+  searchBooks() {
+    this.props.getBookBySearch(this.state.title);
+  }
 
   saveForm() {
     const form = {
@@ -151,7 +156,9 @@ class AdminPublicationsEditPage extends Component {
 					</div>
 					<div className="col-md-9 col-sm-9 item-info">
 						<div className="item-title">
-							<input className="input-title" value={this.state.title} onChange={this.onTitleChange} />
+							<input className="input-title col-sm-9 col-md-9 col-xs-9" value={this.state.title} onChange={this.onTitleChange} />
+              <button onClick={this.searchBooks} className="btn btn-primary col-sm-3 col-md-3 col-xs-3">Search Book</button>
+              <div className="clearfix" />
 						</div>
 						<div className="item-small-title">
 							{ fromArrayToCommaEdit(this.state.writers, 'admin/writers/edit', this.removeWriter) }
@@ -224,6 +231,8 @@ AdminPublicationsEditPage.propTypes = {
   getPublicationDetails: PropTypes.func.isRequired,
   getWriterBySearch: PropTypes.func.isRequired,
   resetGetWriterBySearch: PropTypes.func.isRequired,
+  getBookBySearch: PropTypes.func.isRequired,
+  resetGetBookBySearch: PropTypes.func.isRequired,
   updatePublicationDetails: PropTypes.func.isRequired,
 	publication: PropTypes.object.isRequired,
 	writerSearch: PropTypes.arrayOf(Object).isRequired
@@ -245,6 +254,8 @@ const mapDispatchToProps = (dispatch) => {
     getPublicationDetails: (search) => dispatch(getPublicationDetails(search)),
     getWriterBySearch: (search) => dispatch(getWriterBySearch(search)),
     resetGetWriterBySearch: () => dispatch(resetGetWriterBySearch()),
+    getBookBySearch: (search) => dispatch(getBookBySearch(search)),
+    resetGetBookBySearch: () => dispatch(resetGetBookBySearch()),
     updatePublicationDetails: (form) => dispatch(updatePublicationDetails(form))
   };
 };
