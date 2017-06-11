@@ -20,3 +20,16 @@ export function getWriterBySearch(title) {
 		.then((response) => dispatch(ResolvedGetWriterBySearch(response)));
 	};
 }
+
+export function ResolvedResetGetWriterBySearch() {
+  return {
+    type: 'RESET_GET_WRITER_BY_SEARCH',
+    data: []
+  };
+}
+
+export function resetGetWriterBySearch() {
+	return function (dispatch) {
+		dispatch(ResolvedResetGetWriterBySearch());
+	};
+}

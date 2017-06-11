@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { getPublicationDetails } from '../../actions/ResolvedGetPublicationDetails';
-import { getWriterBySearch } from '../../actions/ResolvedGetWriterBySearch';
+import { getWriterBySearch, resetGetWriterBySearch } from '../../actions/ResolvedGetWriterBySearch';
 import ListsOfPublication from '../../components/ListsOfPublication';
 import TagsOfPublication from '../../components/TagsOfPublication';
 import { fromArrayToCommaEdit, fromCommaToArray } from '../../common/Helpers';
@@ -33,6 +33,7 @@ class AdminPublicationsEditPage extends Component {
     this.onNewWriterChange = this.onNewWriterChange.bind(this);
     this.listWriters = this.listWriters.bind(this);
     this.addNewWriter = this.addNewWriter.bind(this);
+    this.removeWriter = this.removeWriter.bind(this);
     this.saveForm = this.saveForm.bind(this);
   }
 
@@ -92,7 +93,8 @@ class AdminPublicationsEditPage extends Component {
   addNewWriter(writer) {
     const writers = this.state.writers;
     writers.push({ value: writer.full_name, key: writer.writer_id });
-    this.setState({ writers });
+    this.setState({ writers, new_writer: '' });
+    this.props.resetGetWriterBySearch();
   }
   listWriters() {
     this.props.getWriterBySearch(this.state.new_writer);
@@ -100,6 +102,17 @@ class AdminPublicationsEditPage extends Component {
 
   saveForm() {
     console.log(this.state);
+  }
+
+  removeWriter(w) {
+    const writers = [];
+    for (let i = 0; i < this.state.writers.length; i++) {
+      if (this.state.writers[i].key !== w.key) {
+        writers.push(this.state.writers[i]);
+      }
+    }
+
+    this.setState({ writers });
   }
 
   renderSearchWriter() {
@@ -127,7 +140,7 @@ class AdminPublicationsEditPage extends Component {
 							<input className="input-title" value={this.state.title} onChange={this.onTitleChange} />
 						</div>
 						<div className="item-small-title">
-							{ fromArrayToCommaEdit(this.state.writers, 'writers') }
+							{ fromArrayToCommaEdit(this.state.writers, 'admin/writers/edit', this.removeWriter) }
               <input className="input-title" value={this.state.new_writer} onChange={this.onNewWriterChange} />
               <button className="btn btn-primary" onClick={this.listWriters}>List Writers</button>
 
@@ -196,6 +209,7 @@ class AdminPublicationsEditPage extends Component {
 AdminPublicationsEditPage.propTypes = {
   getPublicationDetails: PropTypes.func.isRequired,
   getWriterBySearch: PropTypes.func.isRequired,
+  resetGetWriterBySearch: PropTypes.func.isRequired,
 	publication: PropTypes.object.isRequired,
 	writerSearch: PropTypes.arrayOf(Object).isRequired
 };
@@ -214,7 +228,8 @@ function mapStateToProps(state) {
 const mapDispatchToProps = (dispatch) => {
   return {
     getPublicationDetails: (search) => dispatch(getPublicationDetails(search)),
-    getWriterBySearch: (search) => dispatch(getWriterBySearch(search))
+    getWriterBySearch: (search) => dispatch(getWriterBySearch(search)),
+    resetGetWriterBySearch: () => dispatch(resetGetWriterBySearch())
   };
 };
 

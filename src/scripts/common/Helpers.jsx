@@ -13,13 +13,17 @@ export function commaListItems(item, ids, route) {
   return itemArr;
 }
 
-export function fromArrayToCommaEdit(itemArr, route) {
+export function fromArrayToCommaEdit(itemArr, route, onClickEvent) {
   const rowLen = itemArr.length;
+
+  function onClick(e) {
+    onClickEvent(e);
+  }
   return itemArr.map((item, index) => {
     return (
       <span key={item.key}>
         <Link to={`/${route}/${item.key}`}>{item.value}</Link>
-        <i className="glyphicon glyphicon-remove" />
+        <i onClick={() => onClick(item)} className="glyphicon glyphicon-remove" />
         {rowLen === index + 1 ? null : ', '}
       </span>
     );
