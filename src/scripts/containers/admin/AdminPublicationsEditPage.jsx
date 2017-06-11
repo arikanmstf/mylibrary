@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import { getPublicationDetails } from '../../actions/ResolvedGetPublicationDetails';
 import { getWriterBySearch, resetGetWriterBySearch } from '../../actions/ResolvedGetWriterBySearch';
+import { updatePublicationDetails } from '../../actions/ResolvedSetAdminForm';
 import ListsOfPublicationEdit from '../../components/ListsOfPublicationEdit';
 import TagsOfPublication from '../../components/TagsOfPublication';
 import { fromArrayToCommaEdit, fromCommaToArray } from '../../common/Helpers';
@@ -16,6 +17,7 @@ class AdminPublicationsEditPage extends Component {
       title: '',
       writers: [],
       publisher_name: '',
+      publisher_id: 0,
       description: '',
       isbn: '',
       cover_no: 0,
@@ -103,7 +105,17 @@ class AdminPublicationsEditPage extends Component {
   }
 
   saveForm() {
-    console.log(this.state);
+    const form = {
+      title: this.state.title,
+      writers: this.state.writers,
+      lists: this.state.lists,
+      publisher_id: this.state.publisher_id,
+      description: this.state.description,
+      isbn: this.state.isbn,
+      cover_no: this.state.cover_no,
+      page_number: this.state.page_number
+    };
+    this.props.updatePublicationDetails(form);
   }
 
   removeWriter(w) {
@@ -212,6 +224,7 @@ AdminPublicationsEditPage.propTypes = {
   getPublicationDetails: PropTypes.func.isRequired,
   getWriterBySearch: PropTypes.func.isRequired,
   resetGetWriterBySearch: PropTypes.func.isRequired,
+  updatePublicationDetails: PropTypes.func.isRequired,
 	publication: PropTypes.object.isRequired,
 	writerSearch: PropTypes.arrayOf(Object).isRequired
 };
@@ -231,7 +244,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getPublicationDetails: (search) => dispatch(getPublicationDetails(search)),
     getWriterBySearch: (search) => dispatch(getWriterBySearch(search)),
-    resetGetWriterBySearch: () => dispatch(resetGetWriterBySearch())
+    resetGetWriterBySearch: () => dispatch(resetGetWriterBySearch()),
+    updatePublicationDetails: (form) => dispatch(updatePublicationDetails(form))
   };
 };
 
