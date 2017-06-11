@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { PAGINATION } from '../../common/Config';
 
 import { getAllPublications } from '../../actions/ResolvedGetAllPublications';
+import Pagination from '../../components/Pagination';
 
 class AdminPublicationsPage extends Component {
   constructor(props) {
@@ -19,6 +19,10 @@ class AdminPublicationsPage extends Component {
   componentWillReceiveProps(nextProps) {
 		this.setState(nextProps.search);
 	}
+
+  onLiClick() {
+    this.setState(this.props.search);
+  }
 
   renderList() {
     return this.props.publications.map((publication) => {
@@ -40,36 +44,16 @@ class AdminPublicationsPage extends Component {
     });
   }
 
-  renderPagination() {
-    const recordsPerPage = PAGINATION.recordsPerPage;
-    const totalPage = parseInt(this.props.total / recordsPerPage, 10) + 1;
-    const pageNo = parseInt(this.props.search.pageNo, 10);
-    const result = [];
-    if (totalPage > 10) {
-      for (let i = pageNo - 3; (i >= pageNo - 3) && (i < pageNo + 2); i++) {
-        if (i > -1 && i < totalPage) result.push(this.renderLi(i));
-      }
-    } else {
-      for (let i = 0; i < totalPage; i++) {
-        result.push(this.renderLi(i));
-      }
-    }
-
-    return (
-      <div className="pagination-list-container">
-        {this.firstPage()}
-        {this.prevPage()}
-        {result}
-        {this.nextPage()}
-        {this.lastPage()}
-      </div>
-    );
-  }
-
   render() {
     return (
       <div className="admin-page col-xs-12 col-sm-9 col-md-9">
-        <h3>Admin Publications</h3>
+          <h3>Admin Publications</h3>
+          <Pagination
+            pageNo={parseInt(this.props.search.pageNo, 10)}
+            total={this.props.total}
+            onLiClick={this.onLiClick}
+            linkTo="admin/publications"
+          />
           <table className="table table-responsive table-bordered table-hover admin-table">
             <thead>
               <tr>

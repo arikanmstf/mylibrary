@@ -57,14 +57,12 @@ class PublicationList extends Component {
 	render() {
 		return (
       <div>
-        <ul className="pagination-list">
-          <Pagination
-            pageNo={parseInt(this.props.search.pageNo, 10)}
-            total={this.props.total}
-            onLiClick={this.onLiClick}
-            linkTo="pages"
-          />
-        </ul>
+        <Pagination
+          pageNo={parseInt(this.props.search.pageNo, 10)}
+          total={this.props.total}
+          onLiClick={this.onLiClick}
+          linkTo="pages"
+        />
         <ul className="publication-list">
           {this.renderList()}
         </ul>

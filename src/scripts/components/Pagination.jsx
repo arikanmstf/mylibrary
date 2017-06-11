@@ -71,13 +71,15 @@ export default class Pagination extends Component {
     }
 
     return (
-      <div className="pagination-list-container">
-        {this.firstPage()}
-        {this.prevPage()}
-        {result}
-        {this.nextPage()}
-        {this.lastPage()}
-      </div>
+      <ul className="pagination-list">
+        <div className="pagination-list-container">
+          {this.firstPage()}
+          {this.prevPage()}
+          {result}
+          {this.nextPage()}
+          {this.lastPage()}
+        </div>
+      </ul>
     );
   }
 }

@@ -37,6 +37,7 @@ export default class App extends Component {
                 <Route exact path={`/tags/:tagId`} component={TagDetails} />
                 <Route exact path={`/publishers/:publisherId`} component={PublisherDetails} />
                 <Route exact path="/admin/publications" component={AdminPublications} />
+                <Route path="/admin/publications/:pageNo" component={AdminPublications} />
                 <Route exact path="/admin" component={Admin} />
                 <Route path="*" component={NotFound} />
               </Switch>
