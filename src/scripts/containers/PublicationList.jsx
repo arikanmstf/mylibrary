@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { PAGINATION } from '../common/Config';
+import Pagination from '../components/Pagination';
 
 import { getAllPublications } from '../actions/ResolvedGetAllPublications';
 
@@ -23,43 +23,6 @@ class PublicationList extends Component {
 
   onLiClick() {
     this.setState(this.props.search);
-  }
-
-  nextPage() {
-    const recordsPerPage = PAGINATION.recordsPerPage;
-    const totalPage = parseInt(this.props.total / recordsPerPage, 10) + 1;
-    const pageNo = parseInt(this.props.search.pageNo, 10);
-
-    if (totalPage !== pageNo) {
-      return (<Link to={`/pages/${pageNo + 1}`} onClick={this.onLiClick}>{`>`}</Link>);
-    }
-    return null;
-  }
-  lastPage() {
-    const recordsPerPage = PAGINATION.recordsPerPage;
-    const totalPage = parseInt(this.props.total / recordsPerPage, 10) + 1;
-    const pageNo = parseInt(this.props.search.pageNo, 10);
-
-    if (totalPage !== pageNo) {
-      return (<Link to={`/pages/${totalPage}`} onClick={this.onLiClick}>{`>>`}</Link>);
-    }
-    return null;
-  }
-  prevPage() {
-    const pageNo = parseInt(this.props.search.pageNo, 10);
-
-    if (pageNo > 1) {
-      return (<Link to={`/pages/${pageNo - 1}`} onClick={this.onLiClick}>{`<`}</Link>);
-    }
-    return null;
-  }
-  firstPage() {
-    const pageNo = parseInt(this.props.search.pageNo, 10);
-
-    if (pageNo > 1) {
-      return (<Link to={`/pages/1`} onClick={this.onLiClick}>{`<<`}</Link>);
-    }
-    return null;
   }
 
 	renderList() {
@@ -91,45 +54,16 @@ class PublicationList extends Component {
 		});
 	}
 
-  renderLi(index) {
-    const pageNo = parseInt(this.props.search.pageNo, 10);
-    const i = index + 1;
-    let className;
-    if (i === pageNo) className = 'active';
-    return (<Link to={`/pages/${i}`} className={className} key={i} onClick={this.onLiClick}>{i}</Link>);
-  }
-
-  renderPagination() {
-    const recordsPerPage = PAGINATION.recordsPerPage;
-    const totalPage = parseInt(this.props.total / recordsPerPage, 10) + 1;
-    const pageNo = parseInt(this.props.search.pageNo, 10);
-    const result = [];
-    if (totalPage > 10) {
-      for (let i = pageNo - 3; (i >= pageNo - 3) && (i < pageNo + 2); i++) {
-        if (i > -1 && i < totalPage) result.push(this.renderLi(i));
-      }
-    } else {
-      for (let i = 0; i < totalPage; i++) {
-        result.push(this.renderLi(i));
-      }
-    }
-
-    return (
-      <div className="pagination-list-container">
-        {this.firstPage()}
-        {this.prevPage()}
-        {result}
-        {this.nextPage()}
-        {this.lastPage()}
-      </div>
-    );
-  }
-
 	render() {
 		return (
       <div>
         <ul className="pagination-list">
-          {this.renderPagination()}
+          <Pagination
+            pageNo={parseInt(this.props.search.pageNo, 10)}
+            total={this.props.total}
+            onLiClick={this.onLiClick}
+            linkTo="pages"
+          />
         </ul>
         <ul className="publication-list">
           {this.renderList()}
