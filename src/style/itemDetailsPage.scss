@@ -27,10 +27,6 @@ $btnPadding: 0px 8px;
       .item-small-title {
         font-size: $smallFontSize;
         text-align: left;
-
-        .btn {
-          padding: $btnPadding;
-        }
       }
 
       .item-light-title {
@@ -60,12 +56,12 @@ $btnPadding: 0px 8px;
               padding-left: 0px;
               padding-right: 0px;
             }
-
-            .btn {
-              padding: $btnPadding;
-            }
           }
         }
+      }
+
+      .btn {
+        padding: $btnPadding;
       }
 
       .item-description {

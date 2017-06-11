@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { getPublicationDetails } from '../../actions/ResolvedGetPublicationDetails';
 import { getWriterBySearch, resetGetWriterBySearch } from '../../actions/ResolvedGetWriterBySearch';
 import { getBookBySearch, resetGetBookBySearch } from '../../actions/ResolvedGetBookBySearch';
+import { getPublisherBySearch, resetGetPublisherBySearch } from '../../actions/ResolvedGetPublisherBySearch';
 import { updatePublicationDetails } from '../../actions/ResolvedSetAdminForm';
 import ListsOfPublicationEdit from '../../components/ListsOfPublicationEdit';
 import TagsOfPublication from '../../components/TagsOfPublication';
@@ -17,7 +18,6 @@ class AdminPublicationsEditPage extends Component {
     this.state = {
       title: '',
       writers: [],
-      publisher_name: '',
       publisher_id: 0,
       book_id: 0,
       description: '',
@@ -26,18 +26,20 @@ class AdminPublicationsEditPage extends Component {
       page_number: 0,
       new_writer: '',
       new_title: '',
+      new_publisher: '',
       lists: [],
       ...props
     };
 
-    this.onTitleChange = this.onTitleChange.bind(this);
-    this.onPublisherChange = this.onPublisherChange.bind(this);
+    this.onNewBookChange = this.onNewBookChange.bind(this);
+    this.onNewPublisherChange = this.onNewPublisherChange.bind(this);
     this.onDescChange = this.onDescChange.bind(this);
     this.onIsbnChange = this.onIsbnChange.bind(this);
     this.onCoverChange = this.onCoverChange.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
     this.onNewWriterChange = this.onNewWriterChange.bind(this);
     this.searchWriters = this.searchWriters.bind(this);
+    this.searchPublishers = this.searchPublishers.bind(this);
     this.searchBooks = this.searchBooks.bind(this);
     this.addNewWriter = this.addNewWriter.bind(this);
     this.removeWriter = this.removeWriter.bind(this);
@@ -53,7 +55,6 @@ class AdminPublicationsEditPage extends Component {
       writers: (this.state.writers.length > 0) ?
         this.state.writers :
         fromCommaToArray(nextProps.publication.writers, nextProps.publication.writer_ids),
-      publisher_name: nextProps.publication.publisher_name,
       description: nextProps.publication.description,
       isbn: nextProps.publication.isbn || '',
       cover_no: nextProps.publication.cover_no,
@@ -61,17 +62,6 @@ class AdminPublicationsEditPage extends Component {
       page_number: nextProps.publication.page_number
     });
 	}
-
-  onTitleChange(event) {
-    this.setState({
-      new_title: event.target.value
-    });
-  }
-  onPublisherChange(event) {
-    this.setState({
-      publisher_name: event.target.value
-    });
-  }
   onDescChange(event) {
     this.setState({
       description: event.target.value
@@ -92,10 +82,28 @@ class AdminPublicationsEditPage extends Component {
       page_number: event.target.value
     });
   }
+  onNewPublisherChange(event) {
+    this.setState({
+      new_publisher: event.target.value
+    });
+  }
+  onNewBookChange(event) {
+    this.setState({
+      new_title: event.target.value
+    });
+  }
   onNewWriterChange(event) {
     this.setState({
       new_writer: event.target.value
     });
+  }
+  addNewBook(book) {
+    this.setState({ ...book, new_title: '' });
+    this.props.resetGetBookBySearch();
+  }
+  addNewPublisher(publisher) {
+    this.setState({ publisher_name: publisher.name, publisher_id: publisher.publisher_id, new_publisher: '' });
+    this.props.resetGetPublisherBySearch();
   }
   addNewWriter(writer) {
     const writers = this.state.writers;
@@ -103,15 +111,14 @@ class AdminPublicationsEditPage extends Component {
     this.setState({ writers, new_writer: '' });
     this.props.resetGetWriterBySearch();
   }
-  addNewBook(book) {
-    this.setState({ ...book, new_title: '' });
-    this.props.resetGetBookBySearch();
-  }
   searchWriters() {
     this.props.getWriterBySearch(this.state.new_writer);
   }
   searchBooks() {
     this.props.getBookBySearch(this.state.new_title);
+  }
+  searchPublishers() {
+    this.props.getPublisherBySearch(this.state.new_publisher);
   }
 
   saveForm() {
@@ -126,7 +133,6 @@ class AdminPublicationsEditPage extends Component {
       page_number: this.state.page_number
     };
     this.props.updatePublicationDetails(form);
-    console.log(form);
   }
 
   removeWriter(w) {
@@ -156,6 +162,14 @@ class AdminPublicationsEditPage extends Component {
       );
     }));
   }
+  renderSearchPublisher() {
+    const publisherSearch = this.props.publisherSearch;
+    return publisherSearch && (this.props.publisherSearch.map((publisher) => {
+      return (
+        <li key={publisher.publisher_id} onClick={() => this.addNewPublisher(publisher)}>{publisher.name}</li>
+      );
+    }));
+  }
 
 	render() {
 		const publication = this.props.publication;
@@ -173,7 +187,7 @@ class AdminPublicationsEditPage extends Component {
               {this.state.title || publication.title}
             </div>
 						<div className="item-small-title">
-							<input className="input-title col-sm-9 col-md-9 col-xs-9" value={this.state.new_title} onChange={this.onTitleChange} />
+							<input className="input-title col-sm-9 col-md-9 col-xs-9" value={this.state.new_title} onChange={this.onNewBookChange} />
               <button onClick={this.searchBooks} className="btn btn-primary col-sm-3 col-md-3 col-xs-3">Search Book</button>
               <div className="clearfix" />
               <div className="item-search-results">
@@ -194,13 +208,21 @@ class AdminPublicationsEditPage extends Component {
               </div>
 						</div>
 						<div className="item-small-title">
-							<span>
-                <input className="input-title" value={this.state.publisher_name} onChange={this.onPublisherChange} />
+              <span>
+                {this.state.publisher_name || publication.publisher_name}
               </span>
+							<span>
+                <input className="input-title" value={this.state.new_publisher} onChange={this.onNewPublisherChange} />
+              </span>
+							<span>
+                <button className="btn btn-primary" onClick={this.searchPublishers}>Search Publishers</button>
+              </span>
+              <div className="item-search-results">
+                <ul>
+                  {this.renderSearchPublisher()}
+                </ul>
+              </div>
 						</div>
-						<p className="item-description">
-							{this.state.description}
-						</p>
 						<div className="item-table">
 							<table className="table table-responsive">
 								<tbody>
@@ -255,10 +277,13 @@ AdminPublicationsEditPage.propTypes = {
   resetGetWriterBySearch: PropTypes.func.isRequired,
   getBookBySearch: PropTypes.func.isRequired,
   resetGetBookBySearch: PropTypes.func.isRequired,
+  getPublisherBySearch: PropTypes.func.isRequired,
+  resetGetPublisherBySearch: PropTypes.func.isRequired,
   updatePublicationDetails: PropTypes.func.isRequired,
 	publication: PropTypes.object.isRequired,
 	writerSearch: PropTypes.arrayOf(Object).isRequired,
-	bookSearch: PropTypes.arrayOf(Object).isRequired
+	bookSearch: PropTypes.arrayOf(Object).isRequired,
+	publisherSearch: PropTypes.arrayOf(Object).isRequired
 };
 
 function mapStateToProps(state) {
@@ -267,7 +292,8 @@ function mapStateToProps(state) {
 	return {
 		publication: state.publication,
 		writerSearch: state.writerSearch,
-		bookSearch: state.bookSearch
+		bookSearch: state.bookSearch,
+		publisherSearch: state.publisherSearch
 	};
 }
 
@@ -280,6 +306,8 @@ const mapDispatchToProps = (dispatch) => {
     resetGetWriterBySearch: () => dispatch(resetGetWriterBySearch()),
     getBookBySearch: (search) => dispatch(getBookBySearch(search)),
     resetGetBookBySearch: () => dispatch(resetGetBookBySearch()),
+    getPublisherBySearch: (search) => dispatch(getPublisherBySearch(search)),
+    resetGetPublisherBySearch: () => dispatch(resetGetPublisherBySearch()),
     updatePublicationDetails: (form) => dispatch(updatePublicationDetails(form))
   };
 };
