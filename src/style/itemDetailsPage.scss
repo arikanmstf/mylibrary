@@ -1,3 +1,5 @@
+$btnPadding: 0px 8px;
+
 .item-details-page {
   background-color: $white;
   margin: 0 auto;
@@ -27,7 +29,7 @@
         text-align: left;
 
         .btn {
-          padding: 0px 8px
+          padding: $btnPadding;
         }
       }
 
@@ -57,6 +59,10 @@
             .list {
               padding-left: 0px;
               padding-right: 0px;
+            }
+
+            .btn {
+              padding: $btnPadding;
             }
           }
         }

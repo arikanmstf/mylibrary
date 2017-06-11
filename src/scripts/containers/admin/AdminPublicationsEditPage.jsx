@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { getPublicationDetails } from '../../actions/ResolvedGetPublicationDetails';
 import { getWriterBySearch, resetGetWriterBySearch } from '../../actions/ResolvedGetWriterBySearch';
-import ListsOfPublication from '../../components/ListsOfPublication';
+import ListsOfPublicationEdit from '../../components/ListsOfPublicationEdit';
 import TagsOfPublication from '../../components/TagsOfPublication';
 import { fromArrayToCommaEdit, fromCommaToArray } from '../../common/Helpers';
 
@@ -21,6 +21,7 @@ class AdminPublicationsEditPage extends Component {
       cover_no: 0,
       page_number: 0,
       new_writer: '',
+      lists: [],
       ...props
     };
 
@@ -31,7 +32,7 @@ class AdminPublicationsEditPage extends Component {
     this.onCoverChange = this.onCoverChange.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
     this.onNewWriterChange = this.onNewWriterChange.bind(this);
-    this.listWriters = this.listWriters.bind(this);
+    this.searchWriters = this.searchWriters.bind(this);
     this.addNewWriter = this.addNewWriter.bind(this);
     this.removeWriter = this.removeWriter.bind(this);
     this.saveForm = this.saveForm.bind(this);
@@ -51,6 +52,7 @@ class AdminPublicationsEditPage extends Component {
       description: nextProps.publication.description,
       isbn: nextProps.publication.isbn || '',
       cover_no: nextProps.publication.cover_no,
+      lists: nextProps.publication.lists,
       page_number: nextProps.publication.page_number
     });
 	}
@@ -96,7 +98,7 @@ class AdminPublicationsEditPage extends Component {
     this.setState({ writers, new_writer: '' });
     this.props.resetGetWriterBySearch();
   }
-  listWriters() {
+  searchWriters() {
     this.props.getWriterBySearch(this.state.new_writer);
   }
 
@@ -142,7 +144,7 @@ class AdminPublicationsEditPage extends Component {
 						<div className="item-small-title">
 							{ fromArrayToCommaEdit(this.state.writers, 'admin/writers/edit', this.removeWriter) }
               <input className="input-title" value={this.state.new_writer} onChange={this.onNewWriterChange} />
-              <button className="btn btn-primary" onClick={this.listWriters}>List Writers</button>
+              <button className="btn btn-primary" onClick={this.searchWriters}>Search Writers</button>
 
               <div className="item-search-results">
                 <ul>
@@ -187,11 +189,11 @@ class AdminPublicationsEditPage extends Component {
 							</table>
 						</div>
 						<div className="item-lists-container">
-							<div className="item-lists">
+							<div className="item-lists col-sm-6 col-xs-12">
 								<h5>Lists</h5>
-								<ListsOfPublication lists={publication.lists} />
+								<ListsOfPublicationEdit lists={this.state.lists} />
 							</div>
-							<div className="item-lists">
+							<div className="item-lists col-sm-6 col-xs-12">
 								<h5>Tags</h5>
 								<TagsOfPublication tags={publication.tags} />
 							</div>
