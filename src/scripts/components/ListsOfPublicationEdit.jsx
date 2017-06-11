@@ -78,8 +78,14 @@ class ListsOfPublicationEdit extends Component {
 		return lists ? (
 			<div className="lists-of-publication">
 						{this.renderList()}
-            <input value={this.state.new_list} onChange={this.onNewListChange} />
-            <button className="btn btn-primary" onClick={this.searchLists}>Search Lists</button>
+            <input
+              placeholder="Search for lists"
+              value={this.state.new_list}
+              onChange={this.onNewListChange}
+            />
+            <button className="btn btn-search" onClick={this.searchLists}>
+              <i className="glyphicon glyphicon-search" />
+            </button>
             <div className="item-search-results">
               <ul>
                 {this.renderSearchList()}

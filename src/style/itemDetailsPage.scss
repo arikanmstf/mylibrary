@@ -64,6 +64,20 @@ $btnPadding: 0px 8px;
         padding: $btnPadding;
       }
 
+      .btn-search {
+        width: 30px;
+        padding: 0px 0px;
+        color: $white;
+
+        &:hover {
+          background-color: $lightGray;
+        }
+      }
+
+      .right {
+        float: right;
+      }
+
       .item-description {
 
         textarea {
@@ -77,6 +91,9 @@ $btnPadding: 0px 8px;
       }
 
       .item-search-results {
+        ul {
+          padding: 0px;
+        }
 
         li {
           list-style: none;

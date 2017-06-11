@@ -187,8 +187,15 @@ class AdminPublicationsEditPage extends Component {
               {this.state.title || publication.title}
             </div>
 						<div className="item-small-title">
-							<input className="input-title col-sm-9 col-md-9 col-xs-9" value={this.state.new_title} onChange={this.onNewBookChange} />
-              <button onClick={this.searchBooks} className="btn btn-primary col-sm-3 col-md-3 col-xs-3">Search Book</button>
+              <button onClick={this.searchBooks} className="btn btn-search col-sm-3 col-md-3 col-xs-3 right">
+                <i className="glyphicon glyphicon-search" />
+              </button>
+              <input
+                className="input-title col-sm-9 col-md-9 col-xs-9 right"
+                placeholder="Search books to assign to the publication"
+                value={this.state.new_title}
+                onChange={this.onNewBookChange}
+              />
               <div className="clearfix" />
               <div className="item-search-results">
                 <ul>
@@ -198,9 +205,15 @@ class AdminPublicationsEditPage extends Component {
 						</div>
 						<div className="item-small-title">
 							{ fromArrayToCommaEdit(this.state.writers, 'admin/writers/edit', this.removeWriter) }
-              <input className="input-title" value={this.state.new_writer} onChange={this.onNewWriterChange} />
-              <button className="btn btn-primary" onClick={this.searchWriters}>Search Writers</button>
-
+              <button className="btn btn-search right" onClick={this.searchWriters}>
+                <i className="glyphicon glyphicon-search" />
+              </button>
+              <input
+                className="input-title right"
+                placeholder="Search writers"
+                value={this.state.new_writer}
+                onChange={this.onNewWriterChange}
+              />
               <div className="item-search-results">
                 <ul>
                   {this.renderSearchWriter()}
@@ -211,12 +224,15 @@ class AdminPublicationsEditPage extends Component {
               <span>
                 {this.state.publisher_name || publication.publisher_name}
               </span>
-							<span>
-                <input className="input-title" value={this.state.new_publisher} onChange={this.onNewPublisherChange} />
-              </span>
-							<span>
-                <button className="btn btn-primary" onClick={this.searchPublishers}>Search Publishers</button>
-              </span>
+              <button className="btn btn-search right" onClick={this.searchPublishers}>
+                <i className="glyphicon glyphicon-search" />
+              </button>
+              <input
+                className="input-title right"
+                placeholder="Search publishers"
+                value={this.state.new_publisher}
+                onChange={this.onNewPublisherChange}
+              />
               <div className="item-search-results">
                 <ul>
                   {this.renderSearchPublisher()}
