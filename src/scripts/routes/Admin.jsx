@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import NavbarHeader from '../containers/NavbarHeader';
+import AdminHome from '../containers/admin/AdminHome';
 
 import SideNavigation from '../components/SideNavigation';
 
@@ -10,7 +11,7 @@ export default class Admin extends Component {
       <div>
           <NavbarHeader />
           <SideNavigation />
-          <h1>This is admin page.</h1>
+          <AdminHome />
       </div>
     );
   }

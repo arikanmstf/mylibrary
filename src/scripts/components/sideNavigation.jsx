@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class SideNavigation extends Component {
   render() {
@@ -6,37 +7,16 @@ export default class SideNavigation extends Component {
         <div className="side-navigation">
           <nav className="navbar navbar-default sidebar">
               <div className="container-fluid">
-              <div className="navbar-header">
-                <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
-                  <span className="sr-only">Toggle navigation</span>
-                  <span className="icon-bar" />
-                  <span className="icon-bar" />
-                  <span className="icon-bar" />
-                </button>
-              </div>
               <div className="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
                 <ul className="nav navbar-nav">
-                  <li className="active">
-                    <a>Home
-                      <span className="pull-right hidden-xs showopacity glyphicon glyphicon-home" />
-                    </a>
-                  </li>
-                  <li className="dropdown">
-                    <a className="dropdown-toggle" data-toggle="dropdown">Usuarios <span className="caret" />
-                     <span className="pull-right hidden-xs showopacity" />
-                    </a>
-                    <ul className="dropdown-menu forAnimate">
-                      <li><a href="{{URL::to('createusuario')}}">Crear</a></li>
-                      <li><a>Modificar</a></li>
-                      <li><a>Reportar</a></li>
-                      <li className="divider" />
-                      <li><a>Separated link</a></li>
-                      <li className="divider" />
-                      <li><a>Informes</a></li>
-                    </ul>
-                  </li>
-                  <li><a>Libros<span className="pull-right hidden-xs showopacity" /></a></li>
-                  <li><a>Tags<span className="pull-right hidden-xs showopacity" /></a></li>
+                  <li className="active"><Link to="/admin">Home</Link></li>
+                  <li><Link to="/admin/publications">Publications</Link></li>
+                  <li><Link to="/admin/books">Books</Link></li>
+                  <li><Link to="/admin/writers">Writers</Link></li>
+                  <li><Link to="/admin/publishers">Publishers</Link></li>
+                  <li><Link to="/admin/users">Users</Link></li>
+                  <li><Link to="/admin/tags">Tags</Link></li>
+                  <li><Link to="/admin/lists">Lists</Link></li>
                 </ul>
               </div>
             </div>
