@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 export default class SideNavigation extends Component {
   render() {
     return (
-        <div className="side-navigation">
+        <div className="side-navigation col-sm-3 col-md-3 fixed">
           <nav className="navbar navbar-default sidebar">
               <div className="container-fluid">
-              <div className="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+              <div className="navbar-collapse" id="bs-sidebar-navbar-collapse-1">
                 <ul className="nav navbar-nav">
                   <li className="active"><Link to="/admin">Home</Link></li>
                   <li><Link to="/admin/publications">Publications</Link></li>

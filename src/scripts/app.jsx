@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Storage from './common/storage';
 
-import Admin from './routes/Admin';
 import BookDetails from './routes/BookDetails';
 import Home from './routes/Home';
 import Pages from './routes/Pages';
@@ -13,6 +12,8 @@ import WriterDetails from './routes/WriterDetails';
 import ListDetails from './routes/ListDetails';
 import TagDetails from './routes/TagDetails';
 import PublisherDetails from './routes/PublisherDetails';
+import Admin from './routes/admin/Admin';
+import AdminPublications from './routes/admin/AdminPublications';
 
 import LoginPage from './containers/LoginPage';
 
@@ -29,13 +30,14 @@ export default class App extends Component {
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/pages/:pageNo" component={Pages} />
-                <Route path="/admin" component={Admin} />
-                <Route path={`/publications/:publicationId`} component={PublicationDetails} />
-                <Route path={`/writers/:writerId`} component={WriterDetails} />
-                <Route path={`/lists/:listId`} component={ListDetails} />
-                <Route path={`/books/:bookId`} component={BookDetails} />
-                <Route path={`/tags/:tagId`} component={TagDetails} />
-                <Route path={`/publishers/:publisherId`} component={PublisherDetails} />
+                <Route exact path={`/publications/:publicationId`} component={PublicationDetails} />
+                <Route exact path={`/writers/:writerId`} component={WriterDetails} />
+                <Route exact path={`/lists/:listId`} component={ListDetails} />
+                <Route exact path={`/books/:bookId`} component={BookDetails} />
+                <Route exact path={`/tags/:tagId`} component={TagDetails} />
+                <Route exact path={`/publishers/:publisherId`} component={PublisherDetails} />
+                <Route exact path="/admin/publications" component={AdminPublications} />
+                <Route exact path="/admin" component={Admin} />
                 <Route path="*" component={NotFound} />
               </Switch>
             </Router>

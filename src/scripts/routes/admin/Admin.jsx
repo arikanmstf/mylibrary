@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import NavbarHeader from '../containers/NavbarHeader';
-import AdminHome from '../containers/admin/AdminHome';
+import NavbarHeader from '../../containers/NavbarHeader';
+import AdminPage from '../../containers/admin/AdminPage';
 
-import SideNavigation from '../components/SideNavigation';
+import SideNavigation from '../../components/SideNavigation';
 
 export default class Admin extends Component {
   render() {
@@ -11,7 +11,7 @@ export default class Admin extends Component {
       <div>
           <NavbarHeader />
           <SideNavigation />
-          <AdminHome />
+          <AdminPage />
       </div>
     );
   }

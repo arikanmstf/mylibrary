@@ -1,0 +1,117 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+// import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { PAGINATION } from '../../common/Config';
+
+import { getAllPublications } from '../../actions/ResolvedGetAllPublications';
+
+class AdminPublicationsPage extends Component {
+  constructor(props) {
+		super(props);
+		this.state = props.search;
+	}
+
+	componentDidMount() {
+		this.props.getAllPublications(this.state);
+	}
+
+  componentWillReceiveProps(nextProps) {
+		this.setState(nextProps.search);
+	}
+
+  renderList() {
+    return this.props.publications.map((publication) => {
+      return (
+        <tr key={publication.publication_id}>
+          <td>{publication.publication_id}</td>
+          <td>{publication.title}</td>
+          <td>{publication.publishers}</td>
+          <td>{publication.writers}</td>
+          <td>ASD</td>
+        </tr>
+      );
+    });
+  }
+
+  renderPagination() {
+    const recordsPerPage = PAGINATION.recordsPerPage;
+    const totalPage = parseInt(this.props.total / recordsPerPage, 10) + 1;
+    const pageNo = parseInt(this.props.search.pageNo, 10);
+    const result = [];
+    if (totalPage > 10) {
+      for (let i = pageNo - 3; (i >= pageNo - 3) && (i < pageNo + 2); i++) {
+        if (i > -1 && i < totalPage) result.push(this.renderLi(i));
+      }
+    } else {
+      for (let i = 0; i < totalPage; i++) {
+        result.push(this.renderLi(i));
+      }
+    }
+
+    return (
+      <div className="pagination-list-container">
+        {this.firstPage()}
+        {this.prevPage()}
+        {result}
+        {this.nextPage()}
+        {this.lastPage()}
+      </div>
+    );
+  }
+
+  render() {
+    return (
+      <div className="admin-page col-xs-12 col-sm-9 col-md-9">
+        <h3>Admin Publications</h3>
+          <table className="table table-responsive table-bordered table-hover admin-table">
+            <thead>
+              <tr>
+                <td>#</td>
+                <td>Publication Name</td>
+                <td>Publishers</td>
+                <td>Writers</td>
+                <td>Options</td>
+              </tr>
+            </thead>
+            <tbody>
+              {this.renderList()}
+            </tbody>
+          </table>
+      </div>
+    );
+  }
+}
+
+AdminPublicationsPage.propTypes = {
+  search: PropTypes.object,
+  getAllPublications: PropTypes.func.isRequired,
+  publications: PropTypes.arrayOf(Object),
+  total: PropTypes.number
+};
+
+AdminPublicationsPage.defaultProps = {
+  search: {},
+	publications: [],
+	total: 0
+};
+
+function mapStateToProps(state) {
+  // whatever is returned will show up
+  // as props inside of BookList
+  return {
+   publications: state.publications.list,
+   total: parseInt(state.publications.total, 10)
+  };
+}
+
+// Anything returned from this function will end up as props
+// on the BookList container
+const mapDispatchToProps = (dispatch) => {
+  return { getAllPublications: (search) => dispatch(getAllPublications(search)) };
+};
+
+// Promote BookList from a component to a container - it needs to know
+// about this new dispatch method , selectBook
+// Make it avaible as a prop
+export default connect(mapStateToProps, mapDispatchToProps)(AdminPublicationsPage);
