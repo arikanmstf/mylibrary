@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { PAGINATION } from '../../common/Config';
 
@@ -26,9 +26,15 @@ class AdminPublicationsPage extends Component {
         <tr key={publication.publication_id}>
           <td>{publication.publication_id}</td>
           <td>{publication.title}</td>
-          <td>{publication.publishers}</td>
           <td>{publication.writers}</td>
-          <td>ASD</td>
+          <td>
+            <Link to={`/admin/publications/edit/${publication.publication_id}`}>
+              <i className="glyphicon glyphicon-edit" />
+            </Link>
+            <Link to={`/admin/publications/remove/${publication.publication_id}`}>
+              <i className="glyphicon glyphicon-remove" />
+            </Link>
+          </td>
         </tr>
       );
     });
@@ -69,7 +75,6 @@ class AdminPublicationsPage extends Component {
               <tr>
                 <td>#</td>
                 <td>Publication Name</td>
-                <td>Publishers</td>
                 <td>Writers</td>
                 <td>Options</td>
               </tr>
