@@ -1,8 +1,6 @@
 .item-details-page {
-  max-width: $containerMaxWidth;
   background-color: $white;
   margin: 0 auto;
-  width: 100%;
 
   .item-details-container {
 
@@ -18,11 +16,19 @@
         font-size: $bigFontSize;
         text-align: left;
         border-bottom: 1px solid $gray;
+
+        .input-title {
+          width: 100%;
+        }
       }
 
       .item-small-title {
         font-size: $smallFontSize;
         text-align: left;
+
+        .btn {
+          padding: 0px 8px
+        }
       }
 
       .item-light-title {
@@ -56,9 +62,21 @@
         }
       }
 
+      .item-description {
+
+        textarea {
+          width: 100%;
+          height: 300px;
+        }
+      }
+
       .item-image {
         width: 100%;
       }
+    }
+
+    .glyphicon-remove {
+      color: $red;
     }
   }
 }

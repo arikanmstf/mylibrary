@@ -54,7 +54,7 @@ class PublicationDetailsPage extends Component {
 										<td>{ publication.isbn }</td>
 									</tr> }
 									<tr>
-										<td>Print Number</td>
+										<td>Cover No</td>
 										<td>{ publication.cover_no }</td>
 									</tr>
 									<tr>
