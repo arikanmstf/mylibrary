@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { getPublicationDetails } from '../../actions/ResolvedGetPublicationDetails';
+import { getWriterBySearch } from '../../actions/ResolvedGetWriterBySearch';
 import ListsOfPublication from '../../components/ListsOfPublication';
 import TagsOfPublication from '../../components/TagsOfPublication';
 import { fromArrayToCommaEdit, fromCommaToArray } from '../../common/Helpers';
@@ -30,6 +31,7 @@ class AdminPublicationsEditPage extends Component {
     this.onCoverChange = this.onCoverChange.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
     this.onNewWriterChange = this.onNewWriterChange.bind(this);
+    this.listWriters = this.listWriters.bind(this);
     this.addNewWriter = this.addNewWriter.bind(this);
     this.saveForm = this.saveForm.bind(this);
   }
@@ -41,7 +43,9 @@ class AdminPublicationsEditPage extends Component {
   componentWillReceiveProps(nextProps) {
 		this.setState({
       title: nextProps.publication.title,
-      writers: fromCommaToArray(nextProps.publication.writers, nextProps.publication.writer_ids),
+      writers: (this.state.writers.length > 0) ?
+        this.state.writers :
+        fromCommaToArray(nextProps.publication.writers, nextProps.publication.writer_ids),
       publisher_name: nextProps.publication.publisher_name,
       description: nextProps.publication.description,
       isbn: nextProps.publication.isbn || '',
@@ -85,14 +89,26 @@ class AdminPublicationsEditPage extends Component {
       new_writer: event.target.value
     });
   }
-  addNewWriter() {
+  addNewWriter(writer) {
     const writers = this.state.writers;
-    writers.push({ value: this.state.new_writer });
-    this.setState({ writers, new_writer: '' });
+    writers.push({ value: writer.full_name, key: writer.writer_id });
+    this.setState({ writers });
+  }
+  listWriters() {
+    this.props.getWriterBySearch(this.state.new_writer);
   }
 
   saveForm() {
     console.log(this.state);
+  }
+
+  renderSearchWriter() {
+    const writerSearch = this.props.writerSearch;
+    return writerSearch && (this.props.writerSearch.map((writer) => {
+      return (
+        <li key={writer.writer_id} onClick={() => this.addNewWriter(writer)}>{writer.full_name}</li>
+      );
+    }));
   }
 
 	render() {
@@ -113,7 +129,13 @@ class AdminPublicationsEditPage extends Component {
 						<div className="item-small-title">
 							{ fromArrayToCommaEdit(this.state.writers, 'writers') }
               <input className="input-title" value={this.state.new_writer} onChange={this.onNewWriterChange} />
-              <button className="btn btn-primary" onClick={this.addNewWriter}> Add</button>
+              <button className="btn btn-primary" onClick={this.listWriters}>List Writers</button>
+
+              <div className="item-search-results">
+                <ul>
+                  {this.renderSearchWriter()}
+                </ul>
+              </div>
 						</div>
 						<div className="item-small-title">
 							<span>
@@ -173,21 +195,27 @@ class AdminPublicationsEditPage extends Component {
 }
 AdminPublicationsEditPage.propTypes = {
   getPublicationDetails: PropTypes.func.isRequired,
-	publication: PropTypes.object.isRequired
+  getWriterBySearch: PropTypes.func.isRequired,
+	publication: PropTypes.object.isRequired,
+	writerSearch: PropTypes.arrayOf(Object).isRequired
 };
 
 function mapStateToProps(state) {
 	// whatever is returned will show up
 	// as props inside of BookList
 	return {
-		publication: state.publication
+		publication: state.publication,
+		writerSearch: state.writerSearch,
 	};
 }
 
 // Anything returned from this function will end up as props
 // on the BookList container
 const mapDispatchToProps = (dispatch) => {
-  return { getPublicationDetails: (search) => dispatch(getPublicationDetails(search)) };
+  return {
+    getPublicationDetails: (search) => dispatch(getPublicationDetails(search)),
+    getWriterBySearch: (search) => dispatch(getWriterBySearch(search))
+  };
 };
 
 // Promote BookList from a component to a container - it needs to know

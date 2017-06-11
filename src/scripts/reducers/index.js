@@ -6,6 +6,7 @@ import BookDetailsReducer from './BookDetailsReducer';
 import ListDetailsReducer from './ListDetailsReducer';
 import TagDetailsReducer from './TagDetailsReducer';
 import PublisherDetailsReducer from './PublisherDetailsReducer';
+import WriterSearchReducer from './WriterSearchReducer';
 
 const rootReducer = combineReducers({
   publications: PublicationReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   list: ListDetailsReducer,
   book: BookDetailsReducer,
   tag: TagDetailsReducer,
-  publisher: PublisherDetailsReducer
+  publisher: PublisherDetailsReducer,
+  writerSearch: WriterSearchReducer
 });
 
 export default rootReducer;

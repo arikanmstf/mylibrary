@@ -73,6 +73,20 @@
       .item-image {
         width: 100%;
       }
+
+      .item-search-results {
+
+        li {
+          list-style: none;
+          padding: 5px 0px;
+          border-bottom: 1px solid $lightGray;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $lightGray;
+          }
+        }
+      }
     }
 
     .glyphicon-remove {

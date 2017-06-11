@@ -13,6 +13,7 @@ export const API = { // eslint-disable-line import/prefer-default-export
   getPublicationDetails: home + publications + '/get_one',
   getLogin: home + membership + '/get_login',
   getWriterDetails: home + writers + '/get_one',
+  getWriterBySearch: home + writers + '/get_search',
   getBookDetails: home + books + '/get_one',
   getListDetails: home + lists + '/get_one',
   getTagDetails: home + tags + '/get_one',
