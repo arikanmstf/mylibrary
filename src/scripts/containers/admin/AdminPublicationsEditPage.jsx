@@ -19,11 +19,13 @@ class AdminPublicationsEditPage extends Component {
       writers: [],
       publisher_name: '',
       publisher_id: 0,
+      book_id: 0,
       description: '',
       isbn: '',
       cover_no: 0,
       page_number: 0,
       new_writer: '',
+      new_title: '',
       lists: [],
       ...props
     };
@@ -48,7 +50,6 @@ class AdminPublicationsEditPage extends Component {
 
   componentWillReceiveProps(nextProps) {
 		this.setState({
-      title: nextProps.publication.title,
       writers: (this.state.writers.length > 0) ?
         this.state.writers :
         fromCommaToArray(nextProps.publication.writers, nextProps.publication.writer_ids),
@@ -63,7 +64,7 @@ class AdminPublicationsEditPage extends Component {
 
   onTitleChange(event) {
     this.setState({
-      title: event.target.value
+      new_title: event.target.value
     });
   }
   onPublisherChange(event) {
@@ -102,25 +103,30 @@ class AdminPublicationsEditPage extends Component {
     this.setState({ writers, new_writer: '' });
     this.props.resetGetWriterBySearch();
   }
+  addNewBook(book) {
+    this.setState({ ...book, new_title: '' });
+    this.props.resetGetBookBySearch();
+  }
   searchWriters() {
     this.props.getWriterBySearch(this.state.new_writer);
   }
   searchBooks() {
-    this.props.getBookBySearch(this.state.title);
+    this.props.getBookBySearch(this.state.new_title);
   }
 
   saveForm() {
     const form = {
-      title: this.state.title,
+      book_id: this.state.book_id,
+      publication_id: this.props.publication.publication_id,
       writers: this.state.writers,
       lists: this.state.lists,
       publisher_id: this.state.publisher_id,
-      description: this.state.description,
       isbn: this.state.isbn,
       cover_no: this.state.cover_no,
       page_number: this.state.page_number
     };
     this.props.updatePublicationDetails(form);
+    console.log(form);
   }
 
   removeWriter(w) {
@@ -142,6 +148,14 @@ class AdminPublicationsEditPage extends Component {
       );
     }));
   }
+  renderSearchBook() {
+    const bookSearch = this.props.bookSearch;
+    return bookSearch && (this.props.bookSearch.map((book) => {
+      return (
+        <li key={book.book_id} onClick={() => this.addNewBook(book)}>{book.title}</li>
+      );
+    }));
+  }
 
 	render() {
 		const publication = this.props.publication;
@@ -155,10 +169,18 @@ class AdminPublicationsEditPage extends Component {
 						/>
 					</div>
 					<div className="col-md-9 col-sm-9 item-info">
-						<div className="item-title">
-							<input className="input-title col-sm-9 col-md-9 col-xs-9" value={this.state.title} onChange={this.onTitleChange} />
+            <div className="item-title">
+              {this.state.title || publication.title}
+            </div>
+						<div className="item-small-title">
+							<input className="input-title col-sm-9 col-md-9 col-xs-9" value={this.state.new_title} onChange={this.onTitleChange} />
               <button onClick={this.searchBooks} className="btn btn-primary col-sm-3 col-md-3 col-xs-3">Search Book</button>
               <div className="clearfix" />
+              <div className="item-search-results">
+                <ul>
+                  {this.renderSearchBook()}
+                </ul>
+              </div>
 						</div>
 						<div className="item-small-title">
 							{ fromArrayToCommaEdit(this.state.writers, 'admin/writers/edit', this.removeWriter) }
@@ -177,7 +199,7 @@ class AdminPublicationsEditPage extends Component {
               </span>
 						</div>
 						<p className="item-description">
-							<textarea value={this.state.description} onChange={this.onDescChange} />
+							{this.state.description}
 						</p>
 						<div className="item-table">
 							<table className="table table-responsive">
@@ -235,7 +257,8 @@ AdminPublicationsEditPage.propTypes = {
   resetGetBookBySearch: PropTypes.func.isRequired,
   updatePublicationDetails: PropTypes.func.isRequired,
 	publication: PropTypes.object.isRequired,
-	writerSearch: PropTypes.arrayOf(Object).isRequired
+	writerSearch: PropTypes.arrayOf(Object).isRequired,
+	bookSearch: PropTypes.arrayOf(Object).isRequired
 };
 
 function mapStateToProps(state) {
@@ -244,6 +267,7 @@ function mapStateToProps(state) {
 	return {
 		publication: state.publication,
 		writerSearch: state.writerSearch,
+		bookSearch: state.bookSearch
 	};
 }
 

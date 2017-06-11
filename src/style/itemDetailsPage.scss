@@ -20,7 +20,7 @@ $btnPadding: 0px 8px;
         border-bottom: 1px solid $gray;
 
         .input-title {
-          
+
         }
       }
 
@@ -87,6 +87,7 @@ $btnPadding: 0px 8px;
           padding: 5px 0px;
           border-bottom: 1px solid $lightGray;
           cursor: pointer;
+          font-size: $mediumFontSize;
 
           &:hover {
             background-color: $lightGray;
