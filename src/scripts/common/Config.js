@@ -27,6 +27,7 @@ export const API = {
   getListDetails: home + lists + '/get_one',
   getListBySearch: home + lists + '/get_search',
 
+  getAllTags: home + tags + '/get_all',
   getTagDetails: home + tags + '/get_one',
   getTagBySearch: home + tags + '/get_search',
 
