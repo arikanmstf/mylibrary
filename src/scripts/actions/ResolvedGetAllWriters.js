@@ -4,7 +4,7 @@ import { API } from '../common/Config';
 
 export function ResolvedGetAllWriters(response) {
   return {
-    type: 'RESOLVED_GET_ALL_BOOKS',
+    type: 'RESOLVED_GET_ALL_WRITERS',
     data: response.data.response
   };
 }

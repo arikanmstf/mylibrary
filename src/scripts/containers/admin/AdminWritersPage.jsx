@@ -25,16 +25,16 @@ class AdminWritersPage extends Component {
   }
 
   renderList() {
-    return this.props.books.map((book) => {
+    return this.props.writers.map((writer) => {
       return (
-        <tr key={book.book_id}>
-          <td>{book.book_id}</td>
-          <td>{book.title}</td>
+        <tr key={writer.writer_id}>
+          <td>{writer.writer_id}</td>
+          <td>{writer.full_name}</td>
           <td>
-            <Link to={`/admin/books/edit/${book.book_id}`}>
+            <Link to={`/admin/writers/edit/${writer.writer_id}`}>
               <i className="glyphicon glyphicon-edit" />
             </Link>
-            <Link to={`/admin/books/remove/${book.book_id}`}>
+            <Link to={`/admin/writers/remove/${writer.writer_id}`}>
               <i className="glyphicon glyphicon-remove" />
             </Link>
           </td>
@@ -73,20 +73,20 @@ class AdminWritersPage extends Component {
 AdminWritersPage.propTypes = {
   search: PropTypes.object,
   getAllWriters: PropTypes.func.isRequired,
-  books: PropTypes.arrayOf(Object),
+  writers: PropTypes.arrayOf(Object),
   total: PropTypes.number
 };
 
 AdminWritersPage.defaultProps = {
   search: {},
-	books: [],
+	writers: [],
 	total: 0
 };
 
 function mapStateToProps(state) {
   return {
-   books: state.books.list,
-   total: parseInt(state.books.total, 10)
+   writers: state.writers.list,
+   total: parseInt(state.writers.total, 10)
   };
 }
 
