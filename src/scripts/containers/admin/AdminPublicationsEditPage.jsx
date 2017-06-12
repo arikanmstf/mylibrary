@@ -3,13 +3,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { getPublicationDetails } from '../../actions/ResolvedGetPublicationDetails';
-import { getWriterBySearch, resetGetWriterBySearch } from '../../actions/ResolvedGetWriterBySearch';
 import { getBookBySearch, resetGetBookBySearch } from '../../actions/ResolvedGetBookBySearch';
 import { getPublisherBySearch, resetGetPublisherBySearch } from '../../actions/ResolvedGetPublisherBySearch';
 import { updatePublicationDetails } from '../../actions/ResolvedSetAdminForm';
 import ListsOfPublicationEdit from '../../components/ListsOfPublicationEdit';
-import TagsOfPublicationEdit from '../../components/TagsOfPublicationEdit';
-import { fromArrayToCommaEdit, fromCommaToArray } from '../../common/Helpers';
 
 class AdminPublicationsEditPage extends Component {
 
@@ -17,18 +14,15 @@ class AdminPublicationsEditPage extends Component {
     super(props);
     this.state = {
       title: '',
-      writers: [],
       publisher_id: 0,
       book_id: 0,
       description: '',
       isbn: '',
       cover_no: 0,
       page_number: 0,
-      new_writer: '',
       new_title: '',
       new_publisher: '',
       lists: [],
-      tags: [],
       ...props
     };
 
@@ -38,12 +32,9 @@ class AdminPublicationsEditPage extends Component {
     this.onIsbnChange = this.onIsbnChange.bind(this);
     this.onCoverChange = this.onCoverChange.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
-    this.onNewWriterChange = this.onNewWriterChange.bind(this);
-    this.searchWriters = this.searchWriters.bind(this);
     this.searchPublishers = this.searchPublishers.bind(this);
     this.searchBooks = this.searchBooks.bind(this);
-    this.addNewWriter = this.addNewWriter.bind(this);
-    this.removeWriter = this.removeWriter.bind(this);
+
     this.saveForm = this.saveForm.bind(this);
   }
 
@@ -53,14 +44,10 @@ class AdminPublicationsEditPage extends Component {
 
   componentWillReceiveProps(nextProps) {
 		this.setState({
-      writers: (this.state.writers.length > 0) ?
-        this.state.writers :
-        fromCommaToArray(nextProps.publication.writers, nextProps.publication.writer_ids),
       description: nextProps.publication.description,
       isbn: nextProps.publication.isbn || '',
       cover_no: nextProps.publication.cover_no,
       lists: nextProps.publication.lists,
-      tags: nextProps.publication.tags,
       page_number: nextProps.publication.page_number
     });
 	}
@@ -94,11 +81,6 @@ class AdminPublicationsEditPage extends Component {
       new_title: event.target.value
     });
   }
-  onNewWriterChange(event) {
-    this.setState({
-      new_writer: event.target.value
-    });
-  }
   addNewBook(book) {
     this.setState({ ...book, new_title: '' });
     this.props.resetGetBookBySearch();
@@ -106,15 +88,6 @@ class AdminPublicationsEditPage extends Component {
   addNewPublisher(publisher) {
     this.setState({ publisher_name: publisher.name, publisher_id: publisher.publisher_id, new_publisher: '' });
     this.props.resetGetPublisherBySearch();
-  }
-  addNewWriter(writer) {
-    const writers = this.state.writers;
-    writers.push({ value: writer.full_name, key: writer.writer_id });
-    this.setState({ writers, new_writer: '' });
-    this.props.resetGetWriterBySearch();
-  }
-  searchWriters() {
-    this.props.getWriterBySearch(this.state.new_writer);
   }
   searchBooks() {
     this.props.getBookBySearch(this.state.new_title);
@@ -127,35 +100,13 @@ class AdminPublicationsEditPage extends Component {
     const form = {
       book_id: this.state.book_id,
       publication_id: this.props.publication.publication_id,
-      writers: this.state.writers,
       lists: this.state.lists,
-      tags: this.state.tags,
       publisher_id: this.state.publisher_id,
       isbn: this.state.isbn,
       cover_no: this.state.cover_no,
       page_number: this.state.page_number
     };
     this.props.updatePublicationDetails(form);
-  }
-
-  removeWriter(w) {
-    const writers = [];
-    for (let i = 0; i < this.state.writers.length; i++) {
-      if (this.state.writers[i].key !== w.key) {
-        writers.push(this.state.writers[i]);
-      }
-    }
-
-    this.setState({ writers });
-  }
-
-  renderSearchWriter() {
-    const writerSearch = this.props.writerSearch;
-    return writerSearch && (this.props.writerSearch.map((writer) => {
-      return (
-        <li key={writer.writer_id} onClick={() => this.addNewWriter(writer)}>{writer.full_name}</li>
-      );
-    }));
   }
   renderSearchBook() {
     const bookSearch = this.props.bookSearch;
@@ -207,23 +158,6 @@ class AdminPublicationsEditPage extends Component {
               </div>
 						</div>
 						<div className="item-small-title">
-							{ fromArrayToCommaEdit(this.state.writers, 'admin/writers/edit', this.removeWriter) }
-              <button className="btn btn-search right" onClick={this.searchWriters}>
-                <i className="glyphicon glyphicon-search" />
-              </button>
-              <input
-                className="input-title right"
-                placeholder="Search writers"
-                value={this.state.new_writer}
-                onChange={this.onNewWriterChange}
-              />
-              <div className="item-search-results">
-                <ul>
-                  {this.renderSearchWriter()}
-                </ul>
-              </div>
-						</div>
-						<div className="item-small-title">
               <span>
                 {this.state.publisher_name || publication.publisher_name}
               </span>
@@ -271,13 +205,9 @@ class AdminPublicationsEditPage extends Component {
 							</table>
 						</div>
 						<div className="item-lists-container">
-							<div className="item-lists col-sm-6 col-xs-12">
+							<div className="item-lists col-sm-12 col-xs-12">
 								<h5>Lists</h5>
 								<ListsOfPublicationEdit lists={this.state.lists} />
-							</div>
-							<div className="item-lists col-sm-6 col-xs-12">
-								<h5>Tags</h5>
-								<TagsOfPublicationEdit tags={this.state.tags} />
 							</div>
 						</div>
 					</div>
@@ -292,15 +222,12 @@ class AdminPublicationsEditPage extends Component {
 }
 AdminPublicationsEditPage.propTypes = {
   getPublicationDetails: PropTypes.func.isRequired,
-  getWriterBySearch: PropTypes.func.isRequired,
-  resetGetWriterBySearch: PropTypes.func.isRequired,
   getBookBySearch: PropTypes.func.isRequired,
   resetGetBookBySearch: PropTypes.func.isRequired,
   getPublisherBySearch: PropTypes.func.isRequired,
   resetGetPublisherBySearch: PropTypes.func.isRequired,
   updatePublicationDetails: PropTypes.func.isRequired,
 	publication: PropTypes.object.isRequired,
-	writerSearch: PropTypes.arrayOf(Object).isRequired,
 	bookSearch: PropTypes.arrayOf(Object).isRequired,
 	publisherSearch: PropTypes.arrayOf(Object).isRequired
 };
@@ -310,7 +237,6 @@ function mapStateToProps(state) {
 	// as props inside of BookList
 	return {
 		publication: state.publication,
-		writerSearch: state.writerSearch,
 		bookSearch: state.bookSearch,
 		publisherSearch: state.publisherSearch
 	};
@@ -321,8 +247,6 @@ function mapStateToProps(state) {
 const mapDispatchToProps = (dispatch) => {
   return {
     getPublicationDetails: (search) => dispatch(getPublicationDetails(search)),
-    getWriterBySearch: (search) => dispatch(getWriterBySearch(search)),
-    resetGetWriterBySearch: () => dispatch(resetGetWriterBySearch()),
     getBookBySearch: (search) => dispatch(getBookBySearch(search)),
     resetGetBookBySearch: () => dispatch(resetGetBookBySearch()),
     getPublisherBySearch: (search) => dispatch(getPublisherBySearch(search)),

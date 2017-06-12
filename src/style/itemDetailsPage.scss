@@ -91,10 +91,11 @@ $btnPadding: 0px 8px;
       }
 
       .item-search-results {
+        clear: both;
+
         ul {
           padding: 0px;
         }
-
         li {
           list-style: none;
           padding: 5px 0px;
