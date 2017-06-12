@@ -5,11 +5,14 @@ import PropTypes from 'prop-types';
 
 import { getAllUsers } from '../../actions/ResolvedGetAllUsers';
 import Pagination from '../../components/Pagination';
+import InputSearch from '../../components/input/InputSearch';
 
 class AdminUsersPage extends Component {
   constructor(props) {
 		super(props);
 		this.state = props.search;
+
+    this.setSearchTitle = this.setSearchTitle.bind(this);
 	}
 
 	componentDidMount() {
@@ -22,6 +25,10 @@ class AdminUsersPage extends Component {
 
   onLiClick() {
     this.setState(this.props.search);
+  }
+  setSearchTitle(newValue) {
+    this.setState({ title: newValue });
+    this.props.getAllUsers({ title: newValue });
   }
 
   renderList() {
@@ -53,6 +60,7 @@ class AdminUsersPage extends Component {
             onLiClick={this.onLiClick}
             linkTo="admin/users"
           />
+          <InputSearch makeSearch={this.setSearchTitle} />
           <table className="table table-responsive table-bordered table-hover admin-table">
             <thead>
               <tr>

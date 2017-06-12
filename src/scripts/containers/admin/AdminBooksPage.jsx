@@ -5,11 +5,14 @@ import PropTypes from 'prop-types';
 
 import { getAllBooks } from '../../actions/ResolvedGetAllBooks';
 import Pagination from '../../components/Pagination';
+import InputSearch from '../../components/input/InputSearch';
 
 class AdminBooksPage extends Component {
   constructor(props) {
 		super(props);
 		this.state = props.search;
+
+    this.setSearchTitle = this.setSearchTitle.bind(this);
 	}
 
 	componentDidMount() {
@@ -22,6 +25,10 @@ class AdminBooksPage extends Component {
 
   onLiClick() {
     this.setState(this.props.search);
+  }
+  setSearchTitle(newValue) {
+    this.setState({ title: newValue });
+    this.props.getAllBooks({ title: newValue });
   }
 
   renderList() {
@@ -54,6 +61,7 @@ class AdminBooksPage extends Component {
             onLiClick={this.onLiClick}
             linkTo="admin/books"
           />
+          <InputSearch makeSearch={this.setSearchTitle} />
           <table className="table table-responsive table-bordered table-hover admin-table">
             <thead>
               <tr>

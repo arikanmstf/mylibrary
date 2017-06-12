@@ -34,7 +34,7 @@ class InputSearch extends Component {
         <InputText
           onChange={this.handleSearchChange}
           className="navbar-header-search"
-          placeholder="Type to search a book..."
+          placeholder="Type to search..."
         />
       <button onClick={this.makeSearch} className="btn btn-search col-sm-3 col-md-3 col-xs-3 right">
           <i className="glyphicon glyphicon-search" />
