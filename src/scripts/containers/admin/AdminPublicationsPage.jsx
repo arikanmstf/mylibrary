@@ -5,23 +5,33 @@ import PropTypes from 'prop-types';
 
 import { getAllPublications } from '../../actions/ResolvedGetAllPublications';
 import Pagination from '../../components/Pagination';
+import InputSearch from '../../components/input/InputSearch';
 
 class AdminPublicationsPage extends Component {
   constructor(props) {
 		super(props);
-		this.state = props.search;
+		this.state = {
+      pageNo: props.search.pageNo,
+      title: ''
+    };
+
+    this.setSearchTitle = this.setSearchTitle.bind(this);
 	}
 
 	componentDidMount() {
-		this.props.getAllPublications(this.state);
+    this.props.getAllPublications(this.state);
 	}
 
   componentWillReceiveProps(nextProps) {
-		this.setState(nextProps.search);
+		this.setState({ pageNo: nextProps.search.pageNo });
 	}
 
   onLiClick() {
     this.setState(this.props.search);
+  }
+  setSearchTitle(newValue) {
+    this.setState({ title: newValue });
+    this.props.getAllPublications({ title: newValue });
   }
 
   renderList() {
@@ -54,6 +64,7 @@ class AdminPublicationsPage extends Component {
             onLiClick={this.onLiClick}
             linkTo="admin/publications"
           />
+          <InputSearch makeSearch={this.setSearchTitle} />
           <table className="table table-responsive table-bordered table-hover admin-table">
             <thead>
               <tr>

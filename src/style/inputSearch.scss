@@ -1,4 +1,16 @@
 .input-search {
   max-width: $containerMaxWidth;
   margin: 0 auto;
+
+  input {
+    width: 70%;
+    float: left;
+  }
+
+  button {
+    width: 35px;
+    color: $white;
+    padding: 6px 10px;
+    float: left;
+  }
 }

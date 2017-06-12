@@ -12,16 +12,20 @@ class InputSearch extends Component {
     };
 
     this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.makeSearch = this.makeSearch.bind(this);
   }
 
-  handleSearchChange(value) {
-    if (this.props.onSearchChange) {
-      this.props.onSearchChange(value);
+  handleSearchChange(newValue) {
+    this.setState({ title: newValue });
+  }
+  makeSearch() {
+    if (this.props.makeSearch) {
+      this.props.makeSearch(this.state.title);
     }
   }
 
-  defaultOnChange() {
-    return true;
+  defaultSearch() {
+
   }
 
   render() {
@@ -32,17 +36,20 @@ class InputSearch extends Component {
           className="navbar-header-search"
           placeholder="Type to search a book..."
         />
+      <button onClick={this.makeSearch} className="btn btn-search col-sm-3 col-md-3 col-xs-3 right">
+          <i className="glyphicon glyphicon-search" />
+        </button>
       </div>
     );
   }
 }
 
 InputSearch.propTypes = {
-  onSearchChange: PropTypes.func,
+  makeSearch: PropTypes.func,
 };
 
 InputSearch.defaultProps = {
-  onSearchChange: InputSearch.defaultOnChange,
+  makeSearch: InputSearch.defaultSearch,
 };
 
 export default InputSearch;
