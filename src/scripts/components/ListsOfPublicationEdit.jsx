@@ -103,15 +103,11 @@ ListsOfPublicationEdit.propTypes = {
 };
 
 function mapStateToProps(state) {
-	// whatever is returned will show up
-	// as props inside of BookList
 	return {
 		listSearch: state.listSearch
 	};
 }
 
-// Anything returned from this function will end up as props
-// on the BookList container
 const mapDispatchToProps = (dispatch) => {
   return {
     getListBySearch: (search) => dispatch(getListBySearch(search)),
@@ -119,7 +115,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-// Promote BookList from a component to a container - it needs to know
-// about this new dispatch method , selectBook
-// Make it avaible as a prop
 export default connect(mapStateToProps, mapDispatchToProps)(ListsOfPublicationEdit);

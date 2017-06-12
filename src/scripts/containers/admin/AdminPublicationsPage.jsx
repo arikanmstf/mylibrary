@@ -86,21 +86,14 @@ AdminPublicationsPage.defaultProps = {
 };
 
 function mapStateToProps(state) {
-  // whatever is returned will show up
-  // as props inside of BookList
   return {
    publications: state.publications.list,
    total: parseInt(state.publications.total, 10)
   };
 }
 
-// Anything returned from this function will end up as props
-// on the BookList container
 const mapDispatchToProps = (dispatch) => {
   return { getAllPublications: (search) => dispatch(getAllPublications(search)) };
 };
 
-// Promote BookList from a component to a container - it needs to know
-// about this new dispatch method , selectBook
-// Make it avaible as a prop
 export default connect(mapStateToProps, mapDispatchToProps)(AdminPublicationsPage);

@@ -92,20 +92,13 @@ PublicationDetailsPage.propTypes = {
 };
 
 function mapStateToProps(state) {
-	// whatever is returned will show up
-	// as props inside of BookList
 	return {
 		publication: state.publication
 	};
 }
 
-// Anything returned from this function will end up as props
-// on the BookList container
 const mapDispatchToProps = (dispatch) => {
   return { getPublicationDetails: (search) => dispatch(getPublicationDetails(search)) };
 };
 
-// Promote BookList from a component to a container - it needs to know
-// about this new dispatch method , selectBook
-// Make it avaible as a prop
 export default connect(mapStateToProps, mapDispatchToProps)(PublicationDetailsPage);

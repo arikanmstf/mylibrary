@@ -7,7 +7,7 @@ const books = '/books';
 const tags = '/tags';
 const publishers = '/publishers';
 
-export const API = { // eslint-disable-line import/prefer-default-export
+export const API = {
 
   getAllPublications: home + publications + '/get_all',
   getPublicationDetails: home + publications + '/get_one',
