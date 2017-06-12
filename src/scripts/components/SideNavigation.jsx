@@ -9,7 +9,7 @@ export default class SideNavigation extends Component {
               <div className="container-fluid">
               <div className="navbar-collapse" id="bs-sidebar-navbar-collapse-1">
                 <ul className="nav navbar-nav">
-                  <li className="active"><Link to="/admin">Home</Link></li>
+                  <li><Link to="/admin">Home</Link></li>
                   <li><Link to="/admin/publications">Publications</Link></li>
                   <li><Link to="/admin/books">Books</Link></li>
                   <li><Link to="/admin/writers">Writers</Link></li>

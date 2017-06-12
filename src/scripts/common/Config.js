@@ -18,6 +18,7 @@ export const API = { // eslint-disable-line import/prefer-default-export
   getWriterDetails: home + writers + '/get_one',
   getWriterBySearch: home + writers + '/get_search',
 
+  getAllBooks: home + books + '/get_all',
   getBookDetails: home + books + '/get_one',
   getBookBySearch: home + books + '/get_search',
 
