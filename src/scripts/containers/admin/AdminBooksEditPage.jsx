@@ -19,6 +19,7 @@ class AdminBooksEditPage extends Component {
       writers: [],
       title: '',
       tags: [],
+      new_writer: '',
       ...props
     };
 
@@ -72,7 +73,8 @@ class AdminBooksEditPage extends Component {
       book_id: this.props.book.book_id,
       writers: this.state.writers,
       tags: this.state.tags,
-      publisher_id: this.state.publisher_id
+      publisher_id: this.state.publisher_id,
+      description: this.state.description
     };
     this.props.updatePublicationDetails(form);
   }
@@ -123,6 +125,9 @@ class AdminBooksEditPage extends Component {
                 </ul>
               </div>
 						</div>
+            <p className="item-description">
+							<textarea onChange={this.onDescChange} value={this.state.description} />
+						</p>
 						<div className="item-lists-container">
 							<div className="item-lists col-sm-12 col-xs-12">
 								<h5>Tags</h5>
