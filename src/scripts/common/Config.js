@@ -6,6 +6,7 @@ const writers = '/writers';
 const books = '/books';
 const tags = '/tags';
 const publishers = '/publishers';
+const users = '/users';
 
 export const API = {
 
@@ -32,6 +33,8 @@ export const API = {
   getAllPublishers: home + publishers + '/get_all',
   getPublisherDetails: home + publishers + '/get_one',
   getPublisherBySearch: home + publishers + '/get_search',
+
+  getAllUsers: home + users + '/get_all'
 };
 
 export const PAGINATION = {
