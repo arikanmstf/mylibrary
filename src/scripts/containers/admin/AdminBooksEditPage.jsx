@@ -26,6 +26,7 @@ class AdminBooksEditPage extends Component {
     this.onNewPublisherChange = this.onNewPublisherChange.bind(this);
     this.onDescChange = this.onDescChange.bind(this);
     this.onNewWriterChange = this.onNewWriterChange.bind(this);
+    this.onTitleChange = this.onTitleChange.bind(this);
     this.searchWriters = this.searchWriters.bind(this);
     this.addNewWriter = this.addNewWriter.bind(this);
     this.removeWriter = this.removeWriter.bind(this);
@@ -38,6 +39,7 @@ class AdminBooksEditPage extends Component {
 
   componentWillReceiveProps(nextProps) {
 		this.setState({
+      title: nextProps.book.title,
       writers: (this.state.writers.length > 0) ? this.state.writers : nextProps.book.writers,
       description: nextProps.book.description,
       tags: nextProps.book.tags,
@@ -51,6 +53,11 @@ class AdminBooksEditPage extends Component {
   onNewPublisherChange(event) {
     this.setState({
       new_publisher: event.target.value
+    });
+  }
+  onTitleChange(event) {
+    this.setState({
+      title: event.target.value
     });
   }
   onNewWriterChange(event) {
@@ -71,6 +78,7 @@ class AdminBooksEditPage extends Component {
   saveForm() {
     const form = {
       book_id: this.props.book.book_id,
+      title: this.state.title,
       writers: this.state.writers,
       tags: this.state.tags,
       publisher_id: this.state.publisher_id,
@@ -106,7 +114,7 @@ class AdminBooksEditPage extends Component {
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
             <div className="item-title">
-              {this.state.title || book.title}
+              <input value={this.state.title} onChange={this.onTitleChange} />
             </div>
 						<div className="item-small-title">
 							{ fromArrayToCommaEdit(this.state.writers, 'admin/writers/edit', this.removeWriter) }
