@@ -29,8 +29,9 @@ export const API = {
   getTagDetails: home + tags + '/get_one',
   getTagBySearch: home + tags + '/get_search',
 
+  getAllPublishers: home + publishers + '/get_all',
   getPublisherDetails: home + publishers + '/get_one',
-  getPublisherBySearch: home + publishers + '/get_search'
+  getPublisherBySearch: home + publishers + '/get_search',
 };
 
 export const PAGINATION = {

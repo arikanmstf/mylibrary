@@ -18,6 +18,7 @@ import AdminPublicationsEdit from './routes/admin/AdminPublicationsEdit';
 import AdminBooks from './routes/admin/AdminBooks';
 import AdminBooksEdit from './routes/admin/AdminBooksEdit';
 import AdminWriters from './routes/admin/AdminWriters';
+import AdminPublishers from './routes/admin/AdminPublishers';
 
 import LoginPage from './containers/LoginPage';
 
@@ -50,6 +51,8 @@ export default class App extends Component {
                 <Route exact path="/admin/books/edit/:bookId" component={AdminBooksEdit} />
                 <Route exact path="/admin/writers" component={AdminWriters} />
                 <Route exact path="/admin/writers/:pageNo" component={AdminWriters} />
+                <Route exact path="/admin/publishers" component={AdminPublishers} />
+                <Route exact path="/admin/publishers/:pageNo" component={AdminPublishers} />
 
                 <Route path="*" component={NotFound} />
               </Switch>
