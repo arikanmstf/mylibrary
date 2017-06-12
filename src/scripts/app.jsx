@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import Storage from './common/storage';
+import Storage from './common/Storage';
 
 import BookDetails from './routes/BookDetails';
 import Home from './routes/Home';

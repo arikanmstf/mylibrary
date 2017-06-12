@@ -50,7 +50,8 @@ rules.push({
   loader: 'eslint-loader',
   options: {
     failOnWarning: false,
-    failOnError: isProd
+    failOnError: isProd,
+    quiet: isProd
   }
 });
 
