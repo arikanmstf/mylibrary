@@ -25,6 +25,7 @@ export const API = { // eslint-disable-line import/prefer-default-export
   getListBySearch: home + lists + '/get_search',
 
   getTagDetails: home + tags + '/get_one',
+  getTagBySearch: home + tags + '/get_search',
 
   getPublisherDetails: home + publishers + '/get_one',
   getPublisherBySearch: home + publishers + '/get_search'

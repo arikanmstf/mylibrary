@@ -8,7 +8,7 @@ import { getBookBySearch, resetGetBookBySearch } from '../../actions/ResolvedGet
 import { getPublisherBySearch, resetGetPublisherBySearch } from '../../actions/ResolvedGetPublisherBySearch';
 import { updatePublicationDetails } from '../../actions/ResolvedSetAdminForm';
 import ListsOfPublicationEdit from '../../components/ListsOfPublicationEdit';
-import TagsOfPublication from '../../components/TagsOfPublication';
+import TagsOfPublicationEdit from '../../components/TagsOfPublicationEdit';
 import { fromArrayToCommaEdit, fromCommaToArray } from '../../common/Helpers';
 
 class AdminPublicationsEditPage extends Component {
@@ -28,6 +28,7 @@ class AdminPublicationsEditPage extends Component {
       new_title: '',
       new_publisher: '',
       lists: [],
+      tags: [],
       ...props
     };
 
@@ -59,6 +60,7 @@ class AdminPublicationsEditPage extends Component {
       isbn: nextProps.publication.isbn || '',
       cover_no: nextProps.publication.cover_no,
       lists: nextProps.publication.lists,
+      tags: nextProps.publication.tags,
       page_number: nextProps.publication.page_number
     });
 	}
@@ -127,6 +129,7 @@ class AdminPublicationsEditPage extends Component {
       publication_id: this.props.publication.publication_id,
       writers: this.state.writers,
       lists: this.state.lists,
+      tags: this.state.tags,
       publisher_id: this.state.publisher_id,
       isbn: this.state.isbn,
       cover_no: this.state.cover_no,
@@ -274,7 +277,7 @@ class AdminPublicationsEditPage extends Component {
 							</div>
 							<div className="item-lists col-sm-6 col-xs-12">
 								<h5>Tags</h5>
-								<TagsOfPublication tags={publication.tags} />
+								<TagsOfPublicationEdit tags={this.state.tags} />
 							</div>
 						</div>
 					</div>

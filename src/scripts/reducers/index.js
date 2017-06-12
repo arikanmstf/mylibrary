@@ -8,6 +8,7 @@ import TagDetailsReducer from './TagDetailsReducer';
 import PublisherDetailsReducer from './PublisherDetailsReducer';
 import WriterSearchReducer from './WriterSearchReducer';
 import ListSearchReducer from './ListSearchReducer';
+import TagSearchReducer from './TagSearchReducer';
 import BookSearchReducer from './BookSearchReducer';
 import PublisherSearchReducer from './PublisherSearchReducer';
 
@@ -22,7 +23,8 @@ const rootReducer = combineReducers({
   writerSearch: WriterSearchReducer,
   listSearch: ListSearchReducer,
   bookSearch: BookSearchReducer,
-  publisherSearch: PublisherSearchReducer
+  publisherSearch: PublisherSearchReducer,
+  tagSearch: TagSearchReducer
 });
 
 export default rootReducer;
