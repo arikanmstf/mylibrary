@@ -15,6 +15,7 @@ export const API = {
 
   getLogin: home + membership + '/get_login',
 
+  getAllWriters: home + writers + '/get_all',
   getWriterDetails: home + writers + '/get_one',
   getWriterBySearch: home + writers + '/get_search',
 
