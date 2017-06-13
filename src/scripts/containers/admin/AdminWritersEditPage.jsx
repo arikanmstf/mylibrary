@@ -11,10 +11,12 @@ class AdminWritersEditPage extends Component {
     super(props);
     this.state = {
       title: '',
+      description: '',
       ...props
     };
 
     this.onTitleChange = this.onTitleChange.bind(this);
+    this.onDescChange = this.onDescChange.bind(this);
     this.saveForm = this.saveForm.bind(this);
   }
 
@@ -24,7 +26,8 @@ class AdminWritersEditPage extends Component {
 
   componentWillReceiveProps(nextProps) {
 		this.setState({
-      title: nextProps.writer.full_name
+      title: nextProps.writer.full_name,
+      description: nextProps.writer.description
     });
 	}
   onTitleChange(event) {
@@ -32,11 +35,17 @@ class AdminWritersEditPage extends Component {
       title: event.target.value
     });
   }
+  onDescChange(event) {
+    this.setState({
+      description: event.target.value
+    });
+  }
 
   saveForm() {
     const form = {
       writer_id: this.props.writer.writer_id,
-      title: this.state.title
+      title: this.state.title,
+      description: this.state.description
     };
     this.props.updateWriterDetails(form);
   }
@@ -50,6 +59,9 @@ class AdminWritersEditPage extends Component {
             <div className="item-title">
               <input value={this.state.title} onChange={this.onTitleChange} />
             </div>
+            <p className="item-description">
+							<textarea onChange={this.onDescChange} value={this.state.description} />
+						</p>
 					</div>
 					<div className="clearfix" />
 					<div className="col-md-12" >
