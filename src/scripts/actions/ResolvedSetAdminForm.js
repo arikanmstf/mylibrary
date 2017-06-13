@@ -1,4 +1,5 @@
 import axios from 'axios';
+import qs from 'qs';
 import Storage from '../common/Storage';
 import { API } from '../common/Config';
 
@@ -11,12 +12,10 @@ export function ResolvedUpdatePublicationDetails(response) {
 
 export function updatePublicationDetails(form) {
 	return function (dispatch) {
-		axios.get(API.updatePublicationDetails, {
-				params: {
-					...form,
-					login_key: Storage.get('login_key')
-				}
-			})
+    axios.post(API.updatePublicationDetails, qs.stringify({
+      ...form,
+      login_key: Storage.get('login_key')
+    }))
 		.then((response) => dispatch(ResolvedUpdatePublicationDetails(response)));
 	};
 }
