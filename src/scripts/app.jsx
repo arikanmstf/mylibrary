@@ -17,6 +17,7 @@ import AdminPublicationsEdit from './routes/admin/AdminPublicationsEdit';
 import AdminBooks from './routes/admin/AdminBooks';
 import AdminBooksEdit from './routes/admin/AdminBooksEdit';
 import AdminWriters from './routes/admin/AdminWriters';
+import AdminWritersEdit from './routes/admin/AdminWritersEdit';
 import AdminPublishers from './routes/admin/AdminPublishers';
 import AdminUsers from './routes/admin/AdminUsers';
 import AdminTags from './routes/admin/AdminTags';
@@ -53,6 +54,7 @@ export default class App extends Component {
                 <Route exact path="/admin/books/edit/:bookId" component={AdminBooksEdit} />
                 <Route exact path="/admin/writers" component={AdminWriters} />
                 <Route exact path="/admin/writers/:pageNo" component={AdminWriters} />
+                <Route exact path="/admin/writers/edit/:writerId" component={AdminWritersEdit} />
                 <Route exact path="/admin/publishers" component={AdminPublishers} />
                 <Route exact path="/admin/publishers/:pageNo" component={AdminPublishers} />
                 <Route exact path="/admin/users" component={AdminUsers} />

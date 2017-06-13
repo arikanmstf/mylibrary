@@ -19,6 +19,7 @@ export const API = {
   getAllWriters: home + writers + '/get_all',
   getWriterDetails: home + writers + '/get_one',
   getWriterBySearch: home + writers + '/get_search',
+  updateWriterDetails: home + writers + '/update',
 
   getAllBooks: home + books + '/get_all',
   getBookDetails: home + books + '/get_one',
