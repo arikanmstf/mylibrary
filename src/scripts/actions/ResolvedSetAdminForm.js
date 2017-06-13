@@ -9,6 +9,12 @@ export function ResolvedUpdatePublicationDetails(response) {
     data: response.data.response
   };
 }
+export function ResolvedUpdateBookDetails(response) {
+  return {
+    type: 'RESOLVED_UPDATE_BOOK_DETAILS',
+    data: response.data.response
+  };
+}
 
 export function updatePublicationDetails(form) {
 	return function (dispatch) {
@@ -17,5 +23,15 @@ export function updatePublicationDetails(form) {
       login_key: Storage.get('login_key')
     }))
 		.then((response) => dispatch(ResolvedUpdatePublicationDetails(response)));
+	};
+}
+
+export function updateBookDetails(form) {
+	return function (dispatch) {
+    axios.post(API.updateBookDetails, qs.stringify({
+      ...form,
+      login_key: Storage.get('login_key')
+    }))
+		.then((response) => dispatch(ResolvedUpdateBookDetails(response)));
 	};
 }

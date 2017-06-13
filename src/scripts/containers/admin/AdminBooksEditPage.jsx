@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { getBookDetails } from '../../actions/ResolvedGetBookDetails';
 import { getWriterBySearch, resetGetWriterBySearch } from '../../actions/ResolvedGetWriterBySearch';
-import { updatePublicationDetails } from '../../actions/ResolvedSetAdminForm';
+import { updateBookDetails } from '../../actions/ResolvedSetAdminForm';
 import TagsOfPublicationEdit from '../../components/TagsOfPublicationEdit';
 import { fromArrayToCommaEdit } from '../../common/Helpers';
 
@@ -84,7 +84,7 @@ class AdminBooksEditPage extends Component {
       publisher_id: this.state.publisher_id,
       description: this.state.description
     };
-    this.props.updatePublicationDetails(form);
+    this.props.updateBookDetails(form);
   }
 
   removeWriter(w) {
@@ -156,7 +156,7 @@ AdminBooksEditPage.propTypes = {
   getBookDetails: PropTypes.func.isRequired,
   getWriterBySearch: PropTypes.func.isRequired,
   resetGetWriterBySearch: PropTypes.func.isRequired,
-  updatePublicationDetails: PropTypes.func.isRequired,
+  updateBookDetails: PropTypes.func.isRequired,
 	book: PropTypes.object.isRequired,
 	writerSearch: PropTypes.arrayOf(Object).isRequired,
 };
@@ -173,7 +173,7 @@ const mapDispatchToProps = (dispatch) => {
     getBookDetails: (search) => dispatch(getBookDetails(search)),
     getWriterBySearch: (search) => dispatch(getWriterBySearch(search)),
     resetGetWriterBySearch: () => dispatch(resetGetWriterBySearch()),
-    updatePublicationDetails: (form) => dispatch(updatePublicationDetails(form))
+    updateBookDetails: (form) => dispatch(updateBookDetails(form))
   };
 };
 
