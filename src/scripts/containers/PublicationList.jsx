@@ -10,7 +10,7 @@ class PublicationList extends Component {
 
   constructor(props) {
 		super(props);
-		this.state = props.search;
+		this.state = props;
 	}
 
 	componentDidMount() {
@@ -18,11 +18,14 @@ class PublicationList extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		this.setState(nextProps.search);
+		this.setState(nextProps);
+    if (nextProps.title !== this.props.title) {
+      this.props.getAllPublications(nextProps);
+    }
 	}
 
   onLiClick() {
-    this.setState(this.props.search);
+    this.setState(this.props);
   }
 
 	renderList() {
@@ -58,7 +61,7 @@ class PublicationList extends Component {
 		return (
       <div>
         <Pagination
-          pageNo={parseInt(this.props.search.pageNo, 10)}
+          pageNo={parseInt(this.props.pageNo, 10)}
           total={this.props.total}
           onLiClick={this.onLiClick}
           linkTo="pages"
@@ -72,16 +75,18 @@ class PublicationList extends Component {
 }
 
 PublicationList.propTypes = {
-  search: PropTypes.object,
   getAllPublications: PropTypes.func.isRequired,
   publications: PropTypes.arrayOf(Object),
-  total: PropTypes.number
+  total: PropTypes.number,
+  pageNo: PropTypes.number,
+  title: PropTypes.string
 };
 
 PublicationList.defaultProps = {
-  search: {},
 	publications: [],
-	total: 0
+	total: 0,
+	pageNo: 1,
+	title: ''
 };
 
 function mapStateToProps(state) {

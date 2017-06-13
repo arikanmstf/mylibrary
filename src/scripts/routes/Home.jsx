@@ -11,28 +11,22 @@ class Home extends Component {
     super(props);
 
     this.state = {
-      search: {
-        title: '',
-        pageNo: props.match.params.pageNo || 1
-      }
+      pageNo: props.match.params.pageNo || 1,
+      title: ''
     };
     this.setSearchTitle = this.setSearchTitle.bind(this);
   }
 
   setSearchTitle(e) {
-    this.setState({
-      search: {
-        title: e
-      }
-    });
+    this.setState({ title: e });
   }
 
   render() {
     return (
       <div>
         <NavbarHeader />
-        <InputSearch onSearchChange={this.setSearchTitle} />
-        <PublicationList search={this.state.search} />
+        <InputSearch makeSearch={this.setSearchTitle} />
+        <PublicationList pageNo={this.state.pageNo} title={this.state.title} />
       </div>
     );
   }

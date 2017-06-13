@@ -5,7 +5,6 @@ import Storage from './common/Storage';
 
 import BookDetails from './routes/BookDetails';
 import Home from './routes/Home';
-import Pages from './routes/Pages';
 import NotFound from './routes/NotFound';
 import PublicationDetails from './routes/PublicationDetails';
 import WriterDetails from './routes/WriterDetails';
@@ -37,7 +36,7 @@ export default class App extends Component {
             <Router>
               <Switch>
                 <Route exact path="/" component={Home} />
-                <Route exact path="/pages/:pageNo" component={Pages} />
+                <Route exact path="/pages/:pageNo" component={Home} />
                 <Route exact path={`/publications/:publicationId`} component={PublicationDetails} />
                 <Route exact path={`/writers/:writerId`} component={WriterDetails} />
                 <Route exact path={`/lists/:listId`} component={ListDetails} />
