@@ -21,6 +21,7 @@ import AdminWriters from './routes/admin/AdminWriters';
 import AdminPublishers from './routes/admin/AdminPublishers';
 import AdminUsers from './routes/admin/AdminUsers';
 import AdminTags from './routes/admin/AdminTags';
+import AdminLists from './routes/admin/AdminLists';
 
 import LoginPage from './containers/LoginPage';
 
@@ -59,6 +60,8 @@ export default class App extends Component {
                 <Route exact path="/admin/users/:pageNo" component={AdminUsers} />
                 <Route exact path="/admin/tags" component={AdminTags} />
                 <Route exact path="/admin/tags/:pageNo" component={AdminTags} />
+                <Route exact path="/admin/lists" component={AdminLists} />
+                <Route exact path="/admin/lists/:pageNo" component={AdminLists} />
 
                 <Route path="*" component={NotFound} />
               </Switch>

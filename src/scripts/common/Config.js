@@ -24,6 +24,7 @@ export const API = {
   getBookDetails: home + books + '/get_one',
   getBookBySearch: home + books + '/get_search',
 
+  getAllLists: home + lists + '/get_all',
   getListDetails: home + lists + '/get_one',
   getListBySearch: home + lists + '/get_search',
 
