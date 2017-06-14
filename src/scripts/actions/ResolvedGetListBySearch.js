@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Storage from '../common/Storage';
 import { API } from '../common/Config';
+import StartedRequest from './StartedRequest';
 
 export function ResolvedGetListBySearch(response) {
   return {
@@ -11,6 +12,7 @@ export function ResolvedGetListBySearch(response) {
 
 export function getListBySearch(title) {
 	return function (dispatch) {
+    dispatch(StartedRequest());
 		axios.get(API.getListBySearch, {
 				params: {
 					title,

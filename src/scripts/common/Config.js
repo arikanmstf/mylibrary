@@ -15,6 +15,7 @@ export const API = {
   updatePublicationDetails: home + publications + '/update',
 
   getLogin: home + membership + '/get_login',
+  getLogout: home + membership + '/get_logout',
 
   getAllWriters: home + writers + '/get_all',
   getWriterDetails: home + writers + '/get_one',

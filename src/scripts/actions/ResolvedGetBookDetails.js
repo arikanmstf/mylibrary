@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Storage from '../common/Storage';
 import { API } from '../common/Config';
+import StartedRequest from './StartedRequest';
 
 export function ResolvedGetBookDetails(response) {
   return {
@@ -11,6 +12,7 @@ export function ResolvedGetBookDetails(response) {
 
 export function getBookDetails(bookId) {
 	return function (dispatch) {
+    dispatch(StartedRequest());
 		axios.get(API.getBookDetails, {
 				params: {
 					book_id: bookId,

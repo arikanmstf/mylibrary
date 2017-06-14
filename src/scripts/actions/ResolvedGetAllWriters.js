@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Storage from '../common/Storage';
 import { API } from '../common/Config';
+import StartedRequest from './StartedRequest';
 
 export function ResolvedGetAllWriters(response) {
   return {
@@ -11,6 +12,7 @@ export function ResolvedGetAllWriters(response) {
 
 export function getAllWriters(search) {
 	return function (dispatch) {
+    dispatch(StartedRequest());
 		axios.get(API.getAllWriters, {
 				params: {
 					title: search.title,

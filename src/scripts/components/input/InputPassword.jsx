@@ -34,7 +34,7 @@ class InputPassword extends Component {
 }
 InputPassword.propTypes = {
   placeholder: PropTypes.string,
-  onChange: PropTypes.object
+  onChange: PropTypes.func
 };
 
 InputPassword.defaultProps = {
