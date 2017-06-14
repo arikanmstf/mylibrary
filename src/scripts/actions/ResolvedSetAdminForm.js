@@ -22,6 +22,12 @@ export function ResolvedUpdateWriterDetails(response) {
     data: response.data.response
   };
 }
+export function ResolvedUpdatePublisherDetails(response) {
+  return {
+    type: 'RESOLVED_UPDATE_PUBLISHER_DETAILS',
+    data: response.data.response
+  };
+}
 
 export function updatePublicationDetails(form) {
 	return function (dispatch) {
@@ -33,7 +39,6 @@ export function updatePublicationDetails(form) {
 		.then((response) => dispatch(ResolvedUpdatePublicationDetails(response)));
 	};
 }
-
 export function updateBookDetails(form) {
 	return function (dispatch) {
     dispatch(StartedRequest());
@@ -52,5 +57,15 @@ export function updateWriterDetails(form) {
       login_key: Storage.get('login_key')
     }))
 		.then((response) => dispatch(ResolvedUpdateWriterDetails(response)));
+	};
+}
+export function updatePublisherDetails(form) {
+	return function (dispatch) {
+    dispatch(StartedRequest());
+    axios.post(API.updatePublisherDetails, qs.stringify({
+      ...form,
+      login_key: Storage.get('login_key')
+    }))
+		.then((response) => dispatch(ResolvedUpdatePublisherDetails(response)));
 	};
 }

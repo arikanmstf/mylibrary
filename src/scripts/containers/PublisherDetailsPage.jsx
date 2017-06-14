@@ -26,6 +26,20 @@ class PublisherDetailsPage extends Component {
 						<div className="item-title">
 							<span>{publisher.name}</span>
 						</div>
+						{
+							publisher.phone_no ?
+							(<div className="item-small-title">
+								<span className="glyphicon glyphicon-earphone" />
+								<span>{publisher.phone_no}</span>
+							</div>) : null
+						}
+						{
+							publisher.address ?
+							(<div className="item-small-title">
+								<span>Address: <br /></span>
+								<span>{publisher.address}</span>
+							</div>) : null
+						}
             <span className="item-light-title">Books on the Publisher</span>
             <div className="item-small-title">
 							{commaListItems(publisher.publications, publisher.publication_ids, 'publications')}

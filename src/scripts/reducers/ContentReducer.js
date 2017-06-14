@@ -1,4 +1,4 @@
-const initialState = false;
+const initialState = true;
 
 const ContentReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -24,6 +24,7 @@ const ContentReducer = (state = initialState, action) => {
     case 'RESOLVED_UPDATE_PUBLICATION_DETAILS':
     case 'RESOLVED_UPDATE_BOOK_DETAILS':
     case 'RESOLVED_UPDATE_WRITER_DETAILS':
+    case 'RESOLVED_UPDATE_PUBLISHER_DETAILS':
       return true;
     case 'RESOLVED_CONTENT_NOT_LOADED':
       return false;

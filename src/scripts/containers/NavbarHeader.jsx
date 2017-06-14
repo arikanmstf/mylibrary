@@ -20,7 +20,6 @@ class NavbarHeader extends Component {
               <ul className="nav navbar-nav">
                 <li><Link to="/admin">Admin</Link></li>
                 <li><Link to="/profile">Profile</Link></li>
-                <li><Link to="/profile">Profile</Link></li>
                 <li><a onClick={() => this.getLogout()}>Logout</a></li>
               </ul>
             </div>

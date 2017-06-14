@@ -1,5 +1,6 @@
 .pagination-list {
   clear: both;
+  padding: 0px;
   div.pagination-list-container {
     display: flex;
     flex-wrap: nowrap;
@@ -25,5 +26,4 @@
     }
   }
   margin: 15px auto;
-  padding: 10px 20px;
 }
