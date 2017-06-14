@@ -34,6 +34,18 @@ export function ResolvedUpdateUserDetails(response) {
     data: response.data.response
   };
 }
+export function ResolvedUpdateTagDetails(response) {
+  return {
+    type: 'RESOLVED_UPDATE_TAG_DETAILS',
+    data: response.data.response
+  };
+}
+export function ResolvedUpdateListDetails(response) {
+  return {
+    type: 'RESOLVED_UPDATE_LIST_DETAILS',
+    data: response.data.response
+  };
+}
 
 export function updatePublicationDetails(form) {
 	return function (dispatch) {
@@ -83,5 +95,25 @@ export function updateUserDetails(form) {
       login_key: Storage.get('login_key')
     }))
 		.then((response) => dispatch(ResolvedUpdateUserDetails(response)));
+	};
+}
+export function updateTagDetails(form) {
+	return function (dispatch) {
+    dispatch(StartedRequest());
+    axios.post(API.updateTagDetails, qs.stringify({
+      ...form,
+      login_key: Storage.get('login_key')
+    }))
+		.then((response) => dispatch(ResolvedUpdateTagDetails(response)));
+	};
+}
+export function updateListDetails(form) {
+	return function (dispatch) {
+    dispatch(StartedRequest());
+    axios.post(API.updateListDetails, qs.stringify({
+      ...form,
+      login_key: Storage.get('login_key')
+    }))
+		.then((response) => dispatch(ResolvedUpdateListDetails(response)));
 	};
 }

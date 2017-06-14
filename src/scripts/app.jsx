@@ -12,7 +12,6 @@ import WriterDetails from './routes/WriterDetails';
 import ListDetails from './routes/ListDetails';
 import TagDetails from './routes/TagDetails';
 import PublisherDetails from './routes/PublisherDetails';
-import Admin from './routes/admin/Admin';
 import AdminPublications from './routes/admin/AdminPublications';
 import AdminPublicationsEdit from './routes/admin/AdminPublicationsEdit';
 import AdminBooks from './routes/admin/AdminBooks';
@@ -24,7 +23,9 @@ import AdminPublishersEdit from './routes/admin/AdminPublishersEdit';
 import AdminUsers from './routes/admin/AdminUsers';
 import AdminUsersEdit from './routes/admin/AdminUsersEdit';
 import AdminTags from './routes/admin/AdminTags';
+import AdminTagsEdit from './routes/admin/AdminTagsEdit';
 import AdminLists from './routes/admin/AdminLists';
+import AdminListsEdit from './routes/admin/AdminListsEdit';
 
 import LoginPage from './containers/LoginPage';
 
@@ -62,7 +63,7 @@ class App extends Component {
                 <Route exact path={`/tags/:tagId`} component={TagDetails} />
                 <Route exact path={`/publishers/:publisherId`} component={PublisherDetails} />
 
-                <Route exact path="/admin" component={Admin} />
+                <Route exact path="/admin" component={AdminPublications} />
                 <Route exact path="/admin/publications" component={AdminPublications} />
                 <Route exact path="/admin/publications/:pageNo" component={AdminPublications} />
                 <Route exact path="/admin/publications/edit/:publicationId" component={AdminPublicationsEdit} />
@@ -80,8 +81,10 @@ class App extends Component {
                 <Route exact path="/admin/users/edit/:userId" component={AdminUsersEdit} />
                 <Route exact path="/admin/tags" component={AdminTags} />
                 <Route exact path="/admin/tags/:pageNo" component={AdminTags} />
+                <Route exact path="/admin/tags/edit/:tagId" component={AdminTagsEdit} />
                 <Route exact path="/admin/lists" component={AdminLists} />
                 <Route exact path="/admin/lists/:pageNo" component={AdminLists} />
+                <Route exact path="/admin/lists/edit/:listId" component={AdminListsEdit} />
 
                 <Route path="*" component={NotFound} />
               </Switch>

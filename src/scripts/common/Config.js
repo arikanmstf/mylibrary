@@ -30,10 +30,12 @@ export const API = {
   getAllLists: home + lists + '/get_all',
   getListDetails: home + lists + '/get_one',
   getListBySearch: home + lists + '/get_search',
+  updateListDetails: home + lists + '/update',
 
   getAllTags: home + tags + '/get_all',
   getTagDetails: home + tags + '/get_one',
   getTagBySearch: home + tags + '/get_search',
+  updateTagDetails: home + tags + '/update',
 
   getAllPublishers: home + publishers + '/get_all',
   getPublisherDetails: home + publishers + '/get_one',
