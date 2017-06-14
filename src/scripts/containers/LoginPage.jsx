@@ -58,7 +58,7 @@ class LoginPage extends Component {
 }
 
 LoginPage.propTypes = {
-  getLogin: PropTypes.object.isRequired
+  getLogin: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
