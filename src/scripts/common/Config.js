@@ -36,6 +36,7 @@ export const API = {
   getTagDetails: home + tags + '/get_one',
   getTagBySearch: home + tags + '/get_search',
   updateTagDetails: home + tags + '/update',
+  addTagDetails: home + tags + '/add',
 
   getAllPublishers: home + publishers + '/get_all',
   getPublisherDetails: home + publishers + '/get_one',

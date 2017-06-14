@@ -148,6 +148,12 @@ export function ResolvedAddUserDetails(response) {
     data: response.data.response
   };
 }
+export function ResolvedAddTagDetails(response) {
+  return {
+    type: 'RESOLVED_ADD_TAG_DETAILS',
+    data: response.data.response
+  };
+}
 
 export function addBookDetails(form) {
 	return function (dispatch) {
@@ -197,5 +203,15 @@ export function addUserDetails(form) {
       login_key: Storage.get('login_key')
     }))
 		.then((response) => dispatch(ResolvedAddUserDetails(response)));
+	};
+}
+export function addTagDetails(form) {
+	return function (dispatch) {
+    dispatch(StartedRequest());
+    axios.post(API.addTagDetails, qs.stringify({
+      ...form,
+      login_key: Storage.get('login_key')
+    }))
+		.then((response) => dispatch(ResolvedAddTagDetails(response)));
 	};
 }
