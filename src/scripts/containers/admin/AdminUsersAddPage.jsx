@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getUserDetails } from '../../actions/ResolvedGetUserDetails';
-import { updateUserDetails } from '../../actions/ResolvedSetAdminForm';
+import { addUserDetails } from '../../actions/ResolvedSetAdminForm';
 
 class AdminUsersEditPage extends Component {
 
@@ -14,6 +13,7 @@ class AdminUsersEditPage extends Component {
       email: '',
       display_name: '',
       login_name: '',
+      password: '',
       ...props
     };
 
@@ -21,23 +21,11 @@ class AdminUsersEditPage extends Component {
     this.onMailChange = this.onMailChange.bind(this);
     this.onTypeChange = this.onTypeChange.bind(this);
     this.onLoginChange = this.onLoginChange.bind(this);
+    this.onPassChange = this.onPassChange.bind(this);
 
     this.saveForm = this.saveForm.bind(this);
   }
 
-  componentDidMount() {
-    this.props.getUserDetails(this.state.userId);
-  }
-
-  componentWillReceiveProps(nextProps) {
-		this.setState({
-      user_id: nextProps.user.user_id,
-      display_name: nextProps.user.display_name,
-      login_name: nextProps.user.login_name,
-      email: nextProps.user.email,
-      user_type: nextProps.user.user_type
-    });
-	}
   onDispChange(event) {
     this.setState({
       display_name: event.target.value
@@ -58,6 +46,11 @@ class AdminUsersEditPage extends Component {
       login_name: event.target.value
     });
   }
+  onPassChange(event) {
+    this.setState({
+      password: event.target.value
+    });
+  }
 
   saveForm() {
     if (this.state.type > 9) {
@@ -65,19 +58,18 @@ class AdminUsersEditPage extends Component {
       return false;
     }
     const form = {
-      user_id: this.props.user.user_id,
       display_name: this.state.display_name,
       login_name: this.state.login_name,
       email: this.state.email,
-      user_type: this.state.user_type
+      user_type: this.state.user_type,
+      password: this.state.password,
     };
-    this.props.updateUserDetails(form);
+    this.props.addUserDetails(form);
     return true;
   }
 
 	render() {
-		const user = this.props.user;
-		return user && (
+		return true && (
 			<div className="item-details-page col-md-9 col-sm-9 col-">
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
@@ -91,7 +83,10 @@ class AdminUsersEditPage extends Component {
               <input value={this.state.email} onChange={this.onMailChange} placeholder="Email" />
             </div>
             <div className="item-title">
-              <input type="number" value={this.state.user_type} onChange={this.onTypeChange} placeholder="User type" />
+              <input type="number" value={this.state.user_type} onChange={this.onTypeChange} placeholder="User Type" />
+            </div>
+            <div className="item-title">
+              <input value={this.state.password} onChange={this.onPassChange} placeholder="Password" />
             </div>
 					</div>
 					<div className="clearfix" />
@@ -104,22 +99,13 @@ class AdminUsersEditPage extends Component {
 	}
 }
 AdminUsersEditPage.propTypes = {
-  getUserDetails: PropTypes.func.isRequired,
-  updateUserDetails: PropTypes.func.isRequired,
-	user: PropTypes.object.isRequired
+  addUserDetails: PropTypes.func.isRequired
 };
-
-function mapStateToProps(state) {
-	return {
-		user: state.user
-	};
-}
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getUserDetails: (search) => dispatch(getUserDetails(search)),
-    updateUserDetails: (form) => dispatch(updateUserDetails(form))
+    addUserDetails: (form) => dispatch(addUserDetails(form))
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdminUsersEditPage);
+export default connect(0, mapDispatchToProps)(AdminUsersEditPage);

@@ -31,6 +31,7 @@ import AdminPublishersAdd from './routes/admin/AdminPublishersAdd';
 
 import AdminUsers from './routes/admin/AdminUsers';
 import AdminUsersEdit from './routes/admin/AdminUsersEdit';
+import AdminUsersAdd from './routes/admin/AdminUsersAdd';
 
 import AdminTags from './routes/admin/AdminTags';
 import AdminTagsEdit from './routes/admin/AdminTagsEdit';
@@ -97,6 +98,7 @@ class App extends Component {
                 <Route exact path="/admin/publishers/edit/:publisherId" component={AdminPublishersEdit} />
 
                 <Route exact path="/admin/users" component={AdminUsers} />
+                <Route exact path="/admin/users/add" component={AdminUsersAdd} />
                 <Route exact path="/admin/users/:pageNo" component={AdminUsers} />
                 <Route exact path="/admin/users/edit/:userId" component={AdminUsersEdit} />
 

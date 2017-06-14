@@ -46,6 +46,7 @@ export const API = {
   getAllUsers: home + users + '/get_all',
   getUserDetails: home + users + '/get_one',
   updateUserDetails: home + users + '/update',
+  addUserDetails: home + users + '/add',
 
   getLogin: home + membership + '/get_login',
   getLogout: home + membership + '/get_logout'
