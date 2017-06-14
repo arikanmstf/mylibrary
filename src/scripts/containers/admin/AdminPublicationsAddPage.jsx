@@ -212,7 +212,6 @@ AdminPublicationsAddPage.propTypes = {
 
 function mapStateToProps(state) {
 	return {
-		publication: state.publication,
 		bookSearch: state.bookSearch,
 		publisherSearch: state.publisherSearch
 	};

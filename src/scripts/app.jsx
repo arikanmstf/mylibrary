@@ -23,6 +23,7 @@ import AdminBooksAdd from './routes/admin/AdminBooksAdd';
 
 import AdminWriters from './routes/admin/AdminWriters';
 import AdminWritersEdit from './routes/admin/AdminWritersEdit';
+import AdminWritersAdd from './routes/admin/AdminWritersAdd';
 
 import AdminPublishers from './routes/admin/AdminPublishers';
 import AdminPublishersEdit from './routes/admin/AdminPublishersEdit';
@@ -85,6 +86,7 @@ class App extends Component {
                 <Route exact path="/admin/books/edit/:bookId" component={AdminBooksEdit} />
 
                 <Route exact path="/admin/writers" component={AdminWriters} />
+                <Route exact path="/admin/writers/add" component={AdminWritersAdd} />
                 <Route exact path="/admin/writers/:pageNo" component={AdminWriters} />
                 <Route exact path="/admin/writers/edit/:writerId" component={AdminWritersEdit} />
 

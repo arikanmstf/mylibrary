@@ -149,7 +149,6 @@ AdminBooksAddPage.propTypes = {
 
 function mapStateToProps(state) {
 	return {
-		book: state.book,
 		writerSearch: state.writerSearch,
 	};
 }
