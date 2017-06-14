@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Storage from './common/Storage';
-
 import BookDetails from './routes/BookDetails';
 import Home from './routes/Home';
 import NotFound from './routes/NotFound';
@@ -27,13 +28,27 @@ import LoginPage from './containers/LoginPage';
 
 const isLoggedIn = Storage.get('login_key');
 
-export default class App extends Component {
+class App extends Component {
 
+  constructor(props) {
+		super(props);
+		this.state = props;
+	}
+  componentWillReceiveProps(nextProps) {
+		this.setState(nextProps);
+	}
   render() {
     return (
       <div className="main-container">
         { isLoggedIn ?
           <div>
+            { !this.state.contentLoaded ?
+            <div>
+              <div className="loadingBaseLayer" />
+              <div className="loadingSpinnerContainer">
+                <center><img src="/assets/img/loading.gif" width="35" height="35" /></center>
+              </div>
+            </div> : null }
             <Router>
               <Switch>
                 <Route exact path="/" component={Home} />
@@ -75,3 +90,17 @@ export default class App extends Component {
     );
   }
 }
+App.propTypes = {
+  contentLoaded: PropTypes.bool
+};
+App.defaultProps = {
+  contentLoaded: true
+};
+
+function mapStateToProps(state) {
+	return {
+		contentLoaded: state.contentLoaded
+	};
+}
+
+export default connect(mapStateToProps)(App);
