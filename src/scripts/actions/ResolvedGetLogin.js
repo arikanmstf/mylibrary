@@ -3,6 +3,7 @@ import qs from 'qs';
 
 import Storage from '../common/Storage';
 import { API } from '../common/Config';
+import StartedRequest from './StartedRequest';
 
 export function ResolvedGetLogin(response) {
   return {
@@ -12,7 +13,8 @@ export function ResolvedGetLogin(response) {
 }
 
 export function getLogin(data) {
-	return function () {
+	return function (dispatch) {
+    dispatch(StartedRequest());
 		axios.post(API.getLogin, qs.stringify({
 			username: data.username,
 			password: data.password

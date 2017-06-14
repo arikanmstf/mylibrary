@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Storage from '../common/Storage';
 import { API } from '../common/Config';
+import StartedRequest from './StartedRequest';
 
 export function ResolvedGetPublisherDetails(response) {
   return {
@@ -11,6 +12,7 @@ export function ResolvedGetPublisherDetails(response) {
 
 export function getPublisherDetails(publisherId) {
 	return function (dispatch) {
+    dispatch(StartedRequest());
 		axios.get(API.getPublisherDetails, {
 				params: {
 					publisher_id: publisherId,

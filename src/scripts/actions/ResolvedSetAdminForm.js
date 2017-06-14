@@ -2,6 +2,7 @@ import axios from 'axios';
 import qs from 'qs';
 import Storage from '../common/Storage';
 import { API } from '../common/Config';
+import StartedRequest from './StartedRequest';
 
 export function ResolvedUpdatePublicationDetails(response) {
   return {
@@ -17,13 +18,14 @@ export function ResolvedUpdateBookDetails(response) {
 }
 export function ResolvedUpdateWriterDetails(response) {
   return {
-    type: 'RESOLVED_UPDATE_BOOK_DETAILS',
+    type: 'RESOLVED_UPDATE_WRITER_DETAILS',
     data: response.data.response
   };
 }
 
 export function updatePublicationDetails(form) {
 	return function (dispatch) {
+    dispatch(StartedRequest());
     axios.post(API.updatePublicationDetails, qs.stringify({
       ...form,
       login_key: Storage.get('login_key')
@@ -34,6 +36,7 @@ export function updatePublicationDetails(form) {
 
 export function updateBookDetails(form) {
 	return function (dispatch) {
+    dispatch(StartedRequest());
     axios.post(API.updateBookDetails, qs.stringify({
       ...form,
       login_key: Storage.get('login_key')
@@ -43,6 +46,7 @@ export function updateBookDetails(form) {
 }
 export function updateWriterDetails(form) {
 	return function (dispatch) {
+    dispatch(StartedRequest());
     axios.post(API.updateWriterDetails, qs.stringify({
       ...form,
       login_key: Storage.get('login_key')

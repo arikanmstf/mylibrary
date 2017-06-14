@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Storage from '../common/Storage';
 import { API } from '../common/Config';
+import StartedRequest from './StartedRequest';
 
 export function ResolvedGetWriterDetails(response) {
   return {
@@ -11,6 +12,7 @@ export function ResolvedGetWriterDetails(response) {
 
 export function getWriterDetails(writerId) {
 	return function (dispatch) {
+    dispatch(StartedRequest());
 		axios.get(API.getWriterDetails, {
 				params: {
 					writer_id: writerId,

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Storage from '../common/Storage';
 import { API } from '../common/Config';
+import StartedRequest from './StartedRequest';
 
 export function ResolvedGetTagDetails(response) {
   return {
@@ -11,6 +12,7 @@ export function ResolvedGetTagDetails(response) {
 
 export function getTagDetails(tagId) {
 	return function (dispatch) {
+    dispatch(StartedRequest());
 		axios.get(API.getTagDetails, {
 				params: {
 					tag_id: tagId,
