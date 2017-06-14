@@ -60,6 +60,7 @@ class AdminWritersPage extends Component {
             onLiClick={this.onLiClick}
             linkTo="admin/writers"
           />
+          <Link to={`/admin/writers/add`} className="btn btn-success">Add Writer</Link>
           <InputSearch makeSearch={this.setSearchTitle} />
           <table className="table table-responsive table-bordered table-hover admin-table">
             <thead>

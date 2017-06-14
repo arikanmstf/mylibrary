@@ -60,6 +60,7 @@ class AdminTagsPage extends Component {
             onLiClick={this.onLiClick}
             linkTo="admin/tags"
           />
+          <Link to={`/admin/tags/add`} className="btn btn-success">Add Tag</Link>
           <InputSearch makeSearch={this.setSearchTitle} />
           <table className="table table-responsive table-bordered table-hover admin-table">
             <thead>

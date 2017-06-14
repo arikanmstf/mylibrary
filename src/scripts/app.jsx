@@ -14,16 +14,23 @@ import TagDetails from './routes/TagDetails';
 import PublisherDetails from './routes/PublisherDetails';
 import AdminPublications from './routes/admin/AdminPublications';
 import AdminPublicationsEdit from './routes/admin/AdminPublicationsEdit';
+
 import AdminBooks from './routes/admin/AdminBooks';
 import AdminBooksEdit from './routes/admin/AdminBooksEdit';
+import AdminBooksAdd from './routes/admin/AdminBooksAdd';
+
 import AdminWriters from './routes/admin/AdminWriters';
 import AdminWritersEdit from './routes/admin/AdminWritersEdit';
+
 import AdminPublishers from './routes/admin/AdminPublishers';
 import AdminPublishersEdit from './routes/admin/AdminPublishersEdit';
+
 import AdminUsers from './routes/admin/AdminUsers';
 import AdminUsersEdit from './routes/admin/AdminUsersEdit';
+
 import AdminTags from './routes/admin/AdminTags';
 import AdminTagsEdit from './routes/admin/AdminTagsEdit';
+
 import AdminLists from './routes/admin/AdminLists';
 import AdminListsEdit from './routes/admin/AdminListsEdit';
 
@@ -64,24 +71,32 @@ class App extends Component {
                 <Route exact path={`/publishers/:publisherId`} component={PublisherDetails} />
 
                 <Route exact path="/admin" component={AdminPublications} />
+
                 <Route exact path="/admin/publications" component={AdminPublications} />
                 <Route exact path="/admin/publications/:pageNo" component={AdminPublications} />
                 <Route exact path="/admin/publications/edit/:publicationId" component={AdminPublicationsEdit} />
+
                 <Route exact path="/admin/books" component={AdminBooks} />
+                <Route exact path="/admin/books/add" component={AdminBooksAdd} />
                 <Route exact path="/admin/books/:pageNo" component={AdminBooks} />
                 <Route exact path="/admin/books/edit/:bookId" component={AdminBooksEdit} />
+
                 <Route exact path="/admin/writers" component={AdminWriters} />
                 <Route exact path="/admin/writers/:pageNo" component={AdminWriters} />
                 <Route exact path="/admin/writers/edit/:writerId" component={AdminWritersEdit} />
+
                 <Route exact path="/admin/publishers" component={AdminPublishers} />
                 <Route exact path="/admin/publishers/:pageNo" component={AdminPublishers} />
                 <Route exact path="/admin/publishers/edit/:publisherId" component={AdminPublishersEdit} />
+
                 <Route exact path="/admin/users" component={AdminUsers} />
                 <Route exact path="/admin/users/:pageNo" component={AdminUsers} />
                 <Route exact path="/admin/users/edit/:userId" component={AdminUsersEdit} />
+
                 <Route exact path="/admin/tags" component={AdminTags} />
                 <Route exact path="/admin/tags/:pageNo" component={AdminTags} />
                 <Route exact path="/admin/tags/edit/:tagId" component={AdminTagsEdit} />
+
                 <Route exact path="/admin/lists" component={AdminLists} />
                 <Route exact path="/admin/lists/:pageNo" component={AdminLists} />
                 <Route exact path="/admin/lists/edit/:listId" component={AdminListsEdit} />

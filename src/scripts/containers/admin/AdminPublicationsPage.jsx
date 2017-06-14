@@ -64,6 +64,7 @@ class AdminPublicationsPage extends Component {
             onLiClick={this.onLiClick}
             linkTo="admin/publications"
           />
+          <Link to={`/admin/publications/add`} className="btn btn-success">Add Publication</Link>
           <InputSearch makeSearch={this.setSearchTitle} />
           <table className="table table-responsive table-bordered table-hover admin-table">
             <thead>

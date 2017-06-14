@@ -117,3 +117,21 @@ export function updateListDetails(form) {
 		.then((response) => dispatch(ResolvedUpdateListDetails(response)));
 	};
 }
+
+export function ResolvedAddBookDetails(response) {
+  return {
+    type: 'RESOLVED_ADD_BOOK_DETAILS',
+    data: response.data.response
+  };
+}
+
+export function addBookDetails(form) {
+	return function (dispatch) {
+    dispatch(StartedRequest());
+    axios.post(API.addBookDetails, qs.stringify({
+      ...form,
+      login_key: Storage.get('login_key')
+    }))
+		.then((response) => dispatch(ResolvedAddBookDetails(response)));
+	};
+}
