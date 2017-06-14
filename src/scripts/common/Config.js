@@ -41,6 +41,7 @@ export const API = {
   getPublisherDetails: home + publishers + '/get_one',
   getPublisherBySearch: home + publishers + '/get_search',
   updatePublisherDetails: home + publishers + '/update',
+  addPublisherDetails: home + publishers + '/add',
 
   getAllUsers: home + users + '/get_all',
   getUserDetails: home + users + '/get_one',

@@ -136,6 +136,12 @@ export function ResolvedAddWriterDetails(response) {
     data: response.data.response
   };
 }
+export function ResolvedAddPublisherDetails(response) {
+  return {
+    type: 'RESOLVED_ADD_PUBLISHER_DETAILS',
+    data: response.data.response
+  };
+}
 
 export function addBookDetails(form) {
 	return function (dispatch) {
@@ -165,5 +171,15 @@ export function addWriterDetails(form) {
       login_key: Storage.get('login_key')
     }))
 		.then((response) => dispatch(ResolvedAddWriterDetails(response)));
+	};
+}
+export function addPublisherDetails(form) {
+	return function (dispatch) {
+    dispatch(StartedRequest());
+    axios.post(API.addPublisherDetails, qs.stringify({
+      ...form,
+      login_key: Storage.get('login_key')
+    }))
+		.then((response) => dispatch(ResolvedAddPublisherDetails(response)));
 	};
 }
