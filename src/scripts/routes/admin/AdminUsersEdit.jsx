@@ -2,18 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import NavbarHeader from '../../containers/NavbarHeader';
-import AdminPublishersEditPage from '../../containers/admin/AdminPublishersEditPage';
+import AdminUsersEditPage from '../../containers/admin/AdminUsersEditPage';
 import SideNavigation from '../../components/SideNavigation';
 
-const AdminPublishersEdit = ({ match }) => (
+const AdminUsersEdit = ({ match }) => (
   <div>
     <NavbarHeader />
     <SideNavigation />
-    <AdminPublishersEditPage publisherId={match.params.publisherId} />
+    <AdminUsersEditPage userId={match.params.userId} />
   </div>
 );
 
-AdminPublishersEdit.propTypes = {
+AdminUsersEdit.propTypes = {
   match: PropTypes.object.isRequired
 };
-export default AdminPublishersEdit;
+export default AdminUsersEdit;

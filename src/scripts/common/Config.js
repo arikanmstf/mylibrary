@@ -40,7 +40,9 @@ export const API = {
   getPublisherBySearch: home + publishers + '/get_search',
   updatePublisherDetails: home + publishers + '/update',
 
-  getAllUsers: home + users + '/get_all'
+  getAllUsers: home + users + '/get_all',
+  getUserDetails: home + users + '/get_one',
+  updateUserDetails: home + users + '/update'
 };
 
 export const PAGINATION = {

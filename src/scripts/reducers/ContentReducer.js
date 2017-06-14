@@ -17,6 +17,7 @@ const ContentReducer = (state = initialState, action) => {
     case 'RESOLVED_GET_PUBLICATION_DETAILS':
     case 'RESOLVED_GET_PUBLISHER_BY_SEARCH':
     case 'RESOLVED_GET_PUBLISHER_DETAILS':
+    case 'RESOLVED_GET_USER_DETAILS':
     case 'RESOLVED_GET_TAG_BY_SEARCH':
     case 'RESOLVED_GET_TAG_DETAILS':
     case 'RESOLVED_GET_WRITER_BY_SEARCH':
@@ -25,6 +26,7 @@ const ContentReducer = (state = initialState, action) => {
     case 'RESOLVED_UPDATE_BOOK_DETAILS':
     case 'RESOLVED_UPDATE_WRITER_DETAILS':
     case 'RESOLVED_UPDATE_PUBLISHER_DETAILS':
+    case 'RESOLVED_UPDATE_USER_DETAILS':
       return true;
     case 'RESOLVED_CONTENT_NOT_LOADED':
       return false;
