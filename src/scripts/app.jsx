@@ -12,8 +12,10 @@ import WriterDetails from './routes/WriterDetails';
 import ListDetails from './routes/ListDetails';
 import TagDetails from './routes/TagDetails';
 import PublisherDetails from './routes/PublisherDetails';
+
 import AdminPublications from './routes/admin/AdminPublications';
 import AdminPublicationsEdit from './routes/admin/AdminPublicationsEdit';
+import AdminPublicationsAdd from './routes/admin/AdminPublicationsAdd';
 
 import AdminBooks from './routes/admin/AdminBooks';
 import AdminBooksEdit from './routes/admin/AdminBooksEdit';
@@ -73,6 +75,7 @@ class App extends Component {
                 <Route exact path="/admin" component={AdminPublications} />
 
                 <Route exact path="/admin/publications" component={AdminPublications} />
+                <Route exact path="/admin/publications/add" component={AdminPublicationsAdd} />
                 <Route exact path="/admin/publications/:pageNo" component={AdminPublications} />
                 <Route exact path="/admin/publications/edit/:publicationId" component={AdminPublicationsEdit} />
 

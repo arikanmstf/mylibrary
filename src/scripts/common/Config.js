@@ -13,9 +13,7 @@ export const API = {
   getAllPublications: home + publications + '/get_all',
   getPublicationDetails: home + publications + '/get_one',
   updatePublicationDetails: home + publications + '/update',
-
-  getLogin: home + membership + '/get_login',
-  getLogout: home + membership + '/get_logout',
+  addPublicationDetails: home + publications + '/add',
 
   getAllWriters: home + writers + '/get_all',
   getWriterDetails: home + writers + '/get_one',
@@ -45,7 +43,10 @@ export const API = {
 
   getAllUsers: home + users + '/get_all',
   getUserDetails: home + users + '/get_one',
-  updateUserDetails: home + users + '/update'
+  updateUserDetails: home + users + '/update',
+
+  getLogin: home + membership + '/get_login',
+  getLogout: home + membership + '/get_logout'
 };
 
 export const PAGINATION = {
