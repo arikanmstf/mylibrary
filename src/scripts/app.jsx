@@ -39,6 +39,7 @@ import AdminTagsAdd from './routes/admin/AdminTagsAdd';
 
 import AdminLists from './routes/admin/AdminLists';
 import AdminListsEdit from './routes/admin/AdminListsEdit';
+import AdminListsAdd from './routes/admin/AdminListsAdd';
 
 import LoginPage from './containers/LoginPage';
 
@@ -109,6 +110,7 @@ class App extends Component {
                 <Route exact path="/admin/tags/edit/:tagId" component={AdminTagsEdit} />
 
                 <Route exact path="/admin/lists" component={AdminLists} />
+                <Route exact path="/admin/lists/add" component={AdminListsAdd} />
                 <Route exact path="/admin/lists/:pageNo" component={AdminLists} />
                 <Route exact path="/admin/lists/edit/:listId" component={AdminListsEdit} />
 

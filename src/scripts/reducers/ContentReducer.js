@@ -35,6 +35,7 @@ const ContentReducer = (state = initialState, action) => {
     case 'RESOLVED_ADD_PUBLISHER_DETAILS':
     case 'RESOLVED_ADD_USER_DETAILS':
     case 'RESOLVED_ADD_TAG_DETAILS':
+    case 'RESOLVED_ADD_LIST_DETAILS':
       return true;
     case 'RESOLVED_CONTENT_NOT_LOADED':
       return false;
