@@ -96,10 +96,13 @@ class TagsOfPublicationEdit extends Component {
 	}
 }
 TagsOfPublicationEdit.propTypes = {
-	tags: PropTypes.arrayOf(Object).isRequired,
+	tags: PropTypes.arrayOf(Object),
   tagSearch: PropTypes.arrayOf(Object).isRequired,
   getTagBySearch: PropTypes.func.isRequired,
   resetGetTagBySearch: PropTypes.func.isRequired
+};
+TagsOfPublicationEdit.defaultProps = {
+  tags: []
 };
 
 function mapStateToProps(state) {

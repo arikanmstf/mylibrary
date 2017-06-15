@@ -96,10 +96,13 @@ class ListsOfPublicationEdit extends Component {
 	}
 }
 ListsOfPublicationEdit.propTypes = {
-	lists: PropTypes.arrayOf(Object).isRequired,
+	lists: PropTypes.arrayOf(Object),
   listSearch: PropTypes.arrayOf(Object).isRequired,
   getListBySearch: PropTypes.func.isRequired,
   resetGetListBySearch: PropTypes.func.isRequired
+};
+ListsOfPublicationEdit.defaultProps = {
+  lists: []
 };
 
 function mapStateToProps(state) {

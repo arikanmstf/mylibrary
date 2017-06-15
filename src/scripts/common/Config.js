@@ -13,6 +13,7 @@ export const API = {
   getAllPublications: home + publications + '/get_all',
   getPublicationDetails: home + publications + '/get_one',
   updatePublicationDetails: home + publications + '/update',
+  updatePublicationDetailsList: home + publications + '/update_list',
   addPublicationDetails: home + publications + '/add',
 
   getAllWriters: home + writers + '/get_all',

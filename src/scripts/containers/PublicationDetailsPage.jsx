@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { getPublicationDetails } from '../actions/ResolvedGetPublicationDetails';
-import ListsOfPublication from '../components/ListsOfPublication';
-import TagsOfPublication from '../components/TagsOfPublication';
+import { updatePublicationDetailsList } from '../actions/ResolvedSetAdminForm';
+import ListsOfPublicationEdit from '../components/ListsOfPublicationEdit';
 import { commaListItems } from '../common/Helpers';
 
 class PublicationDetailsPage extends Component {
@@ -14,10 +14,26 @@ class PublicationDetailsPage extends Component {
     super(props);
 
     this.state = props;
+
+		this.saveForm = this.saveForm.bind(this);
   }
 
 	componentDidMount() {
 		this.props.getPublicationDetails(this.state.publicationId);
+	}
+
+	componentWillReceiveProps(nextProps) {
+		this.setState({
+      lists: nextProps.publication.lists
+    });
+	}
+
+	saveForm() {
+		const form = {
+			publication_id: this.state.publicationId,
+			lists: this.state.lists
+		};
+		this.props.updatePublicationDetailsList(form);
 	}
 
 	render() {
@@ -71,12 +87,11 @@ class PublicationDetailsPage extends Component {
 						<div className="item-lists-container">
 							<div className="item-lists">
 								<h5>Lists</h5>
-								<ListsOfPublication lists={publication.lists} />
+								<ListsOfPublicationEdit lists={publication.lists} />
 							</div>
-							<div className="item-lists">
-								<h5>Tags</h5>
-								<TagsOfPublication tags={publication.tags} />
-							</div>
+						</div>
+						<div className="col-md-12" >
+							<button className="btn btn-primary" onClick={this.saveForm}>Save</button>
 						</div>
 					</div>
 					<div className="clearfix" />
@@ -88,17 +103,22 @@ class PublicationDetailsPage extends Component {
 }
 PublicationDetailsPage.propTypes = {
   getPublicationDetails: PropTypes.func.isRequired,
+  updatePublicationDetailsList: PropTypes.func.isRequired,
 	publication: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
 	return {
-		publication: state.publication
+		publication: state.publication,
+		listSearch: state.listSearch
 	};
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return { getPublicationDetails: (search) => dispatch(getPublicationDetails(search)) };
+  return {
+		getPublicationDetails: (search) => dispatch(getPublicationDetails(search)),
+		updatePublicationDetailsList: (search) => dispatch(updatePublicationDetailsList(search))
+	};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PublicationDetailsPage);
