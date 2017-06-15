@@ -52,7 +52,9 @@ export const API = {
   addUserDetails: home + users + '/add',
 
   getLogin: home + membership + '/get_login',
-  getLogout: home + membership + '/get_logout'
+  getLogout: home + membership + '/get_logout',
+  getProfileDetails: home + membership + '/profile',
+  updateProfileDetails: home + membership + '/update'
 };
 
 export const PAGINATION = {

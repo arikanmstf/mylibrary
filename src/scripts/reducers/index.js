@@ -19,6 +19,7 @@ import UserReducer from './UserReducer';
 import TagReducer from './TagReducer';
 import ListReducer from './ListReducer';
 import ContentReducer from './ContentReducer';
+import ProfileReducer from './ProfileReducer';
 
 const rootReducer = combineReducers({
   publications: PublicationReducer,
@@ -40,7 +41,8 @@ const rootReducer = combineReducers({
   users: UserReducer,
   tags: TagReducer,
   lists: ListReducer,
-  contentLoaded: ContentReducer
+  contentLoaded: ContentReducer,
+  profile: ProfileReducer
 });
 
 export default rootReducer;
