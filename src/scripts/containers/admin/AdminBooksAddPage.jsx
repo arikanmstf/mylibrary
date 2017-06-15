@@ -64,7 +64,6 @@ class AdminBooksAddPage extends Component {
 
   saveForm() {
     const form = {
-      book_id: this.props.book.book_id,
       title: this.state.title,
       writers: this.state.writers,
       tags: this.state.tags,
@@ -95,8 +94,7 @@ class AdminBooksAddPage extends Component {
   }
 
 	render() {
-		const book = this.props.book;
-		return book && (
+		return true && (
 			<div className="item-details-page col-md-9 col-sm-9 col-">
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
@@ -143,7 +141,6 @@ AdminBooksAddPage.propTypes = {
   getWriterBySearch: PropTypes.func.isRequired,
   resetGetWriterBySearch: PropTypes.func.isRequired,
   addBookDetails: PropTypes.func.isRequired,
-	book: PropTypes.object.isRequired,
 	writerSearch: PropTypes.arrayOf(Object).isRequired,
 };
 
