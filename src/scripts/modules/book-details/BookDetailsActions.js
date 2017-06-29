@@ -11,7 +11,7 @@ export function ResolvedGetBookDetails(response) {
 }
 
 export function getBookDetails(bookId) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.get(API.getBookDetails, {
 				params: {

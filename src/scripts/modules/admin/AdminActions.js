@@ -54,7 +54,7 @@ export function ResolvedUpdatePublicationDetailsList(response) {
 }
 
 export function updatePublicationDetails(form) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.updatePublicationDetails, qs.stringify({
       ...form,
@@ -64,7 +64,7 @@ export function updatePublicationDetails(form) {
 	};
 }
 export function updateBookDetails(form) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.updateBookDetails, qs.stringify({
       ...form,
@@ -74,7 +74,7 @@ export function updateBookDetails(form) {
 	};
 }
 export function updateWriterDetails(form) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.updateWriterDetails, qs.stringify({
       ...form,
@@ -84,7 +84,7 @@ export function updateWriterDetails(form) {
 	};
 }
 export function updatePublisherDetails(form) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.updatePublisherDetails, qs.stringify({
       ...form,
@@ -94,7 +94,7 @@ export function updatePublisherDetails(form) {
 	};
 }
 export function updateUserDetails(form) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.updateUserDetails, qs.stringify({
       ...form,
@@ -104,7 +104,7 @@ export function updateUserDetails(form) {
 	};
 }
 export function updateTagDetails(form) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.updateTagDetails, qs.stringify({
       ...form,
@@ -114,7 +114,7 @@ export function updateTagDetails(form) {
 	};
 }
 export function updateListDetails(form) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.updateListDetails, qs.stringify({
       ...form,
@@ -124,7 +124,7 @@ export function updateListDetails(form) {
 	};
 }
 export function updatePublicationDetailsList(form) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.updatePublicationDetailsList, qs.stringify({
       ...form,
@@ -178,7 +178,7 @@ export function ResolvedAddListDetails(response) {
 }
 
 export function addBookDetails(form) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.addBookDetails, qs.stringify({
       ...form,
@@ -188,7 +188,7 @@ export function addBookDetails(form) {
 	};
 }
 export function addPublicationDetails(form) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.addPublicationDetails, qs.stringify({
       ...form,
@@ -198,7 +198,7 @@ export function addPublicationDetails(form) {
 	};
 }
 export function addWriterDetails(form) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.addWriterDetails, qs.stringify({
       ...form,
@@ -208,7 +208,7 @@ export function addWriterDetails(form) {
 	};
 }
 export function addPublisherDetails(form) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.addPublisherDetails, qs.stringify({
       ...form,
@@ -218,7 +218,7 @@ export function addPublisherDetails(form) {
 	};
 }
 export function addUserDetails(form) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.addUserDetails, qs.stringify({
       ...form,
@@ -228,7 +228,7 @@ export function addUserDetails(form) {
 	};
 }
 export function addTagDetails(form) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.addTagDetails, qs.stringify({
       ...form,
@@ -238,7 +238,7 @@ export function addTagDetails(form) {
 	};
 }
 export function addListDetails(form) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.addListDetails, qs.stringify({
       ...form,

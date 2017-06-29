@@ -12,7 +12,7 @@ export function ResolvedGetLogin(response) {
 }
 
 export function getLogin(data) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.post(API.getLogin, qs.stringify({
 			username: data.username,
@@ -25,7 +25,7 @@ export function getLogin(data) {
 	};
 }
 export function getLogout() {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.post(API.getLogout, qs.stringify({
       login_key: Storage.get('login_key')

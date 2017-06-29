@@ -11,7 +11,7 @@ export function ResolvedGetTagDetails(response) {
 }
 
 export function getTagDetails(tagId) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.get(API.getTagDetails, {
 				params: {
@@ -31,7 +31,7 @@ export function ResolvedGetTagBySearch(response) {
 }
 
 export function getTagBySearch(title) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.get(API.getTagBySearch, {
 				params: {
@@ -51,7 +51,7 @@ export function ResolvedResetGetTagBySearch() {
 }
 
 export function resetGetTagBySearch() {
-	return function (dispatch) {
+	return (dispatch) => {
 		dispatch(ResolvedResetGetTagBySearch());
 	};
 }

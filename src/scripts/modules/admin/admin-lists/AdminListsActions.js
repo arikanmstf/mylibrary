@@ -11,7 +11,7 @@ export function ResolvedGetAllLists(response) {
 }
 
 export function getAllLists(search) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.get(API.getAllLists, {
 				params: {

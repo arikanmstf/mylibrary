@@ -11,7 +11,7 @@ export function ResolvedGetAllPublishers(response) {
 }
 
 export function getAllPublishers(search) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.get(API.getAllPublishers, {
 				params: {

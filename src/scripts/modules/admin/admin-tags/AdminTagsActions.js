@@ -11,7 +11,7 @@ export function ResolvedGetAllTags(response) {
 }
 
 export function getAllTags(search) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.get(API.getAllTags, {
 				params: {

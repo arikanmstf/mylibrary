@@ -11,7 +11,7 @@ export function ResolvedGetPublisherDetails(response) {
 }
 
 export function getPublisherDetails(publisherId) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.get(API.getPublisherDetails, {
 				params: {

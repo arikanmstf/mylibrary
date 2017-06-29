@@ -11,7 +11,7 @@ export function ResolvedGetAllWriters(response) {
 }
 
 export function getAllWriters(search) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.get(API.getAllWriters, {
 				params: {
@@ -32,7 +32,7 @@ export function ResolvedGetWriterDetails(response) {
 }
 
 export function getWriterDetails(writerId) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.get(API.getWriterDetails, {
 				params: {

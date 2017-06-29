@@ -11,7 +11,7 @@ export function ResolvedGetProfileDetails(response) {
 }
 
 export function getProfileDetails() {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.get(API.getProfileDetails, {
 				params: {
@@ -30,7 +30,7 @@ export function ResolvedUpdateProfileDetails(response) {
 }
 
 export function updateProfileDetails(form) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.updateProfileDetails, qs.stringify({
       ...form,

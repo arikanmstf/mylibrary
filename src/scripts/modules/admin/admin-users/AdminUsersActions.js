@@ -11,7 +11,7 @@ export function ResolvedGetAllUsers(response) {
 }
 
 export function getAllUsers(search) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.get(API.getAllUsers, {
 				params: {
@@ -32,7 +32,7 @@ export function ResolvedGetUserDetails(response) {
 }
 
 export function getUserDetails(userId) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.get(API.getUserDetails, {
 				params: {

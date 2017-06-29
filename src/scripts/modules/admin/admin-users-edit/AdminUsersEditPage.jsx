@@ -61,7 +61,6 @@ class AdminUsersEditPage extends Component {
 
   saveForm() {
     if (this.state.type > 9) {
-      alert('You can not make user type higher than 9');
       return false;
     }
     const form = {

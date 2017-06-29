@@ -11,7 +11,7 @@ export function ResolvedGetAllPublications(response) {
 }
 
 export function getAllPublications(search) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.get(API.getAllPublications, {
 				params: {

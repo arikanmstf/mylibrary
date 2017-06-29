@@ -11,7 +11,7 @@ export function ResolvedGetListDetails(response) {
 }
 
 export function getListDetails(listId) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.get(API.getListDetails, {
 				params: {
@@ -31,7 +31,7 @@ export function ResolvedGetListBySearch(response) {
 }
 
 export function getListBySearch(title) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.get(API.getListBySearch, {
 				params: {
@@ -51,7 +51,7 @@ export function ResolvedResetGetListBySearch() {
 }
 
 export function resetGetListBySearch() {
-	return function (dispatch) {
+	return (dispatch) => {
 		dispatch(ResolvedResetGetListBySearch());
 	};
 }

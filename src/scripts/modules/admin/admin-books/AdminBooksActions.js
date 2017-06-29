@@ -11,7 +11,7 @@ export function ResolvedGetAllBooks(response) {
 }
 
 export function getAllBooks(search) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.get(API.getAllBooks, {
 				params: {
@@ -32,7 +32,7 @@ export function ResolvedGetWriterBySearch(response) {
 }
 
 export function getWriterBySearch(title) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.get(API.getWriterBySearch, {
 				params: {
@@ -52,7 +52,7 @@ export function ResolvedResetGetWriterBySearch() {
 }
 
 export function resetGetWriterBySearch() {
-	return function (dispatch) {
+	return (dispatch) => {
 		dispatch(ResolvedResetGetWriterBySearch());
 	};
 }
@@ -65,7 +65,7 @@ export function ResolvedGetBookBySearch(response) {
 }
 
 export function getBookBySearch(title) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.get(API.getBookBySearch, {
 				params: {
@@ -85,7 +85,7 @@ export function ResolvedResetGetBookBySearch() {
 }
 
 export function resetGetBookBySearch() {
-	return function (dispatch) {
+	return (dispatch) => {
 		dispatch(ResolvedResetGetBookBySearch());
 	};
 }
@@ -98,7 +98,7 @@ export function ResolvedGetPublisherBySearch(response) {
 }
 
 export function getPublisherBySearch(title) {
-	return function (dispatch) {
+	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.get(API.getPublisherBySearch, {
 				params: {
@@ -118,7 +118,7 @@ export function ResolvedResetGetPublisherBySearch() {
 }
 
 export function resetGetPublisherBySearch() {
-	return function (dispatch) {
+	return (dispatch) => {
 		dispatch(ResolvedResetGetPublisherBySearch());
 	};
 }
