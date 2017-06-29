@@ -3,46 +3,46 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Storage from './common/Storage';
-import BookDetails from './routes/BookDetails';
-import Home from './routes/Home';
-import NotFound from './routes/NotFound';
-import PublicationDetails from './routes/PublicationDetails';
-import WriterDetails from './routes/WriterDetails';
-import ListDetails from './routes/ListDetails';
-import TagDetails from './routes/TagDetails';
-import PublisherDetails from './routes/PublisherDetails';
-import Profile from './routes/Profile';
+import Storage from 'common/Storage';
+import BookDetails from 'modules/book-details/BookDetailsRoute';
+import Home from 'modules/home/HomeRoute';
+import NotFound from 'modules/not-found/NotFoundRoute';
+import PublicationDetails from 'modules/publication-details/PublicationDetailsRoute';
+import WriterDetails from 'modules/writer-details/WriterDetailsRoute';
+import ListDetails from 'modules/list-details/ListDetailsRoute';
+import TagDetails from 'modules/tag-details/TagDetailsRoute';
+import PublisherDetails from 'modules/publisher-details/PublisherDetailsRoute';
+import Profile from 'modules/profile/ProfileRoute';
 
-import AdminPublications from './routes/admin/AdminPublications';
-import AdminPublicationsEdit from './routes/admin/AdminPublicationsEdit';
-import AdminPublicationsAdd from './routes/admin/AdminPublicationsAdd';
+import AdminPublications from 'modules/admin/admin-publications/AdminPublicationsRoute';
+import AdminPublicationsEdit from 'modules/admin/admin-publications-edit/AdminPublicationsEditRoute';
+import AdminPublicationsAdd from 'modules/admin/admin-publications-add/AdminPublicationsAddRoute';
 
-import AdminBooks from './routes/admin/AdminBooks';
-import AdminBooksEdit from './routes/admin/AdminBooksEdit';
-import AdminBooksAdd from './routes/admin/AdminBooksAdd';
+import AdminBooks from 'modules/admin/admin-books/AdminBooksRoute';
+import AdminBooksEdit from 'modules/admin/admin-books-edit/AdminBooksEditRoute';
+import AdminBooksAdd from 'modules/admin/admin-books-add/AdminBooksAddRoute';
 
-import AdminWriters from './routes/admin/AdminWriters';
-import AdminWritersEdit from './routes/admin/AdminWritersEdit';
-import AdminWritersAdd from './routes/admin/AdminWritersAdd';
+import AdminWriters from 'modules/admin/admin-writers/AdminWritersRoute';
+import AdminWritersEdit from 'modules/admin/admin-writers-edit/AdminWritersEditRoute';
+import AdminWritersAdd from 'modules/admin/admin-writers-add/AdminWritersAddRoute';
 
-import AdminPublishers from './routes/admin/AdminPublishers';
-import AdminPublishersEdit from './routes/admin/AdminPublishersEdit';
-import AdminPublishersAdd from './routes/admin/AdminPublishersAdd';
+import AdminPublishers from 'modules/admin/admin-publishers/AdminPublishersRoute';
+import AdminPublishersEdit from 'modules/admin/admin-publishers-edit/AdminPublishersEditRoute';
+import AdminPublishersAdd from 'modules/admin/admin-publishers-add/AdminPublishersAddRoute';
 
-import AdminUsers from './routes/admin/AdminUsers';
-import AdminUsersEdit from './routes/admin/AdminUsersEdit';
-import AdminUsersAdd from './routes/admin/AdminUsersAdd';
+import AdminUsers from 'modules/admin/admin-users/AdminUsersRoute';
+import AdminUsersEdit from 'modules/admin/admin-users-edit/AdminUsersEditRoute';
+import AdminUsersAdd from 'modules/admin/admin-users-add/AdminUsersAddRoute';
 
-import AdminTags from './routes/admin/AdminTags';
-import AdminTagsEdit from './routes/admin/AdminTagsEdit';
-import AdminTagsAdd from './routes/admin/AdminTagsAdd';
+import AdminTags from 'modules/admin/admin-tags/AdminTagsRoute';
+import AdminTagsEdit from 'modules/admin/admin-tags-edit/AdminTagsEditRoute';
+import AdminTagsAdd from 'modules/admin/admin-tags-add/AdminTagsAddRoute';
 
-import AdminLists from './routes/admin/AdminLists';
-import AdminListsEdit from './routes/admin/AdminListsEdit';
-import AdminListsAdd from './routes/admin/AdminListsAdd';
+import AdminLists from 'modules/admin/admin-lists/AdminListsRoute';
+import AdminListsEdit from 'modules/admin/admin-lists-edit/AdminListsEditRoute';
+import AdminListsAdd from 'modules/admin/admin-lists-add/AdminListsAddRoute';
 
-import LoginPage from './containers/LoginPage';
+import LoginPage from 'modules/login/LoginRoute';
 
 const isLoggedIn = Storage.get('login_key');
 

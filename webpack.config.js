@@ -2,7 +2,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const webpack = require("webpack");
 const argv = require("yargs").argv;
-
+const path = require("path");
 
 const extractCSS = new ExtractTextPlugin("dist/style.css");
 
@@ -69,7 +69,11 @@ module.exports = {
     rules: rules
   },
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx"],
+    modules: [
+      path.resolve('./src/scripts'),
+      path.resolve('./node_modules')
+    ]
   },
   devServer: {
     historyApiFallback: true,
