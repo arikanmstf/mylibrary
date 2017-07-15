@@ -1,20 +1,12 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Pagination from 'modules/common/Pagination';
-import { getAllPublications } from './PublicationListActions';
 
-class PublicationList extends Component {
-
-  constructor(props) {
-		super(props);
-		this.state = props;
-	}
-
+class PublicationListComponent extends Component {
 	componentDidMount() {
-		this.props.getAllPublications(this.state);
+		this.props.getAllPublications(this.props);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -74,7 +66,7 @@ class PublicationList extends Component {
 	}
 }
 
-PublicationList.propTypes = {
+PublicationListComponent.propTypes = {
   getAllPublications: PropTypes.func.isRequired,
   publications: PropTypes.arrayOf(Object),
   total: PropTypes.number,
@@ -82,22 +74,11 @@ PublicationList.propTypes = {
   title: PropTypes.string
 };
 
-PublicationList.defaultProps = {
+PublicationListComponent.defaultProps = {
 	publications: [],
 	total: 0,
 	pageNo: 1,
 	title: ''
 };
 
-function mapStateToProps(state) {
-  return {
-   publications: state.publications.list,
-   total: parseInt(state.publications.total, 10)
-  };
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return { getAllPublications: (search) => dispatch(getAllPublications(search)) };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(PublicationList);
+export default PublicationListComponent;

@@ -1,25 +1,14 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import ListsOfPublicationEdit from 'modules/common/ListsOfPublicationEdit';
 import { commaListItems } from 'common/Helpers';
-import { getPublicationDetails } from './PublicationDetailsActions';
-import { updatePublicationDetailsList } from '../admin/AdminActions';
 
-class PublicationDetailsPage extends Component {
-
-	constructor(props) {
-    super(props);
-
-    this.state = props;
-
-		this.saveForm = this.saveForm.bind(this);
-  }
+class PublicationDetailsComponent extends Component {
 
 	componentDidMount() {
-		this.props.getPublicationDetails(this.state.publicationId);
+		this.props.getPublicationDetails(this.props.match.params.publicationId);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -30,7 +19,7 @@ class PublicationDetailsPage extends Component {
 
 	saveForm() {
 		const form = {
-			publication_id: this.state.publicationId,
+			publication_id: this.props.match.params.publicationId,
 			lists: this.state.lists
 		};
 		this.props.updatePublicationDetailsList(form);
@@ -91,7 +80,7 @@ class PublicationDetailsPage extends Component {
 							</div>
 						</div>
 						<div className="col-md-12" >
-							<button className="btn btn-primary" onClick={this.saveForm}>Save</button>
+							<button className="btn btn-primary" onClick={(e) => this.saveForm(e)}>Save</button>
 						</div>
 					</div>
 					<div className="clearfix" />
@@ -101,24 +90,11 @@ class PublicationDetailsPage extends Component {
 		);
 	}
 }
-PublicationDetailsPage.propTypes = {
+PublicationDetailsComponent.propTypes = {
   getPublicationDetails: PropTypes.func.isRequired,
   updatePublicationDetailsList: PropTypes.func.isRequired,
-	publication: PropTypes.object.isRequired
+	publication: PropTypes.object.isRequired,
+	match: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state) {
-	return {
-		publication: state.publication,
-		listSearch: state.listSearch
-	};
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-		getPublicationDetails: (search) => dispatch(getPublicationDetails(search)),
-		updatePublicationDetailsList: (search) => dispatch(updatePublicationDetailsList(search))
-	};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(PublicationDetailsPage);
+export default PublicationDetailsComponent;

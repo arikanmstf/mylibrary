@@ -1,20 +1,12 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { commaListItems } from 'common/Helpers';
-import { getListDetails } from './ListDetailsActions';
 
-class ListDetailsPage extends Component {
-
-	constructor(props) {
-    super(props);
-
-    this.state = props;
-  }
+class ListDetailsComponent extends Component {
 
 	componentDidMount() {
-		this.props.getListDetails(this.state.listId);
+		this.props.getListDetails(this.props.match.params.listId);
 	}
 
 	render() {
@@ -38,19 +30,10 @@ class ListDetailsPage extends Component {
 		) : null;
 	}
 }
-ListDetailsPage.propTypes = {
+ListDetailsComponent.propTypes = {
   getListDetails: PropTypes.func.isRequired,
-	list: PropTypes.object.isRequired
+	list: PropTypes.object.isRequired,
+	match: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state) {
-	return {
-		list: state.list
-	};
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return { getListDetails: (listId) => dispatch(getListDetails(listId)) };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ListDetailsPage);
+export default ListDetailsComponent;

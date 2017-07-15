@@ -1,20 +1,12 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { commaListItems } from 'common/Helpers';
-import { getTagDetails } from './TagDetailsActions';
 
-class TagDetailsPage extends Component {
-
-	constructor(props) {
-    super(props);
-
-    this.state = props;
-  }
+class TagDetailsComponent extends Component {
 
 	componentDidMount() {
-		this.props.getTagDetails(this.state.tagId);
+		this.props.getTagDetails(this.props.match.params.tagId);
 	}
 
 	render() {
@@ -38,19 +30,10 @@ class TagDetailsPage extends Component {
 		) : null;
 	}
 }
-TagDetailsPage.propTypes = {
+TagDetailsComponent.propTypes = {
   getTagDetails: PropTypes.func.isRequired,
-	tag: PropTypes.object.isRequired
+	tag: PropTypes.object.isRequired,
+	match: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state) {
-	return {
-		tag: state.tag
-	};
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return { getTagDetails: (tagId) => dispatch(getTagDetails(tagId)) };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(TagDetailsPage);
+export default TagDetailsComponent;

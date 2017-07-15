@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getProfileDetails, updateProfileDetails } from './ProfilePageActions';
-
-class ProfilePage extends Component {
+class ProfileComponent extends Component {
 
 	constructor(props) {
     super(props);
@@ -72,10 +69,10 @@ class ProfilePage extends Component {
               <span>{this.state.login_name}</span>
             </div>
             <div className="item-title">
-              <input value={this.state.display_name} onChange={this.onDispChange} placeholder="Display name" />
+              <input type="text" value={this.state.display_name} onChange={this.onDispChange} placeholder="Display name" />
             </div>
             <div className="item-title">
-              <input value={this.state.email} onChange={this.onMailChange} placeholder="Email" />
+              <input type="text" value={this.state.email} onChange={this.onMailChange} placeholder="Email" />
             </div>
             <div className="item-title">
               <input type="Password" value={this.state.password} onChange={this.onPassChange} placeholder="New Password" />
@@ -90,23 +87,10 @@ class ProfilePage extends Component {
 		);
 	}
 }
-ProfilePage.propTypes = {
+ProfileComponent.propTypes = {
   getProfileDetails: PropTypes.func.isRequired,
   updateProfileDetails: PropTypes.func.isRequired,
 	profile: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state) {
-	return {
-		profile: state.profile
-	};
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getProfileDetails: () => dispatch(getProfileDetails()),
-    updateProfileDetails: (form) => dispatch(updateProfileDetails(form))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);
+export default ProfileComponent;

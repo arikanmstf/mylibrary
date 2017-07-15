@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import NavbarHeader from 'modules/common/NavbarHeader';
 import InputSearch from 'common/input/InputSearch';
-import PublicationList from '../publication-list/PublicationListPage';
+import PublicationList from '../publication-list/PublicationListContainer';
 
-class HomePage extends Component {
+class HomeComponent extends Component {
   constructor(props) {
     super(props);
 
@@ -30,8 +30,8 @@ class HomePage extends Component {
     );
   }
 }
-HomePage.propTypes = {
+HomeComponent.propTypes = {
   match: PropTypes.object.isRequired
 };
 
-export default HomePage;
+export default HomeComponent;

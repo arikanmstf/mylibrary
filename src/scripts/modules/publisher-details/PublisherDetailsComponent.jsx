@@ -1,20 +1,12 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { commaListItems } from 'common/Helpers';
-import { getPublisherDetails } from './PublisherDetailsActions';
 
-class PublisherDetailsPage extends Component {
-
-	constructor(props) {
-    super(props);
-
-    this.state = props;
-  }
+class PublisherDetailsComponent extends Component {
 
 	componentDidMount() {
-		this.props.getPublisherDetails(this.state.publisherId);
+		this.props.getPublisherDetails(this.props.match.params.publisherId);
 	}
 
 	render() {
@@ -52,19 +44,10 @@ class PublisherDetailsPage extends Component {
 		) : null;
 	}
 }
-PublisherDetailsPage.propTypes = {
+PublisherDetailsComponent.propTypes = {
   getPublisherDetails: PropTypes.func.isRequired,
-	publisher: PropTypes.object.isRequired
+	publisher: PropTypes.object.isRequired,
+	match: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state) {
-	return {
-		publisher: state.publisher
-	};
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return { getPublisherDetails: (publisherId) => dispatch(getPublisherDetails(publisherId)) };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(PublisherDetailsPage);
+export default PublisherDetailsComponent;

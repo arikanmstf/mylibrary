@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import InputText from 'common/input/InputText';
 import InputPassword from 'common/input/InputPassword';
-import { getLogin } from './LoginActions';
 
-class LoginPage extends Component {
+class LoginComponent extends Component {
 
 	constructor(props) {
     super(props);
@@ -57,19 +55,8 @@ class LoginPage extends Component {
 	}
 }
 
-LoginPage.propTypes = {
+LoginComponent.propTypes = {
   getLogin: PropTypes.func.isRequired
 };
 
-function mapStateToProps(state) {
-	return {
-		username: state.username,
-		password: state.password
-	};
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return { getLogin: (data) => dispatch(getLogin(data)) };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+export default LoginComponent;

@@ -4,15 +4,15 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Storage from 'common/Storage';
-import BookDetails from 'modules/book-details/BookDetailsRoute';
-import Home from 'modules/home/HomeRoute';
-import NotFound from 'modules/not-found/NotFoundRoute';
-import PublicationDetails from 'modules/publication-details/PublicationDetailsRoute';
-import WriterDetails from 'modules/writer-details/WriterDetailsRoute';
-import ListDetails from 'modules/list-details/ListDetailsRoute';
-import TagDetails from 'modules/tag-details/TagDetailsRoute';
-import PublisherDetails from 'modules/publisher-details/PublisherDetailsRoute';
-import Profile from 'modules/profile/ProfileRoute';
+import BookDetails from 'modules/book-details/BookDetailsContainer';
+import Home from 'modules/home/HomeComponent';
+import NotFound from 'modules/not-found/NotFoundComponent';
+import PublicationDetails from 'modules/publication-details/PublicationDetailsContainer';
+import WriterDetails from 'modules/writer-details/WriterDetailsContainer';
+import ListDetails from 'modules/list-details/ListDetailsContainer';
+import TagDetails from 'modules/tag-details/TagDetailsContainer';
+import PublisherDetails from 'modules/publisher-details/PublisherDetailsContainer';
+import Profile from 'modules/profile/ProfileContainer';
 
 import AdminPublications from 'modules/admin/admin-publications/AdminPublicationsRoute';
 import AdminPublicationsEdit from 'modules/admin/admin-publications-edit/AdminPublicationsEditRoute';
@@ -42,7 +42,7 @@ import AdminLists from 'modules/admin/admin-lists/AdminListsRoute';
 import AdminListsEdit from 'modules/admin/admin-lists-edit/AdminListsEditRoute';
 import AdminListsAdd from 'modules/admin/admin-lists-add/AdminListsAddRoute';
 
-import LoginPage from 'modules/login/LoginRoute';
+import Login from 'modules/login/LoginContainer';
 
 const isLoggedIn = Storage.get('login_key');
 
@@ -121,7 +121,7 @@ class App extends Component {
             </Router>
           </div>
           :
-          <LoginPage />
+          <Login />
         }
       </div>
     );

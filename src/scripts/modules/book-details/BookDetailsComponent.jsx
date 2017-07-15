@@ -1,20 +1,12 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { commaListItems } from 'common/Helpers';
-import { getBookDetails } from './BookDetailsActions';
 
-class BookDetailsPage extends Component {
-
-	constructor(props) {
-    super(props);
-
-    this.state = props;
-  }
+class BookDetailsComponent extends Component {
 
 	componentDidMount() {
-		this.props.getBookDetails(this.state.bookId);
+		this.props.getBookDetails(this.props.match.params.bookId);
 	}
 
 	render() {
@@ -41,19 +33,10 @@ class BookDetailsPage extends Component {
 		) : null;
 	}
 }
-BookDetailsPage.propTypes = {
+BookDetailsComponent.propTypes = {
   getBookDetails: PropTypes.func.isRequired,
-	book: PropTypes.object.isRequired
+	book: PropTypes.object.isRequired,
+	match: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state) {
-	return {
-		book: state.book
-	};
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return { getBookDetails: (bookId) => dispatch(getBookDetails(bookId)) };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(BookDetailsPage);
+export default BookDetailsComponent;

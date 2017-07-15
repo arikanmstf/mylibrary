@@ -1,20 +1,12 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { commaListItems } from 'common/Helpers';
-import { getWriterDetails } from '../admin/admin-writers/AdminWritersActions';
 
-class WriterDetailsPage extends Component {
-
-	constructor(props) {
-    super(props);
-
-    this.state = props;
-  }
+class WriterDetailsComponent extends Component {
 
 	componentDidMount() {
-		this.props.getWriterDetails(this.state.writerId);
+		this.props.getWriterDetails(this.props.match.params.writerId);
 	}
 
 	render() {
@@ -51,19 +43,10 @@ class WriterDetailsPage extends Component {
 		) : null;
 	}
 }
-WriterDetailsPage.propTypes = {
+WriterDetailsComponent.propTypes = {
   getWriterDetails: PropTypes.func.isRequired,
-	writer: PropTypes.object.isRequired
+	writer: PropTypes.object.isRequired,
+	match: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state) {
-	return {
-		writer: state.writer
-	};
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return { getWriterDetails: (writerId) => dispatch(getWriterDetails(writerId)) };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(WriterDetailsPage);
+export default WriterDetailsComponent;

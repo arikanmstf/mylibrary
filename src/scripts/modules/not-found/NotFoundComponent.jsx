@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import NavbarHeader from 'modules/common/NavbarHeader';
 
-class NotFoundPage extends Component {
+class NotFoundComponent extends Component {
   render() {
     return (
       <div>
@@ -13,4 +13,4 @@ class NotFoundPage extends Component {
     );
   }
 }
-export default NotFoundPage;
+export default NotFoundComponent;
