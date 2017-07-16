@@ -55,7 +55,7 @@ class AdminPublishersComponent extends Component {
             pageNo={parseInt(this.props.match.params.pageNo, 10) || 1}
             total={this.props.total}
             onLiClick={this.onLiClick}
-            linkTo="admin/publishers"
+            linkTo="admin/publishers/pages"
           />
           <Link to={`/admin/publishers/add`} className="btn btn-success">Add Publisher</Link>
           <InputSearch makeSearch={this.setSearchTitle} />

@@ -16,7 +16,7 @@ import AdminWritersAdd from 'modules/admin/admin-writers-add/AdminWritersAddCont
 
 import AdminPublishers from 'modules/admin/admin-publishers/AdminPublishersContainer';
 import AdminPublishersEdit from 'modules/admin/admin-publishers-edit/AdminPublishersEditContainer';
-import AdminPublishersAdd from 'modules/admin/admin-publishers-add/AdminPublishersAddRoute';
+import AdminPublishersAdd from 'modules/admin/admin-publishers-add/AdminPublishersAddContainer';
 
 import AdminUsers from 'modules/admin/admin-users/AdminUsersRoute';
 import AdminUsersEdit from 'modules/admin/admin-users-edit/AdminUsersEditRoute';
@@ -58,7 +58,7 @@ class AuthAdminRouter extends Component {
 
           <Route exact path={`${this.props.match.path}/publishers`} component={AdminPublishers} />
           <Route exact path={`${this.props.match.path}/publishers/add`} component={AdminPublishersAdd} />
-          <Route exact path={`${this.props.match.path}/publishers/:pageNo`} component={AdminPublishers} />
+          <Route exact path={`${this.props.match.path}/publishers/pages/:pageNo`} component={AdminPublishers} />
           <Route exact path={`${this.props.match.path}/publishers/edit/:publisherId`} component={AdminPublishersEdit} />
 
           <Route exact path={`${this.props.match.path}/users`} component={AdminUsers} />

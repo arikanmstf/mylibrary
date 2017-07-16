@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { addPublisherDetails } from '../AdminActions';
-
-class AdminPublishersEditPage extends Component {
+class AdminPublishersAddComponent extends Component {
 
 	constructor(props) {
     super(props);
@@ -73,14 +70,8 @@ class AdminPublishersEditPage extends Component {
 		);
 	}
 }
-AdminPublishersEditPage.propTypes = {
+AdminPublishersAddComponent.propTypes = {
   addPublisherDetails: PropTypes.func.isRequired
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addPublisherDetails: (form) => dispatch(addPublisherDetails(form))
-  };
-};
-
-export default connect(0, mapDispatchToProps)(AdminPublishersEditPage);
+export default AdminPublishersAddComponent;
