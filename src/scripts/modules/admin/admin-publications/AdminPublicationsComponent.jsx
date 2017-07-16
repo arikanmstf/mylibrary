@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Pagination from 'modules/common/Pagination';
 import InputSearch from 'common/input/InputSearch';
-import { getAllPublications } from '../../publication-list/PublicationListActions';
 
-class AdminPublicationsPage extends Component {
+class AdminPublicationsComponent extends Component {
   constructor(props) {
 		super(props);
 		this.state = {
-      pageNo: props.search.pageNo,
+      pageNo: props.match.params.pageNo || 1,
       title: ''
     };
 
@@ -20,10 +18,6 @@ class AdminPublicationsPage extends Component {
 
 	componentDidMount() {
     this.props.getAllPublications(this.state);
-	}
-
-  componentWillReceiveProps(nextProps) {
-		this.setState({ pageNo: nextProps.search.pageNo });
 	}
 
   onLiClick() {
@@ -59,7 +53,7 @@ class AdminPublicationsPage extends Component {
       <div className="admin-page col-xs-12 col-sm-9 col-md-9">
           <h3>Admin Publications</h3>
           <Pagination
-            pageNo={parseInt(this.props.search.pageNo, 10)}
+            pageNo={parseInt(this.state.pageNo, 10)}
             total={this.props.total}
             onLiClick={this.onLiClick}
             linkTo="admin/publications"
@@ -84,28 +78,18 @@ class AdminPublicationsPage extends Component {
   }
 }
 
-AdminPublicationsPage.propTypes = {
+AdminPublicationsComponent.propTypes = {
   search: PropTypes.object,
   getAllPublications: PropTypes.func.isRequired,
   publications: PropTypes.arrayOf(Object),
-  total: PropTypes.number
+  total: PropTypes.number,
+  match: PropTypes.object.isRequired
 };
 
-AdminPublicationsPage.defaultProps = {
+AdminPublicationsComponent.defaultProps = {
   search: {},
 	publications: [],
 	total: 0
 };
 
-function mapStateToProps(state) {
-  return {
-   publications: state.publications.list,
-   total: parseInt(state.publications.total, 10)
-  };
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return { getAllPublications: (search) => dispatch(getAllPublications(search)) };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AdminPublicationsPage);
+export default AdminPublicationsComponent;

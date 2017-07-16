@@ -11,7 +11,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return { getLogin: (data) => dispatch(getLogin(data)) };
+  return {
+    getLogin: (data) => dispatch(getLogin(data))
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginComponent);

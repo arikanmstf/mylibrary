@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 
+import NavbarHeader from 'modules/common/NavbarHeader';
+import SideNavigation from 'modules/common/SideNavigation';
+
 export default class AdminPage extends Component {
   render() {
     return (
       <div className="admin-page">
-        <h3>Admin Home</h3>
+        <NavbarHeader />
+        <SideNavigation />
       </div>
     );
   }

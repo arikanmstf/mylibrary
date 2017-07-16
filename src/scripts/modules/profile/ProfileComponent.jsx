@@ -69,13 +69,13 @@ class ProfileComponent extends Component {
               <span>{this.state.login_name}</span>
             </div>
             <div className="item-title">
-              <input type="text" value={this.state.display_name} onChange={this.onDispChange} placeholder="Display name" />
+              <input type="text" onChange={this.onDispChange} placeholder={this.state.display_name} />
             </div>
             <div className="item-title">
-              <input type="text" value={this.state.email} onChange={this.onMailChange} placeholder="Email" />
+              <input type="text" onChange={this.onMailChange} placeholder={this.state.email} />
             </div>
             <div className="item-title">
-              <input type="Password" value={this.state.password} onChange={this.onPassChange} placeholder="New Password" />
+              <input type="Password" onChange={this.onPassChange} placeholder="New Password" />
             </div>
 					</div>
 					<div className="clearfix" />
