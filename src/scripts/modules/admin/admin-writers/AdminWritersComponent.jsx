@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Pagination from 'modules/common/Pagination';
 import InputSearch from 'common/input/InputSearch';
-import { getAllBooks } from './AdminBooksActions';
 
-class AdminBooksPage extends Component {
+class AdminWritersComponent extends Component {
   constructor(props) {
 		super(props);
-		this.state = props.search;
 
     this.setSearchTitle = this.setSearchTitle.bind(this);
 	}
 
 	componentDidMount() {
-		this.props.getAllBooks(this.state);
+		this.props.getAllWriters({ title: '' });
 	}
 
   componentWillReceiveProps(nextProps) {
@@ -28,21 +25,20 @@ class AdminBooksPage extends Component {
   }
   setSearchTitle(newValue) {
     this.setState({ title: newValue });
-    this.props.getAllBooks({ title: newValue });
+    this.props.getAllWriters({ title: newValue });
   }
 
   renderList() {
-    return this.props.books.map((book) => {
+    return this.props.writers.map((writer) => {
       return (
-        <tr key={book.book_id}>
-          <td>{book.book_id}</td>
-          <td>{book.title}</td>
-          <td>{book.writers}</td>
+        <tr key={writer.writer_id}>
+          <td>{writer.writer_id}</td>
+          <td>{writer.full_name}</td>
           <td>
-            <Link to={`/admin/books/edit/${book.book_id}`}>
+            <Link to={`/admin/writers/edit/${writer.writer_id}`}>
               <i className="glyphicon glyphicon-edit" />
             </Link>
-            <Link to={`/admin/books/remove/${book.book_id}`}>
+            <Link to={`/admin/writers/remove/${writer.writer_id}`}>
               <i className="glyphicon glyphicon-remove" />
             </Link>
           </td>
@@ -53,22 +49,21 @@ class AdminBooksPage extends Component {
 
   render() {
     return (
-      <div className="admin-page col-xs-12 col-sm-9 col-md-9">
-          <h3>Admin Books</h3>
+      <div>
+          <h3>Admin Writers</h3>
           <Pagination
-            pageNo={parseInt(this.props.search.pageNo, 10)}
+            pageNo={parseInt(this.props.match.params.pageNo, 10) || 1}
             total={this.props.total}
             onLiClick={this.onLiClick}
-            linkTo="admin/books"
+            linkTo="admin/writers/pages"
           />
-          <Link to={`/admin/books/add`} className="btn btn-success">Add Book</Link>
+          <Link to={`/admin/writers/add`} className="btn btn-success">Add Writer</Link>
           <InputSearch makeSearch={this.setSearchTitle} />
           <table className="table table-responsive table-bordered table-hover admin-table">
             <thead>
               <tr>
                 <td>#</td>
-                <td>Book Name</td>
-                <td>Writers</td>
+                <td>Writer Name</td>
                 <td>Options</td>
               </tr>
             </thead>
@@ -81,28 +76,18 @@ class AdminBooksPage extends Component {
   }
 }
 
-AdminBooksPage.propTypes = {
+AdminWritersComponent.propTypes = {
   search: PropTypes.object,
-  getAllBooks: PropTypes.func.isRequired,
-  books: PropTypes.arrayOf(Object),
-  total: PropTypes.number
+  getAllWriters: PropTypes.func.isRequired,
+  writers: PropTypes.arrayOf(Object),
+  total: PropTypes.number,
+  match: PropTypes.object.isRequired
 };
 
-AdminBooksPage.defaultProps = {
+AdminWritersComponent.defaultProps = {
   search: {},
-	books: [],
+	writers: [],
 	total: 0
 };
 
-function mapStateToProps(state) {
-  return {
-   books: state.books.list,
-   total: parseInt(state.books.total, 10)
-  };
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return { getAllBooks: (search) => dispatch(getAllBooks(search)) };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AdminBooksPage);
+export default AdminWritersComponent;

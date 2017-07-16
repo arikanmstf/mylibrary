@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import ListsOfPublicationEdit from 'modules/common/ListsOfPublicationEdit';
 
-import { getBookBySearch, resetGetBookBySearch, getPublisherBySearch, resetGetPublisherBySearch }
-	from '../admin-books/AdminBooksActions';
-import { addPublicationDetails } from '../AdminActions';
-
-class AdminPublicationsAddPage extends Component {
+class AdminPublicationsAddComponent extends Component {
 
 	constructor(props) {
     super(props);
@@ -201,7 +196,7 @@ class AdminPublicationsAddPage extends Component {
 		);
 	}
 }
-AdminPublicationsAddPage.propTypes = {
+AdminPublicationsAddComponent.propTypes = {
   getBookBySearch: PropTypes.func.isRequired,
   resetGetBookBySearch: PropTypes.func.isRequired,
   getPublisherBySearch: PropTypes.func.isRequired,
@@ -211,21 +206,4 @@ AdminPublicationsAddPage.propTypes = {
 	publisherSearch: PropTypes.arrayOf(Object).isRequired
 };
 
-function mapStateToProps(state) {
-	return {
-		bookSearch: state.bookSearch,
-		publisherSearch: state.publisherSearch
-	};
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getBookBySearch: (search) => dispatch(getBookBySearch(search)),
-    resetGetBookBySearch: () => dispatch(resetGetBookBySearch()),
-    getPublisherBySearch: (search) => dispatch(getPublisherBySearch(search)),
-    resetGetPublisherBySearch: () => dispatch(resetGetPublisherBySearch()),
-    addPublicationDetails: (form) => dispatch(addPublicationDetails(form))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AdminPublicationsAddPage);
+export default AdminPublicationsAddComponent;

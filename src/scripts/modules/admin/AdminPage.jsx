@@ -6,7 +6,7 @@ import SideNavigation from 'modules/common/SideNavigation';
 export default class AdminPage extends Component {
   render() {
     return (
-      <div className="admin-page">
+      <div>
         <NavbarHeader />
         <SideNavigation />
       </div>

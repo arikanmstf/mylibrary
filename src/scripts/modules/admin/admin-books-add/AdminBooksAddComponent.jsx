@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import TagsOfPublicationEdit from 'modules/common/TagsOfPublicationEdit';
 import { fromArrayToCommaEdit } from 'common/Helpers';
-import { getWriterBySearch, resetGetWriterBySearch } from '../admin-books/AdminBooksActions';
-import { addBookDetails } from '../AdminActions';
 
-class AdminBooksAddPage extends Component {
+class AdminBooksAddComponent extends Component {
 
 	constructor(props) {
     super(props);
@@ -137,25 +134,11 @@ class AdminBooksAddPage extends Component {
 		);
 	}
 }
-AdminBooksAddPage.propTypes = {
+AdminBooksAddComponent.propTypes = {
   getWriterBySearch: PropTypes.func.isRequired,
   resetGetWriterBySearch: PropTypes.func.isRequired,
   addBookDetails: PropTypes.func.isRequired,
 	writerSearch: PropTypes.arrayOf(Object).isRequired,
 };
 
-function mapStateToProps(state) {
-	return {
-		writerSearch: state.writerSearch,
-	};
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getWriterBySearch: (search) => dispatch(getWriterBySearch(search)),
-    resetGetWriterBySearch: () => dispatch(resetGetWriterBySearch()),
-    addBookDetails: (form) => dispatch(addBookDetails(form))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AdminBooksAddPage);
+export default AdminBooksAddComponent;

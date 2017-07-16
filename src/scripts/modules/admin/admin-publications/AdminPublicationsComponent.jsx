@@ -50,13 +50,13 @@ class AdminPublicationsComponent extends Component {
 
   render() {
     return (
-      <div className="admin-page col-xs-12 col-sm-9 col-md-9">
+      <div>
           <h3>Admin Publications</h3>
           <Pagination
             pageNo={parseInt(this.state.pageNo, 10)}
             total={this.props.total}
             onLiClick={this.onLiClick}
-            linkTo="admin/publications"
+            linkTo="admin/publications/pages"
           />
           <Link to={`/admin/publications/add`} className="btn btn-success">Add Publication</Link>
           <InputSearch makeSearch={this.setSearchTitle} />

@@ -1,23 +1,30 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { addWriterDetails } from '../AdminActions';
-
-class AdminWritersAddPage extends Component {
+class AdminWritersEditComponent extends Component {
 
 	constructor(props) {
     super(props);
     this.state = {
       title: '',
       description: '',
-      ...props
     };
 
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onDescChange = this.onDescChange.bind(this);
     this.saveForm = this.saveForm.bind(this);
   }
+
+  componentDidMount() {
+    this.props.getWriterDetails(this.props.match.params.writerId);
+  }
+
+  componentWillReceiveProps(nextProps) {
+		this.setState({
+      title: nextProps.writer.full_name,
+      description: nextProps.writer.description
+    });
+	}
   onTitleChange(event) {
     this.setState({
       title: event.target.value
@@ -31,14 +38,16 @@ class AdminWritersAddPage extends Component {
 
   saveForm() {
     const form = {
+      writer_id: this.props.writer.writer_id,
       title: this.state.title,
       description: this.state.description
     };
-    this.props.addWriterDetails(form);
+    this.props.updateWriterDetails(form);
   }
 
 	render() {
-		return true && (
+		const writer = this.props.writer;
+		return writer && (
 			<div className="item-details-page col-md-9 col-sm-9 col-">
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
@@ -58,14 +67,11 @@ class AdminWritersAddPage extends Component {
 		);
 	}
 }
-AdminWritersAddPage.propTypes = {
-  addWriterDetails: PropTypes.func.isRequired
+AdminWritersEditComponent.propTypes = {
+  getWriterDetails: PropTypes.func.isRequired,
+  updateWriterDetails: PropTypes.func.isRequired,
+	writer: PropTypes.object.isRequired,
+	match: PropTypes.object.isRequired
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addWriterDetails: (form) => dispatch(addWriterDetails(form))
-  };
-};
-
-export default connect(0, mapDispatchToProps)(AdminWritersAddPage);
+export default AdminWritersEditComponent;

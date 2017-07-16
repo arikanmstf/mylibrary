@@ -52,7 +52,7 @@ class AdminTagsPage extends Component {
 
   render() {
     return (
-      <div className="admin-page col-xs-12 col-sm-9 col-md-9">
+      <div>
           <h3>Admin Tags</h3>
           <Pagination
             pageNo={parseInt(this.props.search.pageNo, 10)}

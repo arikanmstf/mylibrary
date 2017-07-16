@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import TagsOfPublicationEdit from 'modules/common/TagsOfPublicationEdit';
 import { fromArrayToCommaEdit } from 'common/Helpers';
-import { getBookDetails } from '../../book-details/BookDetailsActions';
-import { getWriterBySearch, resetGetWriterBySearch } from '../admin-books/AdminBooksActions';
-import { updateBookDetails } from '../AdminActions';
 
-class AdminBooksEditPage extends Component {
+class AdminBooksEditComponent extends Component {
 
 	constructor(props) {
     super(props);
@@ -34,13 +30,13 @@ class AdminBooksEditPage extends Component {
   }
 
   componentDidMount() {
-    this.props.getBookDetails(this.state.bookId);
+    this.props.getBookDetails(this.props.match.params.bookId);
   }
 
   componentWillReceiveProps(nextProps) {
 		this.setState({
       title: nextProps.book.title,
-      writers: (this.state.writers.length > 0) ? this.state.writers : nextProps.book.writers,
+      writers: nextProps.book.writers,
       description: nextProps.book.description,
       tags: nextProps.book.tags,
     });
@@ -152,29 +148,14 @@ class AdminBooksEditPage extends Component {
 		);
 	}
 }
-AdminBooksEditPage.propTypes = {
+AdminBooksEditComponent.propTypes = {
   getBookDetails: PropTypes.func.isRequired,
   getWriterBySearch: PropTypes.func.isRequired,
   resetGetWriterBySearch: PropTypes.func.isRequired,
   updateBookDetails: PropTypes.func.isRequired,
 	book: PropTypes.object.isRequired,
 	writerSearch: PropTypes.arrayOf(Object).isRequired,
+	match: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state) {
-	return {
-		book: state.book,
-		writerSearch: state.writerSearch,
-	};
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getBookDetails: (search) => dispatch(getBookDetails(search)),
-    getWriterBySearch: (search) => dispatch(getWriterBySearch(search)),
-    resetGetWriterBySearch: () => dispatch(resetGetWriterBySearch()),
-    updateBookDetails: (form) => dispatch(updateBookDetails(form))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AdminBooksEditPage);
+export default AdminBooksEditComponent;

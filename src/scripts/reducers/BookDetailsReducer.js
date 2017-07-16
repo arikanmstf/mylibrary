@@ -1,4 +1,6 @@
-const initialState = {};
+const initialState = {
+  writers: []
+};
 
 const BookDetailsReducer = (state = initialState, action) => {
   switch (action.type) {
