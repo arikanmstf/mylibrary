@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getPublisherDetails } from '../../publisher-details/PublisherDetailsActions';
-import { updatePublisherDetails } from '../AdminActions';
-
-class AdminPublishersEditPage extends Component {
+class AdminPublishersEditComponent extends Component {
 
 	constructor(props) {
     super(props);
     this.state = {
       title: '',
       phone: '',
-      adr: '',
-      ...props
+      adr: ''
     };
 
     this.onTitleChange = this.onTitleChange.bind(this);
@@ -23,14 +18,14 @@ class AdminPublishersEditPage extends Component {
   }
 
   componentDidMount() {
-    this.props.getPublisherDetails(this.state.publisherId);
+    this.props.getPublisherDetails(this.props.match.params.publisherId);
   }
 
   componentWillReceiveProps(nextProps) {
 		this.setState({
-      title: nextProps.publisher.name,
-      phone: nextProps.publisher.phone_no,
-      adr: nextProps.publisher.address
+      title: nextProps.publisher.name || '',
+      phone: nextProps.publisher.phone_no || '',
+      adr: nextProps.publisher.address || ''
     });
 	}
   onTitleChange(event) {
@@ -87,23 +82,11 @@ class AdminPublishersEditPage extends Component {
 		);
 	}
 }
-AdminPublishersEditPage.propTypes = {
+AdminPublishersEditComponent.propTypes = {
   getPublisherDetails: PropTypes.func.isRequired,
   updatePublisherDetails: PropTypes.func.isRequired,
-	publisher: PropTypes.object.isRequired
+	publisher: PropTypes.object.isRequired,
+	match: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state) {
-	return {
-		publisher: state.publisher
-	};
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getPublisherDetails: (search) => dispatch(getPublisherDetails(search)),
-    updatePublisherDetails: (form) => dispatch(updatePublisherDetails(form))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AdminPublishersEditPage);
+export default AdminPublishersEditComponent;

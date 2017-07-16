@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Pagination from 'modules/common/Pagination';
 import InputSearch from 'common/input/InputSearch';
-import { getAllPublishers } from './AdminPublishersActions';
 
-class AdminPublishersPage extends Component {
+class AdminPublishersComponent extends Component {
   constructor(props) {
 		super(props);
-		this.state = props.search;
 
     this.setSearchTitle = this.setSearchTitle.bind(this);
 	}
 
 	componentDidMount() {
-		this.props.getAllPublishers(this.state);
+		this.props.getAllPublishers({ title: '' });
 	}
 
   componentWillReceiveProps(nextProps) {
@@ -55,7 +52,7 @@ class AdminPublishersPage extends Component {
       <div>
           <h3>Admin Publishers</h3>
           <Pagination
-            pageNo={parseInt(this.props.search.pageNo, 10)}
+            pageNo={parseInt(this.props.match.params.pageNo, 10) || 1}
             total={this.props.total}
             onLiClick={this.onLiClick}
             linkTo="admin/publishers"
@@ -79,28 +76,18 @@ class AdminPublishersPage extends Component {
   }
 }
 
-AdminPublishersPage.propTypes = {
+AdminPublishersComponent.propTypes = {
   search: PropTypes.object,
   getAllPublishers: PropTypes.func.isRequired,
   publishers: PropTypes.arrayOf(Object),
-  total: PropTypes.number
+  total: PropTypes.number,
+  match: PropTypes.object.isRequired
 };
 
-AdminPublishersPage.defaultProps = {
+AdminPublishersComponent.defaultProps = {
   search: {},
 	publishers: [],
 	total: 0
 };
 
-function mapStateToProps(state) {
-  return {
-   publishers: state.publishers.list,
-   total: parseInt(state.publishers.total, 10)
-  };
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return { getAllPublishers: (search) => dispatch(getAllPublishers(search)) };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AdminPublishersPage);
+export default AdminPublishersComponent;

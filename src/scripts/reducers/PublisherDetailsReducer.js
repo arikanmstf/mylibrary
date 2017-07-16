@@ -1,4 +1,8 @@
-const initialState = {};
+const initialState = {
+  phone_no: '',
+  name: '',
+  address: ''
+};
 
 const PublisherDetailsReducer = (state = initialState, action) => {
   switch (action.type) {

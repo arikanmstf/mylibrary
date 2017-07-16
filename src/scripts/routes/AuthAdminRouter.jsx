@@ -14,8 +14,8 @@ import AdminWriters from 'modules/admin/admin-writers/AdminWritersContainer';
 import AdminWritersEdit from 'modules/admin/admin-writers-edit/AdminWritersEditContainer';
 import AdminWritersAdd from 'modules/admin/admin-writers-add/AdminWritersAddContainer';
 
-import AdminPublishers from 'modules/admin/admin-publishers/AdminPublishersRoute';
-import AdminPublishersEdit from 'modules/admin/admin-publishers-edit/AdminPublishersEditRoute';
+import AdminPublishers from 'modules/admin/admin-publishers/AdminPublishersContainer';
+import AdminPublishersEdit from 'modules/admin/admin-publishers-edit/AdminPublishersEditContainer';
 import AdminPublishersAdd from 'modules/admin/admin-publishers-add/AdminPublishersAddRoute';
 
 import AdminUsers from 'modules/admin/admin-users/AdminUsersRoute';
