@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 
 import AdminPublications from 'modules/admin/admin-publications/AdminPublicationsContainer';
-import AdminPublicationsEdit from 'modules/admin/admin-publications-edit/AdminPublicationsEditRoute';
+import AdminPublicationsEdit from 'modules/admin/admin-publications-edit/AdminPublicationsEditContainer';
 import AdminPublicationsAdd from 'modules/admin/admin-publications-add/AdminPublicationsAddRoute';
 
 import AdminBooks from 'modules/admin/admin-books/AdminBooksRoute';
@@ -30,10 +30,15 @@ import AdminLists from 'modules/admin/admin-lists/AdminListsRoute';
 import AdminListsEdit from 'modules/admin/admin-lists-edit/AdminListsEditRoute';
 import AdminListsAdd from 'modules/admin/admin-lists-add/AdminListsAddRoute';
 
+import NavbarHeader from 'modules/common/NavbarHeader';
+import SideNavigation from 'modules/common/SideNavigation';
+
 class AuthAdminRouter extends Component {
   render() {
     return (
-      <div>
+      <div className="admin-page">
+        <NavbarHeader />
+        <SideNavigation />
         <Route exact path={this.props.match.path} component={AdminPublications} />
         <Route exact path={`${this.props.match.path}/publications`} component={AdminPublications} />
         <Route exact path={`${this.props.match.path}/publications/add`} component={AdminPublicationsAdd} />

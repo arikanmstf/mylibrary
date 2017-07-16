@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import ListsOfPublicationEdit from 'modules/common/ListsOfPublicationEdit';
-import { getPublicationDetails } from '../../publication-details/PublicationDetailsActions';
-import { getBookBySearch, resetGetBookBySearch, getPublisherBySearch, resetGetPublisherBySearch }
-	from '../admin-books/AdminBooksActions';
-import { updatePublicationDetails } from '../AdminActions';
 
-class AdminPublicationsEditPage extends Component {
+class AdminPublicationsEditComponent extends Component {
 
 	constructor(props) {
     super(props);
@@ -39,7 +34,7 @@ class AdminPublicationsEditPage extends Component {
   }
 
   componentDidMount() {
-    this.props.getPublicationDetails(this.state.publicationId);
+    this.props.getPublicationDetails(this.props.match.params.publicationId);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -220,7 +215,7 @@ class AdminPublicationsEditPage extends Component {
 		);
 	}
 }
-AdminPublicationsEditPage.propTypes = {
+AdminPublicationsEditComponent.propTypes = {
   getPublicationDetails: PropTypes.func.isRequired,
   getBookBySearch: PropTypes.func.isRequired,
   resetGetBookBySearch: PropTypes.func.isRequired,
@@ -229,26 +224,8 @@ AdminPublicationsEditPage.propTypes = {
   updatePublicationDetails: PropTypes.func.isRequired,
 	publication: PropTypes.object.isRequired,
 	bookSearch: PropTypes.arrayOf(Object).isRequired,
-	publisherSearch: PropTypes.arrayOf(Object).isRequired
+	publisherSearch: PropTypes.arrayOf(Object).isRequired,
+	match: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state) {
-	return {
-		publication: state.publication,
-		bookSearch: state.bookSearch,
-		publisherSearch: state.publisherSearch
-	};
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getPublicationDetails: (search) => dispatch(getPublicationDetails(search)),
-    getBookBySearch: (search) => dispatch(getBookBySearch(search)),
-    resetGetBookBySearch: () => dispatch(resetGetBookBySearch()),
-    getPublisherBySearch: (search) => dispatch(getPublisherBySearch(search)),
-    resetGetPublisherBySearch: () => dispatch(resetGetPublisherBySearch()),
-    updatePublicationDetails: (form) => dispatch(updatePublicationDetails(form))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AdminPublicationsEditPage);
+export default AdminPublicationsEditComponent;
