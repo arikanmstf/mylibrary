@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Pagination from 'modules/common/Pagination';
 import InputSearch from 'common/input/InputSearch';
-import { getAllTags } from './AdminTagsActions';
 
-class AdminTagsPage extends Component {
+class AdminTagsComponent extends Component {
   constructor(props) {
 		super(props);
-		this.state = props.search;
 
+    this.state = {
+      title: '',
+      pageNo: this.props.match.params.pageNo || 1
+    };
     this.setSearchTitle = this.setSearchTitle.bind(this);
 	}
 
@@ -19,12 +20,8 @@ class AdminTagsPage extends Component {
 		this.props.getAllTags(this.state);
 	}
 
-  componentWillReceiveProps(nextProps) {
-		this.setState(nextProps.search);
-	}
-
   onLiClick() {
-    this.setState(this.props.search);
+    this.setState({ pageNo: this.props.match.params.pageNo });
   }
   setSearchTitle(newValue) {
     this.setState({ title: newValue });
@@ -55,10 +52,10 @@ class AdminTagsPage extends Component {
       <div>
           <h3>Admin Tags</h3>
           <Pagination
-            pageNo={parseInt(this.props.search.pageNo, 10)}
+            pageNo={parseInt(this.state.pageNo, 10)}
             total={this.props.total}
             onLiClick={this.onLiClick}
-            linkTo="admin/tags"
+            linkTo="admin/tags/pages"
           />
           <Link to={`/admin/tags/add`} className="btn btn-success">Add Tag</Link>
           <InputSearch makeSearch={this.setSearchTitle} />
@@ -79,28 +76,16 @@ class AdminTagsPage extends Component {
   }
 }
 
-AdminTagsPage.propTypes = {
-  search: PropTypes.object,
+AdminTagsComponent.propTypes = {
   getAllTags: PropTypes.func.isRequired,
   tags: PropTypes.arrayOf(Object),
-  total: PropTypes.number
+  total: PropTypes.number,
+  match: PropTypes.object.isRequired
 };
 
-AdminTagsPage.defaultProps = {
-  search: {},
+AdminTagsComponent.defaultProps = {
 	tags: [],
 	total: 0
 };
 
-function mapStateToProps(state) {
-  return {
-   tags: state.tags.list,
-   total: parseInt(state.tags.total, 10)
-  };
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return { getAllTags: (search) => dispatch(getAllTags(search)) };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AdminTagsPage);
+export default AdminTagsComponent;

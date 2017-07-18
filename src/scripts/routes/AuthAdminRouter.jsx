@@ -18,17 +18,17 @@ import AdminPublishers from 'modules/admin/admin-publishers/AdminPublishersConta
 import AdminPublishersEdit from 'modules/admin/admin-publishers-edit/AdminPublishersEditContainer';
 import AdminPublishersAdd from 'modules/admin/admin-publishers-add/AdminPublishersAddContainer';
 
-import AdminUsers from 'modules/admin/admin-users/AdminUsersRoute';
-import AdminUsersEdit from 'modules/admin/admin-users-edit/AdminUsersEditRoute';
-import AdminUsersAdd from 'modules/admin/admin-users-add/AdminUsersAddRoute';
+import AdminUsers from 'modules/admin/admin-users/AdminUsersContainer';
+import AdminUsersEdit from 'modules/admin/admin-users-edit/AdminUsersEditContainer';
+import AdminUsersAdd from 'modules/admin/admin-users-add/AdminUsersAddContainer';
 
-import AdminTags from 'modules/admin/admin-tags/AdminTagsRoute';
-import AdminTagsEdit from 'modules/admin/admin-tags-edit/AdminTagsEditRoute';
-import AdminTagsAdd from 'modules/admin/admin-tags-add/AdminTagsAddRoute';
+import AdminTags from 'modules/admin/admin-tags/AdminTagsContainer';
+import AdminTagsEdit from 'modules/admin/admin-tags-edit/AdminTagsEditContainer';
+import AdminTagsAdd from 'modules/admin/admin-tags-add/AdminTagsAddContainer';
 
-import AdminLists from 'modules/admin/admin-lists/AdminListsRoute';
-import AdminListsEdit from 'modules/admin/admin-lists-edit/AdminListsEditRoute';
-import AdminListsAdd from 'modules/admin/admin-lists-add/AdminListsAddRoute';
+import AdminLists from 'modules/admin/admin-lists/AdminListsContainer';
+import AdminListsEdit from 'modules/admin/admin-lists-edit/AdminListsEditContainer';
+import AdminListsAdd from 'modules/admin/admin-lists-add/AdminListsAddContainer';
 
 import NavbarHeader from 'modules/common/NavbarHeader';
 import SideNavigation from 'modules/common/SideNavigation';
@@ -63,17 +63,17 @@ class AuthAdminRouter extends Component {
 
           <Route exact path={`${this.props.match.path}/users`} component={AdminUsers} />
           <Route exact path={`${this.props.match.path}/users/add`} component={AdminUsersAdd} />
-          <Route exact path={`${this.props.match.path}/users/:pageNo`} component={AdminUsers} />
+          <Route exact path={`${this.props.match.path}/users/pages/:pageNo`} component={AdminUsers} />
           <Route exact path={`${this.props.match.path}/users/edit/:userId`} component={AdminUsersEdit} />
 
           <Route exact path={`${this.props.match.path}/tags`} component={AdminTags} />
           <Route exact path={`${this.props.match.path}/tags/add`} component={AdminTagsAdd} />
-          <Route exact path={`${this.props.match.path}/tags/:pageNo`} component={AdminTags} />
+          <Route exact path={`${this.props.match.path}/tags/pages/:pageNo`} component={AdminTags} />
           <Route exact path={`${this.props.match.path}/tags/edit/:tagId`} component={AdminTagsEdit} />
 
           <Route exact path={`${this.props.match.path}/lists`} component={AdminLists} />
           <Route exact path={`${this.props.match.path}/lists/add`} component={AdminListsAdd} />
-          <Route exact path={`${this.props.match.path}/lists/:pageNo`} component={AdminLists} />
+          <Route exact path={`${this.props.match.path}/lists/pages/:pageNo`} component={AdminLists} />
           <Route exact path={`${this.props.match.path}/lists/edit/:listId`} component={AdminListsEdit} />
         </div>
       </div>

@@ -9,11 +9,15 @@ class AdminPublishersComponent extends Component {
   constructor(props) {
 		super(props);
 
+    this.state = {
+      pageNo: props.match.params.pageNo || 1,
+      title: ''
+    };
     this.setSearchTitle = this.setSearchTitle.bind(this);
 	}
 
 	componentDidMount() {
-		this.props.getAllPublishers({ title: '' });
+		this.props.getAllPublishers(this.state);
 	}
 
   componentWillReceiveProps(nextProps) {
@@ -21,7 +25,7 @@ class AdminPublishersComponent extends Component {
 	}
 
   onLiClick() {
-    this.setState(this.props.search);
+    this.setState({ pageNo: this.props.match.params.pageNo });
   }
   setSearchTitle(newValue) {
     this.setState({ title: newValue });

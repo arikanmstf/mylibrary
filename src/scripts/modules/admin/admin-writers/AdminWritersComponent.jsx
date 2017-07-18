@@ -9,19 +9,19 @@ class AdminWritersComponent extends Component {
   constructor(props) {
 		super(props);
 
+    this.state = {
+      title: '',
+      pageNo: this.props.match.params.pageNo || 1
+    };
     this.setSearchTitle = this.setSearchTitle.bind(this);
 	}
 
 	componentDidMount() {
-		this.props.getAllWriters({ title: '' });
-	}
-
-  componentWillReceiveProps(nextProps) {
-		this.setState(nextProps.search);
+		this.props.getAllWriters(this.state);
 	}
 
   onLiClick() {
-    this.setState(this.props.search);
+    this.setState({ pageNo: this.props.match.params.pageNo });
   }
   setSearchTitle(newValue) {
     this.setState({ title: newValue });
@@ -77,7 +77,6 @@ class AdminWritersComponent extends Component {
 }
 
 AdminWritersComponent.propTypes = {
-  search: PropTypes.object,
   getAllWriters: PropTypes.func.isRequired,
   writers: PropTypes.arrayOf(Object),
   total: PropTypes.number,
@@ -85,7 +84,6 @@ AdminWritersComponent.propTypes = {
 };
 
 AdminWritersComponent.defaultProps = {
-  search: {},
 	writers: [],
 	total: 0
 };

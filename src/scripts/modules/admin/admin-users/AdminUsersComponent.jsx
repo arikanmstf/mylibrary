@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Pagination from 'modules/common/Pagination';
 import InputSearch from 'common/input/InputSearch';
-import { getAllUsers } from './AdminUsersActions';
 
-class AdminUsersPage extends Component {
+class AdminUsersComponent extends Component {
   constructor(props) {
 		super(props);
-		this.state = props.search;
 
+    this.state = {
+      title: '',
+      pageNo: this.props.match.params.pageNo || 1
+    };
     this.setSearchTitle = this.setSearchTitle.bind(this);
 	}
 
@@ -19,12 +20,8 @@ class AdminUsersPage extends Component {
 		this.props.getAllUsers(this.state);
 	}
 
-  componentWillReceiveProps(nextProps) {
-		this.setState(nextProps.search);
-	}
-
   onLiClick() {
-    this.setState(this.props.search);
+    this.setState({ pageNo: this.props.match.params.pageNo });
   }
   setSearchTitle(newValue) {
     this.setState({ title: newValue });
@@ -55,10 +52,10 @@ class AdminUsersPage extends Component {
       <div>
           <h3>Admin Users</h3>
           <Pagination
-            pageNo={parseInt(this.props.search.pageNo, 10)}
+            pageNo={parseInt(this.state.pageNo, 10)}
             total={this.props.total}
             onLiClick={this.onLiClick}
-            linkTo="admin/users"
+            linkTo="admin/users/pages"
           />
           <Link to={`/admin/users/add`} className="btn btn-success">Add User</Link>
           <InputSearch makeSearch={this.setSearchTitle} />
@@ -79,28 +76,16 @@ class AdminUsersPage extends Component {
   }
 }
 
-AdminUsersPage.propTypes = {
-  search: PropTypes.object,
+AdminUsersComponent.propTypes = {
   getAllUsers: PropTypes.func.isRequired,
   users: PropTypes.arrayOf(Object),
-  total: PropTypes.number
+  total: PropTypes.number,
+  match: PropTypes.object.isRequired
 };
 
-AdminUsersPage.defaultProps = {
-  search: {},
+AdminUsersComponent.defaultProps = {
 	users: [],
 	total: 0
 };
 
-function mapStateToProps(state) {
-  return {
-   users: state.users.list,
-   total: parseInt(state.users.total, 10)
-  };
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return { getAllUsers: (search) => dispatch(getAllUsers(search)) };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AdminUsersPage);
+export default AdminUsersComponent;

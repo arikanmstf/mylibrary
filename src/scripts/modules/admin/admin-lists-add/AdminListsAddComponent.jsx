@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { addTagDetails } from '../AdminActions';
-
-class AdminTagsAddPage extends Component {
+class AdminListsAddComponent extends Component {
 
 	constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      ...props
+      title: ''
     };
 
     this.onTitleChange = this.onTitleChange.bind(this);
@@ -32,7 +28,7 @@ class AdminTagsAddPage extends Component {
     const form = {
       title: this.state.title
     };
-    this.props.addTagDetails(form);
+    this.props.addListDetails(form);
   }
 
 	render() {
@@ -53,14 +49,8 @@ class AdminTagsAddPage extends Component {
 		);
 	}
 }
-AdminTagsAddPage.propTypes = {
-  addTagDetails: PropTypes.func.isRequired,
+AdminListsAddComponent.propTypes = {
+  addListDetails: PropTypes.func.isRequired
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addTagDetails: (form) => dispatch(addTagDetails(form))
-  };
-};
-
-export default connect(0, mapDispatchToProps)(AdminTagsAddPage);
+export default AdminListsAddComponent;

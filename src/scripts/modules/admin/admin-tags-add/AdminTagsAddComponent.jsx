@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getListDetails } from '../../list-details/ListDetailsActions';
-import { updateListDetails } from '../AdminActions';
-
-class AdminListsEditPage extends Component {
+class AdminTagsAddComponent extends Component {
 
 	constructor(props) {
     super(props);
@@ -18,15 +14,6 @@ class AdminListsEditPage extends Component {
     this.saveForm = this.saveForm.bind(this);
   }
 
-  componentDidMount() {
-    this.props.getListDetails(this.state.listId);
-  }
-
-  componentWillReceiveProps(nextProps) {
-		this.setState({
-      title: nextProps.list.title
-    });
-	}
   onTitleChange(event) {
     this.setState({
       title: event.target.value
@@ -40,15 +27,13 @@ class AdminListsEditPage extends Component {
 
   saveForm() {
     const form = {
-      list_id: this.props.list.list_id,
       title: this.state.title
     };
-    this.props.updateListDetails(form);
+    this.props.addTagDetails(form);
   }
 
 	render() {
-		const list = this.props.list;
-		return list && (
+		return true && (
 			<div className="item-details-page col-md-9 col-sm-9 col-">
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
@@ -65,23 +50,8 @@ class AdminListsEditPage extends Component {
 		);
 	}
 }
-AdminListsEditPage.propTypes = {
-  getListDetails: PropTypes.func.isRequired,
-  updateListDetails: PropTypes.func.isRequired,
-	list: PropTypes.object.isRequired
+AdminTagsAddComponent.propTypes = {
+  addTagDetails: PropTypes.func.isRequired,
 };
 
-function mapStateToProps(state) {
-	return {
-		list: state.list
-	};
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getListDetails: (search) => dispatch(getListDetails(search)),
-    updateListDetails: (form) => dispatch(updateListDetails(form))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AdminListsEditPage);
+export default AdminTagsAddComponent;

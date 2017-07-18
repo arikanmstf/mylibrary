@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getUserDetails } from '../admin-users/AdminUsersActions';
-import { updateUserDetails } from '../AdminActions';
-
-class AdminUsersEditPage extends Component {
+class AdminUsersEditComponent extends Component {
 
 	constructor(props) {
     super(props);
@@ -13,8 +9,7 @@ class AdminUsersEditPage extends Component {
       user_type: 1,
       email: '',
       display_name: '',
-      login_name: '',
-      ...props
+      login_name: ''
     };
 
     this.onDispChange = this.onDispChange.bind(this);
@@ -26,7 +21,7 @@ class AdminUsersEditPage extends Component {
   }
 
   componentDidMount() {
-    this.props.getUserDetails(this.state.userId);
+    this.props.getUserDetails(this.props.match.params.userId);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -102,23 +97,11 @@ class AdminUsersEditPage extends Component {
 		);
 	}
 }
-AdminUsersEditPage.propTypes = {
+AdminUsersEditComponent.propTypes = {
   getUserDetails: PropTypes.func.isRequired,
   updateUserDetails: PropTypes.func.isRequired,
-	user: PropTypes.object.isRequired
+	user: PropTypes.object.isRequired,
+	match: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state) {
-	return {
-		user: state.user
-	};
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getUserDetails: (search) => dispatch(getUserDetails(search)),
-    updateUserDetails: (form) => dispatch(updateUserDetails(form))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AdminUsersEditPage);
+export default AdminUsersEditComponent;

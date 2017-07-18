@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getTagDetails } from '../../tag-details/TagDetailsActions';
-import { updateTagDetails } from '../AdminActions';
-
-class AdminTagsEditPage extends Component {
+class AdminTagsEditComponent extends Component {
 
 	constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      ...props
+      title: ''
     };
 
     this.onTitleChange = this.onTitleChange.bind(this);
@@ -19,7 +14,7 @@ class AdminTagsEditPage extends Component {
   }
 
   componentDidMount() {
-    this.props.getTagDetails(this.state.tagId);
+    this.props.getTagDetails(this.props.match.params.tagId);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -65,23 +60,11 @@ class AdminTagsEditPage extends Component {
 		);
 	}
 }
-AdminTagsEditPage.propTypes = {
+AdminTagsEditComponent.propTypes = {
   getTagDetails: PropTypes.func.isRequired,
   updateTagDetails: PropTypes.func.isRequired,
-	tag: PropTypes.object.isRequired
+	tag: PropTypes.object.isRequired,
+	match: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state) {
-	return {
-		tag: state.tag
-	};
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getTagDetails: (search) => dispatch(getTagDetails(search)),
-    updateTagDetails: (form) => dispatch(updateTagDetails(form))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AdminTagsEditPage);
+export default AdminTagsEditComponent;

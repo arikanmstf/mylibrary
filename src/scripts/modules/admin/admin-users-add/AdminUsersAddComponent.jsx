@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { addUserDetails } from '../AdminActions';
-
-class AdminUsersEditPage extends Component {
+class AdminUsersAddComponent extends Component {
 
 	constructor(props) {
     super(props);
@@ -97,14 +94,8 @@ class AdminUsersEditPage extends Component {
 		);
 	}
 }
-AdminUsersEditPage.propTypes = {
+AdminUsersAddComponent.propTypes = {
   addUserDetails: PropTypes.func.isRequired
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addUserDetails: (form) => dispatch(addUserDetails(form))
-  };
-};
-
-export default connect(0, mapDispatchToProps)(AdminUsersEditPage);
+export default AdminUsersAddComponent;
