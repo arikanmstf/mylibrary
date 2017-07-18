@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 
+import { updatePublicationDetailsList } from 'modules/admin/AdminActions';
 import PublicationDetailsComponent from './PublicationDetailsComponent';
 import { getPublicationDetails } from './PublicationDetailsActions';
 
