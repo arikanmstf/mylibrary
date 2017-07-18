@@ -29,7 +29,7 @@ class App extends Component {
         <Router>
             { isLoggedIn ?
               <Switch>
-                <Route exact path="/" component={AuthUserRouter} />
+                <Route path="/" component={AuthUserRouter} />
                 <Route path="/admin" component={AuthAdminRouter} />
                 <Route path="*" component={NotFoundComponent} />
               </Switch>
