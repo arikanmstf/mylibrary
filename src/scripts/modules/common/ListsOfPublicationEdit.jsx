@@ -38,15 +38,14 @@ class ListsOfPublicationEdit extends Component {
     lists.push(list);
     this.setState({ lists, new_list: '' });
     this.props.resetGetListBySearch();
+    this.props.onListsChange(lists);
   }
   removeList(l) {
-    const lists = [];
-    for (let i = 0; i < this.state.lists.length; i++) {
-      if (this.state.lists[i].list_id !== l.list_id) {
-        lists.push(this.state.lists[i]);
-      }
-    }
+    const lists = this.state.lists.filter((list) => {
+        return list.list_id !== l.list_id;
+    });
     this.setState({ lists });
+    this.props.onListsChange(lists);
   }
 
   renderSearchList() {
@@ -99,7 +98,8 @@ ListsOfPublicationEdit.propTypes = {
 	lists: PropTypes.arrayOf(Object),
   listSearch: PropTypes.arrayOf(Object).isRequired,
   getListBySearch: PropTypes.func.isRequired,
-  resetGetListBySearch: PropTypes.func.isRequired
+  resetGetListBySearch: PropTypes.func.isRequired,
+  onListsChange: PropTypes.func.isRequired
 };
 ListsOfPublicationEdit.defaultProps = {
   lists: []

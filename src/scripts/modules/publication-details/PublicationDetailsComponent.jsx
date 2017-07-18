@@ -7,6 +7,14 @@ import { commaListItems } from 'common/Helpers';
 
 class PublicationDetailsComponent extends Component {
 
+	constructor(props) {
+    super(props);
+    this.state = {
+			lists: props.publication.lists
+		};
+		this.onListsChange = this.onListsChange.bind(this);
+  }
+
 	componentDidMount() {
 		this.props.getPublicationDetails(this.props.match.params.publicationId);
 	}
@@ -17,7 +25,12 @@ class PublicationDetailsComponent extends Component {
     });
 	}
 
+	onListsChange(lists) {
+		this.setState({ lists });
+	}
+
 	saveForm() {
+		console.log(this.state);
 		const form = {
 			publication_id: this.props.match.params.publicationId,
 			lists: this.state.lists
@@ -76,7 +89,7 @@ class PublicationDetailsComponent extends Component {
 						<div className="item-lists-container">
 							<div className="item-lists">
 								<h5>Lists</h5>
-								<ListsOfPublicationEdit lists={publication.lists} />
+								<ListsOfPublicationEdit lists={publication.lists} onListsChange={this.onListsChange} />
 							</div>
 						</div>
 						<div className="col-md-12" >
