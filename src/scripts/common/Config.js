@@ -58,5 +58,5 @@ export const API = {
 };
 
 export const PAGINATION = {
-  recordsPerPage: 2
+  recordsPerPage: 36
 };

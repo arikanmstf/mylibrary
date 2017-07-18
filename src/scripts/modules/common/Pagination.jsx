@@ -58,6 +58,7 @@ export default class Pagination extends Component {
   render() {
     const recordsPerPage = PAGINATION.recordsPerPage;
     const totalPage = parseInt(this.props.total / recordsPerPage, 10) + 1;
+    if (totalPage < 2) return null;
     const pageNo = parseInt(this.props.pageNo, 10);
     const result = [];
     if (totalPage > 10) {
