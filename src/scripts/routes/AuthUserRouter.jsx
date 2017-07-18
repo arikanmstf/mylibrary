@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 
+import AuthAdminRouter from 'routes/AuthAdminRouter';
+
 import BookDetails from 'modules/book-details/BookDetailsContainer';
 import Home from 'modules/home/HomeComponent';
 import PublicationDetails from 'modules/publication-details/PublicationDetailsContainer';
@@ -10,8 +12,6 @@ import ListDetails from 'modules/list-details/ListDetailsContainer';
 import TagDetails from 'modules/tag-details/TagDetailsContainer';
 import PublisherDetails from 'modules/publisher-details/PublisherDetailsContainer';
 import Profile from 'modules/profile/ProfileContainer';
-
-import AdminPage from 'modules/admin/AdminPage';
 
 class AuthUserRouter extends Component {
   render() {
@@ -27,7 +27,7 @@ class AuthUserRouter extends Component {
       <Route exact path={`${this.props.match.path}publishers/:publisherId`} component={PublisherDetails} />
       <Route exact path={`${this.props.match.path}profile`} component={Profile} />
 
-      <Route exact path="/admin" component={AdminPage} />
+      <Route path={`${this.props.match.path}admin`} component={AuthAdminRouter} />
     </div>);
   }
 }
