@@ -29,6 +29,7 @@ class AdminPublicationsEditComponent extends Component {
     this.onPageChange = this.onPageChange.bind(this);
     this.searchPublishers = this.searchPublishers.bind(this);
     this.searchBooks = this.searchBooks.bind(this);
+    this.onListsChange = this.onListsChange.bind(this);
 
     this.saveForm = this.saveForm.bind(this);
   }
@@ -76,6 +77,9 @@ class AdminPublicationsEditComponent extends Component {
       new_title: event.target.value
     });
   }
+	onListsChange(lists) {
+		this.setState({ lists });
+	}
   addNewBook(book) {
     this.setState({ ...book, new_title: '' });
     this.props.resetGetBookBySearch();
@@ -202,7 +206,7 @@ class AdminPublicationsEditComponent extends Component {
 						<div className="item-lists-container">
 							<div className="item-lists col-sm-12 col-xs-12">
 								<h5>Lists</h5>
-								<ListsOfPublicationEdit lists={this.state.lists} />
+								<ListsOfPublicationEdit lists={this.state.lists} onListsChange={this.onListsChange} />
 							</div>
 						</div>
 					</div>

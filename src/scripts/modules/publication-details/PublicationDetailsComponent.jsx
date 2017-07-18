@@ -30,7 +30,6 @@ class PublicationDetailsComponent extends Component {
 	}
 
 	saveForm() {
-		console.log(this.state);
 		const form = {
 			publication_id: this.props.match.params.publicationId,
 			lists: this.state.lists
