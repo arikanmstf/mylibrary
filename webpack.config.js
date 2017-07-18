@@ -73,7 +73,10 @@ module.exports = {
     modules: [
       path.resolve('./src/scripts'),
       path.resolve('./node_modules')
-    ]
+    ],
+    alias: {
+      config$: require.resolve("./src/config/" + argv.env + ".js")
+    }
   },
   devServer: {
     historyApiFallback: true,

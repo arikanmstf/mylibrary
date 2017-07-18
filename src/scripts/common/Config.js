@@ -1,4 +1,6 @@
-const home = 'http://mustafaarikan.net/mylibapi';
+import config from 'config';
+
+const home = config.middleWareUrl;
 const publications = '/publications';
 const membership = '/membership';
 const lists = '/lists';
