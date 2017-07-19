@@ -23,7 +23,7 @@ class LoginComponent extends Component {
 		return (
 				<div className="login-page">
 					<img
-						src="./assets/img/react-logo.png"
+						src="/assets/img/react-logo.png"
 						width="180"
 						height="180"
 					/>

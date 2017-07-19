@@ -49,7 +49,7 @@ class PublicationDetailsComponent extends Component {
 							src={`/assets/img/cover/${publication.publication_id}.jpg`}
 						/>
 					</div>
-					<div className="col-md-9 col-sm-9 item-info">
+					<div className="col-md-9 col-sm-9 item-info content-container">
 						<div className="item-title">
 							<span>{ publication.title }</span>
 						</div>
