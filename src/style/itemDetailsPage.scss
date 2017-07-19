@@ -1,8 +1,12 @@
-$btnPadding: 0px 8px;
+$btnPadding: 6px 12px;
 
 .item-details-page {
   background-color: $white;
   margin: 0 auto;
+
+  &.publication-details {
+    max-width: $containerMaxWidth;
+  }
 
   .item-details-container {
 
@@ -20,7 +24,7 @@ $btnPadding: 0px 8px;
         border-bottom: 1px solid $gray;
 
         .input-title {
-
+          width: 100%;
         }
       }
 
@@ -38,6 +42,12 @@ $btnPadding: 0px 8px;
       }
 
       .item-table {
+
+        .table-hover {
+          tr:hover {
+            background-color: $lightYellow;
+          }
+        }
         td{
           padding-left: 0px;
         }
@@ -108,10 +118,6 @@ $btnPadding: 0px 8px;
           }
         }
       }
-    }
-
-    .glyphicon-remove {
-      color: $red;
     }
   }
 }

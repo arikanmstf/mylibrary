@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { getListBySearch, resetGetListBySearch } from 'modules/list-details/ListDetailsActions';
@@ -49,8 +48,13 @@ class ListsOfPublicationEdit extends Component {
   }
 
   renderSearchList() {
+    const lists = this.state.lists;
     const listSearch = this.props.listSearch;
-    return listSearch && (this.props.listSearch.map((list) => {
+
+    return listSearch && (listSearch.map((list) => {
+      for (let i = 0; i < lists.length; i++) {
+        if (lists[i].list_id === list.list_id) return null;
+      }
       return (
         <li key={list.list_id} onClick={() => this.addNewList(list)}>{list.title}</li>
       );
@@ -60,14 +64,13 @@ class ListsOfPublicationEdit extends Component {
 	renderList() {
 		return this.state.lists.map((list) => {
 			return (
-				<div key={list.list_id}>
-					<Link to={`/admin/lists/edit/${list.list_id}`} >
-						<span className="list">
-								{list.title}
-						</span>
-					</Link>
-          <i onClick={() => this.removeList(list)} className="glyphicon glyphicon-remove" />
-				</div>
+        <span
+          onClick={() => this.removeList(list)}
+          key={list.list_id}
+        >
+					{list.title}
+          <i className="glyphicon glyphicon-remove" />
+        </span>
 			);
 		});
 	}
@@ -76,15 +79,23 @@ class ListsOfPublicationEdit extends Component {
 		const lists = this.state.lists;
 		return lists ? (
 			<div className="lists-of-publication">
-						{this.renderList()}
-            <input
-              placeholder="Search for lists"
-              value={this.state.new_list}
-              onChange={this.onNewListChange}
-            />
-            <button className="btn btn-search" onClick={this.searchLists}>
-              <i className="glyphicon glyphicon-search" />
-            </button>
+              <div className="list-list">{this.renderList()}</div>
+              <div className="custom-search-input">
+                  <div className="input-group col-md-12">
+                      <input
+                        value={this.state.new_list}
+                        onChange={this.onNewListChange}
+                        type="text"
+                        className="form-control input-lg"
+                        placeholder="Search for lists"
+                      />
+                      <span className="input-group-btn">
+                          <button className="btn btn-lg" type="button" onClick={this.searchLists}>
+                              <i className="glyphicon glyphicon-search" />
+                          </button>
+                      </span>
+                  </div>
+              </div>
             <div className="item-search-results">
               <ul>
                 {this.renderSearchList()}

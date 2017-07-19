@@ -12,34 +12,50 @@
 @import "inputSearch.scss";
 @import "sideNavigation.scss";
 @import "pagination.scss";
+@import "footer.scss";
+@import "listsOfPublication.scss";
 
+html {
+  position: relative;
+  min-height: 100%;
+}
 body {
-  background-image: url(/assets/img/pattern/pattern11.png);
+  background-image: url(/assets/img/pattern/foggy_birds.png);
   background-repeat: repeat;
+  @extend .calibri-font;
+  margin-bottom: 50px;
+}
+.main-content {
+  position: relative;
+  min-height: 100%;
 
-}
-.alert {
-  padding: 5px;
-}
-.navbar {
-  margin-bottom: 0px;
-}
+  .main-container {
+    position: relative;
+    min-height: 100%;
+  }
+  .alert {
+    padding: 5px;
+  }
+  .navbar {
+    margin-bottom: 0px;
+  }
 
-.loadingBaseLayer {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(88,88,88,0.8);
-  z-index: 100000;
-}
-.loadingSpinnerContainer {
+  .loadingBaseLayer {
     position: fixed;
-    width: 100%;
-    text-align: center;
-    top: 50%;
-    left: 0px;
-    z-index: 100001;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(88,88,88,0.8);
+    z-index: 100000;
+  }
+  .loadingSpinnerContainer {
+      position: fixed;
+      width: 100%;
+      text-align: center;
+      top: 50%;
+      left: 0px;
+      z-index: 100001;
 
+  }
 }

@@ -13,10 +13,14 @@ import TagDetails from 'modules/tag-details/TagDetailsContainer';
 import PublisherDetails from 'modules/publisher-details/PublisherDetailsContainer';
 import Profile from 'modules/profile/ProfileContainer';
 
+import NavbarHeader from 'modules/common/NavbarHeader';
+
 class AuthUserRouter extends Component {
+
   render() {
     return (
     <div>
+      <NavbarHeader />
       <Route exact path={this.props.match.path} component={Home} />
       <Route exact path={`${this.props.match.path}pages/:pageNo`} component={Home} />
       <Route exact path={`${this.props.match.path}publications/:publicationId`} component={PublicationDetails} />

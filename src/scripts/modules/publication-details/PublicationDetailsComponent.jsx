@@ -41,7 +41,7 @@ class PublicationDetailsComponent extends Component {
 		const publication = this.props.publication;
 		const linkStyle = { color: '#AAAAAA' };
 		return publication && (
-			<div className="item-details-page">
+			<div className="item-details-page publication-details">
 				<div className="item-details-container">
 					<div className="col-md-3 col-sm-3 item-info image-container">
 						<img
@@ -63,7 +63,7 @@ class PublicationDetailsComponent extends Component {
 							{ publication.description }
 						</p>
 						<div className="item-table">
-							<table className="table table-responsive">
+							<table className="table table-responsive table-hover">
 								<tbody>
 									{ publication.isbn &&
 									<tr>
@@ -91,9 +91,7 @@ class PublicationDetailsComponent extends Component {
 								<ListsOfPublicationEdit lists={publication.lists} onListsChange={this.onListsChange} />
 							</div>
 						</div>
-						<div className="col-md-12" >
-							<button className="btn btn-primary" onClick={(e) => this.saveForm(e)}>Save</button>
-						</div>
+						<button className="btn btn-primary" onClick={(e) => this.saveForm(e)}>Save</button>
 					</div>
 					<div className="clearfix" />
 					<div className="col-md-12" />

@@ -18,9 +18,24 @@ class NavbarHeader extends Component {
                 <Link className="navbar-brand" to="/">MyLibray</Link>
               </div>
               <ul className="nav navbar-nav">
-                <li><Link to="/admin">Admin</Link></li>
-                <li><Link to="/profile">Profile</Link></li>
-                <li><a onClick={() => this.getLogout()}>Logout</a></li>
+                <li>
+                  <Link to="/admin">
+                    <span>Admin</span>
+                    <i className="glyphicon glyphicon-lock" />
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/profile">
+                    <span>Profile</span>
+                    <i className="glyphicon glyphicon-user" />
+                  </Link>
+                </li>
+                <li>
+                  <a onClick={() => this.getLogout()}>
+                    <span>Logout</span>
+                    <i className="glyphicon glyphicon-log-out" />
+                  </a>
+                </li>
               </ul>
             </div>
           </nav>

@@ -30,14 +30,12 @@ import AdminLists from 'modules/admin/admin-lists/AdminListsContainer';
 import AdminListsEdit from 'modules/admin/admin-lists-edit/AdminListsEditContainer';
 import AdminListsAdd from 'modules/admin/admin-lists-add/AdminListsAddContainer';
 
-import NavbarHeader from 'modules/common/NavbarHeader';
 import SideNavigation from 'modules/common/SideNavigation';
 
 class AuthAdminRouter extends Component {
   render() {
     return (
       <div>
-        <NavbarHeader />
         <SideNavigation />
         <div className="admin-page col-xs-12 col-sm-9 col-md-9">
           <Route exact path={this.props.match.path} component={AdminPublications} />

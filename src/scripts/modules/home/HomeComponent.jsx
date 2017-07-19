@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import NavbarHeader from 'modules/common/NavbarHeader';
-import InputSearch from 'common/input/InputSearch';
-import PublicationList from '../publication-list/PublicationListContainer';
+import PublicationList from 'modules/publication-list/PublicationListContainer';
 
 class HomeComponent extends Component {
   constructor(props) {
@@ -23,8 +21,6 @@ class HomeComponent extends Component {
   render() {
     return (
       <div>
-        <NavbarHeader />
-        <InputSearch makeSearch={this.setSearchTitle} />
         <PublicationList pageNo={this.state.pageNo} title={this.state.title} />
       </div>
     );

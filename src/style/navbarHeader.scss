@@ -1,3 +1,15 @@
 .navbar-header-container {
-
+  a {
+    cursor: pointer;
+  }
+  .navbar-default {
+    background-color: $coolYellow;
+  }
+  .nav{
+    &.navbar-nav {
+      i.glyphicon {
+        margin-left: 3px;
+      }
+    }
+  }
 }

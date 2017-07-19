@@ -18,7 +18,6 @@ class AdminPublicationsEditComponent extends Component {
       new_title: '',
       new_publisher: '',
       lists: [],
-      ...props
     };
 
     this.onNewBookChange = this.onNewBookChange.bind(this);
