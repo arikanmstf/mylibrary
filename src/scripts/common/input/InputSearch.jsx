@@ -6,20 +6,17 @@ class InputSearch extends Component {
     super(props);
 
     this.state = {
-      title: ''
+      search_title: ''
     };
 
     this.handleSearchChange = this.handleSearchChange.bind(this);
-    this.makeSearch = this.makeSearch.bind(this);
   }
 
-  handleSearchChange(newValue) {
-    this.setState({ title: newValue });
+  handleSearchChange(event) {
+    this.setState({ search_title: event.target.value });
   }
   makeSearch() {
-    if (this.props.makeSearch) {
-      this.props.makeSearch(this.state.title);
-    }
+    this.props.makeSearch(this.state.search_title);
   }
 
   defaultSearch() {
@@ -38,7 +35,7 @@ class InputSearch extends Component {
                   placeholder="Search"
                 />
                 <span className="input-group-btn">
-                    <button className="btn btn-lg" type="button" onClick={this.makeSearch}>
+                    <button className="btn btn-lg" type="button" onClick={() => this.makeSearch()}>
                         <i className="glyphicon glyphicon-search" />
                     </button>
                 </span>
@@ -50,11 +47,7 @@ class InputSearch extends Component {
 }
 
 InputSearch.propTypes = {
-  makeSearch: PropTypes.func,
-};
-
-InputSearch.defaultProps = {
-  makeSearch: InputSearch.defaultSearch,
+  makeSearch: PropTypes.func.isRequired
 };
 
 export default InputSearch;

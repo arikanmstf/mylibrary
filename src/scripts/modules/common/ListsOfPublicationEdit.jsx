@@ -10,11 +10,9 @@ class ListsOfPublicationEdit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      new_list: '',
       lists: []
     };
 
-    this.onNewListChange = this.onNewListChange.bind(this);
     this.searchLists = this.searchLists.bind(this);
     this.removeList = this.removeList.bind(this);
     this.addNewList = this.addNewList.bind(this);
@@ -25,18 +23,13 @@ class ListsOfPublicationEdit extends Component {
     });
   }
 
-  onNewListChange(event) {
-    this.setState({
-      new_list: event.target.value
-    });
-  }
-  searchLists() {
-    this.props.getListBySearch(this.state.new_list);
+  searchLists(newValue) {
+    this.props.getListBySearch(newValue);
   }
   addNewList(list) {
     const lists = this.state.lists;
     lists.push(list);
-    this.setState({ lists, new_list: '' });
+    this.setState({ lists });
     this.props.resetGetListBySearch();
     this.props.onListsChange(lists);
   }
