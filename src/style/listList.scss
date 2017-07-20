@@ -1,4 +1,4 @@
-.tag-list {
+.list-list {
   padding: 0;
   list-style: none;
 
@@ -6,16 +6,16 @@
     border-bottom: 1px solid $lightBlack;
     padding: 10px;
 
-    .tag-meta {
+    .list-meta {
       background-color: $white;
       border-bottom-right-radius: 5px;
       border-bottom-left-radius: 5px;
 
-      .tag-info {
+      .list-info {
         padding: 8px;
         text-align: center;
 
-        .tag-title {
+        .list-title {
           font-size: $mediumFontSize;
         }
       }

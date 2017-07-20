@@ -31,6 +31,18 @@ class NavbarHeader extends Component {
                   </Link>
                 </li>
                 <li>
+                  <Link to="/tags">
+                    <span>Tags</span>
+                    <i className="glyphicon glyphicon-tags" />
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/lists">
+                    <span>Lists</span>
+                    <i className="glyphicon glyphicon-list" />
+                  </Link>
+                </li>
+                <li>
                   <a onClick={() => this.getLogout()}>
                     <span>Logout</span>
                     <i className="glyphicon glyphicon-log-out" />

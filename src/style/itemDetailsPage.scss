@@ -5,16 +5,13 @@ $btnPadding: 6px 12px;
   margin: 0 auto;
   max-width: $containerMaxWidth;
 
-  &.publication-details, &.writer-details, &.book-details,
-  &.publisher-details, &.list-details , &.tag-details {
-    border: 1px solid $dedede;
-    border-radius: 8px;
-    margin-top: 20px;
-    padding: 10px;
+  border: 1px solid $dedede;
+  border-radius: 8px;
+  margin-top: 20px;
+  padding: 10px;
 
-    .content-container {
-      background: $white;
-    }
+  .content-container {
+    background: $white;
   }
   &.publication-details {
     .item-details-container {

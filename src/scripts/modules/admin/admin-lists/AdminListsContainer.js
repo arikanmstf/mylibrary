@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { getAllLists } from './AdminListsActions';
+import { getAllLists } from 'modules/list-list/ListListActions';
 import AdminListsComponent from './AdminListsComponent';
 
 const mapStateToProps = (state) => {
