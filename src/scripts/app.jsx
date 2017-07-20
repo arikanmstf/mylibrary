@@ -8,7 +8,6 @@ import Storage from 'common/Storage';
 import ModalLoading from 'common/ModalLoading';
 import UnAuthRouter from 'routes/UnAuthRouter';
 import AuthUserRouter from 'routes/AuthUserRouter';
-import NotFoundComponent from 'modules/not-found/NotFoundComponent';
 
 const isLoggedIn = Storage.get('login_key');
 
@@ -29,7 +28,6 @@ class App extends Component {
             { isLoggedIn ?
               <Switch>
                 <Route path="/" component={AuthUserRouter} />
-                <Route path="*" component={NotFoundComponent} />
               </Switch>
               :
               <Switch>

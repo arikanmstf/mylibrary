@@ -16,6 +16,7 @@ import PublisherDetails from 'modules/publisher-details/PublisherDetailsContaine
 import Profile from 'modules/profile/ProfileContainer';
 
 import NavbarHeader from 'modules/common/NavbarHeader';
+import NotFound from 'modules/not-found/NotFoundComponent';
 
 class AuthUserRouter extends Component {
 
@@ -36,6 +37,7 @@ class AuthUserRouter extends Component {
       <Route exact path={`${this.props.match.path}profile`} component={Profile} />
 
       <Route path={`${this.props.match.path}admin`} component={AuthAdminRouter} />
+      <Route path="*" component={NotFound} />
     </div>);
   }
 }
