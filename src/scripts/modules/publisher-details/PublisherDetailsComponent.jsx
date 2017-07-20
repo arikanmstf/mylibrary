@@ -12,7 +12,7 @@ class PublisherDetailsComponent extends Component {
 	render() {
 		const publisher = this.props.publisher;
 		return publisher ? (
-      <div className="item-details-page">
+      <div className="item-details-page publisher-details">
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
 						<div className="item-title">

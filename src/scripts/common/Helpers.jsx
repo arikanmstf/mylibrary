@@ -8,7 +8,7 @@ export function commaListItems(item, ids, route) {
   const rowLen = itemArr.length;
 
   itemArr = itemArr.map((w, i) => {
-    return (<span key={w}><Link to={`/${route}/${idsArr[i]}`}>{w}</Link>{rowLen === i + 1 ? null : ', '}</span>);
+    return (<span key={idsArr[i]}><Link to={`/${route}/${idsArr[i]}`}>{w}</Link>{rowLen === i + 1 ? null : ', '}</span>);
   });
   return itemArr;
 }

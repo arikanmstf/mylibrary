@@ -16,7 +16,7 @@ class WriterDetailsComponent extends Component {
 		const writerLife = writerBirth + writerDeath;
 
 		return writer ? (
-      <div className="item-details-page">
+      <div className="item-details-page writer-details">
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
 						<div className="item-title">

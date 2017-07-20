@@ -12,7 +12,7 @@ class TagDetailsComponent extends Component {
 	render() {
 		const tag = this.props.tag;
 		return tag ? (
-      <div className="item-details-page">
+      <div className="item-details-page tag-details">
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
 						<div className="item-title">

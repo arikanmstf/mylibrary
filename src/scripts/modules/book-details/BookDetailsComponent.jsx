@@ -12,7 +12,7 @@ class BookDetailsComponent extends Component {
 	render() {
 		const book = this.props.book;
 		return book ? (
-			<div className="item-details-page">
+			<div className="item-details-page book-details">
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
 						<div className="item-title">
