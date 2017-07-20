@@ -2,9 +2,20 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import InputSearch from 'common/input/InputSearch';
 import Pagination from 'modules/common/Pagination';
 
 class PublicationListComponent extends Component {
+
+	constructor(props) {
+		super(props);
+
+		this.state = {
+      title: ''
+    };
+    this.searchPublications = this.searchPublications.bind(this);
+	}
+
 	componentDidMount() {
 		this.props.getAllPublications(this.props);
 	}
@@ -19,6 +30,10 @@ class PublicationListComponent extends Component {
   onLiClick() {
     this.setState(this.props);
   }
+	searchPublications(e) {
+		this.setState({ title: e });
+		this.props.getAllPublications({ title: e });
+	}
 
 	renderList() {
 		return this.props.publications.map((publication) => {
@@ -52,6 +67,7 @@ class PublicationListComponent extends Component {
 	render() {
 		return (
       <div>
+				<InputSearch makeSearch={this.searchPublications} />
         <Pagination
           pageNo={parseInt(this.props.pageNo, 10)}
           total={this.props.total}
