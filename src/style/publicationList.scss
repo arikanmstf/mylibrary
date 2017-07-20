@@ -2,13 +2,7 @@
   $publicationWidth: 200px;
 
   list-style: none;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
   display: flex;
-  -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
   justify-content: center;
 
@@ -21,10 +15,6 @@
 
     .publication-meta {
       background-color: $white;
-      -webkit-border-bottom-right-radius: 5px;
-      -webkit-border-bottom-left-radius: 5px;
-      -moz-border-radius-bottomright: 5px;
-      -moz-border-radius-bottomleft: 5px;
       border-bottom-right-radius: 5px;
       border-bottom-left-radius: 5px;
 

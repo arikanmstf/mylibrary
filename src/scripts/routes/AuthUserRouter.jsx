@@ -9,6 +9,7 @@ import Home from 'modules/home/HomeComponent';
 import PublicationDetails from 'modules/publication-details/PublicationDetailsContainer';
 import WriterDetails from 'modules/writer-details/WriterDetailsContainer';
 import ListDetails from 'modules/list-details/ListDetailsContainer';
+import Tags from 'modules/tag-list/TagListContainer';
 import TagDetails from 'modules/tag-details/TagDetailsContainer';
 import PublisherDetails from 'modules/publisher-details/PublisherDetailsContainer';
 import Profile from 'modules/profile/ProfileContainer';
@@ -27,6 +28,7 @@ class AuthUserRouter extends Component {
       <Route exact path={`${this.props.match.path}writers/:writerId`} component={WriterDetails} />
       <Route exact path={`${this.props.match.path}lists/:listId`} component={ListDetails} />
       <Route exact path={`${this.props.match.path}books/:bookId`} component={BookDetails} />
+      <Route exact path={`${this.props.match.path}tags/`} component={Tags} />
       <Route exact path={`${this.props.match.path}tags/:tagId`} component={TagDetails} />
       <Route exact path={`${this.props.match.path}publishers/:publisherId`} component={PublisherDetails} />
       <Route exact path={`${this.props.match.path}profile`} component={Profile} />
