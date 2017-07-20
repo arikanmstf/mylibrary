@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import InputSearch from 'common/input/InputSearch';
 import { getListBySearch, resetGetListBySearch } from 'modules/list-details/ListDetailsActions';
 
 class ListsOfPublicationEdit extends Component {
@@ -80,22 +81,7 @@ class ListsOfPublicationEdit extends Component {
 		return lists ? (
 			<div className="lists-of-publication">
               <div className="list-list">{this.renderList()}</div>
-              <div className="custom-search-input">
-                  <div className="input-group col-md-12">
-                      <input
-                        value={this.state.new_list}
-                        onChange={this.onNewListChange}
-                        type="text"
-                        className="form-control input-lg"
-                        placeholder="Search for lists"
-                      />
-                      <span className="input-group-btn">
-                          <button className="btn btn-lg" type="button" onClick={this.searchLists}>
-                              <i className="glyphicon glyphicon-search" />
-                          </button>
-                      </span>
-                  </div>
-              </div>
+              <InputSearch makeSearch={this.searchLists} />
             <div className="item-search-results">
               <ul>
                 {this.renderSearchList()}

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import InputText from './InputText';
-
 class InputSearch extends Component {
   constructor(props) {
     super(props);
@@ -31,14 +29,21 @@ class InputSearch extends Component {
   render() {
     return (
       <div className="input-search">
-        <InputText
-          onChange={this.handleSearchChange}
-          className="navbar-header-search"
-          placeholder="Type to search..."
-        />
-      <button onClick={this.makeSearch} className="btn btn-search col-sm-3 col-md-3 col-xs-3 right">
-          <i className="glyphicon glyphicon-search" />
-        </button>
+        <div className="custom-search-input">
+            <div className="input-group col-md-12">
+                <input
+                  onChange={this.handleSearchChange}
+                  type="text"
+                  className="form-control input-lg"
+                  placeholder="Search"
+                />
+                <span className="input-group-btn">
+                    <button className="btn btn-lg" type="button" onClick={this.makeSearch}>
+                        <i className="glyphicon glyphicon-search" />
+                    </button>
+                </span>
+            </div>
+        </div>
       </div>
     );
   }

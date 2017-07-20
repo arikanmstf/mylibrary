@@ -65,8 +65,8 @@ class PublicationDetailsComponent extends Component {
 						<div className="item-buttons">
               { publication.can_download ?
 								<button className="btn btn-success">
-								  <span>Download</span>
-								  <i className="glyphicon glyphicon-download-alt" />
+                  <span>Download</span>
+                  <i className="glyphicon glyphicon-download-alt" />
                 </button> : null }
 						</div>
 						<div className="item-table">
