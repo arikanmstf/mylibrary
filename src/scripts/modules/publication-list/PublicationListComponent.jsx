@@ -61,7 +61,7 @@ class PublicationListComponent extends Component {
         <ul className="publication-list">
           {this.renderList()}
         </ul>
-				<Pagination
+        <Pagination
           pageNo={parseInt(this.props.pageNo, 10)}
           total={this.props.total}
           onLiClick={this.onLiClick}

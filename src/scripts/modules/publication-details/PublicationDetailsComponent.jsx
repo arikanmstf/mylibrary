@@ -62,6 +62,13 @@ class PublicationDetailsComponent extends Component {
 						<p className="item-description">
 							{ publication.description }
 						</p>
+						<div className="item-buttons">
+              { publication.can_download ?
+								<button className="btn btn-success">
+								  <span>Download</span>
+								  <i className="glyphicon glyphicon-download-alt" />
+                </button> : null }
+						</div>
 						<div className="item-table">
 							<table className="table table-responsive table-hover">
 								<tbody>
