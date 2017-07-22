@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import InputSearch from 'common/input/InputSearch';
+import InputUpload from 'common/input/InputUpload';
 import ListsOfPublicationEdit from 'modules/common/ListsOfPublicationEdit';
 
 class AdminPublicationsEditComponent extends Component {
 
 	constructor(props) {
     super(props);
+		this.lists = [];
     this.state = {
       title: '',
       publisher_id: 0,
@@ -15,20 +18,19 @@ class AdminPublicationsEditComponent extends Component {
       isbn: '',
       cover_no: 0,
       page_number: 0,
-      new_title: '',
-      new_publisher: '',
-      lists: [],
+			file_url: '',
+			image_url: ''
     };
 
-    this.onNewBookChange = this.onNewBookChange.bind(this);
-    this.onNewPublisherChange = this.onNewPublisherChange.bind(this);
+    this.onImageUpload = this.onImageUpload.bind(this);
+    this.onFileUpload = this.onFileUpload.bind(this);
     this.onDescChange = this.onDescChange.bind(this);
     this.onIsbnChange = this.onIsbnChange.bind(this);
     this.onCoverChange = this.onCoverChange.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
+    this.onListsChange = this.onListsChange.bind(this);
     this.searchPublishers = this.searchPublishers.bind(this);
     this.searchBooks = this.searchBooks.bind(this);
-    this.onListsChange = this.onListsChange.bind(this);
 
     this.saveForm = this.saveForm.bind(this);
   }
@@ -66,43 +68,35 @@ class AdminPublicationsEditComponent extends Component {
       page_number: event.target.value
     });
   }
-  onNewPublisherChange(event) {
-    this.setState({
-      new_publisher: event.target.value
-    });
-  }
-  onNewBookChange(event) {
-    this.setState({
-      new_title: event.target.value
-    });
-  }
 	onListsChange(lists) {
-		this.setState({ lists });
+		this.lists = lists;
+	}
+	onImageUpload(res) {
+		this.setState({ image_url: res.response.filename });
+	}
+	onFileUpload(res) {
+		this.setState({ file_url: res.response.filename });
 	}
   addNewBook(book) {
-    this.setState({ ...book, new_title: '' });
+    this.setState({ ...book });
     this.props.resetGetBookBySearch();
   }
   addNewPublisher(publisher) {
-    this.setState({ publisher_name: publisher.name, publisher_id: publisher.publisher_id, new_publisher: '' });
+    this.setState({ publisher_name: publisher.name, publisher_id: publisher.publisher_id });
     this.props.resetGetPublisherBySearch();
   }
-  searchBooks() {
-    this.props.getBookBySearch(this.state.new_title);
+  searchBooks(newValue) {
+    this.props.getBookBySearch(newValue);
   }
-  searchPublishers() {
-    this.props.getPublisherBySearch(this.state.new_publisher);
+  searchPublishers(newValue) {
+    this.props.getPublisherBySearch(newValue);
   }
 
   saveForm() {
     const form = {
-      book_id: this.state.book_id,
-      publication_id: this.props.publication.publication_id,
-      lists: this.state.lists,
-      publisher_id: this.state.publisher_id,
-      isbn: this.state.isbn,
-      cover_no: this.state.cover_no,
-      page_number: this.state.page_number
+			...this.state,
+			publication_id: this.props.publication.publication_id,
+			lists: this.lists
     };
     this.props.updatePublicationDetails(form);
   }
@@ -139,15 +133,7 @@ class AdminPublicationsEditComponent extends Component {
               {this.state.title || publication.title}
             </div>
 						<div className="item-small-title">
-              <button onClick={this.searchBooks} className="btn btn-search col-sm-3 col-md-3 col-xs-3 right">
-                <i className="glyphicon glyphicon-search" />
-              </button>
-              <input
-                className="input-title col-sm-9 col-md-9 col-xs-9 right"
-                placeholder="Search books to assign to the publication"
-                value={this.state.new_title}
-                onChange={this.onNewBookChange}
-              />
+              <InputSearch title="Search Books" makeSearch={this.searchBooks} />
               <div className="clearfix" />
               <div className="item-search-results">
                 <ul>
@@ -159,15 +145,7 @@ class AdminPublicationsEditComponent extends Component {
               <span>
                 {this.state.publisher_name || publication.publisher_name}
               </span>
-              <button className="btn btn-search right" onClick={this.searchPublishers}>
-                <i className="glyphicon glyphicon-search" />
-              </button>
-              <input
-                className="input-title right"
-                placeholder="Search publishers"
-                value={this.state.new_publisher}
-                onChange={this.onNewPublisherChange}
-              />
+              <InputSearch title="Search Publishers" makeSearch={this.searchPublishers} />
               <div className="item-search-results">
                 <ul>
                   {this.renderSearchPublisher()}
@@ -201,6 +179,18 @@ class AdminPublicationsEditComponent extends Component {
 									</tr>
 								</tbody>
 							</table>
+						</div>
+						<div className="item-file-container">
+							<InputUpload
+								accept="image/jpeg, image/png"
+								title="Upload cover image"
+								onUpload={this.onImageUpload}
+							/>
+							<InputUpload
+								accept="application/pdf,.pdf,.doc,.txt,.docx,lit,rtf"
+								title="Upload book file"
+								onUpload={this.onFileUpload}
+							/>
 						</div>
 						<div className="item-lists-container">
 							<div className="item-lists col-sm-12 col-xs-12">
