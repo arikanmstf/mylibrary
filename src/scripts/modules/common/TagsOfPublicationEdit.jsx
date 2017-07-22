@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import InputSearch from 'common/input/InputSearch';
 import { getTagBySearch, resetGetTagBySearch } from 'modules/tag-details/TagDetailsActions';
 
 class TagsOfPublicationEdit extends Component {
@@ -10,11 +10,9 @@ class TagsOfPublicationEdit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      new_tag: '',
       tags: []
     };
 
-    this.onNewTagChange = this.onNewTagChange.bind(this);
     this.searchTags = this.searchTags.bind(this);
     this.removeTag = this.removeTag.bind(this);
     this.addNewTag = this.addNewTag.bind(this);
@@ -24,20 +22,15 @@ class TagsOfPublicationEdit extends Component {
       tags: (this.state.tags.length > 0) ? this.state.tags : nextProps.tags
     });
   }
-
-  onNewTagChange(event) {
-    this.setState({
-      new_tag: event.target.value
-    });
-  }
-  searchTags() {
-    this.props.getTagBySearch(this.state.new_tag);
+  searchTags(newValue) {
+    this.props.getTagBySearch(newValue);
   }
   addNewTag(tag) {
     const tags = this.state.tags;
     tags.push(tag);
-    this.setState({ tags, new_tag: '' });
+    this.setState({ tags });
     this.props.resetGetTagBySearch();
+    this.props.onTagsChange(tags);
   }
   removeTag(t) {
     const tags = [];
@@ -47,6 +40,7 @@ class TagsOfPublicationEdit extends Component {
       }
     }
     this.setState({ tags });
+    this.props.onTagsChange(tags);
   }
 
   renderSearchTag() {
@@ -61,14 +55,13 @@ class TagsOfPublicationEdit extends Component {
 	renderTag() {
 		return this.state.tags.map((tag) => {
 			return (
-				<div key={tag.tag_id}>
-					<Link to={`/admin/tags/edit/${tag.tag_id}`} >
-						<span className="list">
-								{tag.title}
-						</span>
-					</Link>
-          <i onClick={() => this.removeTag(tag)} className="glyphicon glyphicon-remove" />
-				</div>
+        <span
+          onClick={() => this.removeTag(tag)}
+          key={tag.tag_id}
+        >
+					{tag.title}
+          <i className="glyphicon glyphicon-remove" />
+        </span>
 			);
 		});
 	}
@@ -77,15 +70,8 @@ class TagsOfPublicationEdit extends Component {
 		const tags = this.state.tags;
 		return tags ? (
 			<div className="lists-of-publication">
-						{this.renderTag()}
-            <input
-              placeholder="Search for tags"
-              value={this.state.new_tag}
-              onChange={this.onNewTagChange}
-            />
-          <button className="btn btn-search" onClick={this.searchTags}>
-              <i className="glyphicon glyphicon-search" />
-            </button>
+						<div className="list-list">{this.renderTag()}</div>
+            <InputSearch title="Search for tags" makeSearch={this.searchTags} />
             <div className="item-search-results">
               <ul>
                 {this.renderSearchTag()}
@@ -99,7 +85,8 @@ TagsOfPublicationEdit.propTypes = {
 	tags: PropTypes.arrayOf(Object),
   tagSearch: PropTypes.arrayOf(Object).isRequired,
   getTagBySearch: PropTypes.func.isRequired,
-  resetGetTagBySearch: PropTypes.func.isRequired
+  resetGetTagBySearch: PropTypes.func.isRequired,
+  onTagsChange: PropTypes.func.isRequired
 };
 TagsOfPublicationEdit.defaultProps = {
   tags: []
