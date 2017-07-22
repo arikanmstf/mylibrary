@@ -9,6 +9,7 @@ class AdminPublicationsAddComponent extends Component {
 
 	constructor(props) {
     super(props);
+		this.lists = [];
     this.state = {
       title: '',
       publisher_id: 0,
@@ -17,7 +18,6 @@ class AdminPublicationsAddComponent extends Component {
       isbn: '',
       cover_no: 0,
       page_number: 0,
-      lists: [],
 			image_url: '',
 			file_url: ''
     };
@@ -56,7 +56,7 @@ class AdminPublicationsAddComponent extends Component {
     });
   }
 	onListsChange(lists) {
-		this.setState({ lists });
+		this.lists = lists;
 	}
 	onImageUpload(res) {
 		this.setState({ image_url: res.response.filename });
@@ -175,7 +175,7 @@ class AdminPublicationsAddComponent extends Component {
 						<div className="item-lists-container">
 							<div className="item-lists col-sm-12 col-xs-12">
 								<h5>Lists</h5>
-								<ListsOfPublicationEdit lists={this.state.lists} onListsChange={this.onListsChange} />
+								<ListsOfPublicationEdit onListsChange={this.onListsChange} />
 							</div>
 						</div>
 					</div>
