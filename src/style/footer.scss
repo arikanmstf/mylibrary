@@ -14,8 +14,3 @@
     color: $lightYellow;
   }
 }
-@media screen and (max-width: $midDevMaxWidth) {
-  .footer-container {
-    position: static;
-  }
-}

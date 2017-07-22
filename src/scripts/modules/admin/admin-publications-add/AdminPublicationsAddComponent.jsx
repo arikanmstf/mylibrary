@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import InputSearch from 'common/input/InputSearch';
+import InputUpload from 'common/input/InputUpload';
 import ListsOfPublicationEdit from 'modules/common/ListsOfPublicationEdit';
 
 class AdminPublicationsAddComponent extends Component {
@@ -15,14 +17,10 @@ class AdminPublicationsAddComponent extends Component {
       isbn: '',
       cover_no: 0,
       page_number: 0,
-      new_title: '',
-      new_publisher: '',
       lists: [],
       ...props
     };
 
-    this.onNewBookChange = this.onNewBookChange.bind(this);
-    this.onNewPublisherChange = this.onNewPublisherChange.bind(this);
     this.onDescChange = this.onDescChange.bind(this);
     this.onIsbnChange = this.onIsbnChange.bind(this);
     this.onCoverChange = this.onCoverChange.bind(this);
@@ -54,32 +52,22 @@ class AdminPublicationsAddComponent extends Component {
       page_number: event.target.value
     });
   }
-  onNewPublisherChange(event) {
-    this.setState({
-      new_publisher: event.target.value
-    });
-  }
-  onNewBookChange(event) {
-    this.setState({
-      new_title: event.target.value
-    });
-  }
 	onListsChange(lists) {
 		this.setState({ lists });
 	}
   addNewBook(book) {
-    this.setState({ ...book, new_title: '' });
+    this.setState({ ...book });
     this.props.resetGetBookBySearch();
   }
   addNewPublisher(publisher) {
-    this.setState({ publisher_name: publisher.name, publisher_id: publisher.publisher_id, new_publisher: '' });
+    this.setState({ publisher_name: publisher.name, publisher_id: publisher.publisher_id });
     this.props.resetGetPublisherBySearch();
   }
-  searchBooks() {
-    this.props.getBookBySearch(this.state.new_title);
+  searchBooks(newValue) {
+    this.props.getBookBySearch(newValue);
   }
-  searchPublishers() {
-    this.props.getPublisherBySearch(this.state.new_publisher);
+  searchPublishers(newValue) {
+    this.props.getPublisherBySearch(newValue);
   }
 
   saveForm() {
@@ -125,15 +113,7 @@ class AdminPublicationsAddComponent extends Component {
               {this.state.title}
             </div>
 						<div className="item-small-title">
-              <button onClick={this.searchBooks} className="btn btn-search col-sm-3 col-md-3 col-xs-3 right">
-                <i className="glyphicon glyphicon-search" />
-              </button>
-              <input
-                className="input-title col-sm-9 col-md-9 col-xs-9 right"
-                placeholder="Search books to assign to the publication"
-                value={this.state.new_title}
-                onChange={this.onNewBookChange}
-              />
+              <InputSearch makeSearch={this.searchBooks} title="Search books to assign to the publication" />
               <div className="clearfix" />
               <div className="item-search-results">
                 <ul>
@@ -145,15 +125,7 @@ class AdminPublicationsAddComponent extends Component {
               <span>
                 {this.state.publisher_name}
               </span>
-              <button className="btn btn-search right" onClick={this.searchPublishers}>
-                <i className="glyphicon glyphicon-search" />
-              </button>
-              <input
-                className="input-title right"
-                placeholder="Search publishers"
-                value={this.state.new_publisher}
-                onChange={this.onNewPublisherChange}
-              />
+							<InputSearch makeSearch={this.searchPublishers} title="Search Pulishers" />
               <div className="item-search-results">
                 <ul>
                   {this.renderSearchPublisher()}
@@ -183,6 +155,15 @@ class AdminPublicationsAddComponent extends Component {
 									</tr>
 								</tbody>
 							</table>
+						</div>
+						<div className="item-file-container">
+							<InputUpload
+								accept="image/jpeg, image/png"
+								title="Upload cover image"
+							/>
+							<InputUpload
+								title="Upload book file"
+							/>
 						</div>
 						<div className="item-lists-container">
 							<div className="item-lists col-sm-12 col-xs-12">

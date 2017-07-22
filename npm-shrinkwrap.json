@@ -275,6 +275,11 @@
       "resolved": "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz",
       "dev": true
     },
+    "attr-accept": {
+      "version": "1.1.0",
+      "from": "attr-accept@>=1.0.3 <2.0.0",
+      "resolved": "https://registry.npmjs.org/attr-accept/-/attr-accept-1.1.0.tgz"
+    },
     "autoprefixer": {
       "version": "6.7.7",
       "from": "autoprefixer@>=6.3.1 <7.0.0",
@@ -4873,6 +4878,11 @@
       "version": "15.6.1",
       "from": "react-dom@>=15.6.1 <16.0.0",
       "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-15.6.1.tgz"
+    },
+    "react-dropzone": {
+      "version": "3.13.3",
+      "from": "react-dropzone@latest",
+      "resolved": "https://registry.npmjs.org/react-dropzone/-/react-dropzone-3.13.3.tgz"
     },
     "react-redux": {
       "version": "5.0.5",

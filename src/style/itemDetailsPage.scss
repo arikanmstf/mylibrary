@@ -120,6 +120,13 @@ $btnPadding: 6px 12px;
       .item-image {
         width: 100%;
       }
+      .input-upload {
+        .upload-container {
+          & > div {
+            width: 100% !important;
+          }
+        }
+      }
 
       .item-search-results {
         clear: both;

@@ -32,7 +32,7 @@ class InputSearch extends Component {
                   onChange={this.handleSearchChange}
                   type="text"
                   className="form-control input-lg"
-                  placeholder="Search"
+                  placeholder={this.props.title}
                 />
                 <span className="input-group-btn">
                     <button className="btn btn-lg" type="button" onClick={() => this.makeSearch()}>
@@ -47,7 +47,11 @@ class InputSearch extends Component {
 }
 
 InputSearch.propTypes = {
-  makeSearch: PropTypes.func.isRequired
+  makeSearch: PropTypes.func.isRequired,
+  title: PropTypes.string
+};
+InputSearch.defaultProps = {
+  title: 'Search'
 };
 
 export default InputSearch;

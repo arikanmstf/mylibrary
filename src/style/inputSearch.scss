@@ -1,4 +1,7 @@
 .input-search {
+  max-width: $containerMaxWidth;
+  margin: 0 auto;
+
   .custom-search-input{
       padding: 3px;
       border: solid 1px #E4E4E4;

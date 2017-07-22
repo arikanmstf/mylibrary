@@ -9,6 +9,7 @@ const books = '/books';
 const tags = '/tags';
 const publishers = '/publishers';
 const users = '/users';
+const upload = '/upload';
 
 export const API = {
 
@@ -56,7 +57,10 @@ export const API = {
   getLogin: home + membership + '/get_login',
   getLogout: home + membership + '/get_logout',
   getProfileDetails: home + membership + '/profile',
-  updateProfileDetails: home + membership + '/update'
+  updateProfileDetails: home + membership + '/update',
+
+  uploadFile: home + upload + '/file',
+  uploadImage: home + upload + '/image'
 };
 
 export const PAGINATION = {
