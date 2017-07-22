@@ -18,7 +18,8 @@ class AdminPublicationsAddComponent extends Component {
       cover_no: 0,
       page_number: 0,
       lists: [],
-      ...props
+			image_url: '',
+			file_url: ''
     };
 
     this.onDescChange = this.onDescChange.bind(this);
@@ -28,6 +29,8 @@ class AdminPublicationsAddComponent extends Component {
     this.searchPublishers = this.searchPublishers.bind(this);
     this.searchBooks = this.searchBooks.bind(this);
     this.onListsChange = this.onListsChange.bind(this);
+    this.onImageUpload = this.onImageUpload.bind(this);
+    this.onFileUpload = this.onFileUpload.bind(this);
 
     this.saveForm = this.saveForm.bind(this);
   }
@@ -55,6 +58,12 @@ class AdminPublicationsAddComponent extends Component {
 	onListsChange(lists) {
 		this.setState({ lists });
 	}
+	onImageUpload(res) {
+		this.setState({ image_url: res.response.filename });
+	}
+	onFileUpload(res) {
+		this.setState({ file_url: res.response.filename });
+	}
   addNewBook(book) {
     this.setState({ ...book });
     this.props.resetGetBookBySearch();
@@ -72,12 +81,7 @@ class AdminPublicationsAddComponent extends Component {
 
   saveForm() {
     const form = {
-      book_id: this.state.book_id,
-      lists: this.state.lists,
-      publisher_id: this.state.publisher_id,
-      isbn: this.state.isbn,
-      cover_no: this.state.cover_no,
-      page_number: this.state.page_number
+      ...this.state
     };
     this.props.addPublicationDetails(form);
   }
@@ -160,9 +164,12 @@ class AdminPublicationsAddComponent extends Component {
 							<InputUpload
 								accept="image/jpeg, image/png"
 								title="Upload cover image"
+								onUpload={this.onImageUpload}
 							/>
 							<InputUpload
+								accept="application/pdf,.pdf,.doc,.txt,.docx,lit,rtf"
 								title="Upload book file"
+								onUpload={this.onFileUpload}
 							/>
 						</div>
 						<div className="item-lists-container">

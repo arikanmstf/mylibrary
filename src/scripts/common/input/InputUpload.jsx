@@ -6,9 +6,17 @@ import { API } from 'common/Config';
 
 class InputUpload extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      file_uploaded: false
+    };
+  }
+
   onDropFile(acceptedFiles, rejectedFiles) {
     if (rejectedFiles && rejectedFiles.length > 0) {
-      alert('Your file has been rejected. Multiple files not allowed'); // eslint-disable-line no-alert
+      alert('Your file has been rejected.'); // eslint-disable-line no-alert
     } else if (acceptedFiles && acceptedFiles.length > 0) {
       const file = acceptedFiles[0];
       const ext = file.name.split('.').slice(-1)[0];
@@ -17,8 +25,9 @@ class InputUpload extends Component {
   }
   upload(url, file) {
     axios.put(url, file)
-      .then(() => {
-        // console.log(res.data);
+      .then((res) => {
+        this.setState({ file_uploaded: true });
+        this.props.onUpload(res.data);
       });
   }
 
@@ -31,7 +40,10 @@ class InputUpload extends Component {
             accept={this.props.accept}
             onDrop={(e, f) => this.onDropFile(e, f)}
           >
-            <p>{this.props.title}</p>
+            { this.state.file_uploaded ?
+              <p>Uploaded</p> :
+              <p>{this.props.title}</p>
+            }
           </Dropzone>
         </div>
       </div>
@@ -40,7 +52,8 @@ class InputUpload extends Component {
 }
 InputUpload.propTypes = {
   accept: PropTypes.string,
-  title: PropTypes.string
+  title: PropTypes.string,
+  onUpload: PropTypes.func.isRequired
 };
 InputUpload.defaultProps = {
   accept: '',
