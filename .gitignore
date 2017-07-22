@@ -3,6 +3,7 @@
 /api
 /dist
 /admin
+/tmp
 npm-debug.log
 
 # IntelliJ
