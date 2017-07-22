@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import TagsOfPublicationEdit from 'modules/common/TagsOfPublicationEdit';
+import InputSearch from 'common/input/InputSearch';
 import { fromArrayToCommaEdit } from 'common/Helpers';
 
 class AdminBooksEditComponent extends Component {
@@ -14,14 +15,11 @@ class AdminBooksEditComponent extends Component {
       publishers: [],
       writers: [],
       title: '',
-      tags: [],
-      new_writer: '',
-      ...props
+      tags: []
     };
 
-    this.onNewPublisherChange = this.onNewPublisherChange.bind(this);
+    this.onTagsChange = this.onTagsChange.bind(this);
     this.onDescChange = this.onDescChange.bind(this);
-    this.onNewWriterChange = this.onNewWriterChange.bind(this);
     this.onTitleChange = this.onTitleChange.bind(this);
     this.searchWriters = this.searchWriters.bind(this);
     this.addNewWriter = this.addNewWriter.bind(this);
@@ -41,6 +39,9 @@ class AdminBooksEditComponent extends Component {
       tags: nextProps.book.tags,
     });
 	}
+	onTagsChange(tags) {
+		this.tags = tags;
+	}
   onDescChange(event) {
     this.setState({
       description: event.target.value
@@ -56,19 +57,14 @@ class AdminBooksEditComponent extends Component {
       title: event.target.value
     });
   }
-  onNewWriterChange(event) {
-    this.setState({
-      new_writer: event.target.value
-    });
-  }
   addNewWriter(writer) {
     const writers = this.state.writers;
     writers.push({ value: writer.full_name, key: writer.writer_id });
-    this.setState({ writers, new_writer: '' });
+    this.setState({ writers });
     this.props.resetGetWriterBySearch();
   }
-  searchWriters() {
-    this.props.getWriterBySearch(this.state.new_writer);
+  searchWriters(newValue) {
+    this.props.getWriterBySearch(newValue);
   }
 
   saveForm() {
@@ -76,7 +72,7 @@ class AdminBooksEditComponent extends Component {
       book_id: this.props.book.book_id,
       title: this.state.title,
       writers: this.state.writers,
-      tags: this.state.tags,
+      tags: this.tags,
       publisher_id: this.state.publisher_id,
       description: this.state.description
     };
@@ -114,15 +110,7 @@ class AdminBooksEditComponent extends Component {
             </div>
 						<div className="item-small-title">
 							{ fromArrayToCommaEdit(this.state.writers, 'admin/writers/edit', this.removeWriter) }
-              <button className="btn btn-search right" onClick={this.searchWriters}>
-                <i className="glyphicon glyphicon-search" />
-              </button>
-              <input
-                className="input-title right"
-                placeholder="Search writers"
-                value={this.state.new_writer}
-                onChange={this.onNewWriterChange}
-              />
+              <InputSearch title="Search for Writers" makeSearch={this.searchWriters} />
               <div className="item-search-results">
                 <ul>
                   {this.renderSearchWriter()}
@@ -135,7 +123,7 @@ class AdminBooksEditComponent extends Component {
 						<div className="item-lists-container">
 							<div className="item-lists col-sm-12 col-xs-12">
 								<h5>Tags</h5>
-								<TagsOfPublicationEdit tags={this.state.tags} />
+								<TagsOfPublicationEdit tags={this.props.book.tags} onTagsChange={this.onTagsChange} />
 							</div>
 						</div>
 					</div>
