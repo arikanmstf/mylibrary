@@ -52,6 +52,11 @@ $btnPadding: 6px 12px;
       .item-small-title {
         font-size: $smallFontSize;
         text-align: left;
+
+        .comma-list {
+          cursor: pointer;
+          text-decoration: underline;
+        }
       }
 
       .item-light-title {

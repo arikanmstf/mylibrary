@@ -22,9 +22,9 @@ export function fromArrayToCommaEdit(itemArr, route, onClickEvent) {
   }
   return itemArr.map((item, index) => {
     return (
-      <span key={item.key}>
-        <Link to={`${config.homeUrl}${route}/${item.key}`}>{item.value}</Link>
-        <i onClick={() => onClick(item)} className="glyphicon glyphicon-remove" />
+      <span key={item.key} onClick={() => onClick(item)} className="comma-list">
+        {item.value}
+        <i className="glyphicon glyphicon-remove" />
         {rowLen === index + 1 ? null : ', '}
       </span>
     );
