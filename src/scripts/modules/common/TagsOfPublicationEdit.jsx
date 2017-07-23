@@ -27,10 +27,16 @@ class TagsOfPublicationEdit extends Component {
   }
   addNewTag(tag) {
     const tags = this.state.tags;
+    for (let i = 0; i < tags.length; i++) {
+      if (tags[i].tag_id === tag.tag_id) {
+        return false;
+      }
+    }
     tags.push(tag);
     this.setState({ tags });
     this.props.resetGetTagBySearch();
     this.props.onTagsChange(tags);
+    return true;
   }
   removeTag(t) {
     const tags = [];
