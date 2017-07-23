@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import ListsOfPublicationEdit from 'modules/common/ListsOfPublicationEdit';
+import TagsOfPublication from 'modules/common/TagsOfPublication';
 import { commaListItems } from 'common/Helpers';
 import { API } from 'common/Config';
 
@@ -97,6 +98,12 @@ class PublicationDetailsComponent extends Component {
 							<div className="item-lists">
 								<h5>Lists</h5>
 								<ListsOfPublicationEdit lists={publication.lists} onListsChange={this.onListsChange} />
+							</div>
+						</div>
+						<div className="item-lists-container">
+							<div className="item-lists">
+								<h5>Tags</h5>
+								<TagsOfPublication tags={publication.tags} />
 							</div>
 						</div>
 						<button className="btn btn-primary" onClick={(e) => this.saveForm(e)}>Save</button>
