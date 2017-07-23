@@ -42,20 +42,15 @@ export function fromCommaToArray(string, ids) {
   });
 }
 
-export const createErrorMessage = (message) => {
-    console.error(message); // eslint-disable-line no-console
-    if (typeof message !== 'string') {
-        if (message.response && message.response.data) {
-            if (message.response.data.error) {
-                message = message.response.data.error.message;
-            }
-            else {
-                message = message.response.statusText;
-            }
-        }
-        else {
-            message = "An error has occured";
-        }
+export const createErrorMessage = (msg) => {
+  let message = msg;
+  if (typeof message !== 'string') {
+    if (message.response && message.response.data) {
+      if (message.response.data.error) message = message.response.data.error.message;
+      else message = message.response.statusText;
+    } else {
+      message = 'An error has occured';
     }
-    return message;
+  }
+  return message;
 };

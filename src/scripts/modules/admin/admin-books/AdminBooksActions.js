@@ -1,16 +1,17 @@
 import axios from 'axios';
+import qs from 'qs';
 import Storage from 'common/Storage';
 import { API } from 'common/Config';
 import StartedRequest from 'common/actions/StartedRequest';
+import { openConfirmModal } from 'modules/common/modal/ModalActions';
 
-export function ResolvedGetAllBooks(response) {
+export const ResolvedGetAllBooks = (response) => {
   return {
     type: 'RESOLVED_GET_ALL_BOOKS',
     data: response.data.response
   };
-}
-
-export function getAllBooks(search) {
+};
+export const getAllBooks = (search) => {
 	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.get(API.getAllBooks, {
@@ -22,16 +23,22 @@ export function getAllBooks(search) {
 			})
 		.then((response) => dispatch(ResolvedGetAllBooks(response)));
 	};
-}
+};
 
-export function ResolvedGetWriterBySearch(response) {
+const addWriterBySearch = (title) => {
+  axios.post(API.addWriterDetails, qs.stringify({
+    title,
+    login_key: Storage.get('login_key')
+  }));
+};
+
+export const ResolvedGetWriterBySearch = (response) => {
   return {
     type: 'RESOLVED_GET_WRITER_BY_SEARCH',
     data: response.data.response
   };
-}
-
-export function getWriterBySearch(title) {
+};
+export const getWriterBySearch = (title) => {
 	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.get(API.getWriterBySearch, {
@@ -40,31 +47,40 @@ export function getWriterBySearch(title) {
 					login_key: Storage.get('login_key')
 				}
 			})
-		.then((response) => dispatch(ResolvedGetWriterBySearch(response)));
+		.then((response) => {
+      if (response.data.response.length < 1) {
+        dispatch(openConfirmModal({
+          message: 'Writer not found, add new one ?',
+          onConfirm: () => {
+            addWriterBySearch(title);
+          }
+        }));
+      } else {
+        dispatch(ResolvedGetWriterBySearch(response));
+      }
+    });
 	};
-}
+};
 
-export function ResolvedResetGetWriterBySearch() {
+export const ResolvedResetGetWriterBySearch = () => {
   return {
     type: 'RESET_GET_WRITER_BY_SEARCH',
     data: []
   };
-}
-
-export function resetGetWriterBySearch() {
+};
+export const resetGetWriterBySearch = () => {
 	return (dispatch) => {
 		dispatch(ResolvedResetGetWriterBySearch());
 	};
-}
+};
 
-export function ResolvedGetBookBySearch(response) {
+export const ResolvedGetBookBySearch = (response) => {
   return {
     type: 'RESOLVED_GET_BOOK_BY_SEARCH',
     data: response.data.response
   };
-}
-
-export function getBookBySearch(title) {
+};
+export const getBookBySearch = (title) => {
 	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.get(API.getBookBySearch, {
@@ -75,29 +91,27 @@ export function getBookBySearch(title) {
 			})
 		.then((response) => dispatch(ResolvedGetBookBySearch(response)));
 	};
-}
+};
 
-export function ResolvedResetGetBookBySearch() {
+export const ResolvedResetGetBookBySearch = () => {
   return {
     type: 'RESET_GET_BOOK_BY_SEARCH',
     data: []
   };
-}
-
-export function resetGetBookBySearch() {
+};
+export const resetGetBookBySearch = () => {
 	return (dispatch) => {
 		dispatch(ResolvedResetGetBookBySearch());
 	};
-}
+};
 
-export function ResolvedGetPublisherBySearch(response) {
+export const ResolvedGetPublisherBySearch = (response) => {
   return {
     type: 'RESOLVED_GET_PUBLISHER_BY_SEARCH',
     data: response.data.response
   };
-}
-
-export function getPublisherBySearch(title) {
+};
+export const getPublisherBySearch = (title) => {
 	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.get(API.getPublisherBySearch, {
@@ -108,17 +122,16 @@ export function getPublisherBySearch(title) {
 			})
 		.then((response) => dispatch(ResolvedGetPublisherBySearch(response)));
 	};
-}
+};
 
-export function ResolvedResetGetPublisherBySearch() {
+export const ResolvedResetGetPublisherBySearch = () => {
   return {
     type: 'RESET_GET_PUBLISHER_BY_SEARCH',
     data: []
   };
-}
-
-export function resetGetPublisherBySearch() {
+};
+export const resetGetPublisherBySearch = () => {
 	return (dispatch) => {
 		dispatch(ResolvedResetGetPublisherBySearch());
 	};
-}
+};
