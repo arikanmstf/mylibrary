@@ -19,10 +19,6 @@ class InputSearch extends Component {
     this.props.makeSearch(this.state.search_title);
   }
 
-  defaultSearch() {
-
-  }
-
   render() {
     return (
       <div className="input-search">
