@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import config from 'config';
 
 import InputSearch from 'common/input/InputSearch';
 import InputUpload from 'common/input/InputUpload';
@@ -125,7 +126,7 @@ class AdminPublicationsEditComponent extends Component {
 					<div className="col-md-3 col-sm-3 item-info image-container">
 						<img
 							className="item-image"
-							src={`/assets/img/cover/${publication.publication_id}.jpg`}
+							src={`${config.homeUrl}assets/img/cover/${publication.publication_id}.jpg`}
 						/>
 					</div>
 					<div className="col-md-9 col-sm-9 item-info">

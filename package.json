@@ -9,8 +9,8 @@
     "lint": "eslint --max-warnings 0 --ext .jsx,.js src/ ",
     "prod": "npm run lint && webpack-dev-server --env=prod",
     "dev": "npm run clean && webpack-dev-server --env=dev",
-    "dist:prod": "npm run clean && webpack -p --env=prod && cd .. && tar -czf mylibrary.tar.gz mylibrary",
-    "dist:dev": "npm run clean && webpack --env=dev && cd .. && tar -czf mylibrary.tar.gz mylibrary"
+    "dist:prod": "npm run clean && webpack -p --env=prod",
+    "dist:dev": "npm run clean && webpack --env=dev"
   },
   "author": "Mustafa Arikan",
   "license": "MIT",

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import config from 'config';
 
 import InputText from 'common/input/InputText';
 import InputPassword from 'common/input/InputPassword';
@@ -23,7 +24,7 @@ class LoginComponent extends Component {
 		return (
 				<div className="login-page">
 					<img
-						src="/assets/img/react-logo.png"
+						src={`${config.homeUrl}assets/img/react-logo.png`}
 						width="180"
 						height="180"
 					/>
