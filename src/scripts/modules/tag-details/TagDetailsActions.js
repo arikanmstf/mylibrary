@@ -1,16 +1,17 @@
 import axios from 'axios';
+import qs from 'qs';
 import Storage from 'common/Storage';
 import { API } from 'common/Config';
 import StartedRequest from 'common/actions/StartedRequest';
+import { openConfirmModal } from 'modules/common/modal/ModalActions';
 
-export function ResolvedGetTagDetails(response) {
+export const ResolvedGetTagDetails = (response) => {
   return {
     type: 'RESOLVED_GET_TAG_DETAILS',
     data: response.data.response
   };
-}
-
-export function getTagDetails(tagId) {
+};
+export const getTagDetails = (tagId) => {
 	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.get(API.getTagDetails, {
@@ -21,16 +22,22 @@ export function getTagDetails(tagId) {
 			})
 		.then((response) => dispatch(ResolvedGetTagDetails(response)));
 	};
-}
+};
 
-export function ResolvedGetTagBySearch(response) {
+const addTagBySearch = (title) => {
+  axios.post(API.addTagDetails, qs.stringify({
+    title,
+    login_key: Storage.get('login_key')
+  }));
+};
+
+export const ResolvedGetTagBySearch = (response) => {
   return {
     type: 'RESOLVED_GET_TAG_BY_SEARCH',
     data: response.data.response
   };
-}
-
-export function getTagBySearch(title) {
+};
+export const getTagBySearch = (title) => {
 	return (dispatch) => {
     dispatch(StartedRequest());
 		axios.get(API.getTagBySearch, {
@@ -39,19 +46,29 @@ export function getTagBySearch(title) {
 					login_key: Storage.get('login_key')
 				}
 			})
-		.then((response) => dispatch(ResolvedGetTagBySearch(response)));
+		.then((response) => {
+      if (response.data.response.length < 1) {
+        dispatch(openConfirmModal({
+          message: 'Tag not found, add new one ?',
+          onConfirm: () => {
+            addTagBySearch(title);
+          }
+        }));
+      } else {
+        dispatch(ResolvedGetTagBySearch(response));
+      }
+    });
 	};
-}
+};
 
-export function ResolvedResetGetTagBySearch() {
+export const ResolvedResetGetTagBySearch = () => {
   return {
     type: 'RESET_GET_TAG_BY_SEARCH',
     data: []
   };
-}
-
-export function resetGetTagBySearch() {
+};
+export const resetGetTagBySearch = () => {
 	return (dispatch) => {
 		dispatch(ResolvedResetGetTagBySearch());
 	};
-}
+};
