@@ -2,6 +2,8 @@ import axios from 'axios';
 import Storage from 'common/Storage';
 import { API } from 'common/Config';
 import StartedRequest from 'common/actions/StartedRequest';
+import { openModal } from 'modules/common/modal/ModalActions';
+import { createErrorMessage } from 'common/Helpers';
 
 export function ResolvedGetAllPublications(response) {
   return {
@@ -20,6 +22,10 @@ export function getAllPublications(search) {
           page: search.pageNo
 				}
 			})
-		.then((response) => dispatch(ResolvedGetAllPublications(response)));
+		.then((response) => dispatch(ResolvedGetAllPublications(response)))
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
+    });
 	};
 }

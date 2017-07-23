@@ -9,6 +9,8 @@ import ModalLoading from 'common/ModalLoading';
 import UnAuthRouter from 'routes/UnAuthRouter';
 import AuthUserRouter from 'routes/AuthUserRouter';
 
+import ModalContainer from 'modules/common/modal/ModalContainer';
+
 const isLoggedIn = Storage.get('login_key');
 
 class App extends Component {
@@ -23,6 +25,7 @@ class App extends Component {
   render() {
     return (
       <div className="main-container">
+        <ModalContainer message="" />
         { !this.state.contentLoaded ? <ModalLoading /> : null }
         <Router>
             { isLoggedIn ?

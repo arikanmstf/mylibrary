@@ -20,6 +20,7 @@ import TagReducer from './TagReducer';
 import ListReducer from './ListReducer';
 import ContentReducer from './ContentReducer';
 import ProfileReducer from './ProfileReducer';
+import { ModalReducer, ModalConfirmReducer } from './ModalReducer';
 
 const rootReducer = combineReducers({
   publications: PublicationReducer,
@@ -42,6 +43,8 @@ const rootReducer = combineReducers({
   tags: TagReducer,
   lists: ListReducer,
   contentLoaded: ContentReducer,
+  modalMessage: ModalReducer,
+  onConfirm: ModalConfirmReducer,
   profile: ProfileReducer
 });
 
