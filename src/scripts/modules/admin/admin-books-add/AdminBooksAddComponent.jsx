@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import TagsOfPublicationEdit from 'modules/common/TagsOfPublicationEdit';
 import InputSearch from 'common/input/InputSearch';
@@ -20,8 +21,8 @@ class AdminBooksAddComponent extends Component {
 
     this.onTagsChange = this.onTagsChange.bind(this);
     this.onDescChange = this.onDescChange.bind(this);
-    this.onTitleChange = this.onTitleChange.bind(this);
     this.searchWriters = this.searchWriters.bind(this);
+    this.searchBooks = this.searchBooks.bind(this);
     this.addNewWriter = this.addNewWriter.bind(this);
     this.removeWriter = this.removeWriter.bind(this);
     this.saveForm = this.saveForm.bind(this);
@@ -35,11 +36,6 @@ class AdminBooksAddComponent extends Component {
       description: event.target.value
     });
   }
-  onTitleChange(event) {
-    this.setState({
-      title: event.target.value
-    });
-  }
   addNewWriter(writer) {
     const writers = this.state.writers;
     writers.push({ value: writer.full_name, key: writer.writer_id });
@@ -49,7 +45,9 @@ class AdminBooksAddComponent extends Component {
   searchWriters(newValue) {
     this.props.getWriterBySearch(newValue);
   }
-
+  searchBooks(newValue) {
+    this.props.getBookBySearch(newValue);
+  }
   saveForm() {
     const form = {
       title: this.state.title,
@@ -80,6 +78,14 @@ class AdminBooksAddComponent extends Component {
       );
     }));
   }
+  renderSearchBook() {
+    const bookSearch = this.props.bookSearch;
+    return bookSearch && (this.props.bookSearch.map((book) => {
+      return (
+        <li key={book.book_id}><Link to={`/admin/books/edit/${book.book_id}`}>{book.title}</Link></li>
+      );
+    }));
+  }
 
 	render() {
 		return true && (
@@ -87,7 +93,12 @@ class AdminBooksAddComponent extends Component {
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
             <div className="item-title">
-              <input placeholder="Book Title" onChange={this.onTitleChange} />
+              <InputSearch title="Book Title" makeSearch={this.searchBooks} />
+							<div className="item-search-results">
+								<ul>
+									{this.renderSearchBook()}
+								</ul>
+							</div>
             </div>
 						<div className="item-small-title">
 							{ fromArrayToCommaEdit(this.state.writers, 'admin/writers/edit', this.removeWriter) }
@@ -119,9 +130,11 @@ class AdminBooksAddComponent extends Component {
 }
 AdminBooksAddComponent.propTypes = {
   getWriterBySearch: PropTypes.func.isRequired,
+  getBookBySearch: PropTypes.func.isRequired,
   resetGetWriterBySearch: PropTypes.func.isRequired,
   addBookDetails: PropTypes.func.isRequired,
 	writerSearch: PropTypes.arrayOf(Object).isRequired,
+	bookSearch: PropTypes.arrayOf(Object).isRequired
 };
 
 export default AdminBooksAddComponent;
