@@ -19,7 +19,8 @@ export function getLogin(data) {
 			password: data.password
 		}))
 		.then((response) => {
-			Storage.set('login_key', response.data.response);
+			Storage.set('login_key', response.data.response.key);
+			Storage.set('is_admin', response.data.response.is_admin);
 			window.location.href = window.location.href;
 		});
 	};

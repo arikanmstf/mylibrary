@@ -1,6 +1,6 @@
 const initialState = [];
 
-const LoginPageReducer = (state = initialState, action) => {
+const LoginReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'RESOLVED_GET_LOGIN':
       return action.data;

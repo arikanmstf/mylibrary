@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getLogout } from 'modules/login/LoginActions';
+import Storage from 'common/Storage';
+
+const isAdmin = Storage.get('is_admin') > 0;
 
 class NavbarHeader extends Component {
 
@@ -18,12 +21,14 @@ class NavbarHeader extends Component {
                 <Link className="navbar-brand" to="/">MyLibray</Link>
               </div>
               <ul className="nav navbar-nav">
+                { isAdmin ? (
                 <li>
                   <Link to="/admin">
                     <span>Admin</span>
                     <i className="glyphicon glyphicon-lock" />
                   </Link>
-                </li>
+                </li>) : null
+                }
                 <li>
                   <Link to="/profile">
                     <span>Profile</span>
