@@ -167,7 +167,7 @@ class AdminPublicationsAddComponent extends Component {
 								onUpload={this.onImageUpload}
 							/>
 							<InputUpload
-								accept="application/pdf,.pdf,.doc,.txt,.docx,lit,rtf"
+								accept="application/epub+zip, application/pdf, application/x-ms-reader, application/x-obak,application/msword, application/doc, appl/text, application/vnd.msword, application/vnd.ms-word, application/winword, application/word, application/x-msw6, application/x-msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/rtf, application/x-rtf, text/rtf, text/richtext, application/msword, application/doc, application/x-soffice, text/plain, application/txt, browser/internal, text/anytext, widetext/plain, widetext/paragraph"
 								title="Upload book file"
 								onUpload={this.onFileUpload}
 							/>
