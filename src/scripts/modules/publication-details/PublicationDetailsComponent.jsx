@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import ListsOfPublicationEdit from 'modules/common/ListsOfPublicationEdit';
 import { commaListItems } from 'common/Helpers';
+import { API } from 'common/Config';
 
 class PublicationDetailsComponent extends Component {
 
@@ -63,11 +64,11 @@ class PublicationDetailsComponent extends Component {
 							{ publication.description }
 						</p>
 						<div className="item-buttons">
-              { publication.can_download ?
-								<button className="btn btn-success">
+              { publication.can_download && publication.file_exists ?
+								<a href={`${API.downloadFile}?publication_id=${publication.publication_id}`}>
                   <span>Download</span>
                   <i className="glyphicon glyphicon-download-alt" />
-                </button> : null }
+                </a> : null }
 						</div>
 						<div className="item-table">
 							<table className="table table-responsive table-hover">

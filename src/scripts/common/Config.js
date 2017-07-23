@@ -10,6 +10,7 @@ const tags = '/tags';
 const publishers = '/publishers';
 const users = '/users';
 const upload = '/upload';
+const download = '/download';
 
 export const API = {
 
@@ -60,7 +61,8 @@ export const API = {
   updateProfileDetails: home + membership + '/update',
 
   uploadFile: home + upload + '/file',
-  uploadImage: home + upload + '/image'
+  uploadImage: home + upload + '/image',
+  downloadFile: home + download + '/file'
 };
 
 export const PAGINATION = {
