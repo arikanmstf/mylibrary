@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import config from 'config';
 import { connect } from 'react-redux';
 import { getLogout } from 'modules/login/LoginActions';
 import Storage from 'common/Storage';
@@ -18,31 +19,31 @@ class NavbarHeader extends Component {
           <nav className="navbar navbar-default">
             <div className="container-fluid">
               <div className="navbar-header">
-                <Link className="navbar-brand" to="/">MyLibray</Link>
+                <Link className="navbar-brand" to={config.homeUrl}>MyLibray</Link>
               </div>
               <ul className="nav navbar-nav">
                 { isAdmin ? (
                 <li>
-                  <Link to="/admin">
+                  <Link to={`${config.homeUrl}admin`}>
                     <span>Admin</span>
                     <i className="glyphicon glyphicon-lock" />
                   </Link>
                 </li>) : null
                 }
                 <li>
-                  <Link to="/profile">
+                  <Link to={`${config.homeUrl}profile`}>
                     <span>Profile</span>
                     <i className="glyphicon glyphicon-user" />
                   </Link>
                 </li>
                 <li>
-                  <Link to="/tags">
+                  <Link to={`${config.homeUrl}tags`}>
                     <span>Tags</span>
                     <i className="glyphicon glyphicon-tags" />
                   </Link>
                 </li>
                 <li>
-                  <Link to="/lists">
+                  <Link to={`${config.homeUrl}lists`}>
                     <span>Lists</span>
                     <i className="glyphicon glyphicon-list" />
                   </Link>
