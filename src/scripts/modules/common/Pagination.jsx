@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { PAGINATION } from 'common/Config';
+import config from 'config';
 
 export default class Pagination extends Component {
 
@@ -16,7 +17,7 @@ export default class Pagination extends Component {
     const pageNo = parseInt(this.props.pageNo, 10);
 
     if (totalPage !== pageNo) {
-      return (<Link to={`/${this.props.linkTo}/${pageNo + 1}`} onClick={this.props.onLiClick}>{`>`}</Link>);
+      return (<Link to={`${config.homeUrl}${this.props.linkTo}/${pageNo + 1}`} onClick={this.props.onLiClick}>{`>`}</Link>);
     }
     return null;
   }
@@ -26,7 +27,7 @@ export default class Pagination extends Component {
     const pageNo = parseInt(this.props.pageNo, 10);
 
     if (totalPage !== pageNo) {
-      return (<Link to={`/${this.props.linkTo}/${totalPage}`} onClick={this.props.onLiClick}>{`>>`}</Link>);
+      return (<Link to={`${config.homeUrl}${this.props.linkTo}/${totalPage}`} onClick={this.props.onLiClick}>{`>>`}</Link>);
     }
     return null;
   }
@@ -34,7 +35,7 @@ export default class Pagination extends Component {
     const pageNo = parseInt(this.props.pageNo, 10);
 
     if (pageNo > 1) {
-      return (<Link to={`/${this.props.linkTo}/${pageNo - 1}`} onClick={this.props.onLiClick}>{`<`}</Link>);
+      return (<Link to={`${config.homeUrl}${this.props.linkTo}/${pageNo - 1}`} onClick={this.props.onLiClick}>{`<`}</Link>);
     }
     return null;
   }
@@ -42,7 +43,7 @@ export default class Pagination extends Component {
     const pageNo = parseInt(this.props.pageNo, 10);
 
     if (pageNo > 1) {
-      return (<Link to={`/${this.props.linkTo}/1`} onClick={this.props.onLiClick}>{`<<`}</Link>);
+      return (<Link to={`${config.homeUrl}${this.props.linkTo}/1`} onClick={this.props.onLiClick}>{`<<`}</Link>);
     }
     return null;
   }
@@ -52,7 +53,7 @@ export default class Pagination extends Component {
     const i = index + 1;
     let className;
     if (i === pageNo) className = 'active';
-    return (<Link to={`/${this.props.linkTo}/${i}`} className={className} key={i} onClick={this.props.onLiClick}>{i}</Link>);
+    return (<Link to={`${config.homeUrl}${this.props.linkTo}/${i}`} className={className} key={i} onClick={this.props.onLiClick}>{i}</Link>);
   }
 
   render() {

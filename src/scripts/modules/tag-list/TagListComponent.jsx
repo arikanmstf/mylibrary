@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import config from 'config';
 
 import Pagination from 'modules/common/Pagination';
 
@@ -27,7 +28,7 @@ class TagListComponent extends Component {
 					<div className="tag-meta">
 						<div className="tag-info">
 							<div className="tag-title">
-								<Link to={`/tags/${tag.tag_id}`} >
+								<Link to={`${config.homeUrl}tags/${tag.tag_id}`} >
 									{tag.title}
 								</Link>
 							</div>

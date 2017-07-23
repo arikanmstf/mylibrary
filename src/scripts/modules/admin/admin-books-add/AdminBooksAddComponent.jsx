@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import config from 'config';
 
 import TagsOfPublicationEdit from 'modules/common/TagsOfPublicationEdit';
 import InputSearch from 'common/input/InputSearch';
@@ -82,7 +83,7 @@ class AdminBooksAddComponent extends Component {
     const bookSearch = this.props.bookSearch;
     return bookSearch && (this.props.bookSearch.map((book) => {
       return (
-        <li key={book.book_id}><Link to={`/admin/books/edit/${book.book_id}`}>{book.title}</Link></li>
+        <li key={book.book_id}><Link to={`${config.homeUrl}admin/books/edit/${book.book_id}`}>{book.title}</Link></li>
       );
     }));
   }

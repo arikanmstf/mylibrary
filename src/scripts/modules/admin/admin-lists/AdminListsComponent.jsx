@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import config from 'config';
 
 import Pagination from 'modules/common/Pagination';
 import InputSearch from 'common/input/InputSearch';
@@ -35,10 +36,10 @@ class AdminListsComponent extends Component {
           <td>{list.list_id}</td>
           <td>{list.title}</td>
           <td>
-            <Link to={`/admin/lists/edit/${list.list_id}`}>
+            <Link to={`${config.homeUrl}admin/lists/edit/${list.list_id}`}>
               <i className="glyphicon glyphicon-edit" />
             </Link>
-            <Link to={`/admin/lists/remove/${list.list_id}`}>
+            <Link to={`${config.homeUrl}admin/lists/remove/${list.list_id}`}>
               <i className="glyphicon glyphicon-remove" />
             </Link>
           </td>
@@ -57,7 +58,7 @@ class AdminListsComponent extends Component {
             onLiClick={this.onLiClick}
             linkTo="admin/lists/pages"
           />
-        <Link to={`/admin/lists/add`} className="btn btn-success">Add List</Link>
+        <Link to={`${config.homeUrl}admin/lists/add`} className="btn btn-success">Add List</Link>
           <InputSearch makeSearch={this.setSearchTitle} />
           <table className="table table-responsive table-bordered table-hover admin-table">
             <thead>

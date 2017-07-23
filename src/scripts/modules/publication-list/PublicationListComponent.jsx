@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import config from 'config';
 
 import InputSearch from 'common/input/InputSearch';
 import Pagination from 'modules/common/Pagination';
@@ -41,7 +42,7 @@ class PublicationListComponent extends Component {
 				<li key={publication.publication_id}>
 					<div className="publication-meta">
 						<div className="publication-image-mask">
-							<Link to={`/publications/${publication.publication_id}`}>
+							<Link to={`${config.homeUrl}publications/${publication.publication_id}`}>
 								<img
 									className="publication-image"
 									src={`/assets/img/cover/${publication.publication_id}.jpg`}
@@ -50,7 +51,7 @@ class PublicationListComponent extends Component {
 						</div>
 						<div className="publication-info">
 							<div className="publication-title">
-								<Link to={`/publications/${publication.publication_id}`} >
+								<Link to={`${config.homeUrl}publications/${publication.publication_id}`} >
 									{publication.title}
 								</Link>
 							</div>

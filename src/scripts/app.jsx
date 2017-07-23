@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
+import config from 'config';
 
 import Storage from 'common/Storage';
 import ModalLoading from 'common/ModalLoading';
@@ -30,7 +31,7 @@ class App extends Component {
         <Router>
             { isLoggedIn ?
               <Switch>
-                <Route path="/" component={AuthUserRouter} />
+                <Route path={config.homeUrl} component={AuthUserRouter} />
               </Switch>
               :
               <Switch>

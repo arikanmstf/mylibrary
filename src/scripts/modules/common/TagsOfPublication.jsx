@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import config from 'config';
 
 class TagsOfPublication extends Component {
 
@@ -8,7 +9,7 @@ class TagsOfPublication extends Component {
 		return this.props.tags.map((tag) => {
 			return (
 				<div key={tag.tag_id} >
-					<Link to={`/tags/${tag.tag_id}`} >
+					<Link to={`${config.homeUrl}tags/${tag.tag_id}`} >
 						<div className="list">
 								{tag.title}
 						</div>

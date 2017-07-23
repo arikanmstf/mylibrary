@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import config from 'config';
 
 import Pagination from 'modules/common/Pagination';
 import InputSearch from 'common/input/InputSearch';
@@ -39,10 +40,10 @@ class AdminPublishersComponent extends Component {
           <td>{publisher.publisher_id}</td>
           <td>{publisher.name}</td>
           <td>
-            <Link to={`/admin/publishers/edit/${publisher.publisher_id}`}>
+            <Link to={`${config.homeUrl}admin/publishers/edit/${publisher.publisher_id}`}>
               <i className="glyphicon glyphicon-edit" />
             </Link>
-            <Link to={`/admin/publishers/remove/${publisher.publisher_id}`}>
+            <Link to={`${config.homeUrl}admin/publishers/remove/${publisher.publisher_id}`}>
               <i className="glyphicon glyphicon-remove" />
             </Link>
           </td>
@@ -61,7 +62,7 @@ class AdminPublishersComponent extends Component {
             onLiClick={this.onLiClick}
             linkTo="admin/publishers/pages"
           />
-          <Link to={`/admin/publishers/add`} className="btn btn-success">Add Publisher</Link>
+          <Link to={`${config.homeUrl}admin/publishers/add`} className="btn btn-success">Add Publisher</Link>
           <InputSearch makeSearch={this.setSearchTitle} />
           <table className="table table-responsive table-bordered table-hover admin-table">
             <thead>

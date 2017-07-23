@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import config from 'config';
 
 export function commaListItems(item, ids, route) {
   if (!item) return null;
@@ -8,7 +9,7 @@ export function commaListItems(item, ids, route) {
   const rowLen = itemArr.length;
 
   itemArr = itemArr.map((w, i) => {
-    return (<span key={idsArr[i]}><Link to={`/${route}/${idsArr[i]}`}>{w}</Link>{rowLen === i + 1 ? null : ', '}</span>);
+    return (<span key={idsArr[i]}><Link to={`${config.homeUrl}${route}/${idsArr[i]}`}>{w}</Link>{rowLen === i + 1 ? null : ', '}</span>);
   });
   return itemArr;
 }
@@ -22,7 +23,7 @@ export function fromArrayToCommaEdit(itemArr, route, onClickEvent) {
   return itemArr.map((item, index) => {
     return (
       <span key={item.key}>
-        <Link to={`/${route}/${item.key}`}>{item.value}</Link>
+        <Link to={`${config.homeUrl}${route}/${item.key}`}>{item.value}</Link>
         <i onClick={() => onClick(item)} className="glyphicon glyphicon-remove" />
         {rowLen === index + 1 ? null : ', '}
       </span>

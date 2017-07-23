@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import config from 'config';
 
 import ListsOfPublicationEdit from 'modules/common/ListsOfPublicationEdit';
 import TagsOfPublication from 'modules/common/TagsOfPublication';
@@ -59,7 +60,7 @@ class PublicationDetailsComponent extends Component {
 							{ commaListItems(publication.writers, publication.writer_ids, 'writers') }
 						</div>
 						<div className="item-light-title">
-							<span><Link style={linkStyle} to={`/publishers/${publication.publisher_id}`}>{publication.publisher_name}</Link></span>
+							<span><Link style={linkStyle} to={`${config.homeUrl}publishers/${publication.publisher_id}`}>{publication.publisher_name}</Link></span>
 						</div>
 						<p className="item-description">
 							{ publication.description }

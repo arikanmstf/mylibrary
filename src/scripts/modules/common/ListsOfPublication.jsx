@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import config from 'config';
 
 class ListsOfPublication extends Component {
 
@@ -8,7 +9,7 @@ class ListsOfPublication extends Component {
 		return this.props.lists.map((list) => {
 			return (
 				<div key={list.list_id}>
-					<Link to={`/lists/${list.list_id}`} >
+					<Link to={`${config.homeUrl}lists/${list.list_id}`} >
 						<div className="list">
 								{list.title}
 						</div>
