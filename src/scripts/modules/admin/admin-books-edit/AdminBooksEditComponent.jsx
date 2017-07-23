@@ -57,11 +57,17 @@ class AdminBooksEditComponent extends Component {
       title: event.target.value
     });
   }
-  addNewWriter(writer) {
+	addNewWriter(writer) {
     const writers = this.state.writers;
+		for (let i = 0; i < writers.length; i++) {
+			if (writers[i].key === writer.writer_id) {
+				return false;
+			}
+		}
     writers.push({ value: writer.full_name, key: writer.writer_id });
     this.setState({ writers });
     this.props.resetGetWriterBySearch();
+		return true;
   }
   searchWriters(newValue) {
     this.props.getWriterBySearch(newValue);
