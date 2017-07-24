@@ -194,7 +194,9 @@ export function addPublicationDetails(form) {
       ...form,
       login_key: Storage.get('login_key')
     }))
-		.then((response) => dispatch(ResolvedAddPublicationDetails(response)));
+		.then(() => {
+      window.location.href = window.location.href;
+    });
 	};
 }
 export function addWriterDetails(form) {
