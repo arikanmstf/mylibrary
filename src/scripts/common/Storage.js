@@ -9,6 +9,9 @@ class Storage {
   delete(key) {
       window.sessionStorage.removeItem(key);
   }
+  clear() {
+    window.sessionStorage.clear();
+  }
 }
 const s = new Storage();
 export default s;

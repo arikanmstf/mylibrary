@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import config from 'config';
+import Storage from 'common/Storage';
 
 export function commaListItems(item, ids, route) {
   if (!item) return null;
@@ -47,8 +48,14 @@ export const createErrorMessage = (msg) => {
   let message = msg;
   if (typeof message !== 'string') {
     if (message.response && message.response.data) {
-      if (message.response.data.error) message = message.response.data.error.message;
-      else message = message.response.statusText;
+      if (message.response.data.error) {
+        if (message.response.data.error.code === '403') {
+          Storage.clear();
+        }
+        message = message.response.data.error.message;
+      } else {
+        message = message.response.statusText;
+      }
     } else {
       message = 'An error has occured';
     }
