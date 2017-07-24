@@ -12,7 +12,7 @@ export function ResolvedUpdatePublicationDetails(response) {
 }
 export function ResolvedUpdateBookDetails(response) {
   return {
-    type: 'RESOLVED_UPDATE_BOOK_DETAILS',
+    type: 'RESOLVED_GET_BOOK_DETAILS',
     data: response.data.response
   };
 }
