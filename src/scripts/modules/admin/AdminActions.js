@@ -6,7 +6,7 @@ import StartedRequest from 'common/actions/StartedRequest';
 
 export function ResolvedUpdatePublicationDetails(response) {
   return {
-    type: 'RESOLVED_UPDATE_PUBLICATION_DETAILS',
+    type: 'RESOLVED_GET_PUBLICATION_DETAILS',
     data: response.data.response
   };
 }
