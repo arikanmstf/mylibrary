@@ -18,31 +18,31 @@ export function ResolvedUpdateBookDetails(response) {
 }
 export function ResolvedUpdateWriterDetails(response) {
   return {
-    type: 'RESOLVED_UPDATE_WRITER_DETAILS',
+    type: 'RESOLVED_GET_WRITER_DETAILS',
     data: response.data.response
   };
 }
 export function ResolvedUpdatePublisherDetails(response) {
   return {
-    type: 'RESOLVED_UPDATE_PUBLISHER_DETAILS',
+    type: 'RESOLVED_GET_PUBLISHER_DETAILS',
     data: response.data.response
   };
 }
 export function ResolvedUpdateUserDetails(response) {
   return {
-    type: 'RESOLVED_UPDATE_USER_DETAILS',
+    type: 'RESOLVED_GET_USER_DETAILS',
     data: response.data.response
   };
 }
 export function ResolvedUpdateTagDetails(response) {
   return {
-    type: 'RESOLVED_UPDATE_TAG_DETAILS',
+    type: 'RESOLVED_GET_TAG_DETAILS',
     data: response.data.response
   };
 }
 export function ResolvedUpdateListDetails(response) {
   return {
-    type: 'RESOLVED_UPDATE_LIST_DETAILS',
+    type: 'RESOLVED_GET_LIST_DETAILS',
     data: response.data.response
   };
 }
