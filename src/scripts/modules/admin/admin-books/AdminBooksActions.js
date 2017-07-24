@@ -31,7 +31,6 @@ const addWriterBySearch = (title) => {
     login_key: Storage.get('login_key')
   }));
 };
-
 export const ResolvedGetWriterBySearch = (response) => {
   return {
     type: 'RESOLVED_GET_WRITER_BY_SEARCH',
@@ -105,6 +104,12 @@ export const resetGetBookBySearch = () => {
 	};
 };
 
+const addPublisherBySearch = (title) => {
+  axios.post(API.addPublisherDetails, qs.stringify({
+    title,
+    login_key: Storage.get('login_key')
+  }));
+};
 export const ResolvedGetPublisherBySearch = (response) => {
   return {
     type: 'RESOLVED_GET_PUBLISHER_BY_SEARCH',
@@ -120,7 +125,18 @@ export const getPublisherBySearch = (title) => {
 					login_key: Storage.get('login_key')
 				}
 			})
-		.then((response) => dispatch(ResolvedGetPublisherBySearch(response)));
+		.then((response) => {
+      if (response.data.response.length < 1) {
+        dispatch(openConfirmModal({
+          message: 'Publisher not found, add new one ?',
+          onConfirm: () => {
+            addPublisherBySearch(title);
+          }
+        }));
+      } else {
+        dispatch(ResolvedGetPublisherBySearch(response));
+      }
+    });
 	};
 };
 

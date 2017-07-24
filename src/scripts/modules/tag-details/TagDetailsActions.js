@@ -30,7 +30,6 @@ const addTagBySearch = (title) => {
     login_key: Storage.get('login_key')
   }));
 };
-
 export const ResolvedGetTagBySearch = (response) => {
   return {
     type: 'RESOLVED_GET_TAG_BY_SEARCH',
