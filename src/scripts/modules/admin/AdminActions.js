@@ -184,7 +184,9 @@ export function addBookDetails(form) {
       ...form,
       login_key: Storage.get('login_key')
     }))
-		.then((response) => dispatch(ResolvedAddBookDetails(response)));
+    .then(() => {
+      window.location.href = window.location.href;
+    });
 	};
 }
 export function addPublicationDetails(form) {
@@ -206,7 +208,9 @@ export function addWriterDetails(form) {
       ...form,
       login_key: Storage.get('login_key')
     }))
-		.then((response) => dispatch(ResolvedAddWriterDetails(response)));
+    .then(() => {
+      window.location.href = window.location.href;
+    });
 	};
 }
 export function addPublisherDetails(form) {
@@ -216,7 +220,9 @@ export function addPublisherDetails(form) {
       ...form,
       login_key: Storage.get('login_key')
     }))
-		.then((response) => dispatch(ResolvedAddPublisherDetails(response)));
+    .then(() => {
+      window.location.href = window.location.href;
+    });
 	};
 }
 export function addUserDetails(form) {
@@ -226,7 +232,9 @@ export function addUserDetails(form) {
       ...form,
       login_key: Storage.get('login_key')
     }))
-		.then((response) => dispatch(ResolvedAddUserDetails(response)));
+    .then(() => {
+      window.location.href = window.location.href;
+    });
 	};
 }
 export function addTagDetails(form) {
@@ -236,7 +244,9 @@ export function addTagDetails(form) {
       ...form,
       login_key: Storage.get('login_key')
     }))
-		.then((response) => dispatch(ResolvedAddTagDetails(response)));
+    .then(() => {
+      window.location.href = window.location.href;
+    });
 	};
 }
 export function addListDetails(form) {
@@ -246,6 +256,8 @@ export function addListDetails(form) {
       ...form,
       login_key: Storage.get('login_key')
     }))
-		.then((response) => dispatch(ResolvedAddListDetails(response)));
+    .then(() => {
+      window.location.href = window.location.href;
+    });
 	};
 }
