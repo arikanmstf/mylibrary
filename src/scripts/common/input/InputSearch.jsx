@@ -10,10 +10,16 @@ class InputSearch extends Component {
     };
 
     this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   handleSearchChange(event) {
     this.setState({ search_title: event.target.value });
+  }
+  handleKeyPress(event) {
+    if (event.charCode === 13) {
+      this.makeSearch();
+    }
   }
   makeSearch() {
     this.props.makeSearch(this.state.search_title);
@@ -28,6 +34,7 @@ class InputSearch extends Component {
                   onChange={this.handleSearchChange}
                   type="text"
                   className="form-control input-lg"
+                  onKeyPress={this.handleKeyPress}
                   placeholder={this.props.title}
                 />
                 <span className="input-group-btn">
