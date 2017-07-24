@@ -19,7 +19,7 @@ class ListsOfPublicationEdit extends Component {
   }
   componentWillReceiveProps(nextProps) {
     this.setState({
-      lists: (this.state.lists.length > 0) ? this.state.lists : nextProps.lists
+      lists: nextProps.lists
     });
   }
 
