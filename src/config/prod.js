@@ -1,5 +1,5 @@
 const Config = {
-  middleWareUrl: 'http://mustafaarikan.net/mylibraryv2/api',
-  homeUrl: '/mylibraryv2/'
+  middleWareUrl: 'http://mustafaarikan.net/mylibrary/api',
+  homeUrl: '/mylibrary/'
 };
 export default Config;
