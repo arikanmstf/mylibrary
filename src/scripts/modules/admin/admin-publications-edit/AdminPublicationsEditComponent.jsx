@@ -97,8 +97,7 @@ class AdminPublicationsEditComponent extends Component {
   saveForm() {
     const form = {
 			...this.state,
-			publication_id: this.props.publication.publication_id,
-			lists: this.lists
+			publication_id: this.props.publication.publication_id
     };
     this.props.updatePublicationDetails(form);
   }
