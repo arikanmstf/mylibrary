@@ -42,6 +42,7 @@ class AdminPublicationsEditComponent extends Component {
 
   componentWillReceiveProps(nextProps) {
 		this.setState({
+      book_id: nextProps.publication.book_id,
       description: nextProps.publication.description,
       isbn: nextProps.publication.isbn || '',
       cover_no: nextProps.publication.cover_no,
