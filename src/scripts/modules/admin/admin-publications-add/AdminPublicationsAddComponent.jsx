@@ -10,13 +10,13 @@ class AdminPublicationsAddComponent extends Component {
 
 	constructor(props) {
     super(props);
-		this.lists = [];
     this.state = {
       title: '',
       publisher_id: 0,
       book_id: 0,
       description: '',
       isbn: '',
+			lists: [],
       cover_no: 0,
       page_number: 0,
 			image_url: '',
@@ -57,7 +57,7 @@ class AdminPublicationsAddComponent extends Component {
     });
   }
 	onListsChange(lists) {
-		this.lists = lists;
+		this.setState({ lists });
 	}
 	onImageUpload(res) {
 		this.setState({ image_url: res.response.filename });
