@@ -3,6 +3,8 @@ import qs from 'qs';
 import Storage from 'common/Storage';
 import { API } from 'common/Config';
 import StartedRequest from 'common/actions/StartedRequest';
+import { openModal } from 'modules/common/modal/ModalActions';
+import { createErrorMessage } from 'common/Helpers';
 
 export function ResolvedGetLogin(response) {
   return {
@@ -22,7 +24,11 @@ export function getLogin(data) {
 			Storage.set('login_key', response.data.response.key);
 			Storage.set('is_admin', response.data.response.is_admin);
 			window.location.href = window.location.href;
-		});
+		})
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
+    });
 	};
 }
 export function getLogout() {
