@@ -6,6 +6,10 @@ const path = require("path");
 
 const extractCSS = new ExtractTextPlugin("dist/style.css");
 
+const JS_JSX_PATTERN = /\.jsx?$/;
+const SCSS_PATTERN = /\.scss$/;
+const ASSET_PATTERN = /\.(jpe?g|png|gif|svg|ttf|otf|eot|woff(2)?)(\?v=\d+)?$/;
+
 const isProd = argv.env === 'prod';
 const isDev = argv.env === 'dev';
 
@@ -19,7 +23,7 @@ let rules = [
     }
   },
   {
-    test: /\.scss$/,
+    test: SCSS_PATTERN,
     use: extractCSS.extract({
       fallback: "style-loader",
       use: [{
@@ -44,7 +48,7 @@ if (isProd) {
 }
 
 rules.push({
-  test: /\.jsx?$/,
+  test: JS_JSX_PATTERN,
   exclude: /node_modules/,
   enforce: 'pre',
   loader: 'eslint-loader',
@@ -52,6 +56,16 @@ rules.push({
     failOnWarning: false,
     failOnError: isProd,
     quiet: isProd
+  }
+});
+
+rules.push({
+  test: ASSET_PATTERN,
+  exclude: /node_modules/,
+  loader: 'file-loader',
+  options: {
+    name: '[path][name].[ext]?[hash]',
+    context: 'assets'
   }
 });
 
@@ -72,7 +86,8 @@ module.exports = {
     extensions: [".js", ".jsx"],
     modules: [
       path.resolve('./src/scripts'),
-      path.resolve('./node_modules')
+      path.resolve('./node_modules'),
+      path.resolve(__dirname, './assets')
     ],
     alias: {
       config$: require.resolve("./src/config/" + argv.env + ".js")
