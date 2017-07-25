@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import InputText from 'common/input/InputText';
-import InputPassword from 'common/input/InputPassword';
-
 import ReactLogo from 'img/react-logo.png';
 
 class LoginComponent extends Component {
@@ -15,11 +12,17 @@ class LoginComponent extends Component {
       username: '',
       password: ''
     };
+		this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
 	getLogin() {
 		this.props.getLogin(this.state);
 	}
+	handleKeyPress(event) {
+    if (event.charCode === 13) {
+      this.getLogin();
+    }
+  }
 
 	render() {
 		return (
@@ -30,15 +33,21 @@ class LoginComponent extends Component {
 						height="180"
 					/>
 					<div className="form-group">
-						<InputText
-							onChange={(e) => this.setState({ username: e })}
+						<input
+							type="text"
+							className="form-control input input-text"
 							placeholder="Enter your username"
+							onChange={(e) => this.setState({ username: e.target.value })}
+							onKeyPress={this.handleKeyPress}
 						/>
 					</div>
 					<div className="form-group">
-						<InputPassword
-							onChange={(e) => this.setState({ password: e })}
+						<input
+							type="password"
+							className="form-control input input-password"
 							placeholder="Enter your password"
+							onKeyPress={this.handleKeyPress}
+							onChange={(e) => this.setState({ password: e.target.value })}
 						/>
 					</div>
 					<div className="form-group">
