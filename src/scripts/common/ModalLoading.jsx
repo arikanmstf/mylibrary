@@ -1,12 +1,13 @@
 import React from 'react';
-import config from 'config';
+
+import loadingGif from 'img/loading.gif';
 
 const ModalLoading = () => {
   return (
     <div>
       <div className="loadingBaseLayer" />
       <div className="loadingSpinnerContainer">
-        <center><img src={`${config.homeUrl}assets/img/loading.gif`} width="35" height="35" /></center>
+        <center><img src={loadingGif} width="35" height="35" /></center>
       </div>
     </div>
   );
