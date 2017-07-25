@@ -15,6 +15,9 @@ class InputSearch extends Component {
 
   handleSearchChange(event) {
     this.setState({ search_title: event.target.value });
+    if (this.props.onChange) {
+      this.props.onChange(event);
+    }
   }
   handleKeyPress(event) {
     if (event.charCode === 13) {
@@ -51,10 +54,12 @@ class InputSearch extends Component {
 
 InputSearch.propTypes = {
   makeSearch: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
   title: PropTypes.string
 };
 InputSearch.defaultProps = {
-  title: 'Search'
+  title: 'Search',
+  onChange: null
 };
 
 export default InputSearch;

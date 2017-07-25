@@ -22,6 +22,7 @@ class AdminBooksAddComponent extends Component {
 
     this.onTagsChange = this.onTagsChange.bind(this);
     this.onDescChange = this.onDescChange.bind(this);
+    this.onTitleChange = this.onTitleChange.bind(this);
     this.searchWriters = this.searchWriters.bind(this);
     this.searchBooks = this.searchBooks.bind(this);
     this.addNewWriter = this.addNewWriter.bind(this);
@@ -35,6 +36,11 @@ class AdminBooksAddComponent extends Component {
   onDescChange(event) {
     this.setState({
       description: event.target.value
+    });
+  }
+  onTitleChange(event) {
+    this.setState({
+      title: event.target.value
     });
   }
   addNewWriter(writer) {
@@ -100,7 +106,7 @@ class AdminBooksAddComponent extends Component {
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
             <div className="item-title">
-              <InputSearch title="Book Title" makeSearch={this.searchBooks} />
+              <InputSearch title="Book Title" onChange={this.onTitleChange} makeSearch={this.searchBooks} />
 							<div className="item-search-results">
 								<ul>
 									{this.renderSearchBook()}
