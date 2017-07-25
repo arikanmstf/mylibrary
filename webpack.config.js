@@ -11,6 +11,9 @@ const SCSS_PATTERN = /\.scss$/;
 const ASSET_PATTERN = /\.(jpe?g|png|gif|svg|ttf|otf|eot|woff(2)?)(\?v=\d+)?$/;
 const DEV_SERVER_PORT = 8080;
 
+const configResolve = require.resolve("./src/config/" + argv.env + ".js");
+const config = require("./src/config/" + argv.env + ".js");
+
 const isProd = argv.env === 'prod';
 const isDev = argv.env === 'dev';
 
@@ -65,7 +68,7 @@ rules.push({
   exclude: /node_modules/,
   loader: 'file-loader',
   options: {
-    name: '[path][name].[ext]?[hash]',
+    name: 'dist/[path][name].[ext]?[hash]',
     context: 'assets'
   }
 });
@@ -77,7 +80,7 @@ module.exports = {
   ],
   output: {
     path: __dirname,
-    publicPath: "/",
+    publicPath: config.homeUrl,
     filename: "dist/bundle.js"
   },
   module: {
@@ -91,7 +94,7 @@ module.exports = {
       path.resolve(__dirname, './assets')
     ],
     alias: {
-      config$: require.resolve("./src/config/" + argv.env + ".js")
+      config$: configResolve
     }
   },
   devServer: {
