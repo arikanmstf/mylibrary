@@ -6,11 +6,13 @@ class AdminListsEditComponent extends Component {
 	constructor(props) {
     super(props);
     this.state = {
-      title: ''
+      title: '',
+			is_public: false
     };
 
     this.onTitleChange = this.onTitleChange.bind(this);
     this.saveForm = this.saveForm.bind(this);
+    this.onPublicChange = this.onPublicChange.bind(this);
   }
 
   componentDidMount() {
@@ -19,7 +21,8 @@ class AdminListsEditComponent extends Component {
 
   componentWillReceiveProps(nextProps) {
 		this.setState({
-      title: nextProps.list.title
+      title: nextProps.list.title,
+      is_public: nextProps.list.is_public > 0
     });
 	}
   onTitleChange(event) {
@@ -27,16 +30,18 @@ class AdminListsEditComponent extends Component {
       title: event.target.value
     });
   }
-  onDescChange(event) {
+  onPublicChange() {
+		const is_public = !this.state.is_public; // eslint-disable-line camelcase
     this.setState({
-      description: event.target.value
+      is_public
     });
   }
 
   saveForm() {
     const form = {
       list_id: this.props.list.list_id,
-      title: this.state.title
+      title: this.state.title,
+      is_public: this.state.is_public ? 1 : 0
     };
     this.props.updateListDetails(form);
   }
@@ -49,6 +54,10 @@ class AdminListsEditComponent extends Component {
 					<div className="col-md-12 col-sm-12 item-info">
             <div className="item-title">
               <input value={this.state.title} onChange={this.onTitleChange} />
+            </div>
+            <div className="item-title">
+							Public:
+              <input type="checkbox" checked={this.state.is_public} onChange={this.onPublicChange} />
             </div>
 					</div>
 					<div className="clearfix" />
