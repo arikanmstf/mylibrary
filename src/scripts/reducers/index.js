@@ -1,5 +1,8 @@
 import { combineReducers } from 'redux';
+
 import ProfileReducer from 'modules/profile/ProfileReducer';
+import TagListReducer from 'modules/tag-list/TagListReducer';
+
 import PublicationReducer from './PublicationReducer';
 import PublicationDetailsReducer from './PublicationDetailsReducer';
 import WriterDetailsReducer from './WriterDetailsReducer';
@@ -17,7 +20,6 @@ import BookReducer from './BookReducer';
 import WriterReducer from './WriterReducer';
 import PublishersReducer from './PublishersReducer';
 import UserReducer from './UserReducer';
-import TagReducer from './TagReducer';
 import ListReducer from './ListReducer';
 import ContentReducer from './ContentReducer';
 import { ModalReducer, ModalConfirmReducer } from './ModalReducer';
@@ -40,7 +42,7 @@ const rootReducer = combineReducers({
   writers: WriterReducer,
   publishers: PublishersReducer,
   users: UserReducer,
-  tags: TagReducer,
+  tags: TagListReducer,
   lists: ListReducer,
   contentLoaded: ContentReducer,
   modalMessage: ModalReducer,
