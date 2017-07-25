@@ -15,7 +15,7 @@ class InputSearch extends Component {
 
   handleSearchChange(event) {
     this.setState({ search_title: event.target.value });
-    if (this.props.onChange) {
+    if (this.props.onChange) {
       this.props.onChange(event);
     }
   }

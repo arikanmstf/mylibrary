@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
+import Storage from 'common/Storage';
 
 import AdminPublications from 'modules/admin/admin-publications/AdminPublicationsContainer';
 import AdminPublicationsEdit from 'modules/admin/admin-publications-edit/AdminPublicationsEditContainer';
@@ -33,9 +34,11 @@ import AdminListsAdd from 'modules/admin/admin-lists-add/AdminListsAddContainer'
 import SideNavigation from 'modules/common/SideNavigation';
 import NotFound from 'modules/not-found/NotFoundComponent';
 
+const isAdmin = Storage.get('is_admin') > 0;
+
 class AuthAdminRouter extends Component {
   render() {
-    return (
+    return isAdmin ? (
       <div>
         <SideNavigation />
         <div className="admin-page col-xs-12 col-sm-9 col-md-9">
@@ -80,7 +83,7 @@ class AuthAdminRouter extends Component {
           </Switch>
         </div>
       </div>
-    );
+    ) : <Route component={NotFound} />;
   }
 }
 
