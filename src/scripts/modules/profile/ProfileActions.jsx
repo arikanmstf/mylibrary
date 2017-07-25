@@ -4,6 +4,8 @@ import qs from 'qs';
 import Storage from 'common/Storage';
 import { API } from 'common/Config';
 import StartedRequest from 'common/actions/StartedRequest';
+import { openModal } from 'modules/common/modal/ModalActions';
+import { createErrorMessage } from 'common/Helpers';
 
 export function ResolvedGetProfileDetails(response) {
   return {
@@ -20,7 +22,11 @@ export function getProfileDetails() {
 					login_key: Storage.get('login_key')
 				}
 			})
-		.then((response) => dispatch(ResolvedGetProfileDetails(response)));
+		.then((response) => dispatch(ResolvedGetProfileDetails(response)))
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
+    });
 	};
 }
 

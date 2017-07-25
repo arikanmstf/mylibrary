@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import ProfileReducer from 'modules/profile/ProfileReducer';
 import PublicationReducer from './PublicationReducer';
 import PublicationDetailsReducer from './PublicationDetailsReducer';
 import WriterDetailsReducer from './WriterDetailsReducer';
@@ -19,7 +20,6 @@ import UserReducer from './UserReducer';
 import TagReducer from './TagReducer';
 import ListReducer from './ListReducer';
 import ContentReducer from './ContentReducer';
-import ProfileReducer from './ProfileReducer';
 import { ModalReducer, ModalConfirmReducer } from './ModalReducer';
 
 const rootReducer = combineReducers({
