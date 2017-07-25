@@ -9,6 +9,7 @@ const extractCSS = new ExtractTextPlugin("dist/style.css");
 const JS_JSX_PATTERN = /\.jsx?$/;
 const SCSS_PATTERN = /\.scss$/;
 const ASSET_PATTERN = /\.(jpe?g|png|gif|svg|ttf|otf|eot|woff(2)?)(\?v=\d+)?$/;
+const DEV_SERVER_PORT = 8080;
 
 const isProd = argv.env === 'prod';
 const isDev = argv.env === 'dev';
@@ -94,7 +95,7 @@ module.exports = {
     }
   },
   devServer: {
-    port: 8080,
+    port: DEV_SERVER_PORT,
     historyApiFallback: true,
     contentBase: "./"
   },
