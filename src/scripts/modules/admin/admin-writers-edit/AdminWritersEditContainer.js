@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { getWriterDetails } from 'modules/admin/admin-writers/AdminWritersActions';
+import { getWriterDetails } from 'modules/writer-details/WriterDetailsActions';
 import { updateWriterDetails } from 'modules/admin/AdminActions';
 import AdminWritersEditComponent from './AdminWritersEditComponent';
 

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { getWriterDetails } from 'modules/admin/admin-writers/AdminWritersActions';
+import { getWriterDetails } from 'modules/writer-details/WriterDetailsActions';
 import WriterDetailsComponent from './WriterDetailsComponent';
 
 const mapStateToProps = (state) => {

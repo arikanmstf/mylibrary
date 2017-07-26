@@ -9,8 +9,8 @@ import ListListReducer from 'modules/list-list/ListListReducer';
 import PublicationDetailsReducer from 'modules/publication-details/PublicationDetailsReducer';
 import PublicationListReducer from 'modules/publication-list/PublicationListReducer';
 import PublisherDetailsReducer from 'modules/publisher-details/PublisherDetailsReducer';
+import WriterDetailsReducer from 'modules/writer-details/WriterDetailsReducer';
 
-import WriterDetailsReducer from './WriterDetailsReducer';
 import UserDetailsReducer from './UserDetailsReducer';
 import WriterSearchReducer from './WriterSearchReducer';
 import BookSearchReducer from './BookSearchReducer';
@@ -23,7 +23,7 @@ import ContentReducer from './ContentReducer';
 import { ModalReducer, ModalConfirmReducer } from './ModalReducer';
 
 const rootReducer = combineReducers({
-  publications: PublicationReducer,
+  publications: PublicationListReducer,
   publication: PublicationDetailsReducer,
   writer: WriterDetailsReducer,
   list: ListDetailsReducer,

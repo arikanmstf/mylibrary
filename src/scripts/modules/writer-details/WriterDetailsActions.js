@@ -5,24 +5,23 @@ import StartedRequest from 'common/actions/StartedRequest';
 import { openModal } from 'modules/common/modal/ModalActions';
 import { createErrorMessage } from 'common/Helpers';
 
-export function ResolvedGetAllWriters(response) {
+export function ResolvedGetWriterDetails(response) {
   return {
-    type: 'RESOLVED_GET_ALL_WRITERS',
+    type: 'RESOLVED_GET_WRITER_DETAILS',
     data: response.data.response
   };
 }
 
-export function getAllWriters(search) {
+export function getWriterDetails(writerId) {
 	return (dispatch) => {
     dispatch(StartedRequest());
-		axios.get(API.getAllWriters, {
+		axios.get(API.getWriterDetails, {
 				params: {
-					title: search.title,
-					login_key: Storage.get('login_key'),
-          page: search.pageNo
+					writer_id: writerId,
+					login_key: Storage.get('login_key')
 				}
 			})
-		.then((response) => dispatch(ResolvedGetAllWriters(response)))
+		.then((response) => dispatch(ResolvedGetWriterDetails(response)))
     .catch((msg) => {
         const message = createErrorMessage(msg);
         dispatch(openModal(message));

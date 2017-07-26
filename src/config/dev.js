@@ -1,5 +1,5 @@
 const Config = {
-  middleWareUrl: 'http://mustafaarikan.net/mylibrary/api',
+  middleWareUrl: 'http://localhost/mylibrary/api',
   homeUrl: '/'
 };
 module.exports = Config;
