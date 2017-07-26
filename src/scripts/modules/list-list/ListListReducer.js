@@ -1,6 +1,6 @@
 const initialState = [];
 
-const ListReducer = (state = initialState, action) => {
+const ListListReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'RESOLVED_GET_ALL_LISTS':
       return action.data;
@@ -9,4 +9,4 @@ const ListReducer = (state = initialState, action) => {
   }
 };
 
-export default ListReducer;
+export default ListListReducer;

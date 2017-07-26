@@ -4,11 +4,12 @@ import ProfileReducer from 'modules/profile/ProfileReducer';
 import TagListReducer from 'modules/tag-list/TagListReducer';
 import { TagDetailsReducer, TagSearchReducer } from 'modules/tag-details/TagDetailsReducer';
 import { ListDetailsReducer, ListSearchReducer } from 'modules/list-details/ListDetailsReducer';
+import BookDetailsReducer from 'modules/book-details/BookDetailsReducer';
+import ListListReducer from 'modules/list-list/ListListReducer';
 
 import PublicationReducer from './PublicationReducer';
 import PublicationDetailsReducer from './PublicationDetailsReducer';
 import WriterDetailsReducer from './WriterDetailsReducer';
-import BookDetailsReducer from './BookDetailsReducer';
 import PublisherDetailsReducer from './PublisherDetailsReducer';
 import UserDetailsReducer from './UserDetailsReducer';
 import WriterSearchReducer from './WriterSearchReducer';
@@ -18,7 +19,6 @@ import BookReducer from './BookReducer';
 import WriterReducer from './WriterReducer';
 import PublishersReducer from './PublishersReducer';
 import UserReducer from './UserReducer';
-import ListReducer from './ListReducer';
 import ContentReducer from './ContentReducer';
 import { ModalReducer, ModalConfirmReducer } from './ModalReducer';
 
@@ -41,7 +41,7 @@ const rootReducer = combineReducers({
   publishers: PublishersReducer,
   users: UserReducer,
   tags: TagListReducer,
-  lists: ListReducer,
+  lists: ListListReducer,
   contentLoaded: ContentReducer,
   modalMessage: ModalReducer,
   onConfirm: ModalConfirmReducer,
