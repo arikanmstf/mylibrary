@@ -1,6 +1,6 @@
 const initialState = [];
 
-const PublicationReducer = (state = initialState, action) => {
+const PublicationListReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'RESOLVED_GET_ALL_PUBLICATIONS':
       return action.data;
@@ -9,4 +9,4 @@ const PublicationReducer = (state = initialState, action) => {
   }
 };
 
-export default PublicationReducer;
+export default PublicationListReducer;

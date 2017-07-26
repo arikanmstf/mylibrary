@@ -6,11 +6,11 @@ import { TagDetailsReducer, TagSearchReducer } from 'modules/tag-details/TagDeta
 import { ListDetailsReducer, ListSearchReducer } from 'modules/list-details/ListDetailsReducer';
 import BookDetailsReducer from 'modules/book-details/BookDetailsReducer';
 import ListListReducer from 'modules/list-list/ListListReducer';
+import PublicationDetailsReducer from 'modules/publication-details/PublicationDetailsReducer';
+import PublicationListReducer from 'modules/publication-list/PublicationListReducer';
+import PublisherDetailsReducer from 'modules/publisher-details/PublisherDetailsReducer';
 
-import PublicationReducer from './PublicationReducer';
-import PublicationDetailsReducer from './PublicationDetailsReducer';
 import WriterDetailsReducer from './WriterDetailsReducer';
-import PublisherDetailsReducer from './PublisherDetailsReducer';
 import UserDetailsReducer from './UserDetailsReducer';
 import WriterSearchReducer from './WriterSearchReducer';
 import BookSearchReducer from './BookSearchReducer';
