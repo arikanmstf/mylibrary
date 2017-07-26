@@ -75,21 +75,21 @@ class PublicationDetailsComponent extends Component {
 						<div className="item-table">
 							<table className="table table-responsive table-hover">
 								<tbody>
-									{ publication.isbn &&
+									{ publication.isbn ?
 									<tr>
-										<td>ISBN</td>
+										<td>{'ISBN'}</td>
 										<td>{ publication.isbn }</td>
-									</tr> }
+									</tr> : null }
 									<tr>
-										<td>Cover No</td>
+										<td>{'Cover No'}</td>
 										<td>{ publication.cover_no }</td>
 									</tr>
 									<tr>
-										<td>Page Number</td>
+										<td>{'Page Number'}</td>
 										<td>{ publication.page_number }</td>
 									</tr>
 									<tr>
-										<td>Added By</td>
+										<td>{'Added By'}</td>
 										<td>{ publication.added_by }</td>
 									</tr>
 								</tbody>

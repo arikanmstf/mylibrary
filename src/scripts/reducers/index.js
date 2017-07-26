@@ -2,17 +2,16 @@ import { combineReducers } from 'redux';
 
 import ProfileReducer from 'modules/profile/ProfileReducer';
 import TagListReducer from 'modules/tag-list/TagListReducer';
+import { ListDetailsReducer, ListSearchReducer } from 'modules/list-details/ListDetailsReducer';
 
 import PublicationReducer from './PublicationReducer';
 import PublicationDetailsReducer from './PublicationDetailsReducer';
 import WriterDetailsReducer from './WriterDetailsReducer';
 import BookDetailsReducer from './BookDetailsReducer';
-import ListDetailsReducer from './ListDetailsReducer';
 import TagDetailsReducer from './TagDetailsReducer';
 import PublisherDetailsReducer from './PublisherDetailsReducer';
 import UserDetailsReducer from './UserDetailsReducer';
 import WriterSearchReducer from './WriterSearchReducer';
-import ListSearchReducer from './ListSearchReducer';
 import TagSearchReducer from './TagSearchReducer';
 import BookSearchReducer from './BookSearchReducer';
 import PublisherSearchReducer from './PublisherSearchReducer';
