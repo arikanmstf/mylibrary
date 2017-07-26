@@ -3,7 +3,8 @@ import qs from 'qs';
 import Storage from 'common/Storage';
 import { API } from 'common/Config';
 import StartedRequest from 'common/actions/StartedRequest';
-import { openConfirmModal } from 'modules/common/modal/ModalActions';
+import { openConfirmModal, openModal } from 'modules/common/modal/ModalActions';
+import { createErrorMessage } from 'common/Helpers';
 
 export const ResolvedGetListDetails = (response) => {
   return {
@@ -20,7 +21,11 @@ export const getListDetails = (listId) => {
 					login_key: Storage.get('login_key')
 				}
 			})
-		.then((response) => dispatch(ResolvedGetListDetails(response)));
+		.then((response) => dispatch(ResolvedGetListDetails(response)))
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
+    });
 	};
 };
 
@@ -28,7 +33,11 @@ const addListBySearch = (title) => {
   axios.post(API.addListDetails, qs.stringify({
     title,
     login_key: Storage.get('login_key')
-  }));
+  }))
+  .catch((msg) => {
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
+  });
 };
 export const ResolvedGetListBySearch = (response) => {
   return {
@@ -56,6 +65,10 @@ export const getListBySearch = (title) => {
       } else {
         dispatch(ResolvedGetListBySearch(response));
       }
+    })
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
     });
 	};
 };

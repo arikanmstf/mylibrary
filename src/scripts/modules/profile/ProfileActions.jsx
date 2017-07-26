@@ -44,6 +44,10 @@ export function updateProfileDetails(form) {
       ...form,
       login_key: Storage.get('login_key')
     }))
-		.then((response) => dispatch(ResolvedUpdateProfileDetails(response)));
+		.then((response) => dispatch(ResolvedUpdateProfileDetails(response)))
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
+    });
 	};
 }

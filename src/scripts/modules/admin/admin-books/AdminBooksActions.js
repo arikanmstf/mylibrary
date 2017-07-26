@@ -3,7 +3,8 @@ import qs from 'qs';
 import Storage from 'common/Storage';
 import { API } from 'common/Config';
 import StartedRequest from 'common/actions/StartedRequest';
-import { openConfirmModal } from 'modules/common/modal/ModalActions';
+import { openConfirmModal, openModal } from 'modules/common/modal/ModalActions';
+import { createErrorMessage } from 'common/Helpers';
 
 export const ResolvedGetAllBooks = (response) => {
   return {
@@ -21,7 +22,11 @@ export const getAllBooks = (search) => {
           page: search.pageNo
 				}
 			})
-		.then((response) => dispatch(ResolvedGetAllBooks(response)));
+		.then((response) => dispatch(ResolvedGetAllBooks(response)))
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
+    });
 	};
 };
 
@@ -29,7 +34,11 @@ const addWriterBySearch = (title) => {
   axios.post(API.addWriterDetails, qs.stringify({
     title,
     login_key: Storage.get('login_key')
-  }));
+  }))
+  .catch((msg) => {
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
+  });
 };
 export const ResolvedGetWriterBySearch = (response) => {
   return {
@@ -57,6 +66,10 @@ export const getWriterBySearch = (title) => {
       } else {
         dispatch(ResolvedGetWriterBySearch(response));
       }
+    })
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
     });
 	};
 };
@@ -88,7 +101,11 @@ export const getBookBySearch = (title) => {
 					login_key: Storage.get('login_key')
 				}
 			})
-		.then((response) => dispatch(ResolvedGetBookBySearch(response)));
+		.then((response) => dispatch(ResolvedGetBookBySearch(response)))
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
+    });
 	};
 };
 
@@ -108,7 +125,11 @@ const addPublisherBySearch = (title) => {
   axios.post(API.addPublisherDetails, qs.stringify({
     title,
     login_key: Storage.get('login_key')
-  }));
+  }))
+  .catch((msg) => {
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
+  });
 };
 export const ResolvedGetPublisherBySearch = (response) => {
   return {
@@ -136,6 +157,10 @@ export const getPublisherBySearch = (title) => {
       } else {
         dispatch(ResolvedGetPublisherBySearch(response));
       }
+    })
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
     });
 	};
 };

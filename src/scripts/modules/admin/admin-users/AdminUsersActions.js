@@ -2,6 +2,8 @@ import axios from 'axios';
 import Storage from 'common/Storage';
 import { API } from 'common/Config';
 import StartedRequest from 'common/actions/StartedRequest';
+import { openModal } from 'modules/common/modal/ModalActions';
+import { createErrorMessage } from 'common/Helpers';
 
 export function ResolvedGetAllUsers(response) {
   return {
@@ -20,7 +22,11 @@ export function getAllUsers(search) {
           page: search.pageNo
 				}
 			})
-		.then((response) => dispatch(ResolvedGetAllUsers(response)));
+		.then((response) => dispatch(ResolvedGetAllUsers(response)))
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
+    });
 	};
 }
 
@@ -40,6 +46,10 @@ export function getUserDetails(userId) {
 					login_key: Storage.get('login_key')
 				}
 			})
-		.then((response) => dispatch(ResolvedGetUserDetails(response)));
+		.then((response) => dispatch(ResolvedGetUserDetails(response)))
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
+    });
 	};
 }

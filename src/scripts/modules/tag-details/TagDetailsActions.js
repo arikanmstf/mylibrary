@@ -3,7 +3,8 @@ import qs from 'qs';
 import Storage from 'common/Storage';
 import { API } from 'common/Config';
 import StartedRequest from 'common/actions/StartedRequest';
-import { openConfirmModal } from 'modules/common/modal/ModalActions';
+import { openConfirmModal, openModal } from 'modules/common/modal/ModalActions';
+import { createErrorMessage } from 'common/Helpers';
 
 export const ResolvedGetTagDetails = (response) => {
   return {
@@ -20,7 +21,11 @@ export const getTagDetails = (tagId) => {
 					login_key: Storage.get('login_key')
 				}
 			})
-		.then((response) => dispatch(ResolvedGetTagDetails(response)));
+		.then((response) => dispatch(ResolvedGetTagDetails(response)))
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
+    });
 	};
 };
 
@@ -28,7 +33,11 @@ const addTagBySearch = (title) => {
   axios.post(API.addTagDetails, qs.stringify({
     title,
     login_key: Storage.get('login_key')
-  }));
+  }))
+  .catch((msg) => {
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
+  });
 };
 export const ResolvedGetTagBySearch = (response) => {
   return {
@@ -56,6 +65,10 @@ export const getTagBySearch = (title) => {
       } else {
         dispatch(ResolvedGetTagBySearch(response));
       }
+    })
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
     });
 	};
 };

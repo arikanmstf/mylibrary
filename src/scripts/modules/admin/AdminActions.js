@@ -3,6 +3,8 @@ import qs from 'qs';
 import Storage from 'common/Storage';
 import { API } from 'common/Config';
 import StartedRequest from 'common/actions/StartedRequest';
+import { openModal } from 'modules/common/modal/ModalActions';
+import { createErrorMessage } from 'common/Helpers';
 
 export function ResolvedUpdatePublicationDetails(response) {
   return {
@@ -60,7 +62,11 @@ export function updatePublicationDetails(form) {
       ...form,
       login_key: Storage.get('login_key')
     }))
-		.then((response) => dispatch(ResolvedUpdatePublicationDetails(response)));
+		.then((response) => dispatch(ResolvedUpdatePublicationDetails(response)))
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
+    });
 	};
 }
 export function updateBookDetails(form) {
@@ -70,7 +76,11 @@ export function updateBookDetails(form) {
       ...form,
       login_key: Storage.get('login_key')
     }))
-		.then((response) => dispatch(ResolvedUpdateBookDetails(response)));
+		.then((response) => dispatch(ResolvedUpdateBookDetails(response)))
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
+    });
 	};
 }
 export function updateWriterDetails(form) {
@@ -80,7 +90,11 @@ export function updateWriterDetails(form) {
       ...form,
       login_key: Storage.get('login_key')
     }))
-		.then((response) => dispatch(ResolvedUpdateWriterDetails(response)));
+		.then((response) => dispatch(ResolvedUpdateWriterDetails(response)))
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
+    });
 	};
 }
 export function updatePublisherDetails(form) {
@@ -90,7 +104,11 @@ export function updatePublisherDetails(form) {
       ...form,
       login_key: Storage.get('login_key')
     }))
-		.then((response) => dispatch(ResolvedUpdatePublisherDetails(response)));
+		.then((response) => dispatch(ResolvedUpdatePublisherDetails(response)))
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
+    });
 	};
 }
 export function updateUserDetails(form) {
@@ -100,7 +118,11 @@ export function updateUserDetails(form) {
       ...form,
       login_key: Storage.get('login_key')
     }))
-		.then((response) => dispatch(ResolvedUpdateUserDetails(response)));
+		.then((response) => dispatch(ResolvedUpdateUserDetails(response)))
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
+    });
 	};
 }
 export function updateTagDetails(form) {
@@ -110,7 +132,11 @@ export function updateTagDetails(form) {
       ...form,
       login_key: Storage.get('login_key')
     }))
-		.then((response) => dispatch(ResolvedUpdateTagDetails(response)));
+		.then((response) => dispatch(ResolvedUpdateTagDetails(response)))
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
+    });
 	};
 }
 export function updateListDetails(form) {
@@ -120,7 +146,11 @@ export function updateListDetails(form) {
       ...form,
       login_key: Storage.get('login_key')
     }))
-		.then((response) => dispatch(ResolvedUpdateListDetails(response)));
+		.then((response) => dispatch(ResolvedUpdateListDetails(response)))
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
+    });
 	};
 }
 export function updatePublicationDetailsList(form) {
@@ -130,7 +160,11 @@ export function updatePublicationDetailsList(form) {
       ...form,
       login_key: Storage.get('login_key')
     }))
-		.then((response) => dispatch(ResolvedUpdatePublicationDetailsList(response)));
+		.then((response) => dispatch(ResolvedUpdatePublicationDetailsList(response)))
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
+    });
 	};
 }
 
@@ -186,6 +220,10 @@ export function addBookDetails(form) {
     }))
     .then(() => {
       window.location.href = window.location.href;
+    })
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
     });
 	};
 }
@@ -198,6 +236,10 @@ export function addPublicationDetails(form) {
     }))
 		.then(() => {
       window.location.href = window.location.href;
+    })
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
     });
 	};
 }
@@ -210,6 +252,10 @@ export function addWriterDetails(form) {
     }))
     .then(() => {
       window.location.href = window.location.href;
+    })
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
     });
 	};
 }
@@ -222,6 +268,10 @@ export function addPublisherDetails(form) {
     }))
     .then(() => {
       window.location.href = window.location.href;
+    })
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
     });
 	};
 }
@@ -234,6 +284,10 @@ export function addUserDetails(form) {
     }))
     .then(() => {
       window.location.href = window.location.href;
+    })
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
     });
 	};
 }
@@ -246,6 +300,10 @@ export function addTagDetails(form) {
     }))
     .then(() => {
       window.location.href = window.location.href;
+    })
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
     });
 	};
 }
@@ -258,6 +316,10 @@ export function addListDetails(form) {
     }))
     .then(() => {
       window.location.href = window.location.href;
+    })
+    .catch((msg) => {
+        const message = createErrorMessage(msg);
+        dispatch(openModal(message));
     });
 	};
 }
