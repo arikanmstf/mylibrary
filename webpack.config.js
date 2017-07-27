@@ -1,10 +1,17 @@
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const webpack = require("webpack");
 const argv = require("yargs").argv;
 const path = require("path");
 
 const extractCSS = new ExtractTextPlugin("dist/style.css");
+const HtmlWebpack =
+new HtmlWebpackPlugin({
+  template: 'src/index.ejs',
+  inject: 'body',
+  hash: true
+});
 
 const JS_JSX_PATTERN = /\.jsx?$/;
 const SCSS_PATTERN = /\.scss$/;
@@ -17,7 +24,7 @@ const config = require("./src/config/" + argv.env + ".js");
 const isProd = argv.env === 'prod';
 const isDev = argv.env === 'dev';
 
-let plugins = [extractCSS];
+let plugins = [HtmlWebpack, extractCSS];
 let rules = [
   {
     exclude: /node_modules/,
