@@ -27,9 +27,10 @@ const isDev = argv.env === 'dev';
 let plugins = [HtmlWebpack, extractCSS];
 let rules = [
   {
+    test: JS_JSX_PATTERN,
     exclude: /node_modules/,
     loader: "babel-loader",
-    query: {
+    options: {
       presets: ["react", "es2015", "stage-1"]
     }
   },
