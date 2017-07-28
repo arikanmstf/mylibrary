@@ -8,13 +8,14 @@ const path = require("path");
 const isProd = argv.env === 'prod';
 const configResolve = require.resolve("./src/config/" + argv.env + ".js");
 const config = require("./src/config/" + argv.env + ".js");
-
+const _package = require("./package.json");
 const JS_JSX_PATTERN = /\.jsx?$/;
 const SCSS_PATTERN = /\.scss$/;
 const ASSET_PATTERN = /\.(jpe?g|png|gif|svg|ttf|otf|eot|woff(2)?)(\?v=\d+)?$/;
 const DEV_SERVER_PORT = 8080;
 const PROJECT_NAME = process.env.npm_package_name;
-const VERSION = (require("./package.json").version);
+const VERSION = (_package.version);
+const DESCRIPTION = (_package.description);
 const PACKAGE_NAME = PROJECT_NAME + "-" + VERSION;
 const distFolder = isProd ? 'dist' : '';
 
@@ -25,6 +26,7 @@ new HtmlWebpackPlugin({
   inject: 'body',
   hash: true,
   filename: `index.html`,
+  description: DESCRIPTION,
   extraFiles: {
     css: config.homeUrl + 'assets/css/bootstrap.min.css'
   }
