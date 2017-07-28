@@ -28,7 +28,7 @@ new HtmlWebpackPlugin({
   filename: `index.html`,
   description: DESCRIPTION,
   extraFiles: {
-    css: config.homeUrl + 'assets/css/bootstrap.min.css'
+    css: config.homeUrl + 'static/css/bootstrap.min.css'
   }
 });
 
@@ -106,8 +106,8 @@ module.exports = {
     extensions: [".js", ".jsx"],
     modules: [
       path.resolve(__dirname, './src/scripts'),
-      path.resolve(__dirname, './node_modules'),
-      path.resolve(__dirname, './assets')
+      path.resolve(__dirname, './src/assets'),
+      path.resolve(__dirname, './node_modules')
     ],
     alias: {
       config$: configResolve

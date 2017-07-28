@@ -110,7 +110,7 @@ class AdminPublicationsAddComponent extends Component {
 					<div className="col-md-3 col-sm-3 item-info image-container">
 						<img
 							className="item-image"
-							src={`${config.homeUrl}assets/img/cover/undefined.jpg`}
+							src={`${config.homeUrl}static/img/cover/undefined.jpg`}
 						/>
 					</div>
 					<div className="col-md-9 col-sm-9 item-info">

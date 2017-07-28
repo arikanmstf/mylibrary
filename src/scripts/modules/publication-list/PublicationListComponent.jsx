@@ -45,7 +45,7 @@ class PublicationListComponent extends Component {
 							<Link to={`${config.homeUrl}publications/${publication.publication_id}`}>
 								<img
 									className="publication-image"
-									src={`${config.homeUrl}assets/img/cover/${publication.publication_id}.jpg`}
+									src={`${config.homeUrl}static/img/cover/${publication.publication_id}.jpg`}
 								/>
 							</Link>
 						</div>

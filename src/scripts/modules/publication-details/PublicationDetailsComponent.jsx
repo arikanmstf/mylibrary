@@ -49,7 +49,7 @@ class PublicationDetailsComponent extends Component {
 					<div className="col-md-3 col-sm-3 item-info image-container">
 						<img
 							className="item-image"
-							src={`${config.homeUrl}assets/img/cover/${publication.publication_id}.jpg`}
+							src={`${config.homeUrl}static/img/cover/${publication.publication_id}.jpg`}
 						/>
 					</div>
 					<div className="col-md-9 col-sm-9 item-info content-container">
