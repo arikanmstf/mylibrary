@@ -84,8 +84,7 @@ rules.push({
   exclude: /node_modules/,
   loader: 'file-loader',
   options: {
-    name: `assets/[path][name].[ext]?[hash]`,
-    context: 'assets'
+    name: `[path][name].[ext]?[hash]`
   }
 });
 
