@@ -5,24 +5,30 @@ const webpack = require("webpack");
 const argv = require("yargs").argv;
 const path = require("path");
 
-const extractCSS = new ExtractTextPlugin("dist/style.css");
-const HtmlWebpack =
-new HtmlWebpackPlugin({
-  template: 'src/index.ejs',
-  inject: 'body',
-  hash: true
-});
+const isProd = argv.env === 'prod';
+const configResolve = require.resolve("./src/config/" + argv.env + ".js");
+const config = require("./src/config/" + argv.env + ".js");
 
 const JS_JSX_PATTERN = /\.jsx?$/;
 const SCSS_PATTERN = /\.scss$/;
 const ASSET_PATTERN = /\.(jpe?g|png|gif|svg|ttf|otf|eot|woff(2)?)(\?v=\d+)?$/;
 const DEV_SERVER_PORT = 8080;
+const PROJECT_NAME = process.env.npm_package_name;
+const VERSION = (require("./package.json").version);
+const PACKAGE_NAME = PROJECT_NAME + "-" + VERSION;
+const distFolder = isProd ? 'dist' : '';
 
-const configResolve = require.resolve("./src/config/" + argv.env + ".js");
-const config = require("./src/config/" + argv.env + ".js");
-
-const isProd = argv.env === 'prod';
-const isDev = argv.env === 'dev';
+const extractCSS = new ExtractTextPlugin(`${PACKAGE_NAME}.css`);
+const HtmlWebpack =
+new HtmlWebpackPlugin({
+  template: 'src/index.ejs',
+  inject: 'body',
+  hash: true,
+  filename: `index.html`,
+  extraFiles: {
+    css: config.homeUrl + 'assets/css/bootstrap.min.css'
+  }
+});
 
 let plugins = [HtmlWebpack, extractCSS];
 let rules = [
@@ -76,7 +82,7 @@ rules.push({
   exclude: /node_modules/,
   loader: 'file-loader',
   options: {
-    name: 'dist/[path][name].[ext]?[hash]',
+    name: `assets/[path][name].[ext]?[hash]`,
     context: 'assets'
   }
 });
@@ -87,9 +93,9 @@ module.exports = {
     "./src/style/index.scss"
   ],
   output: {
-    path: __dirname,
+    path: path.resolve(__dirname, distFolder),
     publicPath: config.homeUrl,
-    filename: "dist/bundle.js"
+    filename: `${PACKAGE_NAME}.js`
   },
   module: {
     rules: rules
