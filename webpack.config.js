@@ -11,6 +11,7 @@ const config = require("./src/config/" + argv.env + ".js");
 const _package = require("./package.json");
 const JS_JSX_PATTERN = /\.jsx?$/;
 const SCSS_PATTERN = /\.scss$/;
+const CSS_PATTERN = /\.css$/;
 const ASSET_PATTERN = /\.(jpe?g|png|gif|svg|ttf|otf|eot|woff(2)?)(\?v=\d+)?$/;
 const DEV_SERVER_PORT = 8080;
 const PROJECT_NAME = process.env.npm_package_name;
@@ -26,10 +27,7 @@ new HtmlWebpackPlugin({
   inject: 'body',
   hash: true,
   filename: `index.html`,
-  description: DESCRIPTION,
-  extraFiles: {
-    css: config.homeUrl + 'static/css/bootstrap.min.css'
-  }
+  description: DESCRIPTION
 });
 
 let plugins = [HtmlWebpack, extractCSS];
@@ -44,6 +42,7 @@ let rules = [
   },
   {
     test: SCSS_PATTERN,
+    exclude: /node_modules/,
     use: extractCSS.extract({
       fallback: "style-loader",
       use: [{
@@ -53,6 +52,28 @@ let rules = [
         "sass-loader"
       ]
     })
+  },
+  {
+    test: ASSET_PATTERN,
+    loader: 'file-loader',
+    options: {
+      name: `assets/[name]-[hash].[ext]`
+    }
+  },
+  {
+    test: JS_JSX_PATTERN,
+    exclude: /node_modules/,
+    enforce: 'pre',
+    loader: 'eslint-loader',
+    options: {
+      failOnWarning: false,
+      failOnError: isProd,
+      quiet: isProd
+    }
+  },
+  {
+    test: CSS_PATTERN,
+    loader: 'style-loader!css-loader'
   }
 ];
 
@@ -66,27 +87,6 @@ if (isProd) {
     })
   );
 }
-
-rules.push({
-  test: JS_JSX_PATTERN,
-  exclude: /node_modules/,
-  enforce: 'pre',
-  loader: 'eslint-loader',
-  options: {
-    failOnWarning: false,
-    failOnError: isProd,
-    quiet: isProd
-  }
-});
-
-rules.push({
-  test: ASSET_PATTERN,
-  exclude: /node_modules/,
-  loader: 'file-loader',
-  options: {
-    name: `assets/[name]-[hash].[ext]`
-  }
-});
 
 module.exports = {
   entry: [
