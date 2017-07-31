@@ -21,6 +21,7 @@ const PACKAGE_NAME = PROJECT_NAME + "-" + VERSION;
 const distFolder = isProd ? 'dist' : '';
 
 const extractCSS = new ExtractTextPlugin(`${PACKAGE_NAME}.css`);
+
 const HtmlWebpack =
 new HtmlWebpackPlugin({
   template: 'src/index.ejs',
@@ -34,7 +35,9 @@ let plugins = [HtmlWebpack, extractCSS];
 let rules = [
   {
     test: JS_JSX_PATTERN,
-    exclude: /node_modules/,
+    include: [
+      path.resolve(__dirname, "src/scripts")
+    ],
     loader: "babel-loader",
     options: {
       presets: ["react", "es2015", "stage-1"]
@@ -42,7 +45,9 @@ let rules = [
   },
   {
     test: SCSS_PATTERN,
-    exclude: /node_modules/,
+    include: [
+      path.resolve(__dirname, "src/style")
+    ],
     use: extractCSS.extract({
       fallback: "style-loader",
       use: [{
@@ -62,7 +67,9 @@ let rules = [
   },
   {
     test: JS_JSX_PATTERN,
-    exclude: /node_modules/,
+    include: [
+      path.resolve(__dirname, "src/scripts")
+    ],
     enforce: 'pre',
     loader: 'eslint-loader',
     options: {
