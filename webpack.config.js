@@ -111,9 +111,9 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx"],
     modules: [
-      path.resolve(__dirname, './src/scripts'),
-      path.resolve(__dirname, './src/assets'),
-      path.resolve(__dirname, './node_modules')
+      path.resolve(__dirname, 'src/scripts'),
+      path.resolve(__dirname, 'src/assets'),
+      path.resolve(__dirname, 'node_modules')
     ],
     alias: {
       config$: configResolve
