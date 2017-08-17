@@ -14,7 +14,6 @@ class AdminPublicationsEditComponent extends Component {
       title: '',
       publisher_id: 0,
       book_id: 0,
-      description: '',
       download_url: '',
       isbn: '',
       lists: [],
@@ -23,18 +22,6 @@ class AdminPublicationsEditComponent extends Component {
       file_url: '',
       image_url: ''
     };
-
-    this.onImageUpload = this.onImageUpload.bind(this);
-    this.onFileUpload = this.onFileUpload.bind(this);
-    this.onDescChange = this.onDescChange.bind(this);
-    this.onIsbnChange = this.onIsbnChange.bind(this);
-    this.onDownloadUrlChange = this.onDownloadUrlChange.bind(this);
-    this.onCoverChange = this.onCoverChange.bind(this);
-    this.onPageChange = this.onPageChange.bind(this);
-    this.onListsChange = this.onListsChange.bind(this);
-    this.searchPublishers = this.searchPublishers.bind(this);
-    this.searchBooks = this.searchBooks.bind(this);
-    this.saveForm = this.saveForm.bind(this);
   }
 
   componentDidMount() {
@@ -44,37 +31,11 @@ class AdminPublicationsEditComponent extends Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
       book_id: nextProps.publication.book_id,
-      description: nextProps.publication.description,
       isbn: nextProps.publication.isbn || '',
       download_url: nextProps.publication.download_url || '',
       cover_no: nextProps.publication.cover_no,
       lists: nextProps.publication.lists,
       page_number: nextProps.publication.page_number
-    });
-  }
-  onDescChange(event) {
-    this.setState({
-      description: event.target.value
-    });
-  }
-  onIsbnChange(event) {
-    this.setState({
-      isbn: event.target.value
-    });
-  }
-  onDownloadUrlChange(event) {
-    this.setState({
-      download_url: event.target.value
-    });
-  }
-  onCoverChange(event) {
-    this.setState({
-      cover_no: event.target.value
-    });
-  }
-  onPageChange(event) {
-    this.setState({
-      page_number: event.target.value
     });
   }
   onListsChange(lists) {
@@ -85,6 +46,11 @@ class AdminPublicationsEditComponent extends Component {
   }
   onFileUpload(res) {
     this.setState({ file_url: res.response.filename });
+  }
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
   }
   addNewBook(book) {
     this.setState({ ...book });
@@ -141,7 +107,7 @@ class AdminPublicationsEditComponent extends Component {
               {this.state.title || publication.title}
             </div>
 						<div className="item-small-title">
-              <InputSearch title="Search Books" makeSearch={this.searchBooks} />
+              <InputSearch title="Search Books" makeSearch={(newValue) => this.searchBooks(newValue)} />
               <div className="clearfix" />
               <div className="item-search-results">
                 <ul>
@@ -153,7 +119,7 @@ class AdminPublicationsEditComponent extends Component {
               <span>
                 {this.state.publisher_name || publication.publisher_name}
               </span>
-              <InputSearch title="Search Publishers" makeSearch={this.searchPublishers} />
+              <InputSearch title="Search Publishers" makeSearch={(newValue) => this.searchPublishers(newValue)} />
               <div className="item-search-results">
                 <ul>
                   {this.renderSearchPublisher()}
@@ -166,25 +132,43 @@ class AdminPublicationsEditComponent extends Component {
 									<tr>
 										<td>Download Url</td>
 										<td>
-                      <input value={this.state.download_url} onChange={this.onDownloadUrlChange} />
+                      <input
+                        name="download_url"
+                        value={this.state.download_url}
+                        onChange={(event) => this.handleChange(event)}
+                      />
                     </td>
 									</tr>
 									<tr>
 										<td>ISBN</td>
 										<td>
-                      <input value={this.state.isbn} onChange={this.onIsbnChange} />
+                      <input
+                        name="isbn"
+                        value={this.state.isbn}
+                        onChange={(event) => this.handleChange(event)}
+                      />
                     </td>
 									</tr>
 									<tr>
 										<td>Cover No</td>
                     <td>
-                      <input type="number" value={this.state.cover_no} onChange={this.onCoverChange} />
+                      <input
+                        name="cover_no"
+                        type="number"
+                        value={this.state.cover_no}
+                        onChange={(event) => this.handleChange(event)}
+                      />
                     </td>
 									</tr>
 									<tr>
 										<td>Page Number</td>
                     <td>
-                      <input type="number" value={this.state.page_number} onChange={this.onPageChange} />
+                      <input
+                        name="page_number"
+                        type="number"
+                        value={this.state.page_number}
+                        onChange={(event) => this.handleChange(event)}
+                      />
                     </td>
 									</tr>
 									<tr>
@@ -198,24 +182,24 @@ class AdminPublicationsEditComponent extends Component {
 							<InputUpload
 								accept="image/jpeg, image/png"
 								title="Upload cover image"
-								onUpload={this.onImageUpload}
+								onUpload={(res) => this.onImageUpload(res)}
 							/>
 							<InputUpload
 								accept="application/pdf,.pdf,.doc,.txt,.docx,lit,rtf"
 								title="Upload book file"
-								onUpload={this.onFileUpload}
+								onUpload={(res) => this.onFileUpload(res)}
 							/>
 						</div>
 						<div className="item-lists-container">
 							<div className="item-lists col-sm-12 col-xs-12">
 								<h5>Lists</h5>
-								<ListsOfPublicationEdit lists={this.state.lists} onListsChange={this.onListsChange} />
+								<ListsOfPublicationEdit lists={this.state.lists} onListsChange={(lists) => this.onListsChange(lists)} />
 							</div>
 						</div>
 					</div>
 					<div className="clearfix" />
 					<div className="col-md-12" >
-            <button className="btn btn-primary" onClick={this.saveForm}>Save</button>
+            <button className="btn btn-primary" onClick={() => this.saveForm()}>Save</button>
 					</div>
 				</div>
 			</div>
