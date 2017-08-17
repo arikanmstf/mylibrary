@@ -66,8 +66,11 @@ class PublicationDetailsComponent extends Component {
 							{ publication.description }
 						</p>
 						<div className="item-buttons">
-              { publication.can_download && publication.file_exists ?
-								<a href={`${API.downloadFile}?publication_id=${publication.publication_id}`}>
+              { publication.can_download && (publication.file_exists || publication.download_url) ?
+								<a href={publication.download_url ?
+										`${publication.download_url}` :
+										`${API.downloadFile}?publication_id=${publication.publication_id}`}
+								>
                   <span>Download</span>
                   <i className="glyphicon glyphicon-download-alt" />
                 </a> : null }

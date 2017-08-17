@@ -15,6 +15,7 @@ class AdminPublicationsAddComponent extends Component {
       publisher_id: 0,
       book_id: 0,
       description: '',
+			download_url: '',
       isbn: '',
 			lists: [],
       cover_no: 0,
@@ -25,6 +26,7 @@ class AdminPublicationsAddComponent extends Component {
 
     this.onDescChange = this.onDescChange.bind(this);
     this.onIsbnChange = this.onIsbnChange.bind(this);
+		this.onDownloadUrlChange = this.onDownloadUrlChange.bind(this);
     this.onCoverChange = this.onCoverChange.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
     this.searchPublishers = this.searchPublishers.bind(this);
@@ -44,6 +46,11 @@ class AdminPublicationsAddComponent extends Component {
   onIsbnChange(event) {
     this.setState({
       isbn: event.target.value
+    });
+  }
+	onDownloadUrlChange(event) {
+    this.setState({
+      download_url: event.target.value
     });
   }
   onCoverChange(event) {
@@ -140,6 +147,12 @@ class AdminPublicationsAddComponent extends Component {
 						<div className="item-table">
 							<table className="table table-responsive">
 								<tbody>
+									<tr>
+										<td>Download Url</td>
+										<td>
+                      <input value={this.state.download_url} onChange={this.onDownloadUrlChange} />
+                    </td>
+									</tr>
 									<tr>
 										<td>ISBN</td>
 										<td>

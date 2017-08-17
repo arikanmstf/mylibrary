@@ -15,6 +15,7 @@ class AdminPublicationsEditComponent extends Component {
       publisher_id: 0,
       book_id: 0,
       description: '',
+      download_url: '',
       isbn: '',
 			lists: [],
       cover_no: 0,
@@ -27,6 +28,7 @@ class AdminPublicationsEditComponent extends Component {
     this.onFileUpload = this.onFileUpload.bind(this);
     this.onDescChange = this.onDescChange.bind(this);
     this.onIsbnChange = this.onIsbnChange.bind(this);
+    this.onDownloadUrlChange = this.onDownloadUrlChange.bind(this);
     this.onCoverChange = this.onCoverChange.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
     this.onListsChange = this.onListsChange.bind(this);
@@ -45,6 +47,7 @@ class AdminPublicationsEditComponent extends Component {
       book_id: nextProps.publication.book_id,
       description: nextProps.publication.description,
       isbn: nextProps.publication.isbn || '',
+      download_url: nextProps.publication.download_url || '',
       cover_no: nextProps.publication.cover_no,
       lists: nextProps.publication.lists,
       page_number: nextProps.publication.page_number
@@ -58,6 +61,11 @@ class AdminPublicationsEditComponent extends Component {
   onIsbnChange(event) {
     this.setState({
       isbn: event.target.value
+    });
+  }
+  onDownloadUrlChange(event) {
+    this.setState({
+      download_url: event.target.value
     });
   }
   onCoverChange(event) {
@@ -156,6 +164,12 @@ class AdminPublicationsEditComponent extends Component {
 						<div className="item-table">
 							<table className="table table-responsive">
 								<tbody>
+									<tr>
+										<td>Download Url</td>
+										<td>
+                      <input value={this.state.download_url} onChange={this.onDownloadUrlChange} />
+                    </td>
+									</tr>
 									<tr>
 										<td>ISBN</td>
 										<td>
