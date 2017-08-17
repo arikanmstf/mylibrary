@@ -18,13 +18,7 @@ class AdminBooksEditComponent extends Component {
       tags: []
     };
 
-    this.onTagsChange = this.onTagsChange.bind(this);
-    this.onDescChange = this.onDescChange.bind(this);
-    this.onTitleChange = this.onTitleChange.bind(this);
-    this.searchWriters = this.searchWriters.bind(this);
-    this.addNewWriter = this.addNewWriter.bind(this);
     this.removeWriter = this.removeWriter.bind(this);
-    this.saveForm = this.saveForm.bind(this);
   }
 
   componentDidMount() {
@@ -42,19 +36,9 @@ class AdminBooksEditComponent extends Component {
   onTagsChange(tags) {
     this.tags = tags;
   }
-  onDescChange(event) {
-    this.setState({
-      description: event.target.value
-    });
-  }
   onNewPublisherChange(event) {
     this.setState({
       new_publisher: event.target.value
-    });
-  }
-  onTitleChange(event) {
-    this.setState({
-      title: event.target.value
     });
   }
   addNewWriter(writer) {
@@ -71,6 +55,11 @@ class AdminBooksEditComponent extends Component {
   }
   searchWriters(newValue) {
     this.props.getWriterBySearch(newValue);
+  }
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
   }
 
   saveForm() {
@@ -112,11 +101,15 @@ class AdminBooksEditComponent extends Component {
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
             <div className="item-title">
-              <input value={this.state.title} onChange={this.onTitleChange} />
+              <input
+                name="title"
+                value={this.state.title}
+                onChange={(event) => this.handleChange(event)}
+              />
             </div>
 						<div className="item-small-title">
 							{ fromArrayToCommaEdit(this.state.writers, 'admin/writers/edit', this.removeWriter) }
-              <InputSearch title="Search for Writers" makeSearch={this.searchWriters} />
+              <InputSearch title="Search for Writers" makeSearch={(newValue) => this.searchWriters(newValue)} />
               <div className="item-search-results">
                 <ul>
                   {this.renderSearchWriter()}
@@ -124,18 +117,25 @@ class AdminBooksEditComponent extends Component {
               </div>
 						</div>
             <p className="item-description">
-							<textarea onChange={this.onDescChange} value={this.state.description} />
+            <textarea
+                name="description"
+                value={this.state.description}
+                onChange={(event) => this.handleChange(event)}
+            />
 						</p>
 						<div className="item-lists-container">
 							<div className="item-lists col-sm-12 col-xs-12">
 								<h5>Tags</h5>
-								<TagsOfPublicationEdit tags={this.props.book.tags} onTagsChange={this.onTagsChange} />
+                <TagsOfPublicationEdit
+                  tags={this.props.book.tags}
+                  onTagsChange={(tags) => this.onTagsChange(tags)}
+                />
 							</div>
 						</div>
 					</div>
 					<div className="clearfix" />
 					<div className="col-md-12" >
-            <button className="btn btn-primary" onClick={this.saveForm}>Save</button>
+            <button className="btn btn-primary" onClick={() => this.saveForm()}>Save</button>
 					</div>
 				</div>
 			</div>
