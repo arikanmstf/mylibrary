@@ -68,8 +68,8 @@ class PublicationDetailsComponent extends Component {
             <div className="item-buttons">
               { publication.can_download && (publication.file_exists || publication.download_url) ?
                 <a href={publication.download_url ?
-										`${publication.download_url}` :
-										`${API.downloadFile}?publication_id=${publication.publication_id}`}
+                  `${publication.download_url}` :
+                  `${API.downloadFile}?publication_id=${publication.publication_id}`}
                 >
                   <span>Download</span>
                   <i className="glyphicon glyphicon-download-alt" />
@@ -115,7 +115,7 @@ class PublicationDetailsComponent extends Component {
           <div className="col-md-12" />
         </div>
       </div>
-		);
+    );
   }
 }
 PublicationDetailsComponent.propTypes = {

@@ -98,8 +98,8 @@ class AdminPublicationsEditComponent extends Component {
         <div className="item-details-container">
           <div className="col-md-3 col-sm-3 item-info image-container">
             <img
-							className="item-image"
-							src={`${config.homeUrl}static/img/cover/${publication.publication_id}.jpg`}
+              className="item-image"
+              src={`${config.homeUrl}static/img/cover/${publication.publication_id}.jpg`}
             />
           </div>
           <div className="col-md-9 col-sm-9 item-info">
@@ -180,14 +180,14 @@ class AdminPublicationsEditComponent extends Component {
             </div>
             <div className="item-file-container">
               <InputUpload
-								accept="image/jpeg, image/png"
-								title="Upload cover image"
-								onUpload={(res) => this.onImageUpload(res)}
+                accept="image/jpeg, image/png"
+                title="Upload cover image"
+                onUpload={(res) => this.onImageUpload(res)}
               />
               <InputUpload
-								accept="application/pdf,.pdf,.doc,.txt,.docx,lit,rtf"
-								title="Upload book file"
-								onUpload={(res) => this.onFileUpload(res)}
+                accept="application/pdf,.pdf,.doc,.txt,.docx,lit,rtf"
+                title="Upload book file"
+                onUpload={(res) => this.onFileUpload(res)}
               />
             </div>
             <div className="item-lists-container">

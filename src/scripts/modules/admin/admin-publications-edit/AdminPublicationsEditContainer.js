@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { getPublicationDetails } from 'modules/publication-details/PublicationDetailsActions';
 import { getBookBySearch, resetGetBookBySearch, getPublisherBySearch, resetGetPublisherBySearch }
-	from 'modules/admin/admin-books/AdminBooksActions';
+  from 'modules/admin/admin-books/AdminBooksActions';
 import { updatePublicationDetails } from 'modules/admin/AdminActions';
 import AdminPublicationsEditComponent from './AdminPublicationsEditComponent';
 

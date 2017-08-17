@@ -115,8 +115,8 @@ class AdminPublicationsAddComponent extends Component {
         <div className="item-details-container">
           <div className="col-md-3 col-sm-3 item-info image-container">
             <img
-							className="item-image"
-							src={`${config.homeUrl}static/img/cover/undefined.jpg`}
+              className="item-image"
+              src={`${config.homeUrl}static/img/cover/undefined.jpg`}
             />
           </div>
           <div className="col-md-9 col-sm-9 item-info">
@@ -175,14 +175,14 @@ class AdminPublicationsAddComponent extends Component {
             </div>
             <div className="item-file-container">
               <InputUpload
-								accept="image/jpeg, image/png"
-								title="Upload cover image"
-								onUpload={this.onImageUpload}
+                accept="image/jpeg, image/png"
+                title="Upload cover image"
+                onUpload={this.onImageUpload}
               />
               <InputUpload
                 accept="application/epub+zip, application/pdf, application/x-ms-reader, application/x-obak,application/msword, application/doc, appl/text, application/vnd.msword, application/vnd.ms-word, application/winword, application/word, application/x-msw6, application/x-msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/rtf, application/x-rtf, text/rtf, text/richtext, application/msword, application/doc, application/x-soffice, text/plain, application/txt, browser/internal, text/anytext, widetext/plain, widetext/paragraph"
-								title="Upload book file"
-								onUpload={this.onFileUpload}
+                title="Upload book file"
+                onUpload={this.onFileUpload}
               />
             </div>
             <div className="item-lists-container">

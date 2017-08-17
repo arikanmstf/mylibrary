@@ -66,7 +66,7 @@ class AdminPublishersAddComponent extends Component {
           </div>
         </div>
       </div>
-		);
+    );
   }
 }
 AdminPublishersAddComponent.propTypes = {
