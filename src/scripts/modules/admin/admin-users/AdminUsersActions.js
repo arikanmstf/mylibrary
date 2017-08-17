@@ -13,21 +13,21 @@ export function ResolvedGetAllUsers(response) {
 }
 
 export function getAllUsers(search) {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
-		axios.get(API.getAllUsers, {
-				params: {
-					title: search.title,
-					login_key: Storage.get('login_key'),
-          page: search.pageNo
-				}
-			})
-		.then((response) => dispatch(ResolvedGetAllUsers(response)))
+    axios.get(API.getAllUsers, {
+      params: {
+        title: search.title,
+        login_key: Storage.get('login_key'),
+        page: search.pageNo
+      }
+    })
+    .then((response) => dispatch(ResolvedGetAllUsers(response)))
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 }
 
 export function ResolvedGetUserDetails(response) {
@@ -38,18 +38,18 @@ export function ResolvedGetUserDetails(response) {
 }
 
 export function getUserDetails(userId) {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
-		axios.get(API.getUserDetails, {
-				params: {
-					user_id: userId,
-					login_key: Storage.get('login_key')
-				}
-			})
-		.then((response) => dispatch(ResolvedGetUserDetails(response)))
+    axios.get(API.getUserDetails, {
+      params: {
+        user_id: userId,
+        login_key: Storage.get('login_key')
+      }
+    })
+    .then((response) => dispatch(ResolvedGetUserDetails(response)))
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 }

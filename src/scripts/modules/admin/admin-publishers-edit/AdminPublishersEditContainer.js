@@ -5,9 +5,9 @@ import { updatePublisherDetails } from 'modules/admin/AdminActions';
 import AdminPublishersEditComponent from './AdminPublishersEditComponent';
 
 const mapStateToProps = (state) => {
-	return {
-		publisher: state.publisher
-	};
+  return {
+    publisher: state.publisher
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

@@ -5,13 +5,13 @@ import { commaListItems } from 'common/Helpers';
 
 class TagDetailsComponent extends Component {
 
-	componentDidMount() {
-		this.props.getTagDetails(this.props.match.params.tagId);
-	}
+  componentDidMount() {
+    this.props.getTagDetails(this.props.match.params.tagId);
+  }
 
-	render() {
-		const tag = this.props.tag;
-		return tag ? (
+  render() {
+    const tag = this.props.tag;
+    return tag ? (
       <div className="item-details-page tag-details">
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
@@ -27,13 +27,13 @@ class TagDetailsComponent extends Component {
 					<div className="col-md-12" />
 				</div>
 			</div>
-		) : null;
-	}
+    ) : null;
+  }
 }
 TagDetailsComponent.propTypes = {
   getTagDetails: PropTypes.func.isRequired,
-	tag: PropTypes.object.isRequired,
-	match: PropTypes.object.isRequired
+  tag: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired
 };
 
 export default TagDetailsComponent;

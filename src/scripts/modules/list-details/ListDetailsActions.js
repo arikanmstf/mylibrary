@@ -13,20 +13,20 @@ export const ResolvedGetListDetails = (response) => {
   };
 };
 export const getListDetails = (listId) => {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
-		axios.get(API.getListDetails, {
-				params: {
-					list_id: listId,
-					login_key: Storage.get('login_key')
-				}
-			})
-		.then((response) => dispatch(ResolvedGetListDetails(response)))
+    axios.get(API.getListDetails, {
+      params: {
+        list_id: listId,
+        login_key: Storage.get('login_key')
+      }
+    })
+    .then((response) => dispatch(ResolvedGetListDetails(response)))
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 };
 
 const addListBySearch = (title) => {
@@ -35,8 +35,8 @@ const addListBySearch = (title) => {
     login_key: Storage.get('login_key')
   }))
   .catch((msg) => {
-      const message = createErrorMessage(msg);
-      dispatch(openModal(message));
+    const message = createErrorMessage(msg);
+    dispatch(openModal(message));
   });
 };
 export const ResolvedGetListBySearch = (response) => {
@@ -46,15 +46,15 @@ export const ResolvedGetListBySearch = (response) => {
   };
 };
 export const getListBySearch = (title) => {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
-		axios.get(API.getListBySearch, {
-				params: {
-					title,
-					login_key: Storage.get('login_key')
-				}
-			})
-		.then((response) => {
+    axios.get(API.getListBySearch, {
+      params: {
+        title,
+        login_key: Storage.get('login_key')
+      }
+    })
+    .then((response) => {
       if (response.data.response.length < 1) {
         dispatch(openConfirmModal({
           message: 'List not found, add new one ?',
@@ -67,10 +67,10 @@ export const getListBySearch = (title) => {
       }
     })
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 };
 
 export const ResolvedResetGetListBySearch = () => {
@@ -80,7 +80,7 @@ export const ResolvedResetGetListBySearch = () => {
   };
 };
 export const resetGetListBySearch = () => {
-	return (dispatch) => {
-		dispatch(ResolvedResetGetListBySearch());
-	};
+  return (dispatch) => {
+    dispatch(ResolvedResetGetListBySearch());
+  };
 };

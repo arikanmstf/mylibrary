@@ -5,9 +5,9 @@ import { updateUserDetails } from 'modules/admin/AdminActions';
 import AdminUsersEditComponent from './AdminUsersEditComponent';
 
 const mapStateToProps = (state) => {
-	return {
-		user: state.user
-	};
+  return {
+    user: state.user
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

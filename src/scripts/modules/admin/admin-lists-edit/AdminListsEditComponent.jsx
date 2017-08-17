@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class AdminListsEditComponent extends Component {
-
-	constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       title: '',
-			is_public: false
+      is_public: false
     };
 
     this.onTitleChange = this.onTitleChange.bind(this);
@@ -20,18 +19,18 @@ class AdminListsEditComponent extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-		this.setState({
+    this.setState({
       title: nextProps.list.title,
       is_public: nextProps.list.is_public > 0
     });
-	}
+  }
   onTitleChange(event) {
     this.setState({
       title: event.target.value
     });
   }
   onPublicChange() {
-		const is_public = !this.state.is_public; // eslint-disable-line camelcase
+    const is_public = !this.state.is_public; // eslint-disable-line camelcase
     this.setState({
       is_public
     });
@@ -45,10 +44,9 @@ class AdminListsEditComponent extends Component {
     };
     this.props.updateListDetails(form);
   }
-
-	render() {
-		const list = this.props.list;
-		return list && (
+  render() {
+    const list = this.props.list;
+    return list && (
 			<div className="item-details-page col-md-9 col-sm-9 col-">
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
@@ -66,14 +64,14 @@ class AdminListsEditComponent extends Component {
 					</div>
 				</div>
 			</div>
-		);
-	}
+    );
+  }
 }
 AdminListsEditComponent.propTypes = {
   getListDetails: PropTypes.func.isRequired,
   updateListDetails: PropTypes.func.isRequired,
-	list: PropTypes.object.isRequired,
-	match: PropTypes.object.isRequired
+  list: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired
 };
 
 export default AdminListsEditComponent;

@@ -64,8 +64,8 @@ class InputUpload extends Component {
     return result;
   }
 
-	render() {
-		return (
+  render() {
+    return (
 			<div className="input-upload">
         <div className="upload-container">
           <Dropzone
@@ -77,8 +77,8 @@ class InputUpload extends Component {
           </Dropzone>
         </div>
       </div>
-		);
-	}
+    );
+  }
 }
 InputUpload.propTypes = {
   accept: PropTypes.string,

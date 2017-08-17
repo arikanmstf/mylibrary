@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class AdminTagsAddComponent extends Component {
-
-	constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       title: '',
@@ -32,8 +31,8 @@ class AdminTagsAddComponent extends Component {
     this.props.addTagDetails(form);
   }
 
-	render() {
-		return true && (
+  render() {
+    return true && (
 			<div className="item-details-page col-md-9 col-sm-9 col-">
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
@@ -47,8 +46,8 @@ class AdminTagsAddComponent extends Component {
 					</div>
 				</div>
 			</div>
-		);
-	}
+    );
+  }
 }
 AdminTagsAddComponent.propTypes = {
   addTagDetails: PropTypes.func.isRequired,

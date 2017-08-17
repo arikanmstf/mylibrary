@@ -4,9 +4,9 @@ import { getProfileDetails, updateProfileDetails } from './ProfileActions';
 import ProfileComponent from './ProfileComponent';
 
 const mapStateToProps = (state) => {
-	return {
-		profile: state.profile
-	};
+  return {
+    profile: state.profile
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

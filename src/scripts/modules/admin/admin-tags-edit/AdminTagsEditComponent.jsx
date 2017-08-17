@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class AdminTagsEditComponent extends Component {
-
-	constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       title: ''
@@ -18,10 +17,10 @@ class AdminTagsEditComponent extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-		this.setState({
+    this.setState({
       title: nextProps.tag.title
     });
-	}
+  }
   onTitleChange(event) {
     this.setState({
       title: event.target.value
@@ -41,9 +40,9 @@ class AdminTagsEditComponent extends Component {
     this.props.updateTagDetails(form);
   }
 
-	render() {
-		const tag = this.props.tag;
-		return tag && (
+  render() {
+    const tag = this.props.tag;
+    return tag && (
 			<div className="item-details-page col-md-9 col-sm-9 col-">
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
@@ -57,14 +56,14 @@ class AdminTagsEditComponent extends Component {
 					</div>
 				</div>
 			</div>
-		);
-	}
+    );
+  }
 }
 AdminTagsEditComponent.propTypes = {
   getTagDetails: PropTypes.func.isRequired,
   updateTagDetails: PropTypes.func.isRequired,
-	tag: PropTypes.object.isRequired,
-	match: PropTypes.object.isRequired
+  tag: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired
 };
 
 export default AdminTagsEditComponent;

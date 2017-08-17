@@ -8,18 +8,18 @@ import InputSearch from 'common/input/InputSearch';
 
 class AdminTagsComponent extends Component {
   constructor(props) {
-		super(props);
+    super(props);
 
     this.state = {
       title: '',
       pageNo: this.props.match.params.pageNo || 1
     };
     this.setSearchTitle = this.setSearchTitle.bind(this);
-	}
+  }
 
-	componentDidMount() {
-		this.props.getAllTags(this.state);
-	}
+  componentDidMount() {
+    this.props.getAllTags(this.state);
+  }
 
   onLiClick() {
     this.setState({ pageNo: this.props.match.params.pageNo });
@@ -85,8 +85,8 @@ AdminTagsComponent.propTypes = {
 };
 
 AdminTagsComponent.defaultProps = {
-	tags: [],
-	total: 0
+  tags: [],
+  total: 0
 };
 
 export default AdminTagsComponent;

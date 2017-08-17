@@ -5,27 +5,27 @@ import ReactLogo from 'img/react-logo.png';
 
 class LoginComponent extends Component {
 
-	constructor(props) {
+  constructor(props) {
     super(props);
 
     this.state = {
       username: '',
       password: ''
     };
-		this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
-	getLogin() {
-		this.props.getLogin(this.state);
-	}
-	handleKeyPress(event) {
+  getLogin() {
+    this.props.getLogin(this.state);
+  }
+  handleKeyPress(event) {
     if (event.charCode === 13) {
       this.getLogin();
     }
   }
 
-	render() {
-		return (
+  render() {
+    return (
 				<div className="login-page">
 					<img
 						src={ReactLogo}
@@ -62,8 +62,8 @@ class LoginComponent extends Component {
 						Login
 					</button>
 				</div>
-			);
-	}
+    );
+  }
 }
 
 LoginComponent.propTypes = {

@@ -4,9 +4,9 @@ import BookDetailsComponent from './BookDetailsComponent';
 import { getBookDetails } from './BookDetailsActions';
 
 const mapStateToProps = (state) => {
-	return {
-		book: state.book
-	};
+  return {
+    book: state.book
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

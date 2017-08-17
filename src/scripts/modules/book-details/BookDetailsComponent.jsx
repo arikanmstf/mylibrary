@@ -5,13 +5,13 @@ import { commaListItems } from 'common/Helpers';
 
 class BookDetailsComponent extends Component {
 
-	componentDidMount() {
-		this.props.getBookDetails(this.props.match.params.bookId);
-	}
+  componentDidMount() {
+    this.props.getBookDetails(this.props.match.params.bookId);
+  }
 
-	render() {
-		const book = this.props.book;
-		return book ? (
+  render() {
+    const book = this.props.book;
+    return book ? (
 			<div className="item-details-page book-details">
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
@@ -30,13 +30,13 @@ class BookDetailsComponent extends Component {
 					<div className="col-md-12" />
 				</div>
 			</div>
-		) : null;
-	}
+    ) : null;
+  }
 }
 BookDetailsComponent.propTypes = {
   getBookDetails: PropTypes.func.isRequired,
-	book: PropTypes.object.isRequired,
-	match: PropTypes.object.isRequired
+  book: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired
 };
 
 export default BookDetailsComponent;

@@ -5,8 +5,8 @@ import AdminBooksComponent from './AdminBooksComponent';
 
 const mapStateToProps = (state) => {
   return {
-   books: state.books.list,
-   total: parseInt(state.books.total, 10)
+    books: state.books.list,
+    total: parseInt(state.books.total, 10)
   };
 };
 

@@ -4,9 +4,9 @@ import ListDetailsComponent from './ListDetailsComponent';
 import { getListDetails } from './ListDetailsActions';
 
 const mapStateToProps = (state) => {
-	return {
-		list: state.list
-	};
+  return {
+    list: state.list
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

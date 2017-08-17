@@ -7,7 +7,7 @@ class Storage {
     return window.sessionStorage.getItem(key);
   }
   delete(key) {
-      window.sessionStorage.removeItem(key);
+    window.sessionStorage.removeItem(key);
   }
   clear() {
     window.sessionStorage.clear();

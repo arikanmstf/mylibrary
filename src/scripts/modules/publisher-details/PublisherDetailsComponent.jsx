@@ -5,13 +5,13 @@ import { commaListItems } from 'common/Helpers';
 
 class PublisherDetailsComponent extends Component {
 
-	componentDidMount() {
-		this.props.getPublisherDetails(this.props.match.params.publisherId);
-	}
+  componentDidMount() {
+    this.props.getPublisherDetails(this.props.match.params.publisherId);
+  }
 
-	render() {
-		const publisher = this.props.publisher;
-		return publisher ? (
+  render() {
+    const publisher = this.props.publisher;
+    return publisher ? (
       <div className="item-details-page publisher-details">
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
@@ -41,13 +41,13 @@ class PublisherDetailsComponent extends Component {
 					<div className="col-md-12" />
 				</div>
 			</div>
-		) : null;
-	}
+    ) : null;
+  }
 }
 PublisherDetailsComponent.propTypes = {
   getPublisherDetails: PropTypes.func.isRequired,
-	publisher: PropTypes.object.isRequired,
-	match: PropTypes.object.isRequired
+  publisher: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired
 };
 
 export default PublisherDetailsComponent;

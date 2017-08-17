@@ -13,18 +13,18 @@ export function ResolvedGetWriterDetails(response) {
 }
 
 export function getWriterDetails(writerId) {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
-		axios.get(API.getWriterDetails, {
-				params: {
-					writer_id: writerId,
-					login_key: Storage.get('login_key')
-				}
-			})
-		.then((response) => dispatch(ResolvedGetWriterDetails(response)))
+    axios.get(API.getWriterDetails, {
+      params: {
+        writer_id: writerId,
+        login_key: Storage.get('login_key')
+      }
+    })
+    .then((response) => dispatch(ResolvedGetWriterDetails(response)))
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 }

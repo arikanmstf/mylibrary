@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class AdminUsersEditComponent extends Component {
 
-	constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       user_type: 1,
@@ -16,7 +16,6 @@ class AdminUsersEditComponent extends Component {
     this.onMailChange = this.onMailChange.bind(this);
     this.onTypeChange = this.onTypeChange.bind(this);
     this.onLoginChange = this.onLoginChange.bind(this);
-
     this.saveForm = this.saveForm.bind(this);
   }
 
@@ -25,14 +24,14 @@ class AdminUsersEditComponent extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-		this.setState({
+    this.setState({
       user_id: nextProps.user.user_id,
       display_name: nextProps.user.display_name,
       login_name: nextProps.user.login_name,
       email: nextProps.user.email,
       user_type: nextProps.user.user_type
     });
-	}
+  }
   onDispChange(event) {
     this.setState({
       display_name: event.target.value
@@ -69,9 +68,9 @@ class AdminUsersEditComponent extends Component {
     return true;
   }
 
-	render() {
-		const user = this.props.user;
-		return user && (
+  render() {
+    const user = this.props.user;
+    return user && (
 			<div className="item-details-page col-md-9 col-sm-9 col-">
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
@@ -94,14 +93,14 @@ class AdminUsersEditComponent extends Component {
 					</div>
 				</div>
 			</div>
-		);
-	}
+    );
+  }
 }
 AdminUsersEditComponent.propTypes = {
   getUserDetails: PropTypes.func.isRequired,
   updateUserDetails: PropTypes.func.isRequired,
-	user: PropTypes.object.isRequired,
-	match: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired
 };
 
 export default AdminUsersEditComponent;

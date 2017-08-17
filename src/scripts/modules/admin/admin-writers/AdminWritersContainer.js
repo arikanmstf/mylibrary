@@ -5,8 +5,8 @@ import AdminWritersComponent from './AdminWritersComponent';
 
 const mapStateToProps = (state) => {
   return {
-   writers: state.writers.list,
-   total: parseInt(state.writers.total, 10)
+    writers: state.writers.list,
+    total: parseInt(state.writers.total, 10)
   };
 };
 

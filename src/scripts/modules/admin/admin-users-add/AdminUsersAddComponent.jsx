@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class AdminUsersAddComponent extends Component {
 
-	constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       user_type: 1,
@@ -19,7 +19,6 @@ class AdminUsersAddComponent extends Component {
     this.onTypeChange = this.onTypeChange.bind(this);
     this.onLoginChange = this.onLoginChange.bind(this);
     this.onPassChange = this.onPassChange.bind(this);
-
     this.saveForm = this.saveForm.bind(this);
   }
 
@@ -64,8 +63,8 @@ class AdminUsersAddComponent extends Component {
     return true;
   }
 
-	render() {
-		return true && (
+  render() {
+    return true && (
 			<div className="item-details-page col-md-9 col-sm-9 col-">
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
@@ -91,8 +90,8 @@ class AdminUsersAddComponent extends Component {
 					</div>
 				</div>
 			</div>
-		);
-	}
+    );
+  }
 }
 AdminUsersAddComponent.propTypes = {
   addUserDetails: PropTypes.func.isRequired

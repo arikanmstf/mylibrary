@@ -13,20 +13,20 @@ export const ResolvedGetTagDetails = (response) => {
   };
 };
 export const getTagDetails = (tagId) => {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
-		axios.get(API.getTagDetails, {
-				params: {
-					tag_id: tagId,
-					login_key: Storage.get('login_key')
-				}
-			})
-		.then((response) => dispatch(ResolvedGetTagDetails(response)))
+    axios.get(API.getTagDetails, {
+      params: {
+        tag_id: tagId,
+        login_key: Storage.get('login_key')
+      }
+    })
+    .then((response) => dispatch(ResolvedGetTagDetails(response)))
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 };
 
 const addTagBySearch = (title) => {
@@ -35,8 +35,8 @@ const addTagBySearch = (title) => {
     login_key: Storage.get('login_key')
   }))
   .catch((msg) => {
-      const message = createErrorMessage(msg);
-      dispatch(openModal(message));
+    const message = createErrorMessage(msg);
+    dispatch(openModal(message));
   });
 };
 export const ResolvedGetTagBySearch = (response) => {
@@ -46,15 +46,15 @@ export const ResolvedGetTagBySearch = (response) => {
   };
 };
 export const getTagBySearch = (title) => {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
-		axios.get(API.getTagBySearch, {
-				params: {
-					title,
-					login_key: Storage.get('login_key')
-				}
-			})
-		.then((response) => {
+    axios.get(API.getTagBySearch, {
+      params: {
+        title,
+        login_key: Storage.get('login_key')
+      }
+    })
+    .then((response) => {
       if (response.data.response.length < 1) {
         dispatch(openConfirmModal({
           message: 'Tag not found, add new one ?',
@@ -67,10 +67,10 @@ export const getTagBySearch = (title) => {
       }
     })
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 };
 
 export const ResolvedResetGetTagBySearch = () => {
@@ -80,7 +80,7 @@ export const ResolvedResetGetTagBySearch = () => {
   };
 };
 export const resetGetTagBySearch = () => {
-	return (dispatch) => {
-		dispatch(ResolvedResetGetTagBySearch());
-	};
+  return (dispatch) => {
+    dispatch(ResolvedResetGetTagBySearch());
+  };
 };

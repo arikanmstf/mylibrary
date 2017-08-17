@@ -6,24 +6,24 @@ import config from 'config';
 import Pagination from 'modules/common/Pagination';
 
 class ListListComponent extends Component {
-	componentDidMount() {
-		this.props.getAllLists(this.props);
-	}
+  componentDidMount() {
+    this.props.getAllLists(this.props);
+  }
 
-	componentWillReceiveProps(nextProps) {
-		this.setState(nextProps);
+  componentWillReceiveProps(nextProps) {
+    this.setState(nextProps);
     if (nextProps.title !== this.props.title) {
       this.props.getAllLists(nextProps);
     }
-	}
+  }
 
   onLiClick() {
     this.setState(this.props);
   }
 
-	renderList() {
-		return this.props.lists.map((list) => {
-			return (
+  renderList() {
+    return this.props.lists.map((list) => {
+      return (
 				<li key={list.list_id}>
 					<div className="list-meta">
 						<div className="list-info">
@@ -35,12 +35,12 @@ class ListListComponent extends Component {
 						</div>
 					</div>
 				</li>
-			);
-		});
-	}
+      );
+    });
+  }
 
-	render() {
-		return (
+  render() {
+    return (
       <div>
         <Pagination
           pageNo={parseInt(this.props.pageNo, 10)}
@@ -52,8 +52,8 @@ class ListListComponent extends Component {
           {this.renderList()}
         </ul>
       </div>
-		);
-	}
+    );
+  }
 }
 
 ListListComponent.propTypes = {
@@ -65,10 +65,10 @@ ListListComponent.propTypes = {
 };
 
 ListListComponent.defaultProps = {
-	lists: [],
-	total: 0,
-	pageNo: 1,
-	title: ''
+  lists: [],
+  total: 0,
+  pageNo: 1,
+  title: ''
 };
 
 export default ListListComponent;

@@ -8,22 +8,22 @@ import InputSearch from 'common/input/InputSearch';
 
 class AdminPublishersComponent extends Component {
   constructor(props) {
-		super(props);
+    super(props);
 
     this.state = {
       pageNo: props.match.params.pageNo || 1,
       title: ''
     };
     this.setSearchTitle = this.setSearchTitle.bind(this);
-	}
+  }
 
-	componentDidMount() {
-		this.props.getAllPublishers(this.state);
-	}
+  componentDidMount() {
+    this.props.getAllPublishers(this.state);
+  }
 
   componentWillReceiveProps(nextProps) {
-		this.setState(nextProps.search);
-	}
+    this.setState(nextProps.search);
+  }
 
   onLiClick() {
     this.setState({ pageNo: this.props.match.params.pageNo });
@@ -91,8 +91,8 @@ AdminPublishersComponent.propTypes = {
 
 AdminPublishersComponent.defaultProps = {
   search: {},
-	publishers: [],
-	total: 0
+  publishers: [],
+  total: 0
 };
 
 export default AdminPublishersComponent;

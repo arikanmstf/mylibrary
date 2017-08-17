@@ -4,9 +4,9 @@ import PublisherDetailsComponent from './PublisherDetailsComponent';
 import { getPublisherDetails } from './PublisherDetailsActions';
 
 const mapStateToProps = (state) => {
-	return {
-		publisher: state.publisher
-	};
+  return {
+    publisher: state.publisher
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

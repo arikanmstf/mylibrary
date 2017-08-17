@@ -5,10 +5,10 @@ import PublicationDetailsComponent from './PublicationDetailsComponent';
 import { getPublicationDetails } from './PublicationDetailsActions';
 
 const mapStateToProps = (state) => {
-	return {
+  return {
     publication: state.publication,
-		listSearch: state.listSearch
-	};
+    listSearch: state.listSearch
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

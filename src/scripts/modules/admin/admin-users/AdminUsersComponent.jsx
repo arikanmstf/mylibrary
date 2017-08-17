@@ -8,18 +8,18 @@ import InputSearch from 'common/input/InputSearch';
 
 class AdminUsersComponent extends Component {
   constructor(props) {
-		super(props);
+    super(props);
 
     this.state = {
       title: '',
       pageNo: this.props.match.params.pageNo || 1
     };
     this.setSearchTitle = this.setSearchTitle.bind(this);
-	}
+  }
 
-	componentDidMount() {
-		this.props.getAllUsers(this.state);
-	}
+  componentDidMount() {
+    this.props.getAllUsers(this.state);
+  }
 
   onLiClick() {
     this.setState({ pageNo: this.props.match.params.pageNo });
@@ -85,8 +85,8 @@ AdminUsersComponent.propTypes = {
 };
 
 AdminUsersComponent.defaultProps = {
-	users: [],
-	total: 0
+  users: [],
+  total: 0
 };
 
 export default AdminUsersComponent;

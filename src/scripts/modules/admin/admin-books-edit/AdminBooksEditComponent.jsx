@@ -7,7 +7,7 @@ import { fromArrayToCommaEdit } from 'common/Helpers';
 
 class AdminBooksEditComponent extends Component {
 
-	constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       book_id: 0,
@@ -32,16 +32,16 @@ class AdminBooksEditComponent extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-		this.setState({
+    this.setState({
       title: nextProps.book.title,
       writers: nextProps.book.writers,
       description: nextProps.book.description,
       tags: nextProps.book.tags,
     });
-	}
-	onTagsChange(tags) {
-		this.tags = tags;
-	}
+  }
+  onTagsChange(tags) {
+    this.tags = tags;
+  }
   onDescChange(event) {
     this.setState({
       description: event.target.value
@@ -57,17 +57,17 @@ class AdminBooksEditComponent extends Component {
       title: event.target.value
     });
   }
-	addNewWriter(writer) {
+  addNewWriter(writer) {
     const writers = this.state.writers;
-		for (let i = 0; i < writers.length; i++) {
-			if (writers[i].key === writer.writer_id) {
-				return false;
-			}
-		}
+    for (let i = 0; i < writers.length; i++) {
+      if (writers[i].key === writer.writer_id) {
+        return false;
+      }
+    }
     writers.push({ value: writer.full_name, key: writer.writer_id });
     this.setState({ writers });
     this.props.resetGetWriterBySearch();
-		return true;
+    return true;
   }
   searchWriters(newValue) {
     this.props.getWriterBySearch(newValue);
@@ -105,9 +105,9 @@ class AdminBooksEditComponent extends Component {
     }));
   }
 
-	render() {
-		const book = this.props.book;
-		return book && (
+  render() {
+    const book = this.props.book;
+    return book && (
 			<div className="item-details-page col-md-9 col-sm-9 col-">
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
@@ -139,17 +139,17 @@ class AdminBooksEditComponent extends Component {
 					</div>
 				</div>
 			</div>
-		);
-	}
+    );
+  }
 }
 AdminBooksEditComponent.propTypes = {
   getBookDetails: PropTypes.func.isRequired,
   getWriterBySearch: PropTypes.func.isRequired,
   resetGetWriterBySearch: PropTypes.func.isRequired,
   updateBookDetails: PropTypes.func.isRequired,
-	book: PropTypes.object.isRequired,
-	writerSearch: PropTypes.arrayOf(Object).isRequired,
-	match: PropTypes.object.isRequired
+  book: PropTypes.object.isRequired,
+  writerSearch: PropTypes.arrayOf(Object).isRequired,
+  match: PropTypes.object.isRequired
 };
 
 export default AdminBooksEditComponent;

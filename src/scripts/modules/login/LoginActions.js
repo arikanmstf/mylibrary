@@ -14,32 +14,32 @@ export function ResolvedGetLogin(response) {
 }
 
 export function getLogin(data) {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
-		axios.post(API.getLogin, qs.stringify({
-			username: data.username,
-			password: data.password
-		}))
-		.then((response) => {
-			Storage.set('login_key', response.data.response.key);
-			Storage.set('is_admin', response.data.response.is_admin);
-			window.location.href = window.location.href;
-		})
+    axios.post(API.getLogin, qs.stringify({
+      username: data.username,
+      password: data.password
+    }))
+    .then((response) => {
+      Storage.set('login_key', response.data.response.key);
+      Storage.set('is_admin', response.data.response.is_admin);
+      window.location.href = window.location.href;
+    })
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 }
 export function getLogout() {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
-		axios.post(API.getLogout, qs.stringify({
+    axios.post(API.getLogout, qs.stringify({
       login_key: Storage.get('login_key')
     }))
-		.then(() => {
-			Storage.delete('login_key');
-			window.location.href = window.location.href;
-		});
-	};
+    .then(() => {
+      Storage.delete('login_key');
+      window.location.href = window.location.href;
+    });
+  };
 }

@@ -8,18 +8,18 @@ import InputSearch from 'common/input/InputSearch';
 
 class AdminWritersComponent extends Component {
   constructor(props) {
-		super(props);
+    super(props);
 
     this.state = {
       title: '',
       pageNo: this.props.match.params.pageNo || 1
     };
     this.setSearchTitle = this.setSearchTitle.bind(this);
-	}
+  }
 
-	componentDidMount() {
-		this.props.getAllWriters(this.state);
-	}
+  componentDidMount() {
+    this.props.getAllWriters(this.state);
+  }
 
   onLiClick() {
     this.setState({ pageNo: this.props.match.params.pageNo });
@@ -85,8 +85,8 @@ AdminWritersComponent.propTypes = {
 };
 
 AdminWritersComponent.defaultProps = {
-	writers: [],
-	total: 0
+  writers: [],
+  total: 0
 };
 
 export default AdminWritersComponent;

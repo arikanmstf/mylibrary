@@ -56,116 +56,116 @@ export function ResolvedUpdatePublicationDetailsList(response) {
 }
 
 export function updatePublicationDetails(form) {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.updatePublicationDetails, qs.stringify({
       ...form,
       login_key: Storage.get('login_key')
     }))
-		.then((response) => dispatch(ResolvedUpdatePublicationDetails(response)))
+    .then((response) => dispatch(ResolvedUpdatePublicationDetails(response)))
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 }
 export function updateBookDetails(form) {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.updateBookDetails, qs.stringify({
       ...form,
       login_key: Storage.get('login_key')
     }))
-		.then((response) => dispatch(ResolvedUpdateBookDetails(response)))
+    .then((response) => dispatch(ResolvedUpdateBookDetails(response)))
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 }
 export function updateWriterDetails(form) {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.updateWriterDetails, qs.stringify({
       ...form,
       login_key: Storage.get('login_key')
     }))
-		.then((response) => dispatch(ResolvedUpdateWriterDetails(response)))
+    .then((response) => dispatch(ResolvedUpdateWriterDetails(response)))
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 }
 export function updatePublisherDetails(form) {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.updatePublisherDetails, qs.stringify({
       ...form,
       login_key: Storage.get('login_key')
     }))
-		.then((response) => dispatch(ResolvedUpdatePublisherDetails(response)))
+    .then((response) => dispatch(ResolvedUpdatePublisherDetails(response)))
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 }
 export function updateUserDetails(form) {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.updateUserDetails, qs.stringify({
       ...form,
       login_key: Storage.get('login_key')
     }))
-		.then((response) => dispatch(ResolvedUpdateUserDetails(response)))
+    .then((response) => dispatch(ResolvedUpdateUserDetails(response)))
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 }
 export function updateTagDetails(form) {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.updateTagDetails, qs.stringify({
       ...form,
       login_key: Storage.get('login_key')
     }))
-		.then((response) => dispatch(ResolvedUpdateTagDetails(response)))
+    .then((response) => dispatch(ResolvedUpdateTagDetails(response)))
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 }
 export function updateListDetails(form) {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.updateListDetails, qs.stringify({
       ...form,
       login_key: Storage.get('login_key')
     }))
-		.then((response) => dispatch(ResolvedUpdateListDetails(response)))
+    .then((response) => dispatch(ResolvedUpdateListDetails(response)))
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 }
 export function updatePublicationDetailsList(form) {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.updatePublicationDetailsList, qs.stringify({
       ...form,
       login_key: Storage.get('login_key')
     }))
-		.then((response) => dispatch(ResolvedUpdatePublicationDetailsList(response)))
+    .then((response) => dispatch(ResolvedUpdatePublicationDetailsList(response)))
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 }
 
 export function ResolvedAddBookDetails(response) {
@@ -212,7 +212,7 @@ export function ResolvedAddListDetails(response) {
 }
 
 export function addBookDetails(form) {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.addBookDetails, qs.stringify({
       ...form,
@@ -222,29 +222,29 @@ export function addBookDetails(form) {
       window.location.href = window.location.href;
     })
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 }
 export function addPublicationDetails(form) {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.addPublicationDetails, qs.stringify({
       ...form,
       login_key: Storage.get('login_key')
     }))
-		.then(() => {
+    .then(() => {
       window.location.href = window.location.href;
     })
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 }
 export function addWriterDetails(form) {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.addWriterDetails, qs.stringify({
       ...form,
@@ -254,13 +254,13 @@ export function addWriterDetails(form) {
       window.location.href = window.location.href;
     })
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 }
 export function addPublisherDetails(form) {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.addPublisherDetails, qs.stringify({
       ...form,
@@ -270,13 +270,13 @@ export function addPublisherDetails(form) {
       window.location.href = window.location.href;
     })
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 }
 export function addUserDetails(form) {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.addUserDetails, qs.stringify({
       ...form,
@@ -286,13 +286,13 @@ export function addUserDetails(form) {
       window.location.href = window.location.href;
     })
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 }
 export function addTagDetails(form) {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.addTagDetails, qs.stringify({
       ...form,
@@ -302,13 +302,13 @@ export function addTagDetails(form) {
       window.location.href = window.location.href;
     })
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 }
 export function addListDetails(form) {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.addListDetails, qs.stringify({
       ...form,
@@ -318,8 +318,8 @@ export function addListDetails(form) {
       window.location.href = window.location.href;
     })
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 }

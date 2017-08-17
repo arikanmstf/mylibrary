@@ -15,19 +15,19 @@ export function ResolvedGetProfileDetails(response) {
 }
 
 export function getProfileDetails() {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
-		axios.get(API.getProfileDetails, {
-				params: {
-					login_key: Storage.get('login_key')
-				}
-			})
-		.then((response) => dispatch(ResolvedGetProfileDetails(response)))
+    axios.get(API.getProfileDetails, {
+      params: {
+        login_key: Storage.get('login_key')
+      }
+    })
+    .then((response) => dispatch(ResolvedGetProfileDetails(response)))
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 }
 
 export function ResolvedUpdateProfileDetails(response) {
@@ -38,16 +38,16 @@ export function ResolvedUpdateProfileDetails(response) {
 }
 
 export function updateProfileDetails(form) {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
     axios.post(API.updateProfileDetails, qs.stringify({
       ...form,
       login_key: Storage.get('login_key')
     }))
-		.then((response) => dispatch(ResolvedUpdateProfileDetails(response)))
+    .then((response) => dispatch(ResolvedUpdateProfileDetails(response)))
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 }

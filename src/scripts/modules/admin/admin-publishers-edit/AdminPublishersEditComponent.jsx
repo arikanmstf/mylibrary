@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class AdminPublishersEditComponent extends Component {
 
-	constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       title: '',
@@ -22,12 +22,12 @@ class AdminPublishersEditComponent extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-		this.setState({
+    this.setState({
       title: nextProps.publisher.name || '',
       phone: nextProps.publisher.phone_no || '',
       adr: nextProps.publisher.address || ''
     });
-	}
+  }
   onTitleChange(event) {
     this.setState({
       title: event.target.value
@@ -54,9 +54,9 @@ class AdminPublishersEditComponent extends Component {
     this.props.updatePublisherDetails(form);
   }
 
-	render() {
-		const publisher = this.props.publisher;
-		return publisher && (
+  render() {
+    const publisher = this.props.publisher;
+    return publisher && (
 			<div className="item-details-page col-md-9 col-sm-9 col-">
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
@@ -79,14 +79,14 @@ class AdminPublishersEditComponent extends Component {
 					</div>
 				</div>
 			</div>
-		);
-	}
+    );
+  }
 }
 AdminPublishersEditComponent.propTypes = {
   getPublisherDetails: PropTypes.func.isRequired,
   updatePublisherDetails: PropTypes.func.isRequired,
-	publisher: PropTypes.object.isRequired,
-	match: PropTypes.object.isRequired
+  publisher: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired
 };
 
 export default AdminPublishersEditComponent;

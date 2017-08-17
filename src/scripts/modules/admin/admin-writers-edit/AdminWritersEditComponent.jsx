@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class AdminWritersEditComponent extends Component {
 
-	constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       title: '',
@@ -20,11 +20,11 @@ class AdminWritersEditComponent extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-		this.setState({
+    this.setState({
       title: nextProps.writer.full_name,
       description: nextProps.writer.description
     });
-	}
+  }
   onTitleChange(event) {
     this.setState({
       title: event.target.value
@@ -45,9 +45,9 @@ class AdminWritersEditComponent extends Component {
     this.props.updateWriterDetails(form);
   }
 
-	render() {
-		const writer = this.props.writer;
-		return writer && (
+  render() {
+    const writer = this.props.writer;
+    return writer && (
 			<div className="item-details-page col-md-9 col-sm-9 col-">
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
@@ -64,14 +64,14 @@ class AdminWritersEditComponent extends Component {
 					</div>
 				</div>
 			</div>
-		);
-	}
+    );
+  }
 }
 AdminWritersEditComponent.propTypes = {
   getWriterDetails: PropTypes.func.isRequired,
   updateWriterDetails: PropTypes.func.isRequired,
-	writer: PropTypes.object.isRequired,
-	match: PropTypes.object.isRequired
+  writer: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired
 };
 
 export default AdminWritersEditComponent;

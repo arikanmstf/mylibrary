@@ -5,9 +5,9 @@ import { updateTagDetails } from 'modules/admin/AdminActions';
 import AdminTagsEditComponent from './AdminTagsEditComponent';
 
 const mapStateToProps = (state) => {
-	return {
-		tag: state.tag
-	};
+  return {
+    tag: state.tag
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

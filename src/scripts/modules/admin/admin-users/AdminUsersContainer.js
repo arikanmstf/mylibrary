@@ -4,8 +4,8 @@ import AdminUsersComponent from './AdminUsersComponent';
 
 const mapStateToProps = (state) => {
   return {
-   users: state.users.list,
-   total: parseInt(state.users.total, 10)
+    users: state.users.list,
+    total: parseInt(state.users.total, 10)
   };
 };
 

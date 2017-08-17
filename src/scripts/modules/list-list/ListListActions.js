@@ -13,19 +13,19 @@ export function ResolvedGetAllLists(response) {
 }
 
 export function getAllLists(search) {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
-		axios.get(API.getAllLists, {
-				params: {
-					title: search.title,
-					login_key: Storage.get('login_key'),
-          page: search.pageNo
-				}
-			})
-		.then((response) => dispatch(ResolvedGetAllLists(response)))
+    axios.get(API.getAllLists, {
+      params: {
+        title: search.title,
+        login_key: Storage.get('login_key'),
+        page: search.pageNo
+      }
+    })
+    .then((response) => dispatch(ResolvedGetAllLists(response)))
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 }

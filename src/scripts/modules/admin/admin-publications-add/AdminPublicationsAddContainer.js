@@ -7,10 +7,10 @@ import { addPublicationDetails } from 'modules/admin/AdminActions';
 import AdminPublicationsAddComponent from './AdminPublicationsAddComponent';
 
 const mapStateToProps = (state) => {
-	return {
-		bookSearch: state.bookSearch,
-		publisherSearch: state.publisherSearch
-	};
+  return {
+    bookSearch: state.bookSearch,
+    publisherSearch: state.publisherSearch
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

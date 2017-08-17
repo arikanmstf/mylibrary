@@ -8,7 +8,7 @@ import ListsOfPublicationEdit from 'modules/common/ListsOfPublicationEdit';
 
 class AdminPublicationsEditComponent extends Component {
 
-	constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       title: '',
@@ -17,11 +17,11 @@ class AdminPublicationsEditComponent extends Component {
       description: '',
       download_url: '',
       isbn: '',
-			lists: [],
+      lists: [],
       cover_no: 0,
       page_number: 0,
-			file_url: '',
-			image_url: ''
+      file_url: '',
+      image_url: ''
     };
 
     this.onImageUpload = this.onImageUpload.bind(this);
@@ -34,7 +34,6 @@ class AdminPublicationsEditComponent extends Component {
     this.onListsChange = this.onListsChange.bind(this);
     this.searchPublishers = this.searchPublishers.bind(this);
     this.searchBooks = this.searchBooks.bind(this);
-
     this.saveForm = this.saveForm.bind(this);
   }
 
@@ -43,7 +42,7 @@ class AdminPublicationsEditComponent extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-		this.setState({
+    this.setState({
       book_id: nextProps.publication.book_id,
       description: nextProps.publication.description,
       isbn: nextProps.publication.isbn || '',
@@ -52,7 +51,7 @@ class AdminPublicationsEditComponent extends Component {
       lists: nextProps.publication.lists,
       page_number: nextProps.publication.page_number
     });
-	}
+  }
   onDescChange(event) {
     this.setState({
       description: event.target.value
@@ -78,15 +77,15 @@ class AdminPublicationsEditComponent extends Component {
       page_number: event.target.value
     });
   }
-	onListsChange(lists) {
-		this.setState({ lists });
-	}
-	onImageUpload(res) {
-		this.setState({ image_url: res.response.filename });
-	}
-	onFileUpload(res) {
-		this.setState({ file_url: res.response.filename });
-	}
+  onListsChange(lists) {
+    this.setState({ lists });
+  }
+  onImageUpload(res) {
+    this.setState({ image_url: res.response.filename });
+  }
+  onFileUpload(res) {
+    this.setState({ file_url: res.response.filename });
+  }
   addNewBook(book) {
     this.setState({ ...book });
     this.props.resetGetBookBySearch();
@@ -104,8 +103,8 @@ class AdminPublicationsEditComponent extends Component {
 
   saveForm() {
     const form = {
-			...this.state,
-			publication_id: this.props.publication.publication_id
+      ...this.state,
+      publication_id: this.props.publication.publication_id
     };
     this.props.updatePublicationDetails(form);
   }
@@ -126,9 +125,9 @@ class AdminPublicationsEditComponent extends Component {
     }));
   }
 
-	render() {
-		const publication = this.props.publication;
-		return publication && (
+  render() {
+    const publication = this.props.publication;
+    return publication && (
 			<div className="item-details-page col-md-9 col-sm-9 col-">
 				<div className="item-details-container">
 					<div className="col-md-3 col-sm-3 item-info image-container">
@@ -220,8 +219,8 @@ class AdminPublicationsEditComponent extends Component {
 					</div>
 				</div>
 			</div>
-		);
-	}
+    );
+  }
 }
 AdminPublicationsEditComponent.propTypes = {
   getPublicationDetails: PropTypes.func.isRequired,
@@ -230,10 +229,10 @@ AdminPublicationsEditComponent.propTypes = {
   getPublisherBySearch: PropTypes.func.isRequired,
   resetGetPublisherBySearch: PropTypes.func.isRequired,
   updatePublicationDetails: PropTypes.func.isRequired,
-	publication: PropTypes.object.isRequired,
-	bookSearch: PropTypes.arrayOf(Object).isRequired,
-	publisherSearch: PropTypes.arrayOf(Object).isRequired,
-	match: PropTypes.object.isRequired
+  publication: PropTypes.object.isRequired,
+  bookSearch: PropTypes.arrayOf(Object).isRequired,
+  publisherSearch: PropTypes.arrayOf(Object).isRequired,
+  match: PropTypes.object.isRequired
 };
 
 export default AdminPublicationsEditComponent;

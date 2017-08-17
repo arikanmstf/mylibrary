@@ -9,7 +9,7 @@ import { fromArrayToCommaEdit } from 'common/Helpers';
 
 class AdminBooksAddComponent extends Component {
 
-	constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       book_id: 0,
@@ -45,15 +45,15 @@ class AdminBooksAddComponent extends Component {
   }
   addNewWriter(writer) {
     const writers = this.state.writers;
-		for (let i = 0; i < writers.length; i++) {
-			if (writers[i].key === writer.writer_id) {
-				return false;
-			}
-		}
+    for (let i = 0; i < writers.length; i++) {
+      if (writers[i].key === writer.writer_id) {
+        return false;
+      }
+    }
     writers.push({ value: writer.full_name, key: writer.writer_id });
     this.setState({ writers });
     this.props.resetGetWriterBySearch();
-		return true;
+    return true;
   }
   searchWriters(newValue) {
     this.props.getWriterBySearch(newValue);
@@ -100,8 +100,8 @@ class AdminBooksAddComponent extends Component {
     }));
   }
 
-	render() {
-		return true && (
+  render() {
+    return true && (
 			<div className="item-details-page col-md-9 col-sm-9 col-">
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
@@ -138,16 +138,16 @@ class AdminBooksAddComponent extends Component {
 					</div>
 				</div>
 			</div>
-		);
-	}
+    );
+  }
 }
 AdminBooksAddComponent.propTypes = {
   getWriterBySearch: PropTypes.func.isRequired,
   getBookBySearch: PropTypes.func.isRequired,
   resetGetWriterBySearch: PropTypes.func.isRequired,
   addBookDetails: PropTypes.func.isRequired,
-	writerSearch: PropTypes.arrayOf(Object).isRequired,
-	bookSearch: PropTypes.arrayOf(Object).isRequired
+  writerSearch: PropTypes.arrayOf(Object).isRequired,
+  bookSearch: PropTypes.arrayOf(Object).isRequired
 };
 
 export default AdminBooksAddComponent;

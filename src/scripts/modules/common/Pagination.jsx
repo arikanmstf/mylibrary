@@ -7,9 +7,9 @@ import config from 'config';
 export default class Pagination extends Component {
 
   constructor(props) {
-		super(props);
-		this.state = props;
-	}
+    super(props);
+    this.state = props;
+  }
 
   nextPage() {
     const recordsPerPage = PAGINATION.recordsPerPage;
@@ -95,6 +95,6 @@ Pagination.propTypes = {
 
 Pagination.defaultProps = {
   pageNo: 0,
-	total: 0,
+  total: 0,
   linkTo: ''
 };

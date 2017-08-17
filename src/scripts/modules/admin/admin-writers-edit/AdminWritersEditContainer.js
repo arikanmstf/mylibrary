@@ -5,9 +5,9 @@ import { updateWriterDetails } from 'modules/admin/AdminActions';
 import AdminWritersEditComponent from './AdminWritersEditComponent';
 
 const mapStateToProps = (state) => {
-	return {
-		writer: state.writer
-	};
+  return {
+    writer: state.writer
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

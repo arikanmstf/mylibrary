@@ -58,9 +58,9 @@ class TagsOfPublicationEdit extends Component {
     }));
   }
 
-	renderTag() {
-		return this.state.tags.map((tag) => {
-			return (
+  renderTag() {
+    return this.state.tags.map((tag) => {
+      return (
         <span
           onClick={() => this.removeTag(tag)}
           key={tag.tag_id}
@@ -68,13 +68,13 @@ class TagsOfPublicationEdit extends Component {
 					{tag.title}
           <i className="glyphicon glyphicon-remove" />
         </span>
-			);
-		});
-	}
+      );
+    });
+  }
 
-	render() {
-		const tags = this.state.tags;
-		return tags ? (
+  render() {
+    const tags = this.state.tags;
+    return tags ? (
 			<div className="lists-of-publication">
 						<div className="list-list">{this.renderTag()}</div>
             <InputSearch title="Search for tags" makeSearch={this.searchTags} />
@@ -84,11 +84,11 @@ class TagsOfPublicationEdit extends Component {
               </ul>
             </div>
 			</div>
-		) : null;
-	}
+    ) : null;
+  }
 }
 TagsOfPublicationEdit.propTypes = {
-	tags: PropTypes.arrayOf(Object),
+  tags: PropTypes.arrayOf(Object),
   tagSearch: PropTypes.arrayOf(Object).isRequired,
   getTagBySearch: PropTypes.func.isRequired,
   resetGetTagBySearch: PropTypes.func.isRequired,
@@ -99,9 +99,9 @@ TagsOfPublicationEdit.defaultProps = {
 };
 
 function mapStateToProps(state) {
-	return {
-		tagSearch: state.tagSearch
-	};
+  return {
+    tagSearch: state.tagSearch
+  };
 }
 
 const mapDispatchToProps = (dispatch) => {

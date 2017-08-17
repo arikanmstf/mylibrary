@@ -13,21 +13,21 @@ export const ResolvedGetAllBooks = (response) => {
   };
 };
 export const getAllBooks = (search) => {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
-		axios.get(API.getAllBooks, {
-				params: {
-					title: search.title,
-					login_key: Storage.get('login_key'),
-          page: search.pageNo
-				}
-			})
-		.then((response) => dispatch(ResolvedGetAllBooks(response)))
+    axios.get(API.getAllBooks, {
+      params: {
+        title: search.title,
+        login_key: Storage.get('login_key'),
+        page: search.pageNo
+      }
+    })
+    .then((response) => dispatch(ResolvedGetAllBooks(response)))
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 };
 
 const addWriterBySearch = (title) => {
@@ -36,8 +36,8 @@ const addWriterBySearch = (title) => {
     login_key: Storage.get('login_key')
   }))
   .catch((msg) => {
-      const message = createErrorMessage(msg);
-      dispatch(openModal(message));
+    const message = createErrorMessage(msg);
+    dispatch(openModal(message));
   });
 };
 export const ResolvedGetWriterBySearch = (response) => {
@@ -47,15 +47,15 @@ export const ResolvedGetWriterBySearch = (response) => {
   };
 };
 export const getWriterBySearch = (title) => {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
-		axios.get(API.getWriterBySearch, {
-				params: {
-					title,
-					login_key: Storage.get('login_key')
-				}
-			})
-		.then((response) => {
+    axios.get(API.getWriterBySearch, {
+      params: {
+        title,
+        login_key: Storage.get('login_key')
+      }
+    })
+    .then((response) => {
       if (response.data.response.length < 1) {
         dispatch(openConfirmModal({
           message: 'Writer not found, add new one ?',
@@ -68,10 +68,10 @@ export const getWriterBySearch = (title) => {
       }
     })
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 };
 
 export const ResolvedResetGetWriterBySearch = () => {
@@ -81,9 +81,9 @@ export const ResolvedResetGetWriterBySearch = () => {
   };
 };
 export const resetGetWriterBySearch = () => {
-	return (dispatch) => {
-		dispatch(ResolvedResetGetWriterBySearch());
-	};
+  return (dispatch) => {
+    dispatch(ResolvedResetGetWriterBySearch());
+  };
 };
 
 export const ResolvedGetBookBySearch = (response) => {
@@ -93,20 +93,20 @@ export const ResolvedGetBookBySearch = (response) => {
   };
 };
 export const getBookBySearch = (title) => {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
-		axios.get(API.getBookBySearch, {
-				params: {
-					title,
-					login_key: Storage.get('login_key')
-				}
-			})
-		.then((response) => dispatch(ResolvedGetBookBySearch(response)))
+    axios.get(API.getBookBySearch, {
+      params: {
+        title,
+        login_key: Storage.get('login_key')
+      }
+    })
+    .then((response) => dispatch(ResolvedGetBookBySearch(response)))
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 };
 
 export const ResolvedResetGetBookBySearch = () => {
@@ -116,9 +116,9 @@ export const ResolvedResetGetBookBySearch = () => {
   };
 };
 export const resetGetBookBySearch = () => {
-	return (dispatch) => {
-		dispatch(ResolvedResetGetBookBySearch());
-	};
+  return (dispatch) => {
+    dispatch(ResolvedResetGetBookBySearch());
+  };
 };
 
 const addPublisherBySearch = (title) => {
@@ -127,8 +127,8 @@ const addPublisherBySearch = (title) => {
     login_key: Storage.get('login_key')
   }))
   .catch((msg) => {
-      const message = createErrorMessage(msg);
-      dispatch(openModal(message));
+    const message = createErrorMessage(msg);
+    dispatch(openModal(message));
   });
 };
 export const ResolvedGetPublisherBySearch = (response) => {
@@ -138,15 +138,15 @@ export const ResolvedGetPublisherBySearch = (response) => {
   };
 };
 export const getPublisherBySearch = (title) => {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
-		axios.get(API.getPublisherBySearch, {
-				params: {
-					title,
-					login_key: Storage.get('login_key')
-				}
-			})
-		.then((response) => {
+    axios.get(API.getPublisherBySearch, {
+      params: {
+        title,
+        login_key: Storage.get('login_key')
+      }
+    })
+    .then((response) => {
       if (response.data.response.length < 1) {
         dispatch(openConfirmModal({
           message: 'Publisher not found, add new one ?',
@@ -159,10 +159,10 @@ export const getPublisherBySearch = (title) => {
       }
     })
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 };
 
 export const ResolvedResetGetPublisherBySearch = () => {
@@ -172,7 +172,7 @@ export const ResolvedResetGetPublisherBySearch = () => {
   };
 };
 export const resetGetPublisherBySearch = () => {
-	return (dispatch) => {
-		dispatch(ResolvedResetGetPublisherBySearch());
-	};
+  return (dispatch) => {
+    dispatch(ResolvedResetGetPublisherBySearch());
+  };
 };

@@ -13,19 +13,19 @@ export function ResolvedGetAllTags(response) {
 }
 
 export function getAllTags(search) {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
-		axios.get(API.getAllTags, {
-				params: {
-					title: search.title,
-					login_key: Storage.get('login_key'),
-          page: search.pageNo
-				}
-			})
-		.then((response) => dispatch(ResolvedGetAllTags(response)))
+    axios.get(API.getAllTags, {
+      params: {
+        title: search.title,
+        login_key: Storage.get('login_key'),
+        page: search.pageNo
+      }
+    })
+    .then((response) => dispatch(ResolvedGetAllTags(response)))
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 }

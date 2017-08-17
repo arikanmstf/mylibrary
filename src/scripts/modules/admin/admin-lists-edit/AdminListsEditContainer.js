@@ -5,9 +5,9 @@ import { updateListDetails } from 'modules/admin/AdminActions';
 import AdminListsEditComponent from './AdminListsEditComponent';
 
 const mapStateToProps = (state) => {
-	return {
-		list: state.list
-	};
+  return {
+    list: state.list
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

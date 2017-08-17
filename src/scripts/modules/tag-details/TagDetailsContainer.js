@@ -4,9 +4,9 @@ import { getTagDetails } from './TagDetailsActions';
 import TagDetailsComponent from './TagDetailsComponent';
 
 const mapStateToProps = (state) => {
-	return {
-		tag: state.tag
-	};
+  return {
+    tag: state.tag
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

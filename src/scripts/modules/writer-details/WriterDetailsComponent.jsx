@@ -5,17 +5,17 @@ import { commaListItems } from 'common/Helpers';
 
 class WriterDetailsComponent extends Component {
 
-	componentDidMount() {
-		this.props.getWriterDetails(this.props.match.params.writerId);
-	}
+  componentDidMount() {
+    this.props.getWriterDetails(this.props.match.params.writerId);
+  }
 
-	render() {
-		const writer = this.props.writer;
-		const writerBirth = (writer.birth_date ? ('Birth: ' + writer.birth_date) : '');
-		const writerDeath = (writer.death_date ? (', Death: ' + writer.death_date) : '');
-		const writerLife = writerBirth + writerDeath;
+  render() {
+    const writer = this.props.writer;
+    const writerBirth = (writer.birth_date ? ('Birth: ' + writer.birth_date) : '');
+    const writerDeath = (writer.death_date ? (', Death: ' + writer.death_date) : '');
+    const writerLife = writerBirth + writerDeath;
 
-		return writer ? (
+    return writer ? (
       <div className="item-details-page writer-details">
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
@@ -40,13 +40,13 @@ class WriterDetailsComponent extends Component {
 					<div className="col-md-12" />
 				</div>
 			</div>
-		) : null;
-	}
+    ) : null;
+  }
 }
 WriterDetailsComponent.propTypes = {
   getWriterDetails: PropTypes.func.isRequired,
-	writer: PropTypes.object.isRequired,
-	match: PropTypes.object.isRequired
+  writer: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired
 };
 
 export default WriterDetailsComponent;

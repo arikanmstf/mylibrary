@@ -8,18 +8,18 @@ import InputSearch from 'common/input/InputSearch';
 
 class AdminBooksComponent extends Component {
   constructor(props) {
-		super(props);
+    super(props);
 
     this.state = {
       title: '',
       pageNo: this.props.match.params.pageNo || 1
     };
     this.setSearchTitle = this.setSearchTitle.bind(this);
-	}
+  }
 
-	componentDidMount() {
-		this.props.getAllBooks(this.state);
-	}
+  componentDidMount() {
+    this.props.getAllBooks(this.state);
+  }
 
   onLiClick() {
     this.setState({ pageNo: this.props.match.params.pageNo });
@@ -87,8 +87,8 @@ AdminBooksComponent.propTypes = {
 };
 
 AdminBooksComponent.defaultProps = {
-	books: [],
-	total: 0
+  books: [],
+  total: 0
 };
 
 export default AdminBooksComponent;

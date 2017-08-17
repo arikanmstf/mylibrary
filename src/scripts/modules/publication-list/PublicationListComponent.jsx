@@ -7,38 +7,36 @@ import InputSearch from 'common/input/InputSearch';
 import Pagination from 'modules/common/Pagination';
 
 class PublicationListComponent extends Component {
-
-	constructor(props) {
-		super(props);
-
-		this.state = {
+  constructor(props) {
+    super(props);
+    this.state = {
       title: ''
     };
     this.searchPublications = this.searchPublications.bind(this);
-	}
+  }
 
-	componentDidMount() {
-		this.props.getAllPublications(this.props);
-	}
+  componentDidMount() {
+    this.props.getAllPublications(this.props);
+  }
 
-	componentWillReceiveProps(nextProps) {
-		this.setState(nextProps);
+  componentWillReceiveProps(nextProps) {
+    this.setState(nextProps);
     if (nextProps.title !== this.props.title) {
       this.props.getAllPublications(nextProps);
     }
-	}
+  }
 
   onLiClick() {
     this.setState(this.props);
   }
-	searchPublications(e) {
-		this.setState({ title: e });
-		this.props.getAllPublications({ title: e });
-	}
+  searchPublications(e) {
+    this.setState({ title: e });
+    this.props.getAllPublications({ title: e });
+  }
 
-	renderList() {
-		return this.props.publications.map((publication) => {
-			return (
+  renderList() {
+    return this.props.publications.map((publication) => {
+      return (
 				<li key={publication.publication_id}>
 					<div className="publication-meta">
 						<div className="publication-image-mask">
@@ -61,12 +59,12 @@ class PublicationListComponent extends Component {
 						</div>
 					</div>
 				</li>
-			);
-		});
-	}
+      );
+    });
+  }
 
-	render() {
-		return (
+  render() {
+    return (
       <div>
 				<InputSearch makeSearch={this.searchPublications} />
         <Pagination
@@ -85,8 +83,8 @@ class PublicationListComponent extends Component {
           linkTo="pages"
         />
       </div>
-		);
-	}
+    );
+  }
 }
 
 PublicationListComponent.propTypes = {
@@ -98,10 +96,10 @@ PublicationListComponent.propTypes = {
 };
 
 PublicationListComponent.defaultProps = {
-	publications: [],
-	total: 0,
-	pageNo: 1,
-	title: ''
+  publications: [],
+  total: 0,
+  pageNo: 1,
+  title: ''
 };
 
 export default PublicationListComponent;

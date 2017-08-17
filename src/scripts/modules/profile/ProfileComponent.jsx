@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class ProfileComponent extends Component {
 
-	constructor(props) {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -17,21 +17,20 @@ class ProfileComponent extends Component {
     this.onDispChange = this.onDispChange.bind(this);
     this.onMailChange = this.onMailChange.bind(this);
     this.onPassChange = this.onPassChange.bind(this);
-
     this.saveForm = this.saveForm.bind(this);
   }
 
-	componentDidMount() {
-		this.props.getProfileDetails();
-	}
+  componentDidMount() {
+    this.props.getProfileDetails();
+  }
   componentWillReceiveProps(nextProps) {
-		this.setState({
+    this.setState({
       user_id: nextProps.profile.user_id,
       display_name: nextProps.profile.display_name,
       login_name: nextProps.profile.login_name,
       email: nextProps.profile.email
     });
-	}
+  }
 
   onDispChange(event) {
     this.setState({
@@ -60,8 +59,8 @@ class ProfileComponent extends Component {
   }
 
   render() {
-		const profile = this.props.profile;
-		return profile && (
+    const profile = this.props.profile;
+    return profile && (
 			<div className="item-details-page col-md-9 col-sm-9 col-">
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
@@ -84,13 +83,13 @@ class ProfileComponent extends Component {
 					</div>
 				</div>
 			</div>
-		);
-	}
+    );
+  }
 }
 ProfileComponent.propTypes = {
   getProfileDetails: PropTypes.func.isRequired,
   updateProfileDetails: PropTypes.func.isRequired,
-	profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired
 };
 
 export default ProfileComponent;

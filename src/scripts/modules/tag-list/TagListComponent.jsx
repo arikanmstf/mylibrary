@@ -6,24 +6,24 @@ import config from 'config';
 import Pagination from 'modules/common/Pagination';
 
 class TagListComponent extends Component {
-	componentDidMount() {
-		this.props.getAllTags(this.props);
-	}
+  componentDidMount() {
+    this.props.getAllTags(this.props);
+  }
 
-	componentWillReceiveProps(nextProps) {
-		this.setState(nextProps);
+  componentWillReceiveProps(nextProps) {
+    this.setState(nextProps);
     if (nextProps.title !== this.props.title) {
       this.props.getAllTags(nextProps);
     }
-	}
+  }
 
   onLiClick() {
     this.setState(this.props);
   }
 
-	renderList() {
-		return this.props.tags.map((tag) => {
-			return (
+  renderList() {
+    return this.props.tags.map((tag) => {
+      return (
 				<li key={tag.tag_id}>
 					<div className="tag-meta">
 						<div className="tag-info">
@@ -35,12 +35,12 @@ class TagListComponent extends Component {
 						</div>
 					</div>
 				</li>
-			);
-		});
-	}
+      );
+    });
+  }
 
-	render() {
-		return (
+  render() {
+    return (
       <div>
         <Pagination
           pageNo={parseInt(this.props.pageNo, 10)}
@@ -52,8 +52,8 @@ class TagListComponent extends Component {
           {this.renderList()}
         </ul>
       </div>
-		);
-	}
+    );
+  }
 }
 
 TagListComponent.propTypes = {
@@ -65,10 +65,10 @@ TagListComponent.propTypes = {
 };
 
 TagListComponent.defaultProps = {
-	tags: [],
-	total: 0,
-	pageNo: 1,
-	title: ''
+  tags: [],
+  total: 0,
+  pageNo: 1,
+  title: ''
 };
 
 export default TagListComponent;

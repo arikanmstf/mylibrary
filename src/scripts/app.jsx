@@ -17,12 +17,12 @@ const isLoggedIn = Storage.get('login_key');
 class App extends Component {
 
   constructor(props) {
-		super(props);
-		this.state = props;
-	}
+    super(props);
+    this.state = props;
+  }
   componentWillReceiveProps(nextProps) {
-		this.setState(nextProps);
-	}
+    this.setState(nextProps);
+  }
   render() {
     return (
       <div className="main-container">
@@ -53,9 +53,9 @@ App.defaultProps = {
 };
 
 const mapStateToProps = (state) => {
-	return {
-		contentLoaded: state.contentLoaded
-	};
+  return {
+    contentLoaded: state.contentLoaded
+  };
 };
 
 export default connect(mapStateToProps)(App);

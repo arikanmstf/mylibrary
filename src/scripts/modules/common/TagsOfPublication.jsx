@@ -4,10 +4,9 @@ import PropTypes from 'prop-types';
 import config from 'config';
 
 class TagsOfPublication extends Component {
-
-	renderTag() {
-		return this.props.tags.map((tag) => {
-			return (
+  renderTag() {
+    return this.props.tags.map((tag) => {
+      return (
 				<div key={tag.tag_id} >
 					<Link to={`${config.homeUrl}tags/${tag.tag_id}`} >
 						<div className="list">
@@ -15,21 +14,21 @@ class TagsOfPublication extends Component {
 						</div>
 					</Link>
 				</div>
-			);
-		});
-	}
+      );
+    });
+  }
 
-	render() {
-		const tags = this.props.tags;
-		return tags ? (
+  render() {
+    const tags = this.props.tags;
+    return tags ? (
 			<div className="lists-of-publication">
 						{this.renderTag()}
 			</div>
-		) : null;
-	}
+    ) : null;
+  }
 }
 TagsOfPublication.propTypes = {
-	tags: PropTypes.arrayOf(Object).isRequired
+  tags: PropTypes.arrayOf(Object).isRequired
 };
 TagsOfPublication.defaultProps = {
   tags: [],

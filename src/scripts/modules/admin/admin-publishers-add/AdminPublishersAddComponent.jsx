@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class AdminPublishersAddComponent extends Component {
 
-	constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       title: '',
@@ -43,8 +43,8 @@ class AdminPublishersAddComponent extends Component {
     this.props.addPublisherDetails(form);
   }
 
-	render() {
-		return true && (
+  render() {
+    return true && (
 			<div className="item-details-page col-md-9 col-sm-9 col-">
 				<div className="item-details-container">
 					<div className="col-md-12 col-sm-12 item-info">
@@ -68,7 +68,7 @@ class AdminPublishersAddComponent extends Component {
 				</div>
 			</div>
 		);
-	}
+  }
 }
 AdminPublishersAddComponent.propTypes = {
   addPublisherDetails: PropTypes.func.isRequired

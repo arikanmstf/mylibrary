@@ -5,8 +5,8 @@ import AdminListsComponent from './AdminListsComponent';
 
 const mapStateToProps = (state) => {
   return {
-   lists: state.lists.list,
-   total: parseInt(state.lists.total, 10)
+    lists: state.lists.list,
+    total: parseInt(state.lists.total, 10)
   };
 };
 

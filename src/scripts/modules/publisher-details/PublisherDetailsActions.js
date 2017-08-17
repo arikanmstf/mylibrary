@@ -13,18 +13,18 @@ export function ResolvedGetPublisherDetails(response) {
 }
 
 export function getPublisherDetails(publisherId) {
-	return (dispatch) => {
+  return (dispatch) => {
     dispatch(StartedRequest());
-		axios.get(API.getPublisherDetails, {
-				params: {
-					publisher_id: publisherId,
-					login_key: Storage.get('login_key')
-				}
-			})
-		.then((response) => dispatch(ResolvedGetPublisherDetails(response)))
+    axios.get(API.getPublisherDetails, {
+      params: {
+        publisher_id: publisherId,
+        login_key: Storage.get('login_key')
+      }
+    })
+    .then((response) => dispatch(ResolvedGetPublisherDetails(response)))
     .catch((msg) => {
-        const message = createErrorMessage(msg);
-        dispatch(openModal(message));
+      const message = createErrorMessage(msg);
+      dispatch(openModal(message));
     });
-	};
+  };
 }

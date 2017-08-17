@@ -6,7 +6,6 @@ import InputSearch from 'common/input/InputSearch';
 import { getListBySearch, resetGetListBySearch } from 'modules/list-details/ListDetailsActions';
 
 class ListsOfPublicationEdit extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -35,7 +34,7 @@ class ListsOfPublicationEdit extends Component {
   }
   removeList(l) {
     const lists = this.state.lists.filter((list) => {
-        return list.list_id !== l.list_id;
+      return list.list_id !== l.list_id;
     });
     this.setState({ lists });
     this.props.onListsChange(lists);
@@ -55,9 +54,9 @@ class ListsOfPublicationEdit extends Component {
     }));
   }
 
-	renderList() {
-		return this.state.lists.map((list) => {
-			return (
+  renderList() {
+    return this.state.lists.map((list) => {
+      return (
         <span
           onClick={() => this.removeList(list)}
           key={list.list_id}
@@ -65,14 +64,14 @@ class ListsOfPublicationEdit extends Component {
 					{list.title}
           <i className="glyphicon glyphicon-remove" />
         </span>
-			);
-		});
-	}
+      );
+    });
+  }
 
-	render() {
-		const lists = this.state.lists;
-		return lists ? (
-			<div className="lists-of-publication">
+  render() {
+    const lists = this.state.lists;
+    return lists ? (
+      <div className="lists-of-publication">
               <div className="list-list">{this.renderList()}</div>
               <InputSearch makeSearch={this.searchLists} />
             <div className="item-search-results">
@@ -81,11 +80,11 @@ class ListsOfPublicationEdit extends Component {
               </ul>
             </div>
 			</div>
-		) : null;
-	}
+    ) : null;
+  }
 }
 ListsOfPublicationEdit.propTypes = {
-	lists: PropTypes.arrayOf(Object),
+  lists: PropTypes.arrayOf(Object),
   listSearch: PropTypes.arrayOf(Object).isRequired,
   getListBySearch: PropTypes.func.isRequired,
   resetGetListBySearch: PropTypes.func.isRequired,
@@ -96,9 +95,9 @@ ListsOfPublicationEdit.defaultProps = {
 };
 
 function mapStateToProps(state) {
-	return {
-		listSearch: state.listSearch
-	};
+  return {
+    listSearch: state.listSearch
+  };
 }
 
 const mapDispatchToProps = (dispatch) => {

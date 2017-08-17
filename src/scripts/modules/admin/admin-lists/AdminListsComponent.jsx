@@ -8,18 +8,16 @@ import InputSearch from 'common/input/InputSearch';
 
 class AdminListsComponent extends Component {
   constructor(props) {
-		super(props);
-
+    super(props);
     this.state = {
       pageNo: props.match.params.pageNo || 1,
       title: ''
     };
     this.setSearchTitle = this.setSearchTitle.bind(this);
-	}
-
-	componentDidMount() {
-		this.props.getAllLists(this.state);
-	}
+  }
+  componentDidMount() {
+    this.props.getAllLists(this.state);
+  }
 
   onLiClick() {
     this.setState({ pageNo: this.props.match.params.pageNo });
@@ -85,8 +83,8 @@ AdminListsComponent.propTypes = {
 };
 
 AdminListsComponent.defaultProps = {
-	lists: [],
-	total: 0
+  lists: [],
+  total: 0
 };
 
 export default AdminListsComponent;

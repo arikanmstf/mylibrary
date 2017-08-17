@@ -5,10 +5,10 @@ import { addBookDetails } from 'modules/admin/AdminActions';
 import AdminBooksAddComponent from './AdminBooksAddComponent';
 
 const mapStateToProps = (state) => {
-	return {
-		writerSearch: state.writerSearch,
-		bookSearch: state.bookSearch,
-	};
+  return {
+    writerSearch: state.writerSearch,
+    bookSearch: state.bookSearch,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

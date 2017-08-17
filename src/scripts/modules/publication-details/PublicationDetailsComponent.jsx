@@ -10,40 +10,40 @@ import { API } from 'common/Config';
 
 class PublicationDetailsComponent extends Component {
 
-	constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
-			lists: props.publication.lists
-		};
-		this.onListsChange = this.onListsChange.bind(this);
+      lists: props.publication.lists
+    };
+    this.onListsChange = this.onListsChange.bind(this);
   }
 
-	componentDidMount() {
-		this.props.getPublicationDetails(this.props.match.params.publicationId);
-	}
+  componentDidMount() {
+    this.props.getPublicationDetails(this.props.match.params.publicationId);
+  }
 
-	componentWillReceiveProps(nextProps) {
-		this.setState({
+  componentWillReceiveProps(nextProps) {
+    this.setState({
       lists: nextProps.publication.lists
     });
-	}
+  }
 
-	onListsChange(lists) {
-		this.setState({ lists });
-	}
+  onListsChange(lists) {
+    this.setState({ lists });
+  }
 
-	saveForm() {
-		const form = {
-			publication_id: this.props.match.params.publicationId,
-			lists: this.state.lists
-		};
-		this.props.updatePublicationDetailsList(form);
-	}
+  saveForm() {
+    const form = {
+      publication_id: this.props.match.params.publicationId,
+      lists: this.state.lists
+    };
+    this.props.updatePublicationDetailsList(form);
+  }
 
-	render() {
-		const publication = this.props.publication;
-		const linkStyle = { color: '#AAAAAA' };
-		return publication && (
+  render() {
+    const publication = this.props.publication;
+    const linkStyle = { color: '#AAAAAA' };
+    return publication && (
 			<div className="item-details-page publication-details">
 				<div className="item-details-container">
 					<div className="col-md-3 col-sm-3 item-info image-container">
@@ -66,7 +66,7 @@ class PublicationDetailsComponent extends Component {
 							{ publication.description }
 						</p>
 						<div className="item-buttons">
-              { publication.can_download && (publication.file_exists || publication.download_url) ?
+              { publication.can_download && (publication.file_exists || publication.download_url) ?
 								<a href={publication.download_url ?
 										`${publication.download_url}` :
 										`${API.downloadFile}?publication_id=${publication.publication_id}`}
@@ -117,13 +117,13 @@ class PublicationDetailsComponent extends Component {
 				</div>
 			</div>
 		);
-	}
+  }
 }
 PublicationDetailsComponent.propTypes = {
   getPublicationDetails: PropTypes.func.isRequired,
   updatePublicationDetailsList: PropTypes.func.isRequired,
-	publication: PropTypes.object.isRequired,
-	match: PropTypes.object.isRequired
+  publication: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired
 };
 
 export default PublicationDetailsComponent;
