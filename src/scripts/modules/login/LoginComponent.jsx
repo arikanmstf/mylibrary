@@ -28,6 +28,7 @@ class LoginComponent extends Component {
     return (
       <div className="login-page">
         <img
+          alt="react logo"
           src={ReactLogo}
           width="180"
           height="180"

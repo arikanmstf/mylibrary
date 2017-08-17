@@ -42,6 +42,7 @@ class PublicationListComponent extends Component {
             <div className="publication-image-mask">
               <Link to={`${config.homeUrl}publications/${publication.publication_id}`}>
                 <img
+                  alt="cover img"
                   className="publication-image"
                   src={`${config.homeUrl}static/img/cover/${publication.publication_id}.jpg`}
                 />

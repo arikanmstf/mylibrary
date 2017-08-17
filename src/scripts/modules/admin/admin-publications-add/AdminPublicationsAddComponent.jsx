@@ -115,6 +115,7 @@ class AdminPublicationsAddComponent extends Component {
         <div className="item-details-container">
           <div className="col-md-3 col-sm-3 item-info image-container">
             <img
+              alt="undefined"
               className="item-image"
               src={`${config.homeUrl}static/img/cover/undefined.jpg`}
             />

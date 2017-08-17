@@ -43,7 +43,6 @@
     "quotes": ["error", "single", { "allowTemplateLiterals": true }],
     "new-cap": [0],
     "arrow-body-style": [0],
-    "jsx-a11y/alt-text": [0],
     "prefer-template": [0],
     "react/forbid-prop-types": [0],
     "jsx-a11y/no-noninteractive-element-interactions": [0],

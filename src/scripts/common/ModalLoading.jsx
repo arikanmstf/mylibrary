@@ -7,7 +7,7 @@ const ModalLoading = () => {
     <div>
       <div className="loadingBaseLayer" />
       <div className="loadingSpinnerContainer">
-        <center><img src={loadingGif} width="35" height="35" /></center>
+        <center><img src={loadingGif} width="35" height="35" alt="loading" /></center>
       </div>
     </div>
   );
