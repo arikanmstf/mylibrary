@@ -11,8 +11,8 @@ class WriterDetailsComponent extends Component {
 
   render() {
     const writer = this.props.writer;
-    const writerBirth = (writer.birth_date ? ('Birth: ' + writer.birth_date) : '');
-    const writerDeath = (writer.death_date ? (', Death: ' + writer.death_date) : '');
+    const writerBirth = (writer.birth_date ? (`Birth: ${writer.birth_date}`) : '');
+    const writerDeath = (writer.death_date ? (`, Death: ${writer.death_date}`) : '');
     const writerLife = writerBirth + writerDeath;
 
     return writer ? (
