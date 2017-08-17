@@ -49,27 +49,27 @@ class AdminListsComponent extends Component {
   render() {
     return (
       <div>
-          <h3>Admin Lists</h3>
-          <Pagination
-            pageNo={parseInt(this.state.pageNo, 10)}
-            total={this.props.total}
-            onLiClick={this.onLiClick}
-            linkTo="admin/lists/pages"
-          />
+        <h3>Admin Lists</h3>
+        <Pagination
+          pageNo={parseInt(this.state.pageNo, 10)}
+          total={this.props.total}
+          onLiClick={this.onLiClick}
+          linkTo="admin/lists/pages"
+        />
         <Link to={`${config.homeUrl}admin/lists/add`} className="btn btn-success">Add List</Link>
-          <InputSearch makeSearch={this.setSearchTitle} />
-          <table className="table table-responsive table-bordered table-hover admin-table">
-            <thead>
-              <tr>
-                <td>#</td>
-                <td>List Name</td>
-                <td>Options</td>
-              </tr>
-            </thead>
-            <tbody>
-              {this.renderList()}
-            </tbody>
-          </table>
+        <InputSearch makeSearch={this.setSearchTitle} />
+        <table className="table table-responsive table-bordered table-hover admin-table">
+          <thead>
+            <tr>
+              <td>#</td>
+              <td>List Name</td>
+              <td>Options</td>
+            </tr>
+          </thead>
+          <tbody>
+            {this.renderList()}
+          </tbody>
+        </table>
       </div>
     );
   }

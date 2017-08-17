@@ -102,42 +102,42 @@ class AdminBooksAddComponent extends Component {
 
   render() {
     return true && (
-			<div className="item-details-page col-md-9 col-sm-9 col-">
-				<div className="item-details-container">
-					<div className="col-md-12 col-sm-12 item-info">
+      <div className="item-details-page col-md-9 col-sm-9 col-">
+        <div className="item-details-container">
+          <div className="col-md-12 col-sm-12 item-info">
             <div className="item-title">
               <InputSearch title="Book Title" onChange={this.onTitleChange} makeSearch={this.searchBooks} />
-							<div className="item-search-results">
-								<ul>
-									{this.renderSearchBook()}
-								</ul>
-							</div>
+              <div className="item-search-results">
+                <ul>
+                  {this.renderSearchBook()}
+                </ul>
+              </div>
             </div>
-						<div className="item-small-title">
-							{ fromArrayToCommaEdit(this.state.writers, 'admin/writers/edit', this.removeWriter) }
+            <div className="item-small-title">
+              { fromArrayToCommaEdit(this.state.writers, 'admin/writers/edit', this.removeWriter) }
               <InputSearch title="Search Writers" makeSearch={this.searchWriters} />
               <div className="item-search-results">
                 <ul>
                   {this.renderSearchWriter()}
                 </ul>
               </div>
-						</div>
+            </div>
             <p className="item-description">
-							<textarea onChange={this.onDescChange} value={this.state.description} />
-						</p>
-						<div className="item-lists-container">
-							<div className="item-lists col-sm-12 col-xs-12">
-								<h5>Tags</h5>
-								<TagsOfPublicationEdit onTagsChange={this.onTagsChange} />
-							</div>
-						</div>
-					</div>
-					<div className="clearfix" />
-					<div className="col-md-12" >
+              <textarea onChange={this.onDescChange} value={this.state.description} />
+            </p>
+            <div className="item-lists-container">
+              <div className="item-lists col-sm-12 col-xs-12">
+                <h5>Tags</h5>
+                <TagsOfPublicationEdit onTagsChange={this.onTagsChange} />
+              </div>
+            </div>
+          </div>
+          <div className="clearfix" />
+          <div className="col-md-12" >
             <button className="btn btn-primary" onClick={this.saveForm}>Save</button>
-					</div>
-				</div>
-			</div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

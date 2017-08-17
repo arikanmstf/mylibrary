@@ -52,28 +52,28 @@ class AdminPublicationsComponent extends Component {
   render() {
     return (
       <div>
-          <h3>Admin Publications</h3>
-          <Pagination
-            pageNo={parseInt(this.state.pageNo, 10)}
-            total={this.props.total}
-            onLiClick={this.onLiClick}
-            linkTo="admin/publications/pages"
-          />
-          <Link to={`${config.homeUrl}admin/publications/add`} className="btn btn-success">Add Publication</Link>
-          <InputSearch makeSearch={this.setSearchTitle} />
-          <table className="table table-responsive table-bordered table-hover admin-table">
-            <thead>
-              <tr>
-                <td>#</td>
-                <td>Publication Name</td>
-                <td>Writers</td>
-                <td>Options</td>
-              </tr>
-            </thead>
-            <tbody>
-              {this.renderList()}
-            </tbody>
-          </table>
+        <h3>Admin Publications</h3>
+        <Pagination
+          pageNo={parseInt(this.state.pageNo, 10)}
+          total={this.props.total}
+          onLiClick={this.onLiClick}
+          linkTo="admin/publications/pages"
+        />
+        <Link to={`${config.homeUrl}admin/publications/add`} className="btn btn-success">Add Publication</Link>
+        <InputSearch makeSearch={this.setSearchTitle} />
+        <table className="table table-responsive table-bordered table-hover admin-table">
+          <thead>
+            <tr>
+              <td>#</td>
+              <td>Publication Name</td>
+              <td>Writers</td>
+              <td>Options</td>
+            </tr>
+          </thead>
+          <tbody>
+            {this.renderList()}
+          </tbody>
+        </table>
       </div>
     );
   }

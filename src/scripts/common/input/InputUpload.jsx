@@ -66,7 +66,7 @@ class InputUpload extends Component {
 
   render() {
     return (
-			<div className="input-upload">
+      <div className="input-upload">
         <div className="upload-container">
           <Dropzone
             multiple={false}

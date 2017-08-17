@@ -55,27 +55,27 @@ class AdminPublishersComponent extends Component {
   render() {
     return (
       <div>
-          <h3>Admin Publishers</h3>
-          <Pagination
-            pageNo={parseInt(this.props.match.params.pageNo, 10) || 1}
-            total={this.props.total}
-            onLiClick={this.onLiClick}
-            linkTo="admin/publishers/pages"
-          />
-          <Link to={`${config.homeUrl}admin/publishers/add`} className="btn btn-success">Add Publisher</Link>
-          <InputSearch makeSearch={this.setSearchTitle} />
-          <table className="table table-responsive table-bordered table-hover admin-table">
-            <thead>
-              <tr>
-                <td>#</td>
-                <td>Publisher Name</td>
-                <td>Options</td>
-              </tr>
-            </thead>
-            <tbody>
-              {this.renderList()}
-            </tbody>
-          </table>
+        <h3>Admin Publishers</h3>
+        <Pagination
+          pageNo={parseInt(this.props.match.params.pageNo, 10) || 1}
+          total={this.props.total}
+          onLiClick={this.onLiClick}
+          linkTo="admin/publishers/pages"
+        />
+        <Link to={`${config.homeUrl}admin/publishers/add`} className="btn btn-success">Add Publisher</Link>
+        <InputSearch makeSearch={this.setSearchTitle} />
+        <table className="table table-responsive table-bordered table-hover admin-table">
+          <thead>
+            <tr>
+              <td>#</td>
+              <td>Publisher Name</td>
+              <td>Options</td>
+            </tr>
+          </thead>
+          <tbody>
+            {this.renderList()}
+          </tbody>
+        </table>
       </div>
     );
   }

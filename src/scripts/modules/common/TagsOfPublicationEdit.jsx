@@ -65,7 +65,7 @@ class TagsOfPublicationEdit extends Component {
           onClick={() => this.removeTag(tag)}
           key={tag.tag_id}
         >
-					{tag.title}
+          {tag.title}
           <i className="glyphicon glyphicon-remove" />
         </span>
       );
@@ -75,15 +75,15 @@ class TagsOfPublicationEdit extends Component {
   render() {
     const tags = this.state.tags;
     return tags ? (
-			<div className="lists-of-publication">
-						<div className="list-list">{this.renderTag()}</div>
-            <InputSearch title="Search for tags" makeSearch={this.searchTags} />
-            <div className="item-search-results">
-              <ul>
-                {this.renderSearchTag()}
-              </ul>
-            </div>
-			</div>
+      <div className="lists-of-publication">
+        <div className="list-list">{this.renderTag()}</div>
+        <InputSearch title="Search for tags" makeSearch={this.searchTags} />
+        <div className="item-search-results">
+          <ul>
+            {this.renderSearchTag()}
+          </ul>
+        </div>
+      </div>
     ) : null;
   }
 }

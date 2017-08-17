@@ -61,7 +61,7 @@ class ListsOfPublicationEdit extends Component {
           onClick={() => this.removeList(list)}
           key={list.list_id}
         >
-					{list.title}
+          {list.title}
           <i className="glyphicon glyphicon-remove" />
         </span>
       );
@@ -72,14 +72,14 @@ class ListsOfPublicationEdit extends Component {
     const lists = this.state.lists;
     return lists ? (
       <div className="lists-of-publication">
-              <div className="list-list">{this.renderList()}</div>
-              <InputSearch makeSearch={this.searchLists} />
-            <div className="item-search-results">
-              <ul>
-                {this.renderSearchList()}
-              </ul>
-            </div>
-			</div>
+        <div className="list-list">{this.renderList()}</div>
+        <InputSearch makeSearch={this.searchLists} />
+        <div className="item-search-results">
+          <ul>
+            {this.renderSearchList()}
+          </ul>
+        </div>
+      </div>
     ) : null;
   }
 }

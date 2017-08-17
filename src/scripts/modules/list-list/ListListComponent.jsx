@@ -24,17 +24,17 @@ class ListListComponent extends Component {
   renderList() {
     return this.props.lists.map((list) => {
       return (
-				<li key={list.list_id}>
-					<div className="list-meta">
-						<div className="list-info">
-							<div className="list-title">
-								<Link to={`${config.homeUrl}lists/${list.list_id}`} >
-									{list.title}
-								</Link>
-							</div>
-						</div>
-					</div>
-				</li>
+        <li key={list.list_id}>
+          <div className="list-meta">
+            <div className="list-info">
+              <div className="list-title">
+                <Link to={`${config.homeUrl}lists/${list.list_id}`} >
+                  {list.title}
+                </Link>
+              </div>
+            </div>
+          </div>
+        </li>
       );
     });
   }

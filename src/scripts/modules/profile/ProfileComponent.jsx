@@ -61,9 +61,9 @@ class ProfileComponent extends Component {
   render() {
     const profile = this.props.profile;
     return profile && (
-			<div className="item-details-page col-md-9 col-sm-9 col-">
-				<div className="item-details-container">
-					<div className="col-md-12 col-sm-12 item-info">
+      <div className="item-details-page col-md-9 col-sm-9 col-">
+        <div className="item-details-container">
+          <div className="col-md-12 col-sm-12 item-info">
             <div className="item-light-title">
               <span>{this.state.login_name}</span>
             </div>
@@ -76,13 +76,13 @@ class ProfileComponent extends Component {
             <div className="item-title">
               <input className="input-title" type="Password" onChange={this.onPassChange} placeholder="New Password" />
             </div>
-					</div>
-					<div className="clearfix" />
-					<div className="col-md-12" >
+          </div>
+          <div className="clearfix" />
+          <div className="col-md-12" >
             <button className="btn btn-primary" onClick={this.saveForm}>Save</button>
-					</div>
-				</div>
-			</div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

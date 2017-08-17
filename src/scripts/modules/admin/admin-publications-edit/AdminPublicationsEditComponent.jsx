@@ -94,19 +94,19 @@ class AdminPublicationsEditComponent extends Component {
   render() {
     const publication = this.props.publication;
     return publication && (
-			<div className="item-details-page col-md-9 col-sm-9 col-">
-				<div className="item-details-container">
-					<div className="col-md-3 col-sm-3 item-info image-container">
-						<img
+      <div className="item-details-page col-md-9 col-sm-9 col-">
+        <div className="item-details-container">
+          <div className="col-md-3 col-sm-3 item-info image-container">
+            <img
 							className="item-image"
 							src={`${config.homeUrl}static/img/cover/${publication.publication_id}.jpg`}
-						/>
-					</div>
-					<div className="col-md-9 col-sm-9 item-info">
+            />
+          </div>
+          <div className="col-md-9 col-sm-9 item-info">
             <div className="item-title">
               {this.state.title || publication.title}
             </div>
-						<div className="item-small-title">
+            <div className="item-small-title">
               <InputSearch title="Search Books" makeSearch={(newValue) => this.searchBooks(newValue)} />
               <div className="clearfix" />
               <div className="item-search-results">
@@ -114,8 +114,8 @@ class AdminPublicationsEditComponent extends Component {
                   {this.renderSearchBook()}
                 </ul>
               </div>
-						</div>
-						<div className="item-small-title">
+            </div>
+            <div className="item-small-title">
               <span>
                 {this.state.publisher_name || publication.publisher_name}
               </span>
@@ -125,32 +125,32 @@ class AdminPublicationsEditComponent extends Component {
                   {this.renderSearchPublisher()}
                 </ul>
               </div>
-						</div>
-						<div className="item-table">
-							<table className="table table-responsive">
-								<tbody>
-									<tr>
-										<td>Download Url</td>
-										<td>
+            </div>
+            <div className="item-table">
+              <table className="table table-responsive">
+                <tbody>
+                  <tr>
+                    <td>Download Url</td>
+                    <td>
                       <input
                         name="download_url"
                         value={this.state.download_url}
                         onChange={(event) => this.handleChange(event)}
                       />
                     </td>
-									</tr>
-									<tr>
-										<td>ISBN</td>
-										<td>
+                  </tr>
+                  <tr>
+                    <td>ISBN</td>
+                    <td>
                       <input
                         name="isbn"
                         value={this.state.isbn}
                         onChange={(event) => this.handleChange(event)}
                       />
                     </td>
-									</tr>
-									<tr>
-										<td>Cover No</td>
+                  </tr>
+                  <tr>
+                    <td>Cover No</td>
                     <td>
                       <input
                         name="cover_no"
@@ -159,9 +159,9 @@ class AdminPublicationsEditComponent extends Component {
                         onChange={(event) => this.handleChange(event)}
                       />
                     </td>
-									</tr>
-									<tr>
-										<td>Page Number</td>
+                  </tr>
+                  <tr>
+                    <td>Page Number</td>
                     <td>
                       <input
                         name="page_number"
@@ -170,39 +170,39 @@ class AdminPublicationsEditComponent extends Component {
                         onChange={(event) => this.handleChange(event)}
                       />
                     </td>
-									</tr>
-									<tr>
-										<td>Added By</td>
-										<td>{ publication.added_by }</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div className="item-file-container">
-							<InputUpload
+                  </tr>
+                  <tr>
+                    <td>Added By</td>
+                    <td>{ publication.added_by }</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="item-file-container">
+              <InputUpload
 								accept="image/jpeg, image/png"
 								title="Upload cover image"
 								onUpload={(res) => this.onImageUpload(res)}
-							/>
-							<InputUpload
+              />
+              <InputUpload
 								accept="application/pdf,.pdf,.doc,.txt,.docx,lit,rtf"
 								title="Upload book file"
 								onUpload={(res) => this.onFileUpload(res)}
-							/>
-						</div>
-						<div className="item-lists-container">
-							<div className="item-lists col-sm-12 col-xs-12">
-								<h5>Lists</h5>
-								<ListsOfPublicationEdit lists={this.state.lists} onListsChange={(lists) => this.onListsChange(lists)} />
-							</div>
-						</div>
-					</div>
-					<div className="clearfix" />
-					<div className="col-md-12" >
+              />
+            </div>
+            <div className="item-lists-container">
+              <div className="item-lists col-sm-12 col-xs-12">
+                <h5>Lists</h5>
+                <ListsOfPublicationEdit lists={this.state.lists} onListsChange={(lists) => this.onListsChange(lists)} />
+              </div>
+            </div>
+          </div>
+          <div className="clearfix" />
+          <div className="col-md-12" >
             <button className="btn btn-primary" onClick={() => this.saveForm()}>Save</button>
-					</div>
-				</div>
-			</div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

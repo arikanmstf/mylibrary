@@ -32,20 +32,20 @@ class InputSearch extends Component {
     return (
       <div className="input-search">
         <div className="custom-search-input">
-            <div className="input-group col-md-12">
-                <input
-                  onChange={this.handleSearchChange}
-                  type="text"
-                  className="form-control input-lg"
-                  onKeyPress={this.handleKeyPress}
-                  placeholder={this.props.title}
-                />
-                <span className="input-group-btn">
-                    <button className="btn btn-lg" type="button" onClick={() => this.makeSearch()}>
-                        <i className="glyphicon glyphicon-search" />
-                    </button>
-                </span>
-            </div>
+          <div className="input-group col-md-12">
+            <input
+              onChange={this.handleSearchChange}
+              type="text"
+              className="form-control input-lg"
+              onKeyPress={this.handleKeyPress}
+              placeholder={this.props.title}
+            />
+            <span className="input-group-btn">
+              <button className="btn btn-lg" type="button" onClick={() => this.makeSearch()}>
+                <i className="glyphicon glyphicon-search" />
+              </button>
+            </span>
+          </div>
         </div>
       </div>
     );

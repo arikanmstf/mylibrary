@@ -51,27 +51,27 @@ class AdminUsersComponent extends Component {
   render() {
     return (
       <div>
-          <h3>Admin Users</h3>
-          <Pagination
-            pageNo={parseInt(this.state.pageNo, 10)}
-            total={this.props.total}
-            onLiClick={this.onLiClick}
-            linkTo="admin/users/pages"
-          />
-          <Link to={`${config.homeUrl}admin/users/add`} className="btn btn-success">Add User</Link>
-          <InputSearch makeSearch={this.setSearchTitle} />
-          <table className="table table-responsive table-bordered table-hover admin-table">
-            <thead>
-              <tr>
-                <td>#</td>
-                <td>User Name</td>
-                <td>Options</td>
-              </tr>
-            </thead>
-            <tbody>
-              {this.renderList()}
-            </tbody>
-          </table>
+        <h3>Admin Users</h3>
+        <Pagination
+          pageNo={parseInt(this.state.pageNo, 10)}
+          total={this.props.total}
+          onLiClick={this.onLiClick}
+          linkTo="admin/users/pages"
+        />
+        <Link to={`${config.homeUrl}admin/users/add`} className="btn btn-success">Add User</Link>
+        <InputSearch makeSearch={this.setSearchTitle} />
+        <table className="table table-responsive table-bordered table-hover admin-table">
+          <thead>
+            <tr>
+              <td>#</td>
+              <td>User Name</td>
+              <td>Options</td>
+            </tr>
+          </thead>
+          <tbody>
+            {this.renderList()}
+          </tbody>
+        </table>
       </div>
     );
   }

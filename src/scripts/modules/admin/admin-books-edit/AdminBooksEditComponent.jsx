@@ -97,9 +97,9 @@ class AdminBooksEditComponent extends Component {
   render() {
     const book = this.props.book;
     return book && (
-			<div className="item-details-page col-md-9 col-sm-9 col-">
-				<div className="item-details-container">
-					<div className="col-md-12 col-sm-12 item-info">
+      <div className="item-details-page col-md-9 col-sm-9 col-">
+        <div className="item-details-container">
+          <div className="col-md-12 col-sm-12 item-info">
             <div className="item-title">
               <input
                 name="title"
@@ -107,38 +107,38 @@ class AdminBooksEditComponent extends Component {
                 onChange={(event) => this.handleChange(event)}
               />
             </div>
-						<div className="item-small-title">
-							{ fromArrayToCommaEdit(this.state.writers, 'admin/writers/edit', this.removeWriter) }
+            <div className="item-small-title">
+              { fromArrayToCommaEdit(this.state.writers, 'admin/writers/edit', this.removeWriter) }
               <InputSearch title="Search for Writers" makeSearch={(newValue) => this.searchWriters(newValue)} />
               <div className="item-search-results">
                 <ul>
                   {this.renderSearchWriter()}
                 </ul>
               </div>
-						</div>
+            </div>
             <p className="item-description">
-            <textarea
+              <textarea
                 name="description"
                 value={this.state.description}
                 onChange={(event) => this.handleChange(event)}
-            />
-						</p>
-						<div className="item-lists-container">
-							<div className="item-lists col-sm-12 col-xs-12">
-								<h5>Tags</h5>
+              />
+            </p>
+            <div className="item-lists-container">
+              <div className="item-lists col-sm-12 col-xs-12">
+                <h5>Tags</h5>
                 <TagsOfPublicationEdit
                   tags={this.props.book.tags}
                   onTagsChange={(tags) => this.onTagsChange(tags)}
                 />
-							</div>
-						</div>
-					</div>
-					<div className="clearfix" />
-					<div className="col-md-12" >
+              </div>
+            </div>
+          </div>
+          <div className="clearfix" />
+          <div className="col-md-12" >
             <button className="btn btn-primary" onClick={() => this.saveForm()}>Save</button>
-					</div>
-				</div>
-			</div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

@@ -7,13 +7,13 @@ class TagsOfPublication extends Component {
   renderTag() {
     return this.props.tags.map((tag) => {
       return (
-				<div key={tag.tag_id} >
-					<Link to={`${config.homeUrl}tags/${tag.tag_id}`} >
-						<div className="list">
-								{tag.title}
-						</div>
-					</Link>
-				</div>
+        <div key={tag.tag_id} >
+          <Link to={`${config.homeUrl}tags/${tag.tag_id}`} >
+            <div className="list">
+              {tag.title}
+            </div>
+          </Link>
+        </div>
       );
     });
   }
@@ -21,9 +21,9 @@ class TagsOfPublication extends Component {
   render() {
     const tags = this.props.tags;
     return tags ? (
-			<div className="lists-of-publication">
-						{this.renderTag()}
-			</div>
+      <div className="lists-of-publication">
+        {this.renderTag()}
+      </div>
     ) : null;
   }
 }

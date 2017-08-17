@@ -57,9 +57,9 @@ class AdminPublishersEditComponent extends Component {
   render() {
     const publisher = this.props.publisher;
     return publisher && (
-			<div className="item-details-page col-md-9 col-sm-9 col-">
-				<div className="item-details-container">
-					<div className="col-md-12 col-sm-12 item-info">
+      <div className="item-details-page col-md-9 col-sm-9 col-">
+        <div className="item-details-container">
+          <div className="col-md-12 col-sm-12 item-info">
             <div className="item-title">
               <input value={this.state.title} onChange={this.onTitleChange} />
             </div>
@@ -71,14 +71,13 @@ class AdminPublishersEditComponent extends Component {
               <span>Address: </span>
               <input value={this.state.adr} onChange={this.onAdrChange} />
             </div>
-
-					</div>
-					<div className="clearfix" />
-					<div className="col-md-12" >
+          </div>
+          <div className="clearfix" />
+          <div className="col-md-12" >
             <button className="btn btn-primary" onClick={this.saveForm}>Save</button>
-					</div>
-				</div>
-			</div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

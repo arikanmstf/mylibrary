@@ -48,22 +48,22 @@ class AdminWritersEditComponent extends Component {
   render() {
     const writer = this.props.writer;
     return writer && (
-			<div className="item-details-page col-md-9 col-sm-9 col-">
-				<div className="item-details-container">
-					<div className="col-md-12 col-sm-12 item-info">
+      <div className="item-details-page col-md-9 col-sm-9 col-">
+        <div className="item-details-container">
+          <div className="col-md-12 col-sm-12 item-info">
             <div className="item-title">
               <input value={this.state.title} onChange={this.onTitleChange} />
             </div>
             <p className="item-description">
-							<textarea onChange={this.onDescChange} value={this.state.description} />
-						</p>
-					</div>
-					<div className="clearfix" />
-					<div className="col-md-12" >
+              <textarea onChange={this.onDescChange} value={this.state.description} />
+            </p>
+          </div>
+          <div className="clearfix" />
+          <div className="col-md-12" >
             <button className="btn btn-primary" onClick={this.saveForm}>Save</button>
-					</div>
-				</div>
-			</div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

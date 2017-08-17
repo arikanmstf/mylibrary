@@ -111,19 +111,19 @@ class AdminPublicationsAddComponent extends Component {
 
   render() {
     return true && (
-			<div className="item-details-page col-md-9 col-sm-9 col-">
-				<div className="item-details-container">
-					<div className="col-md-3 col-sm-3 item-info image-container">
-						<img
+      <div className="item-details-page col-md-9 col-sm-9 col-">
+        <div className="item-details-container">
+          <div className="col-md-3 col-sm-3 item-info image-container">
+            <img
 							className="item-image"
 							src={`${config.homeUrl}static/img/cover/undefined.jpg`}
-						/>
-					</div>
-					<div className="col-md-9 col-sm-9 item-info">
+            />
+          </div>
+          <div className="col-md-9 col-sm-9 item-info">
             <div className="item-title">
               {this.state.title}
             </div>
-						<div className="item-small-title">
+            <div className="item-small-title">
               <InputSearch makeSearch={this.searchBooks} title="Search books to assign to the publication" />
               <div className="clearfix" />
               <div className="item-search-results">
@@ -131,73 +131,73 @@ class AdminPublicationsAddComponent extends Component {
                   {this.renderSearchBook()}
                 </ul>
               </div>
-						</div>
-						<div className="item-small-title">
+            </div>
+            <div className="item-small-title">
               <span>
                 {this.state.publisher_name}
               </span>
-							<InputSearch makeSearch={this.searchPublishers} title="Search Pulishers" />
+              <InputSearch makeSearch={this.searchPublishers} title="Search Pulishers" />
               <div className="item-search-results">
                 <ul>
                   {this.renderSearchPublisher()}
                 </ul>
               </div>
-						</div>
-						<div className="item-table">
-							<table className="table table-responsive">
-								<tbody>
-									<tr>
-										<td>Download Url</td>
-										<td>
+            </div>
+            <div className="item-table">
+              <table className="table table-responsive">
+                <tbody>
+                  <tr>
+                    <td>Download Url</td>
+                    <td>
                       <input value={this.state.download_url} onChange={this.onDownloadUrlChange} />
                     </td>
-									</tr>
-									<tr>
-										<td>ISBN</td>
-										<td>
+                  </tr>
+                  <tr>
+                    <td>ISBN</td>
+                    <td>
                       <input value={this.state.isbn} onChange={this.onIsbnChange} />
                     </td>
-									</tr>
-									<tr>
-										<td>Cover No</td>
+                  </tr>
+                  <tr>
+                    <td>Cover No</td>
                     <td>
                       <input type="number" value={this.state.cover_no} onChange={this.onCoverChange} />
                     </td>
-									</tr>
-									<tr>
-										<td>Page Number</td>
+                  </tr>
+                  <tr>
+                    <td>Page Number</td>
                     <td>
                       <input type="number" value={this.state.page_number} onChange={this.onPageChange} />
                     </td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div className="item-file-container">
-							<InputUpload
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="item-file-container">
+              <InputUpload
 								accept="image/jpeg, image/png"
 								title="Upload cover image"
 								onUpload={this.onImageUpload}
-							/>
-							<InputUpload
-								accept="application/epub+zip, application/pdf, application/x-ms-reader, application/x-obak,application/msword, application/doc, appl/text, application/vnd.msword, application/vnd.ms-word, application/winword, application/word, application/x-msw6, application/x-msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/rtf, application/x-rtf, text/rtf, text/richtext, application/msword, application/doc, application/x-soffice, text/plain, application/txt, browser/internal, text/anytext, widetext/plain, widetext/paragraph"
+              />
+              <InputUpload
+                accept="application/epub+zip, application/pdf, application/x-ms-reader, application/x-obak,application/msword, application/doc, appl/text, application/vnd.msword, application/vnd.ms-word, application/winword, application/word, application/x-msw6, application/x-msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/rtf, application/x-rtf, text/rtf, text/richtext, application/msword, application/doc, application/x-soffice, text/plain, application/txt, browser/internal, text/anytext, widetext/plain, widetext/paragraph"
 								title="Upload book file"
 								onUpload={this.onFileUpload}
-							/>
-						</div>
-						<div className="item-lists-container">
-							<div className="item-lists col-sm-12 col-xs-12">
-								<h5>Lists</h5>
-								<ListsOfPublicationEdit onListsChange={this.onListsChange} />
-							</div>
-						</div>
-					</div>
-					<div className="clearfix" />
-					<div className="col-md-12" >
+              />
+            </div>
+            <div className="item-lists-container">
+              <div className="item-lists col-sm-12 col-xs-12">
+                <h5>Lists</h5>
+                <ListsOfPublicationEdit onListsChange={this.onListsChange} />
+              </div>
+            </div>
+          </div>
+          <div className="clearfix" />
+          <div className="col-md-12" >
             <button className="btn btn-primary" onClick={this.saveForm}>Save</button>
-					</div>
-				</div>
-			</div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

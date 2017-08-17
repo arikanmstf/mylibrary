@@ -37,28 +37,28 @@ class PublicationListComponent extends Component {
   renderList() {
     return this.props.publications.map((publication) => {
       return (
-				<li key={publication.publication_id}>
-					<div className="publication-meta">
-						<div className="publication-image-mask">
-							<Link to={`${config.homeUrl}publications/${publication.publication_id}`}>
-								<img
-									className="publication-image"
-									src={`${config.homeUrl}static/img/cover/${publication.publication_id}.jpg`}
-								/>
-							</Link>
-						</div>
-						<div className="publication-info">
-							<div className="publication-title">
-								<Link to={`${config.homeUrl}publications/${publication.publication_id}`} >
-									{publication.title}
-								</Link>
-							</div>
-							<div className="publication-writers">
-								{publication.writers}
-							</div>
-						</div>
-					</div>
-				</li>
+        <li key={publication.publication_id}>
+          <div className="publication-meta">
+            <div className="publication-image-mask">
+              <Link to={`${config.homeUrl}publications/${publication.publication_id}`}>
+                <img
+                  className="publication-image"
+                  src={`${config.homeUrl}static/img/cover/${publication.publication_id}.jpg`}
+                />
+              </Link>
+            </div>
+            <div className="publication-info">
+              <div className="publication-title">
+                <Link to={`${config.homeUrl}publications/${publication.publication_id}`} >
+                  {publication.title}
+                </Link>
+              </div>
+              <div className="publication-writers">
+                {publication.writers}
+              </div>
+            </div>
+          </div>
+        </li>
       );
     });
   }
@@ -66,7 +66,7 @@ class PublicationListComponent extends Component {
   render() {
     return (
       <div>
-				<InputSearch makeSearch={this.searchPublications} />
+        <InputSearch makeSearch={this.searchPublications} />
         <Pagination
           pageNo={parseInt(this.props.pageNo, 10)}
           total={this.props.total}

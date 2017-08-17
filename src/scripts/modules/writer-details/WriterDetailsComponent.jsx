@@ -17,29 +17,29 @@ class WriterDetailsComponent extends Component {
 
     return writer ? (
       <div className="item-details-page writer-details">
-				<div className="item-details-container">
-					<div className="col-md-12 col-sm-12 item-info">
-						<div className="item-title">
-							<span>{writer.full_name}</span>
-						</div>
-						<div className="item-light-title">
-							{writerLife}
-						</div>
-						<div className="item-light-title">
-							<span>{writer.citizenship}</span>
-						</div>
-						<p className="item-description">
-							{writer.description}
-						</p>
+        <div className="item-details-container">
+          <div className="col-md-12 col-sm-12 item-info">
+            <div className="item-title">
+              <span>{writer.full_name}</span>
+            </div>
+            <div className="item-light-title">
+              {writerLife}
+            </div>
+            <div className="item-light-title">
+              <span>{writer.citizenship}</span>
+            </div>
+            <p className="item-description">
+              {writer.description}
+            </p>
             <span className="item-light-title">Books of the Writer</span>
             <div className="item-small-title">
-							{commaListItems(writer.books, writer.book_ids, 'books')}
-						</div>
-					</div>
-					<div className="clearfix" />
-					<div className="col-md-12" />
-				</div>
-			</div>
+              {commaListItems(writer.books, writer.book_ids, 'books')}
+            </div>
+          </div>
+          <div className="clearfix" />
+          <div className="col-md-12" />
+        </div>
+      </div>
     ) : null;
   }
 }

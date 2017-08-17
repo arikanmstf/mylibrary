@@ -29,16 +29,12 @@ class App extends Component {
         <ModalContainer message="" />
         { !this.state.contentLoaded ? <ModalLoading /> : null }
         <Router>
-            { isLoggedIn ?
-              <Switch>
-                <Route path={config.homeUrl} component={AuthUserRouter} />
-              </Switch>
-              :
-              <Switch>
-                <UnAuthRouter />
-              </Switch>
-
-            }
+          { isLoggedIn ? <Switch>
+            <Route path={config.homeUrl} component={AuthUserRouter} />
+          </Switch> :
+          <Switch>
+            <UnAuthRouter />
+          </Switch> }
         </Router>
         <div className="clearfix" />
       </div>

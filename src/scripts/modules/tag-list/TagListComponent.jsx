@@ -24,17 +24,17 @@ class TagListComponent extends Component {
   renderList() {
     return this.props.tags.map((tag) => {
       return (
-				<li key={tag.tag_id}>
-					<div className="tag-meta">
-						<div className="tag-info">
-							<div className="tag-title">
-								<Link to={`${config.homeUrl}tags/${tag.tag_id}`} >
-									{tag.title}
-								</Link>
-							</div>
-						</div>
-					</div>
-				</li>
+        <li key={tag.tag_id}>
+          <div className="tag-meta">
+            <div className="tag-info">
+              <div className="tag-title">
+                <Link to={`${config.homeUrl}tags/${tag.tag_id}`} >
+                  {tag.title}
+                </Link>
+              </div>
+            </div>
+          </div>
+        </li>
       );
     });
   }
