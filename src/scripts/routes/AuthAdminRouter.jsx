@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import Storage from 'common/Storage';
@@ -36,56 +36,54 @@ import NotFound from 'modules/not-found/NotFoundComponent';
 
 const isAdmin = Storage.get('is_admin') > 0;
 
-class AuthAdminRouter extends Component {
-  render() {
-    return isAdmin ? (
-      <div>
-        <SideNavigation />
-        <div className="admin-page col-xs-12 col-sm-9 col-md-9">
-          <Switch>
-            <Route exact path={this.props.match.path} component={AdminPublications} />
-            <Route exact path={`${this.props.match.path}/publications`} component={AdminPublications} />
-            <Route exact path={`${this.props.match.path}/publications/add`} component={AdminPublicationsAdd} />
-            <Route exact path={`${this.props.match.path}/publications/pages/:pageNo`} component={AdminPublications} />
-            <Route exact path={`${this.props.match.path}/publications/edit/:publicationId`} component={AdminPublicationsEdit} />
+const AuthAdminRouter = (props) => (
+  isAdmin ? (
+    <div>
+      <SideNavigation />
+      <div className="admin-page col-xs-12 col-sm-9 col-md-9">
+        <Switch>
+          <Route exact path={props.match.path} component={AdminPublications} />
+          <Route exact path={`${props.match.path}/publications`} component={AdminPublications} />
+          <Route exact path={`${props.match.path}/publications/add`} component={AdminPublicationsAdd} />
+          <Route exact path={`${props.match.path}/publications/pages/:pageNo`} component={AdminPublications} />
+          <Route exact path={`${props.match.path}/publications/edit/:publicationId`} component={AdminPublicationsEdit} />
 
-            <Route exact path={`${this.props.match.path}/books`} component={AdminBooks} />
-            <Route exact path={`${this.props.match.path}/books/add`} component={AdminBooksAdd} />
-            <Route exact path={`${this.props.match.path}/books/pages/:pageNo`} component={AdminBooks} />
-            <Route exact path={`${this.props.match.path}/books/edit/:bookId`} component={AdminBooksEdit} />
+          <Route exact path={`${props.match.path}/books`} component={AdminBooks} />
+          <Route exact path={`${props.match.path}/books/add`} component={AdminBooksAdd} />
+          <Route exact path={`${props.match.path}/books/pages/:pageNo`} component={AdminBooks} />
+          <Route exact path={`${props.match.path}/books/edit/:bookId`} component={AdminBooksEdit} />
 
-            <Route exact path={`${this.props.match.path}/writers`} component={AdminWriters} />
-            <Route exact path={`${this.props.match.path}/writers/add`} component={AdminWritersAdd} />
-            <Route exact path={`${this.props.match.path}/writers/pages/:pageNo`} component={AdminWriters} />
-            <Route exact path={`${this.props.match.path}/writers/edit/:writerId`} component={AdminWritersEdit} />
+          <Route exact path={`${props.match.path}/writers`} component={AdminWriters} />
+          <Route exact path={`${props.match.path}/writers/add`} component={AdminWritersAdd} />
+          <Route exact path={`${props.match.path}/writers/pages/:pageNo`} component={AdminWriters} />
+          <Route exact path={`${props.match.path}/writers/edit/:writerId`} component={AdminWritersEdit} />
 
-            <Route exact path={`${this.props.match.path}/publishers`} component={AdminPublishers} />
-            <Route exact path={`${this.props.match.path}/publishers/add`} component={AdminPublishersAdd} />
-            <Route exact path={`${this.props.match.path}/publishers/pages/:pageNo`} component={AdminPublishers} />
-            <Route exact path={`${this.props.match.path}/publishers/edit/:publisherId`} component={AdminPublishersEdit} />
+          <Route exact path={`${props.match.path}/publishers`} component={AdminPublishers} />
+          <Route exact path={`${props.match.path}/publishers/add`} component={AdminPublishersAdd} />
+          <Route exact path={`${props.match.path}/publishers/pages/:pageNo`} component={AdminPublishers} />
+          <Route exact path={`${props.match.path}/publishers/edit/:publisherId`} component={AdminPublishersEdit} />
 
-            <Route exact path={`${this.props.match.path}/users`} component={AdminUsers} />
-            <Route exact path={`${this.props.match.path}/users/add`} component={AdminUsersAdd} />
-            <Route exact path={`${this.props.match.path}/users/pages/:pageNo`} component={AdminUsers} />
-            <Route exact path={`${this.props.match.path}/users/edit/:userId`} component={AdminUsersEdit} />
+          <Route exact path={`${props.match.path}/users`} component={AdminUsers} />
+          <Route exact path={`${props.match.path}/users/add`} component={AdminUsersAdd} />
+          <Route exact path={`${props.match.path}/users/pages/:pageNo`} component={AdminUsers} />
+          <Route exact path={`${props.match.path}/users/edit/:userId`} component={AdminUsersEdit} />
 
-            <Route exact path={`${this.props.match.path}/tags`} component={AdminTags} />
-            <Route exact path={`${this.props.match.path}/tags/add`} component={AdminTagsAdd} />
-            <Route exact path={`${this.props.match.path}/tags/pages/:pageNo`} component={AdminTags} />
-            <Route exact path={`${this.props.match.path}/tags/edit/:tagId`} component={AdminTagsEdit} />
+          <Route exact path={`${props.match.path}/tags`} component={AdminTags} />
+          <Route exact path={`${props.match.path}/tags/add`} component={AdminTagsAdd} />
+          <Route exact path={`${props.match.path}/tags/pages/:pageNo`} component={AdminTags} />
+          <Route exact path={`${props.match.path}/tags/edit/:tagId`} component={AdminTagsEdit} />
 
-            <Route exact path={`${this.props.match.path}/lists`} component={AdminLists} />
-            <Route exact path={`${this.props.match.path}/lists/add`} component={AdminListsAdd} />
-            <Route exact path={`${this.props.match.path}/lists/pages/:pageNo`} component={AdminLists} />
-            <Route exact path={`${this.props.match.path}/lists/edit/:listId`} component={AdminListsEdit} />
+          <Route exact path={`${props.match.path}/lists`} component={AdminLists} />
+          <Route exact path={`${props.match.path}/lists/add`} component={AdminListsAdd} />
+          <Route exact path={`${props.match.path}/lists/pages/:pageNo`} component={AdminLists} />
+          <Route exact path={`${props.match.path}/lists/edit/:listId`} component={AdminListsEdit} />
 
-            <Route component={NotFound} />
-          </Switch>
-        </div>
+          <Route component={NotFound} />
+        </Switch>
       </div>
-    ) : <Route component={NotFound} />;
-  }
-}
+    </div>
+  ) : <Route component={NotFound} />
+);
 
 AuthAdminRouter.propTypes = {
   match: PropTypes.object.isRequired

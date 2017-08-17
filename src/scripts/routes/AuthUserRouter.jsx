@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 
@@ -18,31 +18,26 @@ import Profile from 'modules/profile/ProfileContainer';
 import NavbarHeader from 'modules/common/NavbarHeader';
 import NotFound from 'modules/not-found/NotFoundComponent';
 
-class AuthUserRouter extends Component {
-
-  render() {
-    return (
-      <div>
-        <NavbarHeader />
-        <Switch>
-          <Route exact path={this.props.match.path} component={Home} />
-          <Route exact path={`${this.props.match.path}pages/:pageNo`} component={Home} />
-          <Route exact path={`${this.props.match.path}publications/:publicationId`} component={PublicationDetails} />
-          <Route exact path={`${this.props.match.path}writers/:writerId`} component={WriterDetails} />
-          <Route exact path={`${this.props.match.path}lists/`} component={List} />
-          <Route exact path={`${this.props.match.path}lists/:listId`} component={ListDetails} />
-          <Route exact path={`${this.props.match.path}books/:bookId`} component={BookDetails} />
-          <Route exact path={`${this.props.match.path}tags/`} component={Tags} />
-          <Route exact path={`${this.props.match.path}tags/:tagId`} component={TagDetails} />
-          <Route exact path={`${this.props.match.path}publishers/:publisherId`} component={PublisherDetails} />
-          <Route exact path={`${this.props.match.path}profile`} component={Profile} />
-          <Route path={`${this.props.match.path}admin`} component={AuthAdminRouter} />
-          <Route component={NotFound} />
-        </Switch>
-      </div>
-    );
-  }
-}
+const AuthUserRouter = (props) => (
+  <div>
+    <NavbarHeader />
+    <Switch>
+      <Route exact path={props.match.path} component={Home} />
+      <Route exact path={`${props.match.path}pages/:pageNo`} component={Home} />
+      <Route exact path={`${props.match.path}publications/:publicationId`} component={PublicationDetails} />
+      <Route exact path={`${props.match.path}writers/:writerId`} component={WriterDetails} />
+      <Route exact path={`${props.match.path}lists/`} component={List} />
+      <Route exact path={`${props.match.path}lists/:listId`} component={ListDetails} />
+      <Route exact path={`${props.match.path}books/:bookId`} component={BookDetails} />
+      <Route exact path={`${props.match.path}tags/`} component={Tags} />
+      <Route exact path={`${props.match.path}tags/:tagId`} component={TagDetails} />
+      <Route exact path={`${props.match.path}publishers/:publisherId`} component={PublisherDetails} />
+      <Route exact path={`${props.match.path}profile`} component={Profile} />
+      <Route path={`${props.match.path}admin`} component={AuthAdminRouter} />
+      <Route component={NotFound} />
+    </Switch>
+  </div>
+);
 
 AuthUserRouter.propTypes = {
   match: PropTypes.object.isRequired
