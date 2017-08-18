@@ -68,7 +68,10 @@ class PublicationDetailsComponent extends Component {
             </p>
             <div className="item-buttons">
               { publication.can_download && (publication.file_exists || publication.download_url) ?
-                <a href={publication.download_url ?
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={publication.download_url ?
                   `${publication.download_url}` :
                   `${API.downloadFile}?publication_id=${publication.publication_id}`}
                 >

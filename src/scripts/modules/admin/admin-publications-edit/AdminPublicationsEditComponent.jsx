@@ -12,7 +12,7 @@ class AdminPublicationsEditComponent extends Component {
     super(props);
     this.state = {
       title: '',
-      publisher_id: 0,
+      publisher_id: 1,
       book_id: 0,
       download_url: '',
       isbn: '',
@@ -35,7 +35,8 @@ class AdminPublicationsEditComponent extends Component {
       download_url: nextProps.publication.download_url || '',
       cover_no: nextProps.publication.cover_no,
       lists: nextProps.publication.lists,
-      page_number: nextProps.publication.page_number
+      page_number: nextProps.publication.page_number,
+      publisher_id: nextProps.publication.publisher_id || 1
     });
   }
   onListsChange(lists) {
