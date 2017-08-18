@@ -14,7 +14,6 @@ class ListsOfPublicationEdit extends Component {
 
     this.searchLists = this.searchLists.bind(this);
     this.removeList = this.removeList.bind(this);
-    this.addNewList = this.addNewList.bind(this);
   }
   componentWillReceiveProps(nextProps) {
     this.setState({
@@ -39,6 +38,9 @@ class ListsOfPublicationEdit extends Component {
     this.setState({ lists });
     this.props.onListsChange(lists);
   }
+  updateOrderNo(event, list) {
+    list.order_no = event.target.value; // eslint-disable-line no-param-reassign
+  }
 
   renderSearchList() {
     const lists = this.state.lists;
@@ -49,7 +51,21 @@ class ListsOfPublicationEdit extends Component {
         if (lists[i].list_id === list.list_id) return null;
       }
       return (
-        <li key={list.list_id} onClick={() => this.addNewList(list)}>{list.title}</li>
+        <tr key={list.list_id}>
+          <td>{list.title}</td>
+          <td>
+            <input
+              type="number"
+              placeholder="Order No"
+              onChange={(event) => this.updateOrderNo(event, list)}
+            />
+          </td>
+          <td>
+            <button className="btn btn-default" onClick={() => this.addNewList(list)}>
+              <i className="glyphicon glyphicon-plus" />
+            </button>
+          </td>
+        </tr>
       );
     }));
   }
@@ -61,7 +77,7 @@ class ListsOfPublicationEdit extends Component {
           onClick={() => this.removeList(list)}
           key={list.list_id}
         >
-          {list.title}
+          {list.title} ({list.order_no})
           <i className="glyphicon glyphicon-remove" />
         </span>
       );
@@ -75,9 +91,9 @@ class ListsOfPublicationEdit extends Component {
         <div className="list-list">{this.renderList()}</div>
         <InputSearch makeSearch={this.searchLists} />
         <div className="item-search-results">
-          <ul>
-            {this.renderSearchList()}
-          </ul>
+          <table className="list-table">
+            <tbody>{this.renderSearchList()}</tbody>
+          </table>
         </div>
       </div>
     ) : null;
