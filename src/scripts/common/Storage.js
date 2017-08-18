@@ -1,16 +1,16 @@
 class Storage {
 
   set(key, value) {
-    window.sessionStorage.setItem(key, value);
+    window.localStorage.setItem(key, value);
   }
   get(key) {
-    return window.sessionStorage.getItem(key);
+    return window.localStorage.getItem(key);
   }
   delete(key) {
-    window.sessionStorage.removeItem(key);
+    window.localStorage.removeItem(key);
   }
   clear() {
-    window.sessionStorage.clear();
+    window.localStorage.clear();
   }
 }
 const s = new Storage();
