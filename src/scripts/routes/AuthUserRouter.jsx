@@ -15,7 +15,7 @@ import TagDetails from 'modules/tag-details/TagDetailsContainer';
 import PublisherDetails from 'modules/publisher-details/PublisherDetailsContainer';
 import Profile from 'modules/profile/ProfileContainer';
 
-import NavbarHeader from 'modules/common/NavbarHeader';
+import NavbarHeader from 'modules/common/navbar-header/NavbarHeader';
 import NotFound from 'modules/not-found/NotFoundComponent';
 
 const AuthUserRouter = (props) => (

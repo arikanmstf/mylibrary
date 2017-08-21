@@ -46,7 +46,7 @@ let rules = [
   {
     test: SCSS_PATTERN,
     include: [
-      path.resolve(__dirname, "src/style")
+      path.resolve(__dirname, "src/scripts")
     ],
     use: extractCSS.extract({
       fallback: "style-loader",
@@ -98,7 +98,7 @@ if (isProd) {
 module.exports = {
   entry: [
     "./src/scripts/index.jsx",
-    "./src/style/index.scss"
+    "./src/scripts/index.scss"
   ],
   output: {
     path: path.resolve(__dirname, distFolder),

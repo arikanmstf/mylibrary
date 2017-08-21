@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import config from 'config';
 
-import InputSearch from 'common/input/InputSearch';
-import InputUpload from 'common/input/InputUpload';
-import ListsOfPublicationEdit from 'modules/common/ListsOfPublicationEdit';
+import InputSearch from 'modules/common/input-search/InputSearch';
+import InputUpload from 'modules/common/input-upload/InputUpload';
+import ListsOfPublicationEdit from 'modules/common/lists-of-publication/ListsOfPublicationEdit';
 
 class AdminPublicationsAddComponent extends Component {
 

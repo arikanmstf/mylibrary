@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import config from 'config';
 
-import Pagination from 'modules/common/Pagination';
-import InputSearch from 'common/input/InputSearch';
+import Pagination from 'modules/common/pagination/Pagination';
+import InputSearch from 'modules/common/input-search/InputSearch';
 
 class AdminPublicationsComponent extends Component {
   constructor(props) {

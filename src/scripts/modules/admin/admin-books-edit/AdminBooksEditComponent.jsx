@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import TagsOfPublicationEdit from 'modules/common/TagsOfPublicationEdit';
-import InputSearch from 'common/input/InputSearch';
+import TagsOfPublicationEdit from 'modules/common/tags-of-publication/TagsOfPublicationEdit';
+import InputSearch from 'modules/common/input-search/InputSearch';
 import { fromArrayToCommaEdit } from 'common/Helpers';
 
 class AdminBooksEditComponent extends Component {

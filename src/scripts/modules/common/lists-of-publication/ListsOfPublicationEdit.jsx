@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import InputSearch from 'common/input/InputSearch';
+import InputSearch from 'modules/common/input-search/InputSearch';
 import { getListBySearch, resetGetListBySearch } from 'modules/list-details/ListDetailsActions';
 
 class ListsOfPublicationEdit extends Component {

@@ -1,24 +1,23 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
-@import "common/font.scss";
-@import "common/color.scss";
-@import "common/grid.scss";
+@import "common/style/font.scss";
+@import "common/style/color.scss";
+@import "common/style/grid.scss";
+@import "common/style/footer.scss";
 
-@import "admin/common.scss";
-@import "admin/adminHome.scss";
+@import "modules/common/input-search/input-search.scss";
+@import "modules/common/modal/modal.scss";
+@import "modules/common/navbar-header/navbar-header.scss";
+@import "modules/common/pagination/pagination.scss";
+@import "modules/common/side-navigation/side-navigation.scss";
+@import "modules/common/lists-of-publication/lists-of-publication.scss";
 
-@import "loginPage.scss";
-@import "publicationList.scss";
-@import "itemDetailsPage.scss";
-@import "navbarHeader.scss";
-@import "inputSearch.scss";
-@import "sideNavigation.scss";
-@import "pagination.scss";
-@import "footer.scss";
-@import "listsOfPublication.scss";
-@import "tagList.scss";
-@import "listList.scss";
-@import "modal.scss";
+@import "modules/admin/admin-page.scss";
+@import "modules/login/login-page.scss";
+@import "modules/list-list/list-list.scss";
+@import "modules/publication-list/publication-list.scss";
+@import "modules/tag-list/tag-list.scss";
+@import "modules/item-details-page.scss";
 
 html {
   position: relative;

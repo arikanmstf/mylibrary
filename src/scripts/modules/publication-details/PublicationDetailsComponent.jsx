@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import config from 'config';
 
-import ListsOfPublicationEdit from 'modules/common/ListsOfPublicationEdit';
-import TagsOfPublication from 'modules/common/TagsOfPublication';
+import ListsOfPublicationEdit from 'modules/common/lists-of-publication/ListsOfPublicationEdit';
+import TagsOfPublication from 'modules/common/tags-of-publication/TagsOfPublication';
 import { commaListItems } from 'common/Helpers';
 import { API } from 'common/Config';
 

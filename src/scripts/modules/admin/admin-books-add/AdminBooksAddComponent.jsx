@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import config from 'config';
 
-import TagsOfPublicationEdit from 'modules/common/TagsOfPublicationEdit';
-import InputSearch from 'common/input/InputSearch';
+import TagsOfPublicationEdit from 'modules/common/tags-of-publication/TagsOfPublicationEdit';
+import InputSearch from 'modules/common/input-search/InputSearch';
 import { fromArrayToCommaEdit } from 'common/Helpers';
 
 class AdminBooksAddComponent extends Component {

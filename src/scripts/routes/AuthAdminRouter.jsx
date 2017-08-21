@@ -31,7 +31,7 @@ import AdminLists from 'modules/admin/admin-lists/AdminListsContainer';
 import AdminListsEdit from 'modules/admin/admin-lists-edit/AdminListsEditContainer';
 import AdminListsAdd from 'modules/admin/admin-lists-add/AdminListsAddContainer';
 
-import SideNavigation from 'modules/common/SideNavigation';
+import SideNavigation from 'modules/common/side-navigation/SideNavigation';
 import NotFound from 'modules/not-found/NotFoundComponent';
 
 const isAdmin = Storage.get('is_admin') > 0;

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import config from 'config';
 
-import Pagination from 'modules/common/Pagination';
+import Pagination from 'modules/common/pagination/Pagination';
 
 class ListListComponent extends Component {
   componentDidMount() {

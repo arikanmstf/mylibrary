@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import config from 'config';
 
 import Storage from 'common/Storage';
-import ModalLoading from 'common/ModalLoading';
+import ModalLoading from 'modules/common/modal-loading/ModalLoading';
 import UnAuthRouter from 'routes/UnAuthRouter';
 import AuthUserRouter from 'routes/AuthUserRouter';
 
