@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import Button from 'react-toolbox/lib/button/Button';
+import Link from 'react-toolbox/lib/Link';
 
 import config from 'config';
 import Pagination from 'modules/common/pagination/Pagination';
@@ -39,12 +39,8 @@ class AdminPublicationsComponent extends Component {
           <td>{publication.title}</td>
           <td>{publication.writers}</td>
           <td>
-            <Link to={`${config.homeUrl}admin/publications/edit/${publication.publication_id}`}>
-              <i className="glyphicon glyphicon-edit" />
-            </Link>
-            <Link to={`${config.homeUrl}admin/publications/remove/${publication.publication_id}`}>
-              <i className="glyphicon glyphicon-remove" />
-            </Link>
+            <Link style={{ float: 'left' }} href={`${config.homeUrl}admin/publications/edit/${publication.publication_id}`} icon="mode edit" />
+            <Link style={{ float: 'right' }} href={`${config.homeUrl}admin/publications/remove/${publication.publication_id}`} icon="delete" />
           </td>
         </tr>
       );

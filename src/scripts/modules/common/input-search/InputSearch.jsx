@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Input from 'react-toolbox/lib/input/Input';
+import Button from 'react-toolbox/lib/button/Button';
 
 class InputSearch extends Component {
   constructor(props) {
@@ -43,9 +44,7 @@ class InputSearch extends Component {
               name="search_title"
             />
             <span className="input-group-btn">
-              <button className="btn btn-lg" type="button" onClick={() => this.makeSearch()}>
-                <i className="glyphicon glyphicon-search" />
-              </button>
+              <Button icon="search" onClick={() => this.makeSearch()} primary />
             </span>
           </div>
         </div>
