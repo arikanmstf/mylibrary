@@ -52,7 +52,11 @@ let rules = [
       fallback: "style-loader",
       use: [{
         loader: "css-loader",
-        options: { minimize: isProd }
+        options: {
+          minimize: isProd,
+          sourceMap: true,
+          localIdentName: "[name]--[local]--[hash:base64:8]"
+        }
       },
         "sass-loader"
       ]

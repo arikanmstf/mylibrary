@@ -1,0 +1,6 @@
+{
+  "customProperties": {
+    "color-primary": "var(--palette-pink-a200)",
+    "color-primary-dark": "var(--palette-pink-700)"
+  }
+}

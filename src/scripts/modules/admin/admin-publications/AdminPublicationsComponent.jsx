@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import config from 'config';
+import { Link } from 'react-router-dom';
 
+import Button from 'react-toolbox/lib/button/Button';
+
+import config from 'config';
 import Pagination from 'modules/common/pagination/Pagination';
 import InputSearch from 'modules/common/input-search/InputSearch';
 
@@ -59,7 +61,7 @@ class AdminPublicationsComponent extends Component {
           onLiClick={this.onLiClick}
           linkTo="admin/publications/pages"
         />
-        <Link to={`${config.homeUrl}admin/publications/add`} className="btn btn-success">Add Publication</Link>
+        <Button href={`${config.homeUrl}admin/publications/add`} label="Add Publication" raised primary />
         <InputSearch makeSearch={this.setSearchTitle} />
         <table className="table table-responsive table-bordered table-hover admin-table">
           <thead>

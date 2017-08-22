@@ -6,11 +6,13 @@
   "repository": "git@github.com:arikanmstf/mylibrary.git",
   "scripts": {
     "clean": "rm -rf ./dist/*",
-    "lint": "eslint --max-warnings 0 --ext .jsx,.js src/ ",
-    "prod": "npm run lint && webpack-dev-server --env=prod",
-    "dev": "npm run clean && webpack-dev-server --env=dev",
-    "dist:prod": "npm run lint && npm run clean && webpack -p --env=prod",
-    "dist:dev": "npm run clean && webpack --env=dev"
+    "toolbox": "react-toolbox-themr --config src/config/theme/default.json --javascript src/assets/theme --styles assets/theme",
+    "lint": "eslint --max-warnings 0 --ext .jsx,.js src/scripts ",
+    "prepare": "npm run lint && npm run clean && npm run toolbox",
+    "prod": "npm run prepare && webpack-dev-server --env=prod",
+    "dev": "npm run prepare && webpack-dev-server --env=dev",
+    "dist:prod": "npm run prepare && webpack -p --env=prod",
+    "dist:dev": "npm run prepare && webpack --env=dev"
   },
   "author": "Mustafa Arikan",
   "license": "MIT",
@@ -37,6 +39,7 @@
     "mocha": "^2.4.5",
     "node-sass": "^4.5.3",
     "react-router-dom": "^4.1.1",
+    "react-toolbox-themr": "^1.0.2",
     "sass-loader": "^6.0.5",
     "style-loader": "^0.18.1",
     "uglifyjs-webpack-plugin": "^0.4.3",
@@ -55,6 +58,7 @@
     "react-dropzone": "^3.13.3",
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
+    "react-toolbox": "^2.0.0-beta.12",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0"
   }
