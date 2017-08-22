@@ -38,9 +38,9 @@ class AdminBooksAddComponent extends Component {
       description: event.target.value
     });
   }
-  onTitleChange(event) {
+  onTitleChange(value) {
     this.setState({
-      title: event.target.value
+      title: value
     });
   }
   addNewWriter(writer) {

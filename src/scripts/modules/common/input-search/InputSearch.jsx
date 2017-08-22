@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import Input from 'react-toolbox/lib/input/Input';
+
 class InputSearch extends Component {
   constructor(props) {
     super(props);
@@ -9,16 +11,16 @@ class InputSearch extends Component {
       search_title: ''
     };
 
-    this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
-  handleSearchChange(event) {
-    this.setState({ search_title: event.target.value });
+  handleSearchChange = (value) => {
+    this.setState({ search_title: value });
     if (this.props.onChange) {
-      this.props.onChange(event);
+      this.props.onChange(value);
     }
-  }
+  };
+
   handleKeyPress(event) {
     if (event.charCode === 13) {
       this.makeSearch();
@@ -33,12 +35,12 @@ class InputSearch extends Component {
       <div className="input-search">
         <div className="custom-search-input">
           <div className="input-group col-md-12">
-            <input
-              onChange={this.handleSearchChange}
-              type="text"
-              className="form-control input-lg"
+            <Input
+              onChange={(event) => this.handleSearchChange(event)}
               onKeyPress={this.handleKeyPress}
-              placeholder={this.props.title}
+              label={this.props.title}
+              value={this.state.search_title}
+              name="search_title"
             />
             <span className="input-group-btn">
               <button className="btn btn-lg" type="button" onClick={() => this.makeSearch()}>

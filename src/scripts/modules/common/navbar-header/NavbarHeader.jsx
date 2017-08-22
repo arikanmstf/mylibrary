@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
+import AppBar from 'react-toolbox/lib/app_bar/AppBar';
+import Navigation from 'react-toolbox/lib/navigation/Navigation';
+import Link from 'react-toolbox/lib/Link';
+
 import config from 'config';
 import { connect } from 'react-redux';
 import { getLogout } from 'modules/login/LoginActions';
@@ -13,49 +17,23 @@ class NavbarHeader extends Component {
   getLogout() {
     this.props.getLogout();
   }
+
   render() {
     return (
-      <div className="navbar-header-container">
-        <nav className="navbar navbar-default">
-          <div className="container-fluid">
-            <div className="navbar-header">
-              <Link className="navbar-brand" to={config.homeUrl}>MyLibray</Link>
-            </div>
-            <ul className="nav navbar-nav">
-              { isAdmin ? <li>
-                <Link to={`${config.homeUrl}admin`}>
-                  <span>Admin</span>
-                  <i className="glyphicon glyphicon-lock" />
-                </Link>
-              </li> : null }
-              <li>
-                <Link to={`${config.homeUrl}profile`}>
-                  <span>Profile</span>
-                  <i className="glyphicon glyphicon-user" />
-                </Link>
-              </li>
-              <li>
-                <Link to={`${config.homeUrl}tags`}>
-                  <span>Tags</span>
-                  <i className="glyphicon glyphicon-tags" />
-                </Link>
-              </li>
-              <li>
-                <Link to={`${config.homeUrl}lists`}>
-                  <span>Lists</span>
-                  <i className="glyphicon glyphicon-list" />
-                </Link>
-              </li>
-              <li>
-                <a onClick={() => this.getLogout()}>
-                  <span>Logout</span>
-                  <i className="glyphicon glyphicon-log-out" />
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
+      <AppBar title="MyLibrary" leftIcon="menu">
+        <Navigation type="horizontal">
+          { isAdmin ?
+            <Link href={`${config.homeUrl}admin`} label="Admin" />
+            : null }
+          <Link href={`${config.homeUrl}profile`} label="Profile" />
+          <Link href={`${config.homeUrl}tags`} label="Tags" />
+          <Link href={`${config.homeUrl}lists`} label="Lists" />
+          <a onClick={() => this.getLogout()}>
+            <span>Logout</span>
+            <i className="glyphicon glyphicon-log-out" />
+          </a>
+        </Navigation>
+      </AppBar>
     );
   }
 }
