@@ -50,7 +50,6 @@
   "dependencies": {
     "axios": "^0.16.1",
     "babel-preset-stage-1": "^6.1.18",
-    "bootstrap": "^3.3.7",
     "prop-types": "^15.5.10",
     "qs": "^6.4.0",
     "react": "^15.6.1",

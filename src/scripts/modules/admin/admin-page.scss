@@ -4,11 +4,9 @@
 
   .admin-table {
 
-    background-color: $white;
-    width: 100%;
-
-    i.glyphicon {
-      margin-left: 10px;
+    .item-actions {
+      display: flex;
+      justify-content: space-between;
     }
   }
 }

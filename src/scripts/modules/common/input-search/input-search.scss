@@ -7,29 +7,35 @@
       border: solid 1px #E4E4E4;
       border-radius: 6px;
       background-color: #fff;
-  }
 
-  .custom-search-input input{
-      border: 0;
-      box-shadow: none;
-  }
+      input {
+        border: 0;
+        box-shadow: none;
+      }
 
-  .custom-search-input button{
-      border: 0;
-      border-left: solid 1px #ccc;
-      font-size: 24px;
-  }
-  .custom-search-input button:focus {
-     outline: 0;
-  }
+      button {
+        border: 0;
+        border-left: solid 1px #ccc;
+        font-size: 24px;
 
-  .custom-search-input button:hover{
-      border: 0;
-      box-shadow: none;
-      border-left: solid 1px #ccc;
-  }
+        &:focus {
+          outline: 0;
+        }
+        &:hover {
+          border: 0;
+          box-shadow: none;
+          border-left: solid 1px #ccc;
+        }
+      }
+      .input-group {
+        display: table;
 
-  .custom-search-input .glyphicon-search{
-      font-size: 23px;
+        .input-group-btn {
+          width: 1%;
+          white-space: nowrap;
+          vertical-align: middle;
+          display: table-cell;
+        }
+      }
   }
 }

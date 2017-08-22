@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Button from 'react-toolbox/lib/button/Button';
 import Link from 'react-toolbox/lib/Link';
+import { Table, TableHead, TableRow, TableCell } from 'react-toolbox/lib/table';
 
 import config from 'config';
 import Pagination from 'modules/common/pagination/Pagination';
@@ -34,15 +35,15 @@ class AdminPublicationsComponent extends Component {
   renderList() {
     return this.props.publications.map((publication) => {
       return (
-        <tr key={publication.publication_id}>
-          <td>{publication.publication_id}</td>
-          <td>{publication.title}</td>
-          <td>{publication.writers}</td>
-          <td>
-            <Link style={{ float: 'left' }} href={`${config.homeUrl}admin/publications/edit/${publication.publication_id}`} icon="mode edit" />
-            <Link style={{ float: 'right' }} href={`${config.homeUrl}admin/publications/remove/${publication.publication_id}`} icon="delete" />
-          </td>
-        </tr>
+        <TableRow key={publication.publication_id}>
+          <TableCell>{publication.publication_id}</TableCell>
+          <TableCell>{publication.title}</TableCell>
+          <TableCell>{publication.writers}</TableCell>
+          <TableCell className="item-actions">
+            <Link href={`${config.homeUrl}admin/publications/edit/${publication.publication_id}`} icon="settings" />
+            <Link href={`${config.homeUrl}admin/publications/remove/${publication.publication_id}`} icon="delete" />
+          </TableCell>
+        </TableRow>
       );
     });
   }
@@ -59,19 +60,15 @@ class AdminPublicationsComponent extends Component {
         />
         <Button href={`${config.homeUrl}admin/publications/add`} label="Add Publication" raised primary />
         <InputSearch makeSearch={this.setSearchTitle} />
-        <table className="table table-responsive table-bordered table-hover admin-table">
-          <thead>
-            <tr>
-              <td>#</td>
-              <td>Publication Name</td>
-              <td>Writers</td>
-              <td>Options</td>
-            </tr>
-          </thead>
-          <tbody>
-            {this.renderList()}
-          </tbody>
-        </table>
+        <Table selectable={false} className="admin-table">
+          <TableHead>
+            <TableCell>#</TableCell>
+            <TableCell>Publication Name</TableCell>
+            <TableCell>Writers</TableCell>
+            <TableCell>Options</TableCell>
+          </TableHead>
+          {this.renderList()}
+        </Table>
       </div>
     );
   }

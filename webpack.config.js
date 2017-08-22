@@ -55,6 +55,7 @@ let rules = [
         options: {
           minimize: isProd,
           sourceMap: true,
+          importLoaders: 1,
           localIdentName: "[name]--[local]--[hash:base64:8]"
         }
       },
