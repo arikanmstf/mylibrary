@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import config from 'config';
 
+import Button from 'react-toolbox/lib/button/Button';
+import Link from 'react-toolbox/lib/Link';
+import { Table, TableHead, TableRow, TableCell } from 'react-toolbox/lib/table';
+
+import config from 'config';
 import Pagination from 'modules/common/pagination/Pagination';
 import InputSearch from 'modules/common/input-search/InputSearch';
 
@@ -32,19 +35,15 @@ class AdminBooksComponent extends Component {
   renderList() {
     return this.props.books.map((book) => {
       return (
-        <tr key={book.book_id}>
-          <td>{book.book_id}</td>
-          <td>{book.title}</td>
-          <td>{book.writers}</td>
-          <td>
-            <Link to={`${config.homeUrl}admin/books/edit/${book.book_id}`}>
-              <i className="glyphicon glyphicon-edit" />
-            </Link>
-            <Link to={`${config.homeUrl}admin/books/remove/${book.book_id}`}>
-              <i className="glyphicon glyphicon-remove" />
-            </Link>
-          </td>
-        </tr>
+        <TableRow key={book.book_id}>
+          <TableCell>{book.book_id}</TableCell>
+          <TableCell>{book.title}</TableCell>
+          <TableCell>{book.writers}</TableCell>
+          <TableCell className="item-actions">
+            <Link href={`${config.homeUrl}admin/books/edit/${book.book_id}`} icon="settings" />
+            <Link href={`${config.homeUrl}admin/books/remove/${book.book_id}`} icon="delete" />
+          </TableCell>
+        </TableRow>
       );
     });
   }
@@ -59,21 +58,17 @@ class AdminBooksComponent extends Component {
           onLiClick={this.onLiClick}
           linkTo="admin/books/pages"
         />
-        <Link to={`${config.homeUrl}admin/books/add`} className="btn btn-success">Add Book</Link>
+        <Button href={`${config.homeUrl}admin/books/add`} label="Add Book" primary raised />
         <InputSearch makeSearch={this.setSearchTitle} />
-        <table className="table table-responsive table-bordered table-hover admin-table">
-          <thead>
-            <tr>
-              <td>#</td>
-              <td>Book Name</td>
-              <td>Writers</td>
-              <td>Options</td>
-            </tr>
-          </thead>
-          <tbody>
-            {this.renderList()}
-          </tbody>
-        </table>
+        <Table selectable={false} className="admin-table">
+          <TableHead>
+            <TableCell>#</TableCell>
+            <TableCell>Book Name</TableCell>
+            <TableCell>Writers</TableCell>
+            <TableCell>Options</TableCell>
+          </TableHead>
+          {this.renderList()}
+        </Table>
       </div>
     );
   }

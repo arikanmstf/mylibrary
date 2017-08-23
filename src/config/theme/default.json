@@ -2,6 +2,7 @@
   "customProperties": {
     "color-primary": "#bfa493",
     "color-primary-dark": "#b6897a",
-    "input-padding": "10px"
+    "input-padding": "10px",
+    "animation-duration": "0.1s"
   }
 }

@@ -1,0 +1,11 @@
+a {
+  color: $color-link;
+
+  &:visited {
+    color: $color-link-visited;
+  }
+}
+body, html {
+  padding: 0;
+  margin: 0;
+}
