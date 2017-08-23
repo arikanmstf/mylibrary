@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import config from 'config';
 
+import Button from 'react-toolbox/lib/button/Button';
+import Link from 'react-toolbox/lib/link';
+import { Table, TableHead, TableRow, TableCell } from 'react-toolbox/lib/table';
+
+import config from 'config';
 import Pagination from 'modules/common/pagination/Pagination';
 import InputSearch from 'modules/common/input-search/InputSearch';
 
@@ -32,18 +35,14 @@ class AdminWritersComponent extends Component {
   renderList() {
     return this.props.writers.map((writer) => {
       return (
-        <tr key={writer.writer_id}>
-          <td>{writer.writer_id}</td>
-          <td>{writer.full_name}</td>
-          <td>
-            <Link to={`${config.homeUrl}admin/writers/edit/${writer.writer_id}`}>
-              <i className="glyphicon glyphicon-edit" />
-            </Link>
-            <Link to={`${config.homeUrl}admin/writers/remove/${writer.writer_id}`}>
-              <i className="glyphicon glyphicon-remove" />
-            </Link>
-          </td>
-        </tr>
+        <TableRow key={writer.writer_id}>
+          <TableCell>{writer.writer_id}</TableCell>
+          <TableCell>{writer.full_name}</TableCell>
+          <TableCell className="item-actions">
+            <Link href={`${config.homeUrl}admin/writers/edit/${writer.writer_id}`} icon="settings" />
+            <Link href={`${config.homeUrl}admin/writers/remove/${writer.writer_id}`} icon="delete" />
+          </TableCell>
+        </TableRow>
       );
     });
   }
@@ -58,20 +57,16 @@ class AdminWritersComponent extends Component {
           onLiClick={this.onLiClick}
           linkTo="admin/writers/pages"
         />
-        <Link to={`${config.homeUrl}admin/writers/add`} className="btn btn-success">Add Writer</Link>
+        <Button href={`${config.homeUrl}admin/writers/add`} label="Add Writer" accent raised />
         <InputSearch makeSearch={this.setSearchTitle} />
-        <table className="table table-responsive table-bordered table-hover admin-table">
-          <thead>
-            <tr>
-              <td>#</td>
-              <td>Writer Name</td>
-              <td>Options</td>
-            </tr>
-          </thead>
-          <tbody>
-            {this.renderList()}
-          </tbody>
-        </table>
+        <Table selectable={false} className="admin-table">
+          <TableHead>
+            <TableCell>#</TableCell>
+            <TableCell>Writer Name</TableCell>
+            <TableCell>Options</TableCell>
+          </TableHead>
+          {this.renderList()}
+        </Table>
       </div>
     );
   }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Button from 'react-toolbox/lib/button/Button';
-import Link from 'react-toolbox/lib/Link';
+import Link from 'react-toolbox/lib/link';
 import { Table, TableHead, TableRow, TableCell } from 'react-toolbox/lib/table';
 
 import config from 'config';
@@ -58,7 +58,7 @@ class AdminPublicationsComponent extends Component {
           onLiClick={this.onLiClick}
           linkTo="admin/publications/pages"
         />
-        <Button href={`${config.homeUrl}admin/publications/add`} label="Add Publication" raised primary />
+        <Button href={`${config.homeUrl}admin/publications/add`} label="Add Publication" raised accent />
         <InputSearch makeSearch={this.setSearchTitle} />
         <Table selectable={false} className="admin-table">
           <TableHead>

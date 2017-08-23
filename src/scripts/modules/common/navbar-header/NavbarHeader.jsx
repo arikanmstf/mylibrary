@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import AppBar from 'react-toolbox/lib/app_bar/AppBar';
 import Navigation from 'react-toolbox/lib/navigation/Navigation';
-import Link from 'react-toolbox/lib/Link';
+import Link from 'react-toolbox/lib/link';
 
 import config from 'config';
 import { connect } from 'react-redux';

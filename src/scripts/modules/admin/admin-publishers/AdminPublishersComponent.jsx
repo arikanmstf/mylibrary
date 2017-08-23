@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import config from 'config';
 
+import Button from 'react-toolbox/lib/button/Button';
+import Link from 'react-toolbox/lib/link';
+import { Table, TableHead, TableRow, TableCell } from 'react-toolbox/lib/table';
+
+import config from 'config';
 import Pagination from 'modules/common/pagination/Pagination';
 import InputSearch from 'modules/common/input-search/InputSearch';
 
@@ -36,18 +39,14 @@ class AdminPublishersComponent extends Component {
   renderList() {
     return this.props.publishers.map((publisher) => {
       return (
-        <tr key={publisher.publisher_id}>
-          <td>{publisher.publisher_id}</td>
-          <td>{publisher.name}</td>
-          <td>
-            <Link to={`${config.homeUrl}admin/publishers/edit/${publisher.publisher_id}`}>
-              <i className="glyphicon glyphicon-edit" />
-            </Link>
-            <Link to={`${config.homeUrl}admin/publishers/remove/${publisher.publisher_id}`}>
-              <i className="glyphicon glyphicon-remove" />
-            </Link>
-          </td>
-        </tr>
+        <TableRow key={publisher.publisher_id}>
+          <TableCell>{publisher.publisher_id}</TableCell>
+          <TableCell>{publisher.name}</TableCell>
+          <TableCell className="item-actions">
+            <Link href={`${config.homeUrl}admin/publishers/edit/${publisher.publisher_id}`} icon="settings" />
+            <Link href={`${config.homeUrl}admin/publishers/remove/${publisher.publisher_id}`} icon="delete" />
+          </TableCell>
+        </TableRow>
       );
     });
   }
@@ -62,20 +61,16 @@ class AdminPublishersComponent extends Component {
           onLiClick={this.onLiClick}
           linkTo="admin/publishers/pages"
         />
-        <Link to={`${config.homeUrl}admin/publishers/add`} className="btn btn-success">Add Publisher</Link>
+        <Button href={`${config.homeUrl}admin/publishers/add`} label="Add Publisher" raised accent />
         <InputSearch makeSearch={this.setSearchTitle} />
-        <table className="table table-responsive table-bordered table-hover admin-table">
-          <thead>
-            <tr>
-              <td>#</td>
-              <td>Publisher Name</td>
-              <td>Options</td>
-            </tr>
-          </thead>
-          <tbody>
-            {this.renderList()}
-          </tbody>
-        </table>
+        <Table selectable={false} className="admin-table">
+          <TableHead>
+            <TableCell>#</TableCell>
+            <TableCell>Publisher Name</TableCell>
+            <TableCell>Options</TableCell>
+          </TableHead>
+          {this.renderList()}
+        </Table>
       </div>
     );
   }
