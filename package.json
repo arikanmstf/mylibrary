@@ -6,7 +6,7 @@
   "repository": "git@github.com:arikanmstf/mylibrary.git",
   "scripts": {
     "clean": "rm -rf ./dist/*",
-    "toolbox": "react-toolbox-themr --config src/config/theme/default.json --javascript src/assets/theme --styles assets/theme",
+    "toolbox": "react-toolbox-themr --config src/config/theme/default.json --javascript src/assets/theme --styles src/assets/theme",
     "lint": "eslint --max-warnings 0 --ext .jsx,.js src/scripts ",
     "prepare": "npm run lint && npm run clean && npm run toolbox",
     "prod": "npm run prepare && webpack-dev-server --env=prod",

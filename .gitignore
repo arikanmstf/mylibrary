@@ -4,6 +4,8 @@
 /dist
 /admin
 /tmp
+/src/assets/theme.css
+/src/assets/theme.js
 npm-debug.log
 
 # IntelliJ
