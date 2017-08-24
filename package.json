@@ -10,7 +10,7 @@
     "lint": "eslint --max-warnings 0 --ext .jsx,.js src/scripts ",
     "prepare": "npm run lint && npm run clean && npm run toolbox",
     "prod": "npm run prepare && webpack-dev-server --env=prod",
-    "dev": "npm run prepare && webpack-dev-server --env=dev",
+    "dev": "npm run toolbox && webpack-dev-server --env=dev",
     "dist:prod": "npm run prepare && webpack -p --env=prod",
     "dist:dev": "npm run prepare && webpack --env=dev"
   },
