@@ -59,7 +59,8 @@ let rules = [
           localIdentName: "[name]--[local]--[hash:base64:8]"
         }
       },
-        "sass-loader"
+      "sass-loader",
+      "postcss-loader"
       ]
     })
   },
@@ -94,7 +95,7 @@ if (isProd) {
     new UglifyJSPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('production'),
+        'process.NODE_ENV': JSON.stringify('production'),
         'process.env.BUILD_ENV': JSON.stringify(argv.env),
         'process.env.BASENAME': JSON.stringify(process.env.BASENAME),
       }

@@ -38,6 +38,7 @@
     "jsdom": "^8.1.0",
     "mocha": "^2.4.5",
     "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.6",
     "react-router-dom": "^4.1.1",
     "react-toolbox-themr": "^1.0.2",
     "sass-loader": "^6.0.5",
@@ -50,6 +51,8 @@
   "dependencies": {
     "axios": "^0.16.1",
     "babel-preset-stage-1": "^6.1.18",
+    "postcss": "https://registry.npmjs.org/postcss/-/postcss-5.2.17.tgz",
+    "postcss-cssnext": "^3.0.2",
     "prop-types": "^15.5.10",
     "qs": "^6.4.0",
     "react": "^15.6.1",
