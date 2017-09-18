@@ -8,3 +8,5 @@
 	> npm install
 	> npm run dev
 ```
+
+Demo available at: http://mustafaarikan.net/mylibrary/
