@@ -1,10 +1,6 @@
 {
   "customProperties": {
-    "color-primary": "#bfa493",
-    "color-primary-dark": "#b6897a",
-    "color-accent": "#a36370",
-    "color-accent-dark": "#824f59",
     "input-padding": "10px",
-    "animation-duration": "0.1s"
+    "animation-duration": "0s"
   }
 }

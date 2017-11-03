@@ -1,6 +1,6 @@
 # MyLibraryV2
 
-### Familiar with Git?
+### Familiar with Npm?
 
 ```
 	> git clone git@github.com:arikanmstf/mylibrary.git

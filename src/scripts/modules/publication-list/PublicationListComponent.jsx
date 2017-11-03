@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Card, CardMedia, CardTitle, CardActions } from 'react-toolbox/lib/card';
+import IconButton from 'react-toolbox/lib/button/IconButton';
+
 import PropTypes from 'prop-types';
 import config from 'config';
 
 import InputSearch from 'modules/common/input-search/InputSearch';
 import Pagination from 'modules/common/pagination/Pagination';
+
+const publicationCardStyle = {
+  width: '350px'
+};
 
 class PublicationListComponent extends Component {
   constructor(props) {
@@ -35,6 +42,30 @@ class PublicationListComponent extends Component {
   }
 
   renderList() {
+    return this.props.publications.map((publication) => {
+      return (
+        <li key={publication.publication_id}>
+          <Card style={publicationCardStyle}>
+            <CardTitle
+              title={publication.title}
+              subtitle={publication.writers}
+            />
+            <Link to={`${config.homeUrl}publications/${publication.publication_id}`}>
+              <CardMedia
+                aspectRatio="wide"
+                image={`${config.homeUrl}static/img/cover/${publication.publication_id}.jpg`}
+              />
+            </Link>
+            <CardActions>
+              <IconButton icon="add" primary />
+              <IconButton icon="favorite" accent />
+            </CardActions>
+          </Card>
+        </li>);
+    });
+  }
+
+  renderLists() {
     return this.props.publications.map((publication) => {
       return (
         <li key={publication.publication_id}>
@@ -74,9 +105,7 @@ class PublicationListComponent extends Component {
           onLiClick={this.onLiClick}
           linkTo="pages"
         />
-        <ul className="publication-list">
-          {this.renderList()}
-        </ul>
+        <div className="publication-list">{this.renderList()}</div>
         <Pagination
           pageNo={parseInt(this.props.pageNo, 10)}
           total={this.props.total}

@@ -1,6 +1,4 @@
 .publication-list {
-  $publicationWidth: 200px;
-
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -10,39 +8,6 @@
 
   li {
     margin-bottom: 30px;
-    border-bottom: 1px solid $lightBlack;
     padding: 10px;
-
-    .publication-meta {
-      background-color: $white;
-      border-bottom-right-radius: 5px;
-      border-bottom-left-radius: 5px;
-
-      .publication-image-mask {
-        height: 260px;
-        overflow: hidden;
-
-        .publication-image {
-          width: $publicationWidth;
-          text-align: center;
-          cursor: pointer;
-        }
-      }
-
-      .publication-info {
-        width: $publicationWidth;
-
-        padding: 8px;
-        text-align: center;
-
-        .publication-title {
-          font-size: $mediumFontSize;
-        }
-        .publication-writers {
-          color: $lightBlack;
-          font-size: $smallFontSize;
-        }
-      }
-    }
   }
 }

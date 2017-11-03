@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Input from 'react-toolbox/lib/input';
 
 import ReactLogo from 'img/react-logo.png';
 
@@ -23,6 +24,9 @@ class LoginComponent extends Component {
       this.getLogin();
     }
   }
+  handleChange = (value, ev) => {
+    this.setState({ [ev.target.name]: value });
+  };
 
   render() {
     return (
@@ -34,21 +38,21 @@ class LoginComponent extends Component {
           height="180"
         />
         <div className="form-group">
-          <input
+          <Input
             type="text"
-            className="form-control input input-text"
-            placeholder="Enter your username"
-            onChange={(e) => this.setState({ username: e.target.value })}
+            name="username"
+            label="Enter your username"
+            onChange={this.handleChange}
             onKeyPress={this.handleKeyPress}
           />
         </div>
         <div className="form-group">
-          <input
+          <Input
             type="password"
-            className="form-control input input-password"
-            placeholder="Enter your password"
+            name="password"
+            label="Enter your password"
             onKeyPress={this.handleKeyPress}
-            onChange={(e) => this.setState({ password: e.target.value })}
+            onChange={this.handleChange}
           />
         </div>
         <div className="form-group">
