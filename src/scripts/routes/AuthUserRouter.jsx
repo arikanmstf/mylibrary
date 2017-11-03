@@ -15,12 +15,10 @@ import TagDetails from 'modules/tag-details/TagDetailsContainer';
 import PublisherDetails from 'modules/publisher-details/PublisherDetailsContainer';
 import Profile from 'modules/profile/ProfileContainer';
 
-import NavbarHeader from 'modules/common/navbar-header/NavbarHeader';
 import NotFound from 'modules/not-found/NotFoundComponent';
 
 const AuthUserRouter = (props) => (
   <div>
-    <NavbarHeader />
     <Switch>
       <Route exact path={props.match.path} component={Home} />
       <Route exact path={`${props.match.path}pages/:pageNo`} component={Home} />

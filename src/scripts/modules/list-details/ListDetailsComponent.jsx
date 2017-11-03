@@ -14,7 +14,7 @@ class ListDetailsComponent extends Component {
     return list ? (
       <div className="item-details-page list-details">
         <div className="item-details-container">
-          <div className="col-md-12 col-sm-12 item-info">
+          <div className="  item-info">
             <div className="item-title">
               <span>{list.title}</span>
             </div>
@@ -24,7 +24,7 @@ class ListDetailsComponent extends Component {
             </div>
           </div>
           <div className="clearfix" />
-          <div className="col-md-12" />
+          <div />
         </div>
       </div>
     ) : null;

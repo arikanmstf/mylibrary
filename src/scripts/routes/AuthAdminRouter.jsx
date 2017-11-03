@@ -31,7 +31,6 @@ import AdminLists from 'modules/admin/admin-lists/AdminListsContainer';
 import AdminListsEdit from 'modules/admin/admin-lists-edit/AdminListsEditContainer';
 import AdminListsAdd from 'modules/admin/admin-lists-add/AdminListsAddContainer';
 
-import SideNavigation from 'modules/common/side-navigation/SideNavigation';
 import NotFound from 'modules/not-found/NotFoundComponent';
 
 const isAdmin = Storage.get('is_admin') > 0;
@@ -39,8 +38,7 @@ const isAdmin = Storage.get('is_admin') > 0;
 const AuthAdminRouter = (props) => (
   isAdmin ? (
     <div>
-      <SideNavigation />
-      <div className="admin-page col-xs-12 col-sm-9 col-md-9">
+      <div>
         <Switch>
           <Route exact path={props.match.path} component={AdminPublications} />
           <Route exact path={`${props.match.path}/publications`} component={AdminPublications} />

@@ -1,25 +1,63 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
 import config from 'config';
+import PropTypes from 'prop-types';
 
-const SideNavigation = () => (
-  <div className="side-navigation col-sm-3 col-md-3 fixed">
-    <nav className="navbar navbar-default sidebar">
-      <div className="container-fluid">
-        <div className="navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-          <ul className="nav navbar-nav">
-            <li><Link to={`${config.homeUrl}admin/publications`}>Publications</Link></li>
-            <li><Link to={`${config.homeUrl}admin/books`}>Books</Link></li>
-            <li><Link to={`${config.homeUrl}admin/writers`}>Writers</Link></li>
-            <li><Link to={`${config.homeUrl}admin/publishers`}>Publishers</Link></li>
-            <li><Link to={`${config.homeUrl}admin/users`}>Users</Link></li>
-            <li><Link to={`${config.homeUrl}admin/tags`}>Tags</Link></li>
-            <li><Link to={`${config.homeUrl}admin/lists`}>Lists</Link></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </div>
-);
+import Navigation from 'react-toolbox/lib/navigation/Navigation';
+import NavDrawer from 'react-toolbox/lib/layout/NavDrawer';
+import Storage from 'common/Storage';
+
+const isAdmin = Storage.get('is_admin') > 0;
+
+const userActions = [
+  { label: 'Tags', raised: true, icon: 'bookmark', href: `${config.homeUrl}tags`, mini: true },
+  { label: 'Lists', raised: true, icon: 'list', href: `${config.homeUrl}lists`, mini: true }
+];
+
+const adminActions = [
+  { label: 'Publications', raised: true, href: `${config.homeUrl}admin/publications`, mini: true },
+  { label: 'Books', raised: true, icon: 'book', href: `${config.homeUrl}admin/books`, mini: true },
+  { label: 'Writers', raised: true, icon: 'person', href: `${config.homeUrl}admin/writers`, mini: true },
+  { label: 'Publishers', raised: true, href: `${config.homeUrl}admin/publishers`, mini: true },
+  { label: 'Users', raised: true, icon: 'people', href: `${config.homeUrl}admin/users`, mini: true },
+  { label: 'Tags', raised: true, icon: 'bookmark', href: `${config.homeUrl}admin/tags`, mini: true },
+  { label: 'Lists', raised: true, icon: 'list', href: `${config.homeUrl}admin/lists`, mini: true }
+];
+
+class SideNavigation extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      drawerActive: props.drawerActive
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      drawerActive: nextProps.drawerActive
+    });
+  }
+
+  closeDrawerActive = () => {
+    this.setState({ drawerActive: false });
+  }
+
+  render() {
+    return (
+      <NavDrawer onOverlayClick={this.closeDrawerActive} active={this.state.drawerActive}>
+        <Navigation type="vertical" actions={userActions} />
+        { isAdmin ? <Navigation type="vertical" actions={adminActions} /> : null }
+      </NavDrawer>
+    );
+  }
+}
+
+SideNavigation.propTypes = {
+  drawerActive: PropTypes.bool
+};
+
+SideNavigation.defaultProps = {
+  drawerActive: true
+};
 
 export default SideNavigation;

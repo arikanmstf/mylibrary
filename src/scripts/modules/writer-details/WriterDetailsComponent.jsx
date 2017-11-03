@@ -18,7 +18,7 @@ class WriterDetailsComponent extends Component {
     return writer ? (
       <div className="item-details-page writer-details">
         <div className="item-details-container">
-          <div className="col-md-12 col-sm-12 item-info">
+          <div className="  item-info">
             <div className="item-title">
               <span>{writer.full_name}</span>
             </div>
@@ -37,7 +37,7 @@ class WriterDetailsComponent extends Component {
             </div>
           </div>
           <div className="clearfix" />
-          <div className="col-md-12" />
+          <div />
         </div>
       </div>
     ) : null;

@@ -11,6 +11,10 @@ import UnAuthRouter from 'routes/UnAuthRouter';
 import AuthUserRouter from 'routes/AuthUserRouter';
 
 import ModalContainer from 'modules/common/modal/ModalContainer';
+import Layout from 'react-toolbox/lib/layout/Layout';
+import Panel from 'react-toolbox/lib/layout/Panel';
+import SideNavigation from 'modules/common/side-navigation/SideNavigation';
+import NavbarHeader from 'modules/common/navbar-header/NavbarHeader';
 
 const isLoggedIn = Storage.get('login_key');
 
@@ -18,23 +22,39 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = props;
+    this.state = {
+      drawerActive: false,
+      ...props
+    };
   }
   componentWillReceiveProps(nextProps) {
     this.setState(nextProps);
   }
+  openDrawerActive = () => {
+    this.setState({ drawerActive: true });
+  }
+
   render() {
     return (
       <div className="main-container">
         <ModalContainer message="" />
         { !this.state.contentLoaded ? <ModalLoading /> : null }
         <Router>
-          { isLoggedIn ? <Switch>
-            <Route path={config.homeUrl} component={AuthUserRouter} />
-          </Switch> :
-          <Switch>
-            <UnAuthRouter />
-          </Switch> }
+          { isLoggedIn ?
+            <Layout>
+              <SideNavigation drawerActive={this.state.drawerActive} />
+              <Panel>
+                <NavbarHeader onLeftIconClick={this.openDrawerActive} />
+                <Switch>
+                  <Route path={config.homeUrl} component={AuthUserRouter} />
+                </Switch>
+              </Panel>
+            </Layout>
+            :
+            <Switch>
+              <UnAuthRouter />
+            </Switch>
+          }
         </Router>
         <div className="clearfix" />
       </div>

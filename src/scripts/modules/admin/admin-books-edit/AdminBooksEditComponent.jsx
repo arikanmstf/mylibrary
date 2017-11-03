@@ -97,9 +97,9 @@ class AdminBooksEditComponent extends Component {
   render() {
     const book = this.props.book;
     return book && (
-      <div className="item-details-page col-md-9 col-sm-9 col-">
+      <div className="item-details-page   ">
         <div className="item-details-container">
-          <div className="col-md-12 col-sm-12 item-info">
+          <div className="  item-info">
             <div className="item-title">
               <input
                 name="title"
@@ -124,7 +124,7 @@ class AdminBooksEditComponent extends Component {
               />
             </p>
             <div className="item-lists-container">
-              <div className="item-lists col-sm-12 col-xs-12">
+              <div className="item-lists  ">
                 <h5>Tags</h5>
                 <TagsOfPublicationEdit
                   tags={this.props.book.tags}
@@ -134,7 +134,7 @@ class AdminBooksEditComponent extends Component {
             </div>
           </div>
           <div className="clearfix" />
-          <div className="col-md-12" >
+          <div >
             <button className="btn btn-primary" onClick={() => this.saveForm()}>Save</button>
           </div>
         </div>

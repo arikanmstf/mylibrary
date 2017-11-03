@@ -14,7 +14,7 @@ class PublisherDetailsComponent extends Component {
     return publisher ? (
       <div className="item-details-page publisher-details">
         <div className="item-details-container">
-          <div className="col-md-12 col-sm-12 item-info">
+          <div className="  item-info">
             <div className="item-title">
               <span>{publisher.name}</span>
             </div>
@@ -34,7 +34,7 @@ class PublisherDetailsComponent extends Component {
             </div>
           </div>
           <div className="clearfix" />
-          <div className="col-md-12" />
+          <div />
         </div>
       </div>
     ) : null;

@@ -46,14 +46,14 @@ class PublicationDetailsComponent extends Component {
     return publication && (
       <div className="item-details-page publication-details">
         <div className="item-details-container">
-          <div className="col-md-3 col-sm-3 item-info image-container">
+          <div className="  item-info image-container">
             <img
               alt="cover img"
               className="item-image"
               src={`${config.homeUrl}static/img/cover/${publication.publication_id}.jpg`}
             />
           </div>
-          <div className="col-md-9 col-sm-9 item-info content-container">
+          <div className="  item-info content-container">
             <div className="item-title">
               <span>{ publication.title }</span>
             </div>
@@ -116,7 +116,7 @@ class PublicationDetailsComponent extends Component {
             <button className="btn btn-primary" onClick={(e) => this.saveForm(e)}>Save</button>
           </div>
           <div className="clearfix" />
-          <div className="col-md-12" />
+          <div />
         </div>
       </div>
     );

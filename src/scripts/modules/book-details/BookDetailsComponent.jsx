@@ -14,7 +14,7 @@ class BookDetailsComponent extends Component {
     return book ? (
       <div className="item-details-page book-details">
         <div className="item-details-container">
-          <div className="col-md-12 col-sm-12 item-info">
+          <div className="  item-info">
             <div className="item-title">
               <span>{ book.title }</span>
             </div>
@@ -27,7 +27,7 @@ class BookDetailsComponent extends Component {
             </div>
           </div>
           <div className="clearfix" />
-          <div className="col-md-12" />
+          <div />
         </div>
       </div>
     ) : null;

@@ -35,7 +35,7 @@ class InputSearch extends Component {
     return (
       <div className="input-search">
         <div className="custom-search-input">
-          <div className="input-group col-md-12">
+          <div className="input-group ">
             <Input
               onChange={(event) => this.handleSearchChange(event)}
               onKeyPress={this.handleKeyPress}

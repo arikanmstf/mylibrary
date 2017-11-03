@@ -95,16 +95,16 @@ class AdminPublicationsEditComponent extends Component {
   render() {
     const publication = this.props.publication;
     return publication && (
-      <div className="item-details-page col-md-9 col-sm-9 col-">
+      <div className="item-details-page   ">
         <div className="item-details-container">
-          <div className="col-md-3 col-sm-3 item-info image-container">
+          <div className="  item-info image-container">
             <img
               alt="cover img"
               className="item-image"
               src={`${config.homeUrl}static/img/cover/${publication.publication_id}.jpg`}
             />
           </div>
-          <div className="col-md-9 col-sm-9 item-info">
+          <div className="  item-info">
             <div className="item-title">
               {this.state.title || publication.title}
             </div>
@@ -193,14 +193,14 @@ class AdminPublicationsEditComponent extends Component {
               />
             </div>
             <div className="item-lists-container">
-              <div className="item-lists col-sm-12 col-xs-12">
+              <div className="item-lists  ">
                 <h5>Lists</h5>
                 <ListsOfPublicationEdit lists={this.state.lists} onListsChange={(lists) => this.onListsChange(lists)} />
               </div>
             </div>
           </div>
           <div className="clearfix" />
-          <div className="col-md-12" >
+          <div >
             <button className="btn btn-primary" onClick={() => this.saveForm()}>Save</button>
           </div>
         </div>

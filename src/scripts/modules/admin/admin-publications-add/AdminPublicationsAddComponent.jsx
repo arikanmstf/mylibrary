@@ -111,16 +111,16 @@ class AdminPublicationsAddComponent extends Component {
 
   render() {
     return true && (
-      <div className="item-details-page col-md-9 col-sm-9 col-">
+      <div className="item-details-page   ">
         <div className="item-details-container">
-          <div className="col-md-3 col-sm-3 item-info image-container">
+          <div className="  item-info image-container">
             <img
               alt="undefined"
               className="item-image"
               src={`${config.homeUrl}static/img/cover/undefined.jpg`}
             />
           </div>
-          <div className="col-md-9 col-sm-9 item-info">
+          <div className="  item-info">
             <div className="item-title">
               {this.state.title}
             </div>
@@ -187,14 +187,14 @@ class AdminPublicationsAddComponent extends Component {
               />
             </div>
             <div className="item-lists-container">
-              <div className="item-lists col-sm-12 col-xs-12">
+              <div className="item-lists  ">
                 <h5>Lists</h5>
                 <ListsOfPublicationEdit onListsChange={this.onListsChange} />
               </div>
             </div>
           </div>
           <div className="clearfix" />
-          <div className="col-md-12" >
+          <div >
             <button className="btn btn-primary" onClick={this.saveForm}>Save</button>
           </div>
         </div>
