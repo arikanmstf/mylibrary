@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import config from 'config';
-import { Card, CardMedia, CardTitle, CardActions } from 'react-toolbox/lib/card';
+import Card from 'react-toolbox/lib/card/Card';
+import CardMedia from 'react-toolbox/lib/card/CardMedia';
+import CardTitle from 'react-toolbox/lib/card/CardTitle';
+import CardActions from 'react-toolbox/lib/card/CardActions';
 import IconButton from 'react-toolbox/lib/button/IconButton';
 
 const publicationCardStyle = {

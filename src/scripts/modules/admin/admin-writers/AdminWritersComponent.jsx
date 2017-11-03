@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Button from 'react-toolbox/lib/button/Button';
-import Link from 'react-toolbox/lib/link';
-import { Table, TableHead, TableRow, TableCell } from 'react-toolbox/lib/table';
+import Link from 'react-toolbox/lib/link/Link';
+import Table from 'react-toolbox/lib/table/Table';
+import TableHead from 'react-toolbox/lib/table/TableHead';
+import TableRow from 'react-toolbox/lib/table/TableRow';
+import TableCell from 'react-toolbox/lib/table/TableCell';
 
 import config from 'config';
 import Pagination from 'modules/common/pagination/Pagination';

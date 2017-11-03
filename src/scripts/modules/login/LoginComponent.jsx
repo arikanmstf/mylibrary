@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Input from 'react-toolbox/lib/input';
+import Input from 'react-toolbox/lib/input/Input';
 
 import ReactLogo from 'img/react-logo.png';
 
