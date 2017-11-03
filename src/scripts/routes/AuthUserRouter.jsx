@@ -18,7 +18,7 @@ import Profile from 'modules/profile/ProfileContainer';
 import NotFound from 'modules/not-found/NotFoundComponent';
 
 const AuthUserRouter = (props) => (
-  <div>
+  <div className="page-home">
     <Switch>
       <Route exact path={props.match.path} component={Home} />
       <Route exact path={`${props.match.path}pages/:pageNo`} component={Home} />

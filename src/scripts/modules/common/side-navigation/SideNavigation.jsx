@@ -44,9 +44,9 @@ class SideNavigation extends Component {
 
   render() {
     return (
-      <NavDrawer onOverlayClick={this.closeDrawerActive} active={this.state.drawerActive}>
+      <NavDrawer permanentAt="xl" onOverlayClick={this.closeDrawerActive} active={this.state.drawerActive}>
         <Navigation type="vertical" actions={userActions} />
-        { isAdmin ? <Navigation type="vertical" actions={adminActions} /> : null }
+        { isAdmin ? <div>{`Admin`}<hr /><Navigation type="vertical" actions={adminActions} /></div> : null }
       </NavDrawer>
     );
   }

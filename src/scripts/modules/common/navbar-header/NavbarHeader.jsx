@@ -11,6 +11,7 @@ import Storage from 'common/Storage';
 
 const isAdmin = Storage.get('is_admin') > 0;
 const actions = [
+  { label: 'Home', raised: true, icon: 'home', href: `${config.homeUrl}`, mini: true },
   { label: 'Profile', raised: true, icon: 'person', href: `${config.homeUrl}profile`, mini: true }
 ];
 
@@ -20,15 +21,41 @@ if (isAdmin) {
 
 class NavbarHeader extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      navigationClassName: null
+    };
+    actions.push({ label: 'Logout', raised: true, icon: 'lock', onClick: () => this.getLogout(), accent: true });
+  }
+
   getLogout() {
     this.props.getLogout();
   }
 
+  toggleNavigation = () => {
+    if (this.state.navigationClassName) {
+      this.setState({ navigationClassName: null });
+    } else {
+      this.setState({ navigationClassName: 'disabled' });
+    }
+  }
+
   render() {
-    actions.push({ label: 'Logout', raised: true, icon: 'lock', onClick: () => this.getLogout(), accent: true });
     return (
-      <AppBar title="MyLibrary" leftIcon="menu" onLeftIconClick={this.props.onLeftIconClick}>
-        <Navigation type="horizontal" actions={actions} />
+      <AppBar
+        title="MyLibrary"
+        leftIcon="menu"
+        onLeftIconClick={this.props.onLeftIconClick}
+        rightIcon="arrow_drop_down_circle"
+        onRightIconClick={this.toggleNavigation}
+        className="navbar-header"
+      >
+        <Navigation
+          type="horizontal"
+          actions={actions}
+          className={`navigation ${this.state.navigationClassName}`}
+        />
       </AppBar>
     );
   }

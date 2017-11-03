@@ -38,7 +38,7 @@ const isAdmin = Storage.get('is_admin') > 0;
 const AuthAdminRouter = (props) => (
   isAdmin ? (
     <div>
-      <div>
+      <div className="page-admin">
         <Switch>
           <Route exact path={props.match.path} component={AdminPublications} />
           <Route exact path={`${props.match.path}/publications`} component={AdminPublications} />

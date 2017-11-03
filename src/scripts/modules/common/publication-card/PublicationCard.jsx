@@ -7,26 +7,29 @@ import { Card, CardMedia, CardTitle, CardActions } from 'react-toolbox/lib/card'
 import IconButton from 'react-toolbox/lib/button/IconButton';
 
 const publicationCardStyle = {
-  width: '350px'
+  width: '350px',
+  maxWidth: '100%'
 };
 
 const PublicationCard = (props) => (
-  <Card style={publicationCardStyle}>
-    <CardTitle
-      title={props.publication.title}
-      subtitle={props.publication.writers}
-    />
-    <Link to={`${config.homeUrl}publications/${props.publication.publication_id}`}>
-      <CardMedia
-        aspectRatio="wide"
-        image={`${config.homeUrl}static/img/cover/${props.publication.publication_id}.jpg`}
+  <div className="publication-card" style={{ maxWidth: '100%' }}>
+    <Card style={publicationCardStyle}>
+      <CardTitle
+        title={props.publication.title}
+        subtitle={props.publication.writers}
       />
-    </Link>
-    <CardActions>
-      <IconButton icon="add" primary />
-      <IconButton icon="favorite" accent />
-    </CardActions>
-  </Card>
+      <Link to={`${config.homeUrl}publications/${props.publication.publication_id}`}>
+        <CardMedia
+          aspectRatio="wide"
+          image={`${config.homeUrl}static/img/cover/${props.publication.publication_id}.jpg`}
+        />
+      </Link>
+      <CardActions>
+        <IconButton icon="add" primary />
+        <IconButton icon="favorite" accent />
+      </CardActions>
+    </Card>
+  </div>
 );
 
 PublicationCard.propTypes = {
