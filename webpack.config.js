@@ -50,17 +50,17 @@ let rules = [
     ],
     use: extractCSS.extract({
       fallback: "style-loader",
-      use: [{
-        loader: "css-loader",
-        options: {
-          minimize: isProd,
-          sourceMap: true,
-          importLoaders: 1,
-          localIdentName: "[name]--[local]--[hash:base64:8]"
-        }
-      },
-      "sass-loader",
-      "postcss-loader"
+      use: [
+        {
+          loader: "css-loader",
+          options: {
+            minimize: isProd,
+            sourceMap: true,
+            importLoaders: 1,
+            localIdentName: "[name]--[local]--[hash:base64:8]"
+          }
+        },
+        "sass-loader"
       ]
     })
   },
