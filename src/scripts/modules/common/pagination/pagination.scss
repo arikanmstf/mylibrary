@@ -8,15 +8,21 @@
     justify-content: center;
 
     a {
+      opacity: .7;
       list-style: none;
       padding: 6px 10px;
-      cursor: pointer;
       border-radius: 3px;
+      text-decoration: none;
+      cursor: pointer;
+      color: $colorPrimary;
 
       &.active {
-        background: $activePagination;
+        background: $colorPrimary;
         color: $white;
-        padding: 6px 12px;
+        padding: 6px 15px;
+      }
+      &:not(.active):visited {
+        color: $colorPrimary;
       }
 
       &:not(.active):hover {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Link from 'react-toolbox/lib/link/Link';
+
 import { PAGINATION } from 'common/Config';
 import config from 'config';
 
@@ -17,7 +18,7 @@ export default class Pagination extends Component {
     const pageNo = parseInt(this.props.pageNo, 10);
 
     if (totalPage !== pageNo) {
-      return (<Link to={`${config.homeUrl}${this.props.linkTo}/${pageNo + 1}`} onClick={this.props.onLiClick}>{`>`}</Link>);
+      return (<Link href={`${config.homeUrl}${this.props.linkTo}/${pageNo + 1}`} onClick={this.props.onLiClick} icon="chevron_right" />);
     }
     return null;
   }
@@ -27,7 +28,7 @@ export default class Pagination extends Component {
     const pageNo = parseInt(this.props.pageNo, 10);
 
     if (totalPage !== pageNo) {
-      return (<Link to={`${config.homeUrl}${this.props.linkTo}/${totalPage}`} onClick={this.props.onLiClick}>{`>>`}</Link>);
+      return (<Link href={`${config.homeUrl}${this.props.linkTo}/${totalPage}`} onClick={this.props.onLiClick} icon="last_page" />);
     }
     return null;
   }
@@ -35,7 +36,7 @@ export default class Pagination extends Component {
     const pageNo = parseInt(this.props.pageNo, 10);
 
     if (pageNo > 1) {
-      return (<Link to={`${config.homeUrl}${this.props.linkTo}/${pageNo - 1}`} onClick={this.props.onLiClick}>{`<`}</Link>);
+      return (<Link href={`${config.homeUrl}${this.props.linkTo}/${pageNo - 1}`} onClick={this.props.onLiClick} icon="chevron_left" />);
     }
     return null;
   }
@@ -43,7 +44,7 @@ export default class Pagination extends Component {
     const pageNo = parseInt(this.props.pageNo, 10);
 
     if (pageNo > 1) {
-      return (<Link to={`${config.homeUrl}${this.props.linkTo}/1`} onClick={this.props.onLiClick}>{`<<`}</Link>);
+      return (<Link href={`${config.homeUrl}${this.props.linkTo}/1`} onClick={this.props.onLiClick} icon="first_page" />);
     }
     return null;
   }
@@ -53,7 +54,7 @@ export default class Pagination extends Component {
     const i = index + 1;
     let className;
     if (i === pageNo) className = 'active';
-    return (<Link to={`${config.homeUrl}${this.props.linkTo}/${i}`} className={className} key={i} onClick={this.props.onLiClick}>{i}</Link>);
+    return (<Link href={`${config.homeUrl}${this.props.linkTo}/${i}`} className={className} key={i} onClick={this.props.onLiClick} label={i} />);
   }
 
   render() {

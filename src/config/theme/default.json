@@ -1,5 +1,6 @@
 {
   "customProperties": {
-    "input-padding": "10px"
+    "input-padding": "10px",
+    "color-primary": "#303f9f"
   }
 }
