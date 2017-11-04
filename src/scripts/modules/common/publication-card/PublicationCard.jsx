@@ -15,7 +15,8 @@ const publicationCardStyle = {
 };
 
 const PublicationCard = (props) => (
-  <div className="publication-card" style={{ maxWidth: '100%' }}>
+  props.publication &&
+  (<div className="publication-card" style={{ maxWidth: '100%' }}>
     <Card style={publicationCardStyle}>
       <CardTitle
         title={props.publication.title}
@@ -32,7 +33,7 @@ const PublicationCard = (props) => (
         <IconButton icon="favorite" accent />
       </CardActions>
     </Card>
-  </div>
+  </div>)
 );
 
 PublicationCard.propTypes = {

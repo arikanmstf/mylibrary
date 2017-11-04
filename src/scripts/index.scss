@@ -36,10 +36,27 @@ body {
   .main-container {
     position: relative;
     min-height: 100%;
+
+    a {
+      text-decoration: none;
+      opacity: .7;
+      transition: opacity .35s cubic-bezier(.4,0,.2,1);
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    .fleft {
+      float: left;
+    }
+    .fright {
+      float: right;
+    }
   }
 
-  .page-home, .page-admin {
-    padding-top: 20px;
+  .page-home {
+    padding: 10px 10px;
   }
 
   .loadingBaseLayer {

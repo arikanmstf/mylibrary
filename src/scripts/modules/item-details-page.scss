@@ -10,148 +10,51 @@ $btnPadding: 6px 12px;
   margin-top: 20px;
   padding: 10px;
 
-  .content-container {
-    background: $white;
-  }
-  &.publication-details {
-    .item-details-container {
-      background: url('~/static/img/pattern/pattern27.png');
-    }
-  }
-
   .item-details-container {
+    display: flex;
+    @media screen and (max-width: $bpXss) {
+      display: inline-block;
+    }
 
-    .item-info {
-      overflow: hidden;
+    .image-container {
+      width: 30%;
+      padding: 10px;
 
-      &.image-container {
-        padding: 10px;
-      }
-
-      .item-title {
-        font-size: $bigFontSize;
-        text-align: left;
-        border-bottom: 1px solid $gray;
-
-        .input-title {
-          width: 100%;
-        }
-      }
-      .item-buttons {
-        padding: 10px;
-
-        button {
-          margin-left: 10px;
-
-          i {
-            margin-left: 4px
-          }
-        }
-      }
-
-      .item-small-title {
-        font-size: $smallFontSize;
-        text-align: left;
-
-        .comma-list {
-          cursor: pointer;
-          text-decoration: underline;
-        }
-      }
-
-      .item-light-title {
-        color: $lightGray;
-
-        a {
-          color: $lightGray;
-        }
-      }
-
-      .item-table {
-
-        .table-hover {
-          tr:hover {
-            background-color: $lightYellow;
-          }
-        }
-        td{
-          padding-left: 0px;
-        }
-      }
-
-      .item-lists-container {
-
-        display: flex;
-        justify-content: left;
-        flex-wrap: wrap;
-
-        .item-lists {
-          padding-right: 30px;
-          padding-left: 0px;
-          .lists-of-publication {
-            .list {
-              padding-left: 0px;
-              padding-right: 0px;
-            }
-          }
-        }
-      }
-
-      .btn {
-        padding: $btnPadding;
-      }
-
-      .btn-search {
-        width: 30px;
-        padding: 0px 0px;
-        color: $white;
-
-        &:hover {
-          background-color: $lightGray;
-        }
-      }
-
-      .right {
-        float: right;
-      }
-
-      .item-description {
-
-        textarea {
-          width: 100%;
-          height: 300px;
-        }
+      @media screen and (max-width: $bpXss) {
+        width: 100%;
+        padding: 0;
       }
 
       .item-image {
         width: 100%;
       }
-      .input-upload {
-        .upload-container {
-          & > div {
-            width: 100% !important;
-          }
-        }
+    }
+    .content-container {
+      width: 70%;
+      position: relative;
+      padding-bottom: 3rem;
+
+      @media screen and (max-width: $bpXss) {
+        width: 100%;
       }
 
-      .item-search-results {
-        clear: both;
+      .item-actions {
+        position: absolute;
+        bottom: 0px;
+      }
 
-        ul {
-          padding: 0px;
-        }
-        li {
-          list-style: none;
-          padding: 5px 0px;
-          border-bottom: 1px solid $lightGray;
-          cursor: pointer;
-          font-size: $mediumFontSize;
+      .item-light-title {
+        color: $lightBlack;
 
-          &:hover {
-            background-color: $lightGray;
-          }
+        a {
+          justify-content: left;
+          color: $lightBlack;
         }
       }
     }
+  }
+
+  .table-container {
+    margin-top: 10px;
   }
 }

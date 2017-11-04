@@ -25,8 +25,8 @@ class ModalComponent extends Component {
         <p>{this.props.message}</p>
         {this.props.onConfirm ?
           <div>
-            <Button onClick={this.props.closeModal} label="CANCEL" raised danger accent />
-            <Button style={floatRight} onClick={this.onConfirm} label="CONFIRM" raised primary />
+            <Button className="fleft" onClick={this.props.closeModal} label="CANCEL" raised accent />
+            <Button className="fright" onClick={this.onConfirm} label="CONFIRM" raised primary />
           </div> :
           <Button onClick={this.props.closeModal} label="OK" raised primary />}
       </Dialog>

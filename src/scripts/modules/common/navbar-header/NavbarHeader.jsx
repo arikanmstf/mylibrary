@@ -24,7 +24,7 @@ class NavbarHeader extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      navigationClassName: null
+      navigationClassName: 'disabled'
     };
     actions.push({ label: 'Logout', raised: true, icon: 'lock', onClick: () => this.getLogout(), accent: true });
   }

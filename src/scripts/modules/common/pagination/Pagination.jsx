@@ -54,7 +54,8 @@ export default class Pagination extends Component {
     const i = index + 1;
     let className;
     if (i === pageNo) className = 'active';
-    return (<Link href={`${config.homeUrl}${this.props.linkTo}/${i}`} className={className} key={i} onClick={this.props.onLiClick} label={i} />);
+    const label = `${i}`;
+    return (<Link href={`${config.homeUrl}${this.props.linkTo}/${i}`} className={className} key={i} onClick={this.props.onLiClick} label={label} />);
   }
 
   render() {

@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import config from 'config';
 
+import Card from 'react-toolbox/lib/card/Card';
+import CardTitle from 'react-toolbox/lib/card/CardTitle';
+import CardActions from 'react-toolbox/lib/card/CardActions';
+import CardText from 'react-toolbox/lib/card/CardText';
+import IconButton from 'react-toolbox/lib/button/IconButton';
+import Link from 'react-toolbox/lib/link/Link';
+import Table from 'react-toolbox/lib/table/Table';
+import TableRow from 'react-toolbox/lib/table/TableRow';
+import TableCell from 'react-toolbox/lib/table/TableCell';
+import Button from 'react-toolbox/lib/button/Button';
+
 import ListsOfPublicationEdit from 'modules/common/lists-of-publication/ListsOfPublicationEdit';
 import TagsOfPublication from 'modules/common/tags-of-publication/TagsOfPublication';
-import { commaListItems } from 'common/Helpers';
 import { API } from 'common/Config';
 
 class PublicationDetailsComponent extends Component {
@@ -42,82 +51,67 @@ class PublicationDetailsComponent extends Component {
 
   render() {
     const publication = this.props.publication;
-    const linkStyle = { color: '#AAAAAA' };
     return publication && (
-      <div className="item-details-page publication-details">
+      <div className="item-details-page">
         <div className="item-details-container">
-          <div className="  item-info image-container">
+          <div className="image-container">
             <img
               alt="cover img"
               className="item-image"
               src={`${config.homeUrl}static/img/cover/${publication.publication_id}.jpg`}
             />
           </div>
-          <div className="  item-info content-container">
-            <div className="item-title">
-              <span>{ publication.title }</span>
-            </div>
-            <div className="item-small-title">
-              { commaListItems(publication.writers, publication.writer_ids, 'writers') }
-            </div>
-            <div className="item-light-title">
-              <span><Link style={linkStyle} to={`${config.homeUrl}publishers/${publication.publisher_id}`}>{publication.publisher_name}</Link></span>
-            </div>
-            <p className="item-description">
-              { publication.description }
-            </p>
-            <div className="item-buttons">
+          <Card className="content-container">
+            <CardTitle
+              title={this.props.publication.title}
+              subtitle={this.props.publication.writers}
+            />
+            <CardText>
+              <div className="item-light-title">
+                <span>
+                  <Link href={`${config.homeUrl}publishers/${publication.publisher_id}`} label={publication.publisher_name} />
+                </span>
+              </div>
+            </CardText>
+            <CardText>{this.props.publication.description}</CardText>
+            <CardText><TagsOfPublication tags={publication.tags} /></CardText>
+            <CardActions className="item-actions">
+              <IconButton icon="add" primary />
+              <IconButton icon="favorite" accent />
               { publication.can_download && (publication.file_exists || publication.download_url) ?
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <IconButton
+                  icon="file_download"
+                  primary
                   href={publication.download_url ?
                   `${publication.download_url}` :
                   `${API.downloadFile}?publication_id=${publication.publication_id}`}
-                >
-                  <span>Download</span>
-                  <i className="glyphicon glyphicon-download-alt" />
-                </a> : null }
-            </div>
-            <div className="item-table">
-              <table className="table table-responsive table-hover">
-                <tbody>
-                  { publication.isbn ? <tr>
-                    <td>{'ISBN'}</td>
-                    <td>{ publication.isbn }</td>
-                  </tr> : null }
-                  <tr>
-                    <td>{'Cover No'}</td>
-                    <td>{ publication.cover_no }</td>
-                  </tr>
-                  <tr>
-                    <td>{'Page Number'}</td>
-                    <td>{ publication.page_number }</td>
-                  </tr>
-                  <tr>
-                    <td>{'Added By'}</td>
-                    <td>{ publication.added_by }</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div className="item-lists-container">
-              <div className="item-lists">
-                <h5>Lists</h5>
-                <ListsOfPublicationEdit lists={publication.lists} onListsChange={this.onListsChange} />
-              </div>
-            </div>
-            <div className="item-lists-container">
-              <div className="item-lists">
-                <h5>Tags</h5>
-                <TagsOfPublication tags={publication.tags} />
-              </div>
-            </div>
-            <button className="btn btn-primary" onClick={(e) => this.saveForm(e)}>Save</button>
-          </div>
-          <div className="clearfix" />
-          <div />
+                /> : null }
+            </CardActions>
+          </Card>
         </div>
+        <Table selectable={false} className="table-container">
+          { publication.isbn ? <TableRow>
+            <TableCell><span>{'ISBN'}</span></TableCell>
+            <TableCell><span>{ publication.isbn }</span></TableCell>
+          </TableRow> : null }
+          <TableRow>
+            <TableCell><span>{'Cover No'}</span></TableCell>
+            <TableCell><span>{ publication.cover_no }</span></TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell><span>{'Page Number'}</span></TableCell>
+            <TableCell><span>{ publication.page_number }</span></TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell><span>{'Added By'}</span></TableCell>
+            <TableCell><span>{ publication.added_by }</span></TableCell>
+          </TableRow>
+        </Table>
+        <div className="item-lists">
+          <h5>Lists</h5>
+          <ListsOfPublicationEdit lists={publication.lists} onListsChange={this.onListsChange} />
+        </div>
+        <Button onClick={(e) => this.saveForm(e)} label="Save" primary raised />
       </div>
     );
   }
