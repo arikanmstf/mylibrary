@@ -11,8 +11,6 @@ class InputSearch extends Component {
     this.state = {
       search_title: ''
     };
-
-    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   handleSearchChange = (value) => {
@@ -22,12 +20,12 @@ class InputSearch extends Component {
     }
   };
 
-  handleKeyPress(event) {
+  handleKeyPress = (event) => {
     if (event.charCode === 13) {
       this.makeSearch();
     }
   }
-  makeSearch() {
+  makeSearch = () => {
     this.props.makeSearch(this.state.search_title);
   }
 
@@ -35,16 +33,16 @@ class InputSearch extends Component {
     return (
       <div className="input-search">
         <div className="custom-search-input">
-          <div className="input-group ">
+          <div className="input-group">
             <Input
-              onChange={(event) => this.handleSearchChange(event)}
+              onChange={this.handleSearchChange}
               onKeyPress={this.handleKeyPress}
               label={this.props.title}
               value={this.state.search_title}
               name="search_title"
             />
             <span className="input-group-btn">
-              <Button icon="search" onClick={() => this.makeSearch()} primary />
+              <Button icon="search" onClick={this.makeSearch} primary />
             </span>
           </div>
         </div>

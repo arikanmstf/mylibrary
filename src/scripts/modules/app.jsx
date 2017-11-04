@@ -13,8 +13,9 @@ import AuthUserRouter from 'routes/AuthUserRouter';
 import ModalContainer from 'modules/common/modal/ModalContainer';
 import Layout from 'react-toolbox/lib/layout/Layout';
 import Panel from 'react-toolbox/lib/layout/Panel';
-import SideNavigation from 'modules/common/side-navigation/SideNavigation';
+import SideNavigation from 'modules/common/side-navigation/SideNavigationContainer';
 import NavbarHeader from 'modules/common/navbar-header/NavbarHeader';
+import { openDrawer } from 'modules/common/side-navigation/SideNavigationActions';
 
 const isLoggedIn = Storage.get('login_key');
 
@@ -22,29 +23,23 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      drawerActive: false,
-      ...props
-    };
+    this.state = props;
   }
   componentWillReceiveProps(nextProps) {
     this.setState(nextProps);
-  }
-  openDrawerActive = () => {
-    this.setState({ drawerActive: true });
   }
 
   render() {
     return (
       <div className="main-container">
         <ModalContainer message="" />
-        { !this.state.contentLoaded ? <ModalLoading /> : null }
+        { !this.props.contentLoaded ? <ModalLoading /> : null }
         <Router>
           { isLoggedIn ?
             <Layout>
-              <SideNavigation drawerActive={this.state.drawerActive} />
+              <SideNavigation />
               <Panel>
-                <NavbarHeader onLeftIconClick={this.openDrawerActive} />
+                <NavbarHeader onLeftIconClick={this.props.openDrawer} />
                 <Switch>
                   <Route path={config.homeUrl} component={AuthUserRouter} />
                 </Switch>
@@ -62,7 +57,8 @@ class App extends Component {
   }
 }
 App.propTypes = {
-  contentLoaded: PropTypes.bool
+  contentLoaded: PropTypes.bool,
+  openDrawer: PropTypes.func.isRequired
 };
 App.defaultProps = {
   contentLoaded: true
@@ -70,8 +66,13 @@ App.defaultProps = {
 
 const mapStateToProps = (state) => {
   return {
-    contentLoaded: state.contentLoaded
+    contentLoaded: state.contentLoaded,
+    drawerActive: state.drawerActive
   };
 };
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => {
+  return { openDrawer: () => dispatch(openDrawer()) };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

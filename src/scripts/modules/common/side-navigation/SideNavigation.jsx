@@ -39,7 +39,7 @@ class SideNavigation extends Component {
   }
 
   closeDrawerActive = () => {
-    this.setState({ drawerActive: false });
+    this.props.closeDrawer();
   }
 
   render() {
@@ -53,11 +53,12 @@ class SideNavigation extends Component {
 }
 
 SideNavigation.propTypes = {
-  drawerActive: PropTypes.bool
+  drawerActive: PropTypes.bool,
+  closeDrawer: PropTypes.func.isRequired
 };
 
 SideNavigation.defaultProps = {
-  drawerActive: true
+  drawerActive: false
 };
 
 export default SideNavigation;

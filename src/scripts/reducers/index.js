@@ -20,6 +20,7 @@ import WriterReducer from './WriterReducer';
 import PublishersReducer from './PublishersReducer';
 import UserReducer from './UserReducer';
 import ContentReducer from './ContentReducer';
+import DrawerReducer from './DrawerReducer';
 import { ModalReducer, ModalConfirmReducer } from './ModalReducer';
 
 const rootReducer = combineReducers({
@@ -45,7 +46,8 @@ const rootReducer = combineReducers({
   contentLoaded: ContentReducer,
   modalMessage: ModalReducer,
   onConfirm: ModalConfirmReducer,
-  profile: ProfileReducer
+  profile: ProfileReducer,
+  drawerActive: DrawerReducer
 });
 
 export default rootReducer;
