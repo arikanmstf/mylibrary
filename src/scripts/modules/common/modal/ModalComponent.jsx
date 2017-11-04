@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import Dialog from 'react-toolbox/lib/dialog/Dialog';
+import Button from 'react-toolbox/lib/button/Button';
+
 class ModalComponent extends Component {
   constructor(props) {
     super(props);
@@ -8,26 +11,26 @@ class ModalComponent extends Component {
       message: props.message
     };
   }
-  onConfirm() {
+  onConfirm = () => {
     this.props.onConfirm();
     this.props.closeModal();
   }
   render() {
-    const floatRight = {
-      float: 'right'
-    };
-    return (this.props.message !== '') ?
-      (<div className="modal-component">
-        <div className="modal-popup">
-          <p className="modal-message">{this.props.message}</p>
-          {this.props.onConfirm ?
-            <div>
-              <button className="btn btn-danger" onClick={this.props.closeModal}>CANCEL</button>
-              <button className="btn btn-success right" style={floatRight} onClick={() => this.onConfirm()}>CONFIRM</button>
-            </div> :
-            <button className="btn" onClick={this.props.closeModal}>OK</button>}
-        </div>
-      </div>) : null;
+    return (
+      <Dialog
+        active={this.props.message !== ''}
+        onEscKeyDown={this.props.closeModal}
+        onOverlayClick={this.props.closeModal}
+      >
+        <p>{this.props.message}</p>
+        {this.props.onConfirm ?
+          <div>
+            <Button onClick={this.props.closeModal} label="CANCEL" raised danger accent />
+            <Button style={floatRight} onClick={this.onConfirm} label="CONFIRM" raised primary />
+          </div> :
+          <Button onClick={this.props.closeModal} label="OK" raised primary />}
+      </Dialog>
+    );
   }
 }
 ModalComponent.propTypes = {

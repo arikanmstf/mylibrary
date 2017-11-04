@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Input from 'react-toolbox/lib/input/Input';
 
 import ReactLogo from 'img/react-logo.png';
+import Button from 'react-toolbox/lib/button/Button';
 
 class LoginComponent extends Component {
 
@@ -16,7 +17,7 @@ class LoginComponent extends Component {
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
-  getLogin() {
+  getLogin = () => {
     this.props.getLogin(this.state);
   }
   handleKeyPress(event) {
@@ -42,6 +43,7 @@ class LoginComponent extends Component {
             type="text"
             name="username"
             label="Enter your username"
+            value={this.state.username}
             onChange={this.handleChange}
             onKeyPress={this.handleKeyPress}
           />
@@ -51,6 +53,7 @@ class LoginComponent extends Component {
             type="password"
             name="password"
             label="Enter your password"
+            value={this.state.password}
             onKeyPress={this.handleKeyPress}
             onChange={this.handleChange}
           />
@@ -63,9 +66,7 @@ class LoginComponent extends Component {
             Password: 123
           </div>
         </div>
-        <button className="btn btn-info btn-block" onClick={() => this.getLogin()} >
-          Login
-        </button>
+        <Button onClick={this.getLogin} label="Login" raised primary />
       </div>
     );
   }
