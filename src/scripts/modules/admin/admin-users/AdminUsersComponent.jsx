@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import config from 'config';
+
+import Button from 'react-toolbox/lib/button/Button';
+import Link from 'react-toolbox/lib/link/Link';
+import Table from 'react-toolbox/lib/table/Table';
+import TableHead from 'react-toolbox/lib/table/TableHead';
+import TableRow from 'react-toolbox/lib/table/TableRow';
+import TableCell from 'react-toolbox/lib/table/TableCell';
 
 import Pagination from 'modules/common/pagination/Pagination';
 import InputSearch from 'modules/common/input-search/InputSearch';
@@ -32,18 +38,14 @@ class AdminUsersComponent extends Component {
   renderList() {
     return this.props.users.map((user) => {
       return (
-        <tr key={user.user_id}>
-          <td>{user.user_id}</td>
-          <td>{user.display_name}</td>
-          <td>
-            <Link to={`${config.homeUrl}admin/users/edit/${user.user_id}`}>
-              <i className="glyphicon glyphicon-edit" />
-            </Link>
-            <Link to={`${config.homeUrl}admin/users/remove/${user.user_id}`}>
-              <i className="glyphicon glyphicon-remove" />
-            </Link>
-          </td>
-        </tr>
+        <TableRow key={user.user_id}>
+          <TableCell><span>{user.user_id}</span></TableCell>
+          <TableCell><span>{user.display_name}</span></TableCell>
+          <TableCell>
+            <Link href={`${config.homeUrl}admin/users/edit/${user.user_id}`} icon="edit" />
+            <Link href={`${config.homeUrl}admin/users/remove/${user.user_id}`} icon="delete" />
+          </TableCell>
+        </TableRow>
       );
     });
   }
@@ -58,20 +60,18 @@ class AdminUsersComponent extends Component {
           onLiClick={this.onLiClick}
           linkTo="admin/users/pages"
         />
-        <Link to={`${config.homeUrl}admin/users/add`} className="btn btn-success">Add User</Link>
+        <Button href={`${config.homeUrl}admin/users/add`} label="Add User" icon="add" raised primary />
         <InputSearch makeSearch={this.setSearchTitle} />
-        <table className="table table-responsive table-bordered table-hover admin-table">
-          <thead>
-            <tr>
-              <td>#</td>
-              <td>User Name</td>
-              <td>Options</td>
-            </tr>
-          </thead>
-          <tbody>
-            {this.renderList()}
-          </tbody>
-        </table>
+        <Table selectable={false}>
+          <TableHead>
+            <TableRow>
+              <TableCell><span>#</span></TableCell>
+              <TableCell><span>User Name</span></TableCell>
+              <TableCell><span>Options</span></TableCell>
+            </TableRow>
+          </TableHead>
+          {this.renderList()}
+        </Table>
       </div>
     );
   }
