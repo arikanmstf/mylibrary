@@ -31,6 +31,15 @@ const PublicationCard = (props) => (
       <CardActions>
         <IconButton icon="add" primary />
         <IconButton icon="favorite" accent />
+        { props.publication.can_download && (props.publication.file_exists || props.publication.download_url) ?
+          <IconButton
+            icon="file_download"
+            target="_blank"
+            primary
+            href={props.publication.download_url ?
+            `${props.publication.download_url}` :
+            `${API.downloadFile}?publication_id=${props.publication.publication_id}`}
+          /> : null }
       </CardActions>
     </Card>
   </div>)

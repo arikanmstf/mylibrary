@@ -81,6 +81,7 @@ class PublicationDetailsComponent extends Component {
               { publication.can_download && (publication.file_exists || publication.download_url) ?
                 <IconButton
                   icon="file_download"
+                  target="_blank"
                   primary
                   href={publication.download_url ?
                   `${publication.download_url}` :
