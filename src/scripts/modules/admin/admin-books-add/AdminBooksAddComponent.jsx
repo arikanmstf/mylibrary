@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import config from 'config';
 
+import Input from 'react-toolbox/lib/input/Input';
+import Button from 'react-toolbox/lib/button/Button';
+
 import TagsOfPublicationEdit from 'modules/common/tags-of-publication/TagsOfPublicationEdit';
 import InputSearch from 'modules/common/input-search/InputSearch';
 import { fromArrayToCommaEdit } from 'common/Helpers';
@@ -19,31 +22,22 @@ class AdminBooksAddComponent extends Component {
       title: '',
       tags: []
     };
-
-    this.onTagsChange = this.onTagsChange.bind(this);
-    this.onDescChange = this.onDescChange.bind(this);
-    this.onTitleChange = this.onTitleChange.bind(this);
-    this.searchWriters = this.searchWriters.bind(this);
-    this.searchBooks = this.searchBooks.bind(this);
-    this.addNewWriter = this.addNewWriter.bind(this);
-    this.removeWriter = this.removeWriter.bind(this);
-    this.saveForm = this.saveForm.bind(this);
   }
 
-  onTagsChange(tags) {
+  onTagsChange = (tags) => {
     this.tags = tags;
   }
-  onDescChange(event) {
-    this.setState({
-      description: event.target.value
-    });
-  }
-  onTitleChange(value) {
+  onTitleChange = (value) => {
     this.setState({
       title: value
     });
   }
-  addNewWriter(writer) {
+  handleChange = (value, ev) => {
+    this.setState({
+      [ev.target.name]: value
+    });
+  }
+  addNewWriter = (writer) => {
     const writers = this.state.writers;
     for (let i = 0; i < writers.length; i++) {
       if (writers[i].key === writer.writer_id) {
@@ -55,13 +49,13 @@ class AdminBooksAddComponent extends Component {
     this.props.resetGetWriterBySearch();
     return true;
   }
-  searchWriters(newValue) {
+  searchWriters = (newValue) => {
     this.props.getWriterBySearch(newValue);
   }
-  searchBooks(newValue) {
+  searchBooks = (newValue) => {
     this.props.getBookBySearch(newValue);
   }
-  saveForm() {
+  saveForm = () => {
     const form = {
       title: this.state.title,
       writers: this.state.writers,
@@ -72,7 +66,7 @@ class AdminBooksAddComponent extends Component {
     this.props.addBookDetails(form);
   }
 
-  removeWriter(w) {
+  removeWriter = (w) => {
     const writers = [];
     for (let i = 0; i < this.state.writers.length; i++) {
       if (this.state.writers[i].key !== w.key) {
@@ -122,9 +116,14 @@ class AdminBooksAddComponent extends Component {
                 </ul>
               </div>
             </div>
-            <p className="item-description">
-              <textarea onChange={this.onDescChange} value={this.state.description} />
-            </p>
+            <Input
+              type="text"
+              name="description"
+              label="Description"
+              value={this.state.description}
+              onChange={this.handleChange}
+              multiline
+            />
             <div className="item-lists-container">
               <div className="item-lists">
                 <h5>Tags</h5>
@@ -132,11 +131,8 @@ class AdminBooksAddComponent extends Component {
               </div>
             </div>
           </div>
-          <div className="clearfix" />
-          <div>
-            <button className="btn btn-primary" onClick={this.saveForm}>Save</button>
-          </div>
         </div>
+        <Button onClick={this.saveForm} label="Save Form" raised primary />
       </div>
     );
   }

@@ -1,32 +1,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import Input from 'react-toolbox/lib/input/Input';
+import Button from 'react-toolbox/lib/button/Button';
+
 class AdminWritersAddComponent extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
       title: '',
-      description: '',
-      ...props
+      description: ''
     };
+  }
 
-    this.onTitleChange = this.onTitleChange.bind(this);
-    this.onDescChange = this.onDescChange.bind(this);
-    this.saveForm = this.saveForm.bind(this);
-  }
-  onTitleChange(event) {
+  handleChange = (value, ev) => {
     this.setState({
-      title: event.target.value
-    });
-  }
-  onDescChange(event) {
-    this.setState({
-      description: event.target.value
+      [ev.target.name]: value
     });
   }
 
-  saveForm() {
+  saveForm = () => {
     const form = {
       title: this.state.title,
       description: this.state.description
@@ -40,17 +34,25 @@ class AdminWritersAddComponent extends Component {
         <div className="item-details-container">
           <div className="  item-info">
             <div className="item-title">
-              <input value={this.state.title} onChange={this.onTitleChange} />
+              <Input
+                type="text"
+                name="title"
+                label="Writer Name"
+                value={this.state.title}
+                onChange={this.handleChange}
+              />
             </div>
-            <p className="item-description">
-              <textarea onChange={this.onDescChange} value={this.state.description} />
-            </p>
-          </div>
-          <div className="clearfix" />
-          <div >
-            <button className="btn btn-primary" onClick={this.saveForm}>Save</button>
+            <Input
+              type="text"
+              name="description"
+              label="Writer Details"
+              value={this.state.description}
+              onChange={this.handleChange}
+              multiline
+            />
           </div>
         </div>
+        <Button onClick={this.saveForm} label="Save Form" raised primary />
       </div>
     );
   }

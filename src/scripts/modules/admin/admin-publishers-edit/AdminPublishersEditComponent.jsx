@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import Input from 'react-toolbox/lib/input/Input';
+import Button from 'react-toolbox/lib/button/Button';
+
 class AdminPublishersEditComponent extends Component {
 
   constructor(props) {
@@ -10,11 +13,6 @@ class AdminPublishersEditComponent extends Component {
       phone: '',
       adr: ''
     };
-
-    this.onTitleChange = this.onTitleChange.bind(this);
-    this.onPhoneChange = this.onPhoneChange.bind(this);
-    this.onAdrChange = this.onAdrChange.bind(this);
-    this.saveForm = this.saveForm.bind(this);
   }
 
   componentDidMount() {
@@ -28,23 +26,13 @@ class AdminPublishersEditComponent extends Component {
       adr: nextProps.publisher.address || ''
     });
   }
-  onTitleChange(event) {
+  handleChange = (value, ev) => {
     this.setState({
-      title: event.target.value
-    });
-  }
-  onPhoneChange(event) {
-    this.setState({
-      phone: event.target.value
-    });
-  }
-  onAdrChange(event) {
-    this.setState({
-      adr: event.target.value
+      [ev.target.name]: value
     });
   }
 
-  saveForm() {
+  saveForm = () => {
     const form = {
       publisher_id: this.props.publisher.publisher_id,
       title: this.state.title,
@@ -61,22 +49,35 @@ class AdminPublishersEditComponent extends Component {
         <div className="item-details-container">
           <div className="  item-info">
             <div className="item-title">
-              <input value={this.state.title} onChange={this.onTitleChange} />
+              <Input
+                type="text"
+                name="title"
+                value={this.state.title}
+                onChange={this.handleChange}
+                label="Publisher Name"
+              />
             </div>
             <div className="item-small-title">
-              <span>Phone No: </span>
-              <input value={this.state.phone} onChange={this.onPhoneChange} />
+              <Input
+                type="text"
+                name="phone"
+                value={this.state.phone}
+                onChange={this.handleChange}
+                label="Phone Number"
+              />
             </div>
             <div className="item-small-title">
-              <span>Address: </span>
-              <input value={this.state.adr} onChange={this.onAdrChange} />
+              <Input
+                type="text"
+                name="adr"
+                value={this.state.adr}
+                onChange={this.handleChange}
+                label="Address"
+              />
             </div>
-          </div>
-          <div className="clearfix" />
-          <div >
-            <button className="btn btn-primary" onClick={this.saveForm}>Save</button>
           </div>
         </div>
+        <Button onClick={this.saveForm} label="Save Form" raised primary />
       </div>
     );
   }

@@ -123,6 +123,7 @@ class AdminBooksEditComponent extends Component {
               <Input
                 type="text"
                 name="description"
+                label="Description"
                 value={this.state.description}
                 onChange={this.handleChange}
                 multiline

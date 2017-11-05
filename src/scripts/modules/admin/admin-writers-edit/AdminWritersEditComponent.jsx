@@ -10,7 +10,7 @@ class AdminWritersEditComponent extends Component {
     super(props);
     this.state = {
       title: '',
-      description: '',
+      description: ''
     };
   }
 
