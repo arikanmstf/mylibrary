@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import Input from 'react-toolbox/lib/input/Input';
+import Button from 'react-toolbox/lib/button/Button';
 
 import ReactLogo from 'img/react-logo.png';
-import Button from 'react-toolbox/lib/button/Button';
 
 class LoginComponent extends Component {
 

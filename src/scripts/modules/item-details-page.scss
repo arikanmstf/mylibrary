@@ -29,6 +29,7 @@ $btnPadding: 6px 12px;
         width: 100%;
       }
     }
+
     .content-container {
       width: 70%;
       position: relative;
@@ -51,6 +52,10 @@ $btnPadding: 6px 12px;
           color: $lightBlack;
         }
       }
+    }
+
+    .item-info {
+      width: 100%;
     }
   }
 

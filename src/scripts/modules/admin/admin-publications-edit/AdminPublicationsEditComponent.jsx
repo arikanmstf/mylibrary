@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import config from 'config';
 
+import Input from 'react-toolbox/lib/input/Input';
+import Button from 'react-toolbox/lib/button/Button';
+
 import InputSearch from 'modules/common/input-search/InputSearch';
 import InputUpload from 'modules/common/input-upload/InputUpload';
 import ListsOfPublicationEdit from 'modules/common/lists-of-publication/ListsOfPublicationEdit';
@@ -48,10 +51,8 @@ class AdminPublicationsEditComponent extends Component {
   onFileUpload(res) {
     this.setState({ file_url: res.response.filename });
   }
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
+  handleChange = (value, ev) => {
+    this.setState({ [ev.target.name]: value });
   }
   addNewBook(book) {
     this.setState({ ...book });
@@ -68,7 +69,7 @@ class AdminPublicationsEditComponent extends Component {
     this.props.getPublisherBySearch(newValue);
   }
 
-  saveForm() {
+  saveForm = () => {
     const form = {
       ...this.state,
       publication_id: this.props.publication.publication_id
@@ -103,10 +104,11 @@ class AdminPublicationsEditComponent extends Component {
               className="item-image"
               src={`${config.homeUrl}static/img/cover/${publication.publication_id}.jpg`}
             />
+            <Button onClick={this.saveForm} label="Save Form" raised primary />
           </div>
           <div className="  item-info">
             <div className="item-title">
-              {this.state.title || publication.title}
+              {`${publication.title} - ${publication.writers}`}
             </div>
             <div className="item-small-title">
               <InputSearch title="Search Books" makeSearch={(newValue) => this.searchBooks(newValue)} />
@@ -119,7 +121,7 @@ class AdminPublicationsEditComponent extends Component {
             </div>
             <div className="item-small-title">
               <span>
-                {this.state.publisher_name || publication.publisher_name}
+                {`Publisher: ${publication.publisher_name}`}
               </span>
               <InputSearch title="Search Publishers" makeSearch={(newValue) => this.searchPublishers(newValue)} />
               <div className="item-search-results">
@@ -128,57 +130,36 @@ class AdminPublicationsEditComponent extends Component {
                 </ul>
               </div>
             </div>
-            <div className="item-table">
-              <table className="table table-responsive">
-                <tbody>
-                  <tr>
-                    <td>Download Url</td>
-                    <td>
-                      <input
-                        name="download_url"
-                        value={this.state.download_url}
-                        onChange={(event) => this.handleChange(event)}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>ISBN</td>
-                    <td>
-                      <input
-                        name="isbn"
-                        value={this.state.isbn}
-                        onChange={(event) => this.handleChange(event)}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Cover No</td>
-                    <td>
-                      <input
-                        name="cover_no"
-                        type="number"
-                        value={this.state.cover_no}
-                        onChange={(event) => this.handleChange(event)}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Page Number</td>
-                    <td>
-                      <input
-                        name="page_number"
-                        type="number"
-                        value={this.state.page_number}
-                        onChange={(event) => this.handleChange(event)}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Added By</td>
-                    <td>{ publication.added_by }</td>
-                  </tr>
-                </tbody>
-              </table>
+            <div>
+              <Input
+                type="text"
+                name="download_url"
+                label="Download Url"
+                value={this.state.download_url}
+                onChange={this.handleChange}
+              />
+              <Input
+                type="text"
+                name="isbn"
+                label="ISBN"
+                value={this.state.isbn}
+                onChange={this.handleChange}
+              />
+              <Input
+                type="number"
+                name="cover_no"
+                label="Cover no"
+                value={this.state.cover_no}
+                onChange={this.handleChange}
+              />
+              <Input
+                type="number"
+                name="page_number"
+                label="Page Number"
+                value={this.state.page_number}
+                onChange={this.handleChange}
+              />
+              <span>Added by: { publication.added_by }</span>
             </div>
             <div className="item-file-container">
               <InputUpload
@@ -198,10 +179,6 @@ class AdminPublicationsEditComponent extends Component {
                 <ListsOfPublicationEdit lists={this.state.lists} onListsChange={(lists) => this.onListsChange(lists)} />
               </div>
             </div>
-          </div>
-          <div className="clearfix" />
-          <div >
-            <button className="btn btn-primary" onClick={() => this.saveForm()}>Save</button>
           </div>
         </div>
       </div>

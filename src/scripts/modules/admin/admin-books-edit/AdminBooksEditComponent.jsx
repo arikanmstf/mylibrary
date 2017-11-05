@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import Input from 'react-toolbox/lib/input/Input';
+import Button from 'react-toolbox/lib/button/Button';
+
 import TagsOfPublicationEdit from 'modules/common/tags-of-publication/TagsOfPublicationEdit';
 import InputSearch from 'modules/common/input-search/InputSearch';
 import { fromArrayToCommaEdit } from 'common/Helpers';
@@ -17,8 +20,6 @@ class AdminBooksEditComponent extends Component {
       title: '',
       tags: []
     };
-
-    this.removeWriter = this.removeWriter.bind(this);
   }
 
   componentDidMount() {
@@ -56,13 +57,13 @@ class AdminBooksEditComponent extends Component {
   searchWriters(newValue) {
     this.props.getWriterBySearch(newValue);
   }
-  handleChange(event) {
+  handleChange = (value, ev) => {
     this.setState({
-      [event.target.name]: event.target.value
+      [ev.target.name]: value
     });
   }
 
-  saveForm() {
+  saveForm = () => {
     const form = {
       book_id: this.props.book.book_id,
       title: this.state.title,
@@ -74,7 +75,7 @@ class AdminBooksEditComponent extends Component {
     this.props.updateBookDetails(form);
   }
 
-  removeWriter(w) {
+  removeWriter = (w) => {
     const writers = [];
     for (let i = 0; i < this.state.writers.length; i++) {
       if (this.state.writers[i].key !== w.key) {
@@ -97,14 +98,16 @@ class AdminBooksEditComponent extends Component {
   render() {
     const book = this.props.book;
     return book && (
-      <div className="item-details-page   ">
+      <div className="item-details-page">
         <div className="item-details-container">
-          <div className="  item-info">
+          <div className="item-info">
             <div className="item-title">
-              <input
+              <Input
+                type="text"
                 name="title"
                 value={this.state.title}
-                onChange={(event) => this.handleChange(event)}
+                label="Title"
+                onChange={this.handleChange}
               />
             </div>
             <div className="item-small-title">
@@ -117,14 +120,16 @@ class AdminBooksEditComponent extends Component {
               </div>
             </div>
             <p className="item-description">
-              <textarea
+              <Input
+                type="text"
                 name="description"
                 value={this.state.description}
-                onChange={(event) => this.handleChange(event)}
+                onChange={this.handleChange}
+                multiline
               />
             </p>
             <div className="item-lists-container">
-              <div className="item-lists  ">
+              <div className="item-lists">
                 <h5>Tags</h5>
                 <TagsOfPublicationEdit
                   tags={this.props.book.tags}
@@ -133,11 +138,8 @@ class AdminBooksEditComponent extends Component {
               </div>
             </div>
           </div>
-          <div className="clearfix" />
-          <div >
-            <button className="btn btn-primary" onClick={() => this.saveForm()}>Save</button>
-          </div>
         </div>
+        <Button onClick={this.saveForm} label="Save Form" raised primary />
       </div>
     );
   }

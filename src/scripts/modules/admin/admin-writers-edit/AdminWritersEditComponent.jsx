@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import Input from 'react-toolbox/lib/input/Input';
+import Button from 'react-toolbox/lib/button/Button';
+
 class AdminWritersEditComponent extends Component {
 
   constructor(props) {
@@ -9,10 +12,6 @@ class AdminWritersEditComponent extends Component {
       title: '',
       description: '',
     };
-
-    this.onTitleChange = this.onTitleChange.bind(this);
-    this.onDescChange = this.onDescChange.bind(this);
-    this.saveForm = this.saveForm.bind(this);
   }
 
   componentDidMount() {
@@ -25,18 +24,13 @@ class AdminWritersEditComponent extends Component {
       description: nextProps.writer.description
     });
   }
-  onTitleChange(event) {
+  handleChange = (value, ev) => {
     this.setState({
-      title: event.target.value
-    });
-  }
-  onDescChange(event) {
-    this.setState({
-      description: event.target.value
+      [ev.target.name]: value
     });
   }
 
-  saveForm() {
+  saveForm = () => {
     const form = {
       writer_id: this.props.writer.writer_id,
       title: this.state.title,
@@ -48,21 +42,28 @@ class AdminWritersEditComponent extends Component {
   render() {
     const writer = this.props.writer;
     return writer && (
-      <div className="item-details-page   ">
+      <div className="item-details-page">
         <div className="item-details-container">
-          <div className="  item-info">
+          <div className="item-info">
             <div className="item-title">
-              <input value={this.state.title} onChange={this.onTitleChange} />
+              <Input
+                type="text"
+                name="title"
+                label="Writer Name"
+                value={this.state.title}
+                onChange={this.handleChange}
+              />
             </div>
-            <p className="item-description">
-              <textarea onChange={this.onDescChange} value={this.state.description} />
-            </p>
-          </div>
-          <div className="clearfix" />
-          <div >
-            <button className="btn btn-primary" onClick={this.saveForm}>Save</button>
+            <Input
+              type="text"
+              name="description"
+              multiline
+              value={this.state.description}
+              onChange={this.handleChange}
+            />
           </div>
         </div>
+        <Button onClick={this.saveForm} label="Save Form" raised primary />
       </div>
     );
   }
