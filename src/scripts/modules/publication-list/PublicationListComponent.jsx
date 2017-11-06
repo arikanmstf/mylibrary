@@ -49,14 +49,14 @@ class PublicationListComponent extends Component {
       <div>
         <InputSearch makeSearch={this.searchPublications} />
         <Pagination
-          pageNo={parseInt(this.props.pageNo, 10)}
+          pageNo={+this.props.pageNo}
           total={this.props.total}
           onLiClick={this.onLiClick}
           linkTo="pages"
         />
         <div className="publication-list">{this.renderList()}</div>
         <Pagination
-          pageNo={parseInt(this.props.pageNo, 10)}
+          pageNo={+this.props.pageNo}
           total={this.props.total}
           onLiClick={this.onLiClick}
           linkTo="pages"

@@ -43,7 +43,7 @@ class TagListComponent extends Component {
     return (
       <div>
         <Pagination
-          pageNo={parseInt(this.props.pageNo, 10)}
+          pageNo={+this.props.pageNo}
           total={this.props.total}
           onLiClick={this.onLiClick}
           linkTo="pages"

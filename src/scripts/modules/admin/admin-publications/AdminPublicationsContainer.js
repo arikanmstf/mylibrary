@@ -6,7 +6,7 @@ import AdminPublicationsComponent from './AdminPublicationsComponent';
 const mapStateToProps = (state) => {
   return {
     publications: state.publications.list,
-    total: parseInt(state.publications.total, 10)
+    total: +state.publications.total
   };
 };
 

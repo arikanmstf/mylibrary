@@ -15,7 +15,7 @@ export default class Pagination extends Component {
   nextPage() {
     const recordsPerPage = PAGINATION.recordsPerPage;
     const totalPage = parseInt(this.props.total / recordsPerPage, 10) + 1;
-    const pageNo = parseInt(this.props.pageNo, 10);
+    const pageNo = +this.props.pageNo;
 
     if (totalPage !== pageNo) {
       return (<Link href={`${config.homeUrl}${this.props.linkTo}/${pageNo + 1}`} onClick={this.props.onLiClick} icon="chevron_right" />);
@@ -25,7 +25,7 @@ export default class Pagination extends Component {
   lastPage() {
     const recordsPerPage = PAGINATION.recordsPerPage;
     const totalPage = parseInt(this.props.total / recordsPerPage, 10) + 1;
-    const pageNo = parseInt(this.props.pageNo, 10);
+    const pageNo = +this.props.pageNo;
 
     if (totalPage !== pageNo) {
       return (<Link href={`${config.homeUrl}${this.props.linkTo}/${totalPage}`} onClick={this.props.onLiClick} icon="last_page" />);
@@ -33,7 +33,7 @@ export default class Pagination extends Component {
     return null;
   }
   prevPage() {
-    const pageNo = parseInt(this.props.pageNo, 10);
+    const pageNo = +this.props.pageNo;
 
     if (pageNo > 1) {
       return (<Link href={`${config.homeUrl}${this.props.linkTo}/${pageNo - 1}`} onClick={this.props.onLiClick} icon="chevron_left" />);
@@ -41,7 +41,7 @@ export default class Pagination extends Component {
     return null;
   }
   firstPage() {
-    const pageNo = parseInt(this.props.pageNo, 10);
+    const pageNo = +this.props.pageNo;
 
     if (pageNo > 1) {
       return (<Link href={`${config.homeUrl}${this.props.linkTo}/1`} onClick={this.props.onLiClick} icon="first_page" />);
@@ -50,7 +50,7 @@ export default class Pagination extends Component {
   }
 
   renderLi(index) {
-    const pageNo = parseInt(this.props.pageNo, 10);
+    const pageNo = +this.props.pageNo;
     const i = index + 1;
     let className;
     if (i === pageNo) className = 'active';
@@ -62,7 +62,7 @@ export default class Pagination extends Component {
     const recordsPerPage = PAGINATION.recordsPerPage;
     const totalPage = parseInt(this.props.total / recordsPerPage, 10) + 1;
     if (totalPage < 2 || !totalPage) return null;
-    const pageNo = parseInt(this.props.pageNo, 10);
+    const pageNo = +this.props.pageNo;
     const result = [];
     if (totalPage > 10) {
       for (let i = pageNo - 3; (i >= pageNo - 3) && (i < pageNo + 2); i++) {

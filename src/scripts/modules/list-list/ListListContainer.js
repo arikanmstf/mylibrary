@@ -6,7 +6,7 @@ import { getAllLists } from './ListListActions';
 const mapStateToProps = (state) => {
   return {
     lists: state.lists.list,
-    total: parseInt(state.tags.total, 10)
+    total: +state.tags.total
   };
 };
 

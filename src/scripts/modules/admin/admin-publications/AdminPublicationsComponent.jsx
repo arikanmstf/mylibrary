@@ -56,7 +56,7 @@ class AdminPublicationsComponent extends Component {
       <div>
         <h3>Admin Publications</h3>
         <Pagination
-          pageNo={parseInt(this.state.pageNo, 10)}
+          pageNo={+this.state.pageNo}
           total={this.props.total}
           onLiClick={this.onLiClick}
           linkTo="admin/publications/pages"

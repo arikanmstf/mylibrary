@@ -56,7 +56,7 @@ class AdminBooksComponent extends Component {
       <div>
         <h3>Admin Books</h3>
         <Pagination
-          pageNo={parseInt(this.props.match.params.pageNo, 10) || 1}
+          pageNo={+this.props.match.params.pageNo || 1}
           total={this.props.total}
           onLiClick={this.onLiClick}
           linkTo="admin/books/pages"

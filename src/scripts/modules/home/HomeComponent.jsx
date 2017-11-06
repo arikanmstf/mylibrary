@@ -8,7 +8,7 @@ class HomeComponent extends Component {
     super(props);
 
     this.state = {
-      pageNo: parseInt(props.match.params.pageNo, 10) || 1,
+      pageNo: +props.match.params.pageNo || 1,
       title: ''
     };
     this.setSearchTitle = this.setSearchTitle.bind(this);
