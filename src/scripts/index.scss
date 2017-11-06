@@ -28,6 +28,11 @@ body {
   @extend .calibri-font;
   margin-bottom: 50px;
 }
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 .main-content {
   position: relative;
   min-height: 100%;

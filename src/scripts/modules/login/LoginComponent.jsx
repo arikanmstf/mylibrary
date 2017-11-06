@@ -15,13 +15,12 @@ class LoginComponent extends Component {
       username: '',
       password: ''
     };
-    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   getLogin = () => {
     this.props.getLogin(this.state);
   }
-  handleKeyPress(event) {
+  handleKeyPress = (event) => {
     if (event.charCode === 13) {
       this.getLogin();
     }
