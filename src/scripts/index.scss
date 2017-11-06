@@ -1,10 +1,9 @@
-@import "~/src/assets/theme.css";
+@import "../assets/theme.css";
 
 @import "common/style/font.scss";
 @import "common/style/color.scss";
 @import "common/style/grid.scss";
 @import "common/style/footer.scss";
-@import "common/style/theme.scss";
 
 @import "modules/common/input-search/input-search.scss";
 @import "modules/common/modal/modal.scss";
