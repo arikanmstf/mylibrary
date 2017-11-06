@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import Button from 'react-toolbox/lib/button/Button';
+import Input from 'react-toolbox/lib/input/Input';
+
 class AdminUsersEditComponent extends Component {
 
   constructor(props) {
@@ -11,12 +14,6 @@ class AdminUsersEditComponent extends Component {
       display_name: '',
       login_name: ''
     };
-
-    this.onDispChange = this.onDispChange.bind(this);
-    this.onMailChange = this.onMailChange.bind(this);
-    this.onTypeChange = this.onTypeChange.bind(this);
-    this.onLoginChange = this.onLoginChange.bind(this);
-    this.saveForm = this.saveForm.bind(this);
   }
 
   componentDidMount() {
@@ -32,28 +29,14 @@ class AdminUsersEditComponent extends Component {
       user_type: nextProps.user.user_type
     });
   }
-  onDispChange(event) {
+
+  handleChange = (value, ev) => {
     this.setState({
-      display_name: event.target.value
-    });
-  }
-  onMailChange(event) {
-    this.setState({
-      email: event.target.value
-    });
-  }
-  onTypeChange(event) {
-    this.setState({
-      user_type: event.target.value
-    });
-  }
-  onLoginChange(event) {
-    this.setState({
-      login_name: event.target.value
+      [ev.target.name]: value
     });
   }
 
-  saveForm() {
+  saveForm = () => {
     if (this.state.type > 9) {
       return false;
     }
@@ -75,23 +58,44 @@ class AdminUsersEditComponent extends Component {
         <div className="item-details-container">
           <div className="  item-info">
             <div className="item-light-title">
-              <input value={this.state.login_name} onChange={this.onLoginChange} placeholder="Login name" />
+              <Input
+                type="text"
+                name="login_name"
+                label="Login Name"
+                value={this.state.login_name}
+                onChange={this.handleChange}
+              />
             </div>
             <div className="item-title">
-              <input value={this.state.display_name} onChange={this.onDispChange} placeholder="Display name" />
+              <Input
+                type="text"
+                name="display_name"
+                label="Display Name"
+                value={this.state.display_name}
+                onChange={this.handleChange}
+              />
             </div>
             <div className="item-title">
-              <input value={this.state.email} onChange={this.onMailChange} placeholder="Email" />
+              <Input
+                type="text"
+                name="email"
+                label="E-mail"
+                value={this.state.email}
+                onChange={this.handleChange}
+              />
             </div>
             <div className="item-title">
-              <input type="number" value={this.state.user_type} onChange={this.onTypeChange} placeholder="User type" />
+              <Input
+                type="number"
+                name="user_type"
+                label="User Type"
+                value={this.state.user_type}
+                onChange={this.handleChange}
+              />
             </div>
-          </div>
-          <div className="clearfix" />
-          <div >
-            <button className="btn btn-primary" onClick={this.saveForm}>Save</button>
           </div>
         </div>
+        <Button onClick={this.saveForm} label="Save Form" raised primary />
       </div>
     );
   }

@@ -1,30 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import Button from 'react-toolbox/lib/button/Button';
+import Input from 'react-toolbox/lib/input/Input';
+
 class AdminTagsAddComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      ...props
+      title: ''
     };
-
-    this.onTitleChange = this.onTitleChange.bind(this);
-    this.saveForm = this.saveForm.bind(this);
   }
-
-  onTitleChange(event) {
+  handleChange = (value, ev) => {
     this.setState({
-      title: event.target.value
-    });
-  }
-  onDescChange(event) {
-    this.setState({
-      description: event.target.value
+      [ev.target.name]: value
     });
   }
 
-  saveForm() {
+  saveForm = () => {
     const form = {
       title: this.state.title
     };
@@ -37,14 +30,17 @@ class AdminTagsAddComponent extends Component {
         <div className="item-details-container">
           <div className="  item-info">
             <div className="item-title">
-              <input value={this.state.title} onChange={this.onTitleChange} />
+              <Input
+                type="text"
+                name="title"
+                label="Title"
+                value={this.state.title}
+                onChange={this.handleChange}
+              />
             </div>
           </div>
-          <div className="clearfix" />
-          <div >
-            <button className="btn btn-primary" onClick={this.saveForm}>Save</button>
-          </div>
         </div>
+        <Button onClick={this.saveForm} label="Save Form" raised primary />
       </div>
     );
   }

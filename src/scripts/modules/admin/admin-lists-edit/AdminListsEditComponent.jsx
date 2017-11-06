@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import Button from 'react-toolbox/lib/button/Button';
+import Input from 'react-toolbox/lib/input/Input';
+import Checkbox from 'react-toolbox/lib/checkbox/Checkbox';
+
 class AdminListsEditComponent extends Component {
   constructor(props) {
     super(props);
@@ -8,10 +12,6 @@ class AdminListsEditComponent extends Component {
       title: '',
       is_public: false
     };
-
-    this.onTitleChange = this.onTitleChange.bind(this);
-    this.saveForm = this.saveForm.bind(this);
-    this.onPublicChange = this.onPublicChange.bind(this);
   }
 
   componentDidMount() {
@@ -24,19 +24,13 @@ class AdminListsEditComponent extends Component {
       is_public: nextProps.list.is_public > 0
     });
   }
-  onTitleChange(event) {
+  handleChange = (value, ev) => {
     this.setState({
-      title: event.target.value
-    });
-  }
-  onPublicChange() {
-    const is_public = !this.state.is_public; // eslint-disable-line camelcase
-    this.setState({
-      is_public
+      [ev.target.name]: value
     });
   }
 
-  saveForm() {
+  saveForm = () => {
     const form = {
       list_id: this.props.list.list_id,
       title: this.state.title,
@@ -51,18 +45,25 @@ class AdminListsEditComponent extends Component {
         <div className="item-details-container">
           <div className="  item-info">
             <div className="item-title">
-              <input value={this.state.title} onChange={this.onTitleChange} />
+              <Input
+                type="text"
+                name="title"
+                label="Title"
+                value={this.state.title}
+                onChange={this.handleChange}
+              />
             </div>
             <div className="item-title">
-              Public:
-              <input type="checkbox" checked={this.state.is_public} onChange={this.onPublicChange} />
+              <Checkbox
+                label="Public"
+                name="is_public"
+                checked={this.state.is_public}
+                onChange={this.handleChange}
+              />
             </div>
           </div>
-          <div className="clearfix" />
-          <div >
-            <button className="btn btn-primary" onClick={this.saveForm}>Save</button>
-          </div>
         </div>
+        <Button onClick={this.saveForm} label="Save Form" raised primary />
       </div>
     );
   }
