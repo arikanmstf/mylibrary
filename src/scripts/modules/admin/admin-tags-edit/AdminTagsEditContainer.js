@@ -2,19 +2,21 @@ import { connect } from 'react-redux';
 
 import { getTagDetails } from 'modules/tag-details/TagDetailsActions';
 import { updateTagDetails } from 'modules/admin/AdminActions';
-import AdminTagsEditComponent from './AdminTagsEditComponent';
+import ItemEditComponent from 'modules/common/item/edit/ItemEditComponent';
 
 const mapStateToProps = (state) => {
   return {
-    tag: state.tag
+    item: state.tag
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getTagDetails: (search) => dispatch(getTagDetails(search)),
-    updateTagDetails: (form) => dispatch(updateTagDetails(form))
+    getItemDetails: (search) => dispatch(getTagDetails(search)),
+    updateItemDetails: (form) => dispatch(updateTagDetails(form)),
+    itemId: 'tagId',
+    item_id: 'tag_id'
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdminTagsEditComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(ItemEditComponent);

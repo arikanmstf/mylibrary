@@ -4,12 +4,28 @@ import PropTypes from 'prop-types';
 import Button from 'react-toolbox/lib/button/Button';
 import Input from 'react-toolbox/lib/input/Input';
 
-class AdminListsAddComponent extends Component {
+class ItemEditComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: ''
     };
+  }
+
+  componentDidMount() {
+    this.props.getItemDetails(this.props.match.params[this.props.itemId]);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      title: nextProps.item.title
+    });
+  }
+
+  handleKeyPress = (event) => {
+    if (event.charCode === 13) {
+      this.saveForm();
+    }
   }
 
   handleChange = (value, ev) => {
@@ -20,16 +36,18 @@ class AdminListsAddComponent extends Component {
 
   saveForm = () => {
     const form = {
+      [this.props.item_id]: this.props.item[this.props.item_id],
       title: this.state.title
     };
-    this.props.addListDetails(form);
+    this.props.updateItemDetails(form);
   }
 
   render() {
-    return true && (
+    const item = this.props.item;
+    return item && (
       <div className="item-details-page   ">
         <div className="item-details-container">
-          <div className="  item-info">
+          <div className="item-info">
             <div className="item-title">
               <Input
                 type="text"
@@ -37,6 +55,7 @@ class AdminListsAddComponent extends Component {
                 label="Title"
                 value={this.state.title}
                 onChange={this.handleChange}
+                onKeyPress={this.handleKeyPress}
               />
             </div>
           </div>
@@ -46,8 +65,13 @@ class AdminListsAddComponent extends Component {
     );
   }
 }
-AdminListsAddComponent.propTypes = {
-  addListDetails: PropTypes.func.isRequired
+ItemEditComponent.propTypes = {
+  getItemDetails: PropTypes.func.isRequired,
+  updateItemDetails: PropTypes.func.isRequired,
+  item: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+  itemId: PropTypes.string.isRequired,
+  item_id: PropTypes.string.isRequired
 };
 
-export default AdminListsAddComponent;
+export default ItemEditComponent;

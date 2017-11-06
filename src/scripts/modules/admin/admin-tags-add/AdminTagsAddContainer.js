@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 
+import ItemAddComponent from 'modules/common/item/add/ItemAddComponent';
 import { addTagDetails } from '../AdminActions';
-import AdminTagsAddComponent from './AdminTagsAddComponent';
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addTagDetails: (form) => dispatch(addTagDetails(form))
+    addItemDetails: (form) => dispatch(addTagDetails(form))
   };
 };
 
-export default connect(0, mapDispatchToProps)(AdminTagsAddComponent);
+export default connect(0, mapDispatchToProps)(ItemAddComponent);

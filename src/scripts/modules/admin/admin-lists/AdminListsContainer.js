@@ -1,17 +1,22 @@
 import { connect } from 'react-redux';
 
 import { getAllLists } from 'modules/list-list/ListListActions';
-import AdminListsComponent from './AdminListsComponent';
+import ItemListComponent from 'modules/common/item/list/ItemListComponent';
 
 const mapStateToProps = (state) => {
   return {
-    lists: state.lists.list,
-    total: parseInt(state.lists.total, 10)
+    items: state.lists.list,
+    total: +state.lists.total
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return { getAllLists: (search) => dispatch(getAllLists(search)) };
+  return {
+    getAllItems: (search) => dispatch(getAllLists(search)),
+    item_id: 'list_id',
+    item_url: 'lists',
+    title: 'Manage Lists'
+  };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdminListsComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(ItemListComponent);

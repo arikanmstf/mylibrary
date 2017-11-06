@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import Button from 'react-toolbox/lib/button/Button';
+import Input from 'react-toolbox/lib/input/Input';
+
 class ProfileComponent extends Component {
 
   constructor(props) {
@@ -10,14 +13,8 @@ class ProfileComponent extends Component {
       email: '',
       display_name: '',
       login_name: '',
-      password: '',
-      ...props
+      password: ''
     };
-
-    this.onDispChange = this.onDispChange.bind(this);
-    this.onMailChange = this.onMailChange.bind(this);
-    this.onPassChange = this.onPassChange.bind(this);
-    this.saveForm = this.saveForm.bind(this);
   }
 
   componentDidMount() {
@@ -32,22 +29,13 @@ class ProfileComponent extends Component {
     });
   }
 
-  onDispChange(event) {
+  handleChange = (value, ev) => {
     this.setState({
-      display_name: event.target.value
+      [ev.target.name]: value
     });
   }
-  onMailChange(event) {
-    this.setState({
-      email: event.target.value
-    });
-  }
-  onPassChange(event) {
-    this.setState({
-      password: event.target.value
-    });
-  }
-  saveForm() {
+
+  saveForm = () => {
     const form = {
       user_id: this.props.profile.user_id,
       display_name: this.state.display_name,
@@ -68,20 +56,35 @@ class ProfileComponent extends Component {
               <span>{this.state.login_name}</span>
             </div>
             <div className="item-title">
-              <input className="input-title" type="text" onChange={this.onDispChange} placeholder={this.state.display_name} />
+              <Input
+                type="text"
+                name="display_name"
+                value={this.state.display_name}
+                label="Display Name"
+                onChange={this.handleChange}
+              />
             </div>
             <div className="item-title">
-              <input className="input-title" type="text" onChange={this.onMailChange} placeholder={this.state.email} />
+              <Input
+                type="text"
+                name="email"
+                value={this.state.email}
+                label="E-mail"
+                onChange={this.handleChange}
+              />
             </div>
             <div className="item-title">
-              <input className="input-title" type="Password" onChange={this.onPassChange} placeholder="New Password" />
+              <Input
+                type="password"
+                name="password"
+                value={this.state.password}
+                label="New Password"
+                onChange={this.handleChange}
+              />
             </div>
-          </div>
-          <div className="clearfix" />
-          <div >
-            <button className="btn btn-primary" onClick={this.saveForm}>Save</button>
           </div>
         </div>
+        <Button onClick={this.saveForm} label="Save Form" raised primary />
       </div>
     );
   }

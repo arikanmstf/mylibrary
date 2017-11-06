@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Button from 'react-toolbox/lib/button/Button';
 import Input from 'react-toolbox/lib/input/Input';
 
-class AdminTagsEditComponent extends Component {
+class ItemAddComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,30 +12,30 @@ class AdminTagsEditComponent extends Component {
     };
   }
 
-  componentDidMount() {
-    this.props.getTagDetails(this.props.match.params.tagId);
+  handleChange = (value, ev) => {
+    this.setState({
+      [ev.target.name]: value
+    });
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      title: nextProps.tag.title
-    });
+  handleKeyPress = (event) => {
+    if (event.charCode === 13) {
+      this.saveForm();
+    }
   }
 
   saveForm = () => {
     const form = {
-      tag_id: this.props.tag.tag_id,
       title: this.state.title
     };
-    this.props.updateTagDetails(form);
+    this.props.addItemDetails(form);
   }
 
   render() {
-    const tag = this.props.tag;
-    return tag && (
-      <div className="item-details-page   ">
+    return (
+      <div className="item-details-page">
         <div className="item-details-container">
-          <div className="  item-info">
+          <div className="item-info">
             <div className="item-title">
               <Input
                 type="text"
@@ -43,20 +43,17 @@ class AdminTagsEditComponent extends Component {
                 label="Title"
                 value={this.state.title}
                 onChange={this.handleChange}
+                onKeyPress={this.handleKeyPress}
               />
             </div>
           </div>
         </div>
         <Button onClick={this.saveForm} label="Save Form" raised primary />
-      </div>
-    );
+      </div>);
   }
 }
-AdminTagsEditComponent.propTypes = {
-  getTagDetails: PropTypes.func.isRequired,
-  updateTagDetails: PropTypes.func.isRequired,
-  tag: PropTypes.object.isRequired,
-  match: PropTypes.object.isRequired
+ItemAddComponent.propTypes = {
+  addItemDetails: PropTypes.func.isRequired,
 };
 
-export default AdminTagsEditComponent;
+export default ItemAddComponent;
