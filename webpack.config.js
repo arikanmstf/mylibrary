@@ -60,7 +60,12 @@ let rules = [
             localIdentName: "[name]--[local]--[hash:base64:8]"
           }
         },
-        "sass-loader"
+        {
+          loader: "sass-loader",
+          options: {
+            data: "$DIST_FOLDER: '" + (distFolder ? distFolder + '/' : '') + "';"
+          }
+        }
       ]
     })
   },
