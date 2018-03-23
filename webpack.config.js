@@ -63,7 +63,7 @@ let rules = [
         {
           loader: "sass-loader",
           options: {
-            data: "$DIST_FOLDER: '" + (distFolder ? distFolder + '/' : '') + "';"
+            data: "$DIST_FOLDER: '" + (isProd ? config.homeUrl.slice(1) : '') + "';"
           }
         }
       ]
