@@ -7,7 +7,7 @@
   "scripts": {
     "clean": "rm -rf ./dist/*",
     "toolbox": "react-toolbox-themr --config src/config/theme/default.json --javascript src/assets/theme --styles src/assets/theme",
-    "lint": "eslint --max-warnings 0 --ext .jsx,.js src/scripts ",
+    "lint": "eslint --max-warnings 0 --ext .jsx,.js src/main",
     "prepare": "npm run lint && npm run clean && npm run toolbox",
     "prod": "npm run prepare && webpack-dev-server --env=prod",
     "dev": "npm run toolbox && webpack-dev-server --env=dev",
@@ -34,7 +34,6 @@
     "extract-text-webpack-plugin": "3.0.0",
     "file-loader": "0.11.2",
     "html-webpack-plugin": "2.29.0",
-    "jquery": "2.2.1",
     "jsdom": "8.1.0",
     "mocha": "2.4.5",
     "node-sass": "4.5.3",
@@ -57,7 +56,7 @@
     "react-dropzone": "3.13.3",
     "react-redux": "5.0.5",
     "react-router": "4.1.1",
-    "react-toolbox": "2.0.0-beta.12",
+    "react-toolbox": "2.0.0-beta.13",
     "redux": "3.6.0",
     "redux-thunk": "2.2.0"
   }

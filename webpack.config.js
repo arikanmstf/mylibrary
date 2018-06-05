@@ -36,7 +36,7 @@ let rules = [
   {
     test: JS_JSX_PATTERN,
     include: [
-      path.resolve(__dirname, "src/scripts")
+      path.resolve(__dirname, "src/main")
     ],
     loader: "babel-loader",
     options: {
@@ -46,7 +46,7 @@ let rules = [
   {
     test: SCSS_PATTERN,
     include: [
-      path.resolve(__dirname, "src/scripts")
+      path.resolve(__dirname, "src/main")
     ],
     use: extractCSS.extract({
       fallback: "style-loader",
@@ -79,7 +79,7 @@ let rules = [
   {
     test: JS_JSX_PATTERN,
     include: [
-      path.resolve(__dirname, "src/scripts")
+      path.resolve(__dirname, "src/main")
     ],
     enforce: 'pre',
     loader: 'eslint-loader',
@@ -110,8 +110,8 @@ if (isProd) {
 
 module.exports = {
   entry: [
-    "./src/scripts/index.jsx",
-    "./src/scripts/index.scss"
+    "./src/main/index.jsx",
+    "./src/main/index.scss"
   ],
   output: {
     path: path.resolve(__dirname, distFolder),
@@ -124,7 +124,7 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx"],
     modules: [
-      path.resolve(__dirname, 'src/scripts'),
+      path.resolve(__dirname, 'src/main'),
       path.resolve(__dirname, 'src/assets'),
       path.resolve(__dirname, 'node_modules')
     ],
