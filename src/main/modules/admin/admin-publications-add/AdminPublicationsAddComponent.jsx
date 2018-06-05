@@ -4,7 +4,7 @@ import config from 'config';
 
 import InputSearch from 'common/layout/input-search/InputSearch';
 import InputUpload from 'common/layout/input-upload/InputUpload';
-import ListsOfPublicationEdit from 'common/layout/lists-of-publication/ListsOfPublicationEdit';
+import ListsOfPublicationEdit from 'common/layout/lists-of-publication/';
 
 class AdminPublicationsAddComponent extends Component {
 

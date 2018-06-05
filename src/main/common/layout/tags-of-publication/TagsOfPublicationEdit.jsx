@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 
 import InputSearch from 'common/layout/input-search/InputSearch';
 import { getTagBySearch, resetGetTagBySearch } from 'modules/tags/details/TagDetailsActions';
+import IconButton from 'react-toolbox/lib/button/IconButton';
+import Button from 'react-toolbox/lib/button/Button';
+import ListItem from 'common/layout/ListItem';
 
 class TagsOfPublicationEdit extends Component {
 
@@ -53,7 +56,15 @@ class TagsOfPublicationEdit extends Component {
     const tagSearch = this.props.tagSearch;
     return tagSearch && (this.props.tagSearch.map((tag) => {
       return (
-        <li key={tag.tag_id} onClick={() => this.addNewTag(tag)}>{tag.title}</li>
+        <ListItem key={tag.tag_id}>
+          <IconButton
+            icon="add"
+            onClick={() => this.addNewTag(tag)}
+            accent
+          >
+            {tag.title}
+          </IconButton>
+        </ListItem>
       );
     }));
   }
@@ -61,13 +72,12 @@ class TagsOfPublicationEdit extends Component {
   renderTag() {
     return this.state.tags.map((tag) => {
       return (
-        <span
+        <Button
           onClick={() => this.removeTag(tag)}
           key={tag.tag_id}
-        >
-          {tag.title}
-          <i className="glyphicon glyphicon-remove" />
-        </span>
+          label={tag.title}
+          accent
+        />
       );
     });
   }
@@ -75,10 +85,10 @@ class TagsOfPublicationEdit extends Component {
   render() {
     const tags = this.state.tags;
     return tags ? (
-      <div className="lists-of-publication">
-        <div className="list-list">{this.renderTag()}</div>
+      <div>
+        <div>{this.renderTag()}</div>
         <InputSearch title="Search for tags" makeSearch={this.searchTags} />
-        <div className="item-search-results">
+        <div>
           <ul>
             {this.renderSearchTag()}
           </ul>

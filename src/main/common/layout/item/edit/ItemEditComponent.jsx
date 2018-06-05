@@ -45,7 +45,7 @@ class ItemEditComponent extends Component {
   render() {
     const item = this.props.item;
     return item && (
-      <div className="item-details-page   ">
+      <div>
         <div className="item-details-container">
           <div className="item-info">
             <div className="item-title">

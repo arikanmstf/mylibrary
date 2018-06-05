@@ -66,16 +66,14 @@ class InputUpload extends Component {
 
   render() {
     return (
-      <div className="input-upload">
-        <div className="upload-container">
-          <Dropzone
-            multiple={false}
-            accept={this.props.accept}
-            onDrop={(e, f) => this.onDropFile(e, f)}
-          >
-            {this.renderUploadState()}
-          </Dropzone>
-        </div>
+      <div>
+        <Dropzone
+          multiple={false}
+          accept={this.props.accept}
+          onDrop={(e, f) => this.onDropFile(e, f)}
+        >
+          {this.renderUploadState()}
+        </Dropzone>
       </div>
     );
   }

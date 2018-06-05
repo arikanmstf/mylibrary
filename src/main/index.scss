@@ -9,16 +9,11 @@
 @import "common/style/grid.scss";
 @import "common/style/footer.scss";
 
-@import "common/layout/input-search/input-search.scss";
-@import "common/layout/modal/modal.scss";
 @import "common/layout/navbar-header/navbar-header.scss";
 @import "common/layout/pagination/pagination.scss";
-@import "common/layout/lists-of-publication/lists-of-publication.scss";
 
 @import "modules/admin/admin-page.scss";
 @import "modules/login/login-page.scss";
-@import "modules/lists/list/list-list.scss";
-@import "modules/publications/list/publication-list.scss";
 @import "modules/tags/list/tag-list.scss";
 @import "modules/item-details-page.scss";
 
@@ -69,24 +64,5 @@ html, body {
 
   .page-home {
     padding: 10px 10px;
-  }
-
-  .loadingBaseLayer {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(88,88,88,0.8);
-    z-index: 100000;
-  }
-  .loadingSpinnerContainer {
-      position: fixed;
-      width: 100%;
-      text-align: center;
-      top: 50%;
-      left: 0px;
-      z-index: 100001;
-
   }
 }

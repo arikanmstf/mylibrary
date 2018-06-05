@@ -8,11 +8,11 @@
     "clean": "rm -rf ./dist/*",
     "toolbox": "react-toolbox-themr --config src/config/theme/default.json --javascript src/assets/theme --styles src/assets/theme",
     "lint": "eslint --max-warnings 0 --ext .jsx,.js src/main",
-    "prepare": "npm run lint && npm run clean && npm run toolbox",
-    "prod": "npm run prepare && webpack-dev-server --env=prod",
+    "prepare-run": "npm run lint && npm run clean && npm run toolbox",
+    "prod": "npm run prepare-run && webpack-dev-server --env=prod",
     "dev": "npm run toolbox && webpack-dev-server --env=dev",
-    "dist:prod": "npm run prepare && webpack -p --env=prod",
-    "dist:dev": "npm run prepare && webpack --env=dev"
+    "dist:prod": "npm run prepare-run && webpack -p --env=prod",
+    "dist:dev": "npm run prepare-run && webpack --env=dev"
   },
   "author": "Mustafa Arikan",
   "license": "MIT",
@@ -49,7 +49,7 @@
   "dependencies": {
     "axios": "0.16.1",
     "babel-preset-stage-1": "6.1.18",
-    "prop-types": "15.5.10",
+    "prop-types": "15.6.0",
     "qs": "6.4.0",
     "react": "15.6.1",
     "react-dom": "15.6.1",
@@ -58,6 +58,7 @@
     "react-router": "4.1.1",
     "react-toolbox": "2.0.0-beta.13",
     "redux": "3.6.0",
-    "redux-thunk": "2.2.0"
+    "redux-thunk": "2.2.0",
+    "styled-components": "^3.3.2"
   }
 }

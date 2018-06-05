@@ -13,7 +13,7 @@ import TableRow from 'react-toolbox/lib/table/TableRow';
 import TableCell from 'react-toolbox/lib/table/TableCell';
 import Button from 'react-toolbox/lib/button/Button';
 
-import ListsOfPublicationEdit from 'common/layout/lists-of-publication/ListsOfPublicationEdit';
+import ListsOfPublicationEdit from 'common/layout/lists-of-publication/';
 import TagsOfPublication from 'common/layout/tags-of-publication/TagsOfPublication';
 import { API } from 'common/Config';
 

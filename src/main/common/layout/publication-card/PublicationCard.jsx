@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
+import styled from 'styled-components';
 import config from 'config';
 import Card from 'react-toolbox/lib/card/Card';
 import CardMedia from 'react-toolbox/lib/card/CardMedia';
@@ -14,9 +14,15 @@ const publicationCardStyle = {
   maxWidth: '100%'
 };
 
+const Wrapper = styled.div`
+margin-bottom: 30px;
+padding: 10px;
+maxWidth: '100%'
+`;
+
 const PublicationCard = (props) => (
   props.publication &&
-  (<div className="publication-card" style={{ maxWidth: '100%' }}>
+  (<Wrapper>
     <Card style={publicationCardStyle}>
       <CardTitle
         title={props.publication.title}
@@ -42,7 +48,7 @@ const PublicationCard = (props) => (
           /> : null }
       </CardActions>
     </Card>
-  </div>)
+  </Wrapper>)
 );
 
 PublicationCard.propTypes = {

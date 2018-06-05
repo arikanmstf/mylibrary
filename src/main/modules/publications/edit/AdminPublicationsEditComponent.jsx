@@ -7,7 +7,7 @@ import Button from 'react-toolbox/lib/button/Button';
 
 import InputSearch from 'common/layout/input-search/InputSearch';
 import InputUpload from 'common/layout/input-upload/InputUpload';
-import ListsOfPublicationEdit from 'common/layout/lists-of-publication/ListsOfPublicationEdit';
+import ListsOfPublicationEdit from 'common/layout/lists-of-publication/';
 
 class AdminPublicationsEditComponent extends Component {
 

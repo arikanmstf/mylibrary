@@ -9,7 +9,7 @@ class TagsOfPublication extends Component {
       return (
         <div key={tag.tag_id} >
           <Link href={`${config.homeUrl}tags/${tag.tag_id}`} >
-            <div className="list">
+            <div>
               {tag.title}
             </div>
           </Link>
@@ -21,7 +21,7 @@ class TagsOfPublication extends Component {
   render() {
     const tags = this.props.tags;
     return tags ? (
-      <div className="lists-of-publication">
+      <div>
         {this.renderTag()}
       </div>
     ) : null;

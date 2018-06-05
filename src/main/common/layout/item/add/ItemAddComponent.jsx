@@ -16,20 +16,20 @@ class ItemAddComponent extends Component {
     this.setState({
       [ev.target.name]: value
     });
-  }
+  };
 
   handleKeyPress = (event) => {
     if (event.charCode === 13) {
       this.saveForm();
     }
-  }
+  };
 
   saveForm = () => {
     const form = {
       title: this.state.title
     };
     this.props.addItemDetails(form);
-  }
+  };
 
   render() {
     return (

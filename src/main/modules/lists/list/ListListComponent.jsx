@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import config from 'config';
-
+import UnorderedList from 'common/layout/UnorderedList';
 import Pagination from 'common/layout/pagination/Pagination';
+
+const ListList = styled.li`
+border-bottom: 1px solid #666666;
+padding: 10px;
+background-color: white;
+border-bottom-right-radius: 5px;
+border-bottom-left-radius: 5px;
+padding: 8px;
+font-size: 16px;
+`;
 
 class ListListComponent extends Component {
   componentDidMount() {
@@ -24,17 +35,11 @@ class ListListComponent extends Component {
   renderList() {
     return this.props.lists.map((list) => {
       return (
-        <li key={list.list_id}>
-          <div className="list-meta">
-            <div className="list-info">
-              <div className="list-title">
-                <Link to={`${config.homeUrl}lists/${list.list_id}`} >
-                  {list.title}
-                </Link>
-              </div>
-            </div>
-          </div>
-        </li>
+        <ListList key={list.list_id}>
+          <Link to={`${config.homeUrl}lists/${list.list_id}`} >
+            {list.title}
+          </Link>
+        </ListList>
       );
     });
   }
@@ -48,9 +53,9 @@ class ListListComponent extends Component {
           onLiClick={this.onLiClick}
           linkTo="pages"
         />
-        <ul className="item-details-page list-list">
+        <UnorderedList>
           {this.renderList()}
-        </ul>
+        </UnorderedList>
       </div>
     );
   }

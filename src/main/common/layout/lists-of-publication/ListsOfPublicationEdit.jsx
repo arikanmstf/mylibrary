@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import IconButton from 'react-toolbox/lib/button/IconButton';
+import Button from 'react-toolbox/lib/button/Button';
 
 import InputSearch from 'common/layout/input-search/InputSearch';
-import { getListBySearch, resetGetListBySearch } from 'modules/lists/details/ListDetailsActions';
+import { Table } from 'common/layout';
+
+const DivList = styled.div`
+cursor: pointer;
+text-decoration: underline;
+`;
 
 class ListsOfPublicationEdit extends Component {
   constructor(props) {
@@ -61,9 +68,11 @@ class ListsOfPublicationEdit extends Component {
             />
           </td>
           <td>
-            <button className="btn btn-default" onClick={() => this.addNewList(list)}>
-              <i className="glyphicon glyphicon-plus" />
-            </button>
+            <IconButton
+              icon="add"
+              onClick={() => this.addNewList(list)}
+              accent
+            />
           </td>
         </tr>
       );
@@ -73,13 +82,12 @@ class ListsOfPublicationEdit extends Component {
   renderList() {
     return this.state.lists.map((list) => {
       return (
-        <span
+        <Button
           onClick={() => this.removeList(list)}
           key={list.list_id}
-        >
-          {list.title} ({list.order_no})
-          <i className="glyphicon glyphicon-remove" />
-        </span>
+          label={`${list.title} ${list.order_no || ''}`}
+          accent
+        />
       );
     });
   }
@@ -87,13 +95,13 @@ class ListsOfPublicationEdit extends Component {
   render() {
     const lists = this.state.lists;
     return lists ? (
-      <div className="lists-of-publication">
-        <div className="list-list">{this.renderList()}</div>
+      <div>
+        <DivList>{this.renderList()}</DivList>
         <InputSearch makeSearch={this.searchLists} />
-        <div className="item-search-results">
-          <table className="list-table">
+        <div>
+          <Table>
             <tbody>{this.renderSearchList()}</tbody>
-          </table>
+          </Table>
         </div>
       </div>
     ) : null;
@@ -110,17 +118,4 @@ ListsOfPublicationEdit.defaultProps = {
   lists: []
 };
 
-function mapStateToProps(state) {
-  return {
-    listSearch: state.listSearch
-  };
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getListBySearch: (search) => dispatch(getListBySearch(search)),
-    resetGetListBySearch: () => dispatch(resetGetListBySearch())
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ListsOfPublicationEdit);
+export default ListsOfPublicationEdit;

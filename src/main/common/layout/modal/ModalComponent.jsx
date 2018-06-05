@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import Dialog from 'react-toolbox/lib/dialog/Dialog';
 import Button from 'react-toolbox/lib/button/Button';
+
+import { Text } from 'common/layout';
 
 class ModalComponent extends Component {
   constructor(props) {
@@ -11,24 +12,28 @@ class ModalComponent extends Component {
       message: props.message
     };
   }
+
   onConfirm = () => {
     this.props.onConfirm();
     this.props.closeModal();
-  }
+  };
+
   render() {
+    const { message, closeModal, onConfirm } = this.props;
+
     return (
       <Dialog
-        active={this.props.message !== ''}
-        onEscKeyDown={this.props.closeModal}
-        onOverlayClick={this.props.closeModal}
+        active={message !== ''}
+        onEscKeyDown={closeModal}
+        onOverlayClick={closeModal}
       >
-        <p>{this.props.message}</p>
-        {this.props.onConfirm ?
+        <Text value={message} />
+        {onConfirm ?
           <div>
-            <Button className="fleft" onClick={this.props.closeModal} label="CANCEL" raised accent />
-            <Button className="fright" onClick={this.onConfirm} label="CONFIRM" raised primary />
+            <Button onClick={closeModal} label="CANCEL" raised accent />
+            <Button onClick={this.onConfirm} label="CONFIRM" raised primary />
           </div> :
-          <Button onClick={this.props.closeModal} label="OK" raised primary />}
+          <Button onClick={closeModal} label="OK" raised primary />}
       </Dialog>
     );
   }

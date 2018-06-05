@@ -1,8 +1,49 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import Input from 'react-toolbox/lib/input/Input';
 import Button from 'react-toolbox/lib/button/Button';
+import { CenteredDiv } from 'common/layout';
+
+const DivSearch = styled.div`
+padding: 3px;
+border: solid 1px #E4E4E4;
+border-radius: 6px;
+background-color: #fff;
+
+input {
+  border: 0;
+  box-shadow: none;
+}
+
+button {
+  border: 0;
+  border-left: solid 1px #ccc;
+  font-size: 24px;
+
+  &:focus {
+    outline: 0;
+  }
+   
+  &:hover {
+    border: 0;
+    box-shadow: none;
+    border-left: solid 1px #ccc;
+  }
+}
+`;
+
+const Span = styled.span`
+width: 1%;
+white-space: nowrap;
+vertical-align: middle;
+display: table-cell;
+`;
+
+const DivGroup = styled.div`
+display: table;
+`;
 
 class InputSearch extends Component {
   constructor(props) {
@@ -24,16 +65,17 @@ class InputSearch extends Component {
     if (event.charCode === 13) {
       this.makeSearch();
     }
-  }
+  };
+
   makeSearch = () => {
     this.props.makeSearch(this.state.search_title);
-  }
+  };
 
   render() {
     return (
-      <div className="input-search">
-        <div className="custom-search-input">
-          <div className="input-group">
+      <CenteredDiv>
+        <DivSearch>
+          <DivGroup>
             <Input
               onChange={this.handleSearchChange}
               onKeyPress={this.handleKeyPress}
@@ -41,12 +83,12 @@ class InputSearch extends Component {
               value={this.state.search_title}
               name="search_title"
             />
-            <span className="input-group-btn">
+            <Span>
               <Button icon="search" onClick={this.makeSearch} primary />
-            </span>
-          </div>
-        </div>
-      </div>
+            </Span>
+          </DivGroup>
+        </DivSearch>
+      </CenteredDiv>
     );
   }
 }
