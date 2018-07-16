@@ -1,0 +1,9 @@
+/**
+ * Actions Template By => create-new script
+ * @version 1.0.0
+ *
+ */
+
+export const mapStateToProps = (state) => ({});
+
+export const mapDispatchToProps = (dispatch) => ({});

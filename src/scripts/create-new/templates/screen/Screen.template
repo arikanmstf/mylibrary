@@ -1,0 +1,26 @@
+/**
+ * Screen Template By => create-new script
+ * @version 1.0.0
+ *
+ */
+
+// @flow
+import * as React from 'react';
+import T from 'helpers/i18n/Translate';
+import type { #{className}Props } from './#{className}Types';
+
+class #{className} extends React.Component<#{className}Props> {
+  render() {
+    const {
+      Text, View,
+    } = this.props;
+
+    return (
+      <View>
+        <Text>#{className} screen successfully created.</Text>
+      </View>
+    );
+  }
+}
+
+export default #{className};

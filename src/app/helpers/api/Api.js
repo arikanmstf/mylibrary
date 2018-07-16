@@ -13,6 +13,7 @@ class Api {
 
   static async writeResult(x) {
     const res = await Api.doubleAfter2Seconds(x);
+    // eslint-disable-next-line
     console.log(res);
   }
 }

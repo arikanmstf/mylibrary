@@ -1,0 +1,19 @@
+/**
+ * Web Screen Template By => create-new script
+ * @version 1.0.0
+ *
+ */
+
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
+import { connect as connectUi } from 'helpers/connect';
+import { Text, View } from 'ui';
+import #{className}Screen from './#{className}';
+import { mapStateToProps } from './#{screenName}Actions';
+
+const mapUiToProps = () => ({
+  Text, View,
+});
+
+export default connect(mapStateToProps)(connectUi(mapUiToProps)(withRouter(#{className}Screen)));
