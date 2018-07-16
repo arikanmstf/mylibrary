@@ -1,12 +1,32 @@
-# MyLibraryV2
+# MyLibrary
+React and React Native with Redux, Material UI and Flow.
 
-### Familiar with Npm?
+### Install
 
-```
-	> git clone git@github.com:arikanmstf/mylibrary.git
-	> cd mylibrary
-	> npm install
-	> npm run dev
-```
+* `yarn install`
+* `yarn flow-update`
 
-Demo available at: http://mustafaarikan.net/mylibrary/
+If you use Linux, for the first time you may need to run:
+
+* `sudo sysctl -w kern.maxfiles=5242880`
+* See [React Native reference](https://github.com/react-community/create-react-native-app) for more information.
+
+### Start Web
+
+* `yarn start`
+
+### Start Native
+
+* `yarn start-native`
+
+### Eslint
+
+* `yarn lint`
+
+### Flow
+
+* `yarn flow`
+
+### Test
+
+* `yarn test`
