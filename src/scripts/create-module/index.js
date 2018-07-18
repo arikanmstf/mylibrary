@@ -1,5 +1,5 @@
 /**
- * Create New - App file creator
+ * Create Module - App file creator
  * @author arikanmstf
  * @version 1.0.0
  *
@@ -34,11 +34,17 @@ function getScreenTemplates() {
     native: 'templates/screen/ScreenNativeContainer.template',
     web: 'templates/screen/ScreenWebContainer.template',
     types: 'templates/screen/ScreenTypes.template',
+    reducer: 'templates/screen/screenReducer.template',
+    index: 'templates/screen/index.template',
+    test: 'templates/screen/Screen.test.template',
   };
 }
 
 function screenPath(screenName) {
   return `src/app/screens/${screenName}`;
+}
+function testPath(screenName) {
+  return `test/app/screens/${screenName}`;
 }
 
 function validateScreen(screenName) {
@@ -66,7 +72,6 @@ function readAndCreateFile(path, name, search, replace) {
       }
     }
 
-    console.log(newTemplate);
     fs.writeFile(name, newTemplate);
   });
 }
@@ -91,14 +96,50 @@ function createScreenTypeName(path, screenName) {
   return `${path}/${firstLetterUpper(screenName)}Types.js`;
 }
 
-function createScreenFiles(path, screenName) {
+function createScreenReducerName(path, screenName) {
+  return `${path}/${firstLetterUpper(screenName)}Reducer.js`;
+}
+
+function createIndexName(path) {
+  return `${path}/index.js`;
+}
+
+function createTestName(path, screenName) {
+  return `${path}/${firstLetterUpper(screenName)}.test.js`;
+}
+
+function createScreenFiles(screenName) {
   const className = firstLetterUpper(screenName);
   const screenTemplates = getScreenTemplates();
+  const path = screenPath(screenName);
+  createPath(path);
+
   readAndCreateFile(screenTemplates.screen, createScreenName(path, screenName), 'className', className);
   readAndCreateFile(screenTemplates.actions, createScreenActionName(path, screenName));
   readAndCreateFile(screenTemplates.native, createScreenNativeName(path, screenName), ['className', 'screenName'], [className, screenName]);
   readAndCreateFile(screenTemplates.web, createScreenWebName(path, screenName), ['className', 'screenName'], [className, screenName]);
+  readAndCreateFile(screenTemplates.reducer, createScreenReducerName(path, screenName), 'screenName', screenName);
   readAndCreateFile(screenTemplates.types, createScreenTypeName(path, screenName), 'className', className);
+  readAndCreateFile(screenTemplates.index, createIndexName(path), 'className', className);
+
+  console.log('Do you also want to add test scripts ? ( y/n )');
+  prompt.get(['addTests'], (err, result) => {
+    const addTests = firstLetterLower(result.addTests);
+
+    if (addTests === 'y') {
+      const testP = testPath(screenName);
+      const testFileName = createTestName(testP, screenName);
+      const importFrom = `${path}/${className}`;
+      createPath(testP);
+
+      readAndCreateFile(
+        screenTemplates.test,
+        testFileName,
+        ['className', 'testFileName', 'importFrom'],
+        [className, testFileName, importFrom]
+      );
+    }
+  });
 }
 
 function createScreen() {
@@ -106,10 +147,7 @@ function createScreen() {
   prompt.get(['screenName'], (err, result) => {
     const screenName = firstLetterLower(result.screenName);
     validateScreen(screenName);
-
-    const path = screenPath(screenName);
-    createPath(path);
-    createScreenFiles(path, screenName);
+    createScreenFiles(screenName);
   });
 }
 
