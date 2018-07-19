@@ -19,14 +19,6 @@ function firstLetterLower(str) {
   return str.charAt(0).toLowerCase() + str.slice(1);
 }
 
-function createPath(pathName) {
-  fs.mkdirSync(pathName, undefined, (err) => {
-    if (err) {
-      throw new Error(err);
-    }
-  });
-}
-
 function getScreenTemplates() {
   return {
     screen: 'templates/screen/Screen.template',
@@ -40,9 +32,14 @@ function getScreenTemplates() {
   };
 }
 
-function screenPath(screenName) {
+function screenSrcPath(screenName) {
   return `src/app/screens/${screenName}`;
 }
+
+function screenPath(screenName) {
+  return `screens/${screenName}`;
+}
+
 function testPath(screenName) {
   return `test/app/screens/${screenName}`;
 }
@@ -111,8 +108,8 @@ function createTestName(path, screenName) {
 function createScreenFiles(screenName) {
   const className = firstLetterUpper(screenName);
   const screenTemplates = getScreenTemplates();
-  const path = screenPath(screenName);
-  createPath(path);
+  const path = screenSrcPath(screenName);
+  const srcPath = screenPath(screenName);
 
   readAndCreateFile(screenTemplates.screen, createScreenName(path, screenName), 'className', className);
   readAndCreateFile(screenTemplates.actions, createScreenActionName(path, screenName));
@@ -129,8 +126,7 @@ function createScreenFiles(screenName) {
     if (addTests === 'y') {
       const testP = testPath(screenName);
       const testFileName = createTestName(testP, screenName);
-      const importFrom = `${path}/${className}`;
-      createPath(testP);
+      const importFrom = `${srcPath}/${className}`;
 
       readAndCreateFile(
         screenTemplates.test,

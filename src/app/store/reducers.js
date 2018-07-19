@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import dummy from 'screens/dummyTwo/dummyReducer';
+import login from 'screens/login/loginReducer';
 
 const rootReducer = combineReducers({
-  dummy,
+  login,
 });
 
 export default rootReducer;

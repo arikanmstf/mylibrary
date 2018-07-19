@@ -1,11 +1,9 @@
 // @flow
 import * as React from 'react';
-import type { DummyProps } from 'screens/dummy/DummyTypes';
-import type { DummyProps as DummyPropsTwo } from 'screens/dummyTwo/DummyTypes';
+import type { LoginProps } from 'screens/login/LoginTypes';
 
 export type RoutesProps = {
-  DummyScreen: React.ComponentType<DummyProps>,
-  DummyScreenTwo: React.ComponentType<DummyPropsTwo>,
+  LoginScreen: React.ComponentType<LoginProps>,
   Router: Function,
   Switch: Function,
   Route: Function,

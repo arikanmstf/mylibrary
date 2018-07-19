@@ -27,7 +27,7 @@ describe('src/app/ui/Image/Native.js', () => {
   it('Render: props: { style }', () => {
     const newProps = {
       ...props,
-      style: 'dummyStyle',
+      style: {},
     };
 
     const wrapper = shallow(<Image {...newProps} />);

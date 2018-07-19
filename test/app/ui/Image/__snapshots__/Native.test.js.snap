@@ -125,7 +125,7 @@ ShallowWrapper {
         "uri": "dummyUri",
       }
     }
-    style="dummyStyle"
+    style={Object {}}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -142,7 +142,7 @@ ShallowWrapper {
       "source": Object {
         "uri": "dummyUri",
       },
-      "style": "dummyStyle",
+      "style": Object {},
     },
     "ref": null,
     "rendered": null,
@@ -157,7 +157,7 @@ ShallowWrapper {
         "source": Object {
           "uri": "dummyUri",
         },
-        "style": "dummyStyle",
+        "style": Object {},
       },
       "ref": null,
       "rendered": null,

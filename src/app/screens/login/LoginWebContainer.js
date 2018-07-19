@@ -9,11 +9,11 @@ import { withRouter } from 'react-router-dom';
 
 import { connect as connectUi } from 'helpers/connect';
 import { Text, View } from 'ui';
-import #{className}Screen from './#{className}';
-import { mapStateToProps, mapDispatchToProps } from './#{screenName}Actions';
+import LoginScreen from './Login';
+import { mapStateToProps, mapDispatchToProps } from './loginActions';
 
 const mapUiToProps = () => ({
   Text, View,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(withRouter(#{className}Screen)));
+export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(withRouter(LoginScreen)));

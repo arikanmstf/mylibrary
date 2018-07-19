@@ -1,20 +1,19 @@
+import a from 'axios';
+import config from 'config/api.json';
+
+const axios = a.create({
+  baseURL: config.baseUrl,
+  headers: { 'Access-Control-Allow-Origin': config.baseUrl },
+  withCredentials: true,
+});
+
 class Api {
-  static get() {
-    setTimeout();
+  static async get(url, params) {
+    return axios.get(url, { params });
   }
 
-  static async doubleAfter2Seconds(x) {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(x * 2);
-      }, 2000);
-    });
-  }
-
-  static async writeResult(x) {
-    const res = await Api.doubleAfter2Seconds(x);
-    // eslint-disable-next-line
-    console.log(res);
+  static async post(url, params) {
+    return axios.post(url, { params });
   }
 }
 

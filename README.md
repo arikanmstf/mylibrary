@@ -4,7 +4,6 @@ React and React Native with Redux, Material UI and Flow.
 ### Install
 
 * `yarn install`
-* `yarn flow-update`
 
 If you use Linux, for the first time you may need to run:
 
