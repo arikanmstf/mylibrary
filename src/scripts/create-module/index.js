@@ -31,20 +31,38 @@ function getScreenTemplates() {
     test: 'templates/screen/Screen.test.template',
   };
 }
+function getComponentTemplates() {
+  return {
+    native: 'templates/component/Native.template',
+    web: 'templates/component/Web.template',
+    types: 'templates/component/types.template',
+    test_native: 'templates/component/Native.test.template',
+    test_web: 'templates/component/Web.test.template',
+  };
+}
 
 function screenSrcPath(screenName) {
   return `src/app/screens/${screenName}`;
+}
+function componentSrcPath(componentName) {
+  return `src/app/ui/${componentName}`;
 }
 
 function screenPath(screenName) {
   return `screens/${screenName}`;
 }
+function componentPath(screenName) {
+  return `ui/${screenName}`;
+}
 
 function testPath(screenName) {
   return `test/app/screens/${screenName}`;
 }
+function testPathComponent(componentName) {
+  return `test/app/ui/${componentName}`;
+}
 
-function validateScreen(screenName) {
+function validateInput(screenName) {
   const regex = /[a-zA-Z]/;
   if (!regex.test(screenName)) {
     throw new Error('Invalid screen name');
@@ -76,6 +94,21 @@ function readAndCreateFile(path, name, search, replace) {
 function createScreenName(path, screenName) {
   return `${path}/${firstLetterUpper(screenName)}.js`;
 }
+function createComponentWebName(path) {
+  return `${path}/Web.js`;
+}
+function createComponentNativeName(path) {
+  return `${path}/Native.js`;
+}
+function createComponentTypesName(path) {
+  return `${path}/types.js`;
+}
+function createComponentWebTestName(path) {
+  return `${path}/Web.test.js`;
+}
+function createComponentNativeTestName(path) {
+  return `${path}/Native.test.js`;
+}
 
 function createScreenActionName(path, screenName) {
   return `${path}/${firstLetterLower(screenName)}Actions.js`;
@@ -105,6 +138,34 @@ function createTestName(path, screenName) {
   return `${path}/${firstLetterUpper(screenName)}.test.js`;
 }
 
+function createComponentFiles(input) {
+  const componentName = firstLetterUpper(input);
+  const componentTemplates = getComponentTemplates();
+  const path = componentSrcPath(componentName);
+  const srcPath = componentPath(componentName);
+  const importFromWeb = `${srcPath}/Web`;
+  const importFromNative = `${srcPath}/Native`;
+  const testP = testPathComponent(componentName);
+  const testFileNameNative = createComponentNativeTestName(testP);
+  const testFileNameWeb = createComponentWebTestName(testP);
+
+  readAndCreateFile(componentTemplates.native, createComponentNativeName(path), 'componentName', componentName);
+  readAndCreateFile(componentTemplates.web, createComponentWebName(path), 'componentName', componentName);
+  readAndCreateFile(componentTemplates.types, createComponentTypesName(path), 'componentName', componentName);
+  readAndCreateFile(
+    componentTemplates.test_native,
+    testFileNameNative,
+    ['componentName', 'testFileName', 'importFrom'],
+    [componentName, testFileNameNative, importFromNative]
+  );
+  readAndCreateFile(
+    componentTemplates.test_web,
+    testFileNameWeb,
+    ['componentName', 'testFileName', 'importFrom'],
+    [componentName, testFileNameWeb, importFromWeb]
+  );
+}
+
 function createScreenFiles(screenName) {
   const className = firstLetterUpper(screenName);
   const screenTemplates = getScreenTemplates();
@@ -118,43 +179,44 @@ function createScreenFiles(screenName) {
   readAndCreateFile(screenTemplates.reducer, createScreenReducerName(path, screenName), 'screenName', screenName);
   readAndCreateFile(screenTemplates.types, createScreenTypeName(path, screenName), 'className', className);
   readAndCreateFile(screenTemplates.index, createIndexName(path), 'className', className);
+  const testP = testPath(screenName);
+  const testFileName = createTestName(testP, screenName);
+  const importFrom = `${srcPath}/${className}`;
 
-  console.log('Do you also want to add test scripts ? ( y/n )');
-  prompt.get(['addTests'], (err, result) => {
-    const addTests = firstLetterLower(result.addTests);
-
-    if (addTests === 'y') {
-      const testP = testPath(screenName);
-      const testFileName = createTestName(testP, screenName);
-      const importFrom = `${srcPath}/${className}`;
-
-      readAndCreateFile(
-        screenTemplates.test,
-        testFileName,
-        ['className', 'testFileName', 'importFrom'],
-        [className, testFileName, importFrom]
-      );
-    }
-  });
+  readAndCreateFile(
+    screenTemplates.test,
+    testFileName,
+    ['className', 'testFileName', 'importFrom'],
+    [className, testFileName, importFrom]
+  );
 }
 
 function createScreen() {
   console.log('Enter screenName, example: bookDetail');
   prompt.get(['screenName'], (err, result) => {
     const screenName = firstLetterLower(result.screenName);
-    validateScreen(screenName);
+    validateInput(screenName);
     createScreenFiles(screenName);
+  });
+}
+function createComponent() {
+  console.log('Enter componentName, example: TextInput');
+  prompt.get(['componentName'], (err, result) => {
+    const componentName = firstLetterLower(result.componentName);
+    validateInput(componentName);
+    createComponentFiles(componentName);
   });
 }
 
 function main() {
-  console.log('Press "s" for Screen:');
+  console.log('Press "s" (Screen) or "c" (Component) :');
 
   prompt.get(['pageType'], (err, result) => {
     const pageType = result && result.pageType ? result.pageType.replace(' ', '') : '';
 
     switch (pageType) {
       case 's': createScreen(); break;
+      case 'c': createComponent(); break;
       default: console.error('pageType not found');
     }
   });

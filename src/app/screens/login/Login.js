@@ -18,7 +18,7 @@ class Login extends React.Component<LoginProps> {
 
     return (
       <View>
-        <Text>{t.get('welcome')}</Text>
+        <Text>{t.get('LOGIN_MESSAGE')}</Text>
       </View>
     );
   }
