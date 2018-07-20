@@ -7,18 +7,42 @@
 // @flow
 import * as React from 'react';
 import t from 'helpers/i18n/Translate';
+import fields from 'constants/forms/login';
 import type { LoginProps } from './LoginTypes';
 
 // eslint-disable-next-line
 class Login extends React.Component<LoginProps> {
   render() {
     const {
-      Text, View,
+      Text, View, TextField, Button, Row,
     } = this.props;
 
     return (
       <View>
-        <Text>{t.get('LOGIN_MESSAGE')}</Text>
+        <Row>
+          <TextField
+            required
+            name={fields.EMAIL}
+            label={t.get('LOGIN_USERNAME_PLACEHOLDER')}
+          />
+        </Row>
+        <Row>
+          <TextField
+            required
+            name={fields.PASSWORD}
+            label={t.get('LOGIN_PASSWORD_PLACEHOLDER')}
+          />
+        </Row>
+        <Row>
+          <Button
+            primary
+            raised
+            text={t.get('LOGIN_BUTTON')}
+          />
+        </Row>
+        <Row>
+          <Text>{t.get('LOGIN_MESSAGE')}</Text>
+        </Row>
       </View>
     );
   }

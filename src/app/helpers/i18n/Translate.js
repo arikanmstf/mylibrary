@@ -3,7 +3,7 @@ import logger from 'helpers/logger';
 import error from 'constants/messages/error';
 import * as languages from './languages';
 
-const DEFAULT_LANGUAGE = 'tr';
+const DEFAULT_LANGUAGE = 'en';
 
 class Translate {
   data: Object;

@@ -8,12 +8,18 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { connect as connectUi } from 'helpers/connect';
-import { Text, View } from 'ui';
+import {
+  Text,
+  View,
+  TextField,
+  Button,
+  Row,
+} from 'ui';
 import LoginScreen from './Login';
 import { mapStateToProps, mapDispatchToProps } from './loginActions';
 
 const mapUiToProps = () => ({
-  Text, View,
+  Text, View, TextField, Button, Row,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(withRouter(LoginScreen)));
