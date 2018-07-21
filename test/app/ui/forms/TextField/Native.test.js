@@ -6,9 +6,9 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import TextField from 'ui/TextField/Native';
+import TextField from 'ui/forms/TextField/Native';
 
-describe('test/app/ui/TextField/Native.test.js', () => {
+describe('test/app/ui/forms/TextField/Native.test.js', () => {
   it('Render', () => {
     const props = {};
     const wrapper = shallow(<TextField {...props} />);

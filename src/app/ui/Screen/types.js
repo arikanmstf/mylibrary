@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 
-export type ViewProps = {
+export type ScreenProps = {
   children?: React.Node,
   style?: Object,
 };

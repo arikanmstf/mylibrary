@@ -6,12 +6,12 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import TextField from 'ui/TextField/Web';
+import Col from 'ui/Col/Web';
 
-describe('test/app/ui/TextField/Web.test.js', () => {
+describe('test/app/ui/Col/Web.test.js', () => {
   it('Render', () => {
     const props = {};
-    const wrapper = shallow(<TextField {...props} />);
+    const wrapper = shallow(<Col {...props} />);
     expect(wrapper).toMatchSnapshot();
   });
 });

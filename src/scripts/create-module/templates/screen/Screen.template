@@ -12,13 +12,13 @@ import type { #{className}Props } from './#{className}Types';
 class #{className} extends React.Component<#{className}Props> {
   render() {
     const {
-      Text, View,
+      Text, Screen,
     } = this.props;
 
     return (
-      <View>
+      <Screen>
         <Text>#{className} screen successfully created.</Text>
-      </View>
+      </Screen>
     );
   }
 }

@@ -1,5 +1,7 @@
 // @flow
 import React from 'react';
+import { injectGlobal } from 'styled-components';
+import font from 'assets/fonts/libre-baskerville.regular.ttf';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -28,7 +30,17 @@ const theme = createMuiTheme({
       },
     },
   },
+  typography: {
+    fontFamily: '"Baskerville", "Helvetica", "Arial", sans-serif',
+  },
 });
+// eslint-disable-next-line no-unused-expressions
+injectGlobal`
+  @font-face {
+    font-family: 'Baskerville';
+    src: url('${font}') format('opentype');
+  }
+`;
 
 const App = () => {
   return (

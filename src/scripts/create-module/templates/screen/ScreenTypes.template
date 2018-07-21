@@ -7,9 +7,9 @@
 // @flow
 import * as React from 'react';
 import type { TextProps } from 'ui/Text/types';
-import type { ViewProps } from 'ui/View/types';
+import type { ScreenProps } from 'ui/Screen/types';
 
 export type #{className}Props = {
   Text: React.ComponentType<TextProps>,
-  View: React.ComponentType<ViewProps>,
+  Screen: React.ComponentType<ScreenProps>,
 };

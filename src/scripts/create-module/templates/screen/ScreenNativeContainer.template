@@ -6,10 +6,10 @@
 
 import { connect } from 'react-redux';
 import { connect as connectUi } from 'helpers/connect';
-import { Text, View } from 'ui/native';
+import { Text, Screen } from 'ui/native';
 import #{className}Screen from './#{className}';
 import { mapStateToProps, mapDispatchToProps } from './#{screenName}Actions';
 
-const mapUiToProps = () => ({ Text, View });
+const mapUiToProps = () => ({ Text, Screen });
 
 export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(#{className}Screen));

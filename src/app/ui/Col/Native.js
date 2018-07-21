@@ -1,10 +1,18 @@
+/**
+ * Native Component Template By => create-module script
+ * @version 1.0.0
+ *
+ */
+
 // @flow
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import defaultStyle from './style.json';
-import type { RowProps } from './types';
 
-const Row = (props: RowProps) => {
+import type { Node } from 'react';
+import type { ColProps } from './types';
+import defaultStyle from './style.json';
+
+const Col = (props: ColProps): ?Node => {
   const { style, ...other } = props;
   const mergedStyles = StyleSheet.create({
     container: {
@@ -21,4 +29,4 @@ const Row = (props: RowProps) => {
   );
 };
 
-export default Row;
+export default Col;

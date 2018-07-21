@@ -8,12 +8,12 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { connect as connectUi } from 'helpers/connect';
-import { Text, View } from 'ui';
+import { Text, Screen } from 'ui';
 import #{className}Screen from './#{className}';
 import { mapStateToProps, mapDispatchToProps } from './#{screenName}Actions';
 
 const mapUiToProps = () => ({
-  Text, View,
+  Text, Screen,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(withRouter(#{className}Screen)));

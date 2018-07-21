@@ -5,6 +5,6 @@
  */
 
 // @flow
-export type TextFieldProps = {
-  label: string,
+export type ColProps = {
+  style?: ?Object,
 };
