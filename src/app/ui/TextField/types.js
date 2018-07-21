@@ -5,4 +5,6 @@
  */
 
 // @flow
-export type TextFieldProps = {};
+export type TextFieldProps = {
+  label: string,
+};

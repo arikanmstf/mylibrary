@@ -10,9 +10,7 @@ const initialState = {
   dummyField: null,
 };
 
-const reducer = new Map([
-
-]);
+const reducer = new Map([]);
 
 export default handleActions(
   reducer,

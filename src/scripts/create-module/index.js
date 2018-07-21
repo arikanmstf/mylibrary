@@ -127,7 +127,7 @@ function createScreenTypeName(path, screenName) {
 }
 
 function createScreenReducerName(path, screenName) {
-  return `${path}/${firstLetterUpper(screenName)}Reducer.js`;
+  return `${path}/${firstLetterLower(screenName)}Reducer.js`;
 }
 
 function createIndexName(path) {

@@ -1,5 +1,5 @@
 {
-  "name": "react-web-native-template",
+  "name": "mylibrary",
   "version": "3.0.0",
   "description": "MyLibrary is an online book library that you can manage and share your books.",
   "main": "src/app/native/index.js",
@@ -12,13 +12,12 @@
     "lint": "eslint --max-warnings 0 --ext .js src/",
     "flow": "flow",
     "flow-update": "flow-typed install",
-    "fresh-install": "rm -rf $TMPDIR/react-* && rm -rf $TMPDIR/metro* && rm -rf node_modules && rm yarn.lock && yarn cache clean && yarn install && yarn flow-update",
+    "fresh-install": "rm -rf $TMPDIR/react-* && rm -rf $TMPDIR/metro* && rm -rf node_modules && rm yarn.lock && yarn cache clean && yarn install",
     "pre-build": "yarn test && yarn lint && yarn flow",
     "postinstall": "yarn flow-update",
     "create-module": "node src/scripts/create-module/index"
   },
   "keywords": [
-    "react",
     "react",
     "native",
     "template",

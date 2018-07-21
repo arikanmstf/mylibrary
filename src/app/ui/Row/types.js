@@ -5,4 +5,6 @@
  */
 
 // @flow
-export type RowProps = {};
+export type RowProps = {
+  style?: ?Object,
+};
