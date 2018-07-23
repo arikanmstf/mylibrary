@@ -1,8 +1,10 @@
 // @flow
 
 import API from 'helpers/api';
-import { INITIALIZE } from 'constants/services/login';
+import { LOGIN } from 'constants/services/login';
 
-export const initializeService = () => {
-  return API.get(INITIALIZE);
+import type { submitLoginFormRequest } from './LoginTypes';
+
+export const loginRequest = (request: submitLoginFormRequest) => {
+  return API.post(LOGIN, request);
 };

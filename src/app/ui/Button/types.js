@@ -4,4 +4,5 @@ export type ButtonProps = {
   text?: string,
   primary?: boolean,
   raised?: boolean,
+  style?: Object,
 };

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test/app/ui/TextField/Native.test.js Render 1`] = `
+exports[`test/app/ui/forms/TextField/Native.test.js Render 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
@@ -12,9 +12,39 @@ ShallowWrapper {
     "simulateEvent": [Function],
     "unmount": [Function],
   },
-  Symbol(enzyme.__node__): null,
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "component": [Function],
+      "placeholder": undefined,
+      "style": Object {
+        "backgroundColor": "#555",
+        "minHeight": 50,
+      },
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
   Symbol(enzyme.__nodes__): Array [
-    null,
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "component": [Function],
+        "placeholder": undefined,
+        "style": Object {
+          "backgroundColor": "#555",
+          "minHeight": 50,
+        },
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
   ],
   Symbol(enzyme.__options__): Object {
     "adapter": ReactSixteenAdapter {

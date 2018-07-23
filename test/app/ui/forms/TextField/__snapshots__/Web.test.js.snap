@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test/app/ui/TextField/Web.test.js Render 1`] = `
+exports[`test/app/ui/forms/TextField/Web.test.js Render 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
@@ -15,10 +15,15 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "function",
+    "nodeType": "class",
     "props": Object {
-      "required": false,
-      "select": false,
+      "component": [Function],
+      "name": undefined,
+      "style": Object {
+        "backgroundColor": "#555",
+        "minHeight": 50,
+        "width": "100%",
+      },
     },
     "ref": null,
     "rendered": null,
@@ -28,10 +33,15 @@ ShallowWrapper {
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "function",
+      "nodeType": "class",
       "props": Object {
-        "required": false,
-        "select": false,
+        "component": [Function],
+        "name": undefined,
+        "style": Object {
+          "backgroundColor": "#555",
+          "minHeight": 50,
+          "width": "100%",
+        },
       },
       "ref": null,
       "rendered": null,

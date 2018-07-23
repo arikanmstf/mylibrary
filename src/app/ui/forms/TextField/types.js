@@ -7,5 +7,18 @@
 // @flow
 export type TextFieldProps = {
   label: string,
+  name: string,
   style?: Object,
 };
+
+export type ReduxFieldProps = {
+  meta: {
+    touched?: ?boolean,
+    error?: ?string,
+  },
+  input: {
+    name: string,
+    value: any,
+    onChange: Function,
+  },
+}

@@ -14,11 +14,12 @@ import {
   Row,
   Col,
   Image,
+  Form,
 } from 'ui/native';
 import LoginScreen from './Login';
 import { mapStateToProps, mapDispatchToProps } from './loginActions';
 
 const mapUiToProps = () => ({
-  Text, Screen, TextField, Button, Row, Col, Image,
+  Text, Screen, TextField, Button, Row, Col, Image, Form,
 });
 export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(LoginScreen));

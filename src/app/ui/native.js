@@ -5,3 +5,4 @@ export { default as Image } from './Image/Native';
 export { default as TextField } from './forms/TextField/Native';
 export { default as Row } from './Row/Native';
 export { default as Col } from './Col/Native';
+export { default as Form } from './Form/Native';

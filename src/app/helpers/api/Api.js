@@ -1,5 +1,6 @@
 import a from 'axios';
 import config from 'config/api.json';
+import logger from 'helpers/logger';
 
 const axios = a.create({
   baseURL: config.baseUrl,
@@ -12,8 +13,9 @@ class Api {
     return axios.get(url, { params });
   }
 
-  static async post(url, params) {
-    return axios.post(url, { params });
+  static async post(url, data) {
+    logger.log('POST', url, data);
+    return axios.post(url, { ...data });
   }
 }
 

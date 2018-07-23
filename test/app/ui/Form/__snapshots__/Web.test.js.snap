@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test/app/ui/Row/Web.test.js Render 1`] = `
+exports[`test/app/ui/Form/Web.test.js Render 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <styled.div />,
+  Symbol(enzyme.__unrendered__): <Form />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -16,24 +16,20 @@ ShallowWrapper {
     "instance": null,
     "key": undefined,
     "nodeType": "host",
-    "props": Object {
-      "className": "sc-bdVaJa ijWKTS",
-    },
+    "props": Object {},
     "ref": null,
     "rendered": null,
-    "type": "div",
+    "type": "form",
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
       "nodeType": "host",
-      "props": Object {
-        "className": "sc-bdVaJa ijWKTS",
-      },
+      "props": Object {},
       "ref": null,
       "rendered": null,
-      "type": "div",
+      "type": "form",
     },
   ],
   Symbol(enzyme.__options__): Object {

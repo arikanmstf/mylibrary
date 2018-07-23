@@ -7,12 +7,20 @@
 // @flow
 import React from 'react';
 import { StyleSheet, TextInput } from 'react-native';
-import { Field } from 'redux-form';
+import { Field } from 'redux-form/immutable';
 import type { Node } from 'react';
 
 import defaultStyle from './style.json';
 
-import type { TextFieldProps } from './types';
+import type { TextFieldProps, ReduxFieldProps } from './types';
+
+const renderTextField = ({ input, ...other }: ReduxFieldProps) => (
+  <TextInput
+    onChangeText={input.onChange}
+    {...input}
+    {...other}
+  />
+);
 
 const TextField = (props: TextFieldProps): ?Node => {
   const { label, style, ...other } = props;
@@ -25,7 +33,7 @@ const TextField = (props: TextFieldProps): ?Node => {
 
   return (
     <Field
-      component={TextInput}
+      component={renderTextField}
       placeholder={label}
       style={mergedStyles.container}
       {...other}

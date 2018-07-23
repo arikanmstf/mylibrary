@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`src/app/ui/View/Native.js Render: props: { children: DummyText } 1`] = `
+exports[`test/app/ui/Col/Web.test.js Render 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <View />,
+  Symbol(enzyme.__unrendered__): <Col />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -15,33 +15,33 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "class",
+    "nodeType": "host",
     "props": Object {
       "style": Object {
-        "alignItems": "center",
-        "flex": 1,
-        "justifyContent": "center",
+        "backgroundColor": "#eee",
+        "padding": 10,
+        "width": "90%",
       },
     },
     "ref": null,
     "rendered": null,
-    "type": [Function],
+    "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "class",
+      "nodeType": "host",
       "props": Object {
         "style": Object {
-          "alignItems": "center",
-          "flex": 1,
-          "justifyContent": "center",
+          "backgroundColor": "#eee",
+          "padding": 10,
+          "width": "90%",
         },
       },
       "ref": null,
       "rendered": null,
-      "type": [Function],
+      "type": "div",
     },
   ],
   Symbol(enzyme.__options__): Object {

@@ -23,6 +23,9 @@ ShallowWrapper {
       "children": "dummyText",
       "color": undefined,
       "onPress": [MockFunction],
+      "style": Object {
+        "width": "100%",
+      },
       "variant": undefined,
     },
     "ref": null,
@@ -38,6 +41,9 @@ ShallowWrapper {
         "children": "dummyText",
         "color": undefined,
         "onPress": [MockFunction],
+        "style": Object {
+          "width": "100%",
+        },
         "variant": undefined,
       },
       "ref": null,
@@ -77,6 +83,9 @@ ShallowWrapper {
     "props": Object {
       "children": "dummyText",
       "color": "primary",
+      "style": Object {
+        "width": "100%",
+      },
       "variant": undefined,
     },
     "ref": null,
@@ -91,6 +100,9 @@ ShallowWrapper {
       "props": Object {
         "children": "dummyText",
         "color": "primary",
+        "style": Object {
+          "width": "100%",
+        },
         "variant": undefined,
       },
       "ref": null,
@@ -130,6 +142,9 @@ ShallowWrapper {
     "props": Object {
       "children": "dummyText",
       "color": undefined,
+      "style": Object {
+        "width": "100%",
+      },
       "variant": "contained",
     },
     "ref": null,
@@ -144,6 +159,9 @@ ShallowWrapper {
       "props": Object {
         "children": "dummyText",
         "color": undefined,
+        "style": Object {
+          "width": "100%",
+        },
         "variant": "contained",
       },
       "ref": null,
@@ -182,6 +200,9 @@ ShallowWrapper {
     "props": Object {
       "children": "dummyText",
       "color": undefined,
+      "style": Object {
+        "width": "100%",
+      },
       "variant": undefined,
     },
     "ref": null,
@@ -196,6 +217,9 @@ ShallowWrapper {
       "props": Object {
         "children": "dummyText",
         "color": undefined,
+        "style": Object {
+          "width": "100%",
+        },
         "variant": undefined,
       },
       "ref": null,
