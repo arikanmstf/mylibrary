@@ -12,6 +12,7 @@ import type { ScreenProps } from 'ui/Screen/types';
 import type { ButtonProps } from 'ui/Button/types';
 import type { RowProps } from 'ui/Row/types';
 import type { ColProps } from 'ui/Col/types';
+import type { ImageProps } from 'ui/Image/types';
 
 export type LoginProps = {
   Text: React.ComponentType<TextProps>,
@@ -20,4 +21,5 @@ export type LoginProps = {
   Button: React.ComponentType<ButtonProps>,
   Row: React.ComponentType<RowProps>,
   Col: React.ComponentType<ColProps>,
+  Image: React.ComponentType<ImageProps>,
 };

@@ -9,6 +9,7 @@ import styled from 'styled-components';
 
 const Row = styled.div`
 margin: 5px 0;
+display: flex;
 `;
 
 export default Row;

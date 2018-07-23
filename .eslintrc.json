@@ -17,7 +17,8 @@
         "js": "never",
         "jsx": "never",
         "json": "always",
-        "ttf": "always"
+        "ttf": "always",
+        "png": "always"
       }
     ],
     "no-multiple-empty-lines": [

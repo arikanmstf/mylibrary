@@ -9,18 +9,27 @@ import * as React from 'react';
 import { reduxForm } from 'redux-form';
 import t from 'helpers/i18n/Translate';
 import fields, { LOGIN_FORM_KEY } from 'constants/forms/login';
+import Logo from 'assets/images/logo.png';
+
 import type { LoginProps } from './LoginTypes';
 
 // eslint-disable-next-line
 class Login extends React.Component<LoginProps> {
   render() {
     const {
-      Text, Screen, TextField, Button, Row, Col,
+      Text, Screen, TextField, Button, Row, Col, Image,
     } = this.props;
 
     return (
       <Screen>
         <Col>
+          <Row style={{ justifyContent: 'center', alignItems: 'center' }}>
+            <Image
+              source={Logo}
+              style={{ width: 100, height: 100 }}
+              alt="mylibrary logo"
+            />
+          </Row>
           <Row>
             <TextField
               required
