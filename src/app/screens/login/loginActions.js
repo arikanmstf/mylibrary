@@ -6,14 +6,17 @@
 
 // @flow
 import logger from 'helpers/logger';
+import { showLoader, hideLoader } from 'ui/Loader/actions';
 import type { Immutable } from 'store/ImmutableTypes';
 
 import { loginRequest } from './loginServices';
 import type { submitLoginFormRequest } from './LoginTypes';
 
-export const submitLoginForm = (form: Immutable<submitLoginFormRequest>) => {
+export const submitLoginForm = async (form: Immutable<submitLoginFormRequest>, dispatch) => {
   logger.log('submitLoginForm');
-  loginRequest(form.toJS());
+  dispatch(showLoader());
+  await loginRequest(form.toJS());
+  dispatch(hideLoader());
 };
 
 export const mapStateToProps = () => ({});

@@ -17,9 +17,11 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
+      "Loader": [Function],
       "LoginScreen": [Function],
       "Route": [Function],
       "Router": [Function],
+      "Row": [Function],
       "Switch": [Function],
     },
     "ref": null,
@@ -32,9 +34,11 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
+        "Loader": [Function],
         "LoginScreen": [Function],
         "Route": [Function],
         "Router": [Function],
+        "Row": [Function],
         "Switch": [Function],
       },
       "ref": null,
