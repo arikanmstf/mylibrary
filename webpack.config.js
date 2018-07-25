@@ -16,14 +16,13 @@ const appPath = path.resolve(__dirname, 'src/app');
 const sourcePath = path.resolve(__dirname, 'src');
 const nodePath = path.resolve(__dirname, 'node_modules');
 
-const HtmlWebpack =
-  new HtmlWebpackPlugin({
-    template: path.resolve(__dirname, 'src/app/web/index.ejs'),
-    inject: 'body',
-    hash: true,
-    filename: `index.html`,
-    description: DESCRIPTION,
-  });
+const HtmlWebpack = new HtmlWebpackPlugin({
+  template: path.resolve(__dirname, 'src/app/web/index.ejs'),
+  inject: 'body',
+  hash: true,
+  filename: `index.html`,
+  description: DESCRIPTION,
+});
 
 const plugins = [HtmlWebpack];
 const rules = [
@@ -37,7 +36,7 @@ const rules = [
     loader: 'file-loader',
     options: {
       name: `assets/[name]-[hash].[ext]`,
-    }
+    },
   },
   {
     test: JS_JSX_PATTERN,
@@ -55,7 +54,7 @@ const rules = [
 module.exports = {
   entry: [
     'babel-polyfill',
-    path.resolve(__dirname, 'src/app/web/index.js'),
+    path.resolve(__dirname, `${appPath}/web/index.js`),
   ],
   output: {
     path: distPath,
@@ -65,7 +64,7 @@ module.exports = {
     rules,
   },
   resolve: {
-    extensions: ['.js', '.js'],
+    extensions: ['.js'],
     modules: [
       appPath,
       nodePath,

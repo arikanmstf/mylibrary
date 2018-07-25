@@ -5,8 +5,9 @@
   "main": "src/app/native/index.js",
   "repository": "git@github.com:arikanmstf/mylibrary.git",
   "scripts": {
-    "start": "yarn run start-web",
-    "start-web": "webpack-dev-server --config webpack.config.dev.js --mode development",
+    "start": "yarn run start-web-local-dev",
+    "start-web-local-dev": "webpack-dev-server --config webpack.config.local-dev.js --mode development",
+    "start-web-local-prod": "webpack-dev-server --config webpack.config.local-prod.js --mode production",
     "start-native": "react-native-scripts start",
     "test": "jest",
     "lint": "eslint --max-warnings 0 --ext .js src/",

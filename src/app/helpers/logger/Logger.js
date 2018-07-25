@@ -1,5 +1,12 @@
 // @flow
+import { isDevelopment } from 'helpers/env';
 
-const Logger = console; // TODO: initialize logger class
+class Logger {
+  static log(...args) {
+    if (isDevelopment()) {
+      console.log(...args);
+    }
+  }
+}
 
 export default Logger;
