@@ -1,15 +1,18 @@
 import a from 'axios';
-import config from 'config/api.json';
 import logger from 'helpers/logger';
+import baseURL from './baseURL';
+
+logger.log(`baseURL is set to: ${baseURL}`);
 
 const axios = a.create({
-  baseURL: config.baseUrl,
-  headers: { 'Access-Control-Allow-Origin': config.baseUrl },
+  baseURL,
+  headers: { 'Access-Control-Allow-Origin': baseURL },
   withCredentials: true,
 });
 
 class Api {
   static async get(url, params) {
+    logger.log('GET', url, params);
     return axios.get(url, { params });
   }
 

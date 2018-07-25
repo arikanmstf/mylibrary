@@ -8,6 +8,7 @@
 export type TextFieldProps = {
   label: string,
   name: string,
+  type?: string,
   style?: Object,
 };
 

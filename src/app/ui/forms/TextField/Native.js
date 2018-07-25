@@ -23,13 +23,20 @@ const renderTextField = ({ input, ...other }: ReduxFieldProps) => (
 );
 
 const TextField = (props: TextFieldProps): ?Node => {
-  const { label, style, ...other } = props;
+  const {
+    label,
+    style,
+    type,
+    ...other
+  } = props;
+
   const mergedStyles = StyleSheet.create({
     container: {
       ...defaultStyle,
       ...style,
     },
   });
+  const isPassword = type === 'password';
 
   return (
     <Field
@@ -37,6 +44,7 @@ const TextField = (props: TextFieldProps): ?Node => {
       placeholder={label}
       style={mergedStyles.container}
       {...other}
+      secureTextEntry={isPassword}
     />
   );
 };

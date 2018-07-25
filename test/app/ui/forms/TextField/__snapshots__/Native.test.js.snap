@@ -19,6 +19,7 @@ ShallowWrapper {
     "props": Object {
       "component": [Function],
       "placeholder": undefined,
+      "secureTextEntry": false,
       "style": Object {
         "backgroundColor": "#555",
         "minHeight": 50,
@@ -36,6 +37,7 @@ ShallowWrapper {
       "props": Object {
         "component": [Function],
         "placeholder": undefined,
+        "secureTextEntry": false,
         "style": Object {
           "backgroundColor": "#555",
           "minHeight": 50,

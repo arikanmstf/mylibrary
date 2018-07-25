@@ -41,6 +41,7 @@ class Login extends React.Component<LoginProps> {
                 name={fields.EMAIL}
                 label={t.get('LOGIN_USERNAME_PLACEHOLDER')}
                 keyboardType="email-address"
+                autoFocus
               />
             </Row>
             <Row>
