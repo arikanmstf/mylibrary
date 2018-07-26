@@ -1,5 +1,6 @@
 {
   "presets": ["env", "react", "flow", "babel-preset-expo"],
+  "plugins": ["transform-runtime"],
   "env": {
     "development": {
       "plugins": ["transform-react-jsx-source"]

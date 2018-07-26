@@ -5,9 +5,10 @@ import { Loader, Row } from 'ui';
 // Screens
 import LoginScreen from 'screens/login/LoginWebContainer';
 import Routes from '../Routes';
+import PrivateRoute from './PrivateRoute';
 
 const mapRouteToProps = () => ({
-  LoginScreen, Router, Switch, Route, Loader, Row,
+  LoginScreen, Router, Switch, Route, Loader, Row, PrivateRoute,
 });
 
 export default connect(mapRouteToProps)(Routes);

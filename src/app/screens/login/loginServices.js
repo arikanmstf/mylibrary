@@ -1,10 +1,9 @@
 // @flow
 
-import API from 'helpers/api';
-import { LOGIN } from 'constants/services/login';
+import Api, { LOGIN } from 'helpers/api';
 
 import type { submitLoginFormRequest } from './LoginTypes';
 
 export const loginRequest = (request: submitLoginFormRequest) => {
-  return API.post(LOGIN, request);
+  return Api.post(LOGIN, request);
 };

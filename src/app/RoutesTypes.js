@@ -7,4 +7,6 @@ export type RoutesProps = {
   Router: Function,
   Switch: Function,
   Route: Function,
+  PrivateRoute: Function,
+  fetchLoginState: Function,
 };

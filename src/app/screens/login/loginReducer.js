@@ -5,12 +5,18 @@
  */
 
 import { handleActions } from 'redux-actions';
+import { updateLoginState } from './loginActions';
 
 const initialState = {
-  dummyField: null,
+  isLoggedIn: false,
 };
 
-const reducer = new Map([]);
+const reducer = new Map([
+  [
+    updateLoginState,
+    (state, action) => ({ ...state, isLoggedIn: !!(action.payload && action.payload.user) }),
+  ],
+]);
 
 export default handleActions(
   reducer,

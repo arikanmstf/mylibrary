@@ -20,6 +20,14 @@ export type submitLoginFormRequest = {
   password: string,
 };
 
+export type submitLoginFormResponse = {
+  token: string,
+  user: {
+    name: string,
+    permissions: Array<string>,
+  },
+};
+
 export type LoginProps = {
   Text: React.ComponentType<TextProps>,
   TextField: React.ComponentType<TextFieldProps>,

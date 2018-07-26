@@ -28,8 +28,11 @@ const plugins = [HtmlWebpack];
 const rules = [
   {
     test: JS_JSX_PATTERN,
-    include: [appPath],
+    include: [appPath, path.join(__dirname, 'node_modules/react-native-storage')],
     loader: 'babel-loader',
+    query: {
+      cacheDirectory: true,
+    },
   },
   {
     test: ASSET_PATTERN,

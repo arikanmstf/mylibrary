@@ -4,8 +4,12 @@ import { isDevelopment } from 'helpers/env';
 class Logger {
   static log(...args) {
     if (isDevelopment()) {
-      console.log(...args);
+      console.log(...args); // eslint-disable-line no-console
     }
+  }
+
+  static error(...args) {
+    throw new Error(...args);
   }
 }
 
