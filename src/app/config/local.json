@@ -1,5 +1,9 @@
 {
-  "baseUrl_WEB":"http://192.168.1.219:8000/api",
-  "baseUrl_IOS":"http://192.168.1.219:8000/api",
-  "baseUrl_AND":"http://192.168.1.219:8000/api"
+  "baseURL":"http://192.168.1.219:8000/api",
+  "ios": {
+    "baseURL": "http://192.168.1.219:8000/api"
+  },
+  "android": {
+    "baseURL": "http://192.168.1.219:8000/api"
+  }
 }

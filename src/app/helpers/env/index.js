@@ -1,1 +1,1 @@
-export { isDevelopment } from './env';
+export { isDevelopment, getEnv } from './env';

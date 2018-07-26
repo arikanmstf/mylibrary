@@ -1,0 +1,9 @@
+{
+  "baseURL":"http://mustafaarikan.net/api",
+  "ios": {
+    "baseURL": "http://mustafaarikan.net/api"
+  },
+  "android": {
+    "baseURL": "http://mustafaarikan.net/api"
+  }
+}

@@ -1,7 +1,8 @@
 import a from 'axios';
 import logger from 'helpers/logger';
-import baseURL from './baseURL';
+import getConfig from 'config/get';
 
+const { baseURL } = getConfig();
 logger.log(`baseURL is set to: ${baseURL}`);
 
 const axios = a.create({
