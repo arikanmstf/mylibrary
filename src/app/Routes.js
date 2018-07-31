@@ -2,14 +2,14 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import * as routeNames from 'constants/routes/routeNames';
-import { fetchLoginState } from 'screens/login/loginActions';
+import { fetchInitialState } from 'screens/login/loginActions';
 
 import type { Dispatch } from 'redux';
 import type { RoutesProps } from './RoutesTypes';
 
 class Routes extends React.PureComponent<RoutesProps> {
   componentWillMount() {
-    const { fetchLoginState: initial } = this.props;
+    const { fetchInitialState: initial } = this.props;
     initial();
   }
 
@@ -40,7 +40,7 @@ class Routes extends React.PureComponent<RoutesProps> {
 }
 
 export const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
-  fetchLoginState: () => dispatch(fetchLoginState()),
+  fetchInitialState: () => dispatch(fetchInitialState()),
 });
 
 export default connect(null, mapDispatchToProps)(Routes);

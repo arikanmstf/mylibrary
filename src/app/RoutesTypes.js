@@ -14,5 +14,5 @@ export type RoutesProps = {
   Row: React.ComponentType<RowProps>,
   Loader: React.ComponentType<LoaderContainerProps>,
   PrivateRoute: Function,
-  fetchLoginState: Function,
+  fetchInitialState: Function,
 };

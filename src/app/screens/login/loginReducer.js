@@ -5,16 +5,30 @@
  */
 
 import { handleActions } from 'redux-actions';
-import { updateLoginState } from './loginActions';
+import { updateLoginState, updateInitializeState } from './loginActions';
 
 const initialState = {
-  isLoggedIn: false,
+  isLoggedIn: null,
+  isInitialized: null,
+  user: null,
 };
 
 const reducer = new Map([
   [
     updateLoginState,
-    (state, action) => ({ ...state, isLoggedIn: !!(action.payload && action.payload.user) }),
+    (state, action) => ({
+      ...state,
+      isLoggedIn: !!(action.payload && action.payload.user),
+      user: action.payload ? action.payload.user : null,
+    }),
+  ],
+  [
+    updateInitializeState,
+    (state, action) => ({
+      ...state,
+      isInitialized: !!(action.payload && action.payload.user),
+      user: action.payload ? action.payload.user : null,
+    }),
   ],
 ]);
 

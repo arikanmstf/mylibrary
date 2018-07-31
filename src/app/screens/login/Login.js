@@ -16,7 +16,7 @@ import type { LoginProps } from './LoginTypes';
 import { submitLoginForm } from './loginActions';
 
 // eslint-disable-next-line
-class Login extends React.Component<LoginProps> {
+class Login extends React.PureComponent<LoginProps> {
   render() {
     logger.log('Login rendered.');
     const {
