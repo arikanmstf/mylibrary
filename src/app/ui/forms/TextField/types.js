@@ -19,7 +19,7 @@ export type ReduxFieldProps = {
   },
   input: {
     name: string,
-    value: any,
+    value: *,
     onChange: Function,
   },
 }

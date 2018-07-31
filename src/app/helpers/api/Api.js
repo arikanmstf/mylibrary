@@ -22,7 +22,7 @@ type AxiosResult = {
 }
 
 class Api {
-  static async get(url: string, params: Object, ...other: Object) {
+  static async get(url: string, params: Object, ...other: *) {
     try {
       logger.log('GET', url, params);
       const response = await axios.get(url, { params }, ...other);
@@ -34,7 +34,7 @@ class Api {
     }
   }
 
-  static async post(url: string, data: Object, ...other: Object) {
+  static async post(url: string, data: Object, ...other: *) {
     try {
       logger.log('POST', url, data);
       const response = await axios.post(url, { ...data }, ...other);
@@ -47,7 +47,8 @@ class Api {
   }
 
   static fetch(response: AxiosResult) {
-    return response.status === 200 ? response.data.success : response.data.error;
+    return response.status === 200 ? (response.data && response.data.success)
+      : (response.data && response.data.error);
   }
 }
 

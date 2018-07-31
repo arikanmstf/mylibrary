@@ -3,9 +3,9 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import * as routeNames from 'constants/routes/routeNames';
 import { fetchLoginState } from 'screens/login/loginActions';
-import type { RoutesProps } from './RoutesTypes';
 
-const Protected = () => <h3>Protected</h3>;
+import type { Dispatch } from 'redux';
+import type { RoutesProps } from './RoutesTypes';
 
 class Routes extends React.PureComponent<RoutesProps> {
   componentWillMount() {
@@ -15,7 +15,14 @@ class Routes extends React.PureComponent<RoutesProps> {
 
   render() {
     const {
-      LoginScreen, Router, Switch, Route, Loader, Row, PrivateRoute,
+      Router,
+      Switch,
+      Route,
+      Loader,
+      Row,
+      PrivateRoute,
+      LoginScreen,
+      HomeScreen,
     } = this.props;
 
     return (
@@ -23,7 +30,7 @@ class Routes extends React.PureComponent<RoutesProps> {
         <Loader />
         <Router>
           <Switch>
-            <PrivateRoute exact path={routeNames.HOME} component={Protected} />
+            <PrivateRoute exact path={routeNames.HOME} component={HomeScreen} />
             <Route exact path={routeNames.LOGIN} component={LoginScreen} />
           </Switch>
         </Router>
@@ -32,7 +39,7 @@ class Routes extends React.PureComponent<RoutesProps> {
   }
 }
 
-export const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
   fetchLoginState: () => dispatch(fetchLoginState()),
 });
 

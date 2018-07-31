@@ -4,11 +4,20 @@ import { Loader, Row } from 'ui';
 
 // Screens
 import LoginScreen from 'screens/login/LoginWebContainer';
+import HomeScreen from 'screens/home/HomeWebContainer';
+
 import Routes from '../Routes';
 import PrivateRoute from './PrivateRoute';
 
 const mapRouteToProps = () => ({
-  LoginScreen, Router, Switch, Route, Loader, Row, PrivateRoute,
+  Router,
+  Switch,
+  Route,
+  Loader,
+  Row,
+  PrivateRoute,
+  LoginScreen,
+  HomeScreen,
 });
 
 export default connect(mapRouteToProps)(Routes);

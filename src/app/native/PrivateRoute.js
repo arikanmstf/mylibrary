@@ -1,8 +1,8 @@
 // @flow
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
-import LoginScreen from 'screens/login/LoginWebContainer';
+import { Route } from 'react-router-native';
+import LoginScreen from 'screens/login/LoginNativeContainer';
 import type { Immutable } from 'store/ImmutableTypes';
 import type { State } from 'store/StateTypes';
 

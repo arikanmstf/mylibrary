@@ -8,3 +8,5 @@
 export type LoaderProps = {
   isVisible: boolean,
 };
+
+export type LoaderContainerProps = {};

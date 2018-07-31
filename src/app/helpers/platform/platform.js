@@ -1,13 +1,13 @@
 // @flow
 
-export const isWeb:boolean = () => {
+export const isWeb = (): boolean => {
   return typeof document !== 'undefined';
 };
 
-export const isIOS:boolean = () => {
+export const isIOS = (): boolean => {
   return typeof document === 'undefined';
 };
 
-export const isAND:boolean = () => {
+export const isAND = (): boolean => {
   return false; // TODO
 };

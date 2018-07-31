@@ -18,7 +18,6 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "style": Object {
-        "backgroundColor": "#eee",
         "padding": 10,
         "width": "90%",
       },
@@ -34,7 +33,6 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "style": Object {
-          "backgroundColor": "#eee",
           "padding": 10,
           "width": "90%",
         },

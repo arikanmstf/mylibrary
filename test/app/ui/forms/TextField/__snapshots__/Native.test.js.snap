@@ -21,7 +21,6 @@ ShallowWrapper {
       "placeholder": undefined,
       "secureTextEntry": false,
       "style": Object {
-        "backgroundColor": "#555",
         "minHeight": 50,
       },
     },
@@ -39,7 +38,6 @@ ShallowWrapper {
         "placeholder": undefined,
         "secureTextEntry": false,
         "style": Object {
-          "backgroundColor": "#555",
           "minHeight": 50,
         },
       },

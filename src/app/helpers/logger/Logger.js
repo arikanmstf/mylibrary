@@ -2,13 +2,13 @@
 import { isDevelopment } from 'helpers/env';
 
 class Logger {
-  static log(...args) {
+  static log(...args: *) {
     if (isDevelopment()) {
       console.log(...args); // eslint-disable-line no-console
     }
   }
 
-  static error(...args) {
+  static error(...args: *) {
     throw new Error(...args);
   }
 }
