@@ -92,11 +92,12 @@
     ],
     "preset": "react-native",
     "globals": {
-      "IS_DEVELOPMENT": "false",
-      "IS_PRODUCTION": "true",
-      "IS_LOCAL": "false",
-      "IS_LIVE": "true",
-      "ENVIRONMENT": "live"
+      "IS_DEVELOPMENT": false,
+      "IS_PRODUCTION": true,
+      "IS_LOCAL": false,
+      "IS_LIVE": true,
+      "ENVIRONMENT": "live",
+      "IS_MOCK": true
     },
     "moduleDirectories": [
       "node_modules",

@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const webpack = require('webpack');
 const packageObject = require('./package.json');
 
 const JS_JSX_PATTERN = /\.js?$/;
@@ -24,7 +25,11 @@ const HtmlWebpack = new HtmlWebpackPlugin({
   description: DESCRIPTION,
 });
 
-const plugins = [HtmlWebpack];
+const definePlugin = new webpack.DefinePlugin({
+  IS_MOCK: JSON.stringify(false),
+});
+
+const plugins = [HtmlWebpack, definePlugin];
 const rules = [
   {
     test: JS_JSX_PATTERN,
