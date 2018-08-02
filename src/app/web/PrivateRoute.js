@@ -18,8 +18,6 @@ const PrivateRoute = (
     isInitialized: boolean
   }
 ) => {
-  console.log(isInitialized, isLoggedIn);
-
   if (isInitialized === null) {
     return null;
   }
