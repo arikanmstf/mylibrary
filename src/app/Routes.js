@@ -8,7 +8,7 @@ import type { Dispatch } from 'redux';
 import type { RoutesProps } from './RoutesTypes';
 
 class Routes extends React.PureComponent<RoutesProps> {
-  componentWillMount() {
+  componentDidMount() {
     const { fetchInitialState: initial } = this.props;
     initial();
   }
