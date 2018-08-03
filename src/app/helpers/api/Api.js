@@ -24,7 +24,7 @@ type AxiosResult = {
 class Api {
   static async get(url: string, params: Object, ...other: *) {
     if (typeof IS_MOCK !== 'undefined' && IS_MOCK) {
-      logger.log('GET-MOCKED', url, data);
+      logger.log('GET-MOCKED', url, params, ...other);
       // eslint-disable-next-line
       return require(`mock/${url}/get.json`);
     }
@@ -42,7 +42,7 @@ class Api {
 
   static async post(url: string, data: Object, ...other: *) {
     if (typeof IS_MOCK !== 'undefined' && IS_MOCK) {
-      logger.log('POST-MOCKED', url, data);
+      logger.log('POST-MOCKED', url, data, ...other);
       // eslint-disable-next-line
       return require(`mock/${url}/post.json`);
     }

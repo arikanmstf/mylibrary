@@ -23,3 +23,5 @@ class FakeStore {
 export const createFakeStore = (data) => {
   return new FakeStore(data);
 };
+
+export const dispatch = (action) => (action && typeof action === 'function' ? action() : undefined);

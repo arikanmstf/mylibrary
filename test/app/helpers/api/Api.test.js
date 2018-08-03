@@ -1,4 +1,4 @@
-import Api from 'helpers/api/Api';
+import Api from 'helpers/api/Api.js'; // eslint-disable-line
 
 describe('src/test/app/helpers/api/Api.test.js', () => {
   const url = 'mock-url';
