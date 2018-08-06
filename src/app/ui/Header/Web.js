@@ -6,6 +6,7 @@
 
 // @flow
 import * as React from 'react';
+import { reduxForm } from 'redux-form/immutable';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -17,18 +18,27 @@ import { withStyles } from '@material-ui/core/styles';
 
 import logger from 'helpers/logger';
 import Logo from 'assets/images/logo.png';
-import { Image } from 'ui';
+import { Image, TextField } from 'ui';
 import { white } from 'constants/theme/color';
+import t from 'helpers/i18n/Translate';
+import { SEARCH_FORM_KEY } from 'constants/forms/search';
 
 import type { HeaderProps } from './types';
 
 const styles = {
   title: {
-    flexGrow: 1,
     paddingLeft: '20px',
   },
   list: {
     width: '250px',
+  },
+  search: {
+    paddingTop: '14px',
+    margin: '0 20px',
+    maxWidth: '500px',
+  },
+  flex: {
+    flexGrow: 1,
   },
 };
 
@@ -71,6 +81,12 @@ class Header extends React.PureComponent<HeaderProps> {
           <Typography variant="title" color="inherit" className={classes.title}>
             {title}
           </Typography>
+          <TextField
+            type="search"
+            className={classes.search}
+            placeholder={t.get('HEADER_SEARCH')}
+          />
+          <div className={classes.flex} />
           <IconButton
             onClick={this.toggleDrawer()}
           >
@@ -92,4 +108,6 @@ class Header extends React.PureComponent<HeaderProps> {
   }
 }
 
-export default withStyles(styles)(Header);
+export default reduxForm({
+  form: SEARCH_FORM_KEY,
+})(withStyles(styles)(Header));
