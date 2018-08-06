@@ -8,12 +8,12 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { connect as connectUi } from 'helpers/connect';
-import { Text, Screen } from 'ui';
+import { Text, Screen, Header } from 'ui';
 import HomeScreen from './Home';
 import { mapStateToProps, mapDispatchToProps } from './homeActions';
 
 const mapUiToProps = () => ({
-  Text, Screen,
+  Text, Screen, Header,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(withRouter(HomeScreen)));
