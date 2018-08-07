@@ -26,7 +26,6 @@ import { withStyles } from '@material-ui/core/styles';
 import logger from 'helpers/logger';
 import Logo from 'assets/images/logo.png';
 import { Image, TextField } from 'ui';
-import { white } from 'constants/theme/color';
 import t from 'helpers/i18n/Translate';
 import fields, { SEARCH_FORM_KEY } from 'constants/forms/search';
 import {
@@ -35,30 +34,9 @@ import {
   FAVORITES,
   BOOKS_I_READ,
 } from 'constants/routes/routeNames';
+import styles from './style';
 
 import type { HeaderProps } from './types';
-
-const styles = {
-  title: {
-    paddingLeft: '20px',
-  },
-  list: {
-    width: '250px',
-  },
-  search: {
-    paddingTop: '14px',
-    margin: '0 20px',
-    maxWidth: '500px',
-  },
-  flex: {
-    flexGrow: 1,
-  },
-  image: {
-    width: 50,
-    height: 50,
-    flex: 0,
-  },
-};
 
 class Header extends React.PureComponent<HeaderProps> {
   state = {
@@ -72,17 +50,13 @@ class Header extends React.PureComponent<HeaderProps> {
 
   render() {
     const {
-      style,
       classes,
     } = this.props;
-    const mergedStyle = {
-      backgroundColor: white,
-      ...style,
-    };
+
     const { isDrawerOpen } = this.state;
 
     return (
-      <AppBar style={mergedStyle}>
+      <AppBar className={classes.container}>
         <Toolbar>
           <Image
             source={Logo}
@@ -94,7 +68,7 @@ class Header extends React.PureComponent<HeaderProps> {
             name={fields.QUERY}
             type="search"
             className={classes.search}
-            placeholder={t.get('HEADER_SEARCH')}
+            label={t.get('HEADER_SEARCH')}
           />
           <div className={classes.flex} />
           <IconButton

@@ -10,6 +10,7 @@ const Screen = (props: ScreenProps) => {
     container: {
       ...defaultStyle,
       ...style,
+      paddingTop: 18,
     },
   });
 

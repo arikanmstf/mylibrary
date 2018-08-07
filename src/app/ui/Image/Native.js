@@ -8,7 +8,7 @@ class Image extends React.PureComponent<ImageProps> {
   renderImage() {
     const {
       to,
-      ...rest,
+      ...rest
     } = this.props;
 
     return (
