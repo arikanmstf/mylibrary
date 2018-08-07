@@ -58,7 +58,7 @@ class Login extends React.PureComponent<LoginProps> {
                 raised
                 text={t.get('LOGIN_BUTTON')}
                 type="submit"
-                onPress={handleSubmit(submitLoginForm)}
+                onClick={handleSubmit(submitLoginForm)}
               />
             </Row>
             <Row>

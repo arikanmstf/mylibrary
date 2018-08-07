@@ -6,14 +6,21 @@
 
 // @flow
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { reduxForm } from 'redux-form/immutable';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import Typography from '@material-ui/core/Typography';
 import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
+import MenuList from '@material-ui/core/MenuList';
+import MenuItem from '@material-ui/core/MenuItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import StarIcon from '@material-ui/icons/Star';
+import BookIcon from '@material-ui/icons/Book';
+import ProfileIcon from '@material-ui/icons/SettingsApplications';
+import LogoutIcon from '@material-ui/icons/ExitToApp';
 import { withStyles } from '@material-ui/core/styles';
 
 import logger from 'helpers/logger';
@@ -21,7 +28,13 @@ import Logo from 'assets/images/logo.png';
 import { Image, TextField } from 'ui';
 import { white } from 'constants/theme/color';
 import t from 'helpers/i18n/Translate';
-import { SEARCH_FORM_KEY } from 'constants/forms/search';
+import fields, { SEARCH_FORM_KEY } from 'constants/forms/search';
+import {
+  HOME,
+  PROFILE,
+  FAVORITES,
+  BOOKS_I_READ,
+} from 'constants/routes/routeNames';
 
 import type { HeaderProps } from './types';
 
@@ -40,6 +53,11 @@ const styles = {
   flex: {
     flexGrow: 1,
   },
+  image: {
+    width: 50,
+    height: 50,
+    flex: 0,
+  },
 };
 
 class Header extends React.PureComponent<HeaderProps> {
@@ -55,9 +73,7 @@ class Header extends React.PureComponent<HeaderProps> {
   render() {
     const {
       style,
-      title,
       classes,
-      ...rest
     } = this.props;
     const mergedStyle = {
       backgroundColor: white,
@@ -66,22 +82,16 @@ class Header extends React.PureComponent<HeaderProps> {
     const { isDrawerOpen } = this.state;
 
     return (
-      <AppBar {...rest} style={mergedStyle}>
+      <AppBar style={mergedStyle}>
         <Toolbar>
           <Image
             source={Logo}
-            style={
-              {
-                width: 50,
-                height: 50,
-              }
-            }
+            className={classes.image}
             alt="mylibrary logo"
+            to={HOME}
           />
-          <Typography variant="title" color="inherit" className={classes.title}>
-            {title}
-          </Typography>
           <TextField
+            name={fields.QUERY}
             type="search"
             className={classes.search}
             placeholder={t.get('HEADER_SEARCH')}
@@ -97,10 +107,41 @@ class Header extends React.PureComponent<HeaderProps> {
           <div
             tabIndex={0}
             role="button"
-            onClick={this.toggleDrawer()}
-            onKeyDown={this.toggleDrawer()}
           >
-            <List className={classes.list} />
+            <MenuList className={classes.list}>
+              <Link
+                to={PROFILE}
+              >
+                <MenuItem>
+                  <ListItemIcon>
+                    <ProfileIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={t.get('HEADER_MENU_PROFILE')} />
+                </MenuItem>
+              </Link>
+              <Link to={FAVORITES}>
+                <MenuItem>
+                  <ListItemIcon>
+                    <StarIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={t.get('HEADER_MENU_FAVORITES')} />
+                </MenuItem>
+              </Link>
+              <Link to={BOOKS_I_READ}>
+                <MenuItem>
+                  <ListItemIcon>
+                    <BookIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={t.get('HEADER_MENU_BOOKS_I_READ')} />
+                </MenuItem>
+              </Link>
+              <MenuItem>
+                <ListItemIcon>
+                  <LogoutIcon />
+                </ListItemIcon>
+                <ListItemText primary={t.get('HEADER_MENU_LOGOUT')} />
+              </MenuItem>
+            </MenuList>
           </div>
         </Drawer>
       </AppBar>

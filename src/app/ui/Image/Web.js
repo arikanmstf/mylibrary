@@ -1,16 +1,33 @@
 // @flow
-import React from 'react';
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+
 import type { ImageProps } from './types';
 
-const Image = (props: ImageProps) => {
-  const { source, alt, ...other } = props;
-  return (
-    <img
-      src={source.uri || source}
-      alt={alt || 'image'}
-      {...other}
-    />
-  );
-};
+class Image extends React.PureComponent<ImageProps> {
+  renderImage() {
+    const {
+      source,
+      alt,
+      ...other
+    } = this.props;
+
+    return (
+      <img
+        src={source.uri || source}
+        alt={alt || 'image'}
+        {...other}
+      />
+    );
+  }
+
+  render() {
+    const {
+      to,
+    } = this.props;
+
+    return to ? (<Link to={to}>{this.renderImage()}</Link>) : this.renderImage();
+  }
+}
 
 export default Image;

@@ -40,6 +40,10 @@ injectGlobal`
     font-family: 'Baskerville';
     src: url('${font}') format('opentype');
   }
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 const App = () => {

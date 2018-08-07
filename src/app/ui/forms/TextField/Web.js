@@ -14,17 +14,22 @@ import type { TextFieldProps, ReduxFieldProps } from './types';
 import defaultStyle from './style.json';
 
 const renderTextField = ({
-  input, meta: { touched, error }, ...other
+  input, ...other
 }: ReduxFieldProps) => (
   <WebTextField
-    errorText={touched && error}
     {...input}
     {...other}
   />
 );
 
 const TextField = (props: TextFieldProps): Node => {
-  const { style, name, ...other } = props;
+  const {
+    style,
+    name,
+    keyboardType,
+    ...other
+  } = props;
+
   const mergedStyle = {
     ...defaultStyle,
     width: '100%',
