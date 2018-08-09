@@ -24,7 +24,7 @@ export default {
   container: {
     backgroundColor: white,
     position: 'absolute',
-    top: 18,
+    top: 0,
     width: '100%',
   },
   drawer: {

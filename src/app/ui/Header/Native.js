@@ -7,52 +7,65 @@
 // @flow
 import * as React from 'react';
 import { reduxForm } from 'redux-form/immutable';
-import { View } from 'react-native';
-import { Toolbar, Icon } from 'react-native-material-ui';
+import {
+  Header as HeaderNative,
+  Item,
+  Body,
+  Left,
+  Right,
+  Button,
+  Icon,
+} from 'native-base';
 
-import { Image, TextField } from 'ui/native';
-import Logo from 'assets/images/logo.png';
-import { HOME } from 'constants/routes/routeNames';
+import { TextField } from 'ui/native';
 import t from 'helpers/i18n/Translate';
 import fields, { SEARCH_FORM_KEY } from 'constants/forms/search';
-import styles from './style';
+import type { HeaderProps } from './types';
 
-class Header extends React.PureComponent<> {
+class Header extends React.PureComponent<HeaderProps> {
   static renderMenu() {
     return (
-      <View>
-        <Icon name="menu" size="30" />
-      </View>
+      <Right>
+        <Button transparent>
+          <Icon name="menu" />
+        </Button>
+      </Right>
     );
   }
 
-  static renderImage() {
+  static renderLeft() {
     return (
-      <Image source={Logo} alt="mylibrary logo" to={HOME} style={styles.image} />
+      <Left>
+        <Button transparent>
+          <Icon name="arrow-back" />
+        </Button>
+      </Left>
     );
   }
 
-  static renderTextField() {
+  static renderCenter() {
     return (
-      <TextField
-        name={fields.QUERY}
-        label={t.get('HEADER_SEARCH')}
-        type="search"
-        className={styles.search}
-      />
+      <Body>
+        <Item style={{ height: 25, flexGrow: 1 }}>
+          <Icon name="ios-search" />
+          <TextField
+            name={fields.QUERY}
+            label={t.get('HEADER_SEARCH')}
+            type="search"
+          />
+        </Item>
+      </Body>
     );
   }
 
   render() {
+    const { back } = this.props;
     return (
-      <Toolbar
-        style={{
-          container: styles.container,
-        }}
-        leftElement={Header.renderImage()}
-        centerElement={Header.renderTextField()}
-        rightElement={Header.renderMenu()}
-      />
+      <HeaderNative>
+        { back ? Header.renderLeft() : null}
+        {Header.renderCenter()}
+        {Header.renderMenu()}
+      </HeaderNative>
     );
   }
 }

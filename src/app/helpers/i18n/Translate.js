@@ -11,7 +11,7 @@ class Translate {
   constructor(lang?: string = DEFAULT_LANGUAGE) {
     const data = languages[lang];
     if (!data) {
-      logger.error(error.LANG_NOT_FOUND);
+      logger.log(error.LANG_NOT_FOUND);
     }
     this.data = data;
   }

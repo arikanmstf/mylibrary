@@ -8,29 +8,21 @@ import thunk from 'redux-thunk';
 import reducers from 'store/reducers';
 
 // Theme
-import { ThemeContext, getTheme } from 'react-native-material-ui';
-import * as COLOR from 'constants/theme/color';
+import { StyleProvider } from 'native-base';
+import getTheme from 'native-base-theme/components';
+import platform from 'native-base-theme/variables/platform';
 
 // Routes
 import Routes from './Routes';
 
-if (typeof global.self === 'undefined') {
-  global.self = global;
-}
-
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
-const uiTheme = {
-  palette: {
-    primaryColor: COLOR.green500,
-  },
-};
 
 const App = () => {
   return (
     <Provider store={createStoreWithMiddleware(reducers)}>
-      <ThemeContext.Provider value={getTheme(uiTheme)}>
+      <StyleProvider style={getTheme(platform)}>
         <Routes />
-      </ThemeContext.Provider>
+      </StyleProvider>
     </Provider>
   );
 };

@@ -6,8 +6,9 @@
 
 // @flow
 import React from 'react';
-import { StyleSheet, TextInput } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Field } from 'redux-form/immutable';
+import { Input as TextInput } from 'native-base';
 import type { Node } from 'react';
 
 import defaultStyle from './style.json';

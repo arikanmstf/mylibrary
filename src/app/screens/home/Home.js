@@ -14,13 +14,15 @@ import type { HomeProps } from './HomeTypes';
 class Home extends React.Component<HomeProps> {
   render() {
     const {
-      Text, Screen, Header,
+      Text, Screen, Header, Page,
     } = this.props;
 
     return (
       <Screen>
         <Header title={t.get('HOME_TITLE')} />
-        <Text>Home screen successfully created.</Text>
+        <Page>
+          <Text>Home screen successfully created.</Text>
+        </Page>
       </Screen>
     );
   }

@@ -1,13 +1,13 @@
 // @flow
 import React from 'react';
-import { Button as NativeButton } from 'react-native-material-ui';
+import { Button as NativeButton, Text } from 'native-base';
 
 import type { Node } from 'react';
 import type { ButtonProps } from './types';
 
 const Button = (props: ButtonProps): Node => {
   const {
-    onClick, ...other
+    onClick, text, ...other
   } = props;
 
   const foo = () => {};
@@ -15,9 +15,12 @@ const Button = (props: ButtonProps): Node => {
 
   return (
     <NativeButton
+      full
       onPress={onPress}
       {...other}
-    />
+    >
+      <Text>{text}</Text>
+    </NativeButton>
   );
 };
 

@@ -8,3 +8,4 @@ export { default as Col } from './Col/Native';
 export { default as Form } from './Form/Native';
 export { default as Loader } from './Loader/Native';
 export { default as Header } from './Header/Native';
+export { default as Page } from './Page/Native';

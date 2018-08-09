@@ -25,7 +25,7 @@ class Login extends React.PureComponent<LoginProps> {
     } = this.props;
 
     return (
-      <Screen>
+      <Screen center>
         <Form onSubmit={handleSubmit}>
           <Col>
             <Row style={{ justifyContent: 'center', alignItems: 'center' }}>

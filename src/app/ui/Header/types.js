@@ -7,4 +7,5 @@
 // @flow
 export type HeaderProps = {
   style?: Object,
+  back?: ?boolean,
 };

@@ -5,12 +5,13 @@ import defaultStyle from './style.json';
 import type { ScreenProps } from './types';
 
 const Screen = (props: ScreenProps) => {
-  const { style, ...other } = props;
+  const { style, center, ...other } = props;
+  const centerStyle = center ? { justifyContent: 'center', alignItems: 'center' } : {};
   const mergedStyles = StyleSheet.create({
     container: {
       ...defaultStyle,
+      ...centerStyle,
       ...style,
-      paddingTop: 18,
     },
   });
 

@@ -29,7 +29,7 @@ class Api {
       return Api.fetch(response);
     } catch (e) {
       const error = Api.fetch(e.response);
-      logger.error(error); // TODO: dispatch common error
+      logger.log(error); // TODO: dispatch common error
       return null;
     }
   }
@@ -41,7 +41,7 @@ class Api {
       return Api.fetch(response);
     } catch (e) {
       const error = Api.fetch(e.response);
-      logger.error(error); // TODO: dispatch common error
+      logger.log(error); // TODO: dispatch common error
       return null;
     }
   }

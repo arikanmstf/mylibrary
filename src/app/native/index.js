@@ -8,6 +8,10 @@ XMLHttpRequest = GLOBAL.originalXMLHttpRequest ?
   GLOBAL.XMLHttpRequest;
 
 // fetch logger
+if (typeof global.self === 'undefined') {
+  global.self = global;
+}
+
 global._fetch = fetch;
 global.fetch = function (uri, options, ...args) {
   return global._fetch(uri, options, ...args).then((response) => {
