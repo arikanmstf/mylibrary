@@ -26,7 +26,6 @@ const TextField = (props: TextFieldProps): Node => {
   const {
     style,
     name,
-    keyboardType,
     ...other
   } = props;
 

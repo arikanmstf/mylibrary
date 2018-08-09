@@ -5,4 +5,6 @@
  */
 
 // @flow
-export type PageProps = {};
+export type PageProps = {
+  style?: ?Object;
+};

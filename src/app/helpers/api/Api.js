@@ -3,6 +3,8 @@ import a from 'axios';
 import logger from 'helpers/logger';
 import getConfig from 'config/get';
 
+declare var IS_MOCK: string;
+
 const { baseURL } = getConfig();
 logger.log(`baseURL is set to: ${baseURL}`);
 
@@ -25,7 +27,7 @@ class Api {
   static async get(url: string, params: Object, ...other: *) {
     if (typeof IS_MOCK !== 'undefined' && IS_MOCK) {
       logger.log('GET-MOCKED', url, params, ...other);
-      // eslint-disable-next-line
+      // eslint-disable-next-line import/no-dynamic-require, global-require
       return require(`mock/${url}/get.json`);
     }
 

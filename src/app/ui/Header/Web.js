@@ -36,9 +36,9 @@ import {
 } from 'constants/routes/routeNames';
 import styles from './style';
 
-import type { HeaderProps } from './types';
+import type { HeaderProps, HeaderState } from './types';
 
-class Header extends React.PureComponent<HeaderProps> {
+class Header extends React.PureComponent<HeaderProps, HeaderState> {
   state = {
     isDrawerOpen: false,
   };
@@ -56,33 +56,33 @@ class Header extends React.PureComponent<HeaderProps> {
     const { isDrawerOpen } = this.state;
 
     return (
-      <AppBar className={classes.container}>
+      <AppBar className={classes && classes.container}>
         <Toolbar>
           <Image
             source={Logo}
-            className={classes.image}
+            className={classes && classes.image}
             alt="mylibrary logo"
             to={HOME}
           />
           <TextField
             name={fields.QUERY}
             type="search"
-            className={classes.search}
+            className={classes && classes.search}
             label={t.get('HEADER_SEARCH')}
           />
-          <div className={classes.flex} />
+          <div className={classes && classes.flex} />
           <IconButton
             onClick={this.toggleDrawer()}
           >
             <MenuIcon />
           </IconButton>
         </Toolbar>
-        <Drawer anchor="right" open={isDrawerOpen} onClose={this.toggleDrawer()}>
+        <Drawer anchor="right" open={!!isDrawerOpen} onClose={this.toggleDrawer()}>
           <div
             tabIndex={0}
             role="button"
           >
-            <MenuList className={classes.list}>
+            <MenuList className={classes && classes.list}>
               <Link
                 to={PROFILE}
               >
