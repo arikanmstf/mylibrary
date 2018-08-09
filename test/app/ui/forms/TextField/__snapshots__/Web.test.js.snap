@@ -20,7 +20,7 @@ ShallowWrapper {
       "component": [Function],
       "name": undefined,
       "style": Object {
-        "minHeight": 50,
+        "maxHeight": 50,
         "width": "100%",
       },
     },
@@ -37,7 +37,7 @@ ShallowWrapper {
         "component": [Function],
         "name": undefined,
         "style": Object {
-          "minHeight": 50,
+          "maxHeight": 50,
           "width": "100%",
         },
       },

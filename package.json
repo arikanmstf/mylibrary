@@ -91,6 +91,9 @@
     "setupFiles": [
       "./test/enzyme-setup.js"
     ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native|native-base-shoutem-theme|react-router-native)"
+    ],
     "preset": "react-native",
     "globals": {
       "IS_DEVELOPMENT": false,

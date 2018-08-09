@@ -20,11 +20,26 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
+      "children": <Styled(Text)>
+        dummyText
+      </Styled(Text)>,
+      "full": true,
       "onPress": [MockFunction],
-      "text": "dummyText",
+      "virtual": undefined,
     },
     "ref": null,
-    "rendered": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": "dummyText",
+        "virtual": undefined,
+      },
+      "ref": null,
+      "rendered": "dummyText",
+      "type": [Function],
+    },
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
@@ -33,11 +48,26 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "children": <Styled(Text)>
+          dummyText
+        </Styled(Text)>,
+        "full": true,
         "onPress": [MockFunction],
-        "text": "dummyText",
+        "virtual": undefined,
       },
       "ref": null,
-      "rendered": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "dummyText",
+          "virtual": undefined,
+        },
+        "ref": null,
+        "rendered": "dummyText",
+        "type": [Function],
+      },
       "type": [Function],
     },
   ],
@@ -71,12 +101,27 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
+      "children": <Styled(Text)>
+        dummyText
+      </Styled(Text)>,
+      "full": true,
       "onPress": [Function],
       "primary": true,
-      "text": "dummyText",
+      "virtual": undefined,
     },
     "ref": null,
-    "rendered": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": "dummyText",
+        "virtual": undefined,
+      },
+      "ref": null,
+      "rendered": "dummyText",
+      "type": [Function],
+    },
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
@@ -85,12 +130,27 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "children": <Styled(Text)>
+          dummyText
+        </Styled(Text)>,
+        "full": true,
         "onPress": [Function],
         "primary": true,
-        "text": "dummyText",
+        "virtual": undefined,
       },
       "ref": null,
-      "rendered": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "dummyText",
+          "virtual": undefined,
+        },
+        "ref": null,
+        "rendered": "dummyText",
+        "type": [Function],
+      },
       "type": [Function],
     },
   ],
@@ -124,12 +184,27 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
+      "children": <Styled(Text)>
+        dummyText
+      </Styled(Text)>,
+      "full": true,
       "onPress": [Function],
       "raised": true,
-      "text": "dummyText",
+      "virtual": undefined,
     },
     "ref": null,
-    "rendered": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": "dummyText",
+        "virtual": undefined,
+      },
+      "ref": null,
+      "rendered": "dummyText",
+      "type": [Function],
+    },
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
@@ -138,12 +213,27 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "children": <Styled(Text)>
+          dummyText
+        </Styled(Text)>,
+        "full": true,
         "onPress": [Function],
         "raised": true,
-        "text": "dummyText",
+        "virtual": undefined,
       },
       "ref": null,
-      "rendered": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "dummyText",
+          "virtual": undefined,
+        },
+        "ref": null,
+        "rendered": "dummyText",
+        "type": [Function],
+      },
       "type": [Function],
     },
   ],
@@ -176,11 +266,26 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
+      "children": <Styled(Text)>
+        dummyText
+      </Styled(Text)>,
+      "full": true,
       "onPress": [Function],
-      "text": "dummyText",
+      "virtual": undefined,
     },
     "ref": null,
-    "rendered": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": "dummyText",
+        "virtual": undefined,
+      },
+      "ref": null,
+      "rendered": "dummyText",
+      "type": [Function],
+    },
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
@@ -189,11 +294,26 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "children": <Styled(Text)>
+          dummyText
+        </Styled(Text)>,
+        "full": true,
         "onPress": [Function],
-        "text": "dummyText",
+        "virtual": undefined,
       },
       "ref": null,
-      "rendered": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "dummyText",
+          "virtual": undefined,
+        },
+        "ref": null,
+        "rendered": "dummyText",
+        "type": [Function],
+      },
       "type": [Function],
     },
   ],
