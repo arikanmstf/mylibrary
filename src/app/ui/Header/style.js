@@ -27,7 +27,4 @@ export default {
     top: 0,
     width: '100%',
   },
-  drawer: {
-    justifyContent: 'left',
-  },
 };

@@ -6,6 +6,7 @@
 
 // @flow
 import * as React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { reduxForm } from 'redux-form/immutable';
 import AppBar from '@material-ui/core/AppBar';
@@ -35,25 +36,27 @@ import {
   BOOKS_I_READ,
 } from 'constants/routes/routeNames';
 import styles from './style';
+import { mapStateToProps, mapDispatchToProps } from './actions';
 
-import type { HeaderProps, HeaderState } from './types';
+import type { HeaderProps } from './types';
 
-class Header extends React.PureComponent<HeaderProps, HeaderState> {
-  state = {
-    isDrawerOpen: false,
-  };
-
+class Header extends React.PureComponent<HeaderProps> {
   toggleDrawer = () => () => {
     logger.log('toggleDrawer');
-    this.setState((prevState) => ({ isDrawerOpen: !prevState.isDrawerOpen }));
+    const { isDrawerOpen, hideDrawer, showDrawer } = this.props;
+
+    if (isDrawerOpen) {
+      if (hideDrawer) hideDrawer();
+    } else if (showDrawer) {
+      showDrawer();
+    }
   };
 
   render() {
     const {
       classes,
+      isDrawerOpen,
     } = this.props;
-
-    const { isDrawerOpen } = this.state;
 
     return (
       <AppBar className={classes && classes.container}>
@@ -77,7 +80,7 @@ class Header extends React.PureComponent<HeaderProps, HeaderState> {
             <MenuIcon />
           </IconButton>
         </Toolbar>
-        <Drawer anchor="right" open={!!isDrawerOpen} onClose={this.toggleDrawer()}>
+        <Drawer anchor="right" open={isDrawerOpen} onClose={this.toggleDrawer()}>
           <div
             tabIndex={0}
             role="button"
@@ -125,4 +128,6 @@ class Header extends React.PureComponent<HeaderProps, HeaderState> {
 
 export default reduxForm({
   form: SEARCH_FORM_KEY,
-})(withStyles(styles)(Header));
+})(
+  connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Header))
+);

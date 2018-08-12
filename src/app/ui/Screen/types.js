@@ -5,4 +5,6 @@ export type ScreenProps = {
   children?: React.Node,
   style?: Object,
   center?: boolean,
+  isDrawerOpen?: boolean,
+  hideDrawer?: Function,
 };

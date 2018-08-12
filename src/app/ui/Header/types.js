@@ -15,8 +15,7 @@ export type HeaderProps = {
     flex: string,
     list: string,
   },
-};
-
-export type HeaderState = {
   isDrawerOpen?: ?boolean,
+  showDrawer?: Function,
+  hideDrawer?: Function,
 };

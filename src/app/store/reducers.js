@@ -3,11 +3,13 @@ import { reducer as form } from 'redux-form/immutable';
 
 import login from 'screens/login/loginReducer';
 import loader from 'ui/Loader/loaderReducer';
+import screen from 'ui/Screen/screenReducer';
 
 const rootReducer = combineReducers({
-  login,
-  loader,
   form,
+  loader,
+  login,
+  screen,
 });
 
 export default rootReducer;

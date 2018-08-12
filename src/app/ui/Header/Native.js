@@ -6,6 +6,7 @@
 
 // @flow
 import * as React from 'react';
+import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form/immutable';
 import {
   Header as HeaderNative,
@@ -15,18 +16,33 @@ import {
   Right,
   Button,
   Icon,
+  Content,
+  Text,
 } from 'native-base';
-
 import { TextField } from 'ui/native';
 import t from 'helpers/i18n/Translate';
 import fields, { SEARCH_FORM_KEY } from 'constants/forms/search';
+import { white } from 'constants/theme/color';
+import { mapDispatchToProps } from './actions';
+
 import type { HeaderProps } from './types';
 
+export const SideBar = () => (
+  <Content style={{ backgroundColor: white }}>
+    <Text>Hello World I am a stupid drawer</Text>
+  </Content>
+);
+
 class Header extends React.PureComponent<HeaderProps> {
-  static renderMenu() {
+  onMenuButtonPress = () => {
+    const { showDrawer } = this.props;
+    showDrawer();
+  };
+
+  renderMenu() {
     return (
       <Right>
-        <Button transparent>
+        <Button transparent onPress={this.onMenuButtonPress}>
           <Icon name="menu" />
         </Button>
       </Right>
@@ -64,7 +80,7 @@ class Header extends React.PureComponent<HeaderProps> {
       <HeaderNative>
         { back ? Header.renderLeft() : null}
         {Header.renderCenter()}
-        {Header.renderMenu()}
+        {this.renderMenu()}
       </HeaderNative>
     );
   }
@@ -72,4 +88,6 @@ class Header extends React.PureComponent<HeaderProps> {
 
 export default reduxForm({
   form: SEARCH_FORM_KEY,
-})(Header);
+})(
+  connect(null, mapDispatchToProps)(Header)
+);
