@@ -47,8 +47,8 @@ class Api {
   }
 
   static fetch(response: AxiosResult) {
-    return response.status === 200 ? (response.data && response.data.success)
-      : (response.data && response.data.error);
+    return response && response.status === 200 ? (response.data && response.data.success)
+      : ((response && response.data && response.data.error) || null);
   }
 }
 
