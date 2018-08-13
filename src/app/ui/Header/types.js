@@ -19,3 +19,9 @@ export type HeaderProps = {
   showDrawer?: Function,
   hideDrawer?: Function,
 };
+
+export type SideNavigationItem = {
+  label: ?string,
+  icon?: ?string,
+  to?: ?string,
+};

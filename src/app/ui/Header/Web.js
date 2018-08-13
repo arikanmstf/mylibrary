@@ -29,18 +29,50 @@ import Logo from 'assets/images/logo.png';
 import { Image, TextField } from 'ui';
 import t from 'helpers/i18n/Translate';
 import fields, { SEARCH_FORM_KEY } from 'constants/forms/search';
-import {
-  HOME,
-  PROFILE,
-  FAVORITES,
-  BOOKS_I_READ,
-} from 'constants/routes/routeNames';
+import { HOME } from 'constants/routes/routeNames';
 import styles from './style';
 import { mapStateToProps, mapDispatchToProps } from './actions';
-
-import type { HeaderProps } from './types';
+import routes from './sideNavigationItems';
+import type { HeaderProps, SideNavigationItem } from './types';
 
 class Header extends React.PureComponent<HeaderProps> {
+  static mapSideNavigationItems() {
+    return routes.map((route: SideNavigationItem) => {
+      let Icon;
+
+      switch (route.icon) {
+        case 'settings':
+          Icon = ProfileIcon;
+          break;
+        case 'star':
+          Icon = StarIcon;
+          break;
+        case 'book':
+          Icon = BookIcon;
+          break;
+        case 'log-out':
+          Icon = LogoutIcon;
+          break;
+        default:
+          Icon = null;
+      }
+
+      return (
+        <Link
+          to={route.to}
+          key={route.to}
+        >
+          <MenuItem>
+            <ListItemIcon>
+              <Icon />
+            </ListItemIcon>
+            <ListItemText primary={t.get(route.label)} />
+          </MenuItem>
+        </Link>
+      );
+    });
+  }
+
   toggleDrawer = () => () => {
     logger.log('toggleDrawer');
     const { isDrawerOpen, hideDrawer, showDrawer } = this.props;
@@ -86,38 +118,7 @@ class Header extends React.PureComponent<HeaderProps> {
             role="button"
           >
             <MenuList className={classes && classes.list}>
-              <Link
-                to={PROFILE}
-              >
-                <MenuItem>
-                  <ListItemIcon>
-                    <ProfileIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={t.get('HEADER_MENU_PROFILE')} />
-                </MenuItem>
-              </Link>
-              <Link to={FAVORITES}>
-                <MenuItem>
-                  <ListItemIcon>
-                    <StarIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={t.get('HEADER_MENU_FAVORITES')} />
-                </MenuItem>
-              </Link>
-              <Link to={BOOKS_I_READ}>
-                <MenuItem>
-                  <ListItemIcon>
-                    <BookIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={t.get('HEADER_MENU_BOOKS_I_READ')} />
-                </MenuItem>
-              </Link>
-              <MenuItem>
-                <ListItemIcon>
-                  <LogoutIcon />
-                </ListItemIcon>
-                <ListItemText primary={t.get('HEADER_MENU_LOGOUT')} />
-              </MenuItem>
+              {Header.mapSideNavigationItems()}
             </MenuList>
           </div>
         </Drawer>

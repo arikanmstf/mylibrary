@@ -8,6 +8,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form/immutable';
+import { Link } from 'react-router-native';
 import {
   Header as HeaderNative,
   Item,
@@ -17,6 +18,8 @@ import {
   Button,
   Icon,
   Content,
+  List,
+  ListItem,
   Text,
 } from 'native-base';
 import { TextField } from 'ui/native';
@@ -24,12 +27,29 @@ import t from 'helpers/i18n/Translate';
 import fields, { SEARCH_FORM_KEY } from 'constants/forms/search';
 import { white } from 'constants/theme/color';
 import { mapDispatchToProps } from './actions';
+import routes from './sideNavigationItems';
 
-import type { HeaderProps } from './types';
+import type { HeaderProps, SideNavigationItem } from './types';
+
+const renderList = (route: SideNavigationItem) => {
+  return (
+    <ListItem
+      button
+    >
+      <Icon name={route.icon} style={{ marginRight: 20 }} />
+      <Link to={route.to}>
+        <Text>{t.get(route.label)}</Text>
+      </Link>
+    </ListItem>
+  );
+};
 
 export const SideBar = () => (
   <Content style={{ backgroundColor: white }}>
-    <Text>Hello World I am a stupid drawer</Text>
+    <List
+      dataArray={routes}
+      renderRow={renderList}
+    />
   </Content>
 );
 
