@@ -5,7 +5,7 @@ import storage, { LOGIN_STATE } from 'helpers/storage';
 
 const form = createFakeStore({ mockedField: 'mockedValue' }).getState();
 
-describe('test/app/screens/login/loginActions', () => {
+describe('test/app/screens/login/loginActions.test.js', () => {
   describe('submitLoginForm', () => {
     beforeEach(() => {
       loginServices.loginRequest = jest.fn((r) => r);

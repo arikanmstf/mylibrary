@@ -23,5 +23,5 @@ export type HeaderProps = {
 export type SideNavigationItem = {
   label: ?string,
   icon?: ?string,
-  to?: ?string,
+  to: string,
 };

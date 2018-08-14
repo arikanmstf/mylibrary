@@ -24,6 +24,7 @@ import {
 } from 'native-base';
 import { TextField } from 'ui/native';
 import t from 'helpers/i18n/Translate';
+import logger from 'helpers/logger';
 import fields, { SEARCH_FORM_KEY } from 'constants/forms/search';
 import { white } from 'constants/theme/color';
 import { mapDispatchToProps } from './actions';
@@ -31,7 +32,7 @@ import routes from './sideNavigationItems';
 
 import type { HeaderProps, SideNavigationItem } from './types';
 
-const renderList = (route: SideNavigationItem) => {
+export const renderList = (route: SideNavigationItem) => {
   return (
     <ListItem
       button
@@ -53,10 +54,13 @@ export const SideBar = () => (
   </Content>
 );
 
-class Header extends React.PureComponent<HeaderProps> {
+export class Header extends React.PureComponent<HeaderProps> {
   onMenuButtonPress = () => {
     const { showDrawer } = this.props;
-    showDrawer();
+    if (showDrawer) {
+      logger.log('showDrawer');
+      showDrawer();
+    }
   };
 
   renderMenu() {

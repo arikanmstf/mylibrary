@@ -1,10 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test/app/ui/Header/Native.test.js Render 1`] = `
+exports[`test/app/ui/Header/Native.test.js Render props: { back: true } 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <ReduxForm />,
+  Symbol(enzyme.__unrendered__): <Header
+    back={true}
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -17,25 +19,217 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "destroyOnUnmount": true,
-      "enableReinitialize": false,
-      "forceUnregisterOnUnmount": false,
-      "form": "searchForm",
-      "getFormState": [Function],
-      "initialValues": undefined,
-      "keepDirtyOnReinitialize": false,
-      "persistentSubmitErrors": false,
-      "pure": true,
-      "shouldAsyncValidate": [Function],
-      "shouldError": [Function],
-      "shouldValidate": [Function],
-      "shouldWarn": [Function],
-      "touchOnBlur": true,
-      "touchOnChange": false,
-      "updateUnregisteredFields": false,
+      "children": Array [
+        <Styled(Left)>
+          <Styled(Button)
+            transparent={true}
+          >
+            <Styled(Icon)
+              name="arrow-back"
+            />
+          </Styled(Button)>
+        </Styled(Left)>,
+        <Styled(Body)>
+          <Styled(Item)
+            style={
+              Object {
+                "flexGrow": 1,
+                "height": 25,
+              }
+            }
+          >
+            <Styled(Icon)
+              name="ios-search"
+            />
+            <TextField
+              label="Search"
+              name="query"
+              type="search"
+            />
+          </Styled(Item)>
+        </Styled(Body)>,
+        <Styled(Right)>
+          <Styled(Button)
+            onPress={[Function]}
+            transparent={true}
+          >
+            <Styled(Icon)
+              name="menu"
+            />
+          </Styled(Button)>
+        </Styled(Right)>,
+      ],
+      "virtual": undefined,
     },
-    "ref": [Function],
-    "rendered": null,
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <Styled(Button)
+            transparent={true}
+          >
+            <Styled(Icon)
+              name="arrow-back"
+            />
+          </Styled(Button)>,
+          "virtual": undefined,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <Styled(Icon)
+              name="arrow-back"
+            />,
+            "transparent": true,
+            "virtual": undefined,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "name": "arrow-back",
+              "virtual": undefined,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <Styled(Item)
+            style={
+              Object {
+                "flexGrow": 1,
+                "height": 25,
+              }
+            }
+          >
+            <Styled(Icon)
+              name="ios-search"
+            />
+            <TextField
+              label="Search"
+              name="query"
+              type="search"
+            />
+          </Styled(Item)>,
+          "virtual": undefined,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <Styled(Icon)
+                name="ios-search"
+              />,
+              <TextField
+                label="Search"
+                name="query"
+                type="search"
+              />,
+            ],
+            "style": Object {
+              "flexGrow": 1,
+              "height": 25,
+            },
+            "virtual": undefined,
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "name": "ios-search",
+                "virtual": undefined,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "label": "Search",
+                "name": "query",
+                "type": "search",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <Styled(Button)
+            onPress={[Function]}
+            transparent={true}
+          >
+            <Styled(Icon)
+              name="menu"
+            />
+          </Styled(Button)>,
+          "virtual": undefined,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <Styled(Icon)
+              name="menu"
+            />,
+            "onPress": [Function],
+            "transparent": true,
+            "virtual": undefined,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "name": "menu",
+              "virtual": undefined,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+    ],
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
@@ -44,25 +238,217 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "destroyOnUnmount": true,
-        "enableReinitialize": false,
-        "forceUnregisterOnUnmount": false,
-        "form": "searchForm",
-        "getFormState": [Function],
-        "initialValues": undefined,
-        "keepDirtyOnReinitialize": false,
-        "persistentSubmitErrors": false,
-        "pure": true,
-        "shouldAsyncValidate": [Function],
-        "shouldError": [Function],
-        "shouldValidate": [Function],
-        "shouldWarn": [Function],
-        "touchOnBlur": true,
-        "touchOnChange": false,
-        "updateUnregisteredFields": false,
+        "children": Array [
+          <Styled(Left)>
+            <Styled(Button)
+              transparent={true}
+            >
+              <Styled(Icon)
+                name="arrow-back"
+              />
+            </Styled(Button)>
+          </Styled(Left)>,
+          <Styled(Body)>
+            <Styled(Item)
+              style={
+                Object {
+                  "flexGrow": 1,
+                  "height": 25,
+                }
+              }
+            >
+              <Styled(Icon)
+                name="ios-search"
+              />
+              <TextField
+                label="Search"
+                name="query"
+                type="search"
+              />
+            </Styled(Item)>
+          </Styled(Body)>,
+          <Styled(Right)>
+            <Styled(Button)
+              onPress={[Function]}
+              transparent={true}
+            >
+              <Styled(Icon)
+                name="menu"
+              />
+            </Styled(Button)>
+          </Styled(Right)>,
+        ],
+        "virtual": undefined,
       },
-      "ref": [Function],
-      "rendered": null,
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <Styled(Button)
+              transparent={true}
+            >
+              <Styled(Icon)
+                name="arrow-back"
+              />
+            </Styled(Button)>,
+            "virtual": undefined,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <Styled(Icon)
+                name="arrow-back"
+              />,
+              "transparent": true,
+              "virtual": undefined,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "name": "arrow-back",
+                "virtual": undefined,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <Styled(Item)
+              style={
+                Object {
+                  "flexGrow": 1,
+                  "height": 25,
+                }
+              }
+            >
+              <Styled(Icon)
+                name="ios-search"
+              />
+              <TextField
+                label="Search"
+                name="query"
+                type="search"
+              />
+            </Styled(Item)>,
+            "virtual": undefined,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <Styled(Icon)
+                  name="ios-search"
+                />,
+                <TextField
+                  label="Search"
+                  name="query"
+                  type="search"
+                />,
+              ],
+              "style": Object {
+                "flexGrow": 1,
+                "height": 25,
+              },
+              "virtual": undefined,
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "name": "ios-search",
+                  "virtual": undefined,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "label": "Search",
+                  "name": "query",
+                  "type": "search",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <Styled(Button)
+              onPress={[Function]}
+              transparent={true}
+            >
+              <Styled(Icon)
+                name="menu"
+              />
+            </Styled(Button)>,
+            "virtual": undefined,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <Styled(Icon)
+                name="menu"
+              />,
+              "onPress": [Function],
+              "transparent": true,
+              "virtual": undefined,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "name": "menu",
+                "virtual": undefined,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+      ],
       "type": [Function],
     },
   ],
@@ -74,4 +460,584 @@ ShallowWrapper {
     },
   },
 }
+`;
+
+exports[`test/app/ui/Header/Native.test.js Render props: {} 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Header />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        null,
+        <Styled(Body)>
+          <Styled(Item)
+            style={
+              Object {
+                "flexGrow": 1,
+                "height": 25,
+              }
+            }
+          >
+            <Styled(Icon)
+              name="ios-search"
+            />
+            <TextField
+              label="Search"
+              name="query"
+              type="search"
+            />
+          </Styled(Item)>
+        </Styled(Body)>,
+        <Styled(Right)>
+          <Styled(Button)
+            onPress={[Function]}
+            transparent={true}
+          >
+            <Styled(Icon)
+              name="menu"
+            />
+          </Styled(Button)>
+        </Styled(Right)>,
+      ],
+      "virtual": undefined,
+    },
+    "ref": null,
+    "rendered": Array [
+      null,
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <Styled(Item)
+            style={
+              Object {
+                "flexGrow": 1,
+                "height": 25,
+              }
+            }
+          >
+            <Styled(Icon)
+              name="ios-search"
+            />
+            <TextField
+              label="Search"
+              name="query"
+              type="search"
+            />
+          </Styled(Item)>,
+          "virtual": undefined,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <Styled(Icon)
+                name="ios-search"
+              />,
+              <TextField
+                label="Search"
+                name="query"
+                type="search"
+              />,
+            ],
+            "style": Object {
+              "flexGrow": 1,
+              "height": 25,
+            },
+            "virtual": undefined,
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "name": "ios-search",
+                "virtual": undefined,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "label": "Search",
+                "name": "query",
+                "type": "search",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <Styled(Button)
+            onPress={[Function]}
+            transparent={true}
+          >
+            <Styled(Icon)
+              name="menu"
+            />
+          </Styled(Button)>,
+          "virtual": undefined,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <Styled(Icon)
+              name="menu"
+            />,
+            "onPress": [Function],
+            "transparent": true,
+            "virtual": undefined,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "name": "menu",
+              "virtual": undefined,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          null,
+          <Styled(Body)>
+            <Styled(Item)
+              style={
+                Object {
+                  "flexGrow": 1,
+                  "height": 25,
+                }
+              }
+            >
+              <Styled(Icon)
+                name="ios-search"
+              />
+              <TextField
+                label="Search"
+                name="query"
+                type="search"
+              />
+            </Styled(Item)>
+          </Styled(Body)>,
+          <Styled(Right)>
+            <Styled(Button)
+              onPress={[Function]}
+              transparent={true}
+            >
+              <Styled(Icon)
+                name="menu"
+              />
+            </Styled(Button)>
+          </Styled(Right)>,
+        ],
+        "virtual": undefined,
+      },
+      "ref": null,
+      "rendered": Array [
+        null,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <Styled(Item)
+              style={
+                Object {
+                  "flexGrow": 1,
+                  "height": 25,
+                }
+              }
+            >
+              <Styled(Icon)
+                name="ios-search"
+              />
+              <TextField
+                label="Search"
+                name="query"
+                type="search"
+              />
+            </Styled(Item)>,
+            "virtual": undefined,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <Styled(Icon)
+                  name="ios-search"
+                />,
+                <TextField
+                  label="Search"
+                  name="query"
+                  type="search"
+                />,
+              ],
+              "style": Object {
+                "flexGrow": 1,
+                "height": 25,
+              },
+              "virtual": undefined,
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "name": "ios-search",
+                  "virtual": undefined,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "label": "Search",
+                  "name": "query",
+                  "type": "search",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <Styled(Button)
+              onPress={[Function]}
+              transparent={true}
+            >
+              <Styled(Icon)
+                name="menu"
+              />
+            </Styled(Button)>,
+            "virtual": undefined,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <Styled(Icon)
+                name="menu"
+              />,
+              "onPress": [Function],
+              "transparent": true,
+              "virtual": undefined,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "name": "menu",
+                "virtual": undefined,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`test/app/ui/Header/Native.test.js SideBar 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <SideBar />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": <Styled(List)
+        dataArray={
+          Array [
+            Object {
+              "icon": "settings",
+              "label": "HEADER_MENU_PROFILE",
+              "to": "/profile",
+            },
+            Object {
+              "icon": "star",
+              "label": "HEADER_MENU_FAVORITES",
+              "to": "/favorites",
+            },
+            Object {
+              "icon": "book",
+              "label": "HEADER_MENU_BOOKS_I_READ",
+              "to": "/books-i-read",
+            },
+            Object {
+              "icon": "log-out",
+              "label": "HEADER_MENU_LOGOUT",
+              "to": "/logout",
+            },
+          ]
+        }
+        renderRow={[Function]}
+      />,
+      "style": Object {
+        "backgroundColor": "#ffffff",
+      },
+      "virtual": undefined,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "dataArray": Array [
+          Object {
+            "icon": "settings",
+            "label": "HEADER_MENU_PROFILE",
+            "to": "/profile",
+          },
+          Object {
+            "icon": "star",
+            "label": "HEADER_MENU_FAVORITES",
+            "to": "/favorites",
+          },
+          Object {
+            "icon": "book",
+            "label": "HEADER_MENU_BOOKS_I_READ",
+            "to": "/books-i-read",
+          },
+          Object {
+            "icon": "log-out",
+            "label": "HEADER_MENU_LOGOUT",
+            "to": "/logout",
+          },
+        ],
+        "renderRow": [Function],
+        "virtual": undefined,
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <Styled(List)
+          dataArray={
+            Array [
+              Object {
+                "icon": "settings",
+                "label": "HEADER_MENU_PROFILE",
+                "to": "/profile",
+              },
+              Object {
+                "icon": "star",
+                "label": "HEADER_MENU_FAVORITES",
+                "to": "/favorites",
+              },
+              Object {
+                "icon": "book",
+                "label": "HEADER_MENU_BOOKS_I_READ",
+                "to": "/books-i-read",
+              },
+              Object {
+                "icon": "log-out",
+                "label": "HEADER_MENU_LOGOUT",
+                "to": "/logout",
+              },
+            ]
+          }
+          renderRow={[Function]}
+        />,
+        "style": Object {
+          "backgroundColor": "#ffffff",
+        },
+        "virtual": undefined,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "dataArray": Array [
+            Object {
+              "icon": "settings",
+              "label": "HEADER_MENU_PROFILE",
+              "to": "/profile",
+            },
+            Object {
+              "icon": "star",
+              "label": "HEADER_MENU_FAVORITES",
+              "to": "/favorites",
+            },
+            Object {
+              "icon": "book",
+              "label": "HEADER_MENU_BOOKS_I_READ",
+              "to": "/books-i-read",
+            },
+            Object {
+              "icon": "log-out",
+              "label": "HEADER_MENU_LOGOUT",
+              "to": "/logout",
+            },
+          ],
+          "renderRow": [Function],
+          "virtual": undefined,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`test/app/ui/Header/Native.test.js renderCenter 1`] = `
+<Styled(Left)>
+  <Styled(Button)
+    transparent={true}
+  >
+    <Styled(Icon)
+      name="arrow-back"
+    />
+  </Styled(Button)>
+</Styled(Left)>
+`;
+
+exports[`test/app/ui/Header/Native.test.js renderLeft 1`] = `
+<Styled(Left)>
+  <Styled(Button)
+    transparent={true}
+  >
+    <Styled(Icon)
+      name="arrow-back"
+    />
+  </Styled(Button)>
+</Styled(Left)>
+`;
+
+exports[`test/app/ui/Header/Native.test.js renderList 1`] = `
+<Styled(ListItem)
+  button={true}
+>
+  <Styled(Icon)
+    name="settings"
+    style={
+      Object {
+        "marginRight": 20,
+      }
+    }
+  />
+  <Link
+    component={[Function]}
+    replace={false}
+    to="/profile"
+  >
+    <Styled(Text)>
+      Profile
+    </Styled(Text)>
+  </Link>
+</Styled(ListItem)>
 `;

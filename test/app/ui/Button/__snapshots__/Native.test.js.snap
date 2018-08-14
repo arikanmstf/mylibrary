@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`src/app/ui/Button/Native.js Render: props: { onPress } 1`] = `
+exports[`test/app/ui/Button/Native.test.js Render: props: { onPress } 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
@@ -81,7 +81,7 @@ ShallowWrapper {
 }
 `;
 
-exports[`src/app/ui/Button/Native.js Render: props: { primary } 1`] = `
+exports[`test/app/ui/Button/Native.test.js Render: props: { primary } 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
@@ -164,7 +164,7 @@ ShallowWrapper {
 }
 `;
 
-exports[`src/app/ui/Button/Native.js Render: props: { raised } 1`] = `
+exports[`test/app/ui/Button/Native.test.js Render: props: { raised } 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
@@ -247,7 +247,7 @@ ShallowWrapper {
 }
 `;
 
-exports[`src/app/ui/Button/Native.js Render: props: { text } 1`] = `
+exports[`test/app/ui/Button/Native.test.js Render: props: { text } 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],

@@ -1,11 +1,14 @@
 // @flow
 export type State = {|
+  form: Object,
+  loader: {|
+    isVisible: boolean,
+  |},
   login: {|
     isLoggedIn: boolean,
     isInitialized: boolean,
   |},
-  loader: {|
-    isVisible: boolean,
+  screen: {|
+    isDrawerOpen: boolean,
   |},
-  form: Object,
 |};

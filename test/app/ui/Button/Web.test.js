@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { Button } from 'ui';
 
-describe('src/app/ui/Button/Web.js', () => {
+describe('test/app/ui/Button/Web.test.js', () => {
   it('Render: props: { text }', () => {
     const props = {
       text: 'dummyText',

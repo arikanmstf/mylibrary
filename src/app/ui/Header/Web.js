@@ -35,7 +35,7 @@ import { mapStateToProps, mapDispatchToProps } from './actions';
 import routes from './sideNavigationItems';
 import type { HeaderProps, SideNavigationItem } from './types';
 
-class Header extends React.PureComponent<HeaderProps> {
+export class Header extends React.PureComponent<HeaderProps> {
   static mapSideNavigationItems() {
     return routes.map((route: SideNavigationItem) => {
       let Icon;
@@ -63,9 +63,11 @@ class Header extends React.PureComponent<HeaderProps> {
           key={route.to}
         >
           <MenuItem>
-            <ListItemIcon>
-              <Icon />
-            </ListItemIcon>
+            { Icon ? (
+              <ListItemIcon>
+                <Icon />
+              </ListItemIcon>
+            ) : null }
             <ListItemText primary={t.get(route.label)} />
           </MenuItem>
         </Link>
@@ -73,7 +75,7 @@ class Header extends React.PureComponent<HeaderProps> {
     });
   }
 
-  toggleDrawer = () => () => {
+  toggleDrawer = () => {
     logger.log('toggleDrawer');
     const { isDrawerOpen, hideDrawer, showDrawer } = this.props;
 
@@ -107,12 +109,12 @@ class Header extends React.PureComponent<HeaderProps> {
           />
           <div className={classes && classes.flex} />
           <IconButton
-            onClick={this.toggleDrawer()}
+            onClick={this.toggleDrawer}
           >
             <MenuIcon />
           </IconButton>
         </Toolbar>
-        <Drawer anchor="right" open={isDrawerOpen} onClose={this.toggleDrawer()}>
+        <Drawer anchor="right" open={!!isDrawerOpen} onClose={this.toggleDrawer}>
           <div
             tabIndex={0}
             role="button"

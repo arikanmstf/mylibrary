@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`src/app/web/Routes.js Render: props: null 1`] = `
+exports[`test/app/web/Routes.test.js Render: props: null 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],

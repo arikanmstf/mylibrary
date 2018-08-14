@@ -4,7 +4,7 @@ exports[`test/app/ui/Header/Web.test.js Render 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <ReduxForm />,
+  Symbol(enzyme.__unrendered__): <Header />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -17,25 +17,668 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "destroyOnUnmount": true,
-      "enableReinitialize": false,
-      "forceUnregisterOnUnmount": false,
-      "form": "searchForm",
-      "getFormState": [Function],
-      "initialValues": undefined,
-      "keepDirtyOnReinitialize": false,
-      "persistentSubmitErrors": false,
-      "pure": true,
-      "shouldAsyncValidate": [Function],
-      "shouldError": [Function],
-      "shouldValidate": [Function],
-      "shouldWarn": [Function],
-      "touchOnBlur": true,
-      "touchOnChange": false,
-      "updateUnregisteredFields": false,
+      "children": Array [
+        <WithStyles(Toolbar)>
+          <Image
+            alt="mylibrary logo"
+            source={
+              Object {
+                "testUri": "../../../src/app/assets/images/logo.png",
+              }
+            }
+            to="/"
+          />
+          <TextField
+            label="Search"
+            name="query"
+            type="search"
+          />
+          <div />
+          <WithStyles(IconButton)
+            onClick={[Function]}
+          >
+            <pure(Menu) />
+          </WithStyles(IconButton)>
+        </WithStyles(Toolbar)>,
+        <WithStyles(Drawer)
+          anchor="right"
+          onClose={[Function]}
+          open={false}
+        >
+          <div
+            role="button"
+            tabIndex={0}
+          >
+            <MenuList>
+              <Link
+                replace={false}
+                to="/profile"
+              >
+                <WithStyles(MenuItem)>
+                  <WithStyles(ListItemIcon)>
+                    <pure(SettingsApplications) />
+                  </WithStyles(ListItemIcon)>
+                  <WithStyles(ListItemText)
+                    primary="Profile"
+                  />
+                </WithStyles(MenuItem)>
+              </Link>
+              <Link
+                replace={false}
+                to="/favorites"
+              >
+                <WithStyles(MenuItem)>
+                  <WithStyles(ListItemIcon)>
+                    <pure(Star) />
+                  </WithStyles(ListItemIcon)>
+                  <WithStyles(ListItemText)
+                    primary="My Favorites"
+                  />
+                </WithStyles(MenuItem)>
+              </Link>
+              <Link
+                replace={false}
+                to="/books-i-read"
+              >
+                <WithStyles(MenuItem)>
+                  <WithStyles(ListItemIcon)>
+                    <pure(Book) />
+                  </WithStyles(ListItemIcon)>
+                  <WithStyles(ListItemText)
+                    primary="Books I Read"
+                  />
+                </WithStyles(MenuItem)>
+              </Link>
+              <Link
+                replace={false}
+                to="/logout"
+              >
+                <WithStyles(MenuItem)>
+                  <WithStyles(ListItemIcon)>
+                    <pure(ExitToApp) />
+                  </WithStyles(ListItemIcon)>
+                  <WithStyles(ListItemText)
+                    primary="Logout"
+                  />
+                </WithStyles(MenuItem)>
+              </Link>
+            </MenuList>
+          </div>
+        </WithStyles(Drawer)>,
+      ],
+      "className": undefined,
     },
-    "ref": [Function],
-    "rendered": null,
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <Image
+              alt="mylibrary logo"
+              source={
+                Object {
+                  "testUri": "../../../src/app/assets/images/logo.png",
+                }
+              }
+              to="/"
+            />,
+            <TextField
+              label="Search"
+              name="query"
+              type="search"
+            />,
+            <div />,
+            <WithStyles(IconButton)
+              onClick={[Function]}
+            >
+              <pure(Menu) />
+            </WithStyles(IconButton)>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "alt": "mylibrary logo",
+              "className": undefined,
+              "source": Object {
+                "testUri": "../../../src/app/assets/images/logo.png",
+              },
+              "to": "/",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "className": undefined,
+              "label": "Search",
+              "name": "query",
+              "type": "search",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "className": undefined,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <pure(Menu) />,
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "anchor": "right",
+          "children": <div
+            role="button"
+            tabIndex={0}
+          >
+            <MenuList>
+              <Link
+                replace={false}
+                to="/profile"
+              >
+                <WithStyles(MenuItem)>
+                  <WithStyles(ListItemIcon)>
+                    <pure(SettingsApplications) />
+                  </WithStyles(ListItemIcon)>
+                  <WithStyles(ListItemText)
+                    primary="Profile"
+                  />
+                </WithStyles(MenuItem)>
+              </Link>
+              <Link
+                replace={false}
+                to="/favorites"
+              >
+                <WithStyles(MenuItem)>
+                  <WithStyles(ListItemIcon)>
+                    <pure(Star) />
+                  </WithStyles(ListItemIcon)>
+                  <WithStyles(ListItemText)
+                    primary="My Favorites"
+                  />
+                </WithStyles(MenuItem)>
+              </Link>
+              <Link
+                replace={false}
+                to="/books-i-read"
+              >
+                <WithStyles(MenuItem)>
+                  <WithStyles(ListItemIcon)>
+                    <pure(Book) />
+                  </WithStyles(ListItemIcon)>
+                  <WithStyles(ListItemText)
+                    primary="Books I Read"
+                  />
+                </WithStyles(MenuItem)>
+              </Link>
+              <Link
+                replace={false}
+                to="/logout"
+              >
+                <WithStyles(MenuItem)>
+                  <WithStyles(ListItemIcon)>
+                    <pure(ExitToApp) />
+                  </WithStyles(ListItemIcon)>
+                  <WithStyles(ListItemText)
+                    primary="Logout"
+                  />
+                </WithStyles(MenuItem)>
+              </Link>
+            </MenuList>
+          </div>,
+          "onClose": [Function],
+          "open": false,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <MenuList>
+              <Link
+                replace={false}
+                to="/profile"
+              >
+                <WithStyles(MenuItem)>
+                  <WithStyles(ListItemIcon)>
+                    <pure(SettingsApplications) />
+                  </WithStyles(ListItemIcon)>
+                  <WithStyles(ListItemText)
+                    primary="Profile"
+                  />
+                </WithStyles(MenuItem)>
+              </Link>
+              <Link
+                replace={false}
+                to="/favorites"
+              >
+                <WithStyles(MenuItem)>
+                  <WithStyles(ListItemIcon)>
+                    <pure(Star) />
+                  </WithStyles(ListItemIcon)>
+                  <WithStyles(ListItemText)
+                    primary="My Favorites"
+                  />
+                </WithStyles(MenuItem)>
+              </Link>
+              <Link
+                replace={false}
+                to="/books-i-read"
+              >
+                <WithStyles(MenuItem)>
+                  <WithStyles(ListItemIcon)>
+                    <pure(Book) />
+                  </WithStyles(ListItemIcon)>
+                  <WithStyles(ListItemText)
+                    primary="Books I Read"
+                  />
+                </WithStyles(MenuItem)>
+              </Link>
+              <Link
+                replace={false}
+                to="/logout"
+              >
+                <WithStyles(MenuItem)>
+                  <WithStyles(ListItemIcon)>
+                    <pure(ExitToApp) />
+                  </WithStyles(ListItemIcon)>
+                  <WithStyles(ListItemText)
+                    primary="Logout"
+                  />
+                </WithStyles(MenuItem)>
+              </Link>
+            </MenuList>,
+            "role": "button",
+            "tabIndex": 0,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <Link
+                  replace={false}
+                  to="/profile"
+                >
+                  <WithStyles(MenuItem)>
+                    <WithStyles(ListItemIcon)>
+                      <pure(SettingsApplications) />
+                    </WithStyles(ListItemIcon)>
+                    <WithStyles(ListItemText)
+                      primary="Profile"
+                    />
+                  </WithStyles(MenuItem)>
+                </Link>,
+                <Link
+                  replace={false}
+                  to="/favorites"
+                >
+                  <WithStyles(MenuItem)>
+                    <WithStyles(ListItemIcon)>
+                      <pure(Star) />
+                    </WithStyles(ListItemIcon)>
+                    <WithStyles(ListItemText)
+                      primary="My Favorites"
+                    />
+                  </WithStyles(MenuItem)>
+                </Link>,
+                <Link
+                  replace={false}
+                  to="/books-i-read"
+                >
+                  <WithStyles(MenuItem)>
+                    <WithStyles(ListItemIcon)>
+                      <pure(Book) />
+                    </WithStyles(ListItemIcon)>
+                    <WithStyles(ListItemText)
+                      primary="Books I Read"
+                    />
+                  </WithStyles(MenuItem)>
+                </Link>,
+                <Link
+                  replace={false}
+                  to="/logout"
+                >
+                  <WithStyles(MenuItem)>
+                    <WithStyles(ListItemIcon)>
+                      <pure(ExitToApp) />
+                    </WithStyles(ListItemIcon)>
+                    <WithStyles(ListItemText)
+                      primary="Logout"
+                    />
+                  </WithStyles(MenuItem)>
+                </Link>,
+              ],
+              "className": undefined,
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": "/profile",
+                "nodeType": "class",
+                "props": Object {
+                  "children": <WithStyles(MenuItem)>
+                    <WithStyles(ListItemIcon)>
+                      <pure(SettingsApplications) />
+                    </WithStyles(ListItemIcon)>
+                    <WithStyles(ListItemText)
+                      primary="Profile"
+                    />
+                  </WithStyles(MenuItem)>,
+                  "replace": false,
+                  "to": "/profile",
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      <WithStyles(ListItemIcon)>
+                        <pure(SettingsApplications) />
+                      </WithStyles(ListItemIcon)>,
+                      <WithStyles(ListItemText)
+                        primary="Profile"
+                      />,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": <pure(SettingsApplications) />,
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {},
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "primary": "Profile",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": "/favorites",
+                "nodeType": "class",
+                "props": Object {
+                  "children": <WithStyles(MenuItem)>
+                    <WithStyles(ListItemIcon)>
+                      <pure(Star) />
+                    </WithStyles(ListItemIcon)>
+                    <WithStyles(ListItemText)
+                      primary="My Favorites"
+                    />
+                  </WithStyles(MenuItem)>,
+                  "replace": false,
+                  "to": "/favorites",
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      <WithStyles(ListItemIcon)>
+                        <pure(Star) />
+                      </WithStyles(ListItemIcon)>,
+                      <WithStyles(ListItemText)
+                        primary="My Favorites"
+                      />,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": <pure(Star) />,
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {},
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "primary": "My Favorites",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": "/books-i-read",
+                "nodeType": "class",
+                "props": Object {
+                  "children": <WithStyles(MenuItem)>
+                    <WithStyles(ListItemIcon)>
+                      <pure(Book) />
+                    </WithStyles(ListItemIcon)>
+                    <WithStyles(ListItemText)
+                      primary="Books I Read"
+                    />
+                  </WithStyles(MenuItem)>,
+                  "replace": false,
+                  "to": "/books-i-read",
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      <WithStyles(ListItemIcon)>
+                        <pure(Book) />
+                      </WithStyles(ListItemIcon)>,
+                      <WithStyles(ListItemText)
+                        primary="Books I Read"
+                      />,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": <pure(Book) />,
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {},
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "primary": "Books I Read",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": "/logout",
+                "nodeType": "class",
+                "props": Object {
+                  "children": <WithStyles(MenuItem)>
+                    <WithStyles(ListItemIcon)>
+                      <pure(ExitToApp) />
+                    </WithStyles(ListItemIcon)>
+                    <WithStyles(ListItemText)
+                      primary="Logout"
+                    />
+                  </WithStyles(MenuItem)>,
+                  "replace": false,
+                  "to": "/logout",
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      <WithStyles(ListItemIcon)>
+                        <pure(ExitToApp) />
+                      </WithStyles(ListItemIcon)>,
+                      <WithStyles(ListItemText)
+                        primary="Logout"
+                      />,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": <pure(ExitToApp) />,
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {},
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "primary": "Logout",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          "type": "div",
+        },
+        "type": [Function],
+      },
+    ],
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
@@ -44,25 +687,668 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "destroyOnUnmount": true,
-        "enableReinitialize": false,
-        "forceUnregisterOnUnmount": false,
-        "form": "searchForm",
-        "getFormState": [Function],
-        "initialValues": undefined,
-        "keepDirtyOnReinitialize": false,
-        "persistentSubmitErrors": false,
-        "pure": true,
-        "shouldAsyncValidate": [Function],
-        "shouldError": [Function],
-        "shouldValidate": [Function],
-        "shouldWarn": [Function],
-        "touchOnBlur": true,
-        "touchOnChange": false,
-        "updateUnregisteredFields": false,
+        "children": Array [
+          <WithStyles(Toolbar)>
+            <Image
+              alt="mylibrary logo"
+              source={
+                Object {
+                  "testUri": "../../../src/app/assets/images/logo.png",
+                }
+              }
+              to="/"
+            />
+            <TextField
+              label="Search"
+              name="query"
+              type="search"
+            />
+            <div />
+            <WithStyles(IconButton)
+              onClick={[Function]}
+            >
+              <pure(Menu) />
+            </WithStyles(IconButton)>
+          </WithStyles(Toolbar)>,
+          <WithStyles(Drawer)
+            anchor="right"
+            onClose={[Function]}
+            open={false}
+          >
+            <div
+              role="button"
+              tabIndex={0}
+            >
+              <MenuList>
+                <Link
+                  replace={false}
+                  to="/profile"
+                >
+                  <WithStyles(MenuItem)>
+                    <WithStyles(ListItemIcon)>
+                      <pure(SettingsApplications) />
+                    </WithStyles(ListItemIcon)>
+                    <WithStyles(ListItemText)
+                      primary="Profile"
+                    />
+                  </WithStyles(MenuItem)>
+                </Link>
+                <Link
+                  replace={false}
+                  to="/favorites"
+                >
+                  <WithStyles(MenuItem)>
+                    <WithStyles(ListItemIcon)>
+                      <pure(Star) />
+                    </WithStyles(ListItemIcon)>
+                    <WithStyles(ListItemText)
+                      primary="My Favorites"
+                    />
+                  </WithStyles(MenuItem)>
+                </Link>
+                <Link
+                  replace={false}
+                  to="/books-i-read"
+                >
+                  <WithStyles(MenuItem)>
+                    <WithStyles(ListItemIcon)>
+                      <pure(Book) />
+                    </WithStyles(ListItemIcon)>
+                    <WithStyles(ListItemText)
+                      primary="Books I Read"
+                    />
+                  </WithStyles(MenuItem)>
+                </Link>
+                <Link
+                  replace={false}
+                  to="/logout"
+                >
+                  <WithStyles(MenuItem)>
+                    <WithStyles(ListItemIcon)>
+                      <pure(ExitToApp) />
+                    </WithStyles(ListItemIcon)>
+                    <WithStyles(ListItemText)
+                      primary="Logout"
+                    />
+                  </WithStyles(MenuItem)>
+                </Link>
+              </MenuList>
+            </div>
+          </WithStyles(Drawer)>,
+        ],
+        "className": undefined,
       },
-      "ref": [Function],
-      "rendered": null,
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <Image
+                alt="mylibrary logo"
+                source={
+                  Object {
+                    "testUri": "../../../src/app/assets/images/logo.png",
+                  }
+                }
+                to="/"
+              />,
+              <TextField
+                label="Search"
+                name="query"
+                type="search"
+              />,
+              <div />,
+              <WithStyles(IconButton)
+                onClick={[Function]}
+              >
+                <pure(Menu) />
+              </WithStyles(IconButton)>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "alt": "mylibrary logo",
+                "className": undefined,
+                "source": Object {
+                  "testUri": "../../../src/app/assets/images/logo.png",
+                },
+                "to": "/",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "className": undefined,
+                "label": "Search",
+                "name": "query",
+                "type": "search",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": undefined,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <pure(Menu) />,
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "anchor": "right",
+            "children": <div
+              role="button"
+              tabIndex={0}
+            >
+              <MenuList>
+                <Link
+                  replace={false}
+                  to="/profile"
+                >
+                  <WithStyles(MenuItem)>
+                    <WithStyles(ListItemIcon)>
+                      <pure(SettingsApplications) />
+                    </WithStyles(ListItemIcon)>
+                    <WithStyles(ListItemText)
+                      primary="Profile"
+                    />
+                  </WithStyles(MenuItem)>
+                </Link>
+                <Link
+                  replace={false}
+                  to="/favorites"
+                >
+                  <WithStyles(MenuItem)>
+                    <WithStyles(ListItemIcon)>
+                      <pure(Star) />
+                    </WithStyles(ListItemIcon)>
+                    <WithStyles(ListItemText)
+                      primary="My Favorites"
+                    />
+                  </WithStyles(MenuItem)>
+                </Link>
+                <Link
+                  replace={false}
+                  to="/books-i-read"
+                >
+                  <WithStyles(MenuItem)>
+                    <WithStyles(ListItemIcon)>
+                      <pure(Book) />
+                    </WithStyles(ListItemIcon)>
+                    <WithStyles(ListItemText)
+                      primary="Books I Read"
+                    />
+                  </WithStyles(MenuItem)>
+                </Link>
+                <Link
+                  replace={false}
+                  to="/logout"
+                >
+                  <WithStyles(MenuItem)>
+                    <WithStyles(ListItemIcon)>
+                      <pure(ExitToApp) />
+                    </WithStyles(ListItemIcon)>
+                    <WithStyles(ListItemText)
+                      primary="Logout"
+                    />
+                  </WithStyles(MenuItem)>
+                </Link>
+              </MenuList>
+            </div>,
+            "onClose": [Function],
+            "open": false,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <MenuList>
+                <Link
+                  replace={false}
+                  to="/profile"
+                >
+                  <WithStyles(MenuItem)>
+                    <WithStyles(ListItemIcon)>
+                      <pure(SettingsApplications) />
+                    </WithStyles(ListItemIcon)>
+                    <WithStyles(ListItemText)
+                      primary="Profile"
+                    />
+                  </WithStyles(MenuItem)>
+                </Link>
+                <Link
+                  replace={false}
+                  to="/favorites"
+                >
+                  <WithStyles(MenuItem)>
+                    <WithStyles(ListItemIcon)>
+                      <pure(Star) />
+                    </WithStyles(ListItemIcon)>
+                    <WithStyles(ListItemText)
+                      primary="My Favorites"
+                    />
+                  </WithStyles(MenuItem)>
+                </Link>
+                <Link
+                  replace={false}
+                  to="/books-i-read"
+                >
+                  <WithStyles(MenuItem)>
+                    <WithStyles(ListItemIcon)>
+                      <pure(Book) />
+                    </WithStyles(ListItemIcon)>
+                    <WithStyles(ListItemText)
+                      primary="Books I Read"
+                    />
+                  </WithStyles(MenuItem)>
+                </Link>
+                <Link
+                  replace={false}
+                  to="/logout"
+                >
+                  <WithStyles(MenuItem)>
+                    <WithStyles(ListItemIcon)>
+                      <pure(ExitToApp) />
+                    </WithStyles(ListItemIcon)>
+                    <WithStyles(ListItemText)
+                      primary="Logout"
+                    />
+                  </WithStyles(MenuItem)>
+                </Link>
+              </MenuList>,
+              "role": "button",
+              "tabIndex": 0,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <Link
+                    replace={false}
+                    to="/profile"
+                  >
+                    <WithStyles(MenuItem)>
+                      <WithStyles(ListItemIcon)>
+                        <pure(SettingsApplications) />
+                      </WithStyles(ListItemIcon)>
+                      <WithStyles(ListItemText)
+                        primary="Profile"
+                      />
+                    </WithStyles(MenuItem)>
+                  </Link>,
+                  <Link
+                    replace={false}
+                    to="/favorites"
+                  >
+                    <WithStyles(MenuItem)>
+                      <WithStyles(ListItemIcon)>
+                        <pure(Star) />
+                      </WithStyles(ListItemIcon)>
+                      <WithStyles(ListItemText)
+                        primary="My Favorites"
+                      />
+                    </WithStyles(MenuItem)>
+                  </Link>,
+                  <Link
+                    replace={false}
+                    to="/books-i-read"
+                  >
+                    <WithStyles(MenuItem)>
+                      <WithStyles(ListItemIcon)>
+                        <pure(Book) />
+                      </WithStyles(ListItemIcon)>
+                      <WithStyles(ListItemText)
+                        primary="Books I Read"
+                      />
+                    </WithStyles(MenuItem)>
+                  </Link>,
+                  <Link
+                    replace={false}
+                    to="/logout"
+                  >
+                    <WithStyles(MenuItem)>
+                      <WithStyles(ListItemIcon)>
+                        <pure(ExitToApp) />
+                      </WithStyles(ListItemIcon)>
+                      <WithStyles(ListItemText)
+                        primary="Logout"
+                      />
+                    </WithStyles(MenuItem)>
+                  </Link>,
+                ],
+                "className": undefined,
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": "/profile",
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <WithStyles(MenuItem)>
+                      <WithStyles(ListItemIcon)>
+                        <pure(SettingsApplications) />
+                      </WithStyles(ListItemIcon)>
+                      <WithStyles(ListItemText)
+                        primary="Profile"
+                      />
+                    </WithStyles(MenuItem)>,
+                    "replace": false,
+                    "to": "/profile",
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": Array [
+                        <WithStyles(ListItemIcon)>
+                          <pure(SettingsApplications) />
+                        </WithStyles(ListItemIcon)>,
+                        <WithStyles(ListItemText)
+                          primary="Profile"
+                        />,
+                      ],
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "children": <pure(SettingsApplications) />,
+                        },
+                        "ref": null,
+                        "rendered": Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "class",
+                          "props": Object {},
+                          "ref": null,
+                          "rendered": null,
+                          "type": [Function],
+                        },
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "primary": "Profile",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": "/favorites",
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <WithStyles(MenuItem)>
+                      <WithStyles(ListItemIcon)>
+                        <pure(Star) />
+                      </WithStyles(ListItemIcon)>
+                      <WithStyles(ListItemText)
+                        primary="My Favorites"
+                      />
+                    </WithStyles(MenuItem)>,
+                    "replace": false,
+                    "to": "/favorites",
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": Array [
+                        <WithStyles(ListItemIcon)>
+                          <pure(Star) />
+                        </WithStyles(ListItemIcon)>,
+                        <WithStyles(ListItemText)
+                          primary="My Favorites"
+                        />,
+                      ],
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "children": <pure(Star) />,
+                        },
+                        "ref": null,
+                        "rendered": Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "class",
+                          "props": Object {},
+                          "ref": null,
+                          "rendered": null,
+                          "type": [Function],
+                        },
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "primary": "My Favorites",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": "/books-i-read",
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <WithStyles(MenuItem)>
+                      <WithStyles(ListItemIcon)>
+                        <pure(Book) />
+                      </WithStyles(ListItemIcon)>
+                      <WithStyles(ListItemText)
+                        primary="Books I Read"
+                      />
+                    </WithStyles(MenuItem)>,
+                    "replace": false,
+                    "to": "/books-i-read",
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": Array [
+                        <WithStyles(ListItemIcon)>
+                          <pure(Book) />
+                        </WithStyles(ListItemIcon)>,
+                        <WithStyles(ListItemText)
+                          primary="Books I Read"
+                        />,
+                      ],
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "children": <pure(Book) />,
+                        },
+                        "ref": null,
+                        "rendered": Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "class",
+                          "props": Object {},
+                          "ref": null,
+                          "rendered": null,
+                          "type": [Function],
+                        },
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "primary": "Books I Read",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": "/logout",
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <WithStyles(MenuItem)>
+                      <WithStyles(ListItemIcon)>
+                        <pure(ExitToApp) />
+                      </WithStyles(ListItemIcon)>
+                      <WithStyles(ListItemText)
+                        primary="Logout"
+                      />
+                    </WithStyles(MenuItem)>,
+                    "replace": false,
+                    "to": "/logout",
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": Array [
+                        <WithStyles(ListItemIcon)>
+                          <pure(ExitToApp) />
+                        </WithStyles(ListItemIcon)>,
+                        <WithStyles(ListItemText)
+                          primary="Logout"
+                        />,
+                      ],
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "children": <pure(ExitToApp) />,
+                        },
+                        "ref": null,
+                        "rendered": Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "class",
+                          "props": Object {},
+                          "ref": null,
+                          "rendered": null,
+                          "type": [Function],
+                        },
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "primary": "Logout",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            "type": "div",
+          },
+          "type": [Function],
+        },
+      ],
       "type": [Function],
     },
   ],
@@ -74,4 +1360,61 @@ ShallowWrapper {
     },
   },
 }
+`;
+
+exports[`test/app/ui/Header/Web.test.js mapSideNavigationItems 1`] = `
+Array [
+  <Link
+    replace={false}
+    to="/profile"
+  >
+    <WithStyles(MenuItem)>
+      <WithStyles(ListItemIcon)>
+        <pure(SettingsApplications) />
+      </WithStyles(ListItemIcon)>
+      <WithStyles(ListItemText)
+        primary="Profile"
+      />
+    </WithStyles(MenuItem)>
+  </Link>,
+  <Link
+    replace={false}
+    to="/favorites"
+  >
+    <WithStyles(MenuItem)>
+      <WithStyles(ListItemIcon)>
+        <pure(Star) />
+      </WithStyles(ListItemIcon)>
+      <WithStyles(ListItemText)
+        primary="My Favorites"
+      />
+    </WithStyles(MenuItem)>
+  </Link>,
+  <Link
+    replace={false}
+    to="/books-i-read"
+  >
+    <WithStyles(MenuItem)>
+      <WithStyles(ListItemIcon)>
+        <pure(Book) />
+      </WithStyles(ListItemIcon)>
+      <WithStyles(ListItemText)
+        primary="Books I Read"
+      />
+    </WithStyles(MenuItem)>
+  </Link>,
+  <Link
+    replace={false}
+    to="/logout"
+  >
+    <WithStyles(MenuItem)>
+      <WithStyles(ListItemIcon)>
+        <pure(ExitToApp) />
+      </WithStyles(ListItemIcon)>
+      <WithStyles(ListItemText)
+        primary="Logout"
+      />
+    </WithStyles(MenuItem)>
+  </Link>,
+]
 `;

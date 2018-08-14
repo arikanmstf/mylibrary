@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-describe('src/app/web/App.js', () => {
+describe('test/app/web/App.test.js', () => {
   let App;
 
   beforeAll(() => {

@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { Image } from 'ui/native';
 
-describe('src/app/ui/Image/Native.js', () => {
+describe('test/app/ui/Image/Native.test.js', () => {
   const props = {
     source: {
       uri: 'dummyUri',

@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { Button } from 'ui/native';
 
-describe('src/app/ui/Button/Native.js', () => {
+describe('test/app/ui/Button/Native.test.js', () => {
   it('Render: props: { text }', () => {
     const props = {
       text: 'dummyText',

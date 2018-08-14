@@ -20,9 +20,9 @@ class Translate {
     return this.data || {};
   }
 
-  get(key: string): string {
+  get(key?: ?string): string {
     const data = this.getData();
-    return data[key] || key;
+    return data[key] || key || '';
   }
 }
 

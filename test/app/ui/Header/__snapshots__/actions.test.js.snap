@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test/app/ui/Header/actions.test.js mapDispatchToProps 1`] = `
+Object {
+  "hideDrawer": [Function],
+  "showDrawer": [Function],
+}
+`;
+
+exports[`test/app/ui/Header/actions.test.js mapStateToProps 1`] = `
+Object {
+  "isDrawerOpen": "mockedValue",
+}
+`;

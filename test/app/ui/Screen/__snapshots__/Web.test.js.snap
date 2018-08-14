@@ -1,16 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test/app/ui/Text/Native.test.js Render: props: { children: DummyText } 1`] = `
+exports[`test/app/ui/Screen/Web.test.js Render 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
-  >
-    DummyText
-  </Text>,
+  Symbol(enzyme.__unrendered__): <Screen />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -21,31 +15,31 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "host",
+    "nodeType": "class",
     "props": Object {
-      "accessible": true,
-      "allowFontScaling": true,
-      "children": "DummyText",
-      "ellipsizeMode": "tail",
+      "style": Object {
+        "backgroundColor": "#fffff0",
+        "flex": 1,
+      },
     },
     "ref": null,
-    "rendered": "DummyText",
-    "type": "Text",
+    "rendered": null,
+    "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "class",
       "props": Object {
-        "accessible": true,
-        "allowFontScaling": true,
-        "children": "DummyText",
-        "ellipsizeMode": "tail",
+        "style": Object {
+          "backgroundColor": "#fffff0",
+          "flex": 1,
+        },
       },
       "ref": null,
-      "rendered": "DummyText",
-      "type": "Text",
+      "rendered": null,
+      "type": [Function],
     },
   ],
   Symbol(enzyme.__options__): Object {

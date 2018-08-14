@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-describe('src/app/web/Routes.js', () => {
+describe('test/app/web/Routes.test.js', () => {
   let Routes;
 
   beforeAll(() => {

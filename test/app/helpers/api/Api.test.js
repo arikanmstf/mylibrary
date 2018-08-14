@@ -1,6 +1,6 @@
 import Api from 'helpers/api/Api.js'; // eslint-disable-line
 
-describe('src/test/app/helpers/api/Api.test.js', () => {
+describe('test/app/helpers/api/Api.test.js', () => {
   const url = 'mock-url';
 
   it('Static get', async () => {
@@ -58,11 +58,11 @@ describe('src/test/app/helpers/api/Api.test.js', () => {
       expect(data).toEqual(expected);
     });
 
-    it('response.data===undefined', () => {
+    it('response.data===null', () => {
       const response = {};
       const data = Api.fetch(response);
 
-      expect(data).toEqual(undefined);
+      expect(data).toEqual(null);
     });
   });
 });

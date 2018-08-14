@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`src/app/ui/Text/Web.js Render: props: { children: DummyText } 1`] = `
+exports[`test/app/ui/Text/Web.test.js Render: props: { children: DummyText } 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],

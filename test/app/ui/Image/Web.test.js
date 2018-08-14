@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { Image } from 'ui';
 
-describe('src/app/ui/Image/Web.js', () => {
+describe('test/app/ui/Image/Web.test.js', () => {
   const props = {
     source: {
       uri: 'dummyUri',

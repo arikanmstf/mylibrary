@@ -4,7 +4,7 @@ import connect from 'helpers/connect/connect';
 
 const Component = (props) => (<div {...props} />);
 
-describe('src/helpers/connect/connect', () => {
+describe('test/app/helpers/connect/connect.test.js', () => {
   const props = {
     source: {
       uri: 'dummyUri',

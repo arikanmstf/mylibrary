@@ -4,17 +4,25 @@ import { connect } from 'react-redux';
 import { StyleSheet, ScrollView } from 'react-native';
 import { Drawer } from 'native-base';
 import { SideBar } from 'ui/Header/Native';
+import logger from 'helpers/logger';
 import defaultStyle from './style.json';
 import { mapStateToProps, mapDispatchToProps } from './actions';
 import type { ScreenProps } from './types';
 
-class Screen extends React.PureComponent<ScreenProps> {
+export class Screen extends React.PureComponent<ScreenProps> {
+  hideDrawer = () => {
+    const { hideDrawer } = this.props;
+    if (hideDrawer) {
+      logger.log('hideDrawer');
+      hideDrawer();
+    }
+  };
+
   render() {
     const {
       style,
       center,
       isDrawerOpen,
-      hideDrawer,
       ...other
     } = this.props;
     const centerStyle = center ? { justifyContent: 'center', alignItems: 'center' } : {};
@@ -31,8 +39,7 @@ class Screen extends React.PureComponent<ScreenProps> {
         content={<SideBar />}
         side="right"
         open={isDrawerOpen}
-        ref={(ref) => { this.drawer = ref; }}
-        onClose={() => hideDrawer()}
+        onClose={this.hideDrawer}
         type="overlay"
       >
         <ScrollView
