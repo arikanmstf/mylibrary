@@ -1,5 +1,6 @@
 {
   "baseURL":"http://192.168.1.219:8000/api",
+  "homeURL":"ml-test",
   "ios": {
     "baseURL": "http://192.168.1.219:8000/api"
   },

@@ -3,9 +3,14 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import * as routeNames from 'constants/routes/routeNames';
 import { fetchInitialState } from 'screens/login/loginActions';
+import getConfig from 'config/get';
+import logger from 'helpers/logger';
 
 import type { Dispatch } from 'redux';
 import type { RoutesProps } from './RoutesTypes';
+
+const { homeURL } = getConfig();
+logger.log(`homeURL is set to: ${homeURL}`);
 
 class Routes extends React.PureComponent<RoutesProps> {
   componentDidMount() {
@@ -28,7 +33,7 @@ class Routes extends React.PureComponent<RoutesProps> {
     return (
       <Row style={{ height: '100%', margin: 0, padding: 0 }}>
         <Loader />
-        <Router>
+        <Router basename={homeURL}>
           <Switch>
             <PrivateRoute exact path={routeNames.HOME} component={HomeScreen} />
             <Route exact path={routeNames.LOGIN} component={LoginScreen} />
