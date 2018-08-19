@@ -46,6 +46,7 @@
     "babel-preset-expo": "4.0.0",
     "babel-preset-flow": "6.23.0",
     "babel-preset-react": "6.24.1",
+    "copy-webpack-plugin": "4.5.2",
     "enzyme": "3.3.0",
     "enzyme-adapter-react-16": "1.1.1",
     "eslint": "4.19.1",

@@ -1,4 +1,8 @@
+// Webpack Config by: @arikanmstf
+// webpack version : 4.15.1
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 const packageObject = require('./package.json');
@@ -16,6 +20,7 @@ const distPath = path.resolve(__dirname, 'dist');
 const appPath = path.resolve(__dirname, 'src/app');
 const sourcePath = path.resolve(__dirname, 'src');
 const nodePath = path.resolve(__dirname, 'node_modules');
+const staticPath = path.resolve(__dirname, 'static');
 
 const HtmlWebpack = new HtmlWebpackPlugin({
   template: path.resolve(__dirname, 'src/app/web/index.ejs'),
@@ -29,7 +34,12 @@ const definePlugin = new webpack.DefinePlugin({
   IS_MOCK: JSON.stringify(false),
 });
 
-const plugins = [HtmlWebpack, definePlugin];
+const copyPlugin = new CopyWebpackPlugin([{
+  from: staticPath,
+  to: 'static',
+}]);
+
+const plugins = [HtmlWebpack, definePlugin, copyPlugin];
 const rules = [
   {
     test: JS_JSX_PATTERN,

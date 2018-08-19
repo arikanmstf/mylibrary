@@ -18,7 +18,6 @@ import {
   Icon,
   Left,
   Body,
-  Right,
 } from 'native-base';
 
 import type { CardListProps, RenderCardListItem } from './types';
@@ -50,19 +49,15 @@ class CardList extends React.Component<CardListProps> {
         <CardItem>
           <Left>
             <Button transparent>
-              <Icon active name="thumbs-up" />
-              <Text>12 Likes</Text>
+              <Icon name="star" style={{ fontSize: 30 }} />
+            </Button>
+            <Button transparent>
+              <Icon name="add" style={{ fontSize: 38 }} />
+            </Button>
+            <Button transparent>
+              <Icon active name="checkmark" style={{ fontSize: 42 }} />
             </Button>
           </Left>
-          <Body>
-            <Button transparent>
-              <Icon active name="chatbubbles" />
-              <Text>4 Comments</Text>
-            </Button>
-          </Body>
-          <Right>
-            <Text>11h ago</Text>
-          </Right>
         </CardItem>
       </Card>
     );
@@ -70,7 +65,7 @@ class CardList extends React.Component<CardListProps> {
 
   render() {
     const { cards } = this.props;
-    logger.log('render: CardList', cards);
+    logger.log('render: CardList');
 
     return (
       <FlatList
