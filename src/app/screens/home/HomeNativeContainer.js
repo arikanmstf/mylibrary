@@ -7,15 +7,18 @@
 import { connect } from 'react-redux';
 import { connect as connectUi } from 'helpers/connect';
 import {
-  Text,
   Screen,
   Header,
   Page,
+  CardList,
 } from 'ui/native';
 import HomeScreen from './Home';
 import { mapStateToProps, mapDispatchToProps } from './homeActions';
 
 const mapUiToProps = () => ({
-  Text, Screen, Header, Page,
+  Screen,
+  Header,
+  Page,
+  CardList,
 });
 export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(HomeScreen));

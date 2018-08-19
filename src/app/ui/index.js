@@ -9,3 +9,4 @@ export { default as Form } from './Form/Web';
 export { default as Loader } from './Loader/Web';
 export { default as Header } from './Header/Web';
 export { default as Page } from './Page/Web';
+export { default as CardList } from './CardList/Web';

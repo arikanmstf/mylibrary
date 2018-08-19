@@ -3,6 +3,7 @@
 # app
 /api
 /dist
+/static
 
 # expo
 .expo/

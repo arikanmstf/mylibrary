@@ -1,16 +1,11 @@
 // @flow
 import a from 'axios';
 import logger from 'helpers/logger';
+import storage, { LOGIN_STATE } from 'helpers/storage';
 import getConfig from 'config/get';
 
 const { baseURL } = getConfig();
 logger.log(`baseURL is set to: ${baseURL}`);
-
-const axios = a.create({
-  baseURL,
-  headers: { 'Access-Control-Allow-Origin': baseURL },
-  withCredentials: true,
-});
 
 type AxiosResult = {
   data?: {
@@ -22,9 +17,31 @@ type AxiosResult = {
 }
 
 class Api {
-  static async get(url: string, params: Object, ...other: *) {
+  static async createAxios() {
+    let token = '';
     try {
-      logger.log('GET', url, params);
+      const loginState = await storage.load({ key: LOGIN_STATE });
+      token = loginState ? loginState.token : '';
+    } catch (e) {
+      logger.log('TOKEN couldn"t found');
+    }
+
+    logger.log(`Login Token is set to: ${token}`);
+
+    return a.create({
+      baseURL,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Access-Control-Allow-Origin': baseURL,
+      },
+      withCredentials: true,
+    });
+  }
+
+  static async get(url: string, params: Object, ...other: *) {
+    const axios = await Api.createAxios();
+    logger.log('GET', url, params);
+    try {
       const response = await axios.get(url, { params }, ...other);
       return Api.fetch(response);
     } catch (e) {
@@ -35,8 +52,9 @@ class Api {
   }
 
   static async post(url: string, data: Object, ...other: *) {
+    const axios = await Api.createAxios();
+    logger.log('POST', url, data);
     try {
-      logger.log('POST', url, data);
       const response = await axios.post(url, { ...data }, ...other);
       return Api.fetch(response);
     } catch (e) {

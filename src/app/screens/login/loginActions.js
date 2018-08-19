@@ -34,7 +34,6 @@ export const fetchInitialState = (): ThunkAction => {
 };
 
 export const submitLoginForm = async (form: Immutable<submitLoginFormRequest>, dispatch: Dispatch<*>) => {
-  logger.log('submitLoginForm');
   dispatch(showLoader());
 
   const result = await loginRequest(form.toJS());

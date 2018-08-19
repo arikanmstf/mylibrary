@@ -1,10 +1,13 @@
 {
   "baseURL":"http://192.168.1.219:8000/api",
   "homeURL":"ml-test",
+  "staticFilesURL":"http://localhost/mylibrary/static",
   "ios": {
-    "baseURL": "http://192.168.1.219:8000/api"
+    "baseURL": "http://192.168.1.219:8000/api",
+    "staticFilesURL":"http://192.168.1.219/mylibrary/static"
   },
   "android": {
-    "baseURL": "http://192.168.1.219:8000/api"
+    "baseURL": "http://192.168.1.219:8000/api",
+    "staticFilesURL":"http://192.168.1.219/mylibrary/static"
   }
 }

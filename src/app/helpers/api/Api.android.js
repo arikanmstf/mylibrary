@@ -23,8 +23,8 @@ type AxiosResult = {
 
 class Api {
   static async get(url: string, params: Object, ...other: *) {
+    logger.log('GET', url, params);
     try {
-      logger.log('GET', url, params);
       const response = await axios.get(url, { params }, ...other);
       return Api.fetch(response);
     } catch (e) {
@@ -35,8 +35,8 @@ class Api {
   }
 
   static async post(url: string, data: Object, ...other: *) {
+    logger.log('POST', url, data);
     try {
-      logger.log('POST', url, data);
       const response = await axios.post(url, { ...data }, ...other);
       return Api.fetch(response);
     } catch (e) {

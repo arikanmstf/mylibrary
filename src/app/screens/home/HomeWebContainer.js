@@ -9,16 +9,19 @@ import { withRouter } from 'react-router-dom';
 
 import { connect as connectUi } from 'helpers/connect';
 import {
-  Text,
   Screen,
   Header,
   Page,
+  CardList,
 } from 'ui';
 import HomeScreen from './Home';
 import { mapStateToProps, mapDispatchToProps } from './homeActions';
 
 const mapUiToProps = () => ({
-  Text, Screen, Header, Page,
+  Screen,
+  Header,
+  Page,
+  CardList,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(withRouter(HomeScreen)));

@@ -1,2 +1,6 @@
 export default from './Api';
-export { LOGIN, INITIALIZE } from './serviceNames';
+export {
+  LOGIN,
+  INITIALIZE,
+  PUBLICATION,
+} from './serviceNames';

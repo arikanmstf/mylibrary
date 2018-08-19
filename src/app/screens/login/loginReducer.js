@@ -11,6 +11,7 @@ const initialState = {
   isLoggedIn: null,
   isInitialized: null,
   user: null,
+  token: null,
 };
 
 const reducer = new Map([
@@ -19,7 +20,8 @@ const reducer = new Map([
     (state, action) => ({
       ...state,
       isLoggedIn: !!(action.payload && action.payload.user),
-      user: action.payload ? action.payload.user : null,
+      user: action.payload ? action.payload.user : initialState.user,
+      token: action.payload ? action.payload.token : initialState.token,
     }),
   ],
   [
@@ -27,7 +29,7 @@ const reducer = new Map([
     (state, action) => ({
       ...state,
       isInitialized: !!(action.payload && action.payload.user),
-      user: action.payload ? action.payload.user : null,
+      user: action.payload ? action.payload.user : initialState.user,
     }),
   ],
 ]);

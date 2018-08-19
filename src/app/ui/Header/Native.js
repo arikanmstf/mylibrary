@@ -46,7 +46,7 @@ export const renderList = (route: SideNavigationItem) => {
 };
 
 export const SideBar = () => (
-  <Content style={{ backgroundColor: white }}>
+  <Content style={{ backgroundColor: white, paddingTop: 20 }}>
     <List
       dataArray={routes}
       renderRow={renderList}

@@ -1,18 +1,13 @@
 // @flow
 import a from 'axios';
 import logger from 'helpers/logger';
+import storage, { LOGIN_STATE } from 'helpers/storage';
 import getConfig from 'config/get';
 
 declare var IS_MOCK: string;
 
 const { baseURL } = getConfig();
 logger.log(`baseURL is set to: ${baseURL}`);
-
-const axios = a.create({
-  baseURL,
-  headers: { 'Access-Control-Allow-Origin': baseURL },
-  withCredentials: true,
-});
 
 type AxiosResult = {
   data?: {
@@ -24,6 +19,27 @@ type AxiosResult = {
 }
 
 class Api {
+  static async createAxios() {
+    let token = '';
+    try {
+      const loginState = await storage.load({ key: LOGIN_STATE });
+      token = loginState ? loginState.token : '';
+    } catch (e) {
+      logger.log('TOKEN couldn"t found');
+    }
+
+    logger.log(`Login Token is set to: ${token}`);
+
+    return a.create({
+      baseURL,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Access-Control-Allow-Origin': baseURL,
+      },
+      withCredentials: true,
+    });
+  }
+
   static async get(url: string, params: Object, ...other: *) {
     if (typeof IS_MOCK !== 'undefined' && IS_MOCK) {
       logger.log('GET-MOCKED', url, params, ...other);
@@ -31,8 +47,9 @@ class Api {
       return require(`mock/${url}/get.json`);
     }
 
+    const axios = await Api.createAxios();
+    logger.log('GET', url, params);
     try {
-      logger.log('GET', url, params);
       const response = await axios.get(url, { params }, ...other);
       return Api.fetch(response);
     } catch (e) {
@@ -49,8 +66,9 @@ class Api {
       return require(`mock/${url}/post.json`);
     }
 
+    const axios = await Api.createAxios();
+    logger.log('POST', url, data);
     try {
-      logger.log('POST', url, data);
       const response = await axios.post(url, { ...data }, ...other);
       return Api.fetch(response);
     } catch (e) {

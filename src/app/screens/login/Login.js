@@ -18,11 +18,11 @@ import { submitLoginForm } from './loginActions';
 // eslint-disable-next-line
 class Login extends React.PureComponent<LoginProps> {
   render() {
-    logger.log('Login rendered.');
     const {
       Text, Screen, TextField, Button, Row, Col, Image, Form,
       handleSubmit,
     } = this.props;
+    logger.log('render: Login');
 
     return (
       <Screen center>

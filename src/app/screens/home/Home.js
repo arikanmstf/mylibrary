@@ -7,21 +7,36 @@
 // @flow
 import * as React from 'react';
 import t from 'helpers/i18n/Translate';
-
+import logger from 'helpers/logger';
 import type { HomeProps } from './HomeTypes';
 
 // eslint-disable-next-line
 class Home extends React.Component<HomeProps> {
+  componentDidMount() {
+    const {
+      fetchCards,
+    } = this.props;
+
+    if (fetchCards) {
+      fetchCards();
+    }
+  }
+
   render() {
     const {
-      Text, Screen, Header, Page,
+      Screen,
+      Header,
+      Page,
+      CardList,
+      cards,
     } = this.props;
+    logger.log('render: Home', cards);
 
     return (
       <Screen>
         <Header title={t.get('HOME_TITLE')} />
         <Page>
-          <Text>Home screen successfully created.</Text>
+          <CardList cards={cards} />
         </Page>
       </Screen>
     );
