@@ -6,6 +6,7 @@ export type State = {|
   home: {|
     cards: Array<CardItem>,
     totalPages: number,
+    currentPage: number,
   |},
   loader: {|
     isVisible: boolean,

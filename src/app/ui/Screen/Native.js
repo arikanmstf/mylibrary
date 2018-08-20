@@ -45,6 +45,7 @@ export class Screen extends React.PureComponent<ScreenProps> {
         <ScrollView
           contentContainerStyle={mergedStyles.container}
           keyboardShouldPersistTaps="handled"
+          scrollEnabled={false}
           {...other}
         />
       </Drawer>

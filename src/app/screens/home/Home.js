@@ -15,9 +15,10 @@ class Home extends React.Component<HomeProps> {
   componentDidMount() {
     const {
       fetchCards,
+      cards,
     } = this.props;
 
-    if (fetchCards) {
+    if ((!cards || cards.length < 1) && fetchCards) {
       fetchCards();
     }
   }
@@ -28,9 +29,8 @@ class Home extends React.Component<HomeProps> {
       Header,
       Page,
       CardList,
-      cards,
     } = this.props;
-    logger.log('render: Home', cards);
+    logger.log('render: Home');
 
     return (
       <Screen>

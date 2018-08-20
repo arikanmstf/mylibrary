@@ -6,6 +6,7 @@
 
 // @flow
 import * as React from 'react';
+import debounce from 'lodash.debounce';
 import { connect } from 'react-redux';
 import { FlatList } from 'react-native';
 import { Image } from 'ui/native';
@@ -27,7 +28,25 @@ import type { CardListProps, RenderCardListItem } from './types';
 const { staticFilesURL } = getConfig();
 logger.log(`staticFilesURL set to ${staticFilesURL}`);
 
+const isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
+  const paddingToBottom = 400;
+  return layoutMeasurement.height + contentOffset.y >= contentSize.height - paddingToBottom;
+};
+
 class CardList extends React.Component<CardListProps> {
+  onScroll = ({ nativeEvent }) => {
+    const {
+      fetchCards,
+    } = this.props;
+
+    if (isCloseToBottom(nativeEvent)) {
+      if (fetchCards) {
+        fetchCards();
+        logger.log('fetchCards');
+      }
+    }
+  };
+
   toggleFavorite(id: number, index: number) {
     const { toggleFavorite } = this.props;
     if (toggleFavorite) {
@@ -84,12 +103,16 @@ class CardList extends React.Component<CardListProps> {
 
   render() {
     const { cards } = this.props;
+    const onScrollDebounce = debounce(this.onScroll, 500, {
+      leading: true,
+    });
     logger.log('render: CardList');
 
     return (
       <FlatList
         data={cards}
         renderItem={this.renderCardList}
+        onScrollEndDrag={({ nativeEvent }) => { onScrollDebounce({ nativeEvent }); }}
       />
     );
   }
