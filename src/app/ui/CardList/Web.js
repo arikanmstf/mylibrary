@@ -8,19 +8,20 @@
 import * as React from 'react';
 import getConfig from 'config/get';
 import logger from 'helpers/logger';
+import { green500 } from 'constants/theme/color';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
 import StarIcon from '@material-ui/icons/Star';
-import PlusIcon from '@material-ui/icons/Add';
-import CheckIcon from '@material-ui/icons/Check';
+import BookIcon from '@material-ui/icons/Book';
 import IconButton from '@material-ui/core/IconButton';
 import t from 'helpers/i18n/Translate';
 
 import type { CardListProps, CardItem } from './types';
 
 const { staticFilesURL } = getConfig();
+const styleActive = { color: green500 };
 
 class CardList extends React.Component<CardListProps> {
   static renderCardList(cards: Array<CardItem>) {
@@ -37,13 +38,10 @@ class CardList extends React.Component<CardListProps> {
         />
         <CardActions disableActionSpacing>
           <IconButton aria-label={t.get('CARD_ADD_TO_FAVORITES')}>
-            <StarIcon />
+            <StarIcon style={card.isFavorite ? styleActive : null} />
           </IconButton>
           <IconButton aria-label={t.get('CARD_ADD_TO_BOOKS_I_READ')}>
-            <PlusIcon />
-          </IconButton>
-          <IconButton>
-            <CheckIcon />
+            <BookIcon style={card.isRead ? styleActive : null} />
           </IconButton>
         </CardActions>
       </Card>

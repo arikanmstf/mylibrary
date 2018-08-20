@@ -18,7 +18,7 @@ class Home extends React.Component<HomeProps> {
     } = this.props;
 
     if (fetchCards) {
-      fetchCards();
+      fetchCards(324);
     }
   }
 

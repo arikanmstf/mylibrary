@@ -11,6 +11,8 @@ export type CardItem = {
   description?: ?string,
   image?: string,
   id: number,
+  isFavorite: boolean,
+  isRead: boolean,
 }
 
 export type RenderCardListItem = {

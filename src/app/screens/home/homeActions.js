@@ -18,10 +18,10 @@ import { getPublicationList } from './homeServices';
 
 export const updateCards = createAction(UPDATE_CARDS);
 
-export const fetchCards = (): ThunkAction => {
+export const fetchCards = (page: number): ThunkAction => {
   return async (dispatch: Dispatch<*>) => {
     dispatch(showLoader());
-    const cards = await getPublicationList();
+    const cards = await getPublicationList(page);
     logger.log('fetchCards', cards);
     await dispatch(updateCards(cards));
     dispatch(hideLoader());
@@ -33,6 +33,6 @@ export const mapStateToProps = (state: Immutable<State>) => ({
 });
 
 export const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
-  fetchCards: () => dispatch(fetchCards()),
+  fetchCards: (page: number) => dispatch(fetchCards(page)),
 });
 

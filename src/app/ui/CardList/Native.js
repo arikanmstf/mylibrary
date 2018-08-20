@@ -49,13 +49,10 @@ class CardList extends React.Component<CardListProps> {
         <CardItem>
           <Left>
             <Button transparent>
-              <Icon name="star" style={{ fontSize: 30 }} />
+              <Icon name="star" active={card.isFavorite} style={{ fontSize: 30 }} />
             </Button>
             <Button transparent>
-              <Icon name="add" style={{ fontSize: 38 }} />
-            </Button>
-            <Button transparent>
-              <Icon active name="checkmark" style={{ fontSize: 42 }} />
+              <Icon name="book" active={card.isRead} style={{ fontSize: 30 }} />
             </Button>
           </Left>
         </CardItem>

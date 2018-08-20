@@ -11,7 +11,7 @@ import reducers from 'store/reducers';
 
 // Theme
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
-import * as COLOR from 'constants/theme/color';
+import { green500, white } from 'constants/theme/color';
 
 // Routes
 import Routes from './Routes';
@@ -20,13 +20,13 @@ const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: COLOR.green500,
+      main: green500,
     },
   },
   overrides: {
     MuiButton: {
       raisedPrimary: {
-        color: COLOR.white,
+        color: white,
       },
     },
   },
