@@ -20,6 +20,7 @@ import {
   Icon,
   Left,
   Body,
+  Right,
 } from 'native-base';
 import { mapStateToProps, mapDispatchToProps } from './actions';
 
@@ -96,6 +97,13 @@ class CardList extends React.Component<CardListProps> {
               <Icon name="book" active={card.isRead} style={{ fontSize: 30 }} />
             </Button>
           </Left>
+          <Right>
+            <Button
+              transparent
+            >
+              <Icon name="share" style={{ fontSize: 30 }} />
+            </Button>
+          </Right>
         </CardItem>
       </Card>
     );
