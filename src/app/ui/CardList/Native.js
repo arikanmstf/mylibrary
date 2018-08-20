@@ -6,6 +6,7 @@
 
 // @flow
 import * as React from 'react';
+import { connect } from 'react-redux';
 import { FlatList } from 'react-native';
 import { Image } from 'ui/native';
 import logger from 'helpers/logger';
@@ -19,6 +20,7 @@ import {
   Left,
   Body,
 } from 'native-base';
+import { mapStateToProps, mapDispatchToProps } from './actions';
 
 import type { CardListProps, RenderCardListItem } from './types';
 
@@ -26,7 +28,21 @@ const { staticFilesURL } = getConfig();
 logger.log(`staticFilesURL set to ${staticFilesURL}`);
 
 class CardList extends React.Component<CardListProps> {
-  static renderCardList(item: RenderCardListItem) {
+  toggleFavorite(id: number, index: number) {
+    const { toggleFavorite } = this.props;
+    if (toggleFavorite) {
+      toggleFavorite(id, index);
+    }
+  }
+
+  toggleRead(id: number, index: number) {
+    const { toggleRead } = this.props;
+    if (toggleRead) {
+      toggleRead(id, index);
+    }
+  }
+
+  renderCardList = (item: RenderCardListItem) => {
     const card = item ? item.item : null;
     return card && (
       <Card key={card.id}>
@@ -48,17 +64,23 @@ class CardList extends React.Component<CardListProps> {
         </CardItem>
         <CardItem>
           <Left>
-            <Button transparent>
+            <Button
+              transparent
+              onPress={() => { this.toggleFavorite(card.id, item.index); }}
+            >
               <Icon name="star" active={card.isFavorite} style={{ fontSize: 30 }} />
             </Button>
-            <Button transparent>
+            <Button
+              transparent
+              onPress={() => { this.toggleRead(card.id, item.index); }}
+            >
               <Icon name="book" active={card.isRead} style={{ fontSize: 30 }} />
             </Button>
           </Left>
         </CardItem>
       </Card>
     );
-  }
+  };
 
   render() {
     const { cards } = this.props;
@@ -67,10 +89,10 @@ class CardList extends React.Component<CardListProps> {
     return (
       <FlatList
         data={cards}
-        renderItem={CardList.renderCardList}
+        renderItem={this.renderCardList}
       />
     );
   }
 }
 
-export default CardList;
+export default connect(mapStateToProps, mapDispatchToProps)(CardList);

@@ -5,10 +5,10 @@
  */
 
 import { handleActions } from 'redux-actions';
-import { updateCards } from './homeActions';
+import { updateCards, updateTotalPages } from './homeActions';
 
 const initialState = {
-  cards: null,
+  cards: [],
   totalPages: 0,
 };
 
@@ -17,8 +17,14 @@ const reducer = new Map([
     updateCards,
     (state, action) => ({
       ...state,
-      cards: action.payload ? action.payload.content : initialState.cards,
-      totalPages: action.payload ? action.payload.totalPages : initialState.totalPages,
+      cards: action.payload ? action.payload : initialState.cards,
+    }),
+  ],
+  [
+    updateTotalPages,
+    (state, action) => ({
+      ...state,
+      totalPages: action.payload ? action.payload : initialState.totalPages,
     }),
   ],
 ]);

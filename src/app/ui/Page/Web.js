@@ -15,7 +15,7 @@ position: absolute;
 top: 62px;
 padding: 16px;
 width: 100%;
-height: 100%;
+height: auto;
 box-sizing: border-box;
 `;
 

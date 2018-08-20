@@ -32,3 +32,13 @@ export type PublicationDetail = {|
   addedBy: string,
   publisher: Publisher
 |}
+
+export type ToggleFavorite = {|
+  id: number,
+  result: 1 | 0,
+|}
+
+export type ToggleRead = {|
+  id: number,
+  result: 1 | 0,
+|}

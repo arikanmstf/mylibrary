@@ -18,7 +18,7 @@ class Home extends React.Component<HomeProps> {
     } = this.props;
 
     if (fetchCards) {
-      fetchCards(324);
+      fetchCards();
     }
   }
 
@@ -36,7 +36,7 @@ class Home extends React.Component<HomeProps> {
       <Screen>
         <Header title={t.get('HOME_TITLE')} />
         <Page>
-          <CardList cards={cards} />
+          <CardList />
         </Page>
       </Screen>
     );

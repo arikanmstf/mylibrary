@@ -6,6 +6,7 @@
 
 // @flow
 import * as React from 'react';
+import { connect } from 'react-redux';
 import getConfig from 'config/get';
 import logger from 'helpers/logger';
 import { green500 } from 'constants/theme/color';
@@ -18,14 +19,30 @@ import BookIcon from '@material-ui/icons/Book';
 import IconButton from '@material-ui/core/IconButton';
 import t from 'helpers/i18n/Translate';
 
-import type { CardListProps, CardItem } from './types';
+import { mapStateToProps, mapDispatchToProps } from './actions';
+import type { CardListProps } from './types';
 
 const { staticFilesURL } = getConfig();
 const styleActive = { color: green500 };
 
 class CardList extends React.Component<CardListProps> {
-  static renderCardList(cards: Array<CardItem>) {
-    return cards && cards.map((card) => (
+  toggleFavorite(id: number, index: number) {
+    const { toggleFavorite } = this.props;
+    if (toggleFavorite) {
+      toggleFavorite(id, index);
+    }
+  }
+
+  toggleRead(id: number, index: number) {
+    const { toggleRead } = this.props;
+    if (toggleRead) {
+      toggleRead(id, index);
+    }
+  }
+
+  renderCardList() {
+    const { cards } = this.props;
+    return cards && cards.map((card, index) => (
       <Card key={card.id} style={{ margin: '10px 0' }}>
         <CardHeader
           title={card.title}
@@ -37,10 +54,16 @@ class CardList extends React.Component<CardListProps> {
           style={{ height: '200px' }}
         />
         <CardActions disableActionSpacing>
-          <IconButton aria-label={t.get('CARD_ADD_TO_FAVORITES')}>
+          <IconButton
+            aria-label={t.get('CARD_ADD_TO_FAVORITES')}
+            onClick={() => { this.toggleFavorite(card.id, index); }}
+          >
             <StarIcon style={card.isFavorite ? styleActive : null} />
           </IconButton>
-          <IconButton aria-label={t.get('CARD_ADD_TO_BOOKS_I_READ')}>
+          <IconButton
+            aria-label={t.get('CARD_ADD_TO_BOOKS_I_READ')}
+            onClick={() => { this.toggleRead(card.id, index); }}
+          >
             <BookIcon style={card.isRead ? styleActive : null} />
           </IconButton>
         </CardActions>
@@ -49,15 +72,14 @@ class CardList extends React.Component<CardListProps> {
   }
 
   render() {
-    const { cards } = this.props;
     logger.log('render: CardList');
 
     return (
       <div>
-        {CardList.renderCardList(cards)}
+        {this.renderCardList()}
       </div>
     );
   }
 }
 
-export default CardList;
+export default connect(mapStateToProps, mapDispatchToProps)(CardList);

@@ -6,7 +6,7 @@
 
 // @flow
 import { createAction } from 'redux-actions';
-import { UPDATE_CARDS } from 'constants/actions/actionNames';
+import { UPDATE_CARDS, UPDATE_TOTAL_PAGES } from 'constants/actions/actionNames';
 import logger from 'helpers/logger';
 import { showLoader, hideLoader } from 'ui/Loader/actions';
 import type { Dispatch } from 'redux';
@@ -17,13 +17,17 @@ import type { State } from 'store/StateTypes';
 import { getPublicationList } from './homeServices';
 
 export const updateCards = createAction(UPDATE_CARDS);
+export const updateTotalPages = createAction(UPDATE_TOTAL_PAGES);
 
 export const fetchCards = (page: number): ThunkAction => {
   return async (dispatch: Dispatch<*>) => {
     dispatch(showLoader());
-    const cards = await getPublicationList(page);
-    logger.log('fetchCards', cards);
-    await dispatch(updateCards(cards));
+    const result = await getPublicationList(page);
+    logger.log('fetchCards', result);
+    await Promise.all([
+      dispatch(updateCards(result.content)),
+      dispatch(updateTotalPages(result.totalPages)),
+    ]);
     dispatch(hideLoader());
   };
 };
