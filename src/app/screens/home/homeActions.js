@@ -27,19 +27,19 @@ export const updateTotalPages = createAction(UPDATE_TOTAL_PAGES);
 export const updateCurrentPage = createAction(UPDATE_CURRENT_PAGE);
 
 export const fetchAndUpdateCards = (): ThunkAction => {
-  return async (dispatch: Dispatch<*>, getState: Function) => {
+  return async (dispatch: Dispatch<*>) => {
     dispatch(showLoader());
-    const page = getState().toJS().home.currentPage + 1;
-    const result = await getPublicationList(page);
+    const result = await getPublicationList();
     logger.log('fetchAndUpdateCards', result);
     await Promise.all([
       dispatch(updateCards(result.content)),
       dispatch(updateTotalPages(result.totalPages)),
     ]);
-    dispatch(updateCurrentPage(page));
+    dispatch(updateCurrentPage(1));
     dispatch(hideLoader());
   };
 };
+
 export const fetchAndAddCards = (): ThunkAction => {
   return async (dispatch: Dispatch<*>, getState: Function) => {
     const page = getState().toJS().home.currentPage + 1;

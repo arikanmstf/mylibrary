@@ -5,7 +5,7 @@ import {
   toggleFavorite as toggleFavoriteService,
   toggleRead as toggleReadService,
 } from 'screens/home/homeServices';
-import { updateCards, fetchAndAddCards } from 'screens/home/homeActions';
+import { updateCards, fetchAndAddCards, fetchAndUpdateCards } from 'screens/home/homeActions';
 
 import type { Dispatch } from 'redux';
 import type { Immutable } from 'store/ImmutableTypes';
@@ -39,9 +39,11 @@ export const toggleRead = (id: number, index: number): ThunkAction => {
 export const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
   toggleFavorite: (id: number, index: number) => dispatch(toggleFavorite(id, index)),
   toggleRead: (id: number, index: number) => dispatch(toggleRead(id, index)),
-  fetchCards: () => dispatch(fetchAndAddCards()),
+  addCards: () => dispatch(fetchAndAddCards()),
+  fetchCards: () => dispatch(fetchAndUpdateCards()),
 });
 
 export const mapStateToProps = (state: Immutable<State>) => ({
   cards: state.toJS().home.cards,
+  isLoaderVisible: state.toJS().loader.isVisible,
 });

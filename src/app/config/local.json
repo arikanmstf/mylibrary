@@ -1,6 +1,7 @@
 {
   "baseURL":"http://localhost:8081/api",
   "homeURL":"",
+  "productionURL":"http://mustafaarikan.net/mylibrary",
   "staticFilesURL":"http://localhost:8082/static",
   "ios": {
     "baseURL": "http://192.168.1.219:8081/api",

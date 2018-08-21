@@ -15,7 +15,7 @@ import {
 const initialState = {
   cards: [],
   totalPages: 0,
-  currentPage: 0,
+  currentPage: 1,
 };
 
 const reducer = new Map([
