@@ -41,7 +41,7 @@ class CardList extends React.Component<CardListProps> {
     });
   }
 
-  onScroll = ({ nativeEvent }) => {
+  handleScroll = ({ nativeEvent }) => {
     const {
       addCards,
     } = this.props;
@@ -54,7 +54,7 @@ class CardList extends React.Component<CardListProps> {
     }
   };
 
-  onRefresh = () => {
+  handleRefresh = () => {
     const {
       fetchCards,
       isLoaderVisible,
@@ -130,7 +130,7 @@ class CardList extends React.Component<CardListProps> {
 
   render() {
     const { cards } = this.props;
-    const onScrollDebounce = debounce(this.onScroll, 800, {
+    const handleScrollDebounce = debounce(this.handleScroll, 800, {
       leading: true,
     });
     logger.log('render: CardList');
@@ -139,8 +139,8 @@ class CardList extends React.Component<CardListProps> {
       <FlatList
         data={cards}
         renderItem={this.renderCardList}
-        onScrollEndDrag={({ nativeEvent }) => { onScrollDebounce({ nativeEvent }); }}
-        refreshControl={<RefreshControl refreshing={false} onRefresh={this.onRefresh} />}
+        onScrollEndDrag={({ nativeEvent }) => { handleScrollDebounce({ nativeEvent }); }}
+        refreshControl={<RefreshControl refreshing={false} onRefresh={this.handleRefresh} />}
       />
     );
   }

@@ -7,6 +7,7 @@
 // @flow
 import * as React from 'react';
 import { connect } from 'react-redux';
+import debounce from 'lodash.debounce';
 import getConfig from 'config/get';
 import logger from 'helpers/logger';
 import { green500 } from 'constants/theme/color';
@@ -25,7 +26,42 @@ import type { CardListProps } from './types';
 const { staticFilesURL } = getConfig();
 const styleActive = { color: green500 };
 
+const isCloseToBottom = () => {
+  const windowHeight = window.innerHeight || document.documentElement.offsetHeight;
+  const docHeight = Math.max(
+    document.body.scrollHeight,
+    document.body.offsetHeight,
+    document.documentElement.clientHeight,
+    document.documentElement.scrollHeight,
+    document.documentElement.offsetHeight
+  );
+  return windowHeight + window.pageYOffset + 600 >= docHeight;
+};
+
 class CardList extends React.Component<CardListProps> {
+  componentDidMount() {
+    this.handleScrollDebounce = debounce(this.handleScroll, 800, {
+      leading: true,
+    });
+
+    window.addEventListener('scroll', this.handleScrollDebounce);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScrollDebounce);
+  }
+
+  handleScroll = () => {
+    const {
+      addCards,
+    } = this.props;
+
+    if (isCloseToBottom()) {
+      addCards();
+      logger.log('addCards');
+    }
+  };
+
   toggleFavorite(id: number, index: number) {
     const { toggleFavorite } = this.props;
     if (toggleFavorite) {

@@ -25,15 +25,43 @@ import LogoutIcon from '@material-ui/icons/ExitToApp';
 import { withStyles } from '@material-ui/core/styles';
 
 import logger from 'helpers/logger';
+import { white } from 'constants/theme/color';
 import Logo from 'assets/images/logo.png';
 import { Image, TextField } from 'ui';
 import t from 'helpers/i18n/Translate';
 import fields, { SEARCH_FORM_KEY } from 'constants/forms/search';
 import { HOME } from 'constants/routes/routeNames';
-import styles from './style';
 import { mapStateToProps, mapDispatchToProps } from './actions';
 import routes from './sideNavigationItems';
 import type { HeaderProps, SideNavigationItem } from './types';
+
+const styles = {
+  title: {
+    paddingLeft: '20px',
+  },
+  list: {
+    width: '250px',
+  },
+  search: {
+    paddingTop: '14px',
+    margin: '0 20px',
+    maxWidth: '500px',
+  },
+  flex: {
+    flexGrow: 1,
+  },
+  image: {
+    width: 50,
+    height: 50,
+    flex: 0,
+  },
+  container: {
+    backgroundColor: white,
+    position: 'fixed',
+    top: 0,
+    width: '100%',
+  },
+};
 
 export class Header extends React.PureComponent<HeaderProps> {
   static mapSideNavigationItems() {
