@@ -20,6 +20,7 @@ ShallowWrapper {
       "style": Object {
         "backgroundColor": "#fffff0",
         "flex": 1,
+        "height": 600,
       },
     },
     "ref": null,
@@ -35,6 +36,7 @@ ShallowWrapper {
         "style": Object {
           "backgroundColor": "#fffff0",
           "flex": 1,
+          "height": 600,
         },
       },
       "ref": null,

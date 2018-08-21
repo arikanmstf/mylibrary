@@ -868,6 +868,7 @@ ShallowWrapper {
       />,
       "style": Object {
         "backgroundColor": "#ffffff",
+        "paddingTop": 20,
       },
       "virtual": undefined,
     },
@@ -943,6 +944,7 @@ ShallowWrapper {
         />,
         "style": Object {
           "backgroundColor": "#ffffff",
+          "paddingTop": 20,
         },
         "virtual": undefined,
       },

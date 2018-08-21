@@ -22,9 +22,7 @@ ShallowWrapper {
           title="Home"
         />,
         <UNDEFINED>
-          <UNDEFINED>
-            Home screen successfully created.
-          </UNDEFINED>
+          <UNDEFINED />
         </UNDEFINED>,
       ],
     },
@@ -46,20 +44,16 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "children": <UNDEFINED>
-            Home screen successfully created.
-          </UNDEFINED>,
+          "children": <UNDEFINED />,
         },
         "ref": null,
         "rendered": Object {
           "instance": null,
           "key": undefined,
           "nodeType": "function",
-          "props": Object {
-            "children": "Home screen successfully created.",
-          },
+          "props": Object {},
           "ref": null,
-          "rendered": "Home screen successfully created.",
+          "rendered": null,
           "type": undefined,
         },
         "type": undefined,
@@ -78,9 +72,7 @@ ShallowWrapper {
             title="Home"
           />,
           <UNDEFINED>
-            <UNDEFINED>
-              Home screen successfully created.
-            </UNDEFINED>
+            <UNDEFINED />
           </UNDEFINED>,
         ],
       },
@@ -102,20 +94,16 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "children": <UNDEFINED>
-              Home screen successfully created.
-            </UNDEFINED>,
+            "children": <UNDEFINED />,
           },
           "ref": null,
           "rendered": Object {
             "instance": null,
             "key": undefined,
             "nodeType": "function",
-            "props": Object {
-              "children": "Home screen successfully created.",
-            },
+            "props": Object {},
             "ref": null,
-            "rendered": "Home screen successfully created.",
+            "rendered": null,
             "type": undefined,
           },
           "type": undefined,
