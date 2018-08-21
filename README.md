@@ -29,3 +29,8 @@ If you use Linux, for the first time you may need to run:
 ### Test
 
 * `yarn test`
+
+## Dockerize
+* `docker build -t mylibrary-image .`
+* `docker run -p 8082:80 -d -v /Users/mstf/Sites/mylibrary/dist:/var/www/Website --name mylibrary-container mylibrary-image`
+* `docker exec -it mylibrary-container bash`
