@@ -22,10 +22,10 @@ class Routes extends React.PureComponent<RoutesProps> {
     const {
       Router,
       Switch,
-      Route,
       Loader,
       Row,
       PrivateRoute,
+      PublicRoute,
       LoginScreen,
       HomeScreen,
     } = this.props;
@@ -36,7 +36,7 @@ class Routes extends React.PureComponent<RoutesProps> {
         <Router basename={homeURL}>
           <Switch>
             <PrivateRoute exact path={routeNames.HOME} component={HomeScreen} />
-            <Route exact path={routeNames.LOGIN} component={LoginScreen} />
+            <PublicRoute exact path={routeNames.LOGIN} component={LoginScreen} />
           </Switch>
         </Router>
       </Row>

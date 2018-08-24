@@ -1,5 +1,5 @@
 import { connect } from 'helpers/connect';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { Loader, Row } from 'ui';
 
 // Screens
@@ -8,14 +8,15 @@ import HomeScreen from 'screens/home/HomeWebContainer';
 
 import Routes from '../Routes';
 import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
 const mapRouteToProps = () => ({
   Router,
   Switch,
-  Route,
   Loader,
   Row,
   PrivateRoute,
+  PublicRoute,
   LoginScreen,
   HomeScreen,
 });

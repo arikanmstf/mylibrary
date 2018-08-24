@@ -1,5 +1,5 @@
 import { connect } from 'helpers/connect';
-import { MemoryRouter as Router, Switch, Route } from 'react-router-native';
+import { MemoryRouter as Router, Switch } from 'react-router-native';
 import { Loader, Row } from 'ui/native';
 
 // Screens
@@ -8,14 +8,15 @@ import HomeScreen from 'screens/home/HomeNativeContainer';
 
 import Routes from '../Routes';
 import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
 const mapRouteToProps = () => ({
   Router,
   Switch,
-  Route,
   Loader,
   Row,
   PrivateRoute,
+  PublicRoute,
   LoginScreen,
   HomeScreen,
 });
