@@ -7,4 +7,5 @@
 // @flow
 export type RowProps = {
   style?: ?Object,
+  fullHeight?: boolean,
 };

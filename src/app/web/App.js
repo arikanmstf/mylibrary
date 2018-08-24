@@ -40,6 +40,31 @@ injectGlobal`
     font-family: 'Baskerville';
     src: url('${font}') format('opentype');
   }
+  
+  body {
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body > * {
+      flex-shrink: 0;
+    }
+    
+    #app {
+      display: flex;
+      flex-grow: 1;
+    }
+    
+    #app > * {
+      flex-grow: 1;
+      flex-shrink: 0;
+    }
 
   a {
     text-decoration: none;

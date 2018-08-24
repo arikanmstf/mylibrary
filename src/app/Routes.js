@@ -32,7 +32,7 @@ class Routes extends React.PureComponent<RoutesProps> {
     } = this.props;
 
     return (
-      <Row style={{ height: '100%', marginTop: 0, padding: 0 }}>
+      <Row fullHeight style={{ marginTop: 0, padding: 0 }}>
         <Loader />
         <Router basename={homeURL}>
           <Switch>

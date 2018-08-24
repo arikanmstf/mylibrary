@@ -1,14 +1,21 @@
 // @flow
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import defaultStyle from './style.json';
 import type { RowProps } from './types';
 
+const defaultStyle = {
+  marginTop: 5,
+  marginBottom: 5,
+  flexDirection: 'column',
+};
+
 const Row = (props: RowProps) => {
-  const { style, ...other } = props;
+  const { style, fullHeight, ...other } = props;
+  const heightStyle = fullHeight ? { height: '100%' } : {};
   const mergedStyles = StyleSheet.create({
     container: {
       ...defaultStyle,
+      ...heightStyle,
       ...style,
     },
   });
