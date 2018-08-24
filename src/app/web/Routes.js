@@ -4,6 +4,7 @@ import { Loader, Row } from 'ui';
 
 // Screens
 import LoginScreen from 'screens/login/LoginWebContainer';
+import RegisterScreen from 'screens/register/RegisterWebContainer';
 import HomeScreen from 'screens/home/HomeWebContainer';
 
 import Routes from '../Routes';
@@ -18,6 +19,7 @@ const mapRouteToProps = () => ({
   PrivateRoute,
   PublicRoute,
   LoginScreen,
+  RegisterScreen,
   HomeScreen,
 });
 

@@ -21,11 +21,13 @@ export type submitLoginFormRequest = {
 };
 
 export type submitLoginFormResponse = {
-  token: string,
-  user: {
-    name: string,
-    permissions: Array<string>,
-  },
+  success: {
+    token: string,
+    user: {
+      name: string,
+      permissions: Array<string>,
+    },
+  }
 };
 
 export type LoginProps = {
@@ -37,5 +39,6 @@ export type LoginProps = {
   Col: React.ComponentType<ColProps>,
   Image: React.ComponentType<ImageProps>,
   Form: React.ComponentType<FormProps>,
+  Link: React.ComponentType<*>,
   handleSubmit: Function,
 };

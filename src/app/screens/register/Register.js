@@ -8,15 +8,16 @@
 import * as React from 'react';
 import { reduxForm } from 'redux-form/immutable';
 import t from 'helpers/i18n/Translate';
-import fields, { LOGIN_FORM_KEY } from 'constants/forms/login';
+import fields, { REGISTER_FORM_KEY } from 'constants/forms/register';
 import Logo from 'assets/images/logo.png';
 import logger from 'helpers/logger';
-import { REGISTER } from 'constants/routes/routeNames';
-import { submitLoginForm } from './loginActions';
-import type { LoginProps } from './LoginTypes';
+import { LOGIN } from 'constants/routes/routeNames';
+
+import { submitRegisterForm } from './registerActions';
+import type { RegisterProps } from './RegisterTypes';
 
 // eslint-disable-next-line
-class Login extends React.PureComponent<LoginProps> {
+class Register extends React.Component<RegisterProps> {
   render() {
     const {
       Text,
@@ -30,7 +31,7 @@ class Login extends React.PureComponent<LoginProps> {
       Link,
       handleSubmit,
     } = this.props;
-    logger.log('render: Login');
+    logger.log('render: Register');
 
     return (
       <Screen center>
@@ -46,8 +47,24 @@ class Login extends React.PureComponent<LoginProps> {
             <Row>
               <TextField
                 required
+                name={fields.NAME}
+                label={t.get('REGISTER_NAME_PLACEHOLDER')}
+                autoFocus
+              />
+            </Row>
+            <Row>
+              <TextField
+                required
+                name={fields.DISPLAY_NAME}
+                label={t.get('REGISTER_DISPLAY_NAME_PLACEHOLDER')}
+                autoFocus
+              />
+            </Row>
+            <Row>
+              <TextField
+                required
                 name={fields.EMAIL}
-                label={t.get('LOGIN_EMAIL_PLACEHOLDER')}
+                label={t.get('REGISTER_EMAIL_PLACEHOLDER')}
                 keyboardType="email-address"
                 autoFocus
               />
@@ -56,7 +73,15 @@ class Login extends React.PureComponent<LoginProps> {
               <TextField
                 required
                 name={fields.PASSWORD}
-                label={t.get('LOGIN_PASSWORD_PLACEHOLDER')}
+                label={t.get('REGISTER_PASSWORD_PLACEHOLDER')}
+                type="password"
+              />
+            </Row>
+            <Row>
+              <TextField
+                required
+                name={fields.PASSWORD_REPEAT}
+                label={t.get('REGISTER_PASSWORD_REPEAT_PLACEHOLDER')}
                 type="password"
               />
             </Row>
@@ -64,16 +89,16 @@ class Login extends React.PureComponent<LoginProps> {
               <Button
                 primary
                 raised
-                text={t.get('LOGIN_BUTTON')}
+                text={t.get('REGISTER_BUTTON')}
                 type="submit"
-                onClick={handleSubmit(submitLoginForm)}
+                onClick={handleSubmit(submitRegisterForm)}
               />
             </Row>
             <Row>
-              <Text>{t.get('LOGIN_MESSAGE')}</Text>
+              <Text>{t.get('REGISTER_MESSAGE')}</Text>
             </Row>
             <Row>
-              <Link to={REGISTER}><Text>{t.get('LOGIN_GOTO_REGISTER')}</Text></Link>
+              <Link to={LOGIN}><Text>{t.get('REGISTER_GOTO_LOGIN')}</Text></Link>
             </Row>
           </Col>
         </Form>
@@ -83,6 +108,6 @@ class Login extends React.PureComponent<LoginProps> {
 }
 
 export default reduxForm({
-  form: LOGIN_FORM_KEY,
-  onSubmit: submitLoginForm,
-})(Login);
+  form: REGISTER_FORM_KEY,
+  onSubmit: submitRegisterForm,
+})(Register);

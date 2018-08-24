@@ -6,7 +6,7 @@
 
 // @flow
 import * as React from 'react';
-import T from 'helpers/i18n/Translate';
+import logger from 'helpers/logger';
 import type { #{className}Props } from './#{className}Types';
 
 class #{className} extends React.Component<#{className}Props> {
@@ -14,6 +14,8 @@ class #{className} extends React.Component<#{className}Props> {
     const {
       Text, Screen,
     } = this.props;
+
+    logger.log('render: #{className}');
 
     return (
       <Screen>

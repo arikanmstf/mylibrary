@@ -1,0 +1,34 @@
+/**
+ * Actions Template By => create-module script
+ * @version 1.0.0
+ *
+ */
+
+// @flow
+import { showLoader, hideLoader } from 'ui/Loader/actions';
+import storage, { LOGIN_STATE } from 'helpers/storage';
+import { fetchInitialState } from 'screens/login/loginActions';
+
+import type { Dispatch } from 'redux';
+import type { Immutable } from 'store/ImmutableTypes';
+
+import { registerRequest } from './registerServices';
+import type { submitRegisterFormRequest } from './RegisterTypes';
+
+export const submitRegisterForm = async (form: Immutable<submitRegisterFormRequest>, dispatch: Dispatch<*>) => {
+  dispatch(showLoader());
+
+  const result = await registerRequest(form.toJS());
+  const data = {
+    key: LOGIN_STATE,
+    data: { ...result },
+    expires: 1000 * 3600,
+  };
+  storage.save(data);
+
+  dispatch(fetchInitialState());
+  dispatch(hideLoader());
+};
+
+export const mapStateToProps = () => ({});
+export const mapDispatchToProps = () => ({});

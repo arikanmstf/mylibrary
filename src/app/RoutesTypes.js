@@ -1,12 +1,14 @@
 // @flow
 import * as React from 'react';
 import type { LoginProps } from 'screens/login/LoginTypes';
+import type { RegisterProps } from 'screens/register/RegisterTypes';
 import type { HomeProps } from 'screens/home/HomeTypes';
 import type { RowProps } from 'ui/Row/types';
 import type { LoaderContainerProps } from 'ui/Loader/types';
 
 export type RoutesProps = {
   LoginScreen: React.ComponentType<LoginProps>,
+  RegisterScreen: React.ComponentType<RegisterProps>,
   HomeScreen: React.ComponentType<HomeProps>,
   Router: Function,
   Switch: Function,

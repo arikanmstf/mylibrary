@@ -10,3 +10,4 @@ export { default as Loader } from './Loader/Web';
 export { default as Header } from './Header/Web';
 export { default as Page } from './Page/Web';
 export { default as CardList } from './CardList/Web';
+export { default as KeyboardScreen } from './KeyboardScreen/Web';

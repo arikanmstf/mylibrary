@@ -17,8 +17,9 @@ import {
   Image,
   Form,
 } from 'ui/native';
-import LoginScreen from './Login';
-import { mapStateToProps, mapDispatchToProps } from './loginActions';
+
+import RegisterScreen from './Register';
+import { mapStateToProps, mapDispatchToProps } from './registerActions';
 
 const mapUiToProps = () => ({
   Text,
@@ -31,4 +32,4 @@ const mapUiToProps = () => ({
   Form,
   Link,
 });
-export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(LoginScreen));
+export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(RegisterScreen));
