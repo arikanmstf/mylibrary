@@ -13,6 +13,7 @@ import Logo from 'assets/images/logo.png';
 import logger from 'helpers/logger';
 import { REGISTER } from 'constants/routes/routeNames';
 import { submitLoginForm } from './loginActions';
+import validate from './loginValidations';
 import type { LoginProps } from './LoginTypes';
 
 // eslint-disable-next-line
@@ -48,7 +49,6 @@ class Login extends React.PureComponent<LoginProps> {
                 name={fields.EMAIL}
                 label={t.get('LOGIN_EMAIL_PLACEHOLDER')}
                 keyboardType="email-address"
-                autoFocus
               />
             </Row>
             <Row>
@@ -89,4 +89,5 @@ class Login extends React.PureComponent<LoginProps> {
 export default reduxForm({
   form: LOGIN_FORM_KEY,
   onSubmit: submitLoginForm,
+  validate,
 })(Login);

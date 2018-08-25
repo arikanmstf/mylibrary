@@ -14,9 +14,11 @@ import type { TextFieldProps, ReduxFieldProps } from './types';
 import defaultStyle from './style.json';
 
 const renderTextField = ({
-  input, ...other
+  input, meta: { touched, error }, label, ...other
 }: ReduxFieldProps) => (
   <WebTextField
+    error={!!(touched && error)}
+    label={(touched && error) || label}
     {...input}
     {...other}
   />

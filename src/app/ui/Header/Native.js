@@ -30,7 +30,6 @@ import fields, { SEARCH_FORM_KEY } from 'constants/forms/search';
 import { white } from 'constants/theme/color';
 import { mapDispatchToProps, submitSearchForm } from './actions';
 import routes from './sideNavigationItems';
-
 import { SEARCH_SUBMIT_TIMEOUT } from './types';
 import type { HeaderProps, SideNavigationItem } from './types';
 
@@ -96,7 +95,7 @@ export class Header extends React.PureComponent<HeaderProps> {
   renderCenter() {
     return (
       <Body>
-        <Item style={{ height: 25, flexGrow: 1 }}>
+        <Item style={{ height: 25, flexGrow: 1, marginLeft: 20 }}>
           <Icon name="ios-search" />
           <TextField
             name={fields.SEARCH}

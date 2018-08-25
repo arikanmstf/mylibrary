@@ -8,19 +8,29 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Field } from 'redux-form/immutable';
-import { Input as TextInput } from 'native-base';
+import {
+  Input as TextInput,
+  Item,
+  Text,
+  Right,
+} from 'native-base';
 import type { Node } from 'react';
 
 import defaultStyle from './style.json';
 
 import type { TextFieldProps, ReduxFieldProps } from './types';
 
-const renderTextField = ({ input, ...other }: ReduxFieldProps) => (
-  <TextInput
-    onChangeText={input.onChange}
-    {...input}
-    {...other}
-  />
+const renderTextField = (
+  { input, meta: { touched, error }, ...other }: ReduxFieldProps
+) => (
+  <Item error={!!(touched && error)}>
+    <TextInput
+      onChangeText={input.onChange}
+      {...input}
+      {...other}
+    />
+    { touched && error ? <Right><Text>{error}</Text></Right> : null }
+  </Item>
 );
 
 const TextField = (props: TextFieldProps): ?Node => {

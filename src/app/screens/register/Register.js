@@ -13,6 +13,7 @@ import Logo from 'assets/images/logo.png';
 import logger from 'helpers/logger';
 import { LOGIN } from 'constants/routes/routeNames';
 
+import validate from './registerValidations';
 import { submitRegisterForm } from './registerActions';
 import type { RegisterProps } from './RegisterTypes';
 
@@ -48,7 +49,6 @@ class Register extends React.Component<RegisterProps> {
                 required
                 name={fields.NAME}
                 label={t.get('REGISTER_NAME_PLACEHOLDER')}
-                autoFocus
               />
             </Row>
             <Row>
@@ -56,7 +56,6 @@ class Register extends React.Component<RegisterProps> {
                 required
                 name={fields.DISPLAY_NAME}
                 label={t.get('REGISTER_DISPLAY_NAME_PLACEHOLDER')}
-                autoFocus
               />
             </Row>
             <Row>
@@ -65,7 +64,6 @@ class Register extends React.Component<RegisterProps> {
                 name={fields.EMAIL}
                 label={t.get('REGISTER_EMAIL_PLACEHOLDER')}
                 keyboardType="email-address"
-                autoFocus
               />
             </Row>
             <Row>
@@ -114,4 +112,5 @@ class Register extends React.Component<RegisterProps> {
 export default reduxForm({
   form: REGISTER_FORM_KEY,
   onSubmit: submitRegisterForm,
+  validate,
 })(Register);

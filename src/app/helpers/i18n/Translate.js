@@ -20,9 +20,16 @@ class Translate {
     return this.data || {};
   }
 
-  get(key?: ?string): string {
+  get(key?: ?string, variables: Object): string {
     const data = this.getData();
-    return data[key] || key || '';
+    let result = data[key] || key || '';
+    if (variables) {
+      const variableKeys = Object.keys(variables);
+      variableKeys.forEach((variableKey) => {
+        result = result.replace(new RegExp(`{{${variableKey}}}`, 'g'), variables[variableKey]);
+      });
+    }
+    return result;
   }
 }
 
