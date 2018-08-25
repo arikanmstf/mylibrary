@@ -58,10 +58,11 @@ class CardList extends React.Component<CardListProps> {
     const {
       fetchCards,
       isLoaderVisible,
+      search,
     } = this.props;
 
     if (fetchCards && !isLoaderVisible) {
-      fetchCards();
+      fetchCards({ search });
       logger.log('fetchCards');
     }
   };
@@ -130,16 +131,19 @@ class CardList extends React.Component<CardListProps> {
 
   render() {
     const { cards } = this.props;
-    const handleScrollDebounce = debounce(this.handleScroll, 800, {
-      leading: true,
-    });
+    const handleScrollDebounce = ({ nativeEvent }) => {
+      debounce(this.handleScroll, 800, {
+        leading: true,
+      })({ nativeEvent });
+    };
+
     logger.log('render: CardList');
 
     return (
       <FlatList
         data={cards}
         renderItem={this.renderCardList}
-        onScrollEndDrag={({ nativeEvent }) => { handleScrollDebounce({ nativeEvent }); }}
+        onScrollEndDrag={handleScrollDebounce}
         refreshControl={<RefreshControl refreshing={false} onRefresh={this.handleRefresh} />}
       />
     );

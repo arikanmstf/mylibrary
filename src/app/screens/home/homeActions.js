@@ -53,6 +53,13 @@ export const fetchAndUpdateCards = (
 export const fetchAndAddCards = (): ThunkAction => {
   return async (dispatch: Dispatch<*>, getState: Function) => {
     const page = getState().toJS().home.currentPage + 1;
+    const totalPage = getState().toJS().home.totalPages;
+    if (page > totalPage) {
+      // throw 'page is too big'; // TODO
+      logger.log('page is too big');
+      return false;
+    }
+
     const search = getState().toJS().home.searchQuery;
     const result = await getPublicationList({ page, search });
     logger.log('fetchAndAddCards', result);
@@ -61,6 +68,7 @@ export const fetchAndAddCards = (): ThunkAction => {
       dispatch(updateTotalPages(result.totalPages)),
     ]);
     dispatch(updateCurrentPage(page));
+    return true;
   };
 };
 

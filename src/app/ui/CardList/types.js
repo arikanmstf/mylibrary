@@ -29,4 +29,5 @@ export type Pagination<V> = {
 export type CardListProps = {
   cards: Array<CardItem>,
   isLoaderVisible: boolean,
+  search: string,
 };
