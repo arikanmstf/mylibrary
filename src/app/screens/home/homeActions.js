@@ -11,6 +11,7 @@ import {
   UPDATE_CARDS,
   UPDATE_TOTAL_PAGES,
   UPDATE_CURRENT_PAGE,
+  UPDATE_SEARCH_QUERY,
 } from 'constants/actions/actionNames';
 import logger from 'helpers/logger';
 import { showLoader, hideLoader } from 'ui/Loader/actions';
@@ -18,6 +19,7 @@ import type { Dispatch } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
 import type { Immutable } from 'store/ImmutableTypes';
 import type { State } from 'store/StateTypes';
+import type { SubmitSearchFormRequest } from 'ui/Header/types';
 
 import { getPublicationList } from './homeServices';
 
@@ -25,17 +27,25 @@ export const addCards = createAction(ADD_CARDS);
 export const updateCards = createAction(UPDATE_CARDS);
 export const updateTotalPages = createAction(UPDATE_TOTAL_PAGES);
 export const updateCurrentPage = createAction(UPDATE_CURRENT_PAGE);
+export const updateSearchQuery = createAction(UPDATE_SEARCH_QUERY);
 
-export const fetchAndUpdateCards = (): ThunkAction => {
+export const fetchAndUpdateCards = (
+  { search }: SubmitSearchFormRequest = { search: '' }, shouldShowLoader: boolean = true
+): ThunkAction => {
   return async (dispatch: Dispatch<*>) => {
-    dispatch(showLoader());
-    const result = await getPublicationList();
+    const page = 1;
+    if (shouldShowLoader) {
+      dispatch(showLoader());
+    }
+
+    const result = await getPublicationList({ page, search });
     logger.log('fetchAndUpdateCards', result);
     await Promise.all([
       dispatch(updateCards(result.content)),
       dispatch(updateTotalPages(result.totalPages)),
+      dispatch(updateSearchQuery(search)),
     ]);
-    dispatch(updateCurrentPage(1));
+    dispatch(updateCurrentPage(page));
     dispatch(hideLoader());
   };
 };
@@ -43,7 +53,8 @@ export const fetchAndUpdateCards = (): ThunkAction => {
 export const fetchAndAddCards = (): ThunkAction => {
   return async (dispatch: Dispatch<*>, getState: Function) => {
     const page = getState().toJS().home.currentPage + 1;
-    const result = await getPublicationList(page);
+    const search = getState().toJS().home.searchQuery;
+    const result = await getPublicationList({ page, search });
     logger.log('fetchAndAddCards', result);
     await Promise.all([
       dispatch(addCards(result.content)),
@@ -58,6 +69,6 @@ export const mapStateToProps = (state: Immutable<State>) => ({
 });
 
 export const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
-  fetchCards: () => dispatch(fetchAndUpdateCards()),
+  fetchCards: (...args) => dispatch(fetchAndUpdateCards(...args)),
 });
 

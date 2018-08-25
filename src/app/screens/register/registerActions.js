@@ -13,9 +13,9 @@ import type { Dispatch } from 'redux';
 import type { Immutable } from 'store/ImmutableTypes';
 
 import { registerRequest } from './registerServices';
-import type { submitRegisterFormRequest } from './RegisterTypes';
+import type { SubmitRegisterFormRequest } from './RegisterTypes';
 
-export const submitRegisterForm = async (form: Immutable<submitRegisterFormRequest>, dispatch: Dispatch<*>) => {
+export const submitRegisterForm = async (form: Immutable<SubmitRegisterFormRequest>, dispatch: Dispatch<*>) => {
   dispatch(showLoader());
 
   const result = await registerRequest(form.toJS());

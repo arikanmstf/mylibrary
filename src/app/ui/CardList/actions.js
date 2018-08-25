@@ -40,7 +40,7 @@ export const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
   toggleFavorite: (id: number, index: number) => dispatch(toggleFavorite(id, index)),
   toggleRead: (id: number, index: number) => dispatch(toggleRead(id, index)),
   addCards: () => dispatch(fetchAndAddCards()),
-  fetchCards: () => dispatch(fetchAndUpdateCards()),
+  fetchCards: (...args) => dispatch(fetchAndUpdateCards(...args)),
 });
 
 export const mapStateToProps = (state: Immutable<State>) => ({

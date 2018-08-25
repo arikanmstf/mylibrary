@@ -18,6 +18,7 @@ export type HeaderProps = {
   isDrawerOpen?: ?boolean,
   showDrawer?: Function,
   hideDrawer?: Function,
+  handleSubmit: Function,
 };
 
 export type SideNavigationItem = {
@@ -25,3 +26,10 @@ export type SideNavigationItem = {
   icon?: ?string,
   to: string,
 };
+
+export type SubmitSearchFormRequest = {
+  page?: number,
+  search?: string,
+};
+
+export const SEARCH_SUBMIT_TIMEOUT = 500;

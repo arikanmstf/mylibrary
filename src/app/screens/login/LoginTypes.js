@@ -15,12 +15,12 @@ import type { ColProps } from 'ui/Col/types';
 import type { FormProps } from 'ui/Form/types';
 import type { ImageProps } from 'ui/Image/types';
 
-export type submitLoginFormRequest = {
+export type SubmitLoginFormRequest = {
   email: string,
   password: string,
 };
 
-export type submitLoginFormResponse = {
+export type SubmitLoginFormResponse = {
   success: {
     token: string,
     user: {

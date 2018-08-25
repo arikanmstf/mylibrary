@@ -4,9 +4,12 @@ import Api, { PUBLICATION, TOGGLE_FAVORITE, TOGGLE_READ } from 'helpers/api';
 import { transformPublicationToCard } from 'helpers/data/transform';
 import type { Pagination, CardItem } from 'ui/CardList/types';
 import type { PublicationDetail, ToggleFavorite, ToggleRead } from 'helpers/api/types';
+import type { SubmitSearchFormRequest } from 'ui/Header/types';
 
-export const getPublicationList = async (page: number = 1): Promise<Pagination<CardItem>> => {
-  const result: Pagination<PublicationDetail> = await Api.get(PUBLICATION, { page });
+export const getPublicationList = async (
+  { page, search }: SubmitSearchFormRequest = { page: 0, search: '' }
+): Promise<Pagination<CardItem>> => {
+  const result: Pagination<PublicationDetail> = await Api.get(PUBLICATION, { page, search });
   return transformPublicationToCard(result);
 };
 

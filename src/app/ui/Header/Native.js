@@ -9,6 +9,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form/immutable';
 import { Link } from 'react-router-native';
+import debounce from 'lodash.debounce';
 import {
   Header as HeaderNative,
   Item,
@@ -27,9 +28,10 @@ import t from 'helpers/i18n/Translate';
 import logger from 'helpers/logger';
 import fields, { SEARCH_FORM_KEY } from 'constants/forms/search';
 import { white } from 'constants/theme/color';
-import { mapDispatchToProps } from './actions';
+import { mapDispatchToProps, submitSearchForm } from './actions';
 import routes from './sideNavigationItems';
 
+import { SEARCH_SUBMIT_TIMEOUT } from './types';
 import type { HeaderProps, SideNavigationItem } from './types';
 
 export const renderList = (route: SideNavigationItem) => {
@@ -63,6 +65,14 @@ export class Header extends React.PureComponent<HeaderProps> {
     }
   };
 
+  handleChange = () => {
+    const {
+      handleSubmit,
+    } = this.props;
+
+    handleSubmit(submitSearchForm)();
+  };
+
   renderMenu() {
     return (
       <Right>
@@ -83,15 +93,16 @@ export class Header extends React.PureComponent<HeaderProps> {
     );
   }
 
-  static renderCenter() {
+  renderCenter() {
     return (
       <Body>
         <Item style={{ height: 25, flexGrow: 1 }}>
           <Icon name="ios-search" />
           <TextField
-            name={fields.QUERY}
+            name={fields.SEARCH}
             label={t.get('HEADER_SEARCH')}
             type="search"
+            onChange={debounce(this.handleChange, SEARCH_SUBMIT_TIMEOUT)}
           />
         </Item>
       </Body>
@@ -103,7 +114,7 @@ export class Header extends React.PureComponent<HeaderProps> {
     return (
       <HeaderNative>
         { back ? Header.renderLeft() : null}
-        {Header.renderCenter()}
+        {this.renderCenter()}
         {this.renderMenu()}
       </HeaderNative>
     );
@@ -112,6 +123,7 @@ export class Header extends React.PureComponent<HeaderProps> {
 
 export default reduxForm({
   form: SEARCH_FORM_KEY,
+  onSubmit: submitSearchForm,
 })(
   connect(null, mapDispatchToProps)(Header)
 );

@@ -6,6 +6,7 @@
 
 // @flow
 import * as React from 'react';
+import debounce from 'lodash.debounce';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { reduxForm } from 'redux-form/immutable';
@@ -27,12 +28,14 @@ import { withStyles } from '@material-ui/core/styles';
 import logger from 'helpers/logger';
 import { white } from 'constants/theme/color';
 import Logo from 'assets/images/logo.png';
-import { Image, TextField } from 'ui';
+import { Image, TextField, Form } from 'ui';
 import t from 'helpers/i18n/Translate';
 import fields, { SEARCH_FORM_KEY } from 'constants/forms/search';
 import { HOME } from 'constants/routes/routeNames';
-import { mapStateToProps, mapDispatchToProps } from './actions';
+import { mapStateToProps, mapDispatchToProps, submitSearchForm } from './actions';
 import routes from './sideNavigationItems';
+
+import { SEARCH_SUBMIT_TIMEOUT } from './types';
 import type { HeaderProps, SideNavigationItem } from './types';
 
 const styles = {
@@ -105,7 +108,11 @@ export class Header extends React.PureComponent<HeaderProps> {
 
   toggleDrawer = () => {
     logger.log('toggleDrawer');
-    const { isDrawerOpen, hideDrawer, showDrawer } = this.props;
+    const {
+      isDrawerOpen,
+      hideDrawer,
+      showDrawer,
+    } = this.props;
 
     if (isDrawerOpen) {
       if (hideDrawer) hideDrawer();
@@ -114,34 +121,47 @@ export class Header extends React.PureComponent<HeaderProps> {
     }
   };
 
+  handleChange = () => {
+    const {
+      handleSubmit,
+    } = this.props;
+
+    handleSubmit(submitSearchForm)();
+  };
+
   render() {
     const {
       classes,
       isDrawerOpen,
+      handleSubmit,
     } = this.props;
 
     return (
       <AppBar className={classes && classes.container}>
-        <Toolbar>
-          <Image
-            source={Logo}
-            className={classes && classes.image}
-            alt="mylibrary logo"
-            to={HOME}
-          />
-          <TextField
-            name={fields.QUERY}
-            type="search"
-            className={classes && classes.search}
-            label={t.get('HEADER_SEARCH')}
-          />
-          <div className={classes && classes.flex} />
-          <IconButton
-            onClick={this.toggleDrawer}
-          >
-            <MenuIcon />
-          </IconButton>
-        </Toolbar>
+        <Form onSubmit={handleSubmit}>
+          <Toolbar>
+
+            <Image
+              source={Logo}
+              className={classes && classes.image}
+              alt="mylibrary logo"
+              to={HOME}
+            />
+            <TextField
+              name={fields.SEARCH}
+              type="search"
+              className={classes && classes.search}
+              label={t.get('HEADER_SEARCH')}
+              onChange={debounce(this.handleChange, SEARCH_SUBMIT_TIMEOUT)}
+            />
+            <div className={classes && classes.flex} />
+            <IconButton
+              onClick={this.toggleDrawer}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Toolbar>
+        </Form>
         <Drawer anchor="right" open={!!isDrawerOpen} onClose={this.toggleDrawer}>
           <div
             tabIndex={0}
@@ -159,6 +179,7 @@ export class Header extends React.PureComponent<HeaderProps> {
 
 export default reduxForm({
   form: SEARCH_FORM_KEY,
+  onSubmit: submitSearchForm,
 })(
   connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Header))
 );

@@ -10,12 +10,14 @@ import {
   updateCards,
   updateTotalPages,
   updateCurrentPage,
+  updateSearchQuery,
 } from './homeActions';
 
 const initialState = {
   cards: [],
   totalPages: 0,
   currentPage: 1,
+  searchQuery: '',
 };
 
 const reducer = new Map([
@@ -45,6 +47,13 @@ const reducer = new Map([
     (state, action) => ({
       ...state,
       currentPage: action.payload ? action.payload : initialState.currentPage,
+    }),
+  ],
+  [
+    updateSearchQuery,
+    (state, action) => ({
+      ...state,
+      searchQuery: action.payload ? action.payload : initialState.searchQuery,
     }),
   ],
 ]);

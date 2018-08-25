@@ -7,6 +7,7 @@ export type State = {|
     cards: Array<CardItem>,
     totalPages: number,
     currentPage: number,
+    searchQuery: string,
   |},
   loader: {|
     isVisible: boolean,

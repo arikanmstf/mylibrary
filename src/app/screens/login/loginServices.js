@@ -4,9 +4,9 @@ import Api, { LOGIN, INITIALIZE } from 'helpers/api';
 import storage, { LOGIN_STATE } from 'helpers/storage';
 import logger from 'helpers/logger';
 
-import type { submitLoginFormRequest, submitLoginFormResponse } from './LoginTypes';
+import type { SubmitLoginFormRequest, SubmitLoginFormResponse } from './LoginTypes';
 
-export const loginRequest = (request: submitLoginFormRequest): Promise<submitLoginFormResponse> => {
+export const loginRequest = (request: SubmitLoginFormRequest): Promise<SubmitLoginFormResponse> => {
   return Api.post(LOGIN, request);
 };
 

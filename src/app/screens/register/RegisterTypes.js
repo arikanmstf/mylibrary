@@ -28,7 +28,7 @@ export type RegisterProps = {
   handleSubmit: Function,
 };
 
-export type submitRegisterFormRequest = {
+export type SubmitRegisterFormRequest = {
   name: string,
   displayName: string,
   email: string,
@@ -36,7 +36,7 @@ export type submitRegisterFormRequest = {
   passwordRepeat: string,
 };
 
-export type submitRegisterFormResponse = {
+export type SubmitRegisterFormResponse = {
   success: {
     token: string,
     user: {
