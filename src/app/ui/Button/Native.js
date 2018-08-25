@@ -1,17 +1,31 @@
 // @flow
 import React from 'react';
 import { Button as NativeButton, Text } from 'native-base';
+import { Link } from 'react-router-native';
 
 import type { Node } from 'react';
 import type { ButtonProps } from './types';
 
+const ButtonLink = (props: ButtonProps): Node => {
+  const { to, ...other } = props;
+
+  return (
+    <Link
+      to={to}
+    >
+      <Text {...other} />
+    </Link>
+  );
+};
+
 const Button = (props: ButtonProps): Node => {
   const {
-    onClick, text, ...other
+    onClick, text, to, ...other
   } = props;
 
   const foo = () => {};
   const onPress = onClick || foo;
+  const Component = to ? ButtonLink : Text;
 
   return (
     <NativeButton
@@ -19,7 +33,12 @@ const Button = (props: ButtonProps): Node => {
       onPress={onPress}
       {...other}
     >
-      <Text>{text}</Text>
+      <Component
+        to={to}
+        {...other}
+      >
+        {text}
+      </Component>
     </NativeButton>
   );
 };

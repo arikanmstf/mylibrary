@@ -5,4 +5,5 @@ export type ButtonProps = {
   primary?: boolean,
   raised?: boolean,
   style?: Object,
+  to?: string,
 };

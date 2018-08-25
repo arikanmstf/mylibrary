@@ -28,7 +28,6 @@ class Register extends React.Component<RegisterProps> {
       Col,
       Image,
       Form,
-      Link,
       handleSubmit,
     } = this.props;
     logger.log('render: Register');
@@ -98,7 +97,12 @@ class Register extends React.Component<RegisterProps> {
               <Text>{t.get('REGISTER_MESSAGE')}</Text>
             </Row>
             <Row>
-              <Link to={LOGIN}><Text>{t.get('REGISTER_GOTO_LOGIN')}</Text></Link>
+              <Button
+                primary
+                to={LOGIN}
+                text={t.get('REGISTER_GOTO_LOGIN')}
+                transparent
+              />
             </Row>
           </Col>
         </Form>

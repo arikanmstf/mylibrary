@@ -5,7 +5,6 @@
  */
 
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import { connect as connectUi } from 'helpers/connect';
 import {
@@ -30,7 +29,6 @@ const mapUiToProps = () => ({
   Col,
   Image,
   Form,
-  Link,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(LoginScreen));

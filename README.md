@@ -39,5 +39,5 @@ React and React Native with Redux, Material UI and Flow.
 
 ## Dockerize
 * `docker build -t mylibrary-image .`
-* `docker run -p 8082:80 -d --name mylibrary-container mylibrary-image --network bridge`
+* `docker run -p 8082:80 -d --network bridge --name mylibrary-container mylibrary-image`
 * `docker exec -it mylibrary-container bash`

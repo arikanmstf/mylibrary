@@ -5,7 +5,6 @@
  */
 
 import { connect } from 'react-redux';
-import { Link } from 'react-router-native';
 import { connect as connectUi } from 'helpers/connect';
 import {
   Text,
@@ -30,6 +29,5 @@ const mapUiToProps = () => ({
   Col,
   Image,
   Form,
-  Link,
 });
 export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(RegisterScreen));

@@ -1,13 +1,14 @@
 // @flow
 import React from 'react';
 import WebButton from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 import type { Node } from 'react';
 import type { ButtonProps } from './types';
 
 const Button = (props: ButtonProps): Node => {
   const {
-    text, primary, raised, style, ...other
+    text, primary, raised, style, to, ...other
   } = props;
   const color = primary ? 'primary' : undefined;
   const contained = raised ? 'contained' : undefined;
@@ -21,6 +22,8 @@ const Button = (props: ButtonProps): Node => {
       color={color}
       variant={contained}
       style={mergedStyle}
+      component={to ? Link : undefined}
+      to={to}
       {...other}
     >
       {text}

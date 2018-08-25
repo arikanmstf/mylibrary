@@ -25,6 +25,9 @@ const theme = createMuiTheme({
   },
   overrides: {
     MuiButton: {
+      root: {
+        textTransform: 'inherit',
+      },
       raisedPrimary: {
         color: white,
       },

@@ -27,7 +27,6 @@ class Login extends React.PureComponent<LoginProps> {
       Col,
       Image,
       Form,
-      Link,
       handleSubmit,
     } = this.props;
     logger.log('render: Login');
@@ -73,7 +72,12 @@ class Login extends React.PureComponent<LoginProps> {
               <Text>{t.get('LOGIN_MESSAGE')}</Text>
             </Row>
             <Row>
-              <Link to={REGISTER}><Text>{t.get('LOGIN_GOTO_REGISTER')}</Text></Link>
+              <Button
+                primary
+                to={REGISTER}
+                text={t.get('LOGIN_GOTO_REGISTER')}
+                transparent
+              />
             </Row>
           </Col>
         </Form>
