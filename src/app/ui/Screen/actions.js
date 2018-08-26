@@ -1,7 +1,6 @@
 // @flow
 import { createAction } from 'redux-actions';
 import { SHOW_DRAWER, HIDE_DRAWER } from 'constants/actions/actionNames';
-import type { Dispatch } from 'redux';
 import type { Immutable } from 'store/ImmutableTypes';
 import type { State } from 'store/StateTypes';
 
@@ -12,6 +11,6 @@ export const mapStateToProps = (state: Immutable<State>) => ({
   isDrawerOpen: state.toJS().screen.isDrawerOpen,
 });
 
-export const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
-  hideDrawer: () => dispatch(hideDrawer()),
-});
+export const mapDispatchToProps = {
+  hideDrawer,
+};

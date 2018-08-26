@@ -30,5 +30,5 @@ export const submitRegisterForm = async (form: Immutable<SubmitRegisterFormReque
   dispatch(hideLoader());
 };
 
-export const mapStateToProps = () => ({});
-export const mapDispatchToProps = () => ({});
+export const mapStateToProps = null;
+export const mapDispatchToProps = null;

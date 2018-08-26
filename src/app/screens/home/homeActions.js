@@ -35,37 +35,44 @@ export const fetchAndUpdateCards = (
   return async (dispatch: Dispatch<*>) => {
     const page = 1;
     if (shouldShowLoader) {
+      logger.log('action: fetchAndUpdateCardsStart');
       dispatch(showLoader());
     }
 
     const result = await getPublicationList({ page, search });
-    logger.log('fetchAndUpdateCards', result);
+    logger.log('action: fetchAndUpdateCards', result);
     await Promise.all([
       dispatch(updateCards(result.content)),
       dispatch(updateTotalPages(result.totalPages)),
       dispatch(updateSearchQuery(search)),
+      dispatch(updateCurrentPage(page)),
     ]);
-    dispatch(updateCurrentPage(page));
+
+    logger.log('action: fetchAndUpdateCardsEnd');
     dispatch(hideLoader());
   };
 };
 
 export const fetchAndAddCards = (): ThunkAction => {
   return async (dispatch: Dispatch<*>, getState: Function) => {
+    logger.log('action: fetchAndAddCardsStart');
     const page = getState().toJS().home.currentPage + 1;
     const totalPage = getState().toJS().home.totalPages;
     if (page > totalPage) {
-      logger.error('page is too big');
+      logger.log('page is too big');
+      return false;
     }
 
     const search = getState().toJS().home.searchQuery;
     const result = await getPublicationList({ page, search });
-    logger.log('fetchAndAddCards', result);
+    logger.log('action: fetchAndAddCards', result);
     await Promise.all([
       dispatch(addCards(result.content)),
       dispatch(updateTotalPages(result.totalPages)),
     ]);
     dispatch(updateCurrentPage(page));
+    logger.log('action: fetchAndAddCardsEnd');
+    return true;
   };
 };
 
@@ -73,7 +80,7 @@ export const mapStateToProps = (state: Immutable<State>) => ({
   cards: state.toJS().home.cards,
 });
 
-export const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
-  fetchCards: (...args) => dispatch(fetchAndUpdateCards(...args)),
-});
+export const mapDispatchToProps = {
+  fetchCards: fetchAndUpdateCards,
+};
 

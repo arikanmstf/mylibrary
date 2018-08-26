@@ -8,10 +8,10 @@ import type { Immutable } from 'store/ImmutableTypes';
 import type { State } from 'store/StateTypes';
 import type { SubmitSearchFormRequest } from './types';
 
-export const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
-  showDrawer: () => dispatch(showDrawer()),
-  hideDrawer: () => dispatch(hideDrawer()),
-});
+export const mapDispatchToProps = {
+  showDrawer,
+  hideDrawer,
+};
 
 export const submitSearchForm = async (form: Immutable<SubmitSearchFormRequest>, dispatch: Dispatch<*>) => {
   logger.log('submitSearchForm');

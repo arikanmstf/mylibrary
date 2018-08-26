@@ -1,10 +1,10 @@
 /**
  * Actions Template By => create-module script
- * @version 1.0.0
+ * @version 1.0.1
  *
  */
 
 // @flow
 
 export const mapStateToProps = (state) => ({});
-export const mapDispatchToProps = (dispatch) => ({});
+export const mapDispatchToProps = {};

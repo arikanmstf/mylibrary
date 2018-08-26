@@ -36,12 +36,12 @@ export const toggleRead = (id: number, index: number): ThunkAction => {
   };
 };
 
-export const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
-  toggleFavorite: (id: number, index: number) => dispatch(toggleFavorite(id, index)),
-  toggleRead: (id: number, index: number) => dispatch(toggleRead(id, index)),
-  addCards: () => dispatch(fetchAndAddCards()),
-  fetchCards: (...args) => dispatch(fetchAndUpdateCards(...args)),
-});
+export const mapDispatchToProps = {
+  toggleFavorite,
+  toggleRead,
+  addCards: fetchAndAddCards,
+  fetchCards: fetchAndUpdateCards,
+};
 
 export const mapStateToProps = (state: Immutable<State>) => ({
   cards: state.toJS().home.cards,

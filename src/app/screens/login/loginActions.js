@@ -23,19 +23,20 @@ export const updateInitializeState = createAction(UPDATE_INITIALIZE_STATE);
 
 export const fetchInitialState = (): ThunkAction => {
   return async (dispatch: Dispatch<*>) => {
-    dispatch(showLoader());
+    logger.log('action: fetchInitialStateStart');
     const initial = await initialRequest();
-    logger.log('fetchInitialState', initial);
+    logger.log('action: fetchInitialState', initial);
     const loginState = initial ? await storage.load({ key: LOGIN_STATE }) : null;
     await Promise.all([
       dispatch(updateLoginState(loginState)),
       dispatch(updateInitializeState(initial)),
     ]);
-    dispatch(hideLoader());
+    logger.log('action: fetchInitialStateEnd');
   };
 };
 
 export const submitLoginForm = async (form: Immutable<SubmitLoginFormRequest>, dispatch: Dispatch<*>) => {
+  logger.log('action: submitLoginFormStart');
   dispatch(showLoader());
 
   const result = await loginRequest(form.toJS());
@@ -45,8 +46,9 @@ export const submitLoginForm = async (form: Immutable<SubmitLoginFormRequest>, d
     expires: 1000 * 3600,
   };
   storage.save(data);
-
   dispatch(fetchInitialState());
+
+  logger.log('action: submitLoginFormEnd');
   dispatch(hideLoader());
 };
 

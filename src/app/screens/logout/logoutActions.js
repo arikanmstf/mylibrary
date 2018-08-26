@@ -30,6 +30,6 @@ const makeLogoutRequest = (): ThunkAction => {
 };
 
 export const mapStateToProps = null;
-export const mapDispatchToProps = (dispatch) => ({
-  makeLogoutRequest: () => dispatch(makeLogoutRequest()),
-});
+export const mapDispatchToProps = {
+  makeLogoutRequest,
+};
