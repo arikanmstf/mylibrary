@@ -35,6 +35,7 @@ ShallowWrapper {
               Object {
                 "flexGrow": 1,
                 "height": 25,
+                "marginLeft": 20,
               }
             }
           >
@@ -43,7 +44,8 @@ ShallowWrapper {
             />
             <TextField
               label="Search"
-              name="query"
+              name="search"
+              onChange={[Function]}
               type="search"
             />
           </Styled(Item)>
@@ -116,6 +118,7 @@ ShallowWrapper {
               Object {
                 "flexGrow": 1,
                 "height": 25,
+                "marginLeft": 20,
               }
             }
           >
@@ -124,7 +127,8 @@ ShallowWrapper {
             />
             <TextField
               label="Search"
-              name="query"
+              name="search"
+              onChange={[Function]}
               type="search"
             />
           </Styled(Item)>,
@@ -142,13 +146,15 @@ ShallowWrapper {
               />,
               <TextField
                 label="Search"
-                name="query"
+                name="search"
+                onChange={[Function]}
                 type="search"
               />,
             ],
             "style": Object {
               "flexGrow": 1,
               "height": 25,
+              "marginLeft": 20,
             },
             "virtual": undefined,
           },
@@ -172,7 +178,8 @@ ShallowWrapper {
               "nodeType": "function",
               "props": Object {
                 "label": "Search",
-                "name": "query",
+                "name": "search",
+                "onChange": [Function],
                 "type": "search",
               },
               "ref": null,
@@ -254,6 +261,7 @@ ShallowWrapper {
                 Object {
                   "flexGrow": 1,
                   "height": 25,
+                  "marginLeft": 20,
                 }
               }
             >
@@ -262,7 +270,8 @@ ShallowWrapper {
               />
               <TextField
                 label="Search"
-                name="query"
+                name="search"
+                onChange={[Function]}
                 type="search"
               />
             </Styled(Item)>
@@ -335,6 +344,7 @@ ShallowWrapper {
                 Object {
                   "flexGrow": 1,
                   "height": 25,
+                  "marginLeft": 20,
                 }
               }
             >
@@ -343,7 +353,8 @@ ShallowWrapper {
               />
               <TextField
                 label="Search"
-                name="query"
+                name="search"
+                onChange={[Function]}
                 type="search"
               />
             </Styled(Item)>,
@@ -361,13 +372,15 @@ ShallowWrapper {
                 />,
                 <TextField
                   label="Search"
-                  name="query"
+                  name="search"
+                  onChange={[Function]}
                   type="search"
                 />,
               ],
               "style": Object {
                 "flexGrow": 1,
                 "height": 25,
+                "marginLeft": 20,
               },
               "virtual": undefined,
             },
@@ -391,7 +404,8 @@ ShallowWrapper {
                 "nodeType": "function",
                 "props": Object {
                   "label": "Search",
-                  "name": "query",
+                  "name": "search",
+                  "onChange": [Function],
                   "type": "search",
                 },
                 "ref": null,
@@ -487,6 +501,7 @@ ShallowWrapper {
               Object {
                 "flexGrow": 1,
                 "height": 25,
+                "marginLeft": 20,
               }
             }
           >
@@ -495,7 +510,8 @@ ShallowWrapper {
             />
             <TextField
               label="Search"
-              name="query"
+              name="search"
+              onChange={[Function]}
               type="search"
             />
           </Styled(Item)>
@@ -526,6 +542,7 @@ ShallowWrapper {
               Object {
                 "flexGrow": 1,
                 "height": 25,
+                "marginLeft": 20,
               }
             }
           >
@@ -534,7 +551,8 @@ ShallowWrapper {
             />
             <TextField
               label="Search"
-              name="query"
+              name="search"
+              onChange={[Function]}
               type="search"
             />
           </Styled(Item)>,
@@ -552,13 +570,15 @@ ShallowWrapper {
               />,
               <TextField
                 label="Search"
-                name="query"
+                name="search"
+                onChange={[Function]}
                 type="search"
               />,
             ],
             "style": Object {
               "flexGrow": 1,
               "height": 25,
+              "marginLeft": 20,
             },
             "virtual": undefined,
           },
@@ -582,7 +602,8 @@ ShallowWrapper {
               "nodeType": "function",
               "props": Object {
                 "label": "Search",
-                "name": "query",
+                "name": "search",
+                "onChange": [Function],
                 "type": "search",
               },
               "ref": null,
@@ -656,6 +677,7 @@ ShallowWrapper {
                 Object {
                   "flexGrow": 1,
                   "height": 25,
+                  "marginLeft": 20,
                 }
               }
             >
@@ -664,7 +686,8 @@ ShallowWrapper {
               />
               <TextField
                 label="Search"
-                name="query"
+                name="search"
+                onChange={[Function]}
                 type="search"
               />
             </Styled(Item)>
@@ -695,6 +718,7 @@ ShallowWrapper {
                 Object {
                   "flexGrow": 1,
                   "height": 25,
+                  "marginLeft": 20,
                 }
               }
             >
@@ -703,7 +727,8 @@ ShallowWrapper {
               />
               <TextField
                 label="Search"
-                name="query"
+                name="search"
+                onChange={[Function]}
                 type="search"
               />
             </Styled(Item)>,
@@ -721,13 +746,15 @@ ShallowWrapper {
                 />,
                 <TextField
                   label="Search"
-                  name="query"
+                  name="search"
+                  onChange={[Function]}
                   type="search"
                 />,
               ],
               "style": Object {
                 "flexGrow": 1,
                 "height": 25,
+                "marginLeft": 20,
               },
               "virtual": undefined,
             },
@@ -751,7 +778,8 @@ ShallowWrapper {
                 "nodeType": "function",
                 "props": Object {
                   "label": "Search",
-                  "name": "query",
+                  "name": "search",
+                  "onChange": [Function],
                   "type": "search",
                 },
                 "ref": null,

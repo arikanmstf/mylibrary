@@ -59,6 +59,9 @@ ShallowWrapper {
                 "raisedPrimary": Object {
                   "color": "#ffffff",
                 },
+                "root": Object {
+                  "textTransform": "inherit",
+                },
               },
             },
             "palette": Object {
@@ -336,6 +339,9 @@ ShallowWrapper {
             "MuiButton": Object {
               "raisedPrimary": Object {
                 "color": "#ffffff",
+              },
+              "root": Object {
+                "textTransform": "inherit",
               },
             },
           },
@@ -619,6 +625,9 @@ ShallowWrapper {
                   "raisedPrimary": Object {
                     "color": "#ffffff",
                   },
+                  "root": Object {
+                    "textTransform": "inherit",
+                  },
                 },
               },
               "palette": Object {
@@ -896,6 +905,9 @@ ShallowWrapper {
               "MuiButton": Object {
                 "raisedPrimary": Object {
                   "color": "#ffffff",
+                },
+                "root": Object {
+                  "textTransform": "inherit",
                 },
               },
             },

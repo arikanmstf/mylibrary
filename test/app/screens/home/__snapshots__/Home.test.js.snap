@@ -19,7 +19,7 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <UNDEFINED
-          title="Home"
+          title="HOME_TITLE"
         />,
         <UNDEFINED>
           <UNDEFINED />
@@ -33,7 +33,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "title": "Home",
+          "title": "HOME_TITLE",
         },
         "ref": null,
         "rendered": null,
@@ -69,7 +69,7 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <UNDEFINED
-            title="Home"
+            title="HOME_TITLE"
           />,
           <UNDEFINED>
             <UNDEFINED />
@@ -83,7 +83,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "title": "Home",
+            "title": "HOME_TITLE",
           },
           "ref": null,
           "rendered": null,

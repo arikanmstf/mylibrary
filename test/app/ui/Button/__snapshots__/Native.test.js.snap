@@ -20,7 +20,9 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "children": <Styled(Text)>
+      "children": <Styled(Text)
+        onPress={[MockFunction]}
+      >
         dummyText
       </Styled(Text)>,
       "full": true,
@@ -34,6 +36,8 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": "dummyText",
+        "onPress": [MockFunction],
+        "to": undefined,
         "virtual": undefined,
       },
       "ref": null,
@@ -48,7 +52,9 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "children": <Styled(Text)>
+        "children": <Styled(Text)
+          onPress={[MockFunction]}
+        >
           dummyText
         </Styled(Text)>,
         "full": true,
@@ -62,6 +68,8 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": "dummyText",
+          "onPress": [MockFunction],
+          "to": undefined,
           "virtual": undefined,
         },
         "ref": null,
@@ -101,7 +109,9 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "children": <Styled(Text)>
+      "children": <Styled(Text)
+        primary={true}
+      >
         dummyText
       </Styled(Text)>,
       "full": true,
@@ -116,6 +126,8 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": "dummyText",
+        "primary": true,
+        "to": undefined,
         "virtual": undefined,
       },
       "ref": null,
@@ -130,7 +142,9 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "children": <Styled(Text)>
+        "children": <Styled(Text)
+          primary={true}
+        >
           dummyText
         </Styled(Text)>,
         "full": true,
@@ -145,6 +159,8 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": "dummyText",
+          "primary": true,
+          "to": undefined,
           "virtual": undefined,
         },
         "ref": null,
@@ -184,7 +200,9 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "children": <Styled(Text)>
+      "children": <Styled(Text)
+        raised={true}
+      >
         dummyText
       </Styled(Text)>,
       "full": true,
@@ -199,6 +217,8 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": "dummyText",
+        "raised": true,
+        "to": undefined,
         "virtual": undefined,
       },
       "ref": null,
@@ -213,7 +233,9 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "children": <Styled(Text)>
+        "children": <Styled(Text)
+          raised={true}
+        >
           dummyText
         </Styled(Text)>,
         "full": true,
@@ -228,6 +250,8 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": "dummyText",
+          "raised": true,
+          "to": undefined,
           "virtual": undefined,
         },
         "ref": null,
@@ -280,6 +304,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": "dummyText",
+        "to": undefined,
         "virtual": undefined,
       },
       "ref": null,
@@ -308,6 +333,7 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": "dummyText",
+          "to": undefined,
           "virtual": undefined,
         },
         "ref": null,

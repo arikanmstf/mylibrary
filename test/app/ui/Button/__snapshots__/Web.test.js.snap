@@ -22,10 +22,12 @@ ShallowWrapper {
     "props": Object {
       "children": "dummyText",
       "color": undefined,
+      "component": undefined,
       "onPress": [MockFunction],
       "style": Object {
         "width": "100%",
       },
+      "to": undefined,
       "variant": undefined,
     },
     "ref": null,
@@ -40,10 +42,12 @@ ShallowWrapper {
       "props": Object {
         "children": "dummyText",
         "color": undefined,
+        "component": undefined,
         "onPress": [MockFunction],
         "style": Object {
           "width": "100%",
         },
+        "to": undefined,
         "variant": undefined,
       },
       "ref": null,
@@ -83,9 +87,11 @@ ShallowWrapper {
     "props": Object {
       "children": "dummyText",
       "color": "primary",
+      "component": undefined,
       "style": Object {
         "width": "100%",
       },
+      "to": undefined,
       "variant": undefined,
     },
     "ref": null,
@@ -100,9 +106,11 @@ ShallowWrapper {
       "props": Object {
         "children": "dummyText",
         "color": "primary",
+        "component": undefined,
         "style": Object {
           "width": "100%",
         },
+        "to": undefined,
         "variant": undefined,
       },
       "ref": null,
@@ -142,9 +150,11 @@ ShallowWrapper {
     "props": Object {
       "children": "dummyText",
       "color": undefined,
+      "component": undefined,
       "style": Object {
         "width": "100%",
       },
+      "to": undefined,
       "variant": "contained",
     },
     "ref": null,
@@ -159,9 +169,11 @@ ShallowWrapper {
       "props": Object {
         "children": "dummyText",
         "color": undefined,
+        "component": undefined,
         "style": Object {
           "width": "100%",
         },
+        "to": undefined,
         "variant": "contained",
       },
       "ref": null,
@@ -200,9 +212,11 @@ ShallowWrapper {
     "props": Object {
       "children": "dummyText",
       "color": undefined,
+      "component": undefined,
       "style": Object {
         "width": "100%",
       },
+      "to": undefined,
       "variant": undefined,
     },
     "ref": null,
@@ -217,9 +231,11 @@ ShallowWrapper {
       "props": Object {
         "children": "dummyText",
         "color": undefined,
+        "component": undefined,
         "style": Object {
           "width": "100%",
         },
+        "to": undefined,
         "variant": undefined,
       },
       "ref": null,

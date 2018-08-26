@@ -8,7 +8,7 @@ describe('test/app/ui/Header/actions.test.js', () => {
   it('mapDispatchToProps', () => {
     screenActions.showDrawer = jest.fn();
     screenActions.showDrawer.mockClear();
-    expect(mapDispatchToProps(dispatch)).toMatchSnapshot();
+    expect(mapDispatchToProps).toMatchSnapshot();
   });
 
   it('mapStateToProps', () => {

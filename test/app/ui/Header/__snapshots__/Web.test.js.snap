@@ -18,28 +18,31 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": Array [
-        <WithStyles(Toolbar)>
-          <Image
-            alt="mylibrary logo"
-            source={
-              Object {
-                "testUri": "../../../src/app/assets/images/logo.png",
+        <Form>
+          <WithStyles(Toolbar)>
+            <Image
+              alt="mylibrary logo"
+              source={
+                Object {
+                  "testUri": "../../../src/app/assets/images/logo.png",
+                }
               }
-            }
-            to="/"
-          />
-          <TextField
-            label="Search"
-            name="query"
-            type="search"
-          />
-          <div />
-          <WithStyles(IconButton)
-            onClick={[Function]}
-          >
-            <pure(Menu) />
-          </WithStyles(IconButton)>
-        </WithStyles(Toolbar)>,
+              to="/"
+            />
+            <TextField
+              label="Search"
+              name="search"
+              onChange={[Function]}
+              type="search"
+            />
+            <div />
+            <WithStyles(IconButton)
+              onClick={[Function]}
+            >
+              <pure(Menu) />
+            </WithStyles(IconButton)>
+          </WithStyles(Toolbar)>
+        </Form>,
         <WithStyles(Drawer)
           anchor="right"
           onClose={[Function]}
@@ -113,9 +116,9 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
-          "children": Array [
+          "children": <WithStyles(Toolbar)>
             <Image
               alt="mylibrary logo"
               source={
@@ -124,84 +127,119 @@ ShallowWrapper {
                 }
               }
               to="/"
-            />,
+            />
             <TextField
               label="Search"
-              name="query"
+              name="search"
+              onChange={[Function]}
               type="search"
-            />,
-            <div />,
+            />
+            <div />
             <WithStyles(IconButton)
               onClick={[Function]}
             >
               <pure(Menu) />
-            </WithStyles(IconButton)>,
-          ],
+            </WithStyles(IconButton)>
+          </WithStyles(Toolbar)>,
+          "onSubmit": undefined,
         },
         "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "alt": "mylibrary logo",
-              "className": undefined,
-              "source": Object {
-                "testUri": "../../../src/app/assets/images/logo.png",
-              },
-              "to": "/",
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <Image
+                alt="mylibrary logo"
+                source={
+                  Object {
+                    "testUri": "../../../src/app/assets/images/logo.png",
+                  }
+                }
+                to="/"
+              />,
+              <TextField
+                label="Search"
+                name="search"
+                onChange={[Function]}
+                type="search"
+              />,
+              <div />,
+              <WithStyles(IconButton)
+                onClick={[Function]}
+              >
+                <pure(Menu) />
+              </WithStyles(IconButton)>,
+            ],
           },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "className": undefined,
-              "label": "Search",
-              "name": "query",
-              "type": "search",
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "className": undefined,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "div",
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "children": <pure(Menu) />,
-              "onClick": [Function],
-            },
-            "ref": null,
-            "rendered": Object {
+          "ref": null,
+          "rendered": Array [
+            Object {
               "instance": null,
               "key": undefined,
               "nodeType": "class",
-              "props": Object {},
+              "props": Object {
+                "alt": "mylibrary logo",
+                "className": undefined,
+                "source": Object {
+                  "testUri": "../../../src/app/assets/images/logo.png",
+                },
+                "to": "/",
+              },
               "ref": null,
               "rendered": null,
               "type": [Function],
             },
-            "type": [Function],
-          },
-        ],
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "className": undefined,
+                "label": "Search",
+                "name": "search",
+                "onChange": [Function],
+                "type": "search",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": undefined,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <pure(Menu) />,
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
         "type": [Function],
       },
       Object {
@@ -688,28 +726,31 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": Array [
-          <WithStyles(Toolbar)>
-            <Image
-              alt="mylibrary logo"
-              source={
-                Object {
-                  "testUri": "../../../src/app/assets/images/logo.png",
+          <Form>
+            <WithStyles(Toolbar)>
+              <Image
+                alt="mylibrary logo"
+                source={
+                  Object {
+                    "testUri": "../../../src/app/assets/images/logo.png",
+                  }
                 }
-              }
-              to="/"
-            />
-            <TextField
-              label="Search"
-              name="query"
-              type="search"
-            />
-            <div />
-            <WithStyles(IconButton)
-              onClick={[Function]}
-            >
-              <pure(Menu) />
-            </WithStyles(IconButton)>
-          </WithStyles(Toolbar)>,
+                to="/"
+              />
+              <TextField
+                label="Search"
+                name="search"
+                onChange={[Function]}
+                type="search"
+              />
+              <div />
+              <WithStyles(IconButton)
+                onClick={[Function]}
+              >
+                <pure(Menu) />
+              </WithStyles(IconButton)>
+            </WithStyles(Toolbar)>
+          </Form>,
           <WithStyles(Drawer)
             anchor="right"
             onClose={[Function]}
@@ -783,9 +824,9 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
-            "children": Array [
+            "children": <WithStyles(Toolbar)>
               <Image
                 alt="mylibrary logo"
                 source={
@@ -794,84 +835,119 @@ ShallowWrapper {
                   }
                 }
                 to="/"
-              />,
+              />
               <TextField
                 label="Search"
-                name="query"
+                name="search"
+                onChange={[Function]}
                 type="search"
-              />,
-              <div />,
+              />
+              <div />
               <WithStyles(IconButton)
                 onClick={[Function]}
               >
                 <pure(Menu) />
-              </WithStyles(IconButton)>,
-            ],
+              </WithStyles(IconButton)>
+            </WithStyles(Toolbar)>,
+            "onSubmit": undefined,
           },
           "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "alt": "mylibrary logo",
-                "className": undefined,
-                "source": Object {
-                  "testUri": "../../../src/app/assets/images/logo.png",
-                },
-                "to": "/",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <Image
+                  alt="mylibrary logo"
+                  source={
+                    Object {
+                      "testUri": "../../../src/app/assets/images/logo.png",
+                    }
+                  }
+                  to="/"
+                />,
+                <TextField
+                  label="Search"
+                  name="search"
+                  onChange={[Function]}
+                  type="search"
+                />,
+                <div />,
+                <WithStyles(IconButton)
+                  onClick={[Function]}
+                >
+                  <pure(Menu) />
+                </WithStyles(IconButton)>,
+              ],
             },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "className": undefined,
-                "label": "Search",
-                "name": "query",
-                "type": "search",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "className": undefined,
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "div",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "children": <pure(Menu) />,
-                "onClick": [Function],
-              },
-              "ref": null,
-              "rendered": Object {
+            "ref": null,
+            "rendered": Array [
+              Object {
                 "instance": null,
                 "key": undefined,
                 "nodeType": "class",
-                "props": Object {},
+                "props": Object {
+                  "alt": "mylibrary logo",
+                  "className": undefined,
+                  "source": Object {
+                    "testUri": "../../../src/app/assets/images/logo.png",
+                  },
+                  "to": "/",
+                },
                 "ref": null,
                 "rendered": null,
                 "type": [Function],
               },
-              "type": [Function],
-            },
-          ],
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "className": undefined,
+                  "label": "Search",
+                  "name": "search",
+                  "onChange": [Function],
+                  "type": "search",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "className": undefined,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <pure(Menu) />,
+                  "onClick": [Function],
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
           "type": [Function],
         },
         Object {

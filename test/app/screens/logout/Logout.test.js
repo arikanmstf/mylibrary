@@ -9,7 +9,9 @@ import { shallow } from 'enzyme';
 import Logout from 'screens/logout/Logout';
 
 describe('test/app/screens/logout/Logout.test.js', () => {
-  const props = {};
+  const props = {
+    makeLogoutRequest: jest.fn(),
+  };
 
   it('Render', () => {
     const wrapper = shallow(<Logout {...props} />);
