@@ -6,6 +6,7 @@
 
 // @flow
 import * as React from 'react';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
 import getConfig from 'config/get';
@@ -25,6 +26,18 @@ import type { CardListProps } from './types';
 
 const { staticFilesURL } = getConfig();
 const styleActive = { color: green500 };
+
+const GridFour = styled.div`
+@media screen and (min-width: 768px) {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+}
+
+@media screen and (min-width: 1024px) {
+  grid-template-columns: repeat(6, 1fr);
+}
+`;
 
 const isCloseToBottom = () => {
   const windowHeight = window.innerHeight || document.documentElement.offsetHeight;
@@ -111,9 +124,9 @@ class CardList extends React.Component<CardListProps> {
     logger.log('render: CardList');
 
     return (
-      <div>
+      <GridFour>
         {this.renderCardList()}
-      </div>
+      </GridFour>
     );
   }
 }
