@@ -11,3 +11,4 @@ export { default as Header } from './Header/Native';
 export { default as Page } from './Page/Native';
 export { default as CardList } from './CardList/Native';
 export { default as KeyboardScreen } from './KeyboardScreen/Native';
+export { default as Error } from './Error/Native';

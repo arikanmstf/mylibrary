@@ -11,3 +11,4 @@ export { default as Header } from './Header/Web';
 export { default as Page } from './Page/Web';
 export { default as CardList } from './CardList/Web';
 export { default as KeyboardScreen } from './KeyboardScreen/Web';
+export { default as Error } from './Error/Web';

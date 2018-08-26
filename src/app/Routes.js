@@ -20,6 +20,7 @@ class Routes extends React.PureComponent<RoutesProps> {
 
   render() {
     const {
+      Error,
       Router,
       Switch,
       Loader,
@@ -34,15 +35,17 @@ class Routes extends React.PureComponent<RoutesProps> {
 
     return (
       <Row fullHeight style={{ marginTop: 0, padding: 0 }}>
-        <Loader />
-        <Router basename={homeURL}>
-          <Switch>
-            <PrivateRoute exact path={routeNames.HOME} component={HomeScreen} />
-            <PublicRoute exact path={routeNames.LOGIN} component={LoginScreen} />
-            <PrivateRoute exact path={routeNames.LOGOUT} component={LogoutScreen} />
-            <PublicRoute exact path={routeNames.REGISTER} component={RegisterScreen} />
-          </Switch>
-        </Router>
+        <Error>
+          <Loader />
+          <Router basename={homeURL}>
+            <Switch>
+              <PrivateRoute exact path={routeNames.HOME} component={HomeScreen} />
+              <PublicRoute exact path={routeNames.LOGIN} component={LoginScreen} />
+              <PrivateRoute exact path={routeNames.LOGOUT} component={LogoutScreen} />
+              <PublicRoute exact path={routeNames.REGISTER} component={RegisterScreen} />
+            </Switch>
+          </Router>
+        </Error>
       </Row>
     );
   }
