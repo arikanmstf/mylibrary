@@ -18,7 +18,7 @@ const renderTextField = ({
 }: ReduxFieldProps) => (
   <WebTextField
     error={!!(touched && error)}
-    label={(touched && error) || label}
+    label={(touched && error) ? `${label}, ${error}` : label}
     {...input}
     {...other}
   />

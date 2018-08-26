@@ -4,6 +4,7 @@ import { Loader, Row } from 'ui/native';
 
 // Screens
 import LoginScreen from 'screens/login/LoginNativeContainer';
+import LogoutScreen from 'screens/logout/LogoutNativeContainer';
 import RegisterScreen from 'screens/register/RegisterNativeContainer';
 import HomeScreen from 'screens/home/HomeNativeContainer';
 
@@ -19,6 +20,7 @@ const mapRouteToProps = () => ({
   PrivateRoute,
   PublicRoute,
   LoginScreen,
+  LogoutScreen,
   RegisterScreen,
   HomeScreen,
 });

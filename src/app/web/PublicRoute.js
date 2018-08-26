@@ -1,8 +1,8 @@
 // @flow
 import * as React from 'react';
+import { HOME } from 'constants/routes/routeNames';
 import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
-import HomeScreen from 'screens/home/HomeWebContainer';
+import { Route, Redirect } from 'react-router-dom';
 import type { Immutable } from 'store/ImmutableTypes';
 import type { State } from 'store/StateTypes';
 
@@ -23,7 +23,7 @@ const PublicRoute = (
   }
 
   return isInitialized && isLoggedIn ? (
-    <Route {...rest} render={(props) => (<HomeScreen {...props} />)} />
+    <Redirect to={HOME} />
   ) : (
     <Route {...rest} render={(props) => (<Component {...props} />)} />
   );

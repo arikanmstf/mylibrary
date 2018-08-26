@@ -1,6 +1,7 @@
 export default from './Api';
 export {
   LOGIN,
+  LOGOUT,
   REGISTER,
   INITIALIZE,
   PUBLICATION,

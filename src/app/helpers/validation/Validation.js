@@ -1,5 +1,4 @@
 // @flow
-import debounce from 'lodash.debounce';
 import logger from 'helpers/logger';
 import t from 'helpers/i18n/Translate';
 
@@ -50,7 +49,7 @@ class Validation {
       return errors;
     };
 
-    return debounce(validate, 500, { leading: true, trailing: true });
+    return validate;
   }
 }
 

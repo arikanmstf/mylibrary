@@ -1,8 +1,8 @@
 // @flow
 import * as React from 'react';
+import { LOGIN } from 'constants/routes/routeNames';
 import { connect } from 'react-redux';
-import { Route } from 'react-router-native';
-import LoginScreen from 'screens/login/LoginNativeContainer';
+import { Route, Redirect } from 'react-router-native';
 import type { Immutable } from 'store/ImmutableTypes';
 import type { State } from 'store/StateTypes';
 
@@ -25,7 +25,7 @@ const PrivateRoute = (
   return isInitialized && isLoggedIn ? (
     <Route {...rest} render={(props) => (<Component {...props} />)} />
   ) : (
-    <Route {...rest} render={(props) => (<LoginScreen {...props} />)} />
+    <Redirect to={LOGIN} />
   );
 };
 
