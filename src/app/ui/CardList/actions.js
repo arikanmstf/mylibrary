@@ -1,6 +1,5 @@
 // @flow
 import logger from 'helpers/logger';
-import { showLoader, hideLoader } from 'ui/Loader/actions';
 import {
   toggleFavorite as toggleFavoriteService,
   toggleRead as toggleReadService,
@@ -13,26 +12,22 @@ import type { State } from 'store/StateTypes';
 
 export const toggleFavorite = (id: number, index: number): ThunkAction => {
   return async (dispatch: Dispatch<*>, getState: Function) => {
-    dispatch(showLoader());
     const result = await toggleFavoriteService(id);
     logger.log('toggleFavorite', result);
     const { cards } = getState().toJS().home;
     const newCards = [...cards];
     newCards[index].isFavorite = !!result.result;
     await dispatch(updateCards(newCards));
-    dispatch(hideLoader());
   };
 };
 export const toggleRead = (id: number, index: number): ThunkAction => {
   return async (dispatch: Dispatch<*>, getState: Function) => {
-    dispatch(showLoader());
     const result = await toggleReadService(id);
     logger.log('toggleRead', result);
     const { cards } = getState().toJS().home;
     const newCards = [...cards];
     newCards[index].isRead = !!result.result;
     await dispatch(updateCards(newCards));
-    dispatch(hideLoader());
   };
 };
 
