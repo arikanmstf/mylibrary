@@ -12,6 +12,11 @@ import type { RoutesProps } from './RoutesTypes';
 const { homeURL } = getConfig();
 logger.log(`homeURL is set to: ${homeURL}`);
 
+// TODO: ErrorScreen
+const ErrorScreen = () => (
+  <h1>404 Not Found.</h1>
+);
+
 class Routes extends React.PureComponent<RoutesProps> {
   componentDidMount() {
     const { fetchInitialState: initial } = this.props;
@@ -27,6 +32,7 @@ class Routes extends React.PureComponent<RoutesProps> {
       Row,
       PrivateRoute,
       PublicRoute,
+      Route,
       LoginScreen,
       LogoutScreen,
       HomeScreen,
@@ -43,6 +49,7 @@ class Routes extends React.PureComponent<RoutesProps> {
               <PublicRoute exact path={routeNames.LOGIN} component={LoginScreen} />
               <PrivateRoute exact path={routeNames.LOGOUT} component={LogoutScreen} />
               <PublicRoute exact path={routeNames.REGISTER} component={RegisterScreen} />
+              <Route component={ErrorScreen} />
             </Switch>
           </Router>
         </Error>

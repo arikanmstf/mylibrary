@@ -1,5 +1,5 @@
 import { connect } from 'helpers/connect';
-import { MemoryRouter as Router, Switch } from 'react-router-native';
+import { MemoryRouter as Router, Switch, Route } from 'react-router-native';
 import { Loader, Row, Error } from 'ui/native';
 
 // Screens
@@ -24,6 +24,7 @@ const mapRouteToProps = () => ({
   LogoutScreen,
   RegisterScreen,
   HomeScreen,
+  Route,
 });
 
 export default connect(mapRouteToProps)(Routes);

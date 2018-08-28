@@ -1,5 +1,5 @@
 import { connect } from 'helpers/connect';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Loader, Row, Error } from 'ui';
 
 // Screens
@@ -24,6 +24,7 @@ const mapRouteToProps = () => ({
   LogoutScreen,
   RegisterScreen,
   HomeScreen,
+  Route,
 });
 
 export default connect(mapRouteToProps)(Routes);
