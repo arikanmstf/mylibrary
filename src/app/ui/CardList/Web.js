@@ -51,7 +51,7 @@ const isCloseToBottom = () => {
   return windowHeight + window.pageYOffset + 600 >= docHeight;
 };
 
-class CardList extends React.Component<CardListProps> {
+export class CardList extends React.Component<CardListProps> {
   componentDidMount() {
     this.handleScrollDebounce = debounce(this.handleScroll, 800, {
       leading: true,

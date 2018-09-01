@@ -34,7 +34,7 @@ const isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
   return layoutMeasurement.height + contentOffset.y >= contentSize.height - paddingToBottom;
 };
 
-class CardList extends React.Component<CardListProps> {
+export class CardList extends React.Component<CardListProps> {
   static shareCard(card: CardItem) {
     Share.share({
       url: `${productionURL}/publications/${card.id}`,

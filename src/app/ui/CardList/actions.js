@@ -20,6 +20,7 @@ export const toggleFavorite = (id: number, index: number): ThunkAction => {
     await dispatch(updateCards(newCards));
   };
 };
+
 export const toggleRead = (id: number, index: number): ThunkAction => {
   return async (dispatch: Dispatch<*>, getState: Function) => {
     const result = await toggleReadService(id);

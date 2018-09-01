@@ -30,4 +30,8 @@ export type CardListProps = {
   cards: Array<CardItem>,
   isLoaderVisible: boolean,
   search: string,
+  addCards: Function,
+  toggleFavorite: Function,
+  toggleRead: Function,
+  fetchCards: Function,
 };

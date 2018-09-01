@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test/app/ui/CardList/actions.test.js mapDispatchToProps 1`] = `
+Object {
+  "addCards": [Function],
+  "fetchCards": [Function],
+  "toggleFavorite": [Function],
+  "toggleRead": [Function],
+}
+`;
+
+exports[`test/app/ui/CardList/actions.test.js mapStateToProps 1`] = `
+Object {
+  "cards": Array [
+    Object {
+      "isFavorite": false,
+      "isRead": false,
+    },
+  ],
+  "isLoaderVisible": undefined,
+  "search": undefined,
+}
+`;

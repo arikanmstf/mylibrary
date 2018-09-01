@@ -4,19 +4,25 @@ exports[`test/app/ui/CardList/Web.test.js Render 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Connect(CardList)
-    store={
-      FakeStore {
-        "props": Object {
-          "home": Object {
-            "cards": Array [],
-          },
-          "loader": Object {
-            "isVisible": false,
-          },
+  Symbol(enzyme.__unrendered__): <CardList
+    addCards={[MockFunction]}
+    cards={
+      Array [
+        Object {
+          "description": "dummyDescription",
+          "id": 1,
+          "image": "dummyImage",
+          "isFavorite": true,
+          "isRead": true,
+          "title": "dummyTitle",
         },
-      }
+      ]
     }
+    fetchCards={[MockFunction]}
+    isLoaderVisible={false}
+    search="dummySearch"
+    toggleFavorite={[MockFunction]}
+    toggleRead={[MockFunction]}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -30,47 +36,245 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "addCards": [Function],
-      "cards": Array [],
-      "fetchCards": [Function],
-      "isLoaderVisible": false,
-      "search": undefined,
-      "store": FakeStore {
-        "props": Object {
-          "home": Object {
-            "cards": Array [],
-          },
-          "loader": Object {
-            "isVisible": false,
-          },
-        },
-      },
-      "storeSubscription": Subscription {
-        "listeners": Object {
-          "clear": [Function],
-          "get": [Function],
-          "notify": [Function],
-          "subscribe": [Function],
-        },
-        "onStateChange": [Function],
-        "parentSub": undefined,
-        "store": FakeStore {
-          "props": Object {
-            "home": Object {
-              "cards": Array [],
-            },
-            "loader": Object {
-              "isVisible": false,
-            },
-          },
-        },
-        "unsubscribe": undefined,
-      },
-      "toggleFavorite": [Function],
-      "toggleRead": [Function],
+      "children": Array [
+        <WithStyles(Card)
+          style={
+            Object {
+              "margin": "10px 0",
+            }
+          }
+        >
+          <WithStyles(CardHeader)
+            subheader="dummyDescription"
+            title="dummyTitle"
+          />
+          <WithStyles(CardMedia)
+            image="http://mustafaarikan.net/mylibrary/static/img/cover/1.jpg"
+            style={
+              Object {
+                "height": "200px",
+              }
+            }
+            title="dummyTitle"
+          />
+          <WithStyles(CardActions)
+            disableActionSpacing={true}
+          >
+            <WithStyles(IconButton)
+              aria-label="CARD_ADD_TO_FAVORITES"
+              onClick={[Function]}
+            >
+              <pure(Star)
+                style={
+                  Object {
+                    "color": "#4caf50",
+                  }
+                }
+              />
+            </WithStyles(IconButton)>
+            <WithStyles(IconButton)
+              aria-label="CARD_ADD_TO_BOOKS_I_READ"
+              onClick={[Function]}
+            >
+              <pure(Book)
+                style={
+                  Object {
+                    "color": "#4caf50",
+                  }
+                }
+              />
+            </WithStyles(IconButton)>
+          </WithStyles(CardActions)>
+        </WithStyles(Card)>,
+      ],
     },
     "ref": null,
-    "rendered": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": "1",
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <WithStyles(CardHeader)
+              subheader="dummyDescription"
+              title="dummyTitle"
+            />,
+            <WithStyles(CardMedia)
+              image="http://mustafaarikan.net/mylibrary/static/img/cover/1.jpg"
+              style={
+                Object {
+                  "height": "200px",
+                }
+              }
+              title="dummyTitle"
+            />,
+            <WithStyles(CardActions)
+              disableActionSpacing={true}
+            >
+              <WithStyles(IconButton)
+                aria-label="CARD_ADD_TO_FAVORITES"
+                onClick={[Function]}
+              >
+                <pure(Star)
+                  style={
+                    Object {
+                      "color": "#4caf50",
+                    }
+                  }
+                />
+              </WithStyles(IconButton)>
+              <WithStyles(IconButton)
+                aria-label="CARD_ADD_TO_BOOKS_I_READ"
+                onClick={[Function]}
+              >
+                <pure(Book)
+                  style={
+                    Object {
+                      "color": "#4caf50",
+                    }
+                  }
+                />
+              </WithStyles(IconButton)>
+            </WithStyles(CardActions)>,
+          ],
+          "style": Object {
+            "margin": "10px 0",
+          },
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "subheader": "dummyDescription",
+              "title": "dummyTitle",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "image": "http://mustafaarikan.net/mylibrary/static/img/cover/1.jpg",
+              "style": Object {
+                "height": "200px",
+              },
+              "title": "dummyTitle",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <WithStyles(IconButton)
+                  aria-label="CARD_ADD_TO_FAVORITES"
+                  onClick={[Function]}
+                >
+                  <pure(Star)
+                    style={
+                      Object {
+                        "color": "#4caf50",
+                      }
+                    }
+                  />
+                </WithStyles(IconButton)>,
+                <WithStyles(IconButton)
+                  aria-label="CARD_ADD_TO_BOOKS_I_READ"
+                  onClick={[Function]}
+                >
+                  <pure(Book)
+                    style={
+                      Object {
+                        "color": "#4caf50",
+                      }
+                    }
+                  />
+                </WithStyles(IconButton)>,
+              ],
+              "disableActionSpacing": true,
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "aria-label": "CARD_ADD_TO_FAVORITES",
+                  "children": <pure(Star)
+                    style={
+                      Object {
+                        "color": "#4caf50",
+                      }
+                    }
+                  />,
+                  "onClick": [Function],
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "style": Object {
+                      "color": "#4caf50",
+                    },
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "aria-label": "CARD_ADD_TO_BOOKS_I_READ",
+                  "children": <pure(Book)
+                    style={
+                      Object {
+                        "color": "#4caf50",
+                      }
+                    }
+                  />,
+                  "onClick": [Function],
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "style": Object {
+                      "color": "#4caf50",
+                    },
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+    ],
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
@@ -79,47 +283,245 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "addCards": [Function],
-        "cards": Array [],
-        "fetchCards": [Function],
-        "isLoaderVisible": false,
-        "search": undefined,
-        "store": FakeStore {
-          "props": Object {
-            "home": Object {
-              "cards": Array [],
-            },
-            "loader": Object {
-              "isVisible": false,
-            },
-          },
-        },
-        "storeSubscription": Subscription {
-          "listeners": Object {
-            "clear": [Function],
-            "get": [Function],
-            "notify": [Function],
-            "subscribe": [Function],
-          },
-          "onStateChange": [Function],
-          "parentSub": undefined,
-          "store": FakeStore {
-            "props": Object {
-              "home": Object {
-                "cards": Array [],
-              },
-              "loader": Object {
-                "isVisible": false,
-              },
-            },
-          },
-          "unsubscribe": undefined,
-        },
-        "toggleFavorite": [Function],
-        "toggleRead": [Function],
+        "children": Array [
+          <WithStyles(Card)
+            style={
+              Object {
+                "margin": "10px 0",
+              }
+            }
+          >
+            <WithStyles(CardHeader)
+              subheader="dummyDescription"
+              title="dummyTitle"
+            />
+            <WithStyles(CardMedia)
+              image="http://mustafaarikan.net/mylibrary/static/img/cover/1.jpg"
+              style={
+                Object {
+                  "height": "200px",
+                }
+              }
+              title="dummyTitle"
+            />
+            <WithStyles(CardActions)
+              disableActionSpacing={true}
+            >
+              <WithStyles(IconButton)
+                aria-label="CARD_ADD_TO_FAVORITES"
+                onClick={[Function]}
+              >
+                <pure(Star)
+                  style={
+                    Object {
+                      "color": "#4caf50",
+                    }
+                  }
+                />
+              </WithStyles(IconButton)>
+              <WithStyles(IconButton)
+                aria-label="CARD_ADD_TO_BOOKS_I_READ"
+                onClick={[Function]}
+              >
+                <pure(Book)
+                  style={
+                    Object {
+                      "color": "#4caf50",
+                    }
+                  }
+                />
+              </WithStyles(IconButton)>
+            </WithStyles(CardActions)>
+          </WithStyles(Card)>,
+        ],
       },
       "ref": null,
-      "rendered": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": "1",
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <WithStyles(CardHeader)
+                subheader="dummyDescription"
+                title="dummyTitle"
+              />,
+              <WithStyles(CardMedia)
+                image="http://mustafaarikan.net/mylibrary/static/img/cover/1.jpg"
+                style={
+                  Object {
+                    "height": "200px",
+                  }
+                }
+                title="dummyTitle"
+              />,
+              <WithStyles(CardActions)
+                disableActionSpacing={true}
+              >
+                <WithStyles(IconButton)
+                  aria-label="CARD_ADD_TO_FAVORITES"
+                  onClick={[Function]}
+                >
+                  <pure(Star)
+                    style={
+                      Object {
+                        "color": "#4caf50",
+                      }
+                    }
+                  />
+                </WithStyles(IconButton)>
+                <WithStyles(IconButton)
+                  aria-label="CARD_ADD_TO_BOOKS_I_READ"
+                  onClick={[Function]}
+                >
+                  <pure(Book)
+                    style={
+                      Object {
+                        "color": "#4caf50",
+                      }
+                    }
+                  />
+                </WithStyles(IconButton)>
+              </WithStyles(CardActions)>,
+            ],
+            "style": Object {
+              "margin": "10px 0",
+            },
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "subheader": "dummyDescription",
+                "title": "dummyTitle",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "image": "http://mustafaarikan.net/mylibrary/static/img/cover/1.jpg",
+                "style": Object {
+                  "height": "200px",
+                },
+                "title": "dummyTitle",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <WithStyles(IconButton)
+                    aria-label="CARD_ADD_TO_FAVORITES"
+                    onClick={[Function]}
+                  >
+                    <pure(Star)
+                      style={
+                        Object {
+                          "color": "#4caf50",
+                        }
+                      }
+                    />
+                  </WithStyles(IconButton)>,
+                  <WithStyles(IconButton)
+                    aria-label="CARD_ADD_TO_BOOKS_I_READ"
+                    onClick={[Function]}
+                  >
+                    <pure(Book)
+                      style={
+                        Object {
+                          "color": "#4caf50",
+                        }
+                      }
+                    />
+                  </WithStyles(IconButton)>,
+                ],
+                "disableActionSpacing": true,
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "aria-label": "CARD_ADD_TO_FAVORITES",
+                    "children": <pure(Star)
+                      style={
+                        Object {
+                          "color": "#4caf50",
+                        }
+                      }
+                    />,
+                    "onClick": [Function],
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "style": Object {
+                        "color": "#4caf50",
+                      },
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "aria-label": "CARD_ADD_TO_BOOKS_I_READ",
+                    "children": <pure(Book)
+                      style={
+                        Object {
+                          "color": "#4caf50",
+                        }
+                      }
+                    />,
+                    "onClick": [Function],
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "style": Object {
+                        "color": "#4caf50",
+                      },
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+      ],
       "type": [Function],
     },
   ],

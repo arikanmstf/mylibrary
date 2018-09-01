@@ -4,19 +4,25 @@ exports[`test/app/ui/CardList/Native.test.js Render 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Connect(CardList)
-    store={
-      FakeStore {
-        "props": Object {
-          "home": Object {
-            "cards": Array [],
-          },
-          "loader": Object {
-            "isVisible": false,
-          },
+  Symbol(enzyme.__unrendered__): <CardList
+    addCards={[MockFunction]}
+    cards={
+      Array [
+        Object {
+          "description": "dummyDescription",
+          "id": 1,
+          "image": "dummyImage",
+          "isFavorite": true,
+          "isRead": true,
+          "title": "dummyTitle",
         },
-      }
+      ]
     }
+    fetchCards={[MockFunction]}
+    isLoaderVisible={false}
+    search="dummySearch"
+    toggleFavorite={[MockFunction]}
+    toggleRead={[MockFunction]}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -30,44 +36,32 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "addCards": [Function],
-      "cards": Array [],
-      "fetchCards": [Function],
-      "isLoaderVisible": false,
-      "search": undefined,
-      "store": FakeStore {
-        "props": Object {
-          "home": Object {
-            "cards": Array [],
-          },
-          "loader": Object {
-            "isVisible": false,
-          },
+      "data": Array [
+        Object {
+          "description": "dummyDescription",
+          "id": 1,
+          "image": "dummyImage",
+          "isFavorite": true,
+          "isRead": true,
+          "title": "dummyTitle",
         },
-      },
-      "storeSubscription": Subscription {
-        "listeners": Object {
-          "clear": [Function],
-          "get": [Function],
-          "notify": [Function],
-          "subscribe": [Function],
-        },
-        "onStateChange": [Function],
-        "parentSub": undefined,
-        "store": FakeStore {
-          "props": Object {
-            "home": Object {
-              "cards": Array [],
-            },
-            "loader": Object {
-              "isVisible": false,
-            },
-          },
-        },
-        "unsubscribe": undefined,
-      },
-      "toggleFavorite": [Function],
-      "toggleRead": [Function],
+      ],
+      "disableVirtualization": false,
+      "horizontal": false,
+      "initialNumToRender": 10,
+      "keyExtractor": [Function],
+      "maxToRenderPerBatch": 10,
+      "numColumns": 1,
+      "onEndReachedThreshold": 2,
+      "onScrollEndDrag": [Function],
+      "refreshControl": <RefreshControlMock
+        onRefresh={[Function]}
+        refreshing={false}
+      />,
+      "renderItem": [Function],
+      "scrollEventThrottle": 50,
+      "updateCellsBatchingPeriod": 50,
+      "windowSize": 21,
     },
     "ref": null,
     "rendered": null,
@@ -79,44 +73,32 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "addCards": [Function],
-        "cards": Array [],
-        "fetchCards": [Function],
-        "isLoaderVisible": false,
-        "search": undefined,
-        "store": FakeStore {
-          "props": Object {
-            "home": Object {
-              "cards": Array [],
-            },
-            "loader": Object {
-              "isVisible": false,
-            },
+        "data": Array [
+          Object {
+            "description": "dummyDescription",
+            "id": 1,
+            "image": "dummyImage",
+            "isFavorite": true,
+            "isRead": true,
+            "title": "dummyTitle",
           },
-        },
-        "storeSubscription": Subscription {
-          "listeners": Object {
-            "clear": [Function],
-            "get": [Function],
-            "notify": [Function],
-            "subscribe": [Function],
-          },
-          "onStateChange": [Function],
-          "parentSub": undefined,
-          "store": FakeStore {
-            "props": Object {
-              "home": Object {
-                "cards": Array [],
-              },
-              "loader": Object {
-                "isVisible": false,
-              },
-            },
-          },
-          "unsubscribe": undefined,
-        },
-        "toggleFavorite": [Function],
-        "toggleRead": [Function],
+        ],
+        "disableVirtualization": false,
+        "horizontal": false,
+        "initialNumToRender": 10,
+        "keyExtractor": [Function],
+        "maxToRenderPerBatch": 10,
+        "numColumns": 1,
+        "onEndReachedThreshold": 2,
+        "onScrollEndDrag": [Function],
+        "refreshControl": <RefreshControlMock
+          onRefresh={[Function]}
+          refreshing={false}
+        />,
+        "renderItem": [Function],
+        "scrollEventThrottle": 50,
+        "updateCellsBatchingPeriod": 50,
+        "windowSize": 21,
       },
       "ref": null,
       "rendered": null,

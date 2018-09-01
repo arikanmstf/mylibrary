@@ -286,11 +286,11 @@ ShallowWrapper {
         <Unknown />
       </MuiThemeProvider>,
       "store": Object {
+        "@@observable": [Function],
         "dispatch": [Function],
         "getState": [Function],
         "replaceReducer": [Function],
         "subscribe": [Function],
-        Symbol(observable): [Function],
       },
     },
     "ref": null,
@@ -852,11 +852,11 @@ ShallowWrapper {
           <Unknown />
         </MuiThemeProvider>,
         "store": Object {
+          "@@observable": [Function],
           "dispatch": [Function],
           "getState": [Function],
           "replaceReducer": [Function],
           "subscribe": [Function],
-          Symbol(observable): [Function],
         },
       },
       "ref": null,
