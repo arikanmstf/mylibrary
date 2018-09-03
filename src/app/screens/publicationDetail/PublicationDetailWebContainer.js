@@ -5,7 +5,6 @@
  */
 
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 import { connect as connectUi } from 'helpers/connect';
 import {
@@ -14,8 +13,8 @@ import {
   Header,
   Page,
 } from 'ui';
-import #{className}Screen from './#{className}';
-import { mapStateToProps, mapDispatchToProps } from './#{screenName}Actions';
+import PublicationDetailScreen from './PublicationDetail';
+import { mapStateToProps, mapDispatchToProps } from './publicationDetailActions';
 
 const mapUiToProps = () => ({
   Text,
@@ -24,4 +23,6 @@ const mapUiToProps = () => ({
   Page,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(withRouter(#{className}Screen)));
+export default connect(mapStateToProps, mapDispatchToProps)(
+  connectUi(mapUiToProps)(PublicationDetailScreen)
+);

@@ -9,6 +9,7 @@ import * as React from 'react';
 import debounce from 'lodash.debounce';
 import { connect } from 'react-redux';
 import { FlatList, Share, RefreshControl } from 'react-native';
+import { Link } from 'react-router-native';
 import { Image } from 'ui/native';
 import logger from 'helpers/logger';
 import getConfig from 'config/get';
@@ -23,7 +24,7 @@ import {
   Right,
 } from 'native-base';
 import { mapStateToProps, mapDispatchToProps } from './actions';
-
+import { publicationDetailUrl } from 'constants/routes/createUrl';
 import type { CardListProps, RenderCardListItem } from './types';
 
 const { staticFilesURL, productionURL } = getConfig();
@@ -87,7 +88,7 @@ export class CardList extends React.Component<CardListProps> {
       <Card key={card.id}>
         <CardItem>
           <Body>
-            <Text>{card.title}</Text>
+            <Link to={publicationDetailUrl(card.id)}><Text>{card.title}</Text></Link>
             <Text note>{card.description}</Text>
           </Body>
         </CardItem>

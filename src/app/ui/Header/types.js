@@ -19,6 +19,9 @@ export type HeaderProps = {
   showDrawer?: Function,
   hideDrawer?: Function,
   handleSubmit: Function,
+  history: {
+    goBack: Function, // TODO: common history type
+  },
 };
 
 export type SideNavigationItem = {

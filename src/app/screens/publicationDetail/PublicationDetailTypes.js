@@ -9,7 +9,7 @@ import * as React from 'react';
 import type { TextProps } from 'ui/Text/types';
 import type { ScreenProps } from 'ui/Screen/types';
 
-export type #{className}Props = {
+export type PublicationDetailProps = {
   Text: React.ComponentType<TextProps>,
   Screen: React.ComponentType<ScreenProps>,
   Header: React.ComponentType<HeaderProps>,

@@ -8,10 +8,10 @@
 import * as React from 'react';
 import logger from 'helpers/logger';
 import t from 'helpers/i18n/Translate';
-import type { #{className}Props } from './#{className}Types';
+import type { PublicationDetailProps } from './PublicationDetailTypes';
 
 // eslint-disable-next-line react/prefer-stateless-function
-class #{className} extends React.Component<#{className}Props> {
+class PublicationDetail extends React.Component<PublicationDetailProps> {
   render() {
     const {
       Screen,
@@ -19,17 +19,17 @@ class #{className} extends React.Component<#{className}Props> {
       Page,
       Text,
     } = this.props;
-    logger.log('render: #{className}');
+    logger.log('render: PublicationDetail');
 
     return (
       <Screen>
-        <Header title={t.get('HOME_TITLE')} />
+        <Header back title={t.get('HOME_TITLE')} />
         <Page>
-          <Text>#{className} screen successfully created.</Text>
+          <Text>PublicationDetail screen successfully created.</Text>
         </Page>
       </Screen>
     );
   }
 }
 
-export default #{className};
+export default PublicationDetail;

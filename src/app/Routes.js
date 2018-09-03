@@ -37,6 +37,7 @@ class Routes extends React.PureComponent<RoutesProps> {
       LogoutScreen,
       HomeScreen,
       RegisterScreen,
+      PublicationDetailScreen,
     } = this.props;
 
     return (
@@ -46,8 +47,10 @@ class Routes extends React.PureComponent<RoutesProps> {
           <Router basename={homeURL}>
             <Switch>
               <PrivateRoute exact path={routeNames.HOME} component={HomeScreen} />
-              <PublicRoute exact path={routeNames.LOGIN} component={LoginScreen} />
+              <PrivateRoute exact path={routeNames.PUBLICATION_DETAIL} component={PublicationDetailScreen} />
               <PrivateRoute exact path={routeNames.LOGOUT} component={LogoutScreen} />
+
+              <PublicRoute exact path={routeNames.LOGIN} component={LoginScreen} />
               <PublicRoute exact path={routeNames.REGISTER} component={RegisterScreen} />
               <Route component={ErrorScreen} />
             </Switch>

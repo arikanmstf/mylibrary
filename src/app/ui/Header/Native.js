@@ -8,7 +8,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form/immutable';
-import { Link } from 'react-router-native';
+import { Link, withRouter } from 'react-router-native';
 import debounce from 'lodash.debounce';
 import {
   Header as HeaderNative,
@@ -56,11 +56,20 @@ export const SideBar = () => (
 );
 
 export class Header extends React.PureComponent<HeaderProps> {
-  onMenuButtonPress = () => {
+  handleMenuButtonPress = () => {
     const { showDrawer } = this.props;
     if (showDrawer) {
       logger.log('showDrawer');
       showDrawer();
+    }
+  };
+
+  handleBackButtonPress = () => {
+    const { history } = this.props;
+    logger.log('handleBackButtonPress', this.props);
+
+    if (history) {
+      history.goBack();
     }
   };
 
@@ -75,17 +84,17 @@ export class Header extends React.PureComponent<HeaderProps> {
   renderMenu() {
     return (
       <Right>
-        <Button transparent onPress={this.onMenuButtonPress}>
+        <Button transparent onPress={this.handleMenuButtonPress}>
           <Icon name="menu" />
         </Button>
       </Right>
     );
   }
 
-  static renderLeft() {
+  renderLeft() {
     return (
       <Left>
-        <Button transparent>
+        <Button transparent onPress={this.handleBackButtonPress}>
           <Icon name="arrow-back" />
         </Button>
       </Left>
@@ -112,7 +121,7 @@ export class Header extends React.PureComponent<HeaderProps> {
     const { back } = this.props;
     return (
       <HeaderNative>
-        { back ? Header.renderLeft() : null}
+        { back ? this.renderLeft() : null}
         {this.renderCenter()}
         {this.renderMenu()}
       </HeaderNative>
@@ -124,5 +133,5 @@ export default reduxForm({
   form: SEARCH_FORM_KEY,
   onSubmit: submitSearchForm,
 })(
-  connect(null, mapDispatchToProps)(Header)
+  connect(null, mapDispatchToProps)(withRouter(Header))
 );

@@ -7,6 +7,7 @@ import LoginScreen from 'screens/login/LoginNativeContainer';
 import LogoutScreen from 'screens/logout/LogoutNativeContainer';
 import RegisterScreen from 'screens/register/RegisterNativeContainer';
 import HomeScreen from 'screens/home/HomeNativeContainer';
+import PublicationDetailScreen from 'screens/publicationDetail/PublicationDetailNativeContainer';
 
 import Routes from '../Routes';
 import PrivateRoute from './PrivateRoute';
@@ -24,6 +25,7 @@ const mapRouteToProps = () => ({
   LogoutScreen,
   RegisterScreen,
   HomeScreen,
+  PublicationDetailScreen,
   Route,
 });
 

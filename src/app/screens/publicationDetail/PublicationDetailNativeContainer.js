@@ -12,8 +12,8 @@ import {
   Header,
   Page,
 } from 'ui/native';
-import #{className}Screen from './#{className}';
-import { mapStateToProps, mapDispatchToProps } from './#{screenName}Actions';
+import PublicationDetailScreen from './PublicationDetail';
+import { mapStateToProps, mapDispatchToProps } from './publicationDetailActions';
 
 const mapUiToProps = () => ({
   Text,
@@ -22,4 +22,4 @@ const mapUiToProps = () => ({
   Page,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(#{className}Screen));
+export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(PublicationDetailScreen));

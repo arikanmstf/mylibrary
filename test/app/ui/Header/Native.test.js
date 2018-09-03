@@ -24,14 +24,14 @@ describe('test/app/ui/Header/Native.test.js', () => {
     });
   });
 
-  it('onMenuButtonPress', () => {
+  it('handleMenuButtonPress', () => {
     const showDrawer = jest.fn();
     const props = {
       showDrawer,
     };
 
     const wrapper = shallow(<Header {...props} />);
-    wrapper.instance().onMenuButtonPress();
+    wrapper.instance().handleMenuButtonPress();
     expect(showDrawer).toBeCalled();
   });
 

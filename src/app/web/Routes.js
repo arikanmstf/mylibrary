@@ -7,6 +7,7 @@ import LoginScreen from 'screens/login/LoginWebContainer';
 import LogoutScreen from 'screens/logout/LogoutWebContainer';
 import RegisterScreen from 'screens/register/RegisterWebContainer';
 import HomeScreen from 'screens/home/HomeWebContainer';
+import PublicationDetailScreen from 'screens/publicationDetail/PublicationDetailWebContainer';
 
 import Routes from '../Routes';
 import PrivateRoute from './PrivateRoute';
@@ -24,6 +25,7 @@ const mapRouteToProps = () => ({
   LogoutScreen,
   RegisterScreen,
   HomeScreen,
+  PublicationDetailScreen,
   Route,
 });
 
