@@ -24,9 +24,9 @@ describe('test/app/screens/home/homeActions.test.js', () => {
       const search = 'dummySearch';
       await homeActions.fetchAndUpdateCards({ search })(dispatch);
 
-      expect(loaderActions.showLoader).toHaveBeenCalled();
-      expect(loaderActions.hideLoader).toHaveBeenCalled();
-      expect(homeServices.getPublicationList).toHaveBeenCalledWith({ page, search });
+      expect(loaderActions.showLoader).toBeCalled();
+      expect(loaderActions.hideLoader).toBeCalled();
+      expect(homeServices.getPublicationList).toBeCalledWith({ page, search });
     });
   });
 });

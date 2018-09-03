@@ -15,6 +15,9 @@ describe('test/app/screens/logout/Logout.test.js', () => {
 
   it('Render', () => {
     const wrapper = shallow(<Logout {...props} />);
+    const { makeLogoutRequest } = props;
+
     expect(wrapper).toMatchSnapshot();
+    expect(makeLogoutRequest).toBeCalled();
   });
 });

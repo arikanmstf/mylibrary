@@ -14,7 +14,7 @@ import { showLoader, hideLoader } from 'ui/Loader/actions';
 import { updateLoginState } from 'screens/login/loginActions';
 import { logoutRequest } from './logoutServices';
 
-const makeLogoutRequest = (): ThunkAction => {
+export const makeLogoutRequest = (): ThunkAction => {
   return async (dispatch: Dispatch<*>) => {
     logger.log('makeLogoutRequest');
     dispatch(showLoader());

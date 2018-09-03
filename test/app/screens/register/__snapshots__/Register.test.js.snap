@@ -4,7 +4,17 @@ exports[`test/app/screens/register/Register.test.js Render 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <ReduxForm />,
+  Symbol(enzyme.__unrendered__): <ReduxForm
+    Button={[Function]}
+    Col={[Function]}
+    Form={[Function]}
+    Image={[Function]}
+    Row={[Function]}
+    Screen={[Function]}
+    Text={[Function]}
+    TextField={[Function]}
+    handleSubmit={[MockFunction]}
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -17,11 +27,20 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
+      "Button": [Function],
+      "Col": [Function],
+      "Form": [Function],
+      "Image": [Function],
+      "Row": [Function],
+      "Screen": [Function],
+      "Text": [Function],
+      "TextField": [Function],
       "destroyOnUnmount": true,
       "enableReinitialize": false,
       "forceUnregisterOnUnmount": false,
       "form": "registerForm",
       "getFormState": [Function],
+      "handleSubmit": [MockFunction],
       "initialValues": undefined,
       "keepDirtyOnReinitialize": false,
       "onSubmit": [Function],
@@ -46,11 +65,20 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "Button": [Function],
+        "Col": [Function],
+        "Form": [Function],
+        "Image": [Function],
+        "Row": [Function],
+        "Screen": [Function],
+        "Text": [Function],
+        "TextField": [Function],
         "destroyOnUnmount": true,
         "enableReinitialize": false,
         "forceUnregisterOnUnmount": false,
         "form": "registerForm",
         "getFormState": [Function],
+        "handleSubmit": [MockFunction],
         "initialValues": undefined,
         "keepDirtyOnReinitialize": false,
         "onSubmit": [Function],
