@@ -12,6 +12,7 @@ import {
   UPDATE_TOTAL_PAGES,
   UPDATE_CURRENT_PAGE,
   UPDATE_SEARCH_QUERY,
+  UPDATE_SEARCH_PENDING,
 } from 'constants/actions/actionNames';
 import logger from 'helpers/logger';
 import { showLoader, hideLoader } from 'ui/Loader/actions';
@@ -28,6 +29,7 @@ export const updateCards = createAction(UPDATE_CARDS);
 export const updateTotalPages = createAction(UPDATE_TOTAL_PAGES);
 export const updateCurrentPage = createAction(UPDATE_CURRENT_PAGE);
 export const updateSearchQuery = createAction(UPDATE_SEARCH_QUERY);
+export const updateSearchPending = createAction(UPDATE_SEARCH_PENDING);
 
 export const fetchAndUpdateCards = (
   { search }: SubmitSearchFormRequest = { search: '' }, shouldShowLoader: boolean = true
@@ -35,9 +37,9 @@ export const fetchAndUpdateCards = (
   return async (dispatch: Dispatch<*>) => {
     const page = 1;
     if (shouldShowLoader) {
-      logger.log('action: fetchAndUpdateCardsStart');
       dispatch(showLoader());
     }
+    logger.log('action: fetchAndUpdateCardsStart');
 
     const result = await getPublicationList({ page, search });
     logger.log('action: fetchAndUpdateCards', result);
@@ -55,6 +57,11 @@ export const fetchAndUpdateCards = (
 
 export const fetchAndAddCards = (): ThunkAction => {
   return async (dispatch: Dispatch<*>, getState: Function) => {
+    const isPending = getState().toJS().home.isSearchPending;
+    if (isPending) {
+      return false;
+    }
+
     logger.log('action: fetchAndAddCardsStart');
     const page = getState().toJS().home.currentPage + 1;
     const totalPage = getState().toJS().home.totalPages;
@@ -64,12 +71,15 @@ export const fetchAndAddCards = (): ThunkAction => {
     }
 
     const search = getState().toJS().home.searchQuery;
+    await dispatch(updateSearchPending(true));
     const result = await getPublicationList({ page, search });
     logger.log('action: fetchAndAddCards', result);
     await Promise.all([
       dispatch(addCards(result.content)),
       dispatch(updateTotalPages(result.totalPages)),
     ]);
+
+    dispatch(updateSearchPending(false));
     dispatch(updateCurrentPage(page));
     logger.log('action: fetchAndAddCardsEnd');
     return true;

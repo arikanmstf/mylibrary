@@ -11,6 +11,7 @@ import {
   updateTotalPages,
   updateCurrentPage,
   updateSearchQuery,
+  updateSearchPending,
 } from './homeActions';
 
 const initialState = {
@@ -18,6 +19,7 @@ const initialState = {
   totalPages: 0,
   currentPage: 1,
   searchQuery: '',
+  isSearchPending: false,
 };
 
 const reducer = new Map([
@@ -54,6 +56,13 @@ const reducer = new Map([
     (state, action) => ({
       ...state,
       searchQuery: action.payload ? action.payload : initialState.searchQuery,
+    }),
+  ],
+  [
+    updateSearchPending,
+    (state, action) => ({
+      ...state,
+      isSearchPending: action.payload ? action.payload : initialState.isSearchPending,
     }),
   ],
 ]);

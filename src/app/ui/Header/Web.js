@@ -140,7 +140,6 @@ export class Header extends React.PureComponent<HeaderProps> {
       <AppBar className={classes && classes.container}>
         <Form onSubmit={handleSubmit}>
           <Toolbar>
-
             <Image
               source={Logo}
               className={classes && classes.image}

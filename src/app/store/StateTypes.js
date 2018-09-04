@@ -8,6 +8,7 @@ export type State = {|
     totalPages: number,
     currentPage: number,
     searchQuery: string,
+    isSearchPending: boolean,
   |},
   loader: {|
     isVisible: boolean,
