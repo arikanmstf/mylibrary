@@ -5,6 +5,7 @@
  */
 
 // @flow
+import type { RouterHistory } from 'react-router-dom';
 
 export type CardItem = {
   title: string,

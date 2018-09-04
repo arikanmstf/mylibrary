@@ -6439,7 +6439,7 @@ lodash.assign@^4.0.3, lodash.assign@^4.0.6:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/lodash.assign/-/lodash.assign-4.2.0.tgz#0d99f3ccd7a6d261d19bdaeb9245005d285808e7"
 
-lodash.debounce@^4.0.8:
+lodash.debounce@4.0.8, lodash.debounce@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
 
@@ -8463,6 +8463,10 @@ react-router-dom@4.3.1:
     prop-types "^15.6.1"
     react-router "^4.3.1"
     warning "^4.0.1"
+
+react-router-native-stack@^0.0.14:
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/react-router-native-stack/-/react-router-native-stack-0.0.14.tgz#4e88d89223570d171dfa549f0da11d9ce2aefc74"
 
 react-router-native@4.3.0:
   version "4.3.0"

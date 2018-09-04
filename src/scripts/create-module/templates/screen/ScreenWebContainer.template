@@ -5,7 +5,6 @@
  */
 
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 import { connect as connectUi } from 'helpers/connect';
 import {
@@ -24,4 +23,4 @@ const mapUiToProps = () => ({
   Page,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(withRouter(#{className}Screen)));
+export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(#{className}Screen));

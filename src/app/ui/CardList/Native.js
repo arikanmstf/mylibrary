@@ -7,9 +7,14 @@
 // @flow
 import * as React from 'react';
 import debounce from 'lodash.debounce';
+import { withRouter } from 'react-router-native';
 import { connect } from 'react-redux';
-import { FlatList, Share, RefreshControl } from 'react-native';
-import { Link } from 'react-router-native';
+import {
+  FlatList,
+  Share,
+  RefreshControl,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import { Image } from 'ui/native';
 import logger from 'helpers/logger';
 import getConfig from 'config/get';
@@ -23,8 +28,9 @@ import {
   Body,
   Right,
 } from 'native-base';
-import { mapStateToProps, mapDispatchToProps } from './actions';
 import { publicationDetailUrl } from 'constants/routes/createUrl';
+
+import { mapStateToProps, mapDispatchToProps } from './actions';
 import type { CardListProps, RenderCardListItem } from './types';
 
 const { staticFilesURL, productionURL } = getConfig();
@@ -68,6 +74,18 @@ export class CardList extends React.Component<CardListProps> {
     }
   };
 
+  handleImageClick = (id: number) => {
+    const {
+      history,
+    } = this.props;
+
+    logger.log('handleImageClick', history);
+
+    if (history) {
+      history.push(publicationDetailUrl(id));
+    }
+  };
+
   toggleFavorite(id: number, index: number) {
     const { toggleFavorite } = this.props;
     if (toggleFavorite) {
@@ -88,20 +106,22 @@ export class CardList extends React.Component<CardListProps> {
       <Card key={card.id}>
         <CardItem>
           <Body>
-            <Link to={publicationDetailUrl(card.id)}><Text>{card.title}</Text></Link>
+            <Text>{card.title}</Text>
             <Text note>{card.description}</Text>
           </Body>
         </CardItem>
-        <CardItem cardBody>
-          <Image
-            source={
-              { uri: `${staticFilesURL}/img/cover/${card.id}.jpg` }
-            }
-            style={
-              { height: 200, flex: 1 }
-            }
-          />
-        </CardItem>
+        <TouchableWithoutFeedback
+          onPress={() => { this.handleImageClick(card.id); }}
+        >
+          <CardItem
+            cardBody
+          >
+            <Image
+              source={{ uri: `${staticFilesURL}/img/cover/${card.id}.jpg` }}
+              style={{ height: 200, flex: 1 }}
+            />
+          </CardItem>
+        </TouchableWithoutFeedback>
         <CardItem>
           <Left>
             <Button
@@ -151,4 +171,4 @@ export class CardList extends React.Component<CardListProps> {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CardList);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(CardList));

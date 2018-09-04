@@ -28,9 +28,11 @@ import t from 'helpers/i18n/Translate';
 import logger from 'helpers/logger';
 import fields, { SEARCH_FORM_KEY } from 'constants/forms/search';
 import { white } from 'constants/theme/color';
+
 import { mapDispatchToProps, submitSearchForm } from './actions';
 import routes from './sideNavigationItems';
 import { SEARCH_SUBMIT_TIMEOUT } from './types';
+
 import type { HeaderProps, SideNavigationItem } from './types';
 
 export const renderList = (route: SideNavigationItem) => {
@@ -66,7 +68,7 @@ export class Header extends React.PureComponent<HeaderProps> {
 
   handleBackButtonPress = () => {
     const { history } = this.props;
-    logger.log('handleBackButtonPress', this.props);
+    logger.log('handleBackButtonPress');
 
     if (history) {
       history.goBack();

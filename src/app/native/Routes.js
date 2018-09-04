@@ -1,6 +1,7 @@
 import { connect } from 'helpers/connect';
-import { MemoryRouter as Router, Switch, Route } from 'react-router-native';
+import { MemoryRouter as Router, Route } from 'react-router-native';
 import { Loader, Row, Error } from 'ui/native';
+import Stack from 'react-router-native-stack';
 
 // Screens
 import LoginScreen from 'screens/login/LoginNativeContainer';
@@ -15,7 +16,7 @@ import PublicRoute from './PublicRoute';
 
 const mapRouteToProps = () => ({
   Router,
-  Switch,
+  Switch: Stack,
   Loader,
   Row,
   Error,
