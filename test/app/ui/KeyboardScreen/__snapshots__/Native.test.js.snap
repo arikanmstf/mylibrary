@@ -23,13 +23,13 @@ ShallowWrapper {
         keyboardVerticalOffset={0}
         style={
           Object {
-            "backgroundColor": "#fffff0",
+            "backgroundColor": "#fffffc",
             "flex": 1,
           }
         }
       />,
       "contentContainerStyle": Object {
-        "backgroundColor": "#fffff0",
+        "backgroundColor": "#fffffc",
         "flex": 1,
       },
       "keyboardShouldPersistTaps": "handled",
@@ -45,7 +45,7 @@ ShallowWrapper {
         "enabled": true,
         "keyboardVerticalOffset": 0,
         "style": Object {
-          "backgroundColor": "#fffff0",
+          "backgroundColor": "#fffffc",
           "flex": 1,
         },
       },
@@ -67,13 +67,13 @@ ShallowWrapper {
           keyboardVerticalOffset={0}
           style={
             Object {
-              "backgroundColor": "#fffff0",
+              "backgroundColor": "#fffffc",
               "flex": 1,
             }
           }
         />,
         "contentContainerStyle": Object {
-          "backgroundColor": "#fffff0",
+          "backgroundColor": "#fffffc",
           "flex": 1,
         },
         "keyboardShouldPersistTaps": "handled",
@@ -89,7 +89,7 @@ ShallowWrapper {
           "enabled": true,
           "keyboardVerticalOffset": 0,
           "style": Object {
-            "backgroundColor": "#fffff0",
+            "backgroundColor": "#fffffc",
             "flex": 1,
           },
         },

@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test/app/screens/publicationDetail/PublicationDetail.test.js Render 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <PublicationDetail />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": Array [
+        <UNDEFINED
+          back={true}
+          title="HOME_TITLE"
+        />,
+        <UNDEFINED>
+          <UNDEFINED>
+            PublicationDetail screen successfully created.
+          </UNDEFINED>
+        </UNDEFINED>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "back": true,
+          "title": "HOME_TITLE",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": undefined,
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": <UNDEFINED>
+            PublicationDetail screen successfully created.
+          </UNDEFINED>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": "PublicationDetail screen successfully created.",
+          },
+          "ref": null,
+          "rendered": "PublicationDetail screen successfully created.",
+          "type": undefined,
+        },
+        "type": undefined,
+      },
+    ],
+    "type": undefined,
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          <UNDEFINED
+            back={true}
+            title="HOME_TITLE"
+          />,
+          <UNDEFINED>
+            <UNDEFINED>
+              PublicationDetail screen successfully created.
+            </UNDEFINED>
+          </UNDEFINED>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "back": true,
+            "title": "HOME_TITLE",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": undefined,
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": <UNDEFINED>
+              PublicationDetail screen successfully created.
+            </UNDEFINED>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": "PublicationDetail screen successfully created.",
+            },
+            "ref": null,
+            "rendered": "PublicationDetail screen successfully created.",
+            "type": undefined,
+          },
+          "type": undefined,
+        },
+      ],
+      "type": undefined,
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

@@ -7,6 +7,7 @@
 // @flow
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { TouchableOpacity } from 'react-native';
 import { reduxForm } from 'redux-form/immutable';
 import { Link, withRouter } from 'react-router-native';
 import debounce from 'lodash.debounce';
@@ -16,7 +17,6 @@ import {
   Body,
   Left,
   Right,
-  Button,
   Icon,
   Content,
   List,
@@ -86,19 +86,25 @@ export class Header extends React.PureComponent<HeaderProps> {
   renderMenu() {
     return (
       <Right>
-        <Button transparent onPress={this.handleMenuButtonPress}>
+        <TouchableOpacity
+          onPress={this.handleMenuButtonPress}
+          style={{ width: 70, flex: 1, alignItems: 'flex-end' }}
+        >
           <Icon name="menu" />
-        </Button>
+        </TouchableOpacity>
       </Right>
     );
   }
 
-  renderLeft() {
+  renderBackButton() {
     return (
       <Left>
-        <Button transparent onPress={this.handleBackButtonPress}>
+        <TouchableOpacity
+          onPress={this.handleBackButtonPress}
+          style={{ width: 70 }}
+        >
           <Icon name="arrow-back" />
-        </Button>
+        </TouchableOpacity>
       </Left>
     );
   }
@@ -123,7 +129,7 @@ export class Header extends React.PureComponent<HeaderProps> {
     const { back } = this.props;
     return (
       <HeaderNative>
-        { back ? this.renderLeft() : null}
+        { back ? this.renderBackButton() : this.renderBackButton()}
         {this.renderCenter()}
         {this.renderMenu()}
       </HeaderNative>

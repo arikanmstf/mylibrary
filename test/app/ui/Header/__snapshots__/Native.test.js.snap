@@ -21,13 +21,19 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <Styled(Left)>
-          <Styled(Button)
-            transparent={true}
+          <TouchableOpacity
+            activeOpacity={0.2}
+            onPress={[Function]}
+            style={
+              Object {
+                "width": 70,
+              }
+            }
           >
             <Styled(Icon)
               name="arrow-back"
             />
-          </Styled(Button)>
+          </TouchableOpacity>
         </Styled(Left)>,
         <Styled(Body)>
           <Styled(Item)
@@ -51,14 +57,21 @@ ShallowWrapper {
           </Styled(Item)>
         </Styled(Body)>,
         <Styled(Right)>
-          <Styled(Button)
+          <TouchableOpacity
+            activeOpacity={0.2}
             onPress={[Function]}
-            transparent={true}
+            style={
+              Object {
+                "alignItems": "flex-end",
+                "flex": 1,
+                "width": 70,
+              }
+            }
           >
             <Styled(Icon)
               name="menu"
             />
-          </Styled(Button)>
+          </TouchableOpacity>
         </Styled(Right)>,
       ],
       "virtual": undefined,
@@ -70,13 +83,19 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": <Styled(Button)
-            transparent={true}
+          "children": <TouchableOpacity
+            activeOpacity={0.2}
+            onPress={[Function]}
+            style={
+              Object {
+                "width": 70,
+              }
+            }
           >
             <Styled(Icon)
               name="arrow-back"
             />
-          </Styled(Button)>,
+          </TouchableOpacity>,
           "virtual": undefined,
         },
         "ref": null,
@@ -85,11 +104,14 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
+            "activeOpacity": 0.2,
             "children": <Styled(Icon)
               name="arrow-back"
             />,
-            "transparent": true,
-            "virtual": undefined,
+            "onPress": [Function],
+            "style": Object {
+              "width": 70,
+            },
           },
           "ref": null,
           "rendered": Object {
@@ -196,14 +218,21 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": <Styled(Button)
+          "children": <TouchableOpacity
+            activeOpacity={0.2}
             onPress={[Function]}
-            transparent={true}
+            style={
+              Object {
+                "alignItems": "flex-end",
+                "flex": 1,
+                "width": 70,
+              }
+            }
           >
             <Styled(Icon)
               name="menu"
             />
-          </Styled(Button)>,
+          </TouchableOpacity>,
           "virtual": undefined,
         },
         "ref": null,
@@ -212,12 +241,16 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
+            "activeOpacity": 0.2,
             "children": <Styled(Icon)
               name="menu"
             />,
             "onPress": [Function],
-            "transparent": true,
-            "virtual": undefined,
+            "style": Object {
+              "alignItems": "flex-end",
+              "flex": 1,
+              "width": 70,
+            },
           },
           "ref": null,
           "rendered": Object {
@@ -247,13 +280,19 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <Styled(Left)>
-            <Styled(Button)
-              transparent={true}
+            <TouchableOpacity
+              activeOpacity={0.2}
+              onPress={[Function]}
+              style={
+                Object {
+                  "width": 70,
+                }
+              }
             >
               <Styled(Icon)
                 name="arrow-back"
               />
-            </Styled(Button)>
+            </TouchableOpacity>
           </Styled(Left)>,
           <Styled(Body)>
             <Styled(Item)
@@ -277,14 +316,21 @@ ShallowWrapper {
             </Styled(Item)>
           </Styled(Body)>,
           <Styled(Right)>
-            <Styled(Button)
+            <TouchableOpacity
+              activeOpacity={0.2}
               onPress={[Function]}
-              transparent={true}
+              style={
+                Object {
+                  "alignItems": "flex-end",
+                  "flex": 1,
+                  "width": 70,
+                }
+              }
             >
               <Styled(Icon)
                 name="menu"
               />
-            </Styled(Button)>
+            </TouchableOpacity>
           </Styled(Right)>,
         ],
         "virtual": undefined,
@@ -296,13 +342,19 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": <Styled(Button)
-              transparent={true}
+            "children": <TouchableOpacity
+              activeOpacity={0.2}
+              onPress={[Function]}
+              style={
+                Object {
+                  "width": 70,
+                }
+              }
             >
               <Styled(Icon)
                 name="arrow-back"
               />
-            </Styled(Button)>,
+            </TouchableOpacity>,
             "virtual": undefined,
           },
           "ref": null,
@@ -311,11 +363,14 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
+              "activeOpacity": 0.2,
               "children": <Styled(Icon)
                 name="arrow-back"
               />,
-              "transparent": true,
-              "virtual": undefined,
+              "onPress": [Function],
+              "style": Object {
+                "width": 70,
+              },
             },
             "ref": null,
             "rendered": Object {
@@ -422,14 +477,21 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": <Styled(Button)
+            "children": <TouchableOpacity
+              activeOpacity={0.2}
               onPress={[Function]}
-              transparent={true}
+              style={
+                Object {
+                  "alignItems": "flex-end",
+                  "flex": 1,
+                  "width": 70,
+                }
+              }
             >
               <Styled(Icon)
                 name="menu"
               />
-            </Styled(Button)>,
+            </TouchableOpacity>,
             "virtual": undefined,
           },
           "ref": null,
@@ -438,12 +500,16 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
+              "activeOpacity": 0.2,
               "children": <Styled(Icon)
                 name="menu"
               />,
               "onPress": [Function],
-              "transparent": true,
-              "virtual": undefined,
+              "style": Object {
+                "alignItems": "flex-end",
+                "flex": 1,
+                "width": 70,
+              },
             },
             "ref": null,
             "rendered": Object {
@@ -494,7 +560,21 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": Array [
-        null,
+        <Styled(Left)>
+          <TouchableOpacity
+            activeOpacity={0.2}
+            onPress={[Function]}
+            style={
+              Object {
+                "width": 70,
+              }
+            }
+          >
+            <Styled(Icon)
+              name="arrow-back"
+            />
+          </TouchableOpacity>
+        </Styled(Left)>,
         <Styled(Body)>
           <Styled(Item)
             style={
@@ -517,21 +597,79 @@ ShallowWrapper {
           </Styled(Item)>
         </Styled(Body)>,
         <Styled(Right)>
-          <Styled(Button)
+          <TouchableOpacity
+            activeOpacity={0.2}
             onPress={[Function]}
-            transparent={true}
+            style={
+              Object {
+                "alignItems": "flex-end",
+                "flex": 1,
+                "width": 70,
+              }
+            }
           >
             <Styled(Icon)
               name="menu"
             />
-          </Styled(Button)>
+          </TouchableOpacity>
         </Styled(Right)>,
       ],
       "virtual": undefined,
     },
     "ref": null,
     "rendered": Array [
-      null,
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <TouchableOpacity
+            activeOpacity={0.2}
+            onPress={[Function]}
+            style={
+              Object {
+                "width": 70,
+              }
+            }
+          >
+            <Styled(Icon)
+              name="arrow-back"
+            />
+          </TouchableOpacity>,
+          "virtual": undefined,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "activeOpacity": 0.2,
+            "children": <Styled(Icon)
+              name="arrow-back"
+            />,
+            "onPress": [Function],
+            "style": Object {
+              "width": 70,
+            },
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "name": "arrow-back",
+              "virtual": undefined,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        "type": [Function],
+      },
       Object {
         "instance": null,
         "key": undefined,
@@ -620,14 +758,21 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": <Styled(Button)
+          "children": <TouchableOpacity
+            activeOpacity={0.2}
             onPress={[Function]}
-            transparent={true}
+            style={
+              Object {
+                "alignItems": "flex-end",
+                "flex": 1,
+                "width": 70,
+              }
+            }
           >
             <Styled(Icon)
               name="menu"
             />
-          </Styled(Button)>,
+          </TouchableOpacity>,
           "virtual": undefined,
         },
         "ref": null,
@@ -636,12 +781,16 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
+            "activeOpacity": 0.2,
             "children": <Styled(Icon)
               name="menu"
             />,
             "onPress": [Function],
-            "transparent": true,
-            "virtual": undefined,
+            "style": Object {
+              "alignItems": "flex-end",
+              "flex": 1,
+              "width": 70,
+            },
           },
           "ref": null,
           "rendered": Object {
@@ -670,7 +819,21 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": Array [
-          null,
+          <Styled(Left)>
+            <TouchableOpacity
+              activeOpacity={0.2}
+              onPress={[Function]}
+              style={
+                Object {
+                  "width": 70,
+                }
+              }
+            >
+              <Styled(Icon)
+                name="arrow-back"
+              />
+            </TouchableOpacity>
+          </Styled(Left)>,
           <Styled(Body)>
             <Styled(Item)
               style={
@@ -693,21 +856,79 @@ ShallowWrapper {
             </Styled(Item)>
           </Styled(Body)>,
           <Styled(Right)>
-            <Styled(Button)
+            <TouchableOpacity
+              activeOpacity={0.2}
               onPress={[Function]}
-              transparent={true}
+              style={
+                Object {
+                  "alignItems": "flex-end",
+                  "flex": 1,
+                  "width": 70,
+                }
+              }
             >
               <Styled(Icon)
                 name="menu"
               />
-            </Styled(Button)>
+            </TouchableOpacity>
           </Styled(Right)>,
         ],
         "virtual": undefined,
       },
       "ref": null,
       "rendered": Array [
-        null,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <TouchableOpacity
+              activeOpacity={0.2}
+              onPress={[Function]}
+              style={
+                Object {
+                  "width": 70,
+                }
+              }
+            >
+              <Styled(Icon)
+                name="arrow-back"
+              />
+            </TouchableOpacity>,
+            "virtual": undefined,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "activeOpacity": 0.2,
+              "children": <Styled(Icon)
+                name="arrow-back"
+              />,
+              "onPress": [Function],
+              "style": Object {
+                "width": 70,
+              },
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "name": "arrow-back",
+                "virtual": undefined,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          "type": [Function],
+        },
         Object {
           "instance": null,
           "key": undefined,
@@ -796,14 +1017,21 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": <Styled(Button)
+            "children": <TouchableOpacity
+              activeOpacity={0.2}
               onPress={[Function]}
-              transparent={true}
+              style={
+                Object {
+                  "alignItems": "flex-end",
+                  "flex": 1,
+                  "width": 70,
+                }
+              }
             >
               <Styled(Icon)
                 name="menu"
               />
-            </Styled(Button)>,
+            </TouchableOpacity>,
             "virtual": undefined,
           },
           "ref": null,
@@ -812,12 +1040,16 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
+              "activeOpacity": 0.2,
               "children": <Styled(Icon)
                 name="menu"
               />,
               "onPress": [Function],
-              "transparent": true,
-              "virtual": undefined,
+              "style": Object {
+                "alignItems": "flex-end",
+                "flex": 1,
+                "width": 70,
+              },
             },
             "ref": null,
             "rendered": Object {
@@ -1024,28 +1256,46 @@ ShallowWrapper {
 }
 `;
 
-exports[`test/app/ui/Header/Native.test.js renderCenter 1`] = `
+exports[`test/app/ui/Header/Native.test.js renderBackButton 1`] = `
 <Styled(Left)>
-  <Styled(Button)
-    transparent={true}
+  <TouchableOpacity
+    activeOpacity={0.2}
+    onPress={[Function]}
+    style={
+      Object {
+        "width": 70,
+      }
+    }
   >
     <Styled(Icon)
       name="arrow-back"
     />
-  </Styled(Button)>
+  </TouchableOpacity>
 </Styled(Left)>
 `;
 
-exports[`test/app/ui/Header/Native.test.js renderLeft 1`] = `
-<Styled(Left)>
-  <Styled(Button)
-    transparent={true}
+exports[`test/app/ui/Header/Native.test.js renderCenter 1`] = `
+<Styled(Body)>
+  <Styled(Item)
+    style={
+      Object {
+        "flexGrow": 1,
+        "height": 25,
+        "marginLeft": 20,
+      }
+    }
   >
     <Styled(Icon)
-      name="arrow-back"
+      name="ios-search"
     />
-  </Styled(Button)>
-</Styled(Left)>
+    <TextField
+      label="Search"
+      name="search"
+      onChange={[Function]}
+      type="search"
+    />
+  </Styled(Item)>
+</Styled(Body)>
 `;
 
 exports[`test/app/ui/Header/Native.test.js renderList 1`] = `

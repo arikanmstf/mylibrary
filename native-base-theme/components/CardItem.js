@@ -98,8 +98,7 @@ export default (variables = variable) => {
       },
       "NativeBase.Icon": {
         alignSelf: null,
-        fontSize: variables.iconFontSize - 8,
-        color: variables.cardBorderColor
+        fontSize: variables.iconFontSize - 8
       },
       "NativeBase.IconNB": {
         alignSelf: null,

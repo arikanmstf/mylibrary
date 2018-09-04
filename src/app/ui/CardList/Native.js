@@ -14,6 +14,7 @@ import {
   Share,
   RefreshControl,
   TouchableWithoutFeedback,
+  TouchableOpacity,
 } from 'react-native';
 import { Image } from 'ui/native';
 import logger from 'helpers/logger';
@@ -124,26 +125,26 @@ export class CardList extends React.Component<CardListProps> {
         </TouchableWithoutFeedback>
         <CardItem>
           <Left>
-            <Button
-              transparent
+            <TouchableOpacity
+              style={{ width: 40 }}
               onPress={() => { this.toggleFavorite(card.id, item.index); }}
             >
               <Icon name="star" active={card.isFavorite} style={{ fontSize: 30 }} />
-            </Button>
-            <Button
-              transparent
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={{ width: 40, marginTop: 3 }}
               onPress={() => { this.toggleRead(card.id, item.index); }}
             >
               <Icon name="book" active={card.isRead} style={{ fontSize: 30 }} />
-            </Button>
+            </TouchableOpacity>
           </Left>
           <Right>
-            <Button
-              transparent
+            <TouchableOpacity
+              style={{ width: 40, flex: 1, alignItems: 'flex-end' }}
               onPress={() => { CardList.shareCard(card); }}
             >
-              <Icon name="share" style={{ fontSize: 30 }} />
-            </Button>
+              <Icon name="share" color="#000" style={{ fontSize: 30 }} />
+            </TouchableOpacity>
           </Right>
         </CardItem>
       </Card>

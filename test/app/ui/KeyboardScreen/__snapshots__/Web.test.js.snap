@@ -18,7 +18,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "style": Object {
-        "backgroundColor": "#fffff0",
+        "backgroundColor": "#fffffc",
         "flex": 1,
       },
     },
@@ -33,7 +33,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "style": Object {
-          "backgroundColor": "#fffff0",
+          "backgroundColor": "#fffffc",
           "flex": 1,
         },
       },

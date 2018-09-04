@@ -10,10 +10,10 @@ import { Header, renderList, SideBar } from 'ui/Header/Native';
 import routes from 'ui/Header/sideNavigationItems';
 
 describe('test/app/ui/Header/Native.test.js', () => {
-  describe('Render', () => {
-    const props = {};
-    const wrapper = shallow(<Header {...props} />);
+  const props = {};
+  const wrapper = shallow(<Header {...props} />);
 
+  describe('Render', () => {
     it('props: {}', () => {
       expect(wrapper).toMatchSnapshot();
     });
@@ -26,11 +26,11 @@ describe('test/app/ui/Header/Native.test.js', () => {
 
   it('handleMenuButtonPress', () => {
     const showDrawer = jest.fn();
-    const props = {
+    const newProps = {
       showDrawer,
     };
 
-    const wrapper = shallow(<Header {...props} />);
+    wrapper.setProps(newProps);
     wrapper.instance().handleMenuButtonPress();
     expect(showDrawer).toBeCalled();
   });
@@ -41,15 +41,15 @@ describe('test/app/ui/Header/Native.test.js', () => {
   });
 
   it('SideBar', () => {
-    const wrapper = shallow(<SideBar />);
-    expect(wrapper).toMatchSnapshot();
+    const wrapperSidebar = shallow(<SideBar />);
+    expect(wrapperSidebar).toMatchSnapshot();
   });
 
-  it('renderLeft', () => {
-    expect(Header.renderLeft()).toMatchSnapshot();
+  it('renderBackButton', () => {
+    expect(wrapper.instance().renderBackButton()).toMatchSnapshot();
   });
 
   it('renderCenter', () => {
-    expect(Header.renderLeft()).toMatchSnapshot();
+    expect(wrapper.instance().renderCenter()).toMatchSnapshot();
   });
 });
