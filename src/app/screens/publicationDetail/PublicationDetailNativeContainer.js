@@ -5,12 +5,14 @@
  */
 
 import { connect } from 'react-redux';
+
 import { connect as connectUi } from 'helpers/connect';
 import {
   Text,
   Screen,
   Header,
   Page,
+  CardDetail,
 } from 'ui/native';
 import PublicationDetailScreen from './PublicationDetail';
 import { mapStateToProps, mapDispatchToProps } from './publicationDetailActions';
@@ -20,6 +22,9 @@ const mapUiToProps = () => ({
   Screen,
   Header,
   Page,
+  CardDetail,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(PublicationDetailScreen));
+export default connect(mapStateToProps, mapDispatchToProps)(
+  connectUi(mapUiToProps)(PublicationDetailScreen)
+);

@@ -17,7 +17,6 @@ const props = {
     isFavorite: true,
     isRead: true,
   },
-  index: 1,
   toggleFavorite: jest.fn(),
   toggleRead: jest.fn(),
 };
@@ -40,12 +39,12 @@ describe('test/app/ui/CardDetail/Native.test.js', () => {
   });
 
   it('toggleFavorite', () => {
-    wrapper.instance().toggleFavorite(1, 2);
-    expect(toggleFavorite).toBeCalledWith(1, 2);
+    wrapper.instance().toggleFavorite(1);
+    expect(toggleFavorite).toBeCalledWith(1);
   });
 
   it('toggleRead', () => {
-    wrapper.instance().toggleRead(1, 2);
-    expect(toggleRead).toBeCalledWith(1, 2);
+    wrapper.instance().toggleRead(1);
+    expect(toggleRead).toBeCalledWith(1);
   });
 });

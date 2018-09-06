@@ -17,8 +17,6 @@ export type CardItem = {
 
 export type RenderCardListItem = {
   item?: CardItem,
-  index: number,
-  separators: Function,
 }
 
 export type Pagination<V> = {

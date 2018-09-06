@@ -5,12 +5,23 @@
  */
 
 import { handleActions } from 'redux-actions';
+import {
+  updateCard,
+} from './publicationDetailActions';
 
 const initialState = {
-  dummyField: null,
+  card: null,
 };
 
-const reducer = new Map([]);
+const reducer = new Map([
+  [
+    updateCard,
+    (state, action) => ({
+      ...state,
+      card: action.payload || state.card,
+    }),
+  ],
+]);
 
 export default handleActions(
   reducer,

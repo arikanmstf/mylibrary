@@ -56,7 +56,6 @@ export class CardList extends React.Component<CardListProps> {
     return card && (
       <CardDetail
         card={card}
-        index={item.index}
         key={card.id}
       />
     );

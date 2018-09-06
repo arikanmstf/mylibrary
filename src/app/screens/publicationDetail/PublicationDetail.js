@@ -12,12 +12,18 @@ import type { PublicationDetailProps } from './PublicationDetailTypes';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class PublicationDetail extends React.Component<PublicationDetailProps> {
+  componentDidMount() {
+    const { fetchCard, match: { params: { id } } } = this.props;
+    fetchCard(id);
+  }
+
   render() {
     const {
       Screen,
       Header,
       Page,
-      Text,
+      CardDetail,
+      card,
     } = this.props;
     logger.log('render: PublicationDetail');
 
@@ -25,7 +31,10 @@ class PublicationDetail extends React.Component<PublicationDetailProps> {
       <Screen>
         <Header back title={t.get('HOME_TITLE')} />
         <Page>
-          <Text>PublicationDetail screen successfully created.</Text>
+          <CardDetail
+            card={card}
+            isDetailed
+          />
         </Page>
       </Screen>
     );

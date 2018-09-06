@@ -34,36 +34,39 @@ export class CardDetail extends React.Component<CardDetailProps> {
 
   goToDetail = () => {
     const { isDetailed, card, history } = this.props;
-    logger.log('goToDetail', card);
 
     if (!isDetailed) {
+      logger.log('goToDetail', card);
       const url = publicationDetailUrl(card.id);
       history.push(url);
     }
   };
 
-  toggleFavorite(id: number, index: number) {
+  toggleFavorite(id: number) {
     const { toggleFavorite } = this.props;
     if (toggleFavorite) {
-      toggleFavorite(id, index);
+      toggleFavorite(id);
     }
   }
 
-  toggleRead(id: number, index: number) {
+  toggleRead(id: number) {
     const { toggleRead } = this.props;
     if (toggleRead) {
-      toggleRead(id, index);
+      toggleRead(id);
     }
   }
 
   render() {
     const {
       card,
-      index,
       style,
       isDetailed,
     } = this.props;
     const linkStyle = !isDetailed ? { cursor: 'pointer' } : {};
+
+    if (!card) {
+      return null;
+    }
 
     return (
       <Card style={style}>
@@ -82,13 +85,13 @@ export class CardDetail extends React.Component<CardDetailProps> {
         <CardActions disableActionSpacing>
           <IconButton
             aria-label={t.get('CARD_ADD_TO_FAVORITES')}
-            onClick={() => { this.toggleFavorite(card.id, index); }}
+            onClick={() => { this.toggleFavorite(card.id); }}
           >
             <StarIcon style={card.isFavorite ? styleActive : null} />
           </IconButton>
           <IconButton
             aria-label={t.get('CARD_ADD_TO_BOOKS_I_READ')}
-            onClick={() => { this.toggleRead(card.id, index); }}
+            onClick={() => { this.toggleRead(card.id); }}
           >
             <BookIcon style={card.isRead ? styleActive : null} />
           </IconButton>

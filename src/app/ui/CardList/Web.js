@@ -65,10 +65,9 @@ export class CardList extends React.Component<CardListProps> {
 
   renderCardList() {
     const { cards } = this.props;
-    return cards && cards.map((card, index) => (
+    return cards && cards.map((card) => (
       <CardDetail
         card={card}
-        index={index}
         key={card.id}
         style={{ margin: '10px 0' }}
       />

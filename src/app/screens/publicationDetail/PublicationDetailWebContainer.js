@@ -12,6 +12,7 @@ import {
   Screen,
   Header,
   Page,
+  CardDetail,
 } from 'ui';
 import PublicationDetailScreen from './PublicationDetail';
 import { mapStateToProps, mapDispatchToProps } from './publicationDetailActions';
@@ -21,6 +22,7 @@ const mapUiToProps = () => ({
   Screen,
   Header,
   Page,
+  CardDetail,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(

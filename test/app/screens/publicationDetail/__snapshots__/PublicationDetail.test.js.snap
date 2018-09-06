@@ -4,7 +4,30 @@ exports[`test/app/screens/publicationDetail/PublicationDetail.test.js Render 1`]
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <PublicationDetail />,
+  Symbol(enzyme.__unrendered__): <PublicationDetail
+    fetchCard={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            1,
+          ],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      }
+    }
+    match={
+      Object {
+        "params": Object {
+          "id": 1,
+        },
+      }
+    }
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -23,9 +46,9 @@ ShallowWrapper {
           title="HOME_TITLE"
         />,
         <UNDEFINED>
-          <UNDEFINED>
-            PublicationDetail screen successfully created.
-          </UNDEFINED>
+          <UNDEFINED
+            isDetailed={true}
+          />
         </UNDEFINED>,
       ],
     },
@@ -48,9 +71,9 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "children": <UNDEFINED>
-            PublicationDetail screen successfully created.
-          </UNDEFINED>,
+          "children": <UNDEFINED
+            isDetailed={true}
+          />,
         },
         "ref": null,
         "rendered": Object {
@@ -58,10 +81,11 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "children": "PublicationDetail screen successfully created.",
+            "card": undefined,
+            "isDetailed": true,
           },
           "ref": null,
-          "rendered": "PublicationDetail screen successfully created.",
+          "rendered": null,
           "type": undefined,
         },
         "type": undefined,
@@ -81,9 +105,9 @@ ShallowWrapper {
             title="HOME_TITLE"
           />,
           <UNDEFINED>
-            <UNDEFINED>
-              PublicationDetail screen successfully created.
-            </UNDEFINED>
+            <UNDEFINED
+              isDetailed={true}
+            />
           </UNDEFINED>,
         ],
       },
@@ -106,9 +130,9 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "children": <UNDEFINED>
-              PublicationDetail screen successfully created.
-            </UNDEFINED>,
+            "children": <UNDEFINED
+              isDetailed={true}
+            />,
           },
           "ref": null,
           "rendered": Object {
@@ -116,10 +140,11 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "function",
             "props": Object {
-              "children": "PublicationDetail screen successfully created.",
+              "card": undefined,
+              "isDetailed": true,
             },
             "ref": null,
-            "rendered": "PublicationDetail screen successfully created.",
+            "rendered": null,
             "type": undefined,
           },
           "type": undefined,

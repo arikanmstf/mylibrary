@@ -20,4 +20,7 @@ export type State = {|
   screen: {|
     isDrawerOpen: boolean,
   |},
+  publication: {|
+    card: CardItem,
+  |},
 |};

@@ -13,7 +13,7 @@ describe('test/app/screens/register/registerActions.test.js', () => {
     });
     it('should call loginRequest', async () => {
       await registerActions.submitRegisterForm(form, dispatch);
-      expect(registerServices.registerRequest).toHaveBeenCalledWith(form.toJS());
+      expect(registerServices.registerRequest).toBeCalledWith(form.toJS());
     });
     it('should save response to storage', async () => {
       await registerActions.submitRegisterForm(form, dispatch);

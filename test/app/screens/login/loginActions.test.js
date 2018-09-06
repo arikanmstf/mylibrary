@@ -13,7 +13,7 @@ describe('test/app/screens/login/loginActions.test.js', () => {
     });
     it('should call loginRequest', async () => {
       await loginActions.submitLoginForm(form, dispatch);
-      expect(loginServices.loginRequest).toHaveBeenCalledWith(form.toJS());
+      expect(loginServices.loginRequest).toBeCalledWith(form.toJS());
     });
     it('should save response to storage', async () => {
       await loginActions.submitLoginForm(form, dispatch);
@@ -30,7 +30,7 @@ describe('test/app/screens/login/loginActions.test.js', () => {
 
     it('should call initialRequest', async () => {
       dispatch(loginActions.fetchInitialState());
-      expect(loginServices.initialRequest).toHaveBeenCalledWith();
+      expect(loginServices.initialRequest).toBeCalled();
     });
   });
 });

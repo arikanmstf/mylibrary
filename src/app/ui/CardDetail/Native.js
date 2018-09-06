@@ -47,30 +47,35 @@ export class CardDetail extends React.Component<CardDetailProps> {
 
   goToDetail = () => {
     const { isDetailed, card, history } = this.props;
-    logger.log('goToDetail', card);
 
     if (!isDetailed) {
+      logger.log('goToDetail', card);
       const url = publicationDetailUrl(card.id);
       history.push(url);
     }
   };
 
-  toggleFavorite(id: number, index: number) {
+  toggleFavorite(id: number) {
     const { toggleFavorite } = this.props;
     if (toggleFavorite) {
-      toggleFavorite(id, index);
+      toggleFavorite(id);
     }
   }
 
-  toggleRead(id: number, index: number) {
+  toggleRead(id: number) {
     const { toggleRead } = this.props;
     if (toggleRead) {
-      toggleRead(id, index);
+      toggleRead(id);
     }
   }
 
   render() {
-    const { card, index } = this.props;
+    const { card } = this.props;
+
+    if (!card) {
+      return null;
+    }
+
     return (
       <Card>
         <CardItem>
@@ -95,13 +100,13 @@ export class CardDetail extends React.Component<CardDetailProps> {
           <Left>
             <TouchableOpacity
               style={{ width: 40 }}
-              onPress={() => { this.toggleFavorite(card.id, index); }}
+              onPress={() => { this.toggleFavorite(card.id); }}
             >
               <Icon name="star" active={card.isFavorite} style={{ fontSize: 30 }} />
             </TouchableOpacity>
             <TouchableOpacity
               style={{ width: 40, marginTop: 3 }}
-              onPress={() => { this.toggleRead(card.id, index); }}
+              onPress={() => { this.toggleRead(card.id); }}
             >
               <Icon name="book" active={card.isRead} style={{ fontSize: 30 }} />
             </TouchableOpacity>

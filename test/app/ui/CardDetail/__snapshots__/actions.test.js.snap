@@ -11,6 +11,7 @@ exports[`test/app/ui/CardDetail/actions.test.js mapStateToProps 1`] = `
 Object {
   "cards": Array [
     Object {
+      "id": 1,
       "isFavorite": false,
       "isRead": false,
     },

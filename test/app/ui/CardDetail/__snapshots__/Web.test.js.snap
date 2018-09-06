@@ -15,7 +15,6 @@ ShallowWrapper {
         "title": "dummyTitle",
       }
     }
-    index={1}
     isDetailed={false}
     toggleFavorite={[MockFunction]}
     toggleRead={[MockFunction]}

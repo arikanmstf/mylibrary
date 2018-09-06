@@ -13,6 +13,7 @@ const state = createFakeStore({
     cards: [{
       isFavorite: false,
       isRead: false,
+      id: 1,
     }],
     search: 'dummySearch',
   },
@@ -45,11 +46,12 @@ describe('test/app/ui/CardDetail/actions.test.js', () => {
   });
 
   it('toggleFavorite', async () => {
-    await toggleFavorite(1, 0)(dispatch, getState);
+    await toggleFavorite(1)(dispatch, getState);
     expect(homeServices.toggleFavorite).toBeCalledWith(1);
     expect(homeActions.updateCards).toBeCalledWith([{
       isFavorite: true,
       isRead: false,
+      id: 1,
     }]);
   });
 
@@ -57,13 +59,15 @@ describe('test/app/ui/CardDetail/actions.test.js', () => {
     state.toJS().home.cards = [{
       isFavorite: false,
       isRead: false,
+      id: 1,
     }];
 
-    await toggleRead(1, 0)(dispatch, getState);
+    await toggleRead(1)(dispatch, getState);
     expect(homeServices.toggleRead).toBeCalledWith(1);
     expect(homeActions.updateCards).toBeCalledWith([{
       isFavorite: false,
       isRead: true,
+      id: 1,
     }]);
   });
 });
