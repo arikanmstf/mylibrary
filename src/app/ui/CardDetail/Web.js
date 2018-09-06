@@ -69,7 +69,7 @@ export class CardDetail extends React.Component<CardDetailProps> {
     }
 
     return (
-      <Card style={style}>
+      <Card style={{ maxWidth: '768px', margin: '0 auto', ...style }}>
         <CardHeader
           title={card.title}
           subheader={card.description}
