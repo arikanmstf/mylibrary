@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test/app/ui/CardDetail/actions.test.js mapDispatchToProps 1`] = `
+Object {
+  "toggleFavorite": [Function],
+  "toggleRead": [Function],
+}
+`;
+
+exports[`test/app/ui/CardDetail/actions.test.js mapStateToProps 1`] = `
+Object {
+  "cards": Array [
+    Object {
+      "isFavorite": false,
+      "isRead": false,
+    },
+  ],
+}
+`;

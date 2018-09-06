@@ -6,11 +6,96 @@
 
 // @flow
 import * as React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardActions from '@material-ui/core/CardActions';
+import StarIcon from '@material-ui/icons/Star';
+import BookIcon from '@material-ui/icons/Book';
+import IconButton from '@material-ui/core/IconButton';
+import getConfig from 'config/get';
+import { green500 } from 'constants/theme/color';
+import t from 'helpers/i18n/Translate';
+import { publicationDetailUrl } from 'constants/routes/createUrl';
+import logger from 'helpers/logger';
+import { mapStateToProps, mapDispatchToProps } from './actions';
 
 import type { CardDetailProps } from './types';
 
-const CardDetail = (props: CardDetailProps): React.Node => {
-  return <div {...props} />;
-};
+const { staticFilesURL } = getConfig();
+const styleActive = { color: green500 };
 
-export default CardDetail;
+export class CardDetail extends React.Component<CardDetailProps> {
+  static defaultProps = {
+    isDetailed: false,
+  };
+
+  goToDetail = () => {
+    const { isDetailed, card, history } = this.props;
+    logger.log('goToDetail', card);
+
+    if (!isDetailed) {
+      const url = publicationDetailUrl(card.id);
+      history.push(url);
+    }
+  };
+
+  toggleFavorite(id: number, index: number) {
+    const { toggleFavorite } = this.props;
+    if (toggleFavorite) {
+      toggleFavorite(id, index);
+    }
+  }
+
+  toggleRead(id: number, index: number) {
+    const { toggleRead } = this.props;
+    if (toggleRead) {
+      toggleRead(id, index);
+    }
+  }
+
+  render() {
+    const {
+      card,
+      index,
+      style,
+      isDetailed,
+    } = this.props;
+    const linkStyle = !isDetailed ? { cursor: 'pointer' } : {};
+
+    return (
+      <Card style={style}>
+        <CardHeader
+          title={card.title}
+          subheader={card.description}
+          onClick={this.goToDetail}
+          style={linkStyle}
+        />
+        <CardMedia
+          image={`${staticFilesURL}/img/cover/${card.id}.jpg`}
+          title={card.title}
+          onClick={this.goToDetail}
+          style={{ height: '200px', ...linkStyle }}
+        />
+        <CardActions disableActionSpacing>
+          <IconButton
+            aria-label={t.get('CARD_ADD_TO_FAVORITES')}
+            onClick={() => { this.toggleFavorite(card.id, index); }}
+          >
+            <StarIcon style={card.isFavorite ? styleActive : null} />
+          </IconButton>
+          <IconButton
+            aria-label={t.get('CARD_ADD_TO_BOOKS_I_READ')}
+            onClick={() => { this.toggleRead(card.id, index); }}
+          >
+            <BookIcon style={card.isRead ? styleActive : null} />
+          </IconButton>
+        </CardActions>
+      </Card>
+    );
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(CardDetail));

@@ -5,7 +5,6 @@
  */
 
 // @flow
-import type { RouterHistory } from 'react-router-dom';
 
 export type CardItem = {
   title: string,
@@ -32,7 +31,5 @@ export type CardListProps = {
   isLoaderVisible: boolean,
   search: string,
   addCards: Function,
-  toggleFavorite: Function,
-  toggleRead: Function,
   fetchCards: Function,
 };

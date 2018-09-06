@@ -19,17 +19,11 @@ const props = {
   isLoaderVisible: false,
   search: 'dummySearch',
   addCards: jest.fn(),
-  toggleFavorite: jest.fn(),
-  toggleRead: jest.fn(),
   fetchCards: jest.fn(),
 };
 
 describe('test/app/ui/CardList/Web.test.js', () => {
   let wrapper;
-  const {
-    toggleFavorite,
-    toggleRead,
-  } = props;
 
   beforeAll(() => {
     window.addEventListener = jest.fn();
@@ -45,15 +39,5 @@ describe('test/app/ui/CardList/Web.test.js', () => {
 
   it('Render', () => {
     expect(wrapper).toMatchSnapshot();
-  });
-
-  it('toggleFavorite', () => {
-    wrapper.instance().toggleFavorite(1, 2);
-    expect(toggleFavorite).toBeCalledWith(1, 2);
-  });
-
-  it('toggleRead', () => {
-    wrapper.instance().toggleRead(1, 2);
-    expect(toggleRead).toBeCalledWith(1, 2);
   });
 });

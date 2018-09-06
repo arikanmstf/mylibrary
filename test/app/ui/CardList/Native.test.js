@@ -81,14 +81,4 @@ describe('test/app/ui/CardList/Native.test.js', () => {
       expect(fetchCards).toBeCalledWith({ search });
     });
   });
-
-  it('toggleFavorite', () => {
-    wrapper.instance().toggleFavorite(1, 2);
-    expect(toggleFavorite).toBeCalledWith(1, 2);
-  });
-
-  it('toggleRead', () => {
-    wrapper.instance().toggleRead(1, 2);
-    expect(toggleRead).toBeCalledWith(1, 2);
-  });
 });
