@@ -12,6 +12,7 @@ import {
   Share,
   TouchableWithoutFeedback,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import { Image } from 'ui/native';
 import {
@@ -70,57 +71,67 @@ export class CardDetail extends React.Component<CardDetailProps> {
   }
 
   render() {
-    const { card } = this.props;
+    const { card, isDetailed } = this.props;
 
     if (!card) {
       return null;
     }
+    logger.log('render: CardDetail', card);
 
     return (
-      <Card>
-        <CardItem>
-          <Body>
-            <Text>{card.title}</Text>
-            <Text note>{card.description}</Text>
-          </Body>
-        </CardItem>
-        <TouchableWithoutFeedback
-          onPress={this.goToDetail}
-        >
-          <CardItem
-            cardBody
-          >
-            <Image
-              source={{ uri: `${staticFilesURL}/img/cover/${card.id}.jpg` }}
-              style={{ height: 200, flex: 1 }}
-            />
+      <ScrollView>
+        <Card>
+          <CardItem>
+            <Body>
+              <Text>{card.title}</Text>
+              <Text note>{card.description}</Text>
+            </Body>
           </CardItem>
-        </TouchableWithoutFeedback>
-        <CardItem>
-          <Left>
-            <TouchableOpacity
-              style={{ width: 40 }}
-              onPress={() => { this.toggleFavorite(card.id); }}
+          <TouchableWithoutFeedback
+            onPress={this.goToDetail}
+          >
+            <CardItem
+              cardBody
             >
-              <Icon name="star" active={card.isFavorite} style={{ fontSize: 30 }} />
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={{ width: 40, marginTop: 3 }}
-              onPress={() => { this.toggleRead(card.id); }}
-            >
-              <Icon name="book" active={card.isRead} style={{ fontSize: 30 }} />
-            </TouchableOpacity>
-          </Left>
-          <Right>
-            <TouchableOpacity
-              style={{ width: 40, flex: 1, alignItems: 'flex-end' }}
-              onPress={this.shareCard}
-            >
-              <Icon name="share" color="#000" style={{ fontSize: 30 }} />
-            </TouchableOpacity>
-          </Right>
-        </CardItem>
-      </Card>
+              <Image
+                source={{ uri: `${staticFilesURL}/img/cover/${card.id}.jpg` }}
+                style={{ height: 200, flex: 1 }}
+              />
+            </CardItem>
+          </TouchableWithoutFeedback>
+          { isDetailed ? (
+            <CardItem>
+              <Body>
+                <Text>{card.text}</Text>
+              </Body>
+            </CardItem>
+          ) : null }
+          <CardItem>
+            <Left>
+              <TouchableOpacity
+                style={{ width: 40 }}
+                onPress={() => { this.toggleFavorite(card.id); }}
+              >
+                <Icon name="star" active={card.isFavorite} style={{ fontSize: 30 }} />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{ width: 40, marginTop: 3 }}
+                onPress={() => { this.toggleRead(card.id); }}
+              >
+                <Icon name="book" active={card.isRead} style={{ fontSize: 30 }} />
+              </TouchableOpacity>
+            </Left>
+            <Right>
+              <TouchableOpacity
+                style={{ width: 40, flex: 1, alignItems: 'flex-end' }}
+                onPress={this.shareCard}
+              >
+                <Icon name="share" color="#000" style={{ fontSize: 30 }} />
+              </TouchableOpacity>
+            </Right>
+          </CardItem>
+        </Card>
+      </ScrollView>
     );
   }
 }
