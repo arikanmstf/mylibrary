@@ -7,16 +7,15 @@
 // @flow
 import * as React from 'react';
 import logger from 'helpers/logger';
-import t from 'helpers/i18n/Translate';
 import type { PublicationDetailProps } from './PublicationDetailTypes';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class PublicationDetail extends React.Component<PublicationDetailProps> {
   componentDidMount() {
-    const { fetchCard, match: { params: { id } }, card } = this.props;
+    const { fetchPublication, match: { params: { id } }, card } = this.props;
 
     if (!card || (card && card.id !== +id)) {
-      fetchCard(id);
+      fetchPublication(id);
     }
   }
 
@@ -32,7 +31,7 @@ class PublicationDetail extends React.Component<PublicationDetailProps> {
 
     return (
       <Screen>
-        <Header back title={t.get('HOME_TITLE')} />
+        <Header />
         <Page>
           <CardDetail
             card={card}

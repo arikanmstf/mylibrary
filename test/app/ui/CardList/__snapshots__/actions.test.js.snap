@@ -3,7 +3,7 @@
 exports[`test/app/ui/CardList/actions.test.js mapDispatchToProps 1`] = `
 Object {
   "addCards": [Function],
-  "fetchCards": [Function],
+  "fetchPublications": [Function],
 }
 `;
 

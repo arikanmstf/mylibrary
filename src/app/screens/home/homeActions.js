@@ -13,6 +13,7 @@ import {
   UPDATE_CURRENT_PAGE,
   UPDATE_SEARCH_QUERY,
   UPDATE_SEARCH_PENDING,
+  UPDATE_ROWS,
 } from 'constants/actions/actionNames';
 import logger from 'helpers/logger';
 import { showLoader, hideLoader } from 'ui/Loader/actions';
@@ -23,7 +24,7 @@ import type { Immutable } from 'store/ImmutableTypes';
 import type { State } from 'store/StateTypes';
 import type { SubmitSearchFormRequest } from 'ui/Header/types';
 
-import { getPublicationList } from './homeServices';
+import { getPublicationList, getListList } from './homeServices';
 
 export const addCards = createAction(ADD_CARDS);
 export const updateCards = createAction(UPDATE_CARDS);
@@ -31,6 +32,7 @@ export const updateTotalPages = createAction(UPDATE_TOTAL_PAGES);
 export const updateCurrentPage = createAction(UPDATE_CURRENT_PAGE);
 export const updateSearchQuery = createAction(UPDATE_SEARCH_QUERY);
 export const updateSearchPending = createAction(UPDATE_SEARCH_PENDING);
+export const updateRows = createAction(UPDATE_ROWS);
 
 export const fetchAndUpdateCards = (
   { search }: SubmitSearchFormRequest = { search: '' }, shouldShowLoader: boolean = true
@@ -87,11 +89,24 @@ export const fetchAndAddCards = (): ThunkAction => {
   };
 };
 
+export const fetchLists = (): ThunkAction => {
+  return async (dispatch: Dispatch<*>) => {
+    logger.log('action: fetchListsStart');
+
+    const result = await getListList();
+    logger.log('action: fetchLists', result);
+
+    await dispatch(updateRows(result));
+    logger.log('action: fetchListsEnd');
+  };
+};
+
 export const mapStateToProps = (state: Immutable<State>) => ({
   cards: state.toJS().home.cards,
+  rows: state.toJS().home.rows,
 });
 
 export const mapDispatchToProps = {
-  fetchCards: fetchAndUpdateCards,
+  fetchPublications: fetchAndUpdateCards,
+  fetchLists,
 };
-

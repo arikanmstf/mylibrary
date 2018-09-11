@@ -21,7 +21,7 @@ describe('test/app/screens/home/Home.test.js', () => {
     Page,
     CardList,
     cards: [{ id: 1 }, { id: 2 }],
-    fetchCards: jest.fn(),
+    fetchPublications: jest.fn(),
   };
 
   it('Render', () => {

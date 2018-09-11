@@ -19,7 +19,7 @@ const props = {
   isLoaderVisible: false,
   search: 'dummySearch',
   addCards: jest.fn(),
-  fetchCards: jest.fn(),
+  fetchPublications: jest.fn(),
 };
 
 describe('test/app/ui/CardList/Web.test.js', () => {

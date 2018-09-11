@@ -22,7 +22,7 @@ const props = {
   addCards: jest.fn(),
   toggleFavorite: jest.fn(),
   toggleRead: jest.fn(),
-  fetchCards: jest.fn(),
+  fetchPublications: jest.fn(),
 };
 
 const nativeEvent = {
@@ -43,7 +43,7 @@ describe('test/app/ui/CardList/Native.test.js', () => {
     addCards,
     toggleFavorite,
     toggleRead,
-    fetchCards,
+    fetchPublications,
     search,
   } = props;
 
@@ -53,7 +53,7 @@ describe('test/app/ui/CardList/Native.test.js', () => {
     addCards.mockClear();
     toggleFavorite.mockClear();
     toggleRead.mockClear();
-    fetchCards.mockClear();
+    fetchPublications.mockClear();
   });
 
   it('Render', () => {
@@ -73,12 +73,12 @@ describe('test/app/ui/CardList/Native.test.js', () => {
       });
 
       wrapper.instance().handleRefresh();
-      expect(fetchCards).not.toBeCalled();
+      expect(fetchPublications).not.toBeCalled();
     });
 
     it('handleScroll: { isLoaderVisible: true }', () => {
       wrapper.instance().handleRefresh();
-      expect(fetchCards).toBeCalledWith({ search });
+      expect(fetchPublications).toBeCalledWith({ search });
     });
   });
 });

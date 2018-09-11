@@ -6,7 +6,6 @@
 
 // @flow
 import * as React from 'react';
-import t from 'helpers/i18n/Translate';
 import logger from 'helpers/logger';
 import type { HomeProps } from './HomeTypes';
 
@@ -14,12 +13,18 @@ import type { HomeProps } from './HomeTypes';
 class Home extends React.Component<HomeProps> {
   componentDidMount() {
     const {
-      fetchCards,
+      fetchPublications,
+      fetchLists,
       cards,
+      rows,
     } = this.props;
 
-    if ((!cards || cards.length < 1) && fetchCards) {
-      fetchCards();
+    if (!cards) {
+      fetchPublications();
+    }
+
+    if (!rows) {
+      fetchLists();
     }
   }
 
@@ -34,7 +39,7 @@ class Home extends React.Component<HomeProps> {
 
     return (
       <Screen>
-        <Header title={t.get('HOME_TITLE')} />
+        <Header />
         <Page>
           <CardList />
         </Page>

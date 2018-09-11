@@ -5,3 +5,4 @@ export const REGISTER = 'register';
 export const PUBLICATION = 'publication';
 export const TOGGLE_FAVORITE = 'publication/favorite';
 export const TOGGLE_READ = 'publication/read';
+export const LIST_MY = 'list/my';

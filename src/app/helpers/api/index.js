@@ -7,4 +7,5 @@ export {
   PUBLICATION,
   TOGGLE_FAVORITE,
   TOGGLE_READ,
+  LIST_MY,
 } from './serviceNames';

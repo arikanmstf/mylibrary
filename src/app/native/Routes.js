@@ -9,6 +9,7 @@ import LogoutScreen from 'screens/logout/LogoutNativeContainer';
 import RegisterScreen from 'screens/register/RegisterNativeContainer';
 import HomeScreen from 'screens/home/HomeNativeContainer';
 import PublicationDetailScreen from 'screens/publicationDetail/PublicationDetailNativeContainer';
+import PublicationAddToListScreen from 'screens/publicationAddToList/PublicationAddToListNativeContainer';
 
 import Routes from '../Routes';
 import PrivateRoute from './PrivateRoute';
@@ -27,6 +28,7 @@ const mapRouteToProps = () => ({
   RegisterScreen,
   HomeScreen,
   PublicationDetailScreen,
+  PublicationAddToListScreen,
   Route,
 });
 

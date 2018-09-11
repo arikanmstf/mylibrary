@@ -16,18 +16,18 @@ describe('test/app/screens/publicationDetail/PublicationDetail.test.js', () => {
           id: 1,
         },
       },
-    fetchCard: jest.fn(),
+    fetchPublication: jest.fn(),
   };
 
   beforeAll(() => {
-    props.fetchCard.mockClear();
+    props.fetchPublication.mockClear();
   });
 
   it('Render', () => {
     const wrapper = shallow(<PublicationDetail {...props} />);
-    const { fetchCard } = props;
+    const { fetchPublication } = props;
 
     expect(wrapper).toMatchSnapshot();
-    expect(fetchCard).toBeCalledWith(1);
+    expect(fetchPublication).toBeCalledWith(1);
   });
 });

@@ -12,14 +12,16 @@ import {
   updateCurrentPage,
   updateSearchQuery,
   updateSearchPending,
+  updateRows,
 } from './homeActions';
 
 const initialState = {
-  cards: [],
+  cards: null,
   totalPages: 0,
   currentPage: 1,
   searchQuery: '',
   isSearchPending: false,
+  rows: null,
 };
 
 const reducer = new Map([
@@ -63,6 +65,13 @@ const reducer = new Map([
     (state, action) => ({
       ...state,
       isSearchPending: action.payload ? action.payload : initialState.isSearchPending,
+    }),
+  ],
+  [
+    updateRows,
+    (state, action) => ({
+      ...state,
+      rows: action.payload || state.rows,
     }),
   ],
 ]);

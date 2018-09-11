@@ -8,6 +8,7 @@ import LogoutScreen from 'screens/logout/LogoutWebContainer';
 import RegisterScreen from 'screens/register/RegisterWebContainer';
 import HomeScreen from 'screens/home/HomeWebContainer';
 import PublicationDetailScreen from 'screens/publicationDetail/PublicationDetailWebContainer';
+import PublicationAddToListScreen from 'screens/publicationAddToList/PublicationAddToListWebContainer';
 
 import Routes from '../Routes';
 import PrivateRoute from './PrivateRoute';
@@ -26,6 +27,7 @@ const mapRouteToProps = () => ({
   RegisterScreen,
   HomeScreen,
   PublicationDetailScreen,
+  PublicationAddToListScreen,
   Route,
 });
 

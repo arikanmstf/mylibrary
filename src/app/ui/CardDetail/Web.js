@@ -16,11 +16,15 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import StarIcon from '@material-ui/icons/Star';
 import BookIcon from '@material-ui/icons/Book';
+import AddIcon from '@material-ui/icons/Add';
 import IconButton from '@material-ui/core/IconButton';
 import getConfig from 'config/get';
 import { green500 } from 'constants/theme/color';
 import t from 'helpers/i18n/Translate';
-import { publicationDetailUrl } from 'constants/routes/createUrl';
+import {
+  publicationDetailUrl,
+  publicationAddToListUrl,
+} from 'constants/routes/createUrl';
 import logger from 'helpers/logger';
 import { mapStateToProps, mapDispatchToProps } from './actions';
 
@@ -42,6 +46,14 @@ export class CardDetail extends React.Component<CardDetailProps> {
       const url = publicationDetailUrl(card.id);
       history.push(url);
     }
+  };
+
+  goToAddToList = () => {
+    const { card, history } = this.props;
+
+    logger.log('goToAddToList', card);
+    const url = publicationAddToListUrl(card.id);
+    history.push(url);
   };
 
   toggleFavorite(id: number) {
@@ -70,13 +82,13 @@ export class CardDetail extends React.Component<CardDetailProps> {
       return null;
     }
 
-    logger.log('render: CardDetail', card);
+    logger.log('render: CardDetail');
 
     return (
       <Card style={{ maxWidth: '768px', margin: '0 auto', ...style }}>
         <CardHeader
           title={card.title}
-          subheader={card.description}
+          subheader={card.subHeader}
           onClick={this.goToDetail}
           style={linkStyle}
         />
@@ -88,7 +100,7 @@ export class CardDetail extends React.Component<CardDetailProps> {
         />
         { isDetailed ? (
           <CardContent>
-            <Typography component="p">{card.text}</Typography>
+            <Typography component="p">{card.description}</Typography>
           </CardContent>
         ) : null }
         <CardActions disableActionSpacing>
@@ -103,6 +115,11 @@ export class CardDetail extends React.Component<CardDetailProps> {
             onClick={() => { this.toggleRead(card.id); }}
           >
             <BookIcon style={card.isRead ? styleActive : null} />
+          </IconButton>
+          <IconButton
+            onClick={this.goToAddToList}
+          >
+            <AddIcon />
           </IconButton>
         </CardActions>
       </Card>

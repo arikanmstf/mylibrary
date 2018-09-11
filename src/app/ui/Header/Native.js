@@ -22,6 +22,7 @@ import {
   List,
   ListItem,
   Text,
+  Title,
 } from 'native-base';
 import { TextField } from 'ui/native';
 import t from 'helpers/i18n/Translate';
@@ -110,26 +111,30 @@ export class Header extends React.PureComponent<HeaderProps> {
   }
 
   renderCenter() {
+    const { title } = this.props;
+
     return (
       <Body>
-        <Item style={{ height: 25, flexGrow: 1, marginLeft: 20 }}>
-          <Icon name="ios-search" />
-          <TextField
-            name={fields.SEARCH}
-            label={t.get('HEADER_SEARCH')}
-            type="search"
-            onChange={debounce(this.handleChange, SEARCH_SUBMIT_TIMEOUT)}
-          />
-        </Item>
+        {title ? (<Title>{title}</Title>)
+          : (
+            <Item style={{ height: 25, flexGrow: 1, marginLeft: 20 }}>
+              <Icon name="ios-search" />
+              <TextField
+                name={fields.SEARCH}
+                label={t.get('HEADER_SEARCH')}
+                type="search"
+                onChange={debounce(this.handleChange, SEARCH_SUBMIT_TIMEOUT)}
+              />
+            </Item>
+          )}
       </Body>
     );
   }
 
   render() {
-    const { back } = this.props;
     return (
       <HeaderNative>
-        { back ? this.renderBackButton() : this.renderBackButton()}
+        {this.renderBackButton()}
         {this.renderCenter()}
         {this.renderMenu()}
       </HeaderNative>

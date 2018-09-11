@@ -1,6 +1,6 @@
 /**
  * Screen Template By => create-module script
- * @version 1.0.1
+ * @version 1.0.2
  *
  */
 
@@ -23,7 +23,7 @@ class #{className} extends React.Component<#{className}Props> {
 
     return (
       <Screen>
-        <Header title={t.get('HOME_TITLE')} />
+        <Header />
         <Page>
           <Text>#{className} screen successfully created.</Text>
         </Page>

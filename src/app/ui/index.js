@@ -13,3 +13,4 @@ export { default as CardList } from './CardList/Web';
 export { default as CardDetail } from './CardDetail/Web';
 export { default as KeyboardScreen } from './KeyboardScreen/Web';
 export { default as Error } from './Error/Web';
+export { default as RowList } from './RowList/Web';

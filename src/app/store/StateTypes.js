@@ -1,14 +1,17 @@
 // @flow
 import type { CardItem } from 'ui/CardList/types';
+import type { Row } from 'ui/RowList/types';
+import type { PublicationDetail } from 'helpers/api/types';
 
 export type State = {|
   form: Object,
   home: {|
-    cards: Array<CardItem>,
+    cards?: Array<CardItem>,
     totalPages: number,
     currentPage: number,
     searchQuery: string,
     isSearchPending: boolean,
+    rows?: Array<Row>,
   |},
   loader: {|
     isVisible: boolean,
@@ -21,6 +24,7 @@ export type State = {|
     isDrawerOpen: boolean,
   |},
   publication: {|
-    card: CardItem,
+    card?: CardItem,
+    publication?: PublicationDetail,
   |},
 |};

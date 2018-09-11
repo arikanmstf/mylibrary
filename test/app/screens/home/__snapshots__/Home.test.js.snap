@@ -19,7 +19,7 @@ ShallowWrapper {
         },
       ]
     }
-    fetchCards={[MockFunction]}
+    fetchPublications={[MockFunction]}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],

@@ -5,12 +5,11 @@
  */
 
 import { handleActions } from 'redux-actions';
-import {
-  updateCard,
-} from './publicationDetailActions';
+import { updateCard, updatePublication } from './publicationDetailActions';
 
 const initialState = {
   card: null,
+  publication: null,
 };
 
 const reducer = new Map([
@@ -19,6 +18,13 @@ const reducer = new Map([
     (state, action) => ({
       ...state,
       card: action.payload || state.card,
+    }),
+  ],
+  [
+    updatePublication,
+    (state, action) => ({
+      ...state,
+      publication: action.payload || state.publication,
     }),
   ],
 ]);

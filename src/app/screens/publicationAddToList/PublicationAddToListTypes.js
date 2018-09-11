@@ -6,21 +6,19 @@
 
 // @flow
 import * as React from 'react';
-import type { CardDetailProps } from 'ui/CardDetail/types';
+import type { RowListProps, Row } from 'ui/RowList/types';
 import type { ScreenProps } from 'ui/Screen/types';
 import type { HeaderProps } from 'ui/Header/types';
 import type { PageProps } from 'ui/Page/types';
-import type { CardItem } from 'ui/CardList/types';
+import type { PublicationDetail } from 'helpers/api/types';
 
-export type PublicationDetailProps = {
-  CardDetail: React.ComponentType<CardDetailProps>,
+export type PublicationAddToListProps = {
+  RowList: React.ComponentType<RowListProps>,
   Screen: React.ComponentType<ScreenProps>,
   Header: React.ComponentType<HeaderProps>,
   Page: React.ComponentType<PageProps>,
-  fetchData: Function,
-  card?: CardItem,
+  rows?: Array<Row>,
+  publication?: PublicationDetail,
+  fetchLists: Function,
+  fetchPublication: Function,
 };
-
-export type GetPublicationDetailRequest = {
-  id: number,
-}

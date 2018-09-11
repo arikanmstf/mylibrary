@@ -40,14 +40,14 @@ export class CardList extends React.Component<CardListProps> {
 
   handleRefresh = () => {
     const {
-      fetchCards,
+      fetchPublications,
       isLoaderVisible,
       search,
     } = this.props;
 
-    if (fetchCards && !isLoaderVisible) {
-      fetchCards({ search });
-      logger.log('fetchCards');
+    if (fetchPublications && !isLoaderVisible) {
+      fetchPublications({ search });
+      logger.log('fetchPublications');
     }
   };
 

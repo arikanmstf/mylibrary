@@ -48,7 +48,6 @@ const styles = {
   search: {
     paddingTop: '14px',
     margin: '0 20px',
-    maxWidth: '500px',
   },
   flex: {
     flexGrow: 1,

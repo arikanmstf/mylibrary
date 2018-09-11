@@ -24,7 +24,10 @@ import {
   Body,
   Right,
 } from 'native-base';
-import { publicationDetailUrl } from 'constants/routes/createUrl';
+import {
+  publicationDetailUrl,
+  publicationAddToListUrl,
+} from 'constants/routes/createUrl';
 import getConfig from 'config/get';
 import logger from 'helpers/logger';
 
@@ -56,6 +59,14 @@ export class CardDetail extends React.Component<CardDetailProps> {
     }
   };
 
+  goToAddToList = () => {
+    const { card, history } = this.props;
+
+    logger.log('goToAddToList', card);
+    const url = publicationAddToListUrl(card.id);
+    history.push(url);
+  };
+
   toggleFavorite(id: number) {
     const { toggleFavorite } = this.props;
     if (toggleFavorite) {
@@ -76,7 +87,7 @@ export class CardDetail extends React.Component<CardDetailProps> {
     if (!card) {
       return null;
     }
-    logger.log('render: CardDetail', card);
+    logger.log('render: CardDetail');
 
     return (
       <ScrollView>
@@ -84,7 +95,7 @@ export class CardDetail extends React.Component<CardDetailProps> {
           <CardItem>
             <Body>
               <Text>{card.title}</Text>
-              <Text note>{card.description}</Text>
+              <Text note>{card.subHeader}</Text>
             </Body>
           </CardItem>
           <TouchableWithoutFeedback
@@ -102,7 +113,7 @@ export class CardDetail extends React.Component<CardDetailProps> {
           { isDetailed ? (
             <CardItem>
               <Body>
-                <Text>{card.text}</Text>
+                <Text>{card.description}</Text>
               </Body>
             </CardItem>
           ) : null }
@@ -119,6 +130,12 @@ export class CardDetail extends React.Component<CardDetailProps> {
                 onPress={() => { this.toggleRead(card.id); }}
               >
                 <Icon name="book" active={card.isRead} style={{ fontSize: 30 }} />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{ width: 40, marginTop: 3 }}
+                onPress={this.goToAddToList}
+              >
+                <Icon name="add" style={{ fontSize: 30 }} />
               </TouchableOpacity>
             </Left>
             <Right>

@@ -8,11 +8,12 @@
 
 export type CardItem = {
   title: string,
-  description?: ?string,
+  subHeader?: ?string,
   image?: string,
   id: number,
   isFavorite: boolean,
   isRead: boolean,
+  description: string,
 }
 
 export type RenderCardListItem = {
@@ -25,9 +26,9 @@ export type Pagination<V> = {
 };
 
 export type CardListProps = {
-  cards: Array<CardItem>,
+  cards?: Array<CardItem>,
   isLoaderVisible: boolean,
   search: string,
   addCards: Function,
-  fetchCards: Function,
+  fetchPublications: Function,
 };
