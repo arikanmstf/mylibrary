@@ -29,6 +29,23 @@ class PublicationAddToList extends React.Component<PublicationAddToListProps> {
     }
   }
 
+  createOnRowClick = (row) => {
+    const {
+      publication,
+      toggleList,
+    } = this.props;
+
+    if (publication) {
+      const request = {
+        listId: row.id,
+        publicationId: publication.id,
+        orderNo: 0, // TODO
+      };
+
+      toggleList(request);
+    }
+  };
+
   render() {
     const {
       Screen,
@@ -42,11 +59,12 @@ class PublicationAddToList extends React.Component<PublicationAddToListProps> {
 
     return (
       <Screen>
-        <Header title={t.get('HOME_TITLE')} />
+        <Header title={t.get('PUBLICATION_DETAIL_ADD_LIST_HEADER')} />
         <Page>
           <RowList
             rows={rows}
             compareRows={publication ? publication.lists : []}
+            onRowClick={this.createOnRowClick}
           />
         </Page>
       </Screen>

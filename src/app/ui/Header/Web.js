@@ -28,7 +28,9 @@ import { withStyles } from '@material-ui/core/styles';
 import logger from 'helpers/logger';
 import { white } from 'constants/theme/color';
 import Logo from 'assets/images/logo.png';
-import { Image, TextField, Form } from 'ui';
+import {
+  Image, TextField, Form, Text,
+} from 'ui';
 import t from 'helpers/i18n/Translate';
 import fields, { SEARCH_FORM_KEY } from 'constants/forms/search';
 import { HOME } from 'constants/routes/routeNames';
@@ -51,6 +53,7 @@ const styles = {
   },
   flex: {
     flexGrow: 1,
+    textAlign: 'center',
   },
   image: {
     width: 50,
@@ -133,6 +136,7 @@ export class Header extends React.PureComponent<HeaderProps> {
       classes,
       isDrawerOpen,
       handleSubmit,
+      title,
     } = this.props;
 
     return (
@@ -145,14 +149,15 @@ export class Header extends React.PureComponent<HeaderProps> {
               alt="mylibrary logo"
               to={HOME}
             />
-            <TextField
-              name={fields.SEARCH}
-              type="search"
-              className={classes && classes.search}
-              label={t.get('HEADER_SEARCH')}
-              onChange={debounce(this.handleChange, SEARCH_SUBMIT_TIMEOUT)}
-            />
-            <div className={classes && classes.flex} />
+            { title ? (<Text className={classes && classes.flex}>{title}</Text>) : (
+              <TextField
+                name={fields.SEARCH}
+                type="search"
+                className={classes && classes.search}
+                label={t.get('HEADER_SEARCH')}
+                onChange={debounce(this.handleChange, SEARCH_SUBMIT_TIMEOUT)}
+              />
+            )}
             <IconButton
               onClick={this.toggleDrawer}
             >

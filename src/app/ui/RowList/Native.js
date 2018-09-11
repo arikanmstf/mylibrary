@@ -7,6 +7,9 @@
 // @flow
 import * as React from 'react';
 import {
+  TouchableWithoutFeedback,
+} from 'react-native';
+import {
   List,
   ListItem,
   Left,
@@ -23,22 +26,26 @@ class RowList extends React.PureComponent<RowListProps> {
   }
 
   renderRowList() {
-    const { rows, compareRows } = this.props;
+    const { rows, compareRows, onRowClick } = this.props;
     return rows && rows.map((row) => {
       const isSelected = compareRows.some(RowList.hasRowId(row.id));
 
       return (
-        <ListItem
-          selected={isSelected}
+        <TouchableWithoutFeedback
           key={row.id}
+          onPress={() => { if (onRowClick) { onRowClick(row); } }}
         >
-          <Left>
-            <Text>{row.title}</Text>
-          </Left>
-          <Right>
-            <Icon name={isSelected ? 'checkmark' : 'add'} style={{ fontSize: 30 }} />
-          </Right>
-        </ListItem>
+          <ListItem
+            selected={isSelected}
+          >
+            <Left>
+              <Text>{row.title}</Text>
+            </Left>
+            <Right>
+              <Icon name={isSelected ? 'checkmark' : 'add'} style={{ fontSize: 30 }} />
+            </Right>
+          </ListItem>
+        </TouchableWithoutFeedback>
       );
     });
   }

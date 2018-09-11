@@ -2,5 +2,6 @@
 import * as React from 'react';
 
 export type TextProps = {
-  children: React.Node
+  children: React.Node,
+  className: string,
 };

@@ -18,4 +18,5 @@ type CompareRow = {
 export type RowListProps = {
   rows?: Array<Row>,
   compareRows: Array<CompareRow>,
+  onRowClick?: Function,
 };

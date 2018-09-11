@@ -15,7 +15,8 @@ import type { Dispatch } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
 import type { Immutable } from 'store/ImmutableTypes';
 import type { State } from 'store/StateTypes';
-import { getPublicationDetail } from './publicationDetailServices';
+import { getPublicationDetail, toggleList as toggleListService } from './publicationDetailServices';
+import type { ToggleListRequest } from './PublicationDetailTypes';
 
 export const updateCard = createAction(PUBLICATION_UPDATE_CARD);
 export const updatePublication = createAction(PUBLICATION_UPDATE_PUBLICATION);
@@ -42,6 +43,22 @@ export const fetchPublication = (id: number, shouldShowLoader: boolean = true): 
   };
 };
 
+export const toggleList = (request: ToggleListRequest): ThunkAction => {
+  return async (dispatch: Dispatch<*>) => {
+    logger.log('action: toggleListStart');
+    dispatch(showLoader());
+
+    const publication = await toggleListService(request);
+    logger.log('action: toggleList');
+
+    await Promise.all([
+      dispatch(updatePublication(publication)),
+    ]);
+
+    logger.log('action: toggleListEnd');
+    dispatch(hideLoader());
+  };
+};
 export const mapStateToProps = (state: Immutable<State>) => ({
   card: state.toJS().publication.card,
 });

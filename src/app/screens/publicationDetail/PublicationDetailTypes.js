@@ -24,3 +24,9 @@ export type PublicationDetailProps = {
 export type GetPublicationDetailRequest = {
   id: number,
 }
+
+export type ToggleListRequest = {
+  publicationId: number,
+  listId: number,
+  orderNo?: number,
+}
