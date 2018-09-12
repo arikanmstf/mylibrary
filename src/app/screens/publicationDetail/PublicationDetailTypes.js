@@ -26,7 +26,7 @@ export type GetPublicationDetailRequest = {
 }
 
 export type ToggleListRequest = {
-  publicationId: number,
+  addToListId: number,
   listId: number,
   orderNo?: number,
 }

@@ -6,7 +6,7 @@
 
 // @flow
 export type TextFieldProps = {
-  label: string,
+  label?: string,
   name: string,
   type?: string,
   style?: Object,

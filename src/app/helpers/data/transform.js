@@ -45,6 +45,7 @@ export const transformItemToRow = (item: Item): Row => {
     title: item.name,
     id: item.id,
     isSelected: false,
+    orderNo: item.orderNo,
   };
 };
 

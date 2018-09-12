@@ -49,9 +49,11 @@ export const toggleList = (request: ToggleListRequest): ThunkAction => {
     dispatch(showLoader());
 
     const publication = await toggleListService(request);
+    const card = transformPublicationToCard(publication);
     logger.log('action: toggleList');
 
     await Promise.all([
+      dispatch(updateCard(card)),
       dispatch(updatePublication(publication)),
     ]);
 

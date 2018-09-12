@@ -9,14 +9,15 @@ export type Row = {
   title: string,
   id: number,
   isSelected: boolean,
+  orderNo: number,
 }
 
-type CompareRow = {
+export type CompareRow = {
   id: number,
 }
 
 export type RowListProps = {
   rows?: Array<Row>,
+  addToListId: number,
   compareRows: Array<CompareRow>,
-  onRowClick?: Function,
 };

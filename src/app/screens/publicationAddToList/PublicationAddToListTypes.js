@@ -21,5 +21,4 @@ export type PublicationAddToListProps = {
   publication?: PublicationDetail,
   fetchLists: Function,
   fetchPublication: Function,
-  toggleList: Function,
 };

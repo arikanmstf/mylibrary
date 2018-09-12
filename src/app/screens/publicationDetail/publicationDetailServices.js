@@ -12,6 +12,6 @@ export const getPublicationDetail = async ({ id }: GetPublicationDetailRequest):
   return Api.get(`${PUBLICATION}/${id}`);
 };
 
-export const toggleList = async ({ publicationId, ...other }: ToggleListRequest): Promise<PublicationDetail> => {
-  return Api.post(`${PUBLICATION}/${publicationId}/toggle-list`, other);
+export const toggleList = async ({ addToListId, ...other }: ToggleListRequest): Promise<PublicationDetail> => {
+  return Api.post(`${PUBLICATION}/${addToListId}/toggle-list`, other);
 };

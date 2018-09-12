@@ -7,33 +7,28 @@
 // @flow
 import * as React from 'react';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import CheckIcon from '@material-ui/icons/Check';
-import AddIcon from '@material-ui/icons/Add';
+import { ADD_TO_LIST_FORM_KEY } from 'constants/forms/addToList';
 
 import type { RowListProps } from './types';
 
 class RowList extends React.PureComponent<RowListProps> {
-  static hasRowId(rowId) {
-    return (compareRow) => (compareRow.id === rowId);
-  }
-
   renderRowList() {
-    const { rows, compareRows, onRowClick } = this.props;
+    const {
+      rows,
+      compareRows,
+      addToListId,
+      detailComponent: DetailComponent,
+    } = this.props;
 
-    return rows && rows.map((row) => {
-      const isSelected = compareRows.some(RowList.hasRowId(row.id));
+    return rows && compareRows && rows.map((row) => {
       return (
-        <ListItem
+        <DetailComponent
           key={row.id}
-          onClick={() => { if (onRowClick) { onRowClick(row); } }}
-          button
-          dense
-        >
-          <ListItemText>{row.title}</ListItemText>
-          {isSelected ? <CheckIcon color="primary" /> : <AddIcon />}
-        </ListItem>
+          row={row}
+          compareRows={compareRows}
+          addToListId={addToListId}
+          form={`${ADD_TO_LIST_FORM_KEY}__${row.id}`}
+        />
       );
     });
   }

@@ -8,6 +8,7 @@
 import * as React from 'react';
 import logger from 'helpers/logger';
 import t from 'helpers/i18n/Translate';
+import PublicationAddToListForm from './PublicationAddToListForm';
 import type { PublicationAddToListProps } from './PublicationAddToListTypes';
 
 class PublicationAddToList extends React.Component<PublicationAddToListProps> {
@@ -29,22 +30,13 @@ class PublicationAddToList extends React.Component<PublicationAddToListProps> {
     }
   }
 
-  createOnRowClick = (row) => {
-    const {
-      publication,
-      toggleList,
-    } = this.props;
+  static getDerivedStateFromProps(props: PublicationAddToListProps) {
+    const { fetchPublication, match: { params: { id } }, publication } = props;
 
-    if (publication) {
-      const request = {
-        listId: row.id,
-        publicationId: publication.id,
-        orderNo: 0, // TODO
-      };
-
-      toggleList(request);
+    if (!publication || (publication && publication.id !== +id)) {
+      fetchPublication(id);
     }
-  };
+  }
 
   render() {
     const {
@@ -63,8 +55,9 @@ class PublicationAddToList extends React.Component<PublicationAddToListProps> {
         <Page>
           <RowList
             rows={rows}
-            compareRows={publication ? publication.lists : []}
-            onRowClick={this.createOnRowClick}
+            compareRows={publication ? publication.lists : null}
+            addToListId={publication ? publication.id : null}
+            detailComponent={PublicationAddToListForm}
           />
         </Page>
       </Screen>
