@@ -5,7 +5,7 @@
  */
 
 // @flow
-import * as React from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { TouchableOpacity } from 'react-native';
 import { reduxForm } from 'redux-form/immutable';
@@ -58,7 +58,7 @@ export const SideBar = () => (
   </Content>
 );
 
-export class Header extends React.PureComponent<HeaderProps> {
+export class Header extends PureComponent<HeaderProps> {
   handleMenuButtonPress = () => {
     const { showDrawer } = this.props;
     if (showDrawer) {

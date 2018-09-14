@@ -5,15 +5,15 @@
  */
 
 // @flow
-import * as React from 'react';
+import { ComponentType } from 'react';
 import type { TextProps } from 'ui/Text/types';
 import type { ScreenProps } from 'ui/Screen/types';
 import type { HeaderProps } from 'ui/Header/types';
 import type { PageProps } from 'ui/Page/types';
 
 export type #{className}Props = {
-  Text: React.ComponentType<TextProps>,
-  Screen: React.ComponentType<ScreenProps>,
-  Header: React.ComponentType<HeaderProps>,
-  Page: React.ComponentType<PageProps>,
+  Text: ComponentType<TextProps>,
+  Screen: ComponentType<ScreenProps>,
+  Header: ComponentType<HeaderProps>,
+  Page: ComponentType<PageProps>,
 };

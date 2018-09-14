@@ -1,8 +1,8 @@
 // @flow
-import * as React from 'react';
+import React, { ComponentType } from 'react';
 
 const connect = (mapUiToProps: Function) => (
-  (WrappedComponent: React.ComponentType<*>) => {
+  (WrappedComponent: ComponentType<*>) => {
     const uiComponents = mapUiToProps();
     return (props: Object) => (
       <WrappedComponent

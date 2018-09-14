@@ -1,5 +1,5 @@
 // @flow
-import * as React from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, ScrollView } from 'react-native';
 import { Drawer } from 'native-base';
@@ -9,7 +9,7 @@ import defaultStyle from './style.json';
 import { mapStateToProps, mapDispatchToProps } from './actions';
 import type { ScreenProps } from './types';
 
-export class Screen extends React.PureComponent<ScreenProps> {
+export class Screen extends PureComponent<ScreenProps> {
   hideDrawer = () => {
     const { hideDrawer } = this.props;
     if (hideDrawer) {

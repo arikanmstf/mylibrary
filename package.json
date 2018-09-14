@@ -23,7 +23,6 @@
     "flow-update": "flow-typed install",
     "fresh-install": "rm -rf $TMPDIR/react-* && rm -rf $TMPDIR/metro* && rm -rf node_modules && rm yarn.lock && yarn cache clean && yarn install",
     "check-src": "yarn run test && yarn run lint",
-    "postinstall": "yarn run flow-update",
     "create-module": "node src/scripts/create-module/index"
   },
   "keywords": [

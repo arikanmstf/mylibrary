@@ -5,7 +5,7 @@
  */
 
 // @flow
-import * as React from 'react';
+import React, { PureComponent } from 'react';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import IconButton from '@material-ui/core/IconButton';
@@ -16,7 +16,7 @@ import fields from 'constants/forms/addToList';
 
 import type { RowDetailProps } from './types';
 
-class RowDetail extends React.PureComponent<RowDetailProps> {
+class RowDetail extends PureComponent<RowDetailProps> {
   static hasRowId(rowId) {
     return (compareRow) => (compareRow.id === rowId);
   }

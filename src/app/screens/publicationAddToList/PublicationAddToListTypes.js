@@ -5,7 +5,7 @@
  */
 
 // @flow
-import * as React from 'react';
+import { ComponentType } from 'react';
 import type { RowListProps, Row } from 'ui/RowList/types';
 import type { ScreenProps } from 'ui/Screen/types';
 import type { HeaderProps } from 'ui/Header/types';
@@ -13,10 +13,10 @@ import type { PageProps } from 'ui/Page/types';
 import type { PublicationDetail } from 'helpers/api/types';
 
 export type PublicationAddToListProps = {
-  RowList: React.ComponentType<RowListProps>,
-  Screen: React.ComponentType<ScreenProps>,
-  Header: React.ComponentType<HeaderProps>,
-  Page: React.ComponentType<PageProps>,
+  RowList: ComponentType<RowListProps>,
+  Screen: ComponentType<ScreenProps>,
+  Header: ComponentType<HeaderProps>,
+  Page: ComponentType<PageProps>,
   rows?: Array<Row>,
   publication?: PublicationDetail,
   fetchLists: Function,

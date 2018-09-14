@@ -1,5 +1,5 @@
 // @flow
-import * as React from 'react';
+import React, { ComponentType } from 'react';
 import { HOME } from 'constants/routes/routeNames';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
@@ -13,7 +13,7 @@ const PublicRoute = (
     isInitialized,
     ...rest
   }: {
-    component: React.ComponentType<*>,
+    component: ComponentType<*>,
     isLoggedIn: boolean,
     isInitialized: boolean
   }

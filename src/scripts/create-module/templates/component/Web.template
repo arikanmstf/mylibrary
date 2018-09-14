@@ -5,11 +5,11 @@
  */
 
 // @flow
-import * as React from 'react';
+import React, { Node } from 'react';
 
 import type { #{componentName}Props } from './types';
 
-const #{componentName} = (props: #{componentName}Props): React.Node => {
+const #{componentName} = (props: #{componentName}Props): Node => {
   return <div />;
 };
 

@@ -5,13 +5,13 @@
  */
 
 // @flow
-import * as React from 'react';
+import React, { Component } from 'react';
 import logger from 'helpers/logger';
 import t from 'helpers/i18n/Translate';
 import PublicationAddToListForm from './PublicationAddToListForm';
 import type { PublicationAddToListProps } from './PublicationAddToListTypes';
 
-class PublicationAddToList extends React.Component<PublicationAddToListProps> {
+class PublicationAddToList extends Component<PublicationAddToListProps> {
   componentDidMount() {
     const {
       fetchLists,

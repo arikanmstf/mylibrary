@@ -5,7 +5,7 @@
  */
 
 // @flow
-import * as React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
@@ -39,7 +39,7 @@ const isCloseToBottom = () => {
   return windowHeight + window.pageYOffset + 600 >= docHeight;
 };
 
-export class CardList extends React.Component<CardListProps> {
+export class CardList extends Component<CardListProps> {
   componentDidMount() {
     this.handleScrollDebounce = debounce(this.handleScroll, 800, {
       leading: true,

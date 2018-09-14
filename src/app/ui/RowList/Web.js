@@ -5,13 +5,13 @@
  */
 
 // @flow
-import * as React from 'react';
+import React, { PureComponent } from 'react';
 import List from '@material-ui/core/List';
 import { ADD_TO_LIST_FORM_KEY } from 'constants/forms/addToList';
 
 import type { RowListProps } from './types';
 
-class RowList extends React.PureComponent<RowListProps> {
+class RowList extends PureComponent<RowListProps> {
   renderRowList() {
     const {
       rows,

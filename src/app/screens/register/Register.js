@@ -5,7 +5,7 @@
  */
 
 // @flow
-import * as React from 'react';
+import React, { Component } from 'react';
 import { reduxForm } from 'redux-form/immutable';
 import t from 'helpers/i18n/Translate';
 import fields, { REGISTER_FORM_KEY } from 'constants/forms/register';
@@ -18,7 +18,7 @@ import { submitRegisterForm } from './registerActions';
 import type { RegisterProps } from './RegisterTypes';
 
 // eslint-disable-next-line
-class Register extends React.Component<RegisterProps> {
+class Register extends Component<RegisterProps> {
   render() {
     const {
       Text,

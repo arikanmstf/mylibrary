@@ -5,7 +5,7 @@
  */
 
 // @flow
-import * as React from 'react';
+import React, { PureComponent } from 'react';
 import debounce from 'lodash.debounce';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -68,7 +68,7 @@ const styles = {
   },
 };
 
-export class Header extends React.PureComponent<HeaderProps> {
+export class Header extends PureComponent<HeaderProps> {
   static mapSideNavigationItems() {
     return routes.map((route: SideNavigationItem) => {
       let Icon;

@@ -1,5 +1,5 @@
 // @flow
-import * as React from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import * as routeNames from 'constants/routes/routeNames';
 import { fetchInitialState } from 'screens/login/loginActions';
@@ -17,7 +17,7 @@ const ErrorScreen = () => (
   <h1>404 Not Found.</h1>
 );
 
-class Routes extends React.PureComponent<RoutesProps> {
+class Routes extends PureComponent<RoutesProps> {
   componentDidMount() {
     const { fetchInitialState: initial } = this.props;
     initial();

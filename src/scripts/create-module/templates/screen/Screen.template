@@ -5,13 +5,13 @@
  */
 
 // @flow
-import * as React from 'react';
+import React, { Component } from 'react';
 import logger from 'helpers/logger';
 import t from 'helpers/i18n/Translate';
 import type { #{className}Props } from './#{className}Types';
 
 // eslint-disable-next-line react/prefer-stateless-function
-class #{className} extends React.Component<#{className}Props> {
+class #{className} extends Component<#{className}Props> {
   render() {
     const {
       Screen,

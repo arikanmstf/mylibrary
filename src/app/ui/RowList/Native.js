@@ -5,7 +5,7 @@
  */
 
 // @flow
-import * as React from 'react';
+import React, { PureComponent } from 'react';
 import {
   TouchableWithoutFeedback,
 } from 'react-native';
@@ -20,7 +20,7 @@ import { Text } from 'ui/native';
 
 import type { RowListProps } from './types';
 
-class RowList extends React.PureComponent<RowListProps> {
+class RowList extends PureComponent<RowListProps> {
   static hasRowId(rowId) {
     return (compareRow) => (compareRow.id === rowId);
   }

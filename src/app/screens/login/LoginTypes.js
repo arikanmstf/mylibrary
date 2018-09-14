@@ -5,7 +5,7 @@
  */
 
 // @flow
-import * as React from 'react';
+import { ComponentType } from 'react';
 import type { TextProps } from 'ui/Text/types';
 import type { TextFieldProps } from 'ui/forms/TextField/types';
 import type { ScreenProps } from 'ui/Screen/types';
@@ -31,14 +31,14 @@ export type SubmitLoginFormResponse = {
 };
 
 export type LoginProps = {
-  Text: React.ComponentType<TextProps>,
-  TextField: React.ComponentType<TextFieldProps>,
-  Screen: React.ComponentType<ScreenProps>,
-  Button: React.ComponentType<ButtonProps>,
-  Row: React.ComponentType<RowProps>,
-  Col: React.ComponentType<ColProps>,
-  Image: React.ComponentType<ImageProps>,
-  Form: React.ComponentType<FormProps>,
-  Link: React.ComponentType<*>,
+  Text: ComponentType<TextProps>,
+  TextField: ComponentType<TextFieldProps>,
+  Screen: ComponentType<ScreenProps>,
+  Button: ComponentType<ButtonProps>,
+  Row: ComponentType<RowProps>,
+  Col: ComponentType<ColProps>,
+  Image: ComponentType<ImageProps>,
+  Form: ComponentType<FormProps>,
+  Link: ComponentType<*>,
   handleSubmit: Function,
 };

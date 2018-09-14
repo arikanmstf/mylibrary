@@ -1,5 +1,5 @@
 // @flow
-import * as React from 'react';
+import { ComponentType } from 'react';
 import type { LoginProps } from 'screens/login/LoginTypes';
 import type { LogoutProps } from 'screens/logout/LogoutTypes';
 import type { RegisterProps } from 'screens/register/RegisterTypes';
@@ -10,17 +10,17 @@ import type { RowProps } from 'ui/Row/types';
 import type { LoaderContainerProps } from 'ui/Loader/types';
 
 export type RoutesProps = {
-  LoginScreen: React.ComponentType<LoginProps>,
-  LogoutScreen: React.ComponentType<LogoutProps>,
-  RegisterScreen: React.ComponentType<RegisterProps>,
-  HomeScreen: React.ComponentType<HomeProps>,
-  PublicationDetailScreen: React.ComponentType<PublicationDetailProps>,
-  PublicationAddToListScreen: React.ComponentType<PublicationAddToListProps>,
+  LoginScreen: ComponentType<LoginProps>,
+  LogoutScreen: ComponentType<LogoutProps>,
+  RegisterScreen: ComponentType<RegisterProps>,
+  HomeScreen: ComponentType<HomeProps>,
+  PublicationDetailScreen: ComponentType<PublicationDetailProps>,
+  PublicationAddToListScreen: ComponentType<PublicationAddToListProps>,
   Router: Function,
   Switch: Function,
   Route: Function,
-  Row: React.ComponentType<RowProps>,
-  Loader: React.ComponentType<LoaderContainerProps>,
+  Row: ComponentType<RowProps>,
+  Loader: ComponentType<LoaderContainerProps>,
   PrivateRoute: Function,
   PublicRoute: Function,
   fetchInitialState: Function,

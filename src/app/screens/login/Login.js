@@ -5,7 +5,7 @@
  */
 
 // @flow
-import * as React from 'react';
+import React, { PureComponent } from 'react';
 import { reduxForm } from 'redux-form/immutable';
 import t from 'helpers/i18n/Translate';
 import fields, { LOGIN_FORM_KEY } from 'constants/forms/login';
@@ -17,7 +17,7 @@ import validate from './loginValidations';
 import type { LoginProps } from './LoginTypes';
 
 // eslint-disable-next-line
-class Login extends React.PureComponent<LoginProps> {
+class Login extends PureComponent<LoginProps> {
   render() {
     const {
       Text,

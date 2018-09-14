@@ -5,11 +5,11 @@
  */
 
 // @flow
-import * as React from 'react';
+import { Node } from 'react';
 
 import type { RowDetailProps } from './types';
 
-const RowDetail = (props: RowDetailProps): ?React.Node => {
+const RowDetail = (props: RowDetailProps): ?Node => {
   return null;
 };
 

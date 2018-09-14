@@ -5,7 +5,7 @@
  */
 
 // @flow
-import * as React from 'react';
+import React, { Component } from 'react';
 import debounce from 'lodash.debounce';
 import { withRouter } from 'react-router-native';
 import { connect } from 'react-redux';
@@ -24,7 +24,7 @@ const isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
   return layoutMeasurement.height + contentOffset.y >= contentSize.height - paddingToBottom;
 };
 
-export class CardList extends React.Component<CardListProps> {
+export class CardList extends Component<CardListProps> {
   handleScroll = ({ nativeEvent }) => {
     const {
       addCards,

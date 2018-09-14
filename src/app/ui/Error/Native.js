@@ -1,17 +1,17 @@
 // @flow
-import * as React from 'react';
+import React, { Component, ErrorInfo } from 'react';
 import logger from 'helpers/logger';
 import { Screen } from 'ui/native';
 
 import type { ErrorProps, ErrorState } from './types';
 
-class ErrorBoundary extends React.Component<ErrorProps, ErrorState> {
+class ErrorBoundary extends Component<ErrorProps, ErrorState> {
   constructor(props) {
     super(props);
     this.state = { error: null };
   }
 
-  componentDidCatch(error: Error, info: React.ErrorInfo): void {
+  componentDidCatch(error: Error, info: ErrorInfo): void {
     logger.log(error, info);
     this.setState({ error });
   }

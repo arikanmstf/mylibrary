@@ -5,7 +5,7 @@
  */
 
 // @flow
-import * as React from 'react';
+import React, { Node } from 'react';
 import styled from 'styled-components';
 import defaultStyle from './style.json';
 import type { PageProps } from './types';
@@ -19,7 +19,7 @@ height: auto;
 box-sizing: border-box;
 `;
 
-const Page = (props: PageProps): ?React.Node => {
+const Page = (props: PageProps): ?Node => {
   const { style, ...rest } = props;
   const mergedStyle = {
     ...defaultStyle,

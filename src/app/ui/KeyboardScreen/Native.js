@@ -5,13 +5,13 @@
  */
 
 // @flow
-import * as React from 'react';
+import React, { Node } from 'react';
 import { KeyboardAvoidingView, ScrollView, StyleSheet } from 'react-native';
 import defaultStyle from 'ui/Screen/style';
 
 import type { ScreenProps } from 'ui/Screen/types';
 
-const KeyboardScreen = (props: ScreenProps): ?React.Node => {
+const KeyboardScreen = (props: ScreenProps): ?Node => {
   const {
     style,
     center,

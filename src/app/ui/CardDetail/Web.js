@@ -5,7 +5,7 @@
  */
 
 // @flow
-import * as React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
@@ -33,7 +33,7 @@ import type { CardDetailProps } from './types';
 const { staticFilesURL } = getConfig();
 const styleActive = { color: green500 };
 
-export class CardDetail extends React.Component<CardDetailProps> {
+export class CardDetail extends Component<CardDetailProps> {
   static defaultProps = {
     isDetailed: false,
   };

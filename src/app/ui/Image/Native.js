@@ -1,10 +1,10 @@
 // @flow
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { Image as NativeImage } from 'react-native';
 import { Link } from 'react-router-native';
 import type { ImageProps } from './types';
 
-class Image extends React.PureComponent<ImageProps> {
+class Image extends PureComponent<ImageProps> {
   renderImage() {
     const {
       to,

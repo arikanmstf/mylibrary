@@ -1,10 +1,10 @@
 // @flow
-import * as React from 'react';
+import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 
 import type { ImageProps } from './types';
 
-class Image extends React.PureComponent<ImageProps> {
+class Image extends PureComponent<ImageProps> {
   renderImage() {
     const {
       source,

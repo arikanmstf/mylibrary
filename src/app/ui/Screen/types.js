@@ -1,8 +1,8 @@
 // @flow
-import * as React from 'react';
+import { Node } from 'react';
 
 export type ScreenProps = {
-  children?: React.Node,
+  children?: Node,
   style?: Object,
   center?: boolean,
   isDrawerOpen?: boolean,

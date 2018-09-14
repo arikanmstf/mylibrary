@@ -5,12 +5,11 @@
  */
 
 // @flow
-import * as React from 'react';
+import React, { Component } from 'react';
 import logger from 'helpers/logger';
 import type { PublicationDetailProps } from './PublicationDetailTypes';
 
-// eslint-disable-next-line react/prefer-stateless-function
-class PublicationDetail extends React.Component<PublicationDetailProps> {
+class PublicationDetail extends Component<PublicationDetailProps> {
   componentDidMount() {
     const { fetchPublication, match: { params: { id } }, card } = this.props;
 

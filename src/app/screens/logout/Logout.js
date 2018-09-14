@@ -5,11 +5,11 @@
  */
 
 // @flow
-import * as React from 'react';
+import { Component } from 'react';
 import logger from 'helpers/logger';
 import type { LogoutProps } from './LogoutTypes';
 
-class Logout extends React.Component<LogoutProps> {
+class Logout extends Component<LogoutProps> {
   componentDidMount() {
     const { makeLogoutRequest } = this.props;
     makeLogoutRequest();

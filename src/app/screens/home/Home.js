@@ -5,12 +5,11 @@
  */
 
 // @flow
-import * as React from 'react';
+import React, { Component } from 'react';
 import logger from 'helpers/logger';
 import type { HomeProps } from './HomeTypes';
 
-// eslint-disable-next-line
-class Home extends React.Component<HomeProps> {
+class Home extends Component<HomeProps> {
   componentDidMount() {
     const {
       fetchPublications,
