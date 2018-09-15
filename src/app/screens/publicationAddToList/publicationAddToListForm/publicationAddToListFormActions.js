@@ -1,9 +1,12 @@
+/**
+ * Actions Template By => create-module script
+ * @version 1.0.1
+ *
+ */
+
 // @flow
 import { initialize, change } from 'redux-form';
-import { reduxForm } from 'redux-form/immutable';
-import { connect } from 'react-redux';
-import { RowDetail } from 'ui';
-import logger from 'helpers/logger';
+import logger from 'helpers/logger/index';
 import { toggleList } from 'screens/publicationDetail/publicationDetailActions';
 
 import type { Dispatch } from 'redux';
@@ -12,6 +15,7 @@ import type { SubmitFormType } from 'ui/RowDetail/types';
 
 const onFormInitialize = (key: string, form: SubmitFormType) => {
   return (dispatch: Dispatch<*>) => {
+    logger.log('onFormInitialize', key);
     dispatch(initialize(key, form));
   };
 };
@@ -25,16 +29,12 @@ const onFormChange = (key: string, form: SubmitFormType) => {
   };
 };
 
-const onSubmit = (form: Immutable<SubmitFormType>, dispatch: Dispatch<*>) => {
+export const onSubmit = (form: Immutable<SubmitFormType>, dispatch: Dispatch<*>) => {
   logger.log('submitAddToListForm', form.toJS());
   dispatch(toggleList(form.toJS()));
 };
 
-const mapDispatchToProps = {
+export const mapDispatchToProps = {
   onFormInitialize,
   onFormChange,
 };
-
-export default reduxForm({
-  onSubmit,
-})(connect(null, mapDispatchToProps)(RowDetail));

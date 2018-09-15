@@ -17,6 +17,7 @@ export type PublicationAddToListProps = {
   Screen: ComponentType<ScreenProps>,
   Header: ComponentType<HeaderProps>,
   Page: ComponentType<PageProps>,
+  PublicationAddToListForm: ComponentType<*>,
   rows?: Array<Row>,
   publication?: PublicationDetail,
   fetchLists: Function,

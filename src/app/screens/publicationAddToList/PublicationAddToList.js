@@ -8,7 +8,6 @@
 import React, { Component } from 'react';
 import logger from 'helpers/logger';
 import t from 'helpers/i18n/Translate';
-import PublicationAddToListForm from './PublicationAddToListForm';
 import type { PublicationAddToListProps } from './PublicationAddToListTypes';
 
 class PublicationAddToList extends Component<PublicationAddToListProps> {
@@ -36,6 +35,8 @@ class PublicationAddToList extends Component<PublicationAddToListProps> {
     if (!publication || (publication && publication.id !== +id)) {
       fetchPublication(id);
     }
+
+    return null;
   }
 
   render() {
@@ -44,6 +45,7 @@ class PublicationAddToList extends Component<PublicationAddToListProps> {
       Header,
       Page,
       RowList,
+      PublicationAddToListForm,
       rows,
       publication,
     } = this.props;

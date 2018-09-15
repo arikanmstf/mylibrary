@@ -15,12 +15,14 @@ import {
 } from 'ui';
 import PublicationAddToListScreen from './PublicationAddToList';
 import { mapStateToProps, mapDispatchToProps } from './publicationAddToListActions';
+import PublicationAddToListForm from './publicationAddToListForm/PublicationAddToListFormWebContainer';
 
 const mapUiToProps = () => ({
   RowList,
   Screen,
   Header,
   Page,
+  PublicationAddToListForm,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(PublicationAddToListScreen));

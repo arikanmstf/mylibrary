@@ -14,12 +14,14 @@ import {
 } from 'ui/native';
 import PublicationAddToListScreen from './PublicationAddToList';
 import { mapStateToProps, mapDispatchToProps } from './publicationAddToListActions';
+import PublicationAddToListForm from './publicationAddToListForm/PublicationAddToListFormNativeContainer';
 
 const mapUiToProps = () => ({
   RowList,
   Screen,
   Header,
   Page,
+  PublicationAddToListForm,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(PublicationAddToListScreen));

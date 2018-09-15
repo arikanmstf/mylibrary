@@ -21,13 +21,20 @@ import defaultStyle from './style.json';
 import type { TextFieldProps, ReduxFieldProps } from './types';
 
 const renderTextField = (
-  { input, meta: { touched, error }, ...other }: ReduxFieldProps
-) => (
+  {
+    input,
+    meta: { touched, error },
+    type,
+    ...other
+  }: ReduxFieldProps
+) => console.log(input) || (
   <Item error={!!(touched && error)}>
     <TextInput
+      keyboardType={type === 'number' ? 'numeric' : undefined}
       onChangeText={input.onChange}
       {...input}
       {...other}
+      value={input && input.value ? input.value.toString() : undefined}
     />
     { touched && error ? <Right><Text>{error}</Text></Right> : null }
   </Item>
@@ -56,6 +63,7 @@ const TextField = (props: TextFieldProps): ?Node => {
       style={mergedStyles.container}
       {...other}
       secureTextEntry={isPassword}
+      type={type}
     />
   );
 };

@@ -7,6 +7,8 @@
 // @flow
 import React, { Component } from 'react';
 import debounce from 'lodash.debounce';
+import { Map } from 'immutable';
+
 import { withRouter } from 'react-router-native';
 import { connect } from 'react-redux';
 import {
@@ -51,12 +53,13 @@ export class CardList extends Component<CardListProps> {
     }
   };
 
+  keyExtractor = (item) => item.id;
+
   renderCardList = (item: RenderCardListItem) => {
     const card = item ? item.item : null;
     return card && (
       <CardDetail
         card={card}
-        key={card.id}
       />
     );
   };
@@ -74,9 +77,11 @@ export class CardList extends Component<CardListProps> {
     return (
       <FlatList
         data={cards}
+        extraData={Map({ cards })}
         renderItem={this.renderCardList}
         onScrollEndDrag={handleScrollDebounce}
         refreshControl={<RefreshControl refreshing={false} onRefresh={this.handleRefresh} />}
+        keyExtractor={this.keyExtractor}
       />
     );
   }

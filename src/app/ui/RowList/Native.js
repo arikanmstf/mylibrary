@@ -6,46 +6,31 @@
 
 // @flow
 import React, { PureComponent } from 'react';
-import {
-  TouchableWithoutFeedback,
-} from 'react-native';
-import {
-  List,
-  ListItem,
-  Left,
-  Right,
-  Icon,
-} from 'native-base';
-import { Text } from 'ui/native';
+import { List } from 'native-base';
+import logger from 'helpers/logger';
+import { ADD_TO_LIST_FORM_KEY } from 'constants/forms/addToList';
 
 import type { RowListProps } from './types';
 
 class RowList extends PureComponent<RowListProps> {
-  static hasRowId(rowId) {
-    return (compareRow) => (compareRow.id === rowId);
-  }
-
   renderRowList() {
-    const { rows, compareRows, onRowClick } = this.props;
-    return rows && rows.map((row) => {
-      const isSelected = compareRows.some(RowList.hasRowId(row.id));
+    const {
+      rows,
+      compareRows,
+      addToListId,
+      detailComponent: DetailComponent,
+    } = this.props;
+    logger.log('render: RowList', this.props);
 
+    return rows && compareRows && rows.map((row) => {
       return (
-        <TouchableWithoutFeedback
+        <DetailComponent
           key={row.id}
-          onPress={() => { if (onRowClick) { onRowClick(row); } }}
-        >
-          <ListItem
-            selected={isSelected}
-          >
-            <Left>
-              <Text>{row.title}</Text>
-            </Left>
-            <Right>
-              <Icon name={isSelected ? 'checkmark' : 'add'} style={{ fontSize: 30 }} />
-            </Right>
-          </ListItem>
-        </TouchableWithoutFeedback>
+          row={row}
+          compareRows={compareRows}
+          addToListId={addToListId}
+          form={`${ADD_TO_LIST_FORM_KEY}__${row.id}`}
+        />
       );
     });
   }
