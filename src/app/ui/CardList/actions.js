@@ -1,5 +1,5 @@
 // @flow
-import { fetchAndAddCards, fetchAndUpdateCards } from 'screens/home/homeActions';
+import { fetchAndAddCards, fetchAndUpdateCards } from 'modules/card/actions';
 
 import type { Immutable } from 'store/ImmutableTypes';
 import type { State } from 'store/StateTypes';

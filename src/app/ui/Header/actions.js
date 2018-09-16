@@ -1,6 +1,6 @@
 // @flow
 import { showDrawer, hideDrawer } from 'ui/Screen/actions';
-import { fetchAndUpdateCards } from 'screens/home/homeActions';
+import { fetchAndUpdateCards } from 'modules/card/actions';
 import logger from 'helpers/logger';
 
 import type { Dispatch } from 'redux';

@@ -5,12 +5,18 @@ import type { PublicationDetail } from 'helpers/api/types';
 
 export type State = {|
   form: Object,
-  home: {|
+  card: {|
+    card?: CardItem,
     cards?: Array<CardItem>,
     totalPages: number,
     currentPage: number,
     searchQuery: string,
     isSearchPending: boolean,
+  |},
+  publication: {|
+    publication?: PublicationDetail,
+  |},
+  row: {|
     rows?: Array<Row>,
   |},
   loader: {|
@@ -22,9 +28,5 @@ export type State = {|
   |},
   screen: {|
     isDrawerOpen: boolean,
-  |},
-  publication: {|
-    card?: CardItem,
-    publication?: PublicationDetail,
   |},
 |};

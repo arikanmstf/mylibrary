@@ -8,7 +8,6 @@ import { handleActions } from 'redux-actions';
 import { updatePublication } from './actions';
 
 const initialState = {
-  card: null,
   publication: null,
 };
 

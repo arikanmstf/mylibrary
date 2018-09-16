@@ -5,10 +5,9 @@
  */
 
 // @flow
-import { createAction } from 'redux-actions';
-import { UPDATE_ROWS } from 'constants/actions/actionNames';
 import logger from 'helpers/logger';
 import { fetchAndUpdateCards } from 'modules/card/actions';
+import { updateRows } from 'modules/row/actions';
 
 import type { Dispatch } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
@@ -16,8 +15,6 @@ import type { Immutable } from 'store/ImmutableTypes';
 import type { State } from 'store/StateTypes';
 
 import { getListList } from './homeServices';
-
-export const updateRows = createAction(UPDATE_ROWS);
 
 export const fetchLists = (): ThunkAction => {
   return async (dispatch: Dispatch<*>) => {
@@ -33,7 +30,7 @@ export const fetchLists = (): ThunkAction => {
 
 export const mapStateToProps = (state: Immutable<State>) => ({
   cards: state.toJS().card.cards,
-  rows: state.toJS().home.rows,
+  rows: state.toJS().row.rows,
 });
 
 export const mapDispatchToProps = {

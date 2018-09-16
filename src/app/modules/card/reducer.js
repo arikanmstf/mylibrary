@@ -17,6 +17,7 @@ import {
 
 const initialState = {
   cards: null,
+  card: null,
   totalPages: 0,
   currentPage: 1,
   searchQuery: '',

@@ -7,14 +7,9 @@
 import { handleActions } from 'redux-actions';
 import {
   updateRows,
-} from './homeActions';
+} from './actions';
 
 const initialState = {
-  cards: null,
-  totalPages: 0,
-  currentPage: 1,
-  searchQuery: '',
-  isSearchPending: false,
   rows: null,
 };
 

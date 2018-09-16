@@ -11,7 +11,7 @@ import { fetchPublication } from 'modules/publication/actions';
 import { fetchLists } from 'screens/home/homeActions';
 
 export const mapStateToProps = (state: Immutable<State>) => ({
-  rows: state.toJS().home.rows,
+  rows: state.toJS().row.rows,
   publication: state.toJS().publication.publication,
 });
 
