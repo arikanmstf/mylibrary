@@ -49,7 +49,6 @@ const toggle = (id: number, type: 'read' | 'favorite'): ThunkAction => {
 
       await Promise.all([
         dispatch(updateCard(newCard)),
-        // dispatch(fetchPublication(newCard.id, false)),
       ]);
     }
 

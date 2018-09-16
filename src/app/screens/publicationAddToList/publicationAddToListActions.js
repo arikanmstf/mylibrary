@@ -7,7 +7,7 @@
 // @flow
 import type { Immutable } from 'store/ImmutableTypes';
 import type { State } from 'store/StateTypes';
-import { fetchPublication } from 'screens/publicationDetail/publicationDetailActions';
+import { fetchPublication } from 'modules/publication/actions';
 import { fetchLists } from 'screens/home/homeActions';
 
 export const mapStateToProps = (state: Immutable<State>) => ({

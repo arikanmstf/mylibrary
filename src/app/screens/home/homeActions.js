@@ -17,6 +17,7 @@ import {
 } from 'constants/actions/actionNames';
 import logger from 'helpers/logger';
 import { showLoader, hideLoader } from 'ui/Loader/actions';
+import { getPublicationList } from 'modules/publication/services';
 
 import type { Dispatch } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
@@ -24,7 +25,7 @@ import type { Immutable } from 'store/ImmutableTypes';
 import type { State } from 'store/StateTypes';
 import type { SubmitSearchFormRequest } from 'ui/Header/types';
 
-import { getPublicationList, getListList } from './homeServices';
+import { getListList } from './homeServices';
 
 export const addCards = createAction(ADD_CARDS);
 export const updateCards = createAction(UPDATE_CARDS);

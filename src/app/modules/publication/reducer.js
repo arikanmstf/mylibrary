@@ -5,7 +5,8 @@
  */
 
 import { handleActions } from 'redux-actions';
-import { updateCard, updatePublication } from './publicationDetailActions';
+import { updatePublication } from './actions';
+import { updateCard } from '../../screens/publicationDetail/publicationDetailActions';
 
 const initialState = {
   card: null,
