@@ -6,7 +6,6 @@
 
 import { handleActions } from 'redux-actions';
 import { updatePublication } from './actions';
-import { updateCard } from '../../screens/publicationDetail/publicationDetailActions';
 
 const initialState = {
   card: null,
@@ -14,13 +13,6 @@ const initialState = {
 };
 
 const reducer = new Map([
-  [
-    updateCard,
-    (state, action) => ({
-      ...state,
-      card: action.payload || state.card,
-    }),
-  ],
   [
     updatePublication,
     (state, action) => ({

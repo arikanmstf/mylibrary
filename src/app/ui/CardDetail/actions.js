@@ -3,9 +3,8 @@ import logger from 'helpers/logger';
 import {
   toggleFavorite as toggleFavoriteService,
   toggleRead as toggleReadService,
-} from 'screens/home/homeServices';
-import { updateCards } from 'screens/home/homeActions';
-import { updateCard } from 'screens/publicationDetail/publicationDetailActions';
+} from 'modules/publication/services';
+import { updateCard, updateCards } from 'modules/card/actions';
 import { findIndexById, cloneObjectArray } from 'helpers/data/array';
 import { showLoader, hideLoader } from 'ui/Loader/actions';
 
@@ -31,8 +30,8 @@ const toggle = (id: number, type: 'read' | 'favorite'): ThunkAction => {
 
     const result = await toggleFunc(id);
     logger.log(`toggle: ${type}`);
-    const { cards } = getState().toJS().home;
-    const { card } = getState().toJS().publication;
+    const { cards } = getState().toJS().card;
+    const { card } = getState().toJS().card;
 
     if (cards) {
       const newCards = cards ? cloneObjectArray(cards) : [];

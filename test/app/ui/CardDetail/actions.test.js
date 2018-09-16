@@ -56,7 +56,7 @@ describe('test/app/ui/CardDetail/actions.test.js', () => {
   });
 
   it('toggleRead', async () => {
-    state.toJS().home.cards = [{
+    state.toJS().card.cards = [{
       isFavorite: false,
       isRead: false,
       id: 1,

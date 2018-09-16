@@ -6,12 +6,6 @@
 
 import { handleActions } from 'redux-actions';
 import {
-  addCards,
-  updateCards,
-  updateTotalPages,
-  updateCurrentPage,
-  updateSearchQuery,
-  updateSearchPending,
   updateRows,
 } from './homeActions';
 
@@ -25,48 +19,6 @@ const initialState = {
 };
 
 const reducer = new Map([
-  [
-    addCards,
-    (state, action) => ({
-      ...state,
-      cards: action.payload ? [...state.cards, ...action.payload] : state.cards,
-    }),
-  ],
-  [
-    updateCards,
-    (state, action) => ({
-      ...state,
-      cards: action.payload ? action.payload : initialState.cards,
-    }),
-  ],
-  [
-    updateTotalPages,
-    (state, action) => ({
-      ...state,
-      totalPages: action.payload ? action.payload : initialState.totalPages,
-    }),
-  ],
-  [
-    updateCurrentPage,
-    (state, action) => ({
-      ...state,
-      currentPage: action.payload ? action.payload : initialState.currentPage,
-    }),
-  ],
-  [
-    updateSearchQuery,
-    (state, action) => ({
-      ...state,
-      searchQuery: action.payload ? action.payload : initialState.searchQuery,
-    }),
-  ],
-  [
-    updateSearchPending,
-    (state, action) => ({
-      ...state,
-      isSearchPending: action.payload ? action.payload : initialState.isSearchPending,
-    }),
-  ],
   [
     updateRows,
     (state, action) => ({

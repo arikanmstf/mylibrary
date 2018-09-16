@@ -7,7 +7,7 @@
 // @flow
 import { initialize, change } from 'redux-form';
 import logger from 'helpers/logger/index';
-import { toggleList } from 'screens/publicationDetail/publicationDetailActions';
+import { toggleList } from 'modules/publication/actions';
 
 import type { Dispatch } from 'redux';
 import type { Immutable } from 'store/ImmutableTypes';

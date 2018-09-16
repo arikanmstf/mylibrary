@@ -10,7 +10,7 @@ export const mapDispatchToProps = {
 };
 
 export const mapStateToProps = (state: Immutable<State>) => ({
-  cards: state.toJS().home.cards,
-  search: state.toJS().home.searchQuery,
+  cards: state.toJS().card.cards,
+  search: state.toJS().card.searchQuery,
   isLoaderVisible: state.toJS().loader.isVisible,
 });

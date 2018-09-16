@@ -5,7 +5,7 @@ import logger from 'helpers/logger';
 import { showLoader, hideLoader } from 'ui/Loader/actions';
 import { transformPublicationToCard } from 'helpers/data/transform';
 import { findIndexById, cloneObjectArray } from 'helpers/data/array';
-import { updateCards } from 'screens/home/homeActions';
+import { updateCards, updateCard } from 'modules/card/actions';
 
 import type { Dispatch } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
@@ -43,7 +43,7 @@ export const toggleList = (request: ToggleListRequest): ThunkAction => {
 
     const publication = await toggleListService(request);
     const card = transformPublicationToCard(publication);
-    const { cards } = getState().toJS().home;
+    const { cards } = getState().toJS().card;
     logger.log('action: toggleList');
 
     if (cards) {
@@ -62,4 +62,3 @@ export const toggleList = (request: ToggleListRequest): ThunkAction => {
     dispatch(hideLoader());
   };
 };
-
