@@ -1,6 +1,6 @@
 import { connect } from 'helpers/connect';
 import { MemoryRouter as Router, Route } from 'react-router-native';
-import { Loader, Row, Error } from 'ui/native';
+import { Loader, Div, Error } from 'ui/native';
 import Stack from 'react-router-native-stack';
 
 // Screens
@@ -19,7 +19,7 @@ const mapRouteToProps = () => ({
   Router,
   Switch: Stack,
   Loader,
-  Row,
+  Div,
   Error,
   PrivateRoute,
   PublicRoute,

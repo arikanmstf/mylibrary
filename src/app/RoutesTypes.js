@@ -6,7 +6,7 @@ import type { RegisterProps } from 'screens/register/RegisterTypes';
 import type { HomeProps } from 'screens/home/HomeTypes';
 import type { PublicationAddToListProps } from 'screens/publicationAddToList/PublicationAddToListTypes';
 import type { PublicationDetailProps } from 'screens/publicationDetail/PublicationDetailTypes';
-import type { RowProps } from 'ui/Row/types';
+import type { DivProps } from 'ui/Div/types';
 import type { LoaderContainerProps } from 'ui/Loader/types';
 
 export type RoutesProps = {
@@ -19,7 +19,7 @@ export type RoutesProps = {
   Router: Function,
   Switch: Function,
   Route: Function,
-  Row: ComponentType<RowProps>,
+  Div: ComponentType<DivProps>,
   Loader: ComponentType<LoaderContainerProps>,
   PrivateRoute: Function,
   PublicRoute: Function,

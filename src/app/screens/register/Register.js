@@ -25,7 +25,7 @@ class Register extends Component<RegisterProps> {
       Screen,
       TextField,
       Button,
-      Row,
+      Div,
       Col,
       Image,
       Form,
@@ -37,52 +37,52 @@ class Register extends Component<RegisterProps> {
       <Screen center>
         <Form onSubmit={handleSubmit}>
           <Col>
-            <Row style={{ justifyContent: 'center', alignItems: 'center' }}>
+            <Div style={{ justifyContent: 'center', alignItems: 'center' }}>
               <Image
                 source={Logo}
                 style={{ width: 100, height: 100 }}
                 alt="mylibrary logo"
               />
-            </Row>
-            <Row>
+            </Div>
+            <Div>
               <TextField
                 required
                 name={fields.NAME}
                 label={t.get('REGISTER_NAME_PLACEHOLDER')}
               />
-            </Row>
-            <Row>
+            </Div>
+            <Div>
               <TextField
                 required
                 name={fields.DISPLAY_NAME}
                 label={t.get('REGISTER_DISPLAY_NAME_PLACEHOLDER')}
               />
-            </Row>
-            <Row>
+            </Div>
+            <Div>
               <TextField
                 required
                 name={fields.EMAIL}
                 label={t.get('REGISTER_EMAIL_PLACEHOLDER')}
                 keyboardType="email-address"
               />
-            </Row>
-            <Row>
+            </Div>
+            <Div>
               <TextField
                 required
                 name={fields.PASSWORD}
                 label={t.get('REGISTER_PASSWORD_PLACEHOLDER')}
                 type="password"
               />
-            </Row>
-            <Row>
+            </Div>
+            <Div>
               <TextField
                 required
                 name={fields.PASSWORD_REPEAT}
                 label={t.get('REGISTER_PASSWORD_REPEAT_PLACEHOLDER')}
                 type="password"
               />
-            </Row>
-            <Row>
+            </Div>
+            <Div>
               <Button
                 primary
                 raised
@@ -90,18 +90,18 @@ class Register extends Component<RegisterProps> {
                 type="submit"
                 onClick={handleSubmit(submitRegisterForm)}
               />
-            </Row>
-            <Row>
+            </Div>
+            <Div>
               <Text>{t.get('REGISTER_MESSAGE')}</Text>
-            </Row>
-            <Row>
+            </Div>
+            <Div>
               <Button
                 primary
                 to={LOGIN}
                 text={t.get('REGISTER_GOTO_LOGIN')}
                 transparent
               />
-            </Row>
+            </Div>
           </Col>
         </Form>
       </Screen>

@@ -24,7 +24,7 @@ class Login extends PureComponent<LoginProps> {
       Screen,
       TextField,
       Button,
-      Row,
+      Div,
       Col,
       Image,
       Form,
@@ -36,30 +36,30 @@ class Login extends PureComponent<LoginProps> {
       <Screen center>
         <Form onSubmit={handleSubmit}>
           <Col>
-            <Row style={{ justifyContent: 'center', alignItems: 'center' }}>
+            <Div style={{ justifyContent: 'center', alignItems: 'center' }}>
               <Image
                 source={Logo}
                 style={{ width: 100, height: 100 }}
                 alt="mylibrary logo"
               />
-            </Row>
-            <Row>
+            </Div>
+            <Div>
               <TextField
                 required
                 name={fields.EMAIL}
                 label={t.get('LOGIN_EMAIL_PLACEHOLDER')}
                 keyboardType="email-address"
               />
-            </Row>
-            <Row>
+            </Div>
+            <Div>
               <TextField
                 required
                 name={fields.PASSWORD}
                 label={t.get('LOGIN_PASSWORD_PLACEHOLDER')}
                 type="password"
               />
-            </Row>
-            <Row>
+            </Div>
+            <Div>
               <Button
                 primary
                 raised
@@ -67,18 +67,18 @@ class Login extends PureComponent<LoginProps> {
                 type="submit"
                 onClick={handleSubmit(submitLoginForm)}
               />
-            </Row>
-            <Row>
+            </Div>
+            <Div>
               <Text>{t.get('LOGIN_MESSAGE')}</Text>
-            </Row>
-            <Row>
+            </Div>
+            <Div>
               <Button
                 primary
                 to={REGISTER}
                 text={t.get('LOGIN_GOTO_REGISTER')}
                 transparent
               />
-            </Row>
+            </Div>
           </Col>
         </Form>
       </Screen>

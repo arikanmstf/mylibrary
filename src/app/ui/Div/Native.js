@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import type { RowProps } from './types';
+import type { DivProps } from './types';
 
 const defaultStyle = {
   marginTop: 5,
@@ -9,7 +9,7 @@ const defaultStyle = {
   flexDirection: 'column',
 };
 
-const Row = (props: RowProps) => {
+const Row = (props: DivProps) => {
   const { style, fullHeight, ...other } = props;
   const heightStyle = fullHeight ? { height: '100%' } : {};
   const mergedStyles = StyleSheet.create({

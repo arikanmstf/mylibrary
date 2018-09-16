@@ -7,9 +7,9 @@
 // @flow
 import styled from 'styled-components';
 
-const Row = styled.div`
+const Div = styled.div`
 margin: 5px 0;
 display: flex;
 `;
 
-export default Row;
+export default Div;

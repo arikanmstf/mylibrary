@@ -10,7 +10,7 @@ import type { TextProps } from 'ui/Text/types';
 import type { TextFieldProps } from 'ui/forms/TextField/types';
 import type { ScreenProps } from 'ui/Screen/types';
 import type { ButtonProps } from 'ui/Button/types';
-import type { RowProps } from 'ui/Row/types';
+import type { DivProps } from 'ui/Div/types';
 import type { ColProps } from 'ui/Col/types';
 import type { FormProps } from 'ui/Form/types';
 import type { ImageProps } from 'ui/Image/types';
@@ -35,7 +35,7 @@ export type LoginProps = {
   TextField: ComponentType<TextFieldProps>,
   Screen: ComponentType<ScreenProps>,
   Button: ComponentType<ButtonProps>,
-  Row: ComponentType<RowProps>,
+  Div: ComponentType<DivProps>,
   Col: ComponentType<ColProps>,
   Image: ComponentType<ImageProps>,
   Form: ComponentType<FormProps>,

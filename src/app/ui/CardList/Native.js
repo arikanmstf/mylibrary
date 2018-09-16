@@ -77,7 +77,7 @@ export class CardList extends Component<CardListProps> {
     return (
       <FlatList
         data={cards}
-        extraData={Map({ cards })}
+        extraData={this.props}
         renderItem={this.renderCardList}
         onScrollEndDrag={handleScrollDebounce}
         refreshControl={<RefreshControl refreshing={false} onRefresh={this.handleRefresh} />}

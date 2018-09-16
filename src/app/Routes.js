@@ -29,7 +29,7 @@ class Routes extends PureComponent<RoutesProps> {
       Router,
       Switch,
       Loader,
-      Row,
+      Div,
       PrivateRoute,
       PublicRoute,
       Route,
@@ -42,7 +42,7 @@ class Routes extends PureComponent<RoutesProps> {
     } = this.props;
 
     return (
-      <Row fullHeight style={{ marginTop: 0, padding: 0 }}>
+      <Div fullHeight style={{ marginTop: 0, padding: 0 }}>
         <Error>
           <Loader />
           <Router basename={homeURL}>
@@ -58,7 +58,7 @@ class Routes extends PureComponent<RoutesProps> {
             </Switch>
           </Router>
         </Error>
-      </Row>
+      </Div>
     );
   }
 }

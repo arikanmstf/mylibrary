@@ -10,6 +10,8 @@ import { PUBLICATION_UPDATE_CARD, PUBLICATION_UPDATE_PUBLICATION } from 'constan
 import logger from 'helpers/logger';
 import { showLoader, hideLoader } from 'ui/Loader/actions';
 import { transformPublicationToCard } from 'helpers/data/transform';
+import { findIndexById, cloneObjectArray } from 'helpers/data/array';
+import { updateCards } from 'screens/home/homeActions';
 
 import type { Dispatch } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
@@ -44,13 +46,21 @@ export const fetchPublication = (id: number, shouldShowLoader: boolean = true): 
 };
 
 export const toggleList = (request: ToggleListRequest): ThunkAction => {
-  return async (dispatch: Dispatch<*>) => {
+  return async (dispatch: Dispatch<*>, getState: Function) => {
     logger.log('action: toggleListStart');
     dispatch(showLoader());
 
     const publication = await toggleListService(request);
     const card = transformPublicationToCard(publication);
+    const { cards } = getState().toJS().home;
     logger.log('action: toggleList');
+
+    if (cards) {
+      const newCards = cards ? cloneObjectArray(cards) : [];
+      const index = findIndexById(newCards, card.id);
+      newCards[index] = card;
+      await dispatch(updateCards(newCards));
+    }
 
     await Promise.all([
       dispatch(updateCard(card)),

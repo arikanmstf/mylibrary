@@ -5,8 +5,9 @@ import {
   toggleRead as toggleReadService,
 } from 'screens/home/homeServices';
 import { updateCards } from 'screens/home/homeActions';
-import { updateCard, fetchPublication } from 'screens/publicationDetail/publicationDetailActions';
-import { findIndexById } from 'helpers/data/array';
+import { updateCard } from 'screens/publicationDetail/publicationDetailActions';
+import { findIndexById, cloneObjectArray } from 'helpers/data/array';
+import { showLoader, hideLoader } from 'ui/Loader/actions';
 
 import type { Dispatch } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
@@ -20,6 +21,7 @@ const toggle = (id: number, type: 'read' | 'favorite'): ThunkAction => {
   return async (dispatch: Dispatch<*>, getState: Function) => {
     let toggleFunc;
     let toggleField = 'undefinedField';
+    dispatch(showLoader());
 
     switch (type) {
       case toggleTypes.READ: toggleFunc = toggleReadService; toggleField = 'isRead'; break;
@@ -31,10 +33,10 @@ const toggle = (id: number, type: 'read' | 'favorite'): ThunkAction => {
     logger.log(`toggle: ${type}`);
     const { cards } = getState().toJS().home;
     const { card } = getState().toJS().publication;
-    const newCards = cards ? [...cards] : [];
-    const index = findIndexById(newCards, id);
 
     if (cards) {
+      const newCards = cards ? cloneObjectArray(cards) : [];
+      const index = findIndexById(newCards, id);
       newCards[index][toggleField] = !!result.result;
       await dispatch(updateCards(newCards));
     }
@@ -47,9 +49,11 @@ const toggle = (id: number, type: 'read' | 'favorite'): ThunkAction => {
 
       await Promise.all([
         dispatch(updateCard(newCard)),
-        dispatch(fetchPublication(newCard.id, false)),
+        // dispatch(fetchPublication(newCard.id, false)),
       ]);
     }
+
+    dispatch(hideLoader());
   };
 };
 

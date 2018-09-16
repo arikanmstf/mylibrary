@@ -1,6 +1,6 @@
 import { connect } from 'helpers/connect';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Loader, Row, Error } from 'ui';
+import { Loader, Div, Error } from 'ui';
 
 // Screens
 import LoginScreen from 'screens/login/LoginWebContainer';
@@ -18,7 +18,7 @@ const mapRouteToProps = () => ({
   Router,
   Switch,
   Loader,
-  Row,
+  Div,
   Error,
   PrivateRoute,
   PublicRoute,

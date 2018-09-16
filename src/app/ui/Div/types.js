@@ -5,7 +5,7 @@
  */
 
 // @flow
-export type RowProps = {
+export type DivProps = {
   style?: ?Object,
   fullHeight?: boolean,
 };
