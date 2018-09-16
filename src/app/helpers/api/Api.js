@@ -28,7 +28,7 @@ class Api {
       logger.log('TOKEN couldn"t found');
     }
 
-    logger.log(`Login Token is set to: ${token}`);
+    logger.log('Login Token is set.');
 
     return a.create({
       baseURL,

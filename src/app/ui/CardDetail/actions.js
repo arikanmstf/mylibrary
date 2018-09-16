@@ -5,9 +5,9 @@ import {
   toggleRead as toggleReadService,
 } from 'modules/publication/services';
 import { updateCard, updateCards } from 'modules/card/actions';
+import { fetchPublication } from 'modules/publication/actions';
 import { findIndexById, cloneObjectArray } from 'helpers/data/array';
 import { showLoader, hideLoader } from 'ui/Loader/actions';
-
 import type { Dispatch } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
 
@@ -30,8 +30,7 @@ const toggle = (id: number, type: 'read' | 'favorite'): ThunkAction => {
 
     const result = await toggleFunc(id);
     logger.log(`toggle: ${type}`);
-    const { cards } = getState().toJS().card;
-    const { card } = getState().toJS().card;
+    const { card, cards } = getState().toJS().card;
 
     if (cards) {
       const newCards = cards ? cloneObjectArray(cards) : [];
@@ -48,6 +47,7 @@ const toggle = (id: number, type: 'read' | 'favorite'): ThunkAction => {
 
       await Promise.all([
         dispatch(updateCard(newCard)),
+        dispatch(fetchPublication(card.id)),
       ]);
     }
 

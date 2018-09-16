@@ -62,7 +62,7 @@ export class CardDetail extends Component<CardDetailProps> {
   goToAddToList = () => {
     const { card, history } = this.props;
 
-    logger.log('goToAddToList', card);
+    logger.log('goToAddToList');
     const url = publicationAddToListUrl(card.id);
     history.push(url);
   };

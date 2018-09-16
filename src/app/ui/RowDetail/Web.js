@@ -49,6 +49,7 @@ class RowDetail extends PureComponent<RowDetailProps> {
       form,
       onFormChange,
       compareRows,
+      addToListId,
     } = this.props;
     if (onFormChange && (prevProps.compareRows !== compareRows || prevProps.row !== row)) {
       const foundRow = compareRows.find(RowDetail.hasRowId(row.id));
@@ -58,6 +59,7 @@ class RowDetail extends PureComponent<RowDetailProps> {
         {
           [fields.ORDER_NO]: foundRow ? foundRow.orderNo : null,
           [fields.LIST_ID]: row.id,
+          [fields.ADD_TO_LIST_ID]: addToListId,
         }
       );
     }

@@ -8,7 +8,7 @@
 import type { Immutable } from 'store/ImmutableTypes';
 import type { State } from 'store/StateTypes';
 import { fetchPublication } from 'modules/publication/actions';
-import { fetchLists } from 'screens/home/homeActions';
+import { fetchLists } from 'modules/list/actions';
 
 export const mapStateToProps = (state: Immutable<State>) => ({
   rows: state.toJS().row.rows,
