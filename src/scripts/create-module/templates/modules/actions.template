@@ -1,0 +1,12 @@
+/**
+ * Actions Template By => create-module script
+ * @version 1.1.0
+ *
+ */
+
+// @flow
+
+import { createAction } from 'redux-actions';
+import { DUMMY_ACTION } from 'constants/actions/actionNames';
+
+export const dummyAction = createAction(DUMMY_ACTION);

@@ -1,0 +1,14 @@
+/**
+ * Services Template By => create-module script
+ * @version 1.1.0
+ *
+ */
+
+// @flow
+
+import Api, { DUMMY_SERVICE } from 'helpers/api';
+import type { DummyRequest, DummyResponse } from './types';
+
+export const dummyRequest = (request: DummyRequest): Promise<DummyResponse> => {
+  return Api.get(DUMMY_SERVICE, request);
+};
