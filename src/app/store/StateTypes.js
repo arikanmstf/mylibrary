@@ -1,5 +1,5 @@
 // @flow
-import type { CardItem } from 'ui/CardList/types';
+import type { CardItem } from 'modules/card/types';
 import type { Row } from 'ui/RowList/types';
 import type { PublicationDetail } from 'helpers/api/types';
 

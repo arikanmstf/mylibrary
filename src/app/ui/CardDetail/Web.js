@@ -18,32 +18,30 @@ import StarIcon from '@material-ui/icons/Star';
 import BookIcon from '@material-ui/icons/Book';
 import AddIcon from '@material-ui/icons/Add';
 import IconButton from '@material-ui/core/IconButton';
-import getConfig from 'config/get';
 import { green500 } from 'constants/theme/color';
 import t from 'helpers/i18n/Translate';
-import {
-  publicationDetailUrl,
-  publicationAddToListUrl,
-} from 'constants/routes/createUrl';
 import logger from 'helpers/logger';
-import { mapStateToProps, mapDispatchToProps } from './actions';
 
+import { setCardType, defaultProps } from './helpers';
+import { mapStateToProps, mapDispatchToProps } from './actions';
 import type { CardDetailProps } from './types';
 
-const { staticFilesURL } = getConfig();
 const styleActive = { color: green500 };
 
 export class CardDetail extends Component<CardDetailProps> {
-  static defaultProps = {
-    isDetailed: false,
-  };
+  static defaultProps = defaultProps;
+
+  setCardType() {
+    const { card } = this.props;
+    setCardType.bind(this)(card);
+  }
 
   goToDetail = () => {
     const { isDetailed, card, history } = this.props;
 
-    if (!isDetailed) {
+    if (!isDetailed && card && this.getDetailUrl) {
       logger.log('goToDetail', card);
-      const url = publicationDetailUrl(card.id);
+      const url = this.getDetailUrl(card.id);
       history.push(url);
     }
   };
@@ -51,8 +49,8 @@ export class CardDetail extends Component<CardDetailProps> {
   goToAddToList = () => {
     const { card, history } = this.props;
 
-    logger.log('goToAddToList', card);
-    const url = publicationAddToListUrl(card.id);
+    logger.log('goToAddToList');
+    const url = this.addToListUrl(card.id);
     history.push(url);
   };
 
@@ -77,6 +75,7 @@ export class CardDetail extends Component<CardDetailProps> {
       isDetailed,
     } = this.props;
     const linkStyle = !isDetailed ? { cursor: 'pointer' } : {};
+    this.setCardType();
 
     if (!card) {
       return null;
@@ -93,7 +92,7 @@ export class CardDetail extends Component<CardDetailProps> {
           style={linkStyle}
         />
         <CardMedia
-          image={`${staticFilesURL}/img/cover/${card.id}.jpg`}
+          image={this.imageUri}
           title={card.title}
           onClick={this.goToDetail}
           style={{ height: '200px', ...linkStyle }}
@@ -116,11 +115,13 @@ export class CardDetail extends Component<CardDetailProps> {
           >
             <BookIcon style={card.isRead ? styleActive : null} />
           </IconButton>
-          <IconButton
-            onClick={this.goToAddToList}
-          >
-            <AddIcon />
-          </IconButton>
+          { this.addToListUrl ? (
+            <IconButton
+              onClick={this.goToAddToList}
+            >
+              <AddIcon />
+            </IconButton>
+          ) : null }
         </CardActions>
       </Card>
     );

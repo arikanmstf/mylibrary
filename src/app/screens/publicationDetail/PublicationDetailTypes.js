@@ -10,7 +10,7 @@ import type { CardDetailProps } from 'ui/CardDetail/types';
 import type { ScreenProps } from 'ui/Screen/types';
 import type { HeaderProps } from 'ui/Header/types';
 import type { PageProps } from 'ui/Page/types';
-import type { CardItem } from 'ui/CardList/types';
+import type { CardItem } from 'modules/card/types';
 
 export type PublicationDetailProps = {
   CardDetail: ComponentType<CardDetailProps>,

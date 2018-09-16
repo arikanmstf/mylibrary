@@ -5,7 +5,7 @@
  */
 
 // @flow
-import type { CardItem } from 'ui/CardList/types';
+import type { CardItem } from 'modules/card/types';
 
 export type CardDetailProps = {
   card?: CardItem,

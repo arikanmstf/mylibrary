@@ -1,0 +1,4 @@
+// @flow
+
+export const CARD_TYPE_PUBLICATION = 'CARD_TYPE_PUBLICATION';
+export const CARD_TYPE_BOOK = 'CARD_TYPE_BOOK';

@@ -1,5 +1,8 @@
 // @flow
-import type { Pagination, CardItem } from 'ui/CardList/types';
+import { CARD_TYPE_PUBLICATION } from 'modules/card/constants';
+
+import type { CardItem } from 'modules/card/types';
+import type { Pagination } from 'ui/CardList/types';
 import type { PublicationDetail, Item } from 'helpers/api/types';
 import type { Row } from 'ui/RowList/types';
 
@@ -14,12 +17,13 @@ export const transformPublicationToCard = (publication: PublicationDetail): Card
   const publishers = publication.publisher.name ? ` - ${publication.publisher.name}` : '';
 
   return {
-    ...publication,
     title: publication.title,
     id: publication.id,
     subHeader: `${writers}${publishers}`,
     isFavorite: publication.lists.some((list) => (list.code === MY_FAVORITES)),
     isRead: publication.lists.some((list) => (list.code === BOOKS_I_READ)),
+    type: CARD_TYPE_PUBLICATION,
+    description: publication.description,
   };
 };
 

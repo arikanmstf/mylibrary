@@ -24,46 +24,43 @@ import {
   Body,
   Right,
 } from 'native-base';
-import {
-  publicationDetailUrl,
-  publicationAddToListUrl,
-} from 'constants/routes/createUrl';
-import getConfig from 'config/get';
+import { production } from 'constants/routes/createUrl';
 import logger from 'helpers/logger';
 
+import { setCardType, defaultProps } from './helpers';
 import { mapStateToProps, mapDispatchToProps } from './actions';
 import type { CardDetailProps } from './types';
 
-const { staticFilesURL, productionURL } = getConfig();
-logger.log(`staticFilesURL set to ${staticFilesURL}`);
-
 export class CardDetail extends Component<CardDetailProps> {
-  static defaultProps = {
-    isDetailed: false,
+  static defaultProps = defaultProps;
+
+  setCardType() {
+    const { card } = this.props;
+    setCardType.bind(this)(card);
+  }
+
+  goToDetail = () => {
+    const { isDetailed, card, history } = this.props;
+
+    if (!isDetailed && card && this.getDetailUrl) {
+      logger.log('goToDetail', card);
+      const url = this.getDetailUrl(card.id);
+      history.push(url);
+    }
   };
 
   shareCard = () => {
     const { card } = this.props;
     Share.share({
-      url: `${productionURL}/publications/${card.id}`,
+      url: production()(this.getDetailUrl(card.id)),
     });
-  };
-
-  goToDetail = () => {
-    const { isDetailed, card, history } = this.props;
-
-    if (!isDetailed) {
-      logger.log('goToDetail', card);
-      const url = publicationDetailUrl(card.id);
-      history.push(url);
-    }
   };
 
   goToAddToList = () => {
     const { card, history } = this.props;
 
     logger.log('goToAddToList');
-    const url = publicationAddToListUrl(card.id);
+    const url = this.addToListUrl(card.id);
     history.push(url);
   };
 
@@ -87,6 +84,7 @@ export class CardDetail extends Component<CardDetailProps> {
     if (!card) {
       return null;
     }
+    this.setCardType();
     logger.log('render: CardDetail');
 
     return (
@@ -105,7 +103,7 @@ export class CardDetail extends Component<CardDetailProps> {
               cardBody
             >
               <Image
-                source={{ uri: `${staticFilesURL}/img/cover/${card.id}.jpg` }}
+                source={{ uri: this.imageUri }}
                 style={{ height: 200, flex: 1 }}
               />
             </CardItem>
@@ -131,20 +129,24 @@ export class CardDetail extends Component<CardDetailProps> {
               >
                 <Icon name="book" active={card.isRead} style={{ fontSize: 30 }} />
               </TouchableOpacity>
-              <TouchableOpacity
-                style={{ width: 40, marginTop: 3 }}
-                onPress={this.goToAddToList}
-              >
-                <Icon name="add" style={{ fontSize: 30 }} />
-              </TouchableOpacity>
+              { this.addToListUrl ? (
+                <TouchableOpacity
+                  style={{ width: 40, marginTop: 3 }}
+                  onPress={this.goToAddToList}
+                >
+                  <Icon name="add" style={{ fontSize: 30 }} />
+                </TouchableOpacity>
+              ) : null }
             </Left>
             <Right>
-              <TouchableOpacity
-                style={{ width: 40, flex: 1, alignItems: 'flex-end' }}
-                onPress={this.shareCard}
-              >
-                <Icon name="share" color="#000" style={{ fontSize: 30 }} />
-              </TouchableOpacity>
+              { this.getDetailUrl ? (
+                <TouchableOpacity
+                  style={{ width: 40, flex: 1, alignItems: 'flex-end' }}
+                  onPress={this.shareCard}
+                >
+                  <Icon name="share" color="#000" style={{ fontSize: 30 }} />
+                </TouchableOpacity>
+              ) : null }
             </Right>
           </CardItem>
         </Card>

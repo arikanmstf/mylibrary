@@ -5,16 +5,7 @@
  */
 
 // @flow
-
-export type CardItem = {
-  title: string,
-  subHeader?: ?string,
-  image?: string,
-  id: number,
-  isFavorite: boolean,
-  isRead: boolean,
-  description: string,
-}
+import type { CardItem } from 'modules/card/types';
 
 export type RenderCardListItem = {
   item?: CardItem,

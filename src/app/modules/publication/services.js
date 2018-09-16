@@ -7,7 +7,8 @@ import Api, {
 } from 'helpers/api';
 import { transformPublicationListToCardList } from 'helpers/data/transform';
 
-import type { Pagination, CardItem } from 'ui/CardList/types';
+import type { Pagination } from 'ui/CardList/types';
+import type { CardItem } from 'modules/card/types';
 import type {
   PublicationDetail,
   ToggleFavorite,
