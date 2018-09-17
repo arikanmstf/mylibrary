@@ -15,7 +15,7 @@ import type { Dispatch } from 'redux';
 import type { Immutable } from 'store/ImmutableTypes';
 import type { ThunkAction } from 'redux-thunk';
 
-import { loginRequest, initialRequest } from './loginServices';
+import { postLogin, postInitialize } from './loginServices';
 import type { SubmitLoginFormRequest } from './LoginTypes';
 
 export const updateLoginState = createAction(UPDATE_LOGIN_STATE);
@@ -24,7 +24,7 @@ export const updateInitializeState = createAction(UPDATE_INITIALIZE_STATE);
 export const fetchInitialState = (): ThunkAction => {
   return async (dispatch: Dispatch<*>) => {
     logger.log('action: fetchInitialStateStart');
-    const initial = await initialRequest();
+    const initial = await postInitialize();
     logger.log('action: fetchInitialState', initial);
     const loginState = initial ? await storage.load({ key: LOGIN_STATE }) : null;
     await Promise.all([
@@ -39,7 +39,7 @@ export const submitLoginForm = async (form: Immutable<SubmitLoginFormRequest>, d
   logger.log('action: submitLoginFormStart');
   dispatch(showLoader());
 
-  const result = await loginRequest(form.toJS());
+  const result = await postLogin(form.toJS());
   const data = {
     key: LOGIN_STATE,
     data: { ...result },

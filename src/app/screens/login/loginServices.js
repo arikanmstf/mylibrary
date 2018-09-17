@@ -6,11 +6,11 @@ import logger from 'helpers/logger';
 
 import type { SubmitLoginFormRequest, SubmitLoginFormResponse } from './LoginTypes';
 
-export const loginRequest = (request: SubmitLoginFormRequest): Promise<SubmitLoginFormResponse> => {
+export const postLogin = (request: SubmitLoginFormRequest): Promise<SubmitLoginFormResponse> => {
   return Api.post(LOGIN, request);
 };
 
-export const initialRequest = async () => {
+export const postInitialize = async () => {
   try {
     const result = await storage.load({ key: LOGIN_STATE });
 

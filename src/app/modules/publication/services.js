@@ -2,8 +2,10 @@
 
 import Api, {
   PUBLICATION,
-  TOGGLE_FAVORITE,
-  TOGGLE_READ,
+  PUBLICATION_DETAIL,
+  PUBLICATION_TOGGLE_LIST,
+  PUBLICATION_TOGGLE_READ,
+  PUBLICATION_TOGGLE_FAVORITE,
 } from 'helpers/api';
 import { transformPublicationListToCardList } from 'helpers/data/transform';
 
@@ -18,7 +20,7 @@ import type { SubmitSearchFormRequest } from 'ui/Header/types';
 import type { GetPublicationDetailRequest, ToggleListRequest } from './types';
 
 export const getPublicationDetail = async ({ id }: GetPublicationDetailRequest): Promise<PublicationDetail> => {
-  return Api.get(`${PUBLICATION}/${id}`);
+  return Api.get(PUBLICATION_DETAIL.replace('{id}', id));
 };
 
 export const getPublicationList = async (
@@ -28,16 +30,14 @@ export const getPublicationList = async (
   return transformPublicationListToCardList(result);
 };
 
-export const toggleFavorite = async (id: number): Promise<ToggleFavorite> => {
-  const result: ToggleFavorite = await Api.post(`${TOGGLE_FAVORITE}/${id}`);
-  return result;
+export const postToggleFavorite = async (id: number): Promise<ToggleFavorite> => {
+  return Api.post(PUBLICATION_TOGGLE_FAVORITE.replace('{id}', id));
 };
 
-export const toggleRead = async (id: number): Promise<ToggleRead> => {
-  const result: ToggleRead = await Api.post(`${TOGGLE_READ}/${id}`);
-  return result;
+export const postToggleRead = async (id: number): Promise<ToggleRead> => {
+  return Api.post(PUBLICATION_TOGGLE_READ.replace('{id}', id));
 };
 
-export const toggleList = async ({ addToListId, ...other }: ToggleListRequest): Promise<PublicationDetail> => {
-  return Api.post(`${PUBLICATION}/${addToListId}/toggle-list`, other);
+export const postToggleList = async ({ addToListId, ...other }: ToggleListRequest): Promise<PublicationDetail> => {
+  return Api.post(PUBLICATION_TOGGLE_LIST.replace('{id}', addToListId), other);
 };

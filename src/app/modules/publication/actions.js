@@ -9,7 +9,7 @@ import { updateCards, updateCard } from 'modules/card/actions';
 
 import type { Dispatch } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
-import { getPublicationDetail, toggleList as toggleListService } from './services';
+import { getPublicationDetail, postToggleList } from './services';
 import type { ToggleListRequest } from './types';
 
 export const updatePublication = createAction(PUBLICATION_UPDATE_PUBLICATION);
@@ -41,7 +41,7 @@ export const toggleList = (request: ToggleListRequest): ThunkAction => {
     logger.log('action: toggleListStart');
     dispatch(showLoader());
 
-    const publication = await toggleListService(request);
+    const publication = await postToggleList(request);
     const card = transformPublicationToCard(publication);
     const { cards } = getState().toJS().card;
     logger.log('action: toggleList');

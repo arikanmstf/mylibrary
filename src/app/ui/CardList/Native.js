@@ -7,7 +7,6 @@
 // @flow
 import React, { Component } from 'react';
 import debounce from 'lodash.debounce';
-import { Map } from 'immutable';
 
 import { withRouter } from 'react-router-native';
 import { connect } from 'react-redux';

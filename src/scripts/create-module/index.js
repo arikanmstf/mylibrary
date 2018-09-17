@@ -11,7 +11,7 @@ const prompt = require('prompt');
 const fs = require('file-system');
 const p = require('path');
 
-(function () {
+(function () { // eslint-disable-line func-names
   const firstLetterUpper = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };

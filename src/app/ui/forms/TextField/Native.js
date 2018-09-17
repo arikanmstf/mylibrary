@@ -27,7 +27,7 @@ const renderTextField = (
     type,
     ...other
   }: ReduxFieldProps
-) => console.log(input) || (
+) => (
   <Item error={!!(touched && error)}>
     <TextInput
       keyboardType={type === 'number' ? 'numeric' : undefined}

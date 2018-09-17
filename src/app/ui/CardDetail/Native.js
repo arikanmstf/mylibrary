@@ -43,7 +43,7 @@ export class CardDetail extends Component<CardDetailProps> {
     const { isDetailed, card, history } = this.props;
 
     if (!isDetailed && card && this.getDetailUrl) {
-      logger.log('goToDetail', card);
+      logger.log('goToDetail');
       const url = this.getDetailUrl(card.id);
       history.push(url);
     }

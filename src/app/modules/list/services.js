@@ -11,7 +11,7 @@ import { transformItemListToRowList } from 'helpers/data/transform';
 
 import type { Item } from 'helpers/api/types';
 
-export const getListList = async (): Promise<Array<Item>> => {
+export const getMyLists = async (): Promise<Array<Item>> => {
   const result: Array<Item> = await Api.get(LIST_MY);
   return transformItemListToRowList(result);
 };
