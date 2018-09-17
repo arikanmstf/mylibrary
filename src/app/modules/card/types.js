@@ -1,6 +1,6 @@
 // @flow
 
-export type CardItem = {
+export type CardItem = {|
   title: string,
   id: number,
   subHeader?: ?string,
@@ -9,4 +9,5 @@ export type CardItem = {
   type: string,
   description?: string,
   image?: string,
-}
+  downloadUrl?: string,
+|}

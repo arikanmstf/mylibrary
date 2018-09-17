@@ -24,6 +24,7 @@ export const transformPublicationToCard = (publication: PublicationDetail): Card
     isRead: publication.lists.some((list) => (list.code === BOOKS_I_READ)),
     type: CARD_TYPE_PUBLICATION,
     description: publication.description,
+    downloadUrl: publication.downloadUrl && publication.downloadUrl.length > 0 ? publication.downloadUrl : undefined,
   };
 };
 

@@ -32,6 +32,19 @@ const theme = createMuiTheme({
         color: white,
       },
     },
+    MuiIconButton: {
+      root: {
+        width: '36px',
+        height: '36px',
+      },
+    },
+    MuiCard: {
+      root: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+      },
+    },
   },
   typography: {
     fontFamily: '"Baskerville", "Helvetica", "Arial", sans-serif',

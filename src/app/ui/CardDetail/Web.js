@@ -17,6 +17,7 @@ import Typography from '@material-ui/core/Typography';
 import StarIcon from '@material-ui/icons/Star';
 import BookIcon from '@material-ui/icons/Book';
 import AddIcon from '@material-ui/icons/Add';
+import DownloadIcon from '@material-ui/icons/CloudDownload';
 import IconButton from '@material-ui/core/IconButton';
 import { green500 } from 'constants/theme/color';
 import t from 'helpers/i18n/Translate';
@@ -52,6 +53,13 @@ export class CardDetail extends Component<CardDetailProps> {
     logger.log('goToAddToList');
     const url = this.addToListUrl(card.id);
     history.push(url);
+  };
+
+  goToDownload = () => {
+    const { card } = this.props;
+    if (card && card.downloadUrl) {
+      window.open(card.downloadUrl);
+    }
   };
 
   toggleFavorite(id: number) {
@@ -120,6 +128,14 @@ export class CardDetail extends Component<CardDetailProps> {
               onClick={this.goToAddToList}
             >
               <AddIcon />
+            </IconButton>
+          ) : null }
+          { card.downloadUrl ? (
+            <IconButton
+              onClick={this.goToDownload}
+              style={{ marginLeft: 'auto' }}
+            >
+              <DownloadIcon />
             </IconButton>
           ) : null }
         </CardActions>

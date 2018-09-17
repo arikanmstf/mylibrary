@@ -13,6 +13,7 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
   ScrollView,
+  Linking,
 } from 'react-native';
 import { Image } from 'ui/native';
 import {
@@ -62,6 +63,19 @@ export class CardDetail extends Component<CardDetailProps> {
     logger.log('goToAddToList');
     const url = this.addToListUrl(card.id);
     history.push(url);
+  };
+
+  goToDownload = async () => {
+    const { card } = this.props;
+    if (card && card.downloadUrl) {
+      const supported = await Linking.canOpenURL(card.downloadUrl);
+
+      if (supported) {
+        Linking.openURL(card.downloadUrl);
+      } else {
+        logger.log(`Can't open the download url: ${card.downloadUrl}`);
+      }
+    }
   };
 
   toggleFavorite(id: number) {
@@ -138,10 +152,25 @@ export class CardDetail extends Component<CardDetailProps> {
                 </TouchableOpacity>
               ) : null }
             </Left>
-            <Right>
+            <Right
+              style={{
+                flex: 1,
+                alignItems: 'center',
+                flexDirection: 'row',
+                justifyContent: 'flex-end',
+              }}
+            >
+              { card.downloadUrl ? (
+                <TouchableOpacity
+                  style={{ width: 40 }}
+                  onPress={this.goToDownload}
+                >
+                  <Icon name="download" color="#000" style={{ fontSize: 30 }} />
+                </TouchableOpacity>
+              ) : null }
               { this.getDetailUrl ? (
                 <TouchableOpacity
-                  style={{ width: 40, flex: 1, alignItems: 'flex-end' }}
+                  style={{ width: 40, flexShrink: 1, alignItems: 'flex-end' }}
                   onPress={this.shareCard}
                 >
                   <Icon name="share" color="#000" style={{ fontSize: 30 }} />
