@@ -6,6 +6,8 @@
 
 // @flow
 import React, { Component } from 'react';
+import debounce from 'lodash.debounce';
+
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-native';
 import {
@@ -99,6 +101,10 @@ export class CardDetail extends Component<CardDetailProps> {
       return null;
     }
     this.setCardType();
+    const goToDetailDebounce = debounce(this.goToDetail, 800, { leading: true, trailing: false });
+    const goToAddToListDebounce = debounce(this.goToAddToList, 800, { leading: true, trailing: false });
+    const goToDownloadDebounce = debounce(this.goToDownload, 800, { leading: true, trailing: false });
+
     logger.log('render: CardDetail');
 
     return (
@@ -111,7 +117,7 @@ export class CardDetail extends Component<CardDetailProps> {
             </Body>
           </CardItem>
           <TouchableWithoutFeedback
-            onPress={this.goToDetail}
+            onPress={goToDetailDebounce}
           >
             <CardItem
               cardBody
@@ -146,7 +152,7 @@ export class CardDetail extends Component<CardDetailProps> {
               { this.addToListUrl ? (
                 <TouchableOpacity
                   style={{ width: 40, marginTop: 3 }}
-                  onPress={this.goToAddToList}
+                  onPress={goToAddToListDebounce}
                 >
                   <Icon name="add" style={{ fontSize: 30 }} />
                 </TouchableOpacity>
@@ -163,7 +169,7 @@ export class CardDetail extends Component<CardDetailProps> {
               { card.downloadUrl ? (
                 <TouchableOpacity
                   style={{ width: 40 }}
-                  onPress={this.goToDownload}
+                  onPress={goToDownloadDebounce}
                 >
                   <Icon name="download" color="#000" style={{ fontSize: 30 }} />
                 </TouchableOpacity>
