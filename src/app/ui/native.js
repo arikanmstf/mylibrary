@@ -15,3 +15,5 @@ export { default as KeyboardScreen } from './KeyboardScreen/Native';
 export { default as Error } from './Error/Native';
 export { default as RowList } from './RowList/Native';
 export { default as RowDetail } from './RowDetail/Native';
+export { default as Routes } from './Routes/Native';
+export { default as Link } from './Link/Native';

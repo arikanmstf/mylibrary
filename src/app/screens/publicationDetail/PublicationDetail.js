@@ -11,7 +11,14 @@ import type { PublicationDetailProps } from './PublicationDetailTypes';
 
 class PublicationDetail extends Component<PublicationDetailProps> {
   componentDidMount() {
-    const { fetchPublication, match: { params: { id } }, card } = this.props;
+    const {
+      fetchPublication,
+      match,
+      card,
+      navigation,
+    } = this.props;
+
+    const id = match ? match.params.id : navigation.getParam('id');
 
     if (!card || (card && card.id !== +id)) {
       fetchPublication(id);

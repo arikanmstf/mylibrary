@@ -3,10 +3,9 @@ import React, { ComponentType } from 'react';
 import { LOGIN } from 'constants/routes/routeNames';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
-import type { Immutable } from 'store/ImmutableTypes';
-import type { State } from 'store/StateTypes';
+import { mapStateToProps } from './actions';
 
-const PrivateRoute = (
+const PrivateRouteWeb = (
   {
     component: Component,
     isLoggedIn,
@@ -29,9 +28,4 @@ const PrivateRoute = (
   );
 };
 
-export const mapStateToProps = (state: Immutable<State>) => ({
-  isLoggedIn: state.toJS().login.isLoggedIn,
-  isInitialized: state.toJS().login.isInitialized,
-});
-
-export default connect(mapStateToProps)(PrivateRoute);
+export default connect(mapStateToProps)(PrivateRouteWeb);

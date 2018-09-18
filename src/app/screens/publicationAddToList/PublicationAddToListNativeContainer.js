@@ -5,6 +5,7 @@
  */
 
 import { connect } from 'react-redux';
+import { withNavigation } from 'react-navigation';
 import { connect as connectUi } from 'helpers/connect';
 import {
   RowList,
@@ -24,4 +25,6 @@ const mapUiToProps = () => ({
   PublicationAddToListForm,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(PublicationAddToListScreen));
+export default connect(mapStateToProps, mapDispatchToProps)(
+  connectUi(mapUiToProps)(withNavigation(PublicationAddToListScreen))
+);

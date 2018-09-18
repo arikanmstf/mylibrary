@@ -1,13 +1,31 @@
+/**
+ * Web Component Template By => create-module script
+ * @version 1.0.1
+ *
+ */
+
 // @flow
 import React, { PureComponent } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as routeNames from 'constants/routes/routeNames';
-import { fetchInitialState } from 'screens/login/loginActions';
 import getConfig from 'config/get';
 import logger from 'helpers/logger';
+import { Loader, Div, Error } from 'ui';
 
-import type { Dispatch } from 'redux';
-import type { RoutesProps } from './RoutesTypes';
+// Screens
+import LoginScreen from 'screens/login/LoginWebContainer';
+import LogoutScreen from 'screens/logout/LogoutWebContainer';
+import RegisterScreen from 'screens/register/RegisterWebContainer';
+import HomeScreen from 'screens/home/HomeWebContainer';
+import PublicationDetailScreen from 'screens/publicationDetail/PublicationDetailWebContainer';
+import PublicationAddToListScreen from 'screens/publicationAddToList/PublicationAddToListWebContainer';
+
+import PrivateRoute from './PrivateRouteWeb';
+import PublicRoute from './PublicRouteWeb';
+
+import { mapDispatchToProps } from './actions';
+import type { RoutesProps } from './types';
 
 const { homeURL } = getConfig();
 logger.log(`homeURL is set to: ${homeURL}`);
@@ -24,23 +42,6 @@ class Routes extends PureComponent<RoutesProps> {
   }
 
   render() {
-    const {
-      Error,
-      Router,
-      Switch,
-      Loader,
-      Div,
-      PrivateRoute,
-      PublicRoute,
-      Route,
-      LoginScreen,
-      LogoutScreen,
-      HomeScreen,
-      RegisterScreen,
-      PublicationDetailScreen,
-      PublicationAddToListScreen,
-    } = this.props;
-
     return (
       <Div fullHeight style={{ marginTop: 0, padding: 0 }}>
         <Error>
@@ -62,9 +63,5 @@ class Routes extends PureComponent<RoutesProps> {
     );
   }
 }
-
-export const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
-  fetchInitialState: () => dispatch(fetchInitialState()),
-});
 
 export default connect(null, mapDispatchToProps)(Routes);

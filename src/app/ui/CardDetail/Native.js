@@ -9,7 +9,7 @@ import React, { Component } from 'react';
 import debounce from 'lodash.debounce';
 
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-native';
+import { withNavigation } from 'react-navigation';
 import {
   Share,
   TouchableWithoutFeedback,
@@ -43,12 +43,12 @@ export class CardDetail extends Component<CardDetailProps> {
   }
 
   goToDetail = () => {
-    const { isDetailed, card, history } = this.props;
+    const { isDetailed, card, navigation } = this.props;
 
     if (!isDetailed && card && this.getDetailUrl) {
       logger.log('goToDetail');
-      const url = this.getDetailUrl(card.id);
-      history.push(url);
+      const url = this.getDetailUrl();
+      navigation.navigate(url, { id: card.id });
     }
   };
 
@@ -60,11 +60,11 @@ export class CardDetail extends Component<CardDetailProps> {
   };
 
   goToAddToList = () => {
-    const { card, history } = this.props;
+    const { card, navigation } = this.props;
 
     logger.log('goToAddToList');
-    const url = this.addToListUrl(card.id);
-    history.push(url);
+    const url = this.addToListUrl();
+    navigation.navigate(url, { id: card.id });
   };
 
   goToDownload = async () => {
@@ -190,4 +190,4 @@ export class CardDetail extends Component<CardDetailProps> {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(CardDetail));
+export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(CardDetail));

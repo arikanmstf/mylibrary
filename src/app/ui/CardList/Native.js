@@ -8,7 +8,7 @@
 import React, { Component } from 'react';
 import debounce from 'lodash.debounce';
 
-import { withRouter } from 'react-router-native';
+import { withNavigation } from 'react-navigation';
 import { connect } from 'react-redux';
 import {
   FlatList,
@@ -86,4 +86,4 @@ export class CardList extends Component<CardListProps> {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(CardList));
+export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(CardList));

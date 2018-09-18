@@ -14,7 +14,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 import { green500, white } from 'constants/theme/color';
 
 // Routes
-import Routes from './Routes';
+import { Routes } from 'ui';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 const theme = createMuiTheme({

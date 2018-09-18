@@ -9,7 +9,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { TouchableOpacity } from 'react-native';
 import { reduxForm } from 'redux-form/immutable';
-import { Link, withRouter } from 'react-router-native';
+import { withNavigation } from 'react-navigation';
 import debounce from 'lodash.debounce';
 import {
   Header as HeaderNative,
@@ -24,7 +24,7 @@ import {
   Text,
   Title,
 } from 'native-base';
-import { TextField } from 'ui/native';
+import { TextField, Link } from 'ui/native';
 import t from 'helpers/i18n/Translate';
 import logger from 'helpers/logger';
 import fields, { SEARCH_FORM_KEY } from 'constants/forms/search';
@@ -68,11 +68,11 @@ export class Header extends PureComponent<HeaderProps> {
   };
 
   handleBackButtonPress = () => {
-    const { history } = this.props;
+    const { navigation } = this.props;
     logger.log('handleBackButtonPress');
 
-    if (history) {
-      history.goBack();
+    if (navigation) {
+      navigation.goBack();
     }
   };
 
@@ -146,5 +146,5 @@ export default reduxForm({
   form: SEARCH_FORM_KEY,
   onSubmit: submitSearchForm,
 })(
-  connect(null, mapDispatchToProps)(withRouter(Header))
+  connect(null, mapDispatchToProps)(withNavigation(Header))
 );

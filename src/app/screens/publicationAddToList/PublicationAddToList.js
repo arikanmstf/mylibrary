@@ -15,10 +15,13 @@ class PublicationAddToList extends Component<PublicationAddToListProps> {
     const {
       fetchLists,
       fetchPublication,
-      match: { params: { id } },
+      match,
       publication,
       rows,
+      navigation,
     } = this.props;
+
+    const id = match ? match.params.id : navigation.getParam('id');
 
     if (!publication) {
       fetchPublication(id);
@@ -30,7 +33,13 @@ class PublicationAddToList extends Component<PublicationAddToListProps> {
   }
 
   static getDerivedStateFromProps(props: PublicationAddToListProps) {
-    const { fetchPublication, match: { params: { id } }, publication } = props;
+    const {
+      fetchPublication,
+      match,
+      publication,
+      navigation,
+    } = props;
+    const id = match ? match.params.id : navigation.getParam('id');
 
     if (!publication || (publication && publication.id !== +id)) {
       fetchPublication(id);

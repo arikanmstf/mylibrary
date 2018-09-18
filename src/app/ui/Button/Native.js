@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { Button as NativeButton, Text } from 'native-base';
-import { Link } from 'react-router-native';
+import { Link } from 'ui/native';
 
 import type { Node } from 'react';
 import type { ButtonProps } from './types';

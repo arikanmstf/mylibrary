@@ -1,7 +1,7 @@
 // @flow
 import React, { PureComponent } from 'react';
 import { Image as NativeImage } from 'react-native';
-import { Link } from 'react-router-native';
+import { Link } from 'ui/native';
 import type { ImageProps } from './types';
 
 class Image extends PureComponent<ImageProps> {

@@ -19,14 +19,14 @@ export {
   bookCoverUrl,
 };
 
-export const publicationDetailUrl = (id: number) => {
-  return PUBLICATION_DETAIL.replace(':id', id);
+export const publicationDetailUrl = () => {
+  return PUBLICATION_DETAIL;
 };
 
-export const publicationAddToListUrl = (id: number) => {
-  return PUBLICATION_ADD_TO_LIST.replace(':id', id);
+export const publicationAddToListUrl = () => {
+  return PUBLICATION_ADD_TO_LIST;
 };
 
-export const bookDetailUrl = (id: number) => {
-  return BOOK_DETAIL.replace(':id', id);
+export const bookDetailUrl = () => {
+  return BOOK_DETAIL;
 };

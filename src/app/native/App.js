@@ -13,7 +13,7 @@ import getTheme from 'native-base-theme/components';
 import platform from 'native-base-theme/variables/platform';
 
 // Routes
-import Routes from './Routes';
+import { Routes } from 'ui/native';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
