@@ -6,7 +6,6 @@
 
 // @flow
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -24,7 +23,6 @@ import t from 'helpers/i18n/Translate';
 import logger from 'helpers/logger';
 
 import { setCardType, defaultProps } from './helpers';
-import { mapStateToProps, mapDispatchToProps } from './actions';
 import type { CardDetailProps } from './types';
 
 const styleActive = { color: green500 };
@@ -150,4 +148,4 @@ export class CardDetail extends Component<CardDetailProps> {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(CardDetail));
+export default withRouter(CardDetail);

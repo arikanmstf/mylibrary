@@ -7,8 +7,6 @@
 // @flow
 import React, { Component } from 'react';
 import debounce from 'lodash.debounce';
-
-import { connect } from 'react-redux';
 import { withNavigation } from 'react-navigation';
 import {
   Share,
@@ -31,7 +29,6 @@ import { production } from 'constants/routes/createUrl';
 import logger from 'helpers/logger';
 
 import { setCardType, defaultProps } from './helpers';
-import { mapStateToProps, mapDispatchToProps } from './actions';
 import type { CardDetailProps } from './types';
 
 export class CardDetail extends Component<CardDetailProps> {
@@ -139,18 +136,22 @@ export class CardDetail extends Component<CardDetailProps> {
           ) : null }
           <CardItem>
             <Left>
-              <TouchableOpacity
-                style={{ width: 40 }}
-                onPress={() => { this.toggleFavorite(card.id); }}
-              >
-                <Icon name="star" active={card.isFavorite} style={{ fontSize: 30 }} />
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={{ width: 40, marginTop: 3 }}
-                onPress={() => { this.toggleRead(card.id); }}
-              >
-                <Icon name="book" active={card.isRead} style={{ fontSize: 30 }} />
-              </TouchableOpacity>
+              { card.isFavorite !== null ? (
+                <TouchableOpacity
+                  style={{ width: 40 }}
+                  onPress={() => { this.toggleFavorite(card.id); }}
+                >
+                  <Icon name="star" active={card.isFavorite} style={{ fontSize: 30 }} />
+                </TouchableOpacity>
+              ) : null }
+              { card.isRead !== null ? (
+                <TouchableOpacity
+                  style={{ width: 40, marginTop: 3 }}
+                  onPress={() => { this.toggleRead(card.id); }}
+                >
+                  <Icon name="book" active={card.isRead} style={{ fontSize: 30 }} />
+                </TouchableOpacity>
+              ) : null }
               { this.addToListUrl ? (
                 <TouchableOpacity
                   style={{ width: 40, marginTop: 3 }}
@@ -192,4 +193,4 @@ export class CardDetail extends Component<CardDetailProps> {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(CardDetail));
+export default withNavigation(CardDetail);

@@ -54,14 +54,19 @@ export class CardList extends Component<CardListProps> {
 
   keyExtractor = (item) => item.id;
 
-  renderCardList = (item: RenderCardListItem) => {
-    const card = item ? item.item : null;
-    return card && (
-      <CardDetail
-        card={card}
-      />
-    );
-  };
+  renderCardList() {
+    const { toggleRead, toggleFavorite } = this.props;
+    return (item: RenderCardListItem) => {
+      const card = item ? item.item : null;
+      return card && (
+        <CardDetail
+          card={card}
+          toggleRead={toggleRead}
+          toggleFavorite={toggleFavorite}
+        />
+      );
+    };
+  }
 
   render() {
     const { cards } = this.props;
@@ -77,7 +82,7 @@ export class CardList extends Component<CardListProps> {
       <FlatList
         data={cards}
         extraData={this.props}
-        renderItem={this.renderCardList}
+        renderItem={this.renderCardList()}
         onScrollEndDrag={handleScrollDebounce}
         refreshControl={<RefreshControl refreshing={false} onRefresh={this.handleRefresh} />}
         keyExtractor={this.keyExtractor}

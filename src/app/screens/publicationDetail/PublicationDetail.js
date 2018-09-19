@@ -70,6 +70,8 @@ class PublicationDetail extends Component<PublicationDetailProps> {
       Page,
       CardDetail,
       card,
+      toggleRead,
+      toggleFavorite,
     } = this.props;
     logger.log('render: PublicationDetail');
 
@@ -79,6 +81,8 @@ class PublicationDetail extends Component<PublicationDetailProps> {
         <Page>
           <CardDetail
             card={card}
+            toggleFavorite={toggleFavorite}
+            toggleRead={toggleRead}
             isDetailed
           />
         </Page>

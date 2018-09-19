@@ -64,12 +64,14 @@ export class CardList extends Component<CardListProps> {
   };
 
   renderCardList() {
-    const { cards } = this.props;
+    const { cards, toggleRead, toggleFavorite } = this.props;
     return cards && cards.map((card) => (
       <CardDetail
         card={card}
         key={card.id}
         style={{ margin: '10px 0' }}
+        toggleRead={toggleRead}
+        toggleFavorite={toggleFavorite}
       />
     ));
   }

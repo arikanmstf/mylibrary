@@ -33,6 +33,8 @@ class Home extends Component<HomeProps> {
       Header,
       Page,
       CardList,
+      toggleRead,
+      toggleFavorite,
     } = this.props;
     logger.log('render: Home');
 
@@ -40,7 +42,10 @@ class Home extends Component<HomeProps> {
       <Screen>
         <Header />
         <Page>
-          <CardList />
+          <CardList
+            toggleRead={toggleRead}
+            toggleFavorite={toggleFavorite}
+          />
         </Page>
       </Screen>
     );

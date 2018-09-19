@@ -5,7 +5,7 @@
  */
 
 // @flow
-import { fetchPublication } from 'modules/publication/actions';
+import { fetchPublication, toggleFavorite, toggleRead } from 'modules/publication/actions';
 
 import type { Immutable } from 'store/ImmutableTypes';
 import type { State } from 'store/StateTypes';
@@ -16,4 +16,6 @@ export const mapStateToProps = (state: Immutable<State>) => ({
 
 export const mapDispatchToProps = {
   fetchPublication,
+  toggleFavorite,
+  toggleRead,
 };

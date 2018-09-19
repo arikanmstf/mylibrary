@@ -6,11 +6,17 @@ import { showLoader, hideLoader } from 'ui/Loader/actions';
 import { transformPublicationToCard } from 'helpers/data/transform';
 import { findIndexById, cloneObjectArray } from 'helpers/data/array';
 import { updateCards } from 'modules/card/actions';
+import { postToggleFavorite, postToggleRead } from 'modules/publication/services';
 
 import type { Dispatch } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
 import { getPublicationDetail, postToggleList } from './services';
 import type { ToggleListRequest } from './types';
+
+const toggleTypes = {
+  READ: 'read',
+  FAVORITE: 'favorite',
+};
 
 export const updatePublication = createAction(PUBLICATION_UPDATE_PUBLICATION);
 export const updatePublicationCard = createAction(PUBLICATION_UPDATE_CARD);
@@ -63,3 +69,42 @@ export const toggleList = (request: ToggleListRequest): ThunkAction => {
     dispatch(hideLoader());
   };
 };
+
+const toggle = (id: number, type: 'read' | 'favorite'): ThunkAction => {
+  return async (dispatch: Dispatch<*>, getState: Function) => {
+    let toggleFunc;
+    dispatch(showLoader());
+
+    switch (type) {
+      case toggleTypes.READ: toggleFunc = postToggleRead; break;
+      case toggleTypes.FAVORITE: toggleFunc = postToggleFavorite; break;
+      default: toggleFunc = () => { logger.log('toggleFunc type unknown'); };
+    }
+
+    const result = await toggleFunc(id);
+    logger.log(`toggle: ${type}`);
+    const { cards } = getState().toJS().card;
+    const { card } = getState().toJS().publication;
+
+    if (cards) {
+      const newCards = cards ? cloneObjectArray(cards) : [];
+      const index = findIndexById(newCards, id);
+      newCards[index] = transformPublicationToCard(result);
+      await dispatch(updateCards(newCards));
+    }
+
+    if (card) {
+      const newCard = transformPublicationToCard(result);
+
+      await Promise.all([
+        dispatch(updatePublicationCard(newCard)),
+        dispatch(updatePublication(result)),
+      ]);
+    }
+
+    dispatch(hideLoader());
+  };
+};
+
+export const toggleRead = (id) => (toggle(id, 'read'));
+export const toggleFavorite = (id) => (toggle(id, 'favorite'));
