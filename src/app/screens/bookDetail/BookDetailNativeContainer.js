@@ -11,7 +11,7 @@ import {
   Screen,
   Header,
   Page,
-  CardDetail
+  CardDetail,
 } from 'ui/native';
 import BookDetailScreen from './BookDetail';
 import { mapStateToProps, mapDispatchToProps } from './bookDetailActions';

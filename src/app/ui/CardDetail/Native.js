@@ -38,14 +38,14 @@ export class CardDetail extends Component<CardDetailProps> {
   static defaultProps = defaultProps;
 
   setCardType() {
-    const { card } = this.props;
-    setCardType.bind(this)(card);
+    const { card, isDetailed } = this.props;
+    setCardType.bind(this)(card, isDetailed);
   }
 
   goToDetail = () => {
-    const { isDetailed, card, navigation } = this.props;
+    const { card, navigation } = this.props;
 
-    if (!isDetailed && card && this.getDetailUrl) {
+    if (card && this.getDetailUrl) {
       logger.log('goToDetail');
       const url = this.getDetailUrl();
       navigation.navigate(url, { id: card.id });
@@ -116,18 +116,20 @@ export class CardDetail extends Component<CardDetailProps> {
               <Text note>{card.subHeader}</Text>
             </Body>
           </CardItem>
-          <TouchableWithoutFeedback
-            onPress={goToDetailDebounce}
-          >
-            <CardItem
-              cardBody
+          { this.imageUri ? (
+            <TouchableWithoutFeedback
+              onPress={goToDetailDebounce}
             >
-              <Image
-                source={{ uri: this.imageUri }}
-                style={{ height: 200, flex: 1 }}
-              />
-            </CardItem>
-          </TouchableWithoutFeedback>
+              <CardItem
+                cardBody
+              >
+                <Image
+                  source={{ uri: this.imageUri }}
+                  style={{ height: 200, flex: 1 }}
+                />
+              </CardItem>
+            </TouchableWithoutFeedback>
+          ) : null }
           { isDetailed ? (
             <CardItem>
               <Body>

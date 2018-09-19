@@ -11,19 +11,62 @@ import { CARD_TYPE_BOOK } from 'modules/card/constants';
 import type { BookDetailProps } from './BookDetailTypes';
 
 class BookDetail extends Component<BookDetailProps> {
+  willFocus = this.props.navigation.addListener( // eslint-disable-line react/destructuring-assignment
+    'willFocus',
+    () => {
+      this.forceUpdate();
+    }
+  );
+
   componentDidMount() {
     const {
       fetchBook,
+    } = this.props;
+
+    if (this.shouldFetch()) {
+      fetchBook(this.getId());
+    }
+  }
+
+  componentDidUpdate() {
+    const {
+      fetchBook,
+    } = this.props;
+
+    if (this.shouldFetch()) {
+      fetchBook(this.getId());
+    }
+  }
+
+  getId() {
+    const {
       match,
+      navigation,
+    } = this.props;
+    return match ? match.params.id : navigation.getParam('id');
+  }
+
+  shouldFetch() {
+    const {
       card,
       navigation,
     } = this.props;
 
-    const id = match ? match.params.id : navigation.getParam('id');
+    const id = this.getId();
 
-    if (!card || (card && (card.id !== +id || card.type !== CARD_TYPE_BOOK))) {
-      fetchBook(id);
-    }
+    return (
+      (
+        !card
+        || (
+          card
+          && (
+            card.id !== +id
+            || card.type !== CARD_TYPE_BOOK
+          )
+        )
+      )
+      && navigation.isFocused()
+    );
   }
 
   render() {

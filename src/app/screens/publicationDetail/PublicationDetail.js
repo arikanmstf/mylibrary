@@ -12,19 +12,62 @@ import { CARD_TYPE_PUBLICATION } from 'modules/card/constants';
 import type { PublicationDetailProps } from './PublicationDetailTypes';
 
 class PublicationDetail extends Component<PublicationDetailProps> {
+  willFocus = this.props.navigation.addListener( // eslint-disable-line react/destructuring-assignment
+    'willFocus',
+    () => {
+      this.forceUpdate();
+    }
+  );
+
   componentDidMount() {
     const {
       fetchPublication,
+    } = this.props;
+
+    if (this.shouldFetch()) {
+      fetchPublication(this.getId());
+    }
+  }
+
+  componentDidUpdate() {
+    const {
+      fetchPublication,
+    } = this.props;
+
+    if (this.shouldFetch()) {
+      fetchPublication(this.getId());
+    }
+  }
+
+  getId() {
+    const {
       match,
+      navigation,
+    } = this.props;
+    return match ? match.params.id : navigation.getParam('id');
+  }
+
+  shouldFetch() {
+    const {
       card,
       navigation,
     } = this.props;
 
-    const id = match ? match.params.id : navigation.getParam('id');
+    const id = this.getId();
 
-    if (!card || (card && (card.id !== +id || card.type !== CARD_TYPE_PUBLICATION))) {
-      fetchPublication(id);
-    }
+    return (
+      (
+        !card
+        || (
+          card
+          && (
+            card.id !== +id
+            || card.type !== CARD_TYPE_PUBLICATION
+          )
+        )
+      )
+      && navigation.isFocused()
+    );
   }
 
   render() {
