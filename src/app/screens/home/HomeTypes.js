@@ -5,7 +5,7 @@
  */
 
 // @flow
-import { ComponentType } from 'react';
+import type { ComponentType } from 'react';
 import type { ScreenProps } from 'ui/Screen/types';
 import type { HeaderProps } from 'ui/Header/types';
 import type { PageProps } from 'ui/Page/types';

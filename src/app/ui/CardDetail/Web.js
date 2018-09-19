@@ -33,14 +33,14 @@ export class CardDetail extends Component<CardDetailProps> {
   static defaultProps = defaultProps;
 
   setCardType() {
-    const { card } = this.props;
-    setCardType.bind(this)(card);
+    const { card, isDetailed } = this.props;
+    setCardType.bind(this)(card, isDetailed);
   }
 
   goToDetail = () => {
-    const { isDetailed, card, history } = this.props;
+    const { card, history } = this.props;
 
-    if (!isDetailed && card && this.getDetailUrl) {
+    if (card && this.getDetailUrl) {
       logger.log('goToDetail', card);
       const url = this.getDetailUrl(card.id);
       history.push(url);
@@ -82,8 +82,8 @@ export class CardDetail extends Component<CardDetailProps> {
       style,
       isDetailed,
     } = this.props;
-    const linkStyle = !isDetailed ? { cursor: 'pointer' } : {};
     this.setCardType();
+    const linkStyle = this.getDetailUrl ? { cursor: 'pointer' } : {};
 
     if (!card) {
       return null;
@@ -99,30 +99,36 @@ export class CardDetail extends Component<CardDetailProps> {
           onClick={this.goToDetail}
           style={linkStyle}
         />
-        <CardMedia
-          image={this.imageUri}
-          title={card.title}
-          onClick={this.goToDetail}
-          style={{ height: '200px', ...linkStyle }}
-        />
+        { this.imageUri ? (
+          <CardMedia
+            image={this.imageUri}
+            title={card.title}
+            onClick={this.goToDetail}
+            style={{ height: '200px', ...linkStyle }}
+          />
+        ) : null }
         { isDetailed ? (
           <CardContent>
             <Typography component="p">{card.description}</Typography>
           </CardContent>
         ) : null }
         <CardActions disableActionSpacing>
-          <IconButton
-            aria-label={t.get('CARD_ADD_TO_FAVORITES')}
-            onClick={() => { this.toggleFavorite(card.id); }}
-          >
-            <StarIcon style={card.isFavorite ? styleActive : null} />
-          </IconButton>
-          <IconButton
-            aria-label={t.get('CARD_ADD_TO_BOOKS_I_READ')}
-            onClick={() => { this.toggleRead(card.id); }}
-          >
-            <BookIcon style={card.isRead ? styleActive : null} />
-          </IconButton>
+          { card.isFavorite !== null ? (
+            <IconButton
+              aria-label={t.get('CARD_ADD_TO_FAVORITES')}
+              onClick={() => { this.toggleFavorite(card.id); }}
+            >
+              <StarIcon style={card.isFavorite ? styleActive : null} />
+            </IconButton>
+          ) : null }
+          { card.isRead !== null ? (
+            <IconButton
+              aria-label={t.get('CARD_ADD_TO_BOOKS_I_READ')}
+              onClick={() => { this.toggleRead(card.id); }}
+            >
+              <BookIcon style={card.isRead ? styleActive : null} />
+            </IconButton>
+          ) : null }
           { this.addToListUrl ? (
             <IconButton
               onClick={this.goToAddToList}

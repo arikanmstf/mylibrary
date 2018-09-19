@@ -42,3 +42,13 @@ export type ToggleRead = {|
   id: number,
   result: 1 | 0,
 |}
+
+export type BookDetail = {|
+  title: string,
+  id: number,
+  description: string,
+  writers: Array<Writer>,
+  publishers: Array<Publisher>,
+  tags: Array<Item>,
+  addedBy: string,
+|}

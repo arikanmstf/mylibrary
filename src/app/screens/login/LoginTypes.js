@@ -5,7 +5,7 @@
  */
 
 // @flow
-import { ComponentType } from 'react';
+import type { ComponentType } from 'react';
 import type { TextProps } from 'ui/Text/types';
 import type { TextFieldProps } from 'ui/forms/TextField/types';
 import type { ScreenProps } from 'ui/Screen/types';

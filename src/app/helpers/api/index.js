@@ -10,4 +10,5 @@ export {
   PUBLICATION_TOGGLE_READ,
   PUBLICATION_TOGGLE_LIST,
   LIST_MY,
+  BOOK_DETAIL,
 } from './serviceNames';

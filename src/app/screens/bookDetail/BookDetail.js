@@ -1,20 +1,19 @@
 /**
  * Screen Template By => create-module script
- * @version 1.0.1
+ * @version 1.0.2
  *
  */
 
 // @flow
 import React, { Component } from 'react';
 import logger from 'helpers/logger';
-import { CARD_TYPE_PUBLICATION } from 'modules/card/constants';
+import { CARD_TYPE_BOOK } from 'modules/card/constants';
+import type { BookDetailProps } from './BookDetailTypes';
 
-import type { PublicationDetailProps } from './PublicationDetailTypes';
-
-class PublicationDetail extends Component<PublicationDetailProps> {
+class BookDetail extends Component<BookDetailProps> {
   componentDidMount() {
     const {
-      fetchPublication,
+      fetchBook,
       match,
       card,
       navigation,
@@ -22,8 +21,8 @@ class PublicationDetail extends Component<PublicationDetailProps> {
 
     const id = match ? match.params.id : navigation.getParam('id');
 
-    if (!card || (card && (card.id !== +id || card.type !== CARD_TYPE_PUBLICATION))) {
-      fetchPublication(id);
+    if (!card || (card && (card.id !== +id || card.type !== CARD_TYPE_BOOK))) {
+      fetchBook(id);
     }
   }
 
@@ -35,7 +34,7 @@ class PublicationDetail extends Component<PublicationDetailProps> {
       CardDetail,
       card,
     } = this.props;
-    logger.log('render: PublicationDetail');
+    logger.log('render: BookDetail');
 
     return (
       <Screen>
@@ -51,4 +50,4 @@ class PublicationDetail extends Component<PublicationDetailProps> {
   }
 }
 
-export default PublicationDetail;
+export default BookDetail;

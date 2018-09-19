@@ -1,9 +1,12 @@
 // @flow
-import { CARD_TYPE_PUBLICATION } from 'modules/card/constants';
+import {
+  CARD_TYPE_PUBLICATION,
+  CARD_TYPE_BOOK,
+} from 'modules/card/constants';
 
 import type { CardItem } from 'modules/card/types';
 import type { Pagination } from 'ui/CardList/types';
-import type { PublicationDetail, Item } from 'helpers/api/types';
+import type { PublicationDetail, Item, BookDetail } from 'helpers/api/types';
 import type { Row } from 'ui/RowList/types';
 
 const BOOKS_I_READ = 'BOOKS_I_READ';
@@ -60,4 +63,23 @@ export const transformItemListToRowList = (result: Array<Item>): Array<Row> => {
   }
 
   return result.map(transformItemToRow);
+};
+
+export const transformBookToCard = (book: BookDetail): CardItem => {
+  if (!book) {
+    return book;
+  }
+
+  const writers = book.writers.map((writer) => writer.name).join(', ');
+  const publishers = book.publishers.map((publisher) => publisher.name).join(', ');
+
+  return {
+    title: book.title,
+    id: book.id,
+    subHeader: `${writers} - ${publishers}`,
+    isFavorite: null,
+    isRead: null,
+    type: CARD_TYPE_BOOK,
+    description: book.description,
+  };
 };

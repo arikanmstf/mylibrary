@@ -8,3 +8,4 @@ export const PUBLICATION_TOGGLE_FAVORITE = 'publication/{id}/favorite';
 export const PUBLICATION_TOGGLE_READ = 'publication/{id}/read';
 export const PUBLICATION_TOGGLE_LIST = 'publication/{id}/toggle-list';
 export const LIST_MY = 'list/my';
+export const BOOK_DETAIL = 'book/{id}';

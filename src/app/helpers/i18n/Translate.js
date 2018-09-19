@@ -20,7 +20,7 @@ class Translate {
     return this.data || {};
   }
 
-  get(key?: ?string, variables: Object): string {
+  get(key?: ?string, variables?: Object): string {
     const data = this.getData();
     let result = data[key] || key || '';
     if (variables) {
