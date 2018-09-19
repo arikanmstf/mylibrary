@@ -7,9 +7,9 @@ export type State = {|
   form: Object,
   book: {|
     book: BookDetail,
+    card?: CardItem,
   |},
   card: {|
-    card?: CardItem,
     cards?: Array<CardItem>,
     totalPages: number,
     currentPage: number,
@@ -18,6 +18,7 @@ export type State = {|
   |},
   publication: {|
     publication?: PublicationDetail,
+    card?: CardItem,
   |},
   row: {|
     rows?: Array<Row>,

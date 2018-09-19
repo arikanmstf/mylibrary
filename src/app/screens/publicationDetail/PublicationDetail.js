@@ -12,13 +12,6 @@ import { CARD_TYPE_PUBLICATION } from 'modules/card/constants';
 import type { PublicationDetailProps } from './PublicationDetailTypes';
 
 class PublicationDetail extends Component<PublicationDetailProps> {
-  willFocus = this.props.navigation.addListener( // eslint-disable-line react/destructuring-assignment
-    'willFocus',
-    () => {
-      this.forceUpdate();
-    }
-  );
-
   componentDidMount() {
     const {
       fetchPublication,
@@ -66,7 +59,7 @@ class PublicationDetail extends Component<PublicationDetailProps> {
           )
         )
       )
-      && navigation.isFocused()
+      && (navigation ? navigation.isFocused() : true)
     );
   }
 

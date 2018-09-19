@@ -11,13 +11,6 @@ import { CARD_TYPE_BOOK } from 'modules/card/constants';
 import type { BookDetailProps } from './BookDetailTypes';
 
 class BookDetail extends Component<BookDetailProps> {
-  willFocus = this.props.navigation.addListener( // eslint-disable-line react/destructuring-assignment
-    'willFocus',
-    () => {
-      this.forceUpdate();
-    }
-  );
-
   componentDidMount() {
     const {
       fetchBook,
@@ -65,7 +58,7 @@ class BookDetail extends Component<BookDetailProps> {
           )
         )
       )
-      && navigation.isFocused()
+      && (navigation ? navigation.isFocused() : true)
     );
   }
 

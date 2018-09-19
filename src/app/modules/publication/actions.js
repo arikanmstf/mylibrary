@@ -1,11 +1,11 @@
 // @flow
 import { createAction } from 'redux-actions';
-import { PUBLICATION_UPDATE_PUBLICATION } from 'constants/actions/actionNames';
+import { PUBLICATION_UPDATE_PUBLICATION, PUBLICATION_UPDATE_CARD } from 'constants/actions/actionNames';
 import logger from 'helpers/logger';
 import { showLoader, hideLoader } from 'ui/Loader/actions';
 import { transformPublicationToCard } from 'helpers/data/transform';
 import { findIndexById, cloneObjectArray } from 'helpers/data/array';
-import { updateCards, updateCard } from 'modules/card/actions';
+import { updateCards } from 'modules/card/actions';
 
 import type { Dispatch } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
@@ -13,6 +13,7 @@ import { getPublicationDetail, postToggleList } from './services';
 import type { ToggleListRequest } from './types';
 
 export const updatePublication = createAction(PUBLICATION_UPDATE_PUBLICATION);
+export const updatePublicationCard = createAction(PUBLICATION_UPDATE_CARD);
 
 export const fetchPublication = (id: number, shouldShowLoader: boolean = true): ThunkAction => {
   return async (dispatch: Dispatch<*>) => {
@@ -27,7 +28,7 @@ export const fetchPublication = (id: number, shouldShowLoader: boolean = true): 
     logger.log('action: fetchPublication');
 
     await Promise.all([
-      dispatch(updateCard(card)),
+      dispatch(updatePublicationCard(card)),
       dispatch(updatePublication(publication)),
     ]);
 
@@ -54,7 +55,7 @@ export const toggleList = (request: ToggleListRequest): ThunkAction => {
     }
 
     await Promise.all([
-      dispatch(updateCard(card)),
+      dispatch(updatePublicationCard(card)),
       dispatch(updatePublication(publication)),
     ]);
 

@@ -6,11 +6,10 @@
 
 // @flow
 import { createAction } from 'redux-actions';
-import { BOOK_UPDATE_BOOK } from 'constants/actions/actionNames';
+import { BOOK_UPDATE_BOOK, BOOK_UPDATE_CARD } from 'constants/actions/actionNames';
 import logger from 'helpers/logger';
 import { showLoader, hideLoader } from 'ui/Loader/actions';
 import { transformBookToCard } from 'helpers/data/transform';
-import { updateCard } from 'modules/card/actions';
 
 import type { Dispatch } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
@@ -18,6 +17,7 @@ import type { ThunkAction } from 'redux-thunk';
 import { getBookDetail } from './services';
 
 export const updateBook = createAction(BOOK_UPDATE_BOOK);
+export const updateBookCard = createAction(BOOK_UPDATE_CARD);
 
 export const fetchBook = (id: number, shouldShowLoader: boolean = true): ThunkAction => {
   return async (dispatch: Dispatch<*>) => {
@@ -32,7 +32,7 @@ export const fetchBook = (id: number, shouldShowLoader: boolean = true): ThunkAc
     logger.log('action: fetchBook');
 
     await Promise.all([
-      dispatch(updateCard(card)),
+      dispatch(updateBookCard(card)),
       dispatch(updateBook(book)),
     ]);
 

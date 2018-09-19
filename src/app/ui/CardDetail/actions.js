@@ -4,8 +4,8 @@ import {
   postToggleFavorite,
   postToggleRead,
 } from 'modules/publication/services';
-import { updateCard, updateCards } from 'modules/card/actions';
-import { updatePublication } from 'modules/publication/actions';
+import { updateCards } from 'modules/card/actions';
+import { updatePublication, updatePublicationCard } from 'modules/publication/actions';
 import { findIndexById, cloneObjectArray } from 'helpers/data/array';
 import { showLoader, hideLoader } from 'ui/Loader/actions';
 import { transformPublicationToCard } from 'helpers/data/transform';
@@ -31,7 +31,7 @@ const toggle = (id: number, type: 'read' | 'favorite'): ThunkAction => {
 
     const result = await toggleFunc(id);
     logger.log(`toggle: ${type}`);
-    const { card, cards } = getState().toJS().card;
+    const { card, cards } = getState().toJS().publication;
 
     if (cards) {
       const newCards = cards ? cloneObjectArray(cards) : [];
@@ -44,7 +44,7 @@ const toggle = (id: number, type: 'read' | 'favorite'): ThunkAction => {
       const newCard = transformPublicationToCard(result);
 
       await Promise.all([
-        dispatch(updateCard(newCard)),
+        dispatch(updatePublicationCard(newCard)),
         dispatch(updatePublication(result)),
       ]);
     }

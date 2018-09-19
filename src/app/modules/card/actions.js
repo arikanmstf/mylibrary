@@ -2,7 +2,6 @@
 import { createAction } from 'redux-actions';
 import {
   ADD_CARDS,
-  UPDATE_CARD,
   UPDATE_CARDS,
   UPDATE_TOTAL_PAGES,
   UPDATE_CURRENT_PAGE,
@@ -18,7 +17,6 @@ import type { ThunkAction } from 'redux-thunk';
 import type { SubmitSearchFormRequest } from 'ui/Header/types';
 
 export const addCards = createAction(ADD_CARDS);
-export const updateCard = createAction(UPDATE_CARD);
 export const updateCards = createAction(UPDATE_CARDS);
 export const updateTotalPages = createAction(UPDATE_TOTAL_PAGES);
 export const updateCurrentPage = createAction(UPDATE_CURRENT_PAGE);

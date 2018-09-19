@@ -7,7 +7,6 @@
 import { handleActions } from 'redux-actions';
 import {
   addCards,
-  updateCard,
   updateCards,
   updateTotalPages,
   updateCurrentPage,
@@ -17,7 +16,6 @@ import {
 
 const initialState = {
   cards: null,
-  card: null,
   totalPages: 0,
   currentPage: 1,
   searchQuery: '',
@@ -30,13 +28,6 @@ const reducer = new Map([
     (state, action) => ({
       ...state,
       cards: action.payload ? [...state.cards, ...action.payload] : state.cards,
-    }),
-  ],
-  [
-    updateCard,
-    (state, action) => ({
-      ...state,
-      card: action.payload || state.card,
     }),
   ],
   [
