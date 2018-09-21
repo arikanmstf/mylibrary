@@ -17,7 +17,12 @@ import StarIcon from '@material-ui/icons/Star';
 import BookIcon from '@material-ui/icons/Book';
 import AddIcon from '@material-ui/icons/Add';
 import DownloadIcon from '@material-ui/icons/CloudDownload';
+import MoreIcon from '@material-ui/icons/MoreVert';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+
 import IconButton from '@material-ui/core/IconButton';
+
 import { green500 } from 'constants/theme/color';
 import t from 'helpers/i18n/Translate';
 import logger from 'helpers/logger';
@@ -29,6 +34,10 @@ const styleActive = { color: green500 };
 
 export class CardDetail extends Component<CardDetailProps> {
   static defaultProps = defaultProps;
+
+  state = {
+    anchorElRenderMore: null,
+  };
 
   setCardType() {
     const { card, isDetailed } = this.props;
@@ -60,6 +69,14 @@ export class CardDetail extends Component<CardDetailProps> {
     }
   };
 
+  handleRenderMoreClick = (event) => {
+    this.setState({ anchorElRenderMore: event.currentTarget });
+  };
+
+  handleRenderMoreClose = () => {
+    this.setState({ anchorElRenderMore: null });
+  };
+
   toggleFavorite(id: number) {
     const { toggleFavorite } = this.props;
     if (toggleFavorite) {
@@ -72,6 +89,30 @@ export class CardDetail extends Component<CardDetailProps> {
     if (toggleRead) {
       toggleRead(id);
     }
+  }
+
+  renderMore() {
+    const { anchorElRenderMore } = this.state;
+
+    return (
+      <div>
+        <IconButton
+          onClick={this.handleRenderMoreClick}
+        >
+          <MoreIcon />
+        </IconButton>
+        <Menu
+          id="header-more-menu"
+          anchorEl={anchorElRenderMore}
+          open={Boolean(anchorElRenderMore)}
+          onClose={this.handleRenderMoreClose}
+        >
+          <MenuItem onClick={this.handleRenderMoreClose}>Profile</MenuItem>
+          <MenuItem onClick={this.handleRenderMoreClose}>My account</MenuItem>
+          <MenuItem onClick={this.handleRenderMoreClose}>Logout</MenuItem>
+        </Menu>
+      </div>
+    );
   }
 
   render() {
@@ -94,8 +135,7 @@ export class CardDetail extends Component<CardDetailProps> {
         <CardHeader
           title={card.title}
           subheader={card.subHeader}
-          onClick={this.goToDetail}
-          style={linkStyle}
+          action={this.renderMore()}
         />
         { this.imageUri ? (
           <CardMedia

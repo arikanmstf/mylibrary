@@ -45,6 +45,15 @@ const theme = createMuiTheme({
         justifyContent: 'space-between',
       },
     },
+    MuiCardHeader: {
+      root: {
+        height: '110px',
+      },
+      content: {
+        height: '100%',
+        overflow: 'hidden',
+      },
+    },
   },
   typography: {
     fontFamily: '"Baskerville", "Helvetica", "Arial", sans-serif',
