@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 import reducers from 'store/reducers';
 
 // Theme
-import { StyleProvider } from 'native-base';
+import { StyleProvider, Root } from 'native-base';
 import getTheme from 'native-base-theme/components';
 import platform from 'native-base-theme/variables/platform';
 
@@ -21,7 +21,9 @@ const App = () => {
   return (
     <Provider store={createStoreWithMiddleware(reducers)}>
       <StyleProvider style={getTheme(platform)}>
-        <Routes />
+        <Root>
+          <Routes />
+        </Root>
       </StyleProvider>
     </Provider>
   );

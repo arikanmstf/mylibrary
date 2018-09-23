@@ -18,6 +18,7 @@ const writerOptions = (card: CardItem) => {
   }
   return card.writers.map((writer) => ({
     to: writerDetailUrl(writer.id),
+    toId: writer.id,
     label: `Writer detail: ${writer.name}`,
   }));
 };
@@ -27,11 +28,13 @@ const createMoreOptions = (card: CardItem) => (
     [CARD_TYPE_PUBLICATION]: [
       {
         to: bookDetailUrl(card.id),
+        toId: card.id,
         label: 'Book detail', // TODO: i18n
       },
       card.publisher
         ? {
           to: publisherDetailUrl(card.publisher.id),
+          toId: card.publisher.id,
           label: 'Publisher detail',
         }
         : null,
@@ -40,6 +43,11 @@ const createMoreOptions = (card: CardItem) => (
   }[card.type]
     .filter((x) => x)
     .concat(writerOptions(card))
+    .concat([
+      {
+        label: 'Cancel',
+      },
+    ])
 );
 
 export function setCardType(card: CardItem, isDetailed: boolean) {

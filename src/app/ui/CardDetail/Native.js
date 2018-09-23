@@ -24,6 +24,7 @@ import {
   Left,
   Body,
   Right,
+  ActionSheet,
 } from 'native-base';
 import { production } from 'constants/routes/createUrl';
 import logger from 'helpers/logger';
@@ -56,6 +57,13 @@ export class CardDetail extends Component<CardDetailProps> {
     });
   };
 
+  goTo = (option) => {
+    const { navigation } = this.props;
+    if (option.to) {
+      navigation.navigate(option.to, { id: option.toId });
+    }
+  };
+
   goToAddToList = () => {
     const { card, navigation } = this.props;
 
@@ -75,6 +83,21 @@ export class CardDetail extends Component<CardDetailProps> {
         logger.log(`Can't open the download url: ${card.downloadUrl}`);
       }
     }
+  };
+
+  handleRenderMoreClick = () => {
+    const options = this.moreOptions.map((option) => (option.label));
+    ActionSheet.show(
+      {
+        options,
+        cancelButtonIndex: options.length - 1,
+        destructiveButtonIndex: options.length - 1,
+      },
+      (buttonIndex) => {
+        const option = this.moreOptions[buttonIndex];
+        this.goTo(option);
+      }
+    );
   };
 
   toggleFavorite(id: number) {
@@ -112,10 +135,18 @@ export class CardDetail extends Component<CardDetailProps> {
               <Text>{card.title}</Text>
               <Text note>{card.subHeader}</Text>
             </Body>
-            <Right>
+            <Right
+              style={{
+                flex: 1,
+                alignItems: 'center',
+                flexDirection: 'row',
+                justifyContent: 'flex-end',
+              }}
+            >
               { card ? (
                 <TouchableOpacity
-                  onPress={() => {}}
+                  onPress={this.handleRenderMoreClick}
+                  style={{ width: 40, flexShrink: 1, alignItems: 'flex-end' }}
                 >
                   <Icon name="more" active />
                 </TouchableOpacity>
