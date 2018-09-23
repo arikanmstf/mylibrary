@@ -112,6 +112,15 @@ export class CardDetail extends Component<CardDetailProps> {
               <Text>{card.title}</Text>
               <Text note>{card.subHeader}</Text>
             </Body>
+            <Right>
+              { card ? (
+                <TouchableOpacity
+                  onPress={() => {}}
+                >
+                  <Icon name="more" active />
+                </TouchableOpacity>
+              ) : null }
+            </Right>
           </CardItem>
           { this.imageUri ? (
             <TouchableWithoutFeedback

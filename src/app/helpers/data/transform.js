@@ -28,6 +28,8 @@ export const transformPublicationToCard = (publication: PublicationDetail): Card
     type: CARD_TYPE_PUBLICATION,
     description: publication.description,
     downloadUrl: publication.downloadUrl && publication.downloadUrl.length > 0 ? publication.downloadUrl : undefined,
+    publisher: publication.publisher,
+    writers: publication.writers,
   };
 };
 
@@ -81,5 +83,6 @@ export const transformBookToCard = (book: BookDetail): CardItem => {
     isRead: null,
     type: CARD_TYPE_BOOK,
     description: book.description,
+    writers: book.writers,
   };
 };

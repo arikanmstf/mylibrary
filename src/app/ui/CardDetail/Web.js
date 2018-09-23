@@ -44,6 +44,11 @@ export class CardDetail extends Component<CardDetailProps> {
     setCardType.bind(this)(card, isDetailed);
   }
 
+  goTo = (url) => {
+    const { history } = this.props;
+    history.push(url);
+  };
+
   goToDetail = () => {
     const { card, history } = this.props;
 
@@ -91,6 +96,12 @@ export class CardDetail extends Component<CardDetailProps> {
     }
   }
 
+  renderMoreOptions() {
+    return this.moreOptions.map((option) => (
+      <MenuItem onClick={() => { this.goTo(option.to); }}>{option.label}</MenuItem>
+    ));
+  }
+
   renderMore() {
     const { anchorElRenderMore } = this.state;
 
@@ -107,9 +118,7 @@ export class CardDetail extends Component<CardDetailProps> {
           open={Boolean(anchorElRenderMore)}
           onClose={this.handleRenderMoreClose}
         >
-          <MenuItem onClick={this.handleRenderMoreClose}>Profile</MenuItem>
-          <MenuItem onClick={this.handleRenderMoreClose}>My account</MenuItem>
-          <MenuItem onClick={this.handleRenderMoreClose}>Logout</MenuItem>
+          {this.renderMoreOptions()}
         </Menu>
       </div>
     );

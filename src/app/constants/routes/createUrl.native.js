@@ -3,6 +3,8 @@ import {
   BOOK_DETAIL,
   PUBLICATION_DETAIL,
   PUBLICATION_ADD_TO_LIST,
+  WRITER_DETAIL,
+  PUBLISHER_DETAIL,
 } from './routeNames';
 
 import {
@@ -29,4 +31,12 @@ export const publicationAddToListUrl = () => {
 
 export const bookDetailUrl = () => {
   return BOOK_DETAIL;
+};
+
+export const writerDetailUrl = () => {
+  return WRITER_DETAIL;
+};
+
+export const publisherDetailUrl = () => {
+  return PUBLISHER_DETAIL;
 };
