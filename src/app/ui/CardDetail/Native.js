@@ -176,7 +176,7 @@ export class CardDetail extends Component<CardDetailProps> {
           ) : null }
           <CardItem>
             <Left>
-              { card.isFavorite !== null ? (
+              { card.isFavorite !== undefined ? (
                 <TouchableOpacity
                   style={{ width: 40 }}
                   onPress={() => { this.toggleFavorite(card.id); }}
@@ -184,7 +184,7 @@ export class CardDetail extends Component<CardDetailProps> {
                   <Icon name="star" active={card.isFavorite} style={{ fontSize: 30 }} />
                 </TouchableOpacity>
               ) : null }
-              { card.isRead !== null ? (
+              { card.isRead !== undefined ? (
                 <TouchableOpacity
                   style={{ width: 40, marginTop: 3 }}
                   onPress={() => { this.toggleRead(card.id); }}

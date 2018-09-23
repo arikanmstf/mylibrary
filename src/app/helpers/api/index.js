@@ -11,4 +11,5 @@ export {
   PUBLICATION_TOGGLE_LIST,
   LIST_MY,
   BOOK_DETAIL,
+  WRITER_DETAIL,
 } from './serviceNames';

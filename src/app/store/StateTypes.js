@@ -1,7 +1,7 @@
 // @flow
 import type { CardItem } from 'modules/card/types';
 import type { Row } from 'ui/RowList/types';
-import type { PublicationDetail, BookDetail } from 'helpers/api/types';
+import type { PublicationDetail, BookDetail, WriterDetail } from 'helpers/api/types';
 
 export type State = {|
   form: Object,
@@ -32,5 +32,9 @@ export type State = {|
   |},
   screen: {|
     isDrawerOpen: boolean,
+  |},
+  writer: {|
+    writer?: WriterDetail,
+    card?: CardItem,
   |},
 |};

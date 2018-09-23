@@ -12,11 +12,11 @@ import type { HeaderProps } from 'ui/Header/types';
 import type { PageProps } from 'ui/Page/types';
 import type { CardItem } from 'modules/card/types';
 
-export type PublicationDetailProps = {
+export type WriterDetailProps = {
   CardDetail: ComponentType<CardDetailProps>,
   Screen: ComponentType<ScreenProps>,
   Header: ComponentType<HeaderProps>,
   Page: ComponentType<PageProps>,
-  fetchPublication: Function,
+  fetchWriter: Function,
   card?: CardItem,
 };

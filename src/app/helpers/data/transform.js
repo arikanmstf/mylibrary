@@ -2,11 +2,17 @@
 import {
   CARD_TYPE_PUBLICATION,
   CARD_TYPE_BOOK,
+  CARD_TYPE_WRITER,
 } from 'modules/card/constants';
 
 import type { CardItem } from 'modules/card/types';
 import type { Pagination } from 'ui/CardList/types';
-import type { PublicationDetail, Item, BookDetail } from 'helpers/api/types';
+import type {
+  PublicationDetail,
+  Item,
+  BookDetail,
+  WriterDetail,
+} from 'helpers/api/types';
 import type { Row } from 'ui/RowList/types';
 
 const BOOKS_I_READ = 'BOOKS_I_READ';
@@ -79,10 +85,21 @@ export const transformBookToCard = (book: BookDetail): CardItem => {
     title: book.title,
     id: book.id,
     subHeader: `${writers} - ${publishers}`,
-    isFavorite: null,
-    isRead: null,
     type: CARD_TYPE_BOOK,
     description: book.description,
     writers: book.writers,
+  };
+};
+
+export const transformWriterToCard = (writer: WriterDetail): CardItem => {
+  if (!writer) {
+    return writer;
+  }
+
+  return {
+    title: writer.name,
+    id: writer.id,
+    description: writer.description,
+    type: CARD_TYPE_WRITER,
   };
 };

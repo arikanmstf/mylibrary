@@ -46,7 +46,9 @@ export class CardDetail extends Component<CardDetailProps> {
 
   goTo = (url) => {
     const { history } = this.props;
-    history.push(url);
+    if (url) {
+      history.push(url);
+    }
   };
 
   goToDetail = () => {
@@ -98,7 +100,14 @@ export class CardDetail extends Component<CardDetailProps> {
 
   renderMoreOptions() {
     return this.moreOptions.map((option) => (
-      <MenuItem onClick={() => { this.goTo(option.to); }}>{option.label}</MenuItem>
+      <MenuItem
+        onClick={() => {
+          this.handleRenderMoreClose();
+          this.goTo(option.to);
+        }}
+      >
+        {option.label}
+      </MenuItem>
     ));
   }
 
@@ -160,7 +169,7 @@ export class CardDetail extends Component<CardDetailProps> {
           </CardContent>
         ) : null }
         <CardActions disableActionSpacing>
-          { card.isFavorite !== null ? (
+          { card.isFavorite !== undefined ? (
             <IconButton
               aria-label={t.get('CARD_ADD_TO_FAVORITES')}
               onClick={() => { this.toggleFavorite(card.id); }}
@@ -168,7 +177,7 @@ export class CardDetail extends Component<CardDetailProps> {
               <StarIcon style={card.isFavorite ? styleActive : null} />
             </IconButton>
           ) : null }
-          { card.isRead !== null ? (
+          { card.isRead !== undefined ? (
             <IconButton
               aria-label={t.get('CARD_ADD_TO_BOOKS_I_READ')}
               onClick={() => { this.toggleRead(card.id); }}

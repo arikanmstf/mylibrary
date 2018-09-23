@@ -9,7 +9,11 @@ import {
   writerDetailUrl,
 } from 'constants/routes/createUrl';
 import logger from 'helpers/logger';
-import { CARD_TYPE_BOOK, CARD_TYPE_PUBLICATION } from 'modules/card/constants';
+import {
+  CARD_TYPE_BOOK,
+  CARD_TYPE_PUBLICATION,
+  CARD_TYPE_WRITER,
+} from 'modules/card/constants';
 import type { CardItem } from 'modules/card/types';
 
 const writerOptions = (card: CardItem) => {
@@ -40,6 +44,7 @@ const createMoreOptions = (card: CardItem) => (
         : null,
     ],
     [CARD_TYPE_BOOK]: [],
+    [CARD_TYPE_WRITER]: [],
   }[card.type]
     .filter((x) => x)
     .concat(writerOptions(card))

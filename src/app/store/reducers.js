@@ -5,6 +5,7 @@ import book from 'modules/book/reducer';
 import card from 'modules/card/reducer';
 import publication from 'modules/publication/reducer';
 import row from 'modules/row/reducer';
+import writer from 'modules/writer/reducer';
 
 import loader from 'ui/Loader/loaderReducer';
 import login from 'screens/login/loginReducer';
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   loader,
   login,
   screen,
+  writer,
 });
 
 export default rootReducer;

@@ -1,8 +1,9 @@
 // @flow
 
-export type Writer = {|
+export type WriterDetail = {|
   id: number,
   name: string,
+  description: string,
 |}
 
 export type Publisher = {|
@@ -23,7 +24,7 @@ export type PublicationDetail = {|
   id: number,
   bookId: number,
   downloadUrl: string,
-  writers: Array<Writer>,
+  writers: Array<WriterDetail>,
   lists: Array<Item>,
   tags: Array<Item>,
   description: string,
@@ -47,7 +48,7 @@ export type BookDetail = {|
   title: string,
   id: number,
   description: string,
-  writers: Array<Writer>,
+  writers: Array<WriterDetail>,
   publishers: Array<Publisher>,
   tags: Array<Item>,
   addedBy: string,
