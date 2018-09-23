@@ -143,7 +143,7 @@ export class CardDetail extends Component<CardDetailProps> {
                 justifyContent: 'flex-end',
               }}
             >
-              { card ? (
+              { card && this.moreOptions.length > 1 ? (
                 <TouchableOpacity
                   onPress={this.handleRenderMoreClick}
                   style={{ width: 40, flexShrink: 1, alignItems: 'flex-end' }}

@@ -113,6 +113,9 @@ export class CardDetail extends Component<CardDetailProps> {
 
   renderMore() {
     const { anchorElRenderMore } = this.state;
+    if (this.moreOptions.length < 2) {
+      return null;
+    }
 
     return (
       <div>
