@@ -24,6 +24,10 @@ export type HeaderProps = {
   },
 };
 
+export type HeaderState = {
+  isSearchFocus: boolean,
+}
+
 export type SideNavigationItem = {
   label: ?string,
   icon?: ?string,

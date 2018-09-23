@@ -56,15 +56,15 @@ export const fetchAndAddCards = (): ThunkAction => {
     }
 
     logger.log('action: fetchAndAddCardsStart');
-    dispatch(showCenterLoader());
     const page = getState().toJS().card.currentPage + 1;
     const totalPage = getState().toJS().card.totalPages;
     if (page > totalPage) {
       logger.log('page is too big');
       return false;
     }
-
     const search = getState().toJS().card.searchQuery;
+
+    dispatch(showCenterLoader());
     await dispatch(updateSearchPending(true));
     const result = await getPublicationList({ page, search });
     logger.log('action: fetchAndAddCards', result);

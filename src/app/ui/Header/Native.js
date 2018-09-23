@@ -34,7 +34,7 @@ import { mapDispatchToProps, submitSearchForm } from './actions';
 import routes from './sideNavigationItems';
 import { SEARCH_SUBMIT_TIMEOUT } from './types';
 
-import type { HeaderProps, SideNavigationItem } from './types';
+import type { HeaderProps, HeaderState, SideNavigationItem } from './types';
 
 export const renderList = (route: SideNavigationItem) => {
   return (
@@ -58,7 +58,11 @@ export const SideBar = () => (
   </Content>
 );
 
-export class Header extends PureComponent<HeaderProps> {
+export class Header extends PureComponent<HeaderProps, HeaderState> {
+  state = {
+    isSearchFocus: false,
+  };
+
   handleMenuButtonPress = () => {
     const { showDrawer } = this.props;
     if (showDrawer) {
@@ -80,8 +84,21 @@ export class Header extends PureComponent<HeaderProps> {
     const {
       handleSubmit,
     } = this.props;
+    console.log(this.props);
 
     handleSubmit(submitSearchForm)();
+  };
+
+  handleFocus = () => {
+    this.setState({
+      isSearchFocus: true,
+    });
+  };
+
+  handleBlur = () => {
+    this.setState({
+      isSearchFocus: false,
+    });
   };
 
   renderMenu() {
@@ -98,7 +115,8 @@ export class Header extends PureComponent<HeaderProps> {
   }
 
   renderBackButton() {
-    return (
+    const { isSearchFocus } = this.state;
+    return !isSearchFocus ? (
       <Left>
         <TouchableOpacity
           onPress={this.handleBackButtonPress}
@@ -107,33 +125,30 @@ export class Header extends PureComponent<HeaderProps> {
           <Icon name="arrow-back" />
         </TouchableOpacity>
       </Left>
-    );
+    ) : null;
   }
 
   renderCenter() {
     const { title } = this.props;
 
-    return (
-      <Body>
-        {title ? (<Title>{title}</Title>)
-          : (
-            <Item style={{ height: 25, flexGrow: 1, marginLeft: 20 }}>
-              <Icon name="ios-search" />
-              <TextField
-                name={fields.SEARCH}
-                label={t.get('HEADER_SEARCH')}
-                type="search"
-                onChange={debounce(this.handleChange, SEARCH_SUBMIT_TIMEOUT)}
-              />
-            </Item>
-          )}
-      </Body>
+    return title ? (<Body><Title>{title}</Title></Body>) : (
+      <Item>
+        <Icon name="ios-search" />
+        <TextField
+          name={fields.SEARCH}
+          placeholder={t.get('HEADER_SEARCH')}
+          type="search"
+          onChange={debounce(this.handleChange, SEARCH_SUBMIT_TIMEOUT)}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+        />
+      </Item>
     );
   }
 
   render() {
     return (
-      <HeaderNative>
+      <HeaderNative searchBar rounded>
         {this.renderBackButton()}
         {this.renderCenter()}
         {this.renderMenu()}
