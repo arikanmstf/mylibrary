@@ -1,6 +1,6 @@
 import * as homeActions from 'screens/home/homeActions';
 import * as homeServices from 'screens/home/homeServices';
-import * as loaderActions from 'ui/Loader/actions';
+import * as loaderActions from 'ui/ModalLoader/actions';
 import { dispatch } from 'helpers/connect/fakeStore';
 
 describe('test/app/screens/home/homeActions.test.js', () => {

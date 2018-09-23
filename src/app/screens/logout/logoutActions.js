@@ -10,7 +10,7 @@ import logger from 'helpers/logger';
 import type { ThunkAction } from 'redux-thunk';
 import type { Dispatch } from 'redux';
 
-import { showLoader, hideLoader } from 'ui/Loader/actions';
+import { showLoader, hideLoader } from 'ui/ModalLoader/actions';
 import { updateLoginState } from 'screens/login/loginActions';
 import { getLogout } from './logoutServices';
 

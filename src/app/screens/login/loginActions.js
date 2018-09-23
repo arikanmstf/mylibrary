@@ -7,7 +7,7 @@
 // @flow
 import logger from 'helpers/logger';
 import { createAction } from 'redux-actions';
-import { showLoader, hideLoader } from 'ui/Loader/actions';
+import { showLoader, hideLoader } from 'ui/ModalLoader/actions';
 import storage, { LOGIN_STATE } from 'helpers/storage';
 import { UPDATE_LOGIN_STATE, UPDATE_INITIALIZE_STATE } from 'constants/actions/actionNames';
 

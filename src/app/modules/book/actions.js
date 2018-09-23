@@ -8,7 +8,7 @@
 import { createAction } from 'redux-actions';
 import { BOOK_UPDATE_BOOK, BOOK_UPDATE_CARD } from 'constants/actions/actionNames';
 import logger from 'helpers/logger';
-import { showLoader, hideLoader } from 'ui/Loader/actions';
+import { showLoader, hideLoader } from 'ui/ModalLoader/actions';
 import { transformBookToCard } from 'helpers/data/transform';
 
 import type { Dispatch } from 'redux';

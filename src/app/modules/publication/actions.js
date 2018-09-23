@@ -2,7 +2,7 @@
 import { createAction } from 'redux-actions';
 import { PUBLICATION_UPDATE_PUBLICATION, PUBLICATION_UPDATE_CARD } from 'constants/actions/actionNames';
 import logger from 'helpers/logger';
-import { showLoader, hideLoader } from 'ui/Loader/actions';
+import { showLoader, hideLoader } from 'ui/ModalLoader/actions';
 import { transformPublicationToCard } from 'helpers/data/transform';
 import { findIndexById, cloneObjectArray } from 'helpers/data/array';
 import { updateCards } from 'modules/card/actions';

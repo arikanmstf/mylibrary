@@ -9,7 +9,8 @@ import {
   UPDATE_SEARCH_PENDING,
 } from 'constants/actions/actionNames';
 import logger from 'helpers/logger';
-import { showLoader, hideLoader } from 'ui/Loader/actions';
+import { showLoader, hideLoader } from 'ui/ModalLoader/actions';
+import { showCenterLoader, hideCenterLoader } from 'ui/CenterLoader/actions';
 import { getPublicationList } from 'modules/publication/services';
 
 import type { Dispatch } from 'redux';
@@ -55,6 +56,7 @@ export const fetchAndAddCards = (): ThunkAction => {
     }
 
     logger.log('action: fetchAndAddCardsStart');
+    dispatch(showCenterLoader());
     const page = getState().toJS().card.currentPage + 1;
     const totalPage = getState().toJS().card.totalPages;
     if (page > totalPage) {
@@ -73,6 +75,7 @@ export const fetchAndAddCards = (): ThunkAction => {
 
     dispatch(updateSearchPending(false));
     dispatch(updateCurrentPage(page));
+    dispatch(hideCenterLoader());
     logger.log('action: fetchAndAddCardsEnd');
     return true;
   };

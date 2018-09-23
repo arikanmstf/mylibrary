@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import * as routeNames from 'constants/routes/routeNames';
 import getConfig from 'config/get';
 import logger from 'helpers/logger';
-import { Loader, Div, Error } from 'ui';
+import { ModalLoader, Div, Error } from 'ui';
 
 // Screens
 import LoginScreen from 'screens/login/LoginWebContainer';
@@ -47,7 +47,7 @@ class Routes extends PureComponent<RoutesProps> {
     return (
       <Div fullHeight style={{ marginTop: 0, padding: 0 }}>
         <Error>
-          <Loader />
+          <ModalLoader />
           <Router basename={homeURL}>
             <Switch>
               <PrivateRoute exact path={routeNames.LOGOUT} component={LogoutScreen} />

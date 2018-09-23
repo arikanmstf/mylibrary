@@ -6,15 +6,17 @@ import card from 'modules/card/reducer';
 import publication from 'modules/publication/reducer';
 import row from 'modules/row/reducer';
 import writer from 'modules/writer/reducer';
+import loader from 'ui/ModalLoader/reducer';
+import centerLoader from 'ui/CenterLoader/reducer';
+import screen from 'ui/Screen/reducer';
 
-import loader from 'ui/Loader/loaderReducer';
 import login from 'screens/login/loginReducer';
-import screen from 'ui/Screen/screenReducer';
 
 const rootReducer = combineReducers({
   form,
   book,
   card,
+  centerLoader,
   publication,
   row,
   loader,

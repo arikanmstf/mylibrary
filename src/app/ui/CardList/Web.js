@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
 import logger from 'helpers/logger';
-import { CardDetail } from 'ui';
+import { CardDetail, CenterLoader } from 'ui';
 
 import { mapStateToProps, mapDispatchToProps } from './actions';
 import type { CardListProps } from './types';
@@ -80,9 +80,12 @@ export class CardList extends Component<CardListProps> {
     logger.log('render: CardList');
 
     return (
-      <GridFour>
-        {this.renderCardList()}
-      </GridFour>
+      <div>
+        <GridFour>
+          {this.renderCardList()}
+        </GridFour>
+        <CenterLoader />
+      </div>
     );
   }
 }

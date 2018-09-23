@@ -16,6 +16,9 @@ export type State = {|
     searchQuery: string,
     isSearchPending: boolean,
   |},
+  centerLoader: {|
+    isVisible: boolean,
+  |},
   publication: {|
     publication?: PublicationDetail,
     card?: CardItem,

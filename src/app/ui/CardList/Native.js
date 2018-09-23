@@ -15,7 +15,7 @@ import {
   RefreshControl,
 } from 'react-native';
 import logger from 'helpers/logger';
-import { CardDetail } from 'ui/native';
+import { CardDetail, CenterLoader } from 'ui/native';
 
 import { mapStateToProps, mapDispatchToProps } from './actions';
 import type { CardListProps, RenderCardListItem } from './types';
@@ -86,6 +86,7 @@ export class CardList extends Component<CardListProps> {
         onScrollEndDrag={handleScrollDebounce}
         refreshControl={<RefreshControl refreshing={false} onRefresh={this.handleRefresh} />}
         keyExtractor={this.keyExtractor}
+        ListFooterComponent={CenterLoader}
       />
     );
   }

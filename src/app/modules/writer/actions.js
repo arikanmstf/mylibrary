@@ -9,7 +9,7 @@
 import { createAction } from 'redux-actions';
 import { WRITER_UPDATE_CARD, WRITER_UPDATE_WRITER } from 'constants/actions/actionNames';
 import logger from 'helpers/logger';
-import { showLoader, hideLoader } from 'ui/Loader/actions';
+import { showLoader, hideLoader } from 'ui/ModalLoader/actions';
 import { transformWriterToCard } from 'helpers/data/transform';
 
 import type { Dispatch } from 'redux';

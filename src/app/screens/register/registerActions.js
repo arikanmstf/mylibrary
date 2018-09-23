@@ -5,7 +5,7 @@
  */
 
 // @flow
-import { showLoader, hideLoader } from 'ui/Loader/actions';
+import { showLoader, hideLoader } from 'ui/ModalLoader/actions';
 import storage, { LOGIN_STATE } from 'helpers/storage';
 import { fetchInitialState } from 'screens/login/loginActions';
 

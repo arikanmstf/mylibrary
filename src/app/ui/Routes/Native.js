@@ -9,7 +9,7 @@ import React, { PureComponent } from 'react';
 import { createStackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
 import * as routeNames from 'constants/routes/routeNames';
-import { Loader, Div, Error } from 'ui/native';
+import { ModalLoader, Div, Error } from 'ui/native';
 
 // Screens
 import LoginScreen from 'screens/login/LoginNativeContainer';
@@ -67,7 +67,7 @@ class Routes extends PureComponent<RoutesProps> {
     return (
       <Div fullHeight style={{ marginTop: 0, padding: 0 }}>
         <Error>
-          <Loader />
+          <ModalLoader />
           <RootStack />
         </Error>
       </Div>
