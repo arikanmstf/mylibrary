@@ -20,6 +20,7 @@ import PublicationDetailScreen from 'screens/publicationDetail/PublicationDetail
 import PublicationAddToListScreen from 'screens/publicationAddToList/PublicationAddToListNativeContainer';
 import BookDetailScreen from 'screens/bookDetail/BookDetailNativeContainer';
 import WriterDetailScreen from 'screens/writerDetail/WriterDetailNativeContainer';
+import PublisherDetailScreen from 'screens/publisherDetail/PublisherDetailNativeContainer';
 
 import { mapStateToProps, mapDispatchToProps } from './actions';
 import type { RoutesProps } from './types';
@@ -32,6 +33,7 @@ const AppStack = createStackNavigator(
     [routeNames.PUBLICATION_ADD_TO_LIST]: PublicationAddToListScreen,
     [routeNames.BOOK_DETAIL]: BookDetailScreen,
     [routeNames.WRITER_DETAIL]: WriterDetailScreen,
+    [routeNames.PUBLISHER_DETAIL]: PublisherDetailScreen,
   },
   {
     initialRouteName: routeNames.HOME,

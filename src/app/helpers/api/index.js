@@ -12,4 +12,5 @@ export {
   LIST_MY,
   BOOK_DETAIL,
   WRITER_DETAIL,
+  PUBLISHER_DETAIL,
 } from './serviceNames';

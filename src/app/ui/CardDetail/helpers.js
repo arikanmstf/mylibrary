@@ -13,6 +13,7 @@ import {
   CARD_TYPE_BOOK,
   CARD_TYPE_PUBLICATION,
   CARD_TYPE_WRITER,
+  CARD_TYPE_PUBLISHER,
 } from 'modules/card/constants';
 import type { CardItem } from 'modules/card/types';
 
@@ -45,6 +46,7 @@ const createMoreOptions = (card: CardItem) => (
     ],
     [CARD_TYPE_BOOK]: [],
     [CARD_TYPE_WRITER]: [],
+    [CARD_TYPE_PUBLISHER]: [],
   }[card.type]
     .filter((x) => x)
     .concat(writerOptions(card))

@@ -7,28 +7,28 @@
 // @flow
 import React, { Component } from 'react';
 import logger from 'helpers/logger';
-import { CARD_TYPE_WRITER } from 'modules/card/constants';
+import { CARD_TYPE_PUBLISHER } from 'modules/card/constants';
 
-import type { WriterDetailProps } from './WriterDetailTypes';
+import type { PublisherDetailProps } from './PublisherDetailTypes';
 
-class WriterDetail extends Component<WriterDetailProps> {
+class PublisherDetail extends Component<PublisherDetailProps> {
   componentDidMount() {
     const {
-      fetchWriter,
+      fetchPublisher,
     } = this.props;
 
     if (this.shouldFetch()) {
-      fetchWriter(this.getId());
+      fetchPublisher(this.getId());
     }
   }
 
   componentDidUpdate() {
     const {
-      fetchWriter,
+      fetchPublisher,
     } = this.props;
 
     if (this.shouldFetch()) {
-      fetchWriter(this.getId());
+      fetchPublisher(this.getId());
     }
   }
 
@@ -55,7 +55,7 @@ class WriterDetail extends Component<WriterDetailProps> {
           card
           && (
             card.id !== +id
-            || card.type !== CARD_TYPE_WRITER
+            || card.type !== CARD_TYPE_PUBLISHER
           )
         )
       )
@@ -71,7 +71,7 @@ class WriterDetail extends Component<WriterDetailProps> {
       CardDetail,
       card,
     } = this.props;
-    logger.log('render: WriterDetail');
+    logger.log('render: PublisherDetail');
 
     return (
       <Screen>
@@ -87,4 +87,4 @@ class WriterDetail extends Component<WriterDetailProps> {
   }
 }
 
-export default WriterDetail;
+export default PublisherDetail;

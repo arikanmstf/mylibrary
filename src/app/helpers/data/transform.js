@@ -3,6 +3,7 @@ import {
   CARD_TYPE_PUBLICATION,
   CARD_TYPE_BOOK,
   CARD_TYPE_WRITER,
+  CARD_TYPE_PUBLISHER,
 } from 'modules/card/constants';
 
 import type { CardItem } from 'modules/card/types';
@@ -12,6 +13,7 @@ import type {
   Item,
   BookDetail,
   WriterDetail,
+  PublisherDetail,
 } from 'helpers/api/types';
 import type { Row } from 'ui/RowList/types';
 
@@ -101,5 +103,17 @@ export const transformWriterToCard = (writer: WriterDetail): CardItem => {
     id: writer.id,
     description: writer.description,
     type: CARD_TYPE_WRITER,
+  };
+};
+
+export const transformPublisherToCard = (publisher: PublisherDetail): CardItem => {
+  if (!publisher) {
+    return publisher;
+  }
+
+  return {
+    title: publisher.name,
+    id: publisher.id,
+    type: CARD_TYPE_PUBLISHER,
   };
 };

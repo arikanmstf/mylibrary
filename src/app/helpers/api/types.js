@@ -6,7 +6,7 @@ export type WriterDetail = {|
   description: string,
 |}
 
-export type Publisher = {|
+export type PublisherDetail = {|
   id: number,
   name: string,
 |}
@@ -31,7 +31,7 @@ export type PublicationDetail = {|
   pageNumber: number,
   coverNo: number,
   addedBy: string,
-  publisher: Publisher
+  publisher: PublisherDetail
 |}
 
 export type ToggleFavorite = {|
@@ -49,7 +49,7 @@ export type BookDetail = {|
   id: number,
   description: string,
   writers: Array<WriterDetail>,
-  publishers: Array<Publisher>,
+  publishers: Array<PublisherDetail>,
   tags: Array<Item>,
   addedBy: string,
 |}

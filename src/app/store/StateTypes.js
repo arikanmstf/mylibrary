@@ -1,7 +1,12 @@
 // @flow
 import type { CardItem } from 'modules/card/types';
 import type { Row } from 'ui/RowList/types';
-import type { PublicationDetail, BookDetail, WriterDetail } from 'helpers/api/types';
+import type {
+  PublicationDetail,
+  BookDetail,
+  WriterDetail,
+  PublisherDetail,
+} from 'helpers/api/types';
 
 export type State = {|
   form: Object,
@@ -21,6 +26,10 @@ export type State = {|
   |},
   publication: {|
     publication?: PublicationDetail,
+    card?: CardItem,
+  |},
+  publisher: {|
+    publisher?: PublisherDetail,
     card?: CardItem,
   |},
   row: {|
