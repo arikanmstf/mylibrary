@@ -1,8 +1,6 @@
-const path = require('path');
 const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-
-const common = require(path.resolve(__dirname, './webpack.config.js')); // eslint-disable-line import/no-dynamic-require
+const common = require('webpack-config-arikanmstf');
 
 const definePlugin = new webpack.DefinePlugin({
   // DEVELOPMENT and PRODUCTION for debugging
