@@ -80,7 +80,7 @@ export class CardList extends Component<CardListProps> {
       <Button
         iconRight
         onPress={() => { updateListType(null); }}
-        primary
+        light
       >
         <Text>{t.get(type)}</Text>
         <Icon name="close" />
