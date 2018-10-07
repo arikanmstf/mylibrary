@@ -15,38 +15,31 @@ class PublisherDetail extends Component<PublisherDetailProps> {
   componentDidMount() {
     const {
       fetchPublisher,
+      match: { params: { id } },
     } = this.props;
 
     if (this.shouldFetch()) {
-      fetchPublisher(this.getId());
+      fetchPublisher(id);
     }
   }
 
   componentDidUpdate() {
     const {
       fetchPublisher,
+      match: { params: { id } },
     } = this.props;
 
     if (this.shouldFetch()) {
-      fetchPublisher(this.getId());
+      fetchPublisher(id);
     }
-  }
-
-  getId() {
-    const {
-      match,
-      navigation,
-    } = this.props;
-    return match ? match.params.id : navigation.getParam('id');
   }
 
   shouldFetch() {
     const {
       card,
       navigation,
+      match: { params: { id } },
     } = this.props;
-
-    const id = this.getId();
 
     return (
       (

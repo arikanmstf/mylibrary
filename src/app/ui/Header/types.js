@@ -24,15 +24,13 @@ export type HeaderProps = {
   },
 };
 
+export type Navigation = {
+  navigate: Function,
+}
+
 export type HeaderState = {
   isSearchFocus: boolean,
 }
-
-export type SideNavigationItem = {
-  label: ?string,
-  icon?: ?string,
-  to: string,
-};
 
 export type SubmitSearchFormRequest = {
   page?: number,

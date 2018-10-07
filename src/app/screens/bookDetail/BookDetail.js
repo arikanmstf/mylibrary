@@ -14,38 +14,31 @@ class BookDetail extends Component<BookDetailProps> {
   componentDidMount() {
     const {
       fetchBook,
+      match: { params: { id } },
     } = this.props;
 
     if (this.shouldFetch()) {
-      fetchBook(this.getId());
+      fetchBook(id);
     }
   }
 
   componentDidUpdate() {
     const {
       fetchBook,
+      match: { params: { id } },
     } = this.props;
 
     if (this.shouldFetch()) {
-      fetchBook(this.getId());
+      fetchBook(id);
     }
-  }
-
-  getId() {
-    const {
-      match,
-      navigation,
-    } = this.props;
-    return match ? match.params.id : navigation.getParam('id');
   }
 
   shouldFetch() {
     const {
       card,
       navigation,
+      match: { params: { id } },
     } = this.props;
-
-    const id = this.getId();
 
     return (
       (

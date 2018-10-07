@@ -24,9 +24,9 @@ export const getPublicationDetail = async ({ id }: GetPublicationDetailRequest):
 };
 
 export const getPublicationList = async (
-  { page, search }: SubmitSearchFormRequest = { page: 0, search: '' }
+  { page, search, type }: SubmitSearchFormRequest = { page: 0, search: '', type: '' }
 ): Promise<Pagination<CardItem>> => {
-  const result: Pagination<PublicationDetail> = await Api.get(PUBLICATION, { page, search });
+  const result: Pagination<PublicationDetail> = await Api.get(PUBLICATION, { page, search, type });
   return transformPublicationListToCardList(result);
 };
 

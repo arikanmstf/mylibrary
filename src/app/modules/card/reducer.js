@@ -12,6 +12,7 @@ import {
   updateCurrentPage,
   updateSearchQuery,
   updateSearchPending,
+  updateListType,
 } from './actions';
 
 const initialState = {
@@ -19,6 +20,7 @@ const initialState = {
   totalPages: 0,
   currentPage: 1,
   searchQuery: '',
+  listType: undefined,
   isSearchPending: false,
 };
 
@@ -63,6 +65,13 @@ const reducer = new Map([
     (state, action) => ({
       ...state,
       isSearchPending: action.payload ? action.payload : initialState.isSearchPending,
+    }),
+  ],
+  [
+    updateListType,
+    (state, action) => ({
+      ...state,
+      listType: action.payload ? action.payload : initialState.listType,
     }),
   ],
 ]);

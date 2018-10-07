@@ -1,6 +1,6 @@
 // @flow
 import { showDrawer, hideDrawer } from 'ui/Screen/actions';
-import { fetchAndUpdateCards } from 'modules/card/actions';
+import { fetchAndUpdateCards, updateSearchQuery } from 'modules/card/actions';
 import logger from 'helpers/logger';
 
 import type { Dispatch } from 'redux';
@@ -15,7 +15,9 @@ export const mapDispatchToProps = {
 
 export const submitSearchForm = async (form: Immutable<SubmitSearchFormRequest>, dispatch: Dispatch<*>) => {
   logger.log('submitSearchForm');
-  dispatch(fetchAndUpdateCards(form.toJS(), false));
+  const { search } = form.toJS();
+  dispatch(updateSearchQuery(search));
+  dispatch(fetchAndUpdateCards(false));
 };
 
 export const mapStateToProps = (state: Immutable<State>) => ({

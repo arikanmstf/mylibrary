@@ -18,3 +18,4 @@ export { default as RowList } from './RowList/Web';
 export { default as RowDetail } from './RowDetail/Web';
 export { default as Routes } from './Routes/Web';
 export { default as Link } from './Link/Web';
+export { default as SideNavigation } from './SideNavigation/Web';

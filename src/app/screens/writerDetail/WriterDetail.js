@@ -15,38 +15,31 @@ class WriterDetail extends Component<WriterDetailProps> {
   componentDidMount() {
     const {
       fetchWriter,
+      match: { params: { id } },
     } = this.props;
 
     if (this.shouldFetch()) {
-      fetchWriter(this.getId());
+      fetchWriter(id);
     }
   }
 
   componentDidUpdate() {
     const {
       fetchWriter,
+      match: { params: { id } },
     } = this.props;
 
     if (this.shouldFetch()) {
-      fetchWriter(this.getId());
+      fetchWriter(id);
     }
-  }
-
-  getId() {
-    const {
-      match,
-      navigation,
-    } = this.props;
-    return match ? match.params.id : navigation.getParam('id');
   }
 
   shouldFetch() {
     const {
       card,
       navigation,
+      match: { params: { id } },
     } = this.props;
-
-    const id = this.getId();
 
     return (
       (

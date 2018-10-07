@@ -5,6 +5,7 @@ import {
   CARD_TYPE_WRITER,
   CARD_TYPE_PUBLISHER,
 } from 'modules/card/constants';
+import { BOOKS_I_READ, MY_FAVORITES } from 'modules/publication/constants';
 
 import type { CardItem } from 'modules/card/types';
 import type { Pagination } from 'ui/CardList/types';
@@ -16,9 +17,6 @@ import type {
   PublisherDetail,
 } from 'helpers/api/types';
 import type { Row } from 'ui/RowList/types';
-
-const BOOKS_I_READ = 'BOOKS_I_READ';
-const MY_FAVORITES = 'MY_FAVORITES';
 
 export const transformPublicationToCard = (publication: PublicationDetail): CardItem => {
   if (!publication) {

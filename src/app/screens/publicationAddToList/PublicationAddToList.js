@@ -18,13 +18,10 @@ class PublicationAddToList extends Component<PublicationAddToListProps> {
       match,
       publication,
       rows,
-      navigation,
     } = this.props;
 
-    const id = match ? match.params.id : navigation.getParam('id');
-
     if (!publication) {
-      fetchPublication(id);
+      fetchPublication(match.params.id);
     }
 
     if (!rows) {
@@ -37,9 +34,8 @@ class PublicationAddToList extends Component<PublicationAddToListProps> {
       fetchPublication,
       match,
       publication,
-      navigation,
     } = props;
-    const id = match ? match.params.id : navigation.getParam('id');
+    const { id } = match.params;
 
     if (!publication || (publication && publication.id !== +id)) {
       fetchPublication(id);

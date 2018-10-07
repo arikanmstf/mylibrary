@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, ScrollView } from 'react-native';
 import { Drawer } from 'native-base';
-import { SideBar } from 'ui/Header/Native';
+import { SideNavigation } from 'ui/native';
 import logger from 'helpers/logger';
 import defaultStyle from './style.json';
 import { mapStateToProps, mapDispatchToProps } from './actions';
@@ -36,7 +36,7 @@ export class Screen extends PureComponent<ScreenProps> {
 
     return (
       <Drawer
-        content={<SideBar />}
+        content={<SideNavigation />}
         side="right"
         open={isDrawerOpen}
         onClose={this.hideDrawer}

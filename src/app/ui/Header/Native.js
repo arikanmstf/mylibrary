@@ -18,45 +18,16 @@ import {
   Left,
   Right,
   Icon,
-  Content,
-  List,
-  ListItem,
-  Text,
   Title,
 } from 'native-base';
-import { TextField, Link } from 'ui/native';
+import { TextField } from 'ui/native';
 import t from 'helpers/i18n/Translate';
 import logger from 'helpers/logger';
 import fields, { SEARCH_FORM_KEY } from 'constants/forms/search';
-import { white } from 'constants/theme/color';
-
 import { mapDispatchToProps, submitSearchForm } from './actions';
-import routes from './sideNavigationItems';
 import { SEARCH_SUBMIT_TIMEOUT } from './types';
 
-import type { HeaderProps, HeaderState, SideNavigationItem } from './types';
-
-export const renderList = (route: SideNavigationItem) => {
-  return (
-    <ListItem
-      button
-    >
-      <Icon name={route.icon} style={{ marginRight: 20 }} />
-      <Link to={route.to}>
-        <Text>{t.get(route.label)}</Text>
-      </Link>
-    </ListItem>
-  );
-};
-
-export const SideBar = () => (
-  <Content style={{ backgroundColor: white, paddingTop: 20 }}>
-    <List
-      dataArray={routes}
-      renderRow={renderList}
-    />
-  </Content>
-);
+import type { HeaderProps, HeaderState } from './types';
 
 export class Header extends PureComponent<HeaderProps, HeaderState> {
   state = {
@@ -84,7 +55,6 @@ export class Header extends PureComponent<HeaderProps, HeaderState> {
     const {
       handleSubmit,
     } = this.props;
-    console.log(this.props);
 
     handleSubmit(submitSearchForm)();
   };

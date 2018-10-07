@@ -19,6 +19,7 @@ export type State = {|
     totalPages: number,
     currentPage: number,
     searchQuery: string,
+    listType: string,
     isSearchPending: boolean,
   |},
   centerLoader: {|

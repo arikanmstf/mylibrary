@@ -7,7 +7,7 @@
 // @flow
 import React, { Component } from 'react';
 import debounce from 'lodash.debounce';
-
+import { Button, Icon } from 'native-base';
 import { withNavigation } from 'react-navigation';
 import { connect } from 'react-redux';
 import {
@@ -15,7 +15,8 @@ import {
   RefreshControl,
 } from 'react-native';
 import logger from 'helpers/logger';
-import { CardDetail, CenterLoader } from 'ui/native';
+import { CardDetail, CenterLoader, Text } from 'ui/native';
+import t from 'helpers/i18n/Translate';
 
 import { mapStateToProps, mapDispatchToProps } from './actions';
 import type { CardListProps, RenderCardListItem } from './types';
@@ -68,6 +69,25 @@ export class CardList extends Component<CardListProps> {
     };
   }
 
+  renderChips() {
+    const { type, updateListType } = this.props;
+
+    if (!type || type === '') {
+      return null;
+    }
+
+    return (
+      <Button
+        iconRight
+        onPress={() => { updateListType(null); }}
+        primary
+      >
+        <Text>{t.get(type)}</Text>
+        <Icon name="close" />
+      </Button>
+    );
+  }
+
   render() {
     const { cards } = this.props;
     const handleScrollDebounce = ({ nativeEvent }) => {
@@ -87,6 +107,7 @@ export class CardList extends Component<CardListProps> {
         refreshControl={<RefreshControl refreshing={false} onRefresh={this.handleRefresh} />}
         keyExtractor={this.keyExtractor}
         ListFooterComponent={CenterLoader}
+        ListHeaderComponent={this.renderChips()}
       />
     );
   }

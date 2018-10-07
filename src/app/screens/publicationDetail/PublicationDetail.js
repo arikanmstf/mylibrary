@@ -15,38 +15,31 @@ class PublicationDetail extends Component<PublicationDetailProps> {
   componentDidMount() {
     const {
       fetchPublication,
+      match: { params: { id } },
     } = this.props;
 
     if (this.shouldFetch()) {
-      fetchPublication(this.getId());
+      fetchPublication(id);
     }
   }
 
   componentDidUpdate() {
     const {
       fetchPublication,
+      match: { params: { id } },
     } = this.props;
 
     if (this.shouldFetch()) {
-      fetchPublication(this.getId());
+      fetchPublication(id);
     }
-  }
-
-  getId() {
-    const {
-      match,
-      navigation,
-    } = this.props;
-    return match ? match.params.id : navigation.getParam('id');
   }
 
   shouldFetch() {
     const {
       card,
       navigation,
+      match: { params: { id } },
     } = this.props;
-
-    const id = this.getId();
 
     return (
       (

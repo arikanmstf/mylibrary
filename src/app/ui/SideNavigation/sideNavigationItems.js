@@ -1,10 +1,11 @@
 // @flow
 import {
   PROFILE,
-  FAVORITES,
-  BOOKS_I_READ,
   LOGOUT,
 } from 'constants/routes/routeNames';
+import { BOOKS_I_READ, MY_FAVORITES } from 'modules/publication/constants';
+
+import type { SideNavigationProps } from './types';
 
 export default [
   {
@@ -14,13 +15,17 @@ export default [
   },
   {
     label: 'HEADER_MENU_FAVORITES',
-    to: FAVORITES,
     icon: 'star',
+    onPress: ({ updateListType }: SideNavigationProps) => {
+      updateListType(MY_FAVORITES);
+    },
   },
   {
     label: 'HEADER_MENU_BOOKS_I_READ',
-    to: BOOKS_I_READ,
     icon: 'book',
+    onPress: ({ updateListType }: SideNavigationProps) => {
+      updateListType(BOOKS_I_READ);
+    },
   },
   {
     label: 'HEADER_MENU_LOGOUT',

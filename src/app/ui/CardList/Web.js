@@ -7,6 +7,9 @@
 // @flow
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import Chip from '@material-ui/core/Chip';
+import t from 'helpers/i18n/Translate';
+
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
 import logger from 'helpers/logger';
@@ -76,11 +79,27 @@ export class CardList extends Component<CardListProps> {
     ));
   }
 
+  renderChips() {
+    const { type, updateListType } = this.props;
+
+    if (!type || type === '') {
+      return null;
+    }
+
+    return (
+      <Chip
+        label={t.get(type)}
+        onDelete={() => { updateListType(null); }}
+      />
+    );
+  }
+
   render() {
     logger.log('render: CardList');
 
     return (
       <div>
+        {this.renderChips()}
         <GridFour>
           {this.renderCardList()}
         </GridFour>
