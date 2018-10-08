@@ -27,23 +27,26 @@ export const updateSearchPending = createAction(UPDATE_SEARCH_PENDING);
 
 export const fetchAndUpdateCards = (shouldShowLoader: boolean = true): ThunkAction => {
   return async (dispatch: Dispatch<*>, getState: Function) => {
-    const page = 1;
-    if (shouldShowLoader) {
-      dispatch(showLoader());
-    }
-    logger.log('action: fetchAndUpdateCardsStart');
-    const search = getState().toJS().card.searchQuery;
-    const type = getState().toJS().card.listType;
-    const result = await getPublicationList(dispatch)({ page, search, type });
-    logger.log('action: fetchAndUpdateCards');
-    await Promise.all([
-      dispatch(updateCards(result.content)),
-      dispatch(updateTotalPages(result.totalPages)),
-      dispatch(updateCurrentPage(page)),
-    ]);
+    try {
+      const page = 1;
+      if (shouldShowLoader) {
+        dispatch(showLoader());
+      }
+      logger.log('action: fetchAndUpdateCardsStart');
+      const search = getState().toJS().card.searchQuery;
+      const type = getState().toJS().card.listType;
+      const result = await getPublicationList(dispatch)({ page, search, type });
+      logger.log('action: fetchAndUpdateCards');
+      await Promise.all([
+        dispatch(updateCards(result.content)),
+        dispatch(updateTotalPages(result.totalPages)),
+        dispatch(updateCurrentPage(page)),
+      ]);
 
-    logger.log('action: fetchAndUpdateCardsEnd');
-    dispatch(hideLoader());
+      logger.log('action: fetchAndUpdateCardsEnd');
+    } finally {
+      dispatch(hideLoader());
+    }
   };
 };
 

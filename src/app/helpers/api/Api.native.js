@@ -3,7 +3,7 @@ import a from 'axios';
 import logger from 'helpers/logger';
 import storage, { LOGIN_STATE } from 'helpers/storage';
 import getConfig from 'config/get';
-import { updateApiError } from 'ui/Error/actions';
+import { updateModalError } from 'ui/Error/actions';
 import type { Dispatch } from 'redux';
 
 const { baseURL } = getConfig();
@@ -52,7 +52,7 @@ class Api {
         const response = await axios.get(url, { params }, ...other);
         return Api.fetch(response);
       } catch (e) {
-        dispatch(updateApiError(e));
+        dispatch(updateModalError(e));
         throw Api.error(e);
       }
     };
@@ -66,7 +66,7 @@ class Api {
         const response = await axios.post(url, { ...data }, ...other);
         return Api.fetch(response);
       } catch (e) {
-        dispatch(updateApiError(e));
+        dispatch(updateModalError(e));
         throw Api.error(e);
       }
     };

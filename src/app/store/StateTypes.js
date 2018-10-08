@@ -7,6 +7,7 @@ import type {
   WriterDetail,
   PublisherDetail,
 } from 'helpers/api/types';
+import type { GeneralError, ModalError } from 'ui/Error/types';
 
 export type State = {|
   form: Object,
@@ -26,7 +27,8 @@ export type State = {|
     isVisible: boolean,
   |},
   error: {|
-    generalError: any,
+    generalError: GeneralError,
+    modalError: ModalError,
   |},
   publication: {|
     publication?: PublicationDetail,

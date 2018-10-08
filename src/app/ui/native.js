@@ -19,3 +19,4 @@ export { default as RowDetail } from './RowDetail/Native';
 export { default as Routes } from './Routes/Native';
 export { default as Link } from './Link/Native';
 export { default as SideNavigation } from './SideNavigation/Native';
+export { default as Modal } from './Modal/Native';

@@ -1,9 +1,9 @@
 import { handleActions } from 'redux-actions';
-import { updateGeneralError, updateApiError } from './actions';
+import { updateGeneralError, updateModalError } from './actions';
 
 const initialState = {
   generalError: null,
-  apiError: null,
+  modalError: null,
 };
 
 const reducer = new Map([
@@ -11,14 +11,14 @@ const reducer = new Map([
     updateGeneralError,
     (state, action) => ({
       ...state,
-      generalError: action.payload || state.generalError,
+      generalError: action.payload,
     }),
   ],
   [
-    updateApiError,
+    updateModalError,
     (state, action) => ({
       ...state,
-      apiError: action.payload || state.apiError,
+      modalError: action.payload,
     }),
   ],
 ]);

@@ -27,19 +27,21 @@ export const fetchPublication = (id: number, shouldShowLoader: boolean = true): 
       dispatch(showLoader());
     }
 
-    logger.log('action: fetchPublicationStart');
+    try {
+      logger.log('action: fetchPublicationStart');
+      const publication = await getPublicationDetail(dispatch)({ id });
+      const card = transformPublicationToCard(publication);
+      logger.log('action: fetchPublication');
 
-    const publication = await getPublicationDetail(dispatch)({ id });
-    const card = transformPublicationToCard(publication);
-    logger.log('action: fetchPublication');
+      await Promise.all([
+        dispatch(updatePublicationCard(card)),
+        dispatch(updatePublication(publication)),
+      ]);
 
-    await Promise.all([
-      dispatch(updatePublicationCard(card)),
-      dispatch(updatePublication(publication)),
-    ]);
-
-    logger.log('action: fetchPublicationEnd');
-    dispatch(hideLoader());
+      logger.log('action: fetchPublicationEnd');
+    } finally {
+      dispatch(hideLoader());
+    }
   };
 };
 
