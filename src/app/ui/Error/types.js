@@ -6,9 +6,10 @@
 
 // @flow
 export type ErrorProps = {
-  children: *,
+  children?: *,
+  error?: *,
 };
 
 export type ErrorState = {
-  error: ?string,
+  error: *,
 };

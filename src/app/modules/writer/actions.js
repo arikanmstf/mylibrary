@@ -26,7 +26,7 @@ export const fetchWriter = (id: number): ThunkAction => {
 
     logger.log('action: fetchWriterStart');
 
-    const writer = await getWriterDetail({ id });
+    const writer = await getWriterDetail(dispatch)({ id });
     const card = transformWriterToCard(writer);
     logger.log('action: fetchWriter');
 

@@ -4,13 +4,16 @@ import Api, { LOGIN, INITIALIZE } from 'helpers/api';
 import storage, { LOGIN_STATE } from 'helpers/storage';
 import logger from 'helpers/logger';
 
+import type { Dispatch } from 'redux';
 import type { SubmitLoginFormRequest, SubmitLoginFormResponse } from './LoginTypes';
 
-export const postLogin = (request: SubmitLoginFormRequest): Promise<SubmitLoginFormResponse> => {
-  return Api.post(LOGIN, request);
+export const postLogin = (
+  dispatch: Dispatch<*>
+) => (request: SubmitLoginFormRequest): Promise<SubmitLoginFormResponse> => {
+  return Api.post(dispatch)(LOGIN, request);
 };
 
-export const postInitialize = async () => {
+export const postInitialize = (dispatch: Dispatch<*>) => async () => {
   try {
     const result = await storage.load({ key: LOGIN_STATE });
 
@@ -27,7 +30,7 @@ export const postInitialize = async () => {
       version: '1',
     };
 
-    return Api.post(INITIALIZE, request, config);
+    return Api.post(dispatch)(INITIALIZE, request, config);
   } catch (e) {
     logger.log(e);
     return null;

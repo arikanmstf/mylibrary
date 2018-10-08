@@ -34,8 +34,7 @@ export const fetchAndUpdateCards = (shouldShowLoader: boolean = true): ThunkActi
     logger.log('action: fetchAndUpdateCardsStart');
     const search = getState().toJS().card.searchQuery;
     const type = getState().toJS().card.listType;
-
-    const result = await getPublicationList({ page, search, type });
+    const result = await getPublicationList(dispatch)({ page, search, type });
     logger.log('action: fetchAndUpdateCards');
     await Promise.all([
       dispatch(updateCards(result.content)),
@@ -67,7 +66,7 @@ export const fetchAndAddCards = (): ThunkAction => {
 
     dispatch(showCenterLoader());
     await dispatch(updateSearchPending(true));
-    const result = await getPublicationList({ page, search, type });
+    const result = await getPublicationList(dispatch)({ page, search, type });
     logger.log('action: fetchAndAddCards');
     await Promise.all([
       dispatch(addCards(result.content)),

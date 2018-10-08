@@ -8,8 +8,11 @@
 
 import Api, { PUBLISHER_DETAIL } from 'helpers/api';
 import type { PublisherDetail } from 'helpers/api/types';
+import type { Dispatch } from 'redux';
 import type { GetPublisherDetailRequest } from './types';
 
-export const getPublisherDetail = async ({ id }: GetPublisherDetailRequest): Promise<PublisherDetail> => {
-  return Api.get(PUBLISHER_DETAIL.replace('{id}', id));
+export const getPublisherDetail = (
+  dispatch: Dispatch<*>
+) => async ({ id }: GetPublisherDetailRequest): Promise<PublisherDetail> => {
+  return Api.get(dispatch)(PUBLISHER_DETAIL.replace('{id}', id));
 };

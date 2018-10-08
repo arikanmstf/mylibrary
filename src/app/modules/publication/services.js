@@ -17,27 +17,32 @@ import type {
   ToggleRead,
 } from 'helpers/api/types';
 import type { SubmitSearchFormRequest } from 'ui/Header/types';
+import type { Dispatch } from 'redux';
 import type { GetPublicationDetailRequest, ToggleListRequest } from './types';
 
-export const getPublicationDetail = async ({ id }: GetPublicationDetailRequest): Promise<PublicationDetail> => {
-  return Api.get(PUBLICATION_DETAIL.replace('{id}', id));
+export const getPublicationDetail = (
+  dispatch: Dispatch<*>
+) => async ({ id }: GetPublicationDetailRequest): Promise<PublicationDetail> => {
+  return Api.get(dispatch)(PUBLICATION_DETAIL.replace('{id}', id));
 };
 
-export const getPublicationList = async (
+export const getPublicationList = (dispatch: Dispatch<*>) => async (
   { page, search, type }: SubmitSearchFormRequest = { page: 0, search: '', type: '' }
 ): Promise<Pagination<CardItem>> => {
-  const result: Pagination<PublicationDetail> = await Api.get(PUBLICATION, { page, search, type });
+  const result: Pagination<PublicationDetail> = await Api.get(dispatch)(PUBLICATION, { page, search, type });
   return transformPublicationListToCardList(result);
 };
 
-export const postToggleFavorite = async (id: number): Promise<ToggleFavorite> => {
-  return Api.post(PUBLICATION_TOGGLE_FAVORITE.replace('{id}', id));
+export const postToggleFavorite = (dispatch: Dispatch<*>) => async (id: number): Promise<ToggleFavorite> => {
+  return Api.post(dispatch)(PUBLICATION_TOGGLE_FAVORITE.replace('{id}', id));
 };
 
-export const postToggleRead = async (id: number): Promise<ToggleRead> => {
-  return Api.post(PUBLICATION_TOGGLE_READ.replace('{id}', id));
+export const postToggleRead = (dispatch: Dispatch<*>) => async (id: number): Promise<ToggleRead> => {
+  return Api.post(dispatch)(PUBLICATION_TOGGLE_READ.replace('{id}', id));
 };
 
-export const postToggleList = async ({ addToListId, ...other }: ToggleListRequest): Promise<PublicationDetail> => {
-  return Api.post(PUBLICATION_TOGGLE_LIST.replace('{id}', addToListId), other);
+export const postToggleList = (
+  dispatch: Dispatch<*>
+) => async ({ addToListId, ...other }: ToggleListRequest): Promise<PublicationDetail> => {
+  return Api.post(dispatch)(PUBLICATION_TOGGLE_LIST.replace('{id}', addToListId), other);
 };

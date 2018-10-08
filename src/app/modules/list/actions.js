@@ -17,7 +17,7 @@ export const fetchLists = (): ThunkAction => {
   return async (dispatch: Dispatch<*>) => {
     logger.log('action: fetchListsStart');
 
-    const result = await getMyLists();
+    const result = await getMyLists(dispatch)();
     logger.log('action: fetchLists', result);
 
     await dispatch(updateRows(result));

@@ -1,6 +1,6 @@
 /**
  * Services Template By => create-module script
- * @version 1.1.0
+ * @version 1.1.1
  *
  */
 
@@ -8,7 +8,8 @@
 
 import Api, { DUMMY_SERVICE } from 'helpers/api';
 import type { DummyRequest, DummyResponse } from './types';
+import type { Dispatch } from 'redux';
 
 export const dummyRequest = (request: DummyRequest): Promise<DummyResponse> => {
-  return Api.get(DUMMY_SERVICE, request);
+  return Api.get(dispatch: Dispatch<*>)(DUMMY_SERVICE, request);
 };

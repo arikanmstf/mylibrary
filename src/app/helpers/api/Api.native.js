@@ -4,10 +4,7 @@ import logger from 'helpers/logger';
 import storage, { LOGIN_STATE } from 'helpers/storage';
 import getConfig from 'config/get';
 import { updateApiError } from 'ui/Error/actions';
-
 import type { Dispatch } from 'redux';
-
-declare var IS_MOCK: string;
 
 const { baseURL } = getConfig();
 logger.log(`baseURL is set to: ${baseURL}`);
@@ -49,12 +46,6 @@ class Api {
 
   static get(dispatch: Dispatch<*>) {
     return async (url: string, params: Object, ...other: *) => {
-      if (typeof IS_MOCK !== 'undefined' && IS_MOCK) {
-        logger.log('GET-MOCKED', url, params, ...other);
-        // eslint-disable-next-line import/no-dynamic-require, global-require
-        return require(`mock/${url}/get.json`);
-      }
-
       const axios = await Api.createAxios();
       logger.log('GET', url, params);
       try {
@@ -69,12 +60,6 @@ class Api {
 
   static post(dispatch: Dispatch<*>) {
     return async (url: string, data: Object, ...other: *) => {
-      if (typeof IS_MOCK !== 'undefined' && IS_MOCK) {
-        logger.log('POST-MOCKED', url, data, ...other);
-        // eslint-disable-next-line
-        return require(`mock/${url}/post.json`);
-      }
-
       const axios = await Api.createAxios();
       logger.log('POST', url, data);
       try {

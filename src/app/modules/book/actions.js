@@ -27,7 +27,7 @@ export const fetchBook = (id: number, shouldShowLoader: boolean = true): ThunkAc
 
     logger.log('action: fetchBookStart');
 
-    const book = await getBookDetail({ id });
+    const book = await getBookDetail(dispatch)({ id });
     const card = transformBookToCard(book);
     logger.log('action: fetchBook');
 

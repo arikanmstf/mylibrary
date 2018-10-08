@@ -2,13 +2,14 @@
 import React, { Component, ErrorInfo } from 'react';
 import logger from 'helpers/logger';
 import { Screen } from 'ui/native';
+import { errorMessages } from './constants';
 
 import type { ErrorProps, ErrorState } from './types';
 
 class ErrorBoundary extends Component<ErrorProps, ErrorState> {
   constructor(props) {
     super(props);
-    this.state = { error: null };
+    this.state = { error: props.error };
   }
 
   componentDidCatch(error: Error, info: ErrorInfo): void {
@@ -22,7 +23,8 @@ class ErrorBoundary extends Component<ErrorProps, ErrorState> {
 
     return error && error.stack ? (
       <Screen>
-        {error.stack}
+        { error.code ? error.code : null}
+        {error.code ? errorMessages[error.code] : error.stack || error.message || error}
       </Screen>
     ) : children;
   }

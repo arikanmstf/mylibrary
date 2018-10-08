@@ -101,6 +101,7 @@ export class CardDetail extends Component<CardDetailProps> {
   renderMoreOptions() {
     return this.moreOptions.map((option) => (
       <MenuItem
+        key={option.label}
         onClick={() => {
           this.handleRenderMoreClose();
           this.goTo(option.to);

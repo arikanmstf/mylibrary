@@ -25,6 +25,9 @@ export type State = {|
   centerLoader: {|
     isVisible: boolean,
   |},
+  error: {|
+    generalError: any,
+  |},
   publication: {|
     publication?: PublicationDetail,
     card?: CardItem,

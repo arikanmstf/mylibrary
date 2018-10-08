@@ -3,10 +3,7 @@
   "homeURL":"mylibrary",
   "productionURL":"http://mustafaarikan.net/mylibrary",
   "staticFilesURL":"http://mustafaarikan.net/mylibrary/static",
-  "ios": {
-    "baseURL": "http://mustafaarikan.net/api"
-  },
-  "android": {
+  "native": {
     "baseURL": "http://mustafaarikan.net/api"
   }
 }

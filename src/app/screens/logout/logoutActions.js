@@ -18,7 +18,7 @@ export const makeLogoutRequest = (): ThunkAction => {
   return async (dispatch: Dispatch<*>) => {
     logger.log('makeLogoutRequest');
     dispatch(showLoader());
-    const logoutState = await getLogout();
+    const logoutState = await getLogout(dispatch)();
     if (logoutState) {
       logger.log('logoutState', logoutState);
       await Promise.all([

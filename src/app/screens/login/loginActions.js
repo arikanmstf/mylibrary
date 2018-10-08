@@ -25,7 +25,7 @@ export const fetchInitialState = (): ThunkAction => {
   return async (dispatch: Dispatch<*>) => {
     logger.log('action: fetchInitialStateStart');
     dispatch(showLoader());
-    const initial = await postInitialize();
+    const initial = await postInitialize(dispatch)();
     logger.log('action: fetchInitialState', initial);
     const loginState = initial ? await storage.load({ key: LOGIN_STATE }) : null;
     await Promise.all([
@@ -41,7 +41,7 @@ export const submitLoginForm = async (form: Immutable<SubmitLoginFormRequest>, d
   logger.log('action: submitLoginFormStart');
   dispatch(showLoader());
 
-  const result = await postLogin(form.toJS());
+  const result = await postLogin(dispatch)(form.toJS());
   const data = {
     key: LOGIN_STATE,
     data: { ...result },

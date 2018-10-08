@@ -12,6 +12,7 @@ import * as routeNames from 'constants/routes/routeNames';
 import getConfig from 'config/get';
 import logger from 'helpers/logger';
 import { ModalLoader, Div, Error } from 'ui';
+import { CODE_404 } from 'ui/Error/constants';
 
 // Screens
 import LoginScreen from 'screens/login/LoginWebContainer';
@@ -33,9 +34,8 @@ import type { RoutesProps } from './types';
 const { homeURL } = getConfig();
 logger.log(`homeURL is set to: ${homeURL}`);
 
-// TODO: ErrorScreen
-const ErrorScreen = () => (
-  <h1>404 Not Found.</h1>
+const NotFound = () => (
+  <Error error={{ code: CODE_404 }} />
 );
 
 class Routes extends PureComponent<RoutesProps> {
@@ -61,7 +61,7 @@ class Routes extends PureComponent<RoutesProps> {
 
               <PublicRoute exact path={routeNames.LOGIN} component={LoginScreen} />
               <PublicRoute exact path={routeNames.REGISTER} component={RegisterScreen} />
-              <Route component={ErrorScreen} />
+              <Route component={NotFound} />
             </Switch>
           </Router>
         </Error>

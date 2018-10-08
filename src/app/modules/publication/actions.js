@@ -29,7 +29,7 @@ export const fetchPublication = (id: number, shouldShowLoader: boolean = true): 
 
     logger.log('action: fetchPublicationStart');
 
-    const publication = await getPublicationDetail({ id });
+    const publication = await getPublicationDetail(dispatch)({ id });
     const card = transformPublicationToCard(publication);
     logger.log('action: fetchPublication');
 
@@ -48,7 +48,7 @@ export const toggleList = (request: ToggleListRequest): ThunkAction => {
     logger.log('action: toggleListStart');
     dispatch(showLoader());
 
-    const publication = await postToggleList(request);
+    const publication = await postToggleList(dispatch)(request);
     const card = transformPublicationToCard(publication);
     const { cards } = getState().toJS().card;
     logger.log('action: toggleList');
@@ -81,7 +81,7 @@ const toggle = (id: number, type: 'read' | 'favorite'): ThunkAction => {
       default: toggleFunc = () => { logger.log('toggleFunc type unknown'); };
     }
 
-    const result = await toggleFunc(id);
+    const result = await toggleFunc(dispatch)(id);
     logger.log(`toggle: ${type}`);
     const { cards } = getState().toJS().card;
     const { card } = getState().toJS().publication;

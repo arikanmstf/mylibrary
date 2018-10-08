@@ -8,8 +8,9 @@
 
 import Api, { BOOK_DETAIL } from 'helpers/api';
 import type { BookDetail } from 'helpers/api/types';
+import type { Dispatch } from 'redux';
 import type { GetBookDetailRequest } from './types';
 
-export const getBookDetail = async ({ id }: GetBookDetailRequest): Promise<BookDetail> => {
-  return Api.get(BOOK_DETAIL.replace('{id}', id));
+export const getBookDetail = (dispatch: Dispatch<*>) => async ({ id }: GetBookDetailRequest): Promise<BookDetail> => {
+  return Api.get(dispatch)(BOOK_DETAIL.replace('{id}', id));
 };

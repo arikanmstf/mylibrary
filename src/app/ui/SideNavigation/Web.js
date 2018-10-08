@@ -32,7 +32,7 @@ class SideNavigation extends PureComponent<SideNavigationProps> {
   handleItemClick = (route: SideNavigationItem) => {
     const { history } = this.props;
     if (route.to) {
-      history.push(url);
+      history.push(route.to);
     }
 
     if (route.onPress) {
@@ -63,6 +63,7 @@ class SideNavigation extends PureComponent<SideNavigationProps> {
 
       return (
         <MenuItem
+          key={route.label}
           onClick={() => { this.handleItemClick(route); }}
         >
           { Icon ? (

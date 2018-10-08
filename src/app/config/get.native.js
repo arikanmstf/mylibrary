@@ -5,5 +5,5 @@ import configLive from 'config/live.json';
 const config = getEnv() === 'local' ? configLocal : configLive;
 
 export default function () {
-  return { ...config, ...config.ios };
+  return { ...config, ...config.native };
 }

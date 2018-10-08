@@ -26,7 +26,7 @@ export const fetchPublisher = (id: number): ThunkAction => {
 
     logger.log('action: fetchPublisherStart');
 
-    const publisher = await getPublisherDetail({ id });
+    const publisher = await getPublisherDetail(dispatch)({ id });
     const card = transformPublisherToCard(publisher);
     logger.log('action: fetchPublisher');
 

@@ -18,7 +18,7 @@ import type { SubmitRegisterFormRequest } from './RegisterTypes';
 export const submitRegisterForm = async (form: Immutable<SubmitRegisterFormRequest>, dispatch: Dispatch<*>) => {
   dispatch(showLoader());
 
-  const result = await postRegister(form.toJS());
+  const result = await postRegister(dispatch)(form.toJS());
   const data = {
     key: LOGIN_STATE,
     data: { ...result },
