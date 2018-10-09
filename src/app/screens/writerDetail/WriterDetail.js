@@ -5,13 +5,13 @@
  */
 
 // @flow
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import logger from 'helpers/logger';
 import { CARD_TYPE_WRITER } from 'modules/card/constants';
 
 import type { WriterDetailProps } from './WriterDetailTypes';
 
-class WriterDetail extends Component<WriterDetailProps> {
+class WriterDetail extends PureComponent<WriterDetailProps> {
   componentDidMount() {
     const {
       fetchWriter,

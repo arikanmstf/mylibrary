@@ -5,12 +5,12 @@
  */
 
 // @flow
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import logger from 'helpers/logger';
 import { CARD_TYPE_BOOK } from 'modules/card/constants';
 import type { BookDetailProps } from './BookDetailTypes';
 
-class BookDetail extends Component<BookDetailProps> {
+class BookDetail extends PureComponent<BookDetailProps> {
   componentDidMount() {
     const {
       fetchBook,

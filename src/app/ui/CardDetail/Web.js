@@ -5,7 +5,7 @@
  */
 
 // @flow
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -32,7 +32,7 @@ import type { CardDetailProps } from './types';
 
 const styleActive = { color: green500 };
 
-export class CardDetail extends Component<CardDetailProps> {
+export class CardDetail extends PureComponent<CardDetailProps> {
   static defaultProps = defaultProps;
 
   state = {

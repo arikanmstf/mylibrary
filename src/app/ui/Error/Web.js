@@ -1,5 +1,5 @@
 // @flow
-import React, { Component, ErrorInfo, Fragment } from 'react';
+import React, { PureComponent, ErrorInfo, Fragment } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import logger from 'helpers/logger';
@@ -13,7 +13,7 @@ const ScreenStyled = styled(Screen)`
 text-align: center;
 `;
 
-class ErrorBoundary extends Component<ErrorProps, ErrorState> {
+class ErrorBoundary extends PureComponent<ErrorProps, ErrorState> {
   constructor(props) {
     super(props);
     this.state = { error: props.error };

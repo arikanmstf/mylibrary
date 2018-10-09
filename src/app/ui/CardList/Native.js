@@ -5,7 +5,7 @@
  */
 
 // @flow
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import debounce from 'lodash.debounce';
 import { Button, Icon } from 'native-base';
 import { withNavigation } from 'react-navigation';
@@ -26,7 +26,7 @@ const isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
   return layoutMeasurement.height + contentOffset.y >= contentSize.height - paddingToBottom;
 };
 
-export class CardList extends Component<CardListProps> {
+export class CardList extends PureComponent<CardListProps> {
   handleScroll = ({ nativeEvent }) => {
     const {
       addCards,

@@ -1,17 +1,17 @@
 /**
  * Screen Template By => create-module script
- * @version 1.0.2
+ * @version 1.0.3
  *
  */
 
 // @flow
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import logger from 'helpers/logger';
 import t from 'helpers/i18n/Translate';
 import type { #{className}Props } from './#{className}Types';
 
 // eslint-disable-next-line react/prefer-stateless-function
-class #{className} extends Component<#{className}Props> {
+class #{className} extends PureComponent<#{className}Props> {
   render() {
     const {
       Screen,

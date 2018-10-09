@@ -1,5 +1,5 @@
 // @flow
-import React, { Component, ErrorInfo, Fragment } from 'react';
+import React, { PureComponent, ErrorInfo, Fragment } from 'react';
 import { connect } from 'react-redux';
 import logger from 'helpers/logger';
 import { Screen, Modal } from 'ui/native';
@@ -8,7 +8,7 @@ import { mapStateToProps, mapDispatchToProps } from './actions';
 
 import type { ErrorProps, ErrorState } from './types';
 
-class ErrorBoundary extends Component<ErrorProps, ErrorState> {
+class ErrorBoundary extends PureComponent<ErrorProps, ErrorState> {
   constructor(props) {
     super(props);
     this.state = { error: props.error };

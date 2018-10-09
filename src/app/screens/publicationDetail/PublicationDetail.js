@@ -5,13 +5,13 @@
  */
 
 // @flow
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import logger from 'helpers/logger';
 import { CARD_TYPE_PUBLICATION } from 'modules/card/constants';
 
 import type { PublicationDetailProps } from './PublicationDetailTypes';
 
-class PublicationDetail extends Component<PublicationDetailProps> {
+class PublicationDetail extends PureComponent<PublicationDetailProps> {
   componentDidMount() {
     const {
       fetchPublication,

@@ -5,7 +5,7 @@
  */
 
 // @flow
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import Chip from '@material-ui/core/Chip';
 import t from 'helpers/i18n/Translate';
@@ -42,7 +42,7 @@ const isCloseToBottom = () => {
   return windowHeight + window.pageYOffset + 600 >= docHeight;
 };
 
-export class CardList extends Component<CardListProps> {
+export class CardList extends PureComponent<CardListProps> {
   componentDidMount() {
     this.handleScrollDebounce = debounce(this.handleScroll, 800, {
       leading: true,

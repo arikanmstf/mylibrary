@@ -5,12 +5,12 @@
  */
 
 // @flow
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import logger from 'helpers/logger';
 import t from 'helpers/i18n/Translate';
 import type { PublicationAddToListProps } from './PublicationAddToListTypes';
 
-class PublicationAddToList extends Component<PublicationAddToListProps> {
+class PublicationAddToList extends PureComponent<PublicationAddToListProps> {
   componentDidMount() {
     const {
       fetchLists,

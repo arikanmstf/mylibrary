@@ -5,7 +5,7 @@
  */
 
 // @flow
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import debounce from 'lodash.debounce';
 import { withNavigation } from 'react-navigation';
 import {
@@ -32,7 +32,7 @@ import logger from 'helpers/logger';
 import { setCardType, defaultProps } from './helpers';
 import type { CardDetailProps } from './types';
 
-export class CardDetail extends Component<CardDetailProps> {
+export class CardDetail extends PureComponent<CardDetailProps> {
   static defaultProps = defaultProps;
 
   setCardType() {

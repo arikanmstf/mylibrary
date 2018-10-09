@@ -5,11 +5,11 @@
  */
 
 // @flow
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import logger from 'helpers/logger';
 import type { HomeProps } from './HomeTypes';
 
-class Home extends Component<HomeProps> {
+class Home extends PureComponent<HomeProps> {
   state = {};
 
   componentDidMount() {

@@ -5,13 +5,13 @@
  */
 
 // @flow
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import logger from 'helpers/logger';
 import { CARD_TYPE_PUBLISHER } from 'modules/card/constants';
 
 import type { PublisherDetailProps } from './PublisherDetailTypes';
 
-class PublisherDetail extends Component<PublisherDetailProps> {
+class PublisherDetail extends PureComponent<PublisherDetailProps> {
   componentDidMount() {
     const {
       fetchPublisher,
