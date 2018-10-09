@@ -10,9 +10,6 @@ export const updateModalError = createAction(ERROR_UPDATE_MODAL);
 
 export const mapStateToProps = (state: Immutable<State>) => ({
   generalError: state.toJS().error.generalError,
-  modalError: state.toJS().error.modalError,
 });
 
-export const mapDispatchToProps = {
-  updateModalError,
-};
+export const mapDispatchToProps = null;

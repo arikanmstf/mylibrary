@@ -11,8 +11,13 @@ import { connect } from 'react-redux';
 import * as routeNames from 'constants/routes/routeNames';
 import getConfig from 'config/get';
 import logger from 'helpers/logger';
-import { ModalLoader, Div, Error } from 'ui';
-import { CODE_404 } from 'ui/Error/constants';
+import {
+  ModalLoader,
+  Div,
+  GeneralError,
+  ModalError,
+} from 'ui';
+import { CODE_404 } from 'ui/GeneralError/constants';
 
 // Screens
 import LoginScreen from 'screens/login/LoginWebContainer';
@@ -35,7 +40,7 @@ const { homeURL } = getConfig();
 logger.log(`homeURL is set to: ${homeURL}`);
 
 const NotFound = () => (
-  <Error error={{ code: CODE_404 }} />
+  <GeneralError error={{ code: CODE_404 }} />
 );
 
 class Routes extends PureComponent<RoutesProps> {
@@ -47,8 +52,9 @@ class Routes extends PureComponent<RoutesProps> {
   render() {
     return (
       <Div fullHeight style={{ marginTop: 0, padding: 0 }}>
-        <Error>
+        <GeneralError>
           <ModalLoader />
+          <ModalError />
           <Router basename={homeURL}>
             <Switch>
               <PrivateRoute exact path={routeNames.LOGOUT} component={LogoutScreen} />
@@ -64,7 +70,7 @@ class Routes extends PureComponent<RoutesProps> {
               <Route component={NotFound} />
             </Switch>
           </Router>
-        </Error>
+        </GeneralError>
       </Div>
     );
   }

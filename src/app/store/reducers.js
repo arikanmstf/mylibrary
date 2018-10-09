@@ -11,7 +11,7 @@ import publisher from 'modules/publisher/reducer';
 import loader from 'ui/ModalLoader/reducer';
 import centerLoader from 'ui/CenterLoader/reducer';
 import screen from 'ui/Screen/reducer';
-import error from 'ui/Error/reducer';
+import error from 'ui/GeneralError/reducer';
 
 import login from 'screens/login/loginReducer';
 

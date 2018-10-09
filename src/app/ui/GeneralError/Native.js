@@ -1,23 +1,18 @@
 // @flow
-import React, { PureComponent, ErrorInfo, Fragment } from 'react';
+import React, { PureComponent, ErrorInfo } from 'react';
 import { connect } from 'react-redux';
 import logger from 'helpers/logger';
-import { Screen, Modal } from 'ui/native';
+import { Screen } from 'ui/native';
 import { errorMessages } from './constants';
 import { mapStateToProps, mapDispatchToProps } from './actions';
 
-import type { ErrorProps, ErrorState } from './types';
+import type { GeneralErrorProps, GeneralErrorState } from './types';
 
-class ErrorBoundary extends PureComponent<ErrorProps, ErrorState> {
+class GeneralError extends PureComponent<GeneralErrorProps, GeneralErrorState> {
   constructor(props) {
     super(props);
     this.state = { error: props.error };
   }
-
-  handleModalClose = () => {
-    const { updateModalError } = this.props;
-    updateModalError(null);
-  };
 
   componentDidCatch(error: Error, info: ErrorInfo): void {
     logger.log(error, info);
@@ -26,7 +21,7 @@ class ErrorBoundary extends PureComponent<ErrorProps, ErrorState> {
 
   render() {
     const { error: stateError } = this.state;
-    const { children, generalError, modalError } = this.props;
+    const { children, generalError } = this.props;
     const error = stateError || generalError;
 
     return error ? (
@@ -34,17 +29,8 @@ class ErrorBoundary extends PureComponent<ErrorProps, ErrorState> {
         { error.code ? <h1>{error.code}</h1> : error.message}
         <pre>{error.code ? errorMessages[error.code] : error.stack || error.message || error}</pre>
       </Screen>
-    ) : (
-      <Fragment>
-        {children}
-        <Modal
-          text={modalError && modalError.stack}
-          open={modalError}
-          onClose={this.handleModalClose}
-        />
-      </Fragment>
-    );
+    ) : children;
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ErrorBoundary);
+export default connect(mapStateToProps, mapDispatchToProps)(GeneralError);

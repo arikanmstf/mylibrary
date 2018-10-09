@@ -7,7 +7,7 @@ import type {
   WriterDetail,
   PublisherDetail,
 } from 'helpers/api/types';
-import type { GeneralError, ModalError } from 'ui/Error/types';
+import type { GeneralError, ModalError } from 'ui/GeneralError/types';
 
 export type State = {|
   form: Object,

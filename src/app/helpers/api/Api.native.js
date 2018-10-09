@@ -3,7 +3,7 @@ import a from 'axios';
 import logger from 'helpers/logger';
 import storage, { LOGIN_STATE } from 'helpers/storage';
 import getConfig from 'config/get';
-import { updateModalError } from 'ui/Error/actions';
+import { updateModalError } from 'ui/GeneralError/actions';
 import type { Dispatch } from 'redux';
 
 const { baseURL } = getConfig();

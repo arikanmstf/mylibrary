@@ -6,12 +6,12 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import Error from 'ui/GeneralError/Native';
+import ModalError from 'ui/ModalError/Native';
 
-describe('test/app/ui/Error/Native.test.js', () => {
+describe('test/app/ui/ModalError/Web.test.js', () => {
   it('Render', () => {
     const props = {};
-    const wrapper = shallow(<Error {...props} />);
+    const wrapper = shallow(<ModalError {...props} />);
     expect(wrapper).toMatchSnapshot();
   });
 });
