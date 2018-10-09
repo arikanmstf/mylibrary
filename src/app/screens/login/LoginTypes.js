@@ -21,13 +21,11 @@ export type SubmitLoginFormRequest = {
 };
 
 export type SubmitLoginFormResponse = {
-  success: {
-    token: string,
-    user: {
-      name: string,
-      permissions: Array<string>,
-    },
-  }
+  token: string,
+  user: {
+    name: string,
+    permissions: Array<string>,
+  },
 };
 
 export type LoginProps = {
