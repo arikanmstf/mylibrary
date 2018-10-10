@@ -12,6 +12,7 @@ import {
   staticFiles,
   publicationCoverUrl,
   bookCoverUrl,
+  publicationDetailUrlWithId,
 } from './createUrl.common';
 
 export {
@@ -19,6 +20,7 @@ export {
   staticFiles,
   publicationCoverUrl,
   bookCoverUrl,
+  publicationDetailUrlWithId,
 };
 
 export const publicationDetailUrl = (id: number) => {

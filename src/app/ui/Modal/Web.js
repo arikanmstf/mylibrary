@@ -46,7 +46,7 @@ const Modal = ({ onClose, open, text }: ModalProps): Node => {
           <ModalButtonStyled
             primary
             raised
-            text={t.get('MODAL_CLOSE')}
+            text={t.get('GENERAL_CLOSE')}
             onClick={onClose}
           />
         ) : null }

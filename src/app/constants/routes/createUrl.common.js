@@ -1,5 +1,8 @@
 // @flow
 import getConfig from 'config/get';
+import {
+  PUBLICATION_DETAIL,
+} from './routeNames';
 
 export const production = () => {
   const { productionURL } = getConfig();
@@ -21,4 +24,8 @@ export const publicationCoverUrl = (id: number) => {
 
 export const bookCoverUrl = (id: number) => {
   return `/img/cover/${id}.jpg`;
+};
+
+export const publicationDetailUrlWithId = (id: number) => {
+  return PUBLICATION_DETAIL.replace(':id', id);
 };

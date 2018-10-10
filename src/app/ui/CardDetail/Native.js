@@ -51,9 +51,13 @@ export class CardDetail extends PureComponent<CardDetailProps> {
   };
 
   shareCard = () => {
+    if (!this.getDetailUrlWithId) {
+      throw new Error('getDetailUrlWithId not found.');
+    }
+
     const { card } = this.props;
     Share.share({
-      url: production()(this.getDetailUrl(card.id)),
+      url: production()(this.getDetailUrlWithId(card.id)),
     });
   };
 

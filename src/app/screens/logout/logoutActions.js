@@ -11,7 +11,7 @@ import type { ThunkAction } from 'redux-thunk';
 import type { Dispatch } from 'redux';
 
 import { showLoader, hideLoader } from 'ui/ModalLoader/actions';
-import { updateLoginState } from 'screens/login/loginActions';
+import { updateLoginState, saveLoginState } from 'screens/login/loginActions';
 import { getLogout } from './logoutServices';
 
 export const makeLogoutRequest = (): ThunkAction => {
@@ -23,6 +23,7 @@ export const makeLogoutRequest = (): ThunkAction => {
       logger.log('logoutState', logoutState);
       await Promise.all([
         dispatch(updateLoginState(logoutState)),
+        saveLoginState(logoutState),
       ]);
     }
     dispatch(hideLoader());

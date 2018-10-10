@@ -7,6 +7,7 @@ import {
   bookDetailUrl,
   publisherDetailUrl,
   writerDetailUrl,
+  publicationDetailUrlWithId,
 } from 'constants/routes/createUrl';
 import logger from 'helpers/logger';
 import {
@@ -15,6 +16,8 @@ import {
   CARD_TYPE_WRITER,
   CARD_TYPE_PUBLISHER,
 } from 'modules/card/constants';
+import t from 'helpers/i18n/Translate';
+
 import type { CardItem } from 'modules/card/types';
 
 const writerOptions = (card: CardItem) => {
@@ -24,7 +27,7 @@ const writerOptions = (card: CardItem) => {
   return card.writers.map((writer) => ({
     to: writerDetailUrl(writer.id),
     toId: writer.id,
-    label: `Writer detail: ${writer.name}`,
+    label: `${t.get('CARD_DETAIL_WRITER_DETAIL')}: ${writer.name}`,
   }));
 };
 
@@ -34,13 +37,13 @@ const createMoreOptions = (card: CardItem) => (
       {
         to: bookDetailUrl(card.id),
         toId: card.id,
-        label: 'Book detail', // TODO: i18n
+        label: t.get('CARD_DETAIL_BOOK_DETAIL'),
       },
       card.publisher
         ? {
           to: publisherDetailUrl(card.publisher.id),
           toId: card.publisher.id,
-          label: 'Publisher detail',
+          label: t.get('CARD_DETAIL_PUBLISHER_DETAIL'),
         }
         : null,
     ],
@@ -52,7 +55,7 @@ const createMoreOptions = (card: CardItem) => (
     .concat(writerOptions(card))
     .concat([
       {
-        label: 'Cancel',
+        label: t.get('GENERAL_CANCEL'),
       },
     ])
 );
@@ -62,6 +65,7 @@ export function setCardType(card: CardItem, isDetailed: boolean) {
     switch (card.type) {
       case CARD_TYPE_PUBLICATION:
         this.getDetailUrl = isDetailed ? undefined : publicationDetailUrl;
+        this.getDetailUrlWithId = isDetailed ? undefined : publicationDetailUrlWithId;
         this.addToListUrl = publicationAddToListUrl;
         this.imageUri = staticFiles()(publicationCoverUrl(card.id));
         break;
