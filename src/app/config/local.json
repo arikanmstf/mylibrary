@@ -1,9 +1,9 @@
 {
-  "baseURL":"http://localhost:8081/api",
+  "baseURL":"http://localhost:8081",
   "homeURL":"",
   "productionURL":"http://mustafaarikan.net/mylibrary",
   "staticFilesURL":"http://192.168.1.219/ml-test/static",
   "native": {
-    "baseURL": "http://192.168.1.219:8081/api"
+    "baseURL": "http://192.168.1.219:8081"
   }
 }

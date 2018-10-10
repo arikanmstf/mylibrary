@@ -1,5 +1,15 @@
 {
   "expo": {
-    "sdkVersion": "27.0.0"
+    "name": "MyLibrary",
+    "icon": "./static/img/favicon-180x180.png",
+    "version": "3.0.0-alpha.1",
+    "slug": "mylibrary",
+    "sdkVersion": "27.0.0",
+    "ios": {
+      "bundleIdentifier": "com.arikanmstf.mylibrary"
+    },
+    "android": {
+      "package": "com.arikanmstf.mylibrary"
+    }
   }
 }
