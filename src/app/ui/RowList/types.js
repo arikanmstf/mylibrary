@@ -5,6 +5,9 @@
  */
 
 // @flow
+import type { ComponentType } from 'react';
+import type { Item } from 'helpers/api/types';
+
 export type Row = {
   title: string,
   id: number,
@@ -12,12 +15,9 @@ export type Row = {
   orderNo: number,
 }
 
-export type CompareRow = {
-  id: number,
-}
-
 export type RowListProps = {
   rows?: Array<Row>,
   addToListId: number,
-  compareRows: Array<CompareRow>,
+  compareRows: Array<Item>,
+  detailComponent: ComponentType<*>,
 };

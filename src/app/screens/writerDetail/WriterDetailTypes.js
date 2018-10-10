@@ -6,6 +6,8 @@
 
 // @flow
 import type { ComponentType } from 'react';
+import type { StackNavigator } from 'react-navigation';
+import type { Match } from 'react-router';
 import type { CardDetailProps } from 'ui/CardDetail/types';
 import type { ScreenProps } from 'ui/Screen/types';
 import type { HeaderProps } from 'ui/Header/types';
@@ -18,5 +20,7 @@ export type WriterDetailProps = {
   Header: ComponentType<HeaderProps>,
   Page: ComponentType<PageProps>,
   fetchWriter: Function,
-  card?: CardItem,
+  card: CardItem,
+  navigation: StackNavigator,
+  match: Match,
 };

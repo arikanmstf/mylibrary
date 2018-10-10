@@ -1,5 +1,6 @@
 // @flow
-import React, { ComponentType } from 'react';
+import React from 'react';
+import type { ComponentType } from 'react';
 import { HOME } from 'constants/routes/routeNames';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';

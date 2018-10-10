@@ -13,7 +13,7 @@
     "start-web:live-prod": "webpack-dev-server --config webpack.config.live-prod.js --mode production",
     "build-web:local-dev": "yarn check-src && webpack --config webpack.config.local-dev.js --mode development",
     "build-web:local-prod": "yarn check-src && webpack --config webpack.config.local-prod.js --mode production",
-    "build-web:live-prod": "yarn check-src && webpack --config webpack.config.live-prod.js --mode production",
+    "build-web:live-prod": "webpack --config webpack.config.live-prod.js --mode production",
     "deploy-web:local": "(docker container stop mylibrary-container & docker container rm mylibrary-container | docker rmi mylibrary-image | yarn build-web:local-prod) && docker build -t mylibrary-image . && docker run -p 8082:80 -d --name mylibrary-container mylibrary-image",
     "start-native": "yarn run start-native:local-dev",
     "start-native:local-dev": "REACT_NATIVE_ENVIRONMENT=local REACT_NATIVE_IS_DEVELOPMENT=true react-native-scripts start",

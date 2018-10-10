@@ -19,6 +19,7 @@ import {
 import t from 'helpers/i18n/Translate';
 
 import type { CardItem } from 'modules/card/types';
+import type { Option } from './types';
 
 const writerOptions = (card: CardItem) => {
   if (!card.writers) {
@@ -26,12 +27,12 @@ const writerOptions = (card: CardItem) => {
   }
   return card.writers.map((writer) => ({
     to: writerDetailUrl(writer.id),
-    toId: writer.id,
+    toId: writer ? writer.id : null,
     label: `${t.get('CARD_DETAIL_WRITER_DETAIL')}: ${writer.name}`,
   }));
 };
 
-const createMoreOptions = (card: CardItem) => (
+const createMoreOptions = (card: CardItem): Array<Option> => (
   {
     [CARD_TYPE_PUBLICATION]: [
       {
@@ -42,7 +43,7 @@ const createMoreOptions = (card: CardItem) => (
       card.publisher
         ? {
           to: publisherDetailUrl(card.publisher.id),
-          toId: card.publisher.id,
+          toId: card.publisher ? card.publisher.id : null,
           label: t.get('CARD_DETAIL_PUBLISHER_DETAIL'),
         }
         : null,

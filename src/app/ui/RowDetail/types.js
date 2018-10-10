@@ -5,19 +5,21 @@
  */
 
 // @flow
-import { Row, CompareRow } from 'ui/RowList/types';
+import type { Row } from 'ui/RowList/types';
+import type { Item } from 'helpers/api/types';
 
 export type SubmitFormType = {
-  publicationId: number,
+  addToListId: number,
   listId: number,
-  orderNo: number,
+  orderNo?: number,
 };
 
 export type RowDetailProps = {
   row: Row,
   form: string,
   addToListId: number,
-  compareRows: Array<CompareRow>,
+  compareRows: Array<Item>,
   onFormInitialize?: Function,
   handleSubmit: Function,
+  onFormChange: Function,
 };

@@ -62,8 +62,8 @@ class PublicationAddToList extends PureComponent<PublicationAddToListProps> {
         <Page>
           <RowList
             rows={rows}
-            compareRows={publication ? publication.lists : null}
-            addToListId={publication ? publication.id : null}
+            compareRows={publication ? publication.lists : []}
+            addToListId={publication ? publication.id : 0}
             detailComponent={PublicationAddToListForm}
           />
         </Page>

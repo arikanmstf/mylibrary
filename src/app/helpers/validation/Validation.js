@@ -18,7 +18,7 @@ class Validation {
     ) ? t.get('VALIDATION_IS_REQUIRED') : false;
   }
 
-  static minLength(length: number): string | false {
+  static minLength(length: number): Function {
     return (value: string | Array<*>) => (
       !(typeof value !== 'undefined' && value && value.length >= length)
         ? t.get('VALIDATION_MIN_LENGTH', { length }) : false

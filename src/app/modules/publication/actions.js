@@ -7,6 +7,7 @@ import { transformPublicationToCard } from 'helpers/data/transform';
 import { findIndexById, cloneObjectArray } from 'helpers/data/array';
 import { updateCards } from 'modules/card/actions';
 import { postToggleFavorite, postToggleRead } from 'modules/publication/services';
+import { updateGeneralError } from 'ui/GeneralError/actions';
 
 import type { Dispatch } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
@@ -80,7 +81,10 @@ const toggle = (id: number, type: 'read' | 'favorite'): ThunkAction => {
     switch (type) {
       case toggleTypes.READ: toggleFunc = postToggleRead; break;
       case toggleTypes.FAVORITE: toggleFunc = postToggleFavorite; break;
-      default: toggleFunc = () => { logger.log('toggleFunc type unknown'); };
+      default: toggleFunc = (d: Dispatch<*>) => (i: number) => {
+        d(updateGeneralError(`toggleFunc type unknown with id: ${i}`));
+        logger.log('toggleFunc type unknown');
+      };
     }
 
     const result = await toggleFunc(dispatch)(id);
@@ -108,5 +112,5 @@ const toggle = (id: number, type: 'read' | 'favorite'): ThunkAction => {
   };
 };
 
-export const toggleRead = (id) => (toggle(id, 'read'));
-export const toggleFavorite = (id) => (toggle(id, 'favorite'));
+export const toggleRead = (id: number) => (toggle(id, 'read'));
+export const toggleFavorite = (id: number) => (toggle(id, 'favorite'));

@@ -22,4 +22,11 @@ export type HomeProps = {
   rows?: Array<Row>,
   fetchPublications: Function,
   fetchLists: Function,
+  toggleFavorite?: Function,
+  toggleRead?: Function,
+  listType?: string,
+};
+
+export type HomeState = {
+  listType?: string,
 };

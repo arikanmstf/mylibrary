@@ -7,7 +7,8 @@ import type {
   WriterDetail,
   PublisherDetail,
 } from 'helpers/api/types';
-import type { GeneralError, ModalError } from 'ui/GeneralError/types';
+import type { GeneralError } from 'ui/GeneralError/types';
+import type { ModalError } from 'ui/ModalError/types';
 
 export type State = {|
   form: Object,
@@ -19,8 +20,8 @@ export type State = {|
     cards?: Array<CardItem>,
     totalPages: number,
     currentPage: number,
-    searchQuery: string,
-    listType: string,
+    searchQuery?: string,
+    listType?: string,
     isSearchPending: boolean,
   |},
   centerLoader: {|
@@ -28,7 +29,7 @@ export type State = {|
   |},
   error: {|
     generalError: GeneralError,
-    modalError: ModalError,
+    modalError?: ModalError,
   |},
   publication: {|
     publication?: PublicationDetail,
@@ -42,14 +43,14 @@ export type State = {|
     rows?: Array<Row>,
   |},
   loader: {|
-    isVisible: boolean,
+    isVisible?: boolean,
   |},
   login: {|
     isLoggedIn: boolean,
     isInitialized: boolean,
   |},
   screen: {|
-    isDrawerOpen: boolean,
+    isDrawerOpen?: boolean,
   |},
   writer: {|
     writer?: WriterDetail,

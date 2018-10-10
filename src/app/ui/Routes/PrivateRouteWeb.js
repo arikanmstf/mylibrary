@@ -1,8 +1,9 @@
 // @flow
-import React, { ComponentType } from 'react';
+import React from 'react';
 import { LOGIN } from 'constants/routes/routeNames';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
+import type { ComponentType } from 'react';
 import { mapStateToProps } from './actions';
 
 const PrivateRouteWeb = (

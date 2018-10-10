@@ -11,8 +11,9 @@ import { transformItemListToRowList } from 'helpers/data/transform';
 
 import type { Item } from 'helpers/api/types';
 import type { Dispatch } from 'redux';
+import type { Row } from 'ui/RowList/types';
 
-export const getMyLists = (dispatch: Dispatch<*>) => async (): Promise<Array<Item>> => {
+export const getMyLists = (dispatch: Dispatch<*>) => async (): Promise<Array<Row>> => {
   const result: Array<Item> = await Api.get(dispatch)(LIST_MY);
   return transformItemListToRowList(result);
 };

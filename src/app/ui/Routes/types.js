@@ -5,4 +5,8 @@
  */
 
 // @flow
-export type RoutesProps = {};
+export type RoutesProps = {
+  isLoggedIn: boolean,
+  isInitialized: boolean,
+  fetchInitialState: Function,
+};

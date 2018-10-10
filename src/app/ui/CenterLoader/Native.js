@@ -5,7 +5,8 @@
  */
 
 // @flow
-import React, { Node } from 'react';
+import React from 'react';
+import type { Node } from 'react';
 import { connect } from 'react-redux';
 import { Body } from 'native-base';
 import { Image } from 'ui/native';

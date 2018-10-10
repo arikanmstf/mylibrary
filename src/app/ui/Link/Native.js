@@ -5,9 +5,10 @@
  */
 
 // @flow
-import React, { Node } from 'react';
+import React from 'react';
 import { withNavigation } from 'react-navigation';
 import { TouchableOpacity } from 'react-native';
+import type { Node } from 'react';
 import type { LinkProps } from './types';
 
 const Link = (
@@ -20,7 +21,7 @@ const Link = (
 ): ?Node => {
   return (
     <TouchableOpacity
-      onPress={() => { navigation.navigate(to, params); }}
+      onPress={() => { if (navigation) { navigation.navigate(to, params); } }}
     >
       {children}
     </TouchableOpacity>

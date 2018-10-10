@@ -5,13 +5,14 @@
  */
 
 // @flow
-import React, { Node } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
 import ModalWeb from '@material-ui/core/Modal';
 import { white } from 'constants/theme/color';
 import t from 'helpers/i18n/Translate';
 import { Button } from 'ui';
+import type { Node } from 'react';
 
 import type { ModalProps } from './types';
 

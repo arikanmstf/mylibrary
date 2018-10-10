@@ -5,9 +5,10 @@
  */
 
 // @flow
-import React, { Node } from 'react';
+import React from 'react';
 import { KeyboardAvoidingView, ScrollView, StyleSheet } from 'react-native';
 import defaultStyle from 'ui/Screen/style';
+import type { Node } from 'react';
 
 import type { ScreenProps } from 'ui/Screen/types';
 

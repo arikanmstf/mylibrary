@@ -18,8 +18,12 @@ export type Pagination<V> = {
 
 export type CardListProps = {
   cards?: Array<CardItem>,
-  isLoaderVisible: boolean,
-  search: string,
-  addCards: Function,
-  fetchPublications: Function,
+  isLoaderVisible?: boolean,
+  search?: string,
+  type?: string,
+  addCards?: Function,
+  fetchPublications?: Function,
+  updateListType?: Function,
+  toggleRead?: Function,
+  toggleFavorite?: Function,
 };

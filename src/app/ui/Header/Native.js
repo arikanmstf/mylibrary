@@ -56,7 +56,9 @@ export class Header extends PureComponent<HeaderProps, HeaderState> {
       handleSubmit,
     } = this.props;
 
-    handleSubmit(submitSearchForm)();
+    if (handleSubmit) {
+      handleSubmit(submitSearchForm)();
+    }
   };
 
   handleFocus = () => {

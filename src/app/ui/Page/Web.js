@@ -5,8 +5,9 @@
  */
 
 // @flow
-import React, { Node } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import type { Node } from 'react';
 import defaultStyle from './style.json';
 import type { PageProps } from './types';
 

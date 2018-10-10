@@ -5,10 +5,12 @@
  */
 
 // @flow
-import React, { Node } from 'react';
+import React from 'react';
 import { Modal as ModalNative, View } from 'react-native';
 import { Button, Text } from 'ui/native';
 import t from 'helpers/i18n/Translate';
+import type { Node } from 'react';
+
 import type { ModalProps } from './types';
 
 const Modal = ({ onClose, open, text }: ModalProps): Node => {

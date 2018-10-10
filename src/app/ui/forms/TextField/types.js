@@ -22,4 +22,6 @@ export type ReduxFieldProps = {
     value: *,
     onChange: Function,
   },
+  label: string,
+  type: string,
 }

@@ -13,8 +13,6 @@ import type { Pagination } from 'ui/CardList/types';
 import type { CardItem } from 'modules/card/types';
 import type {
   PublicationDetail,
-  ToggleFavorite,
-  ToggleRead,
 } from 'helpers/api/types';
 import type { SubmitSearchFormRequest } from 'ui/Header/types';
 import type { Dispatch } from 'redux';
@@ -33,11 +31,11 @@ export const getPublicationList = (dispatch: Dispatch<*>) => async (
   return transformPublicationListToCardList(result);
 };
 
-export const postToggleFavorite = (dispatch: Dispatch<*>) => async (id: number): Promise<ToggleFavorite> => {
+export const postToggleFavorite = (dispatch: Dispatch<*>) => async (id: number): Promise<PublicationDetail> => {
   return Api.post(dispatch)(PUBLICATION_TOGGLE_FAVORITE.replace('{id}', id));
 };
 
-export const postToggleRead = (dispatch: Dispatch<*>) => async (id: number): Promise<ToggleRead> => {
+export const postToggleRead = (dispatch: Dispatch<*>) => async (id: number): Promise<PublicationDetail> => {
   return Api.post(dispatch)(PUBLICATION_TOGGLE_READ.replace('{id}', id));
 };
 

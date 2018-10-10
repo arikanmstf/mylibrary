@@ -31,13 +31,15 @@ const GridFour = styled.div`
 `;
 
 const isCloseToBottom = () => {
-  const windowHeight = window.innerHeight || document.documentElement.offsetHeight;
+  const windowHeight = window.innerHeight
+    || (document.documentElement ? document.documentElement.offsetHeight : 0);
+
   const docHeight = Math.max(
-    document.body.scrollHeight,
-    document.body.offsetHeight,
-    document.documentElement.clientHeight,
-    document.documentElement.scrollHeight,
-    document.documentElement.offsetHeight
+    document.body ? document.body.scrollHeight : 0,
+    document.body ? document.body.offsetHeight : 0,
+    document.documentElement ? document.documentElement.clientHeight : 0,
+    document.documentElement ? document.documentElement.scrollHeight : 0,
+    document.documentElement ? document.documentElement.offsetHeight : 0
   );
   return windowHeight + window.pageYOffset + 600 >= docHeight;
 };
@@ -60,11 +62,13 @@ export class CardList extends PureComponent<CardListProps> {
       addCards,
     } = this.props;
 
-    if (isCloseToBottom()) {
+    if (isCloseToBottom() && addCards) {
       addCards();
       logger.log('addCards');
     }
   };
+
+  handleScrollDebounce: Function;
 
   renderCardList() {
     const { cards, toggleRead, toggleFavorite } = this.props;
@@ -89,7 +93,7 @@ export class CardList extends PureComponent<CardListProps> {
     return (
       <Chip
         label={t.get(type)}
-        onDelete={() => { updateListType(null); }}
+        onDelete={() => { if (updateListType) { updateListType(null); } }}
       />
     );
   }

@@ -30,10 +30,14 @@ import { production } from 'constants/routes/createUrl';
 import logger from 'helpers/logger';
 
 import { setCardType, defaultProps } from './helpers';
-import type { CardDetailProps } from './types';
+import type { CardDetailProps, Option } from './types';
 
 export class CardDetail extends PureComponent<CardDetailProps> {
   static defaultProps = defaultProps;
+
+  getDetailUrl: Function;
+
+  getDetailUrlWithId: Function;
 
   setCardType() {
     const { card, isDetailed } = this.props;
@@ -43,7 +47,7 @@ export class CardDetail extends PureComponent<CardDetailProps> {
   goToDetail = () => {
     const { card, navigation } = this.props;
 
-    if (card && this.getDetailUrl) {
+    if (card && this.getDetailUrl && navigation) {
       logger.log('goToDetail');
       const url = this.getDetailUrl();
       navigation.navigate(url, { id: card.id });
@@ -61,9 +65,9 @@ export class CardDetail extends PureComponent<CardDetailProps> {
     });
   };
 
-  goTo = (option) => {
+  goTo = (option: Option) => {
     const { navigation } = this.props;
-    if (option.to) {
+    if (option.to && navigation) {
       navigation.navigate(option.to, { id: option.toId });
     }
   };
@@ -73,7 +77,10 @@ export class CardDetail extends PureComponent<CardDetailProps> {
 
     logger.log('goToAddToList');
     const url = this.addToListUrl();
-    navigation.navigate(url, { id: card.id });
+
+    if (navigation) {
+      navigation.navigate(url, { id: card.id });
+    }
   };
 
   goToDownload = async () => {
@@ -84,7 +91,7 @@ export class CardDetail extends PureComponent<CardDetailProps> {
       if (supported) {
         Linking.openURL(card.downloadUrl);
       } else {
-        logger.log(`Can't open the download url: ${card.downloadUrl}`);
+        logger.log('Cant open the download url', card.downloadUrl);
       }
     }
   };
@@ -103,6 +110,12 @@ export class CardDetail extends PureComponent<CardDetailProps> {
       }
     );
   };
+
+  moreOptions: Array<Option>;
+
+  imageUri: string;
+
+  addToListUrl: Function;
 
   toggleFavorite(id: number) {
     const { toggleFavorite } = this.props;

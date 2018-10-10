@@ -20,7 +20,7 @@ import type { SideNavigationProps, SideNavigationItem } from './types';
 class SideNavigation extends PureComponent<SideNavigationProps> {
   handleItemClick = (route: SideNavigationItem) => {
     const { navigation } = this.props;
-    if (route.to) {
+    if (route.to && navigation) {
       navigation.navigate(route.to);
     }
 

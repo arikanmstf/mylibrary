@@ -1,11 +1,12 @@
 /**
  * Native Component Template By => create-module script
- * @version 1.0.1
+ * @version 1.0.2
  *
  */
 
 // @flow
-import React, { Node } from 'react';
+import React from 'react';
+import type { Node } from 'react';
 
 import type { #{componentName}Props } from './types';
 

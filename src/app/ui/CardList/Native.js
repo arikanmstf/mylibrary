@@ -6,6 +6,7 @@
 
 // @flow
 import React, { PureComponent } from 'react';
+import type { SyntheticEvent } from 'react-native';
 import debounce from 'lodash.debounce';
 import { Button, Icon } from 'native-base';
 import { withNavigation } from 'react-navigation';
@@ -18,6 +19,7 @@ import logger from 'helpers/logger';
 import { CardDetail, CenterLoader, Text } from 'ui/native';
 import t from 'helpers/i18n/Translate';
 
+import type { CardItem } from 'modules/card/types';
 import { mapStateToProps, mapDispatchToProps } from './actions';
 import type { CardListProps, RenderCardListItem } from './types';
 
@@ -27,7 +29,7 @@ const isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
 };
 
 export class CardList extends PureComponent<CardListProps> {
-  handleScroll = ({ nativeEvent }) => {
+  handleScroll = ({ nativeEvent }: SyntheticEvent) => {
     const {
       addCards,
     } = this.props;
@@ -53,7 +55,7 @@ export class CardList extends PureComponent<CardListProps> {
     }
   };
 
-  keyExtractor = (item) => item.id;
+  keyExtractor = (item: CardItem) => item.id;
 
   renderCardList() {
     const { toggleRead, toggleFavorite } = this.props;
@@ -79,7 +81,7 @@ export class CardList extends PureComponent<CardListProps> {
     return (
       <Button
         iconRight
-        onPress={() => { updateListType(null); }}
+        onPress={() => { if (updateListType) { updateListType(null); } }}
         light
       >
         <Text>{t.get(type)}</Text>

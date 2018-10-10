@@ -1,5 +1,7 @@
 // @flow
 import { updateModalError } from 'ui/GeneralError/actions';
+import type { Immutable } from 'store/ImmutableTypes';
+import type { State } from 'store/StateTypes';
 
 export const mapStateToProps = (state: Immutable<State>) => ({
   modalError: state.toJS().error.modalError,

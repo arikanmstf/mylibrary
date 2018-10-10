@@ -17,11 +17,12 @@ import logger from 'helpers/logger';
 import { Text, TextField } from 'ui/native';
 import fields from 'constants/forms/addToList';
 
+import type { Item } from 'helpers/api/types';
 import type { RowDetailProps } from './types';
 
 class RowDetail extends PureComponent<RowDetailProps> {
-  static hasRowId(rowId) {
-    return (compareRow) => (compareRow.id === rowId);
+  static hasRowId(rowId: number) {
+    return (compareRow: Item) => (compareRow.id === rowId);
   }
 
   componentDidMount() {
@@ -46,7 +47,7 @@ class RowDetail extends PureComponent<RowDetailProps> {
     }
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: RowDetailProps) {
     const {
       row,
       form,

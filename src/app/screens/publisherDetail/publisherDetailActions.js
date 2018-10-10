@@ -6,6 +6,8 @@
 
 // @flow
 import { fetchPublisher } from 'modules/publisher/actions';
+import type { Immutable } from 'store/ImmutableTypes';
+import type { State } from 'store/StateTypes';
 
 export const mapStateToProps = (state: Immutable<State>) => ({
   card: state.toJS().publisher.card,

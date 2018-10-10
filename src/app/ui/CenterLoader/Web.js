@@ -5,7 +5,8 @@
  */
 
 // @flow
-import React, { Node } from 'react';
+import React from 'react';
+import type { Node } from 'react';
 import { connect } from 'react-redux';
 import { Image } from 'ui';
 import Loading from 'assets/images/loading.gif';

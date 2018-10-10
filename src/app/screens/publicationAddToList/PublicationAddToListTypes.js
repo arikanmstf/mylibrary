@@ -6,6 +6,8 @@
 
 // @flow
 import type { ComponentType } from 'react';
+import type { Match } from 'react-router';
+
 import type { RowListProps, Row } from 'ui/RowList/types';
 import type { ScreenProps } from 'ui/Screen/types';
 import type { HeaderProps } from 'ui/Header/types';
@@ -22,4 +24,5 @@ export type PublicationAddToListProps = {
   publication?: PublicationDetail,
   fetchLists: Function,
   fetchPublication: Function,
+  match: Match,
 };

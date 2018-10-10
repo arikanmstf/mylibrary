@@ -18,7 +18,7 @@ import type {
 } from 'helpers/api/types';
 import type { Row } from 'ui/RowList/types';
 
-export const transformPublicationToCard = (publication: PublicationDetail): CardItem => {
+export const transformPublicationToCard = (publication?: PublicationDetail): CardItem => {
   if (!publication) {
     return publication;
   }

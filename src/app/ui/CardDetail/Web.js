@@ -26,27 +26,30 @@ import IconButton from '@material-ui/core/IconButton';
 import { green500 } from 'constants/theme/color';
 import t from 'helpers/i18n/Translate';
 import logger from 'helpers/logger';
+import type { Node } from 'react';
 
 import { setCardType, defaultProps } from './helpers';
-import type { CardDetailProps } from './types';
+import type { CardDetailProps, CardDetailState, Option } from './types';
 
 const styleActive = { color: green500 };
 
-export class CardDetail extends PureComponent<CardDetailProps> {
+export class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
   static defaultProps = defaultProps;
 
   state = {
     anchorElRenderMore: null,
   };
 
+  getDetailUrl: Function;
+
   setCardType() {
     const { card, isDetailed } = this.props;
     setCardType.bind(this)(card, isDetailed);
   }
 
-  goTo = (url) => {
+  goTo = (url?: ?string) => {
     const { history } = this.props;
-    if (url) {
+    if (url && history) {
       history.push(url);
     }
   };
@@ -54,7 +57,7 @@ export class CardDetail extends PureComponent<CardDetailProps> {
   goToDetail = () => {
     const { card, history } = this.props;
 
-    if (card && this.getDetailUrl) {
+    if (card && this.getDetailUrl && history) {
       logger.log('goToDetail', card);
       const url = this.getDetailUrl(card.id);
       history.push(url);
@@ -66,7 +69,10 @@ export class CardDetail extends PureComponent<CardDetailProps> {
 
     logger.log('goToAddToList');
     const url = this.addToListUrl(card.id);
-    history.push(url);
+
+    if (history) {
+      history.push(url);
+    }
   };
 
   goToDownload = () => {
@@ -76,13 +82,19 @@ export class CardDetail extends PureComponent<CardDetailProps> {
     }
   };
 
-  handleRenderMoreClick = (event) => {
+  handleRenderMoreClick = (event: { currentTarget: HTMLElement }) => {
     this.setState({ anchorElRenderMore: event.currentTarget });
   };
 
   handleRenderMoreClose = () => {
     this.setState({ anchorElRenderMore: null });
   };
+
+  moreOptions: Array<Option>;
+
+  imageUri: string;
+
+  addToListUrl: Function;
 
   toggleFavorite(id: number) {
     const { toggleFavorite } = this.props;
@@ -98,7 +110,7 @@ export class CardDetail extends PureComponent<CardDetailProps> {
     }
   }
 
-  renderMoreOptions() {
+  renderMoreOptions(): Node {
     return this.moreOptions.map((option) => (
       <MenuItem
         key={option.label}

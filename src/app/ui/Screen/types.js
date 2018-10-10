@@ -1,5 +1,5 @@
 // @flow
-import { Node } from 'react';
+import type { Node } from 'react';
 
 export type ScreenProps = {
   children?: Node,

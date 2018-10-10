@@ -1,7 +1,7 @@
 // @flow
-import { Node } from 'react';
+import type { Node } from 'react';
 
 export type TextProps = {
   children: Node,
-  className: string,
+  className?: string,
 };

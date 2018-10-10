@@ -21,7 +21,7 @@ import type { SubmitLoginFormRequest, SubmitLoginFormResponse } from './LoginTyp
 export const updateLoginState = createAction(UPDATE_LOGIN_STATE);
 export const updateInitializeState = createAction(UPDATE_INITIALIZE_STATE);
 
-export const saveLoginState = async (data: SubmitLoginFormResponse) => {
+export const saveLoginState = async (data: ?SubmitLoginFormResponse) => {
   const save = {
     key: LOGIN_STATE,
     data,

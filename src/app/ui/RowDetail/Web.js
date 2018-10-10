@@ -14,11 +14,12 @@ import AddIcon from '@material-ui/icons/Add';
 import { TextField } from 'ui';
 import fields from 'constants/forms/addToList';
 
+import type { Item } from 'helpers/api/types';
 import type { RowDetailProps } from './types';
 
 class RowDetail extends PureComponent<RowDetailProps> {
-  static hasRowId(rowId) {
-    return (compareRow) => (compareRow.id === rowId);
+  static hasRowId(rowId: number) {
+    return (compareRow: Item) => (compareRow.id === rowId);
   }
 
   componentDidMount() {
@@ -43,7 +44,7 @@ class RowDetail extends PureComponent<RowDetailProps> {
     }
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: RowDetailProps) {
     const {
       row,
       form,
