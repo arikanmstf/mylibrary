@@ -8,6 +8,7 @@
 import { showLoader, hideLoader } from 'ui/ModalLoader/actions';
 import storage, { LOGIN_STATE } from 'helpers/storage';
 import { fetchInitialState } from 'screens/login/loginActions';
+import { LOADER_REGISTER } from 'constants/actions/loaderNames';
 
 import type { Dispatch } from 'redux';
 import type { Immutable } from 'store/ImmutableTypes';
@@ -16,7 +17,7 @@ import { postRegister } from './registerServices';
 import type { SubmitRegisterFormRequest } from './RegisterTypes';
 
 export const submitRegisterForm = async (form: Immutable<SubmitRegisterFormRequest>, dispatch: Dispatch<*>) => {
-  dispatch(showLoader());
+  dispatch(showLoader(LOADER_REGISTER));
 
   const result = await postRegister(dispatch)(form.toJS());
   const data = {
@@ -27,7 +28,7 @@ export const submitRegisterForm = async (form: Immutable<SubmitRegisterFormReque
   storage.save(data);
 
   dispatch(fetchInitialState());
-  dispatch(hideLoader());
+  dispatch(hideLoader(LOADER_REGISTER));
 };
 
 export const mapStateToProps = null;

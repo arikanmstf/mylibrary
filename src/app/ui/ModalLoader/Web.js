@@ -23,7 +23,8 @@ justify-content: center;
 height: 100%;
 `;
 
-const Modal = ({ isVisible, dispatch, ...other }: LoaderProps): Node => {
+const Modal = ({ visible, dispatch, ...other }: LoaderProps): Node => {
+  const isVisible = visible.length > 0;
   return (
     <ModalDiv
       {...other}

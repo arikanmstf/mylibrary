@@ -1,6 +1,7 @@
 // @flow
 import { createAction } from 'redux-actions';
 import { PUBLICATION_UPDATE_PUBLICATION, PUBLICATION_UPDATE_CARD } from 'constants/actions/actionNames';
+import { LOADER_CARD_DETAIL, LOADER_TOGGLE_LIST } from 'constants/actions/loaderNames';
 import logger from 'helpers/logger';
 import { showLoader, hideLoader } from 'ui/ModalLoader/actions';
 import { transformPublicationToCard } from 'helpers/data/transform';
@@ -22,11 +23,9 @@ const toggleTypes = {
 export const updatePublication = createAction(PUBLICATION_UPDATE_PUBLICATION);
 export const updatePublicationCard = createAction(PUBLICATION_UPDATE_CARD);
 
-export const fetchPublication = (id: number, shouldShowLoader: boolean = true): ThunkAction => {
+export const fetchPublication = (id: number): ThunkAction => {
   return async (dispatch: Dispatch<*>) => {
-    if (shouldShowLoader) {
-      dispatch(showLoader());
-    }
+    dispatch(showLoader(LOADER_CARD_DETAIL));
 
     try {
       logger.log('action: fetchPublicationStart');
@@ -41,7 +40,7 @@ export const fetchPublication = (id: number, shouldShowLoader: boolean = true): 
 
       logger.log('action: fetchPublicationEnd');
     } finally {
-      dispatch(hideLoader());
+      dispatch(hideLoader(LOADER_CARD_DETAIL));
     }
   };
 };
@@ -49,7 +48,7 @@ export const fetchPublication = (id: number, shouldShowLoader: boolean = true): 
 export const toggleList = (request: ToggleListRequest): ThunkAction => {
   return async (dispatch: Dispatch<*>, getState: Function) => {
     logger.log('action: toggleListStart');
-    dispatch(showLoader());
+    dispatch(showLoader(LOADER_TOGGLE_LIST));
 
     const publication = await postToggleList(dispatch)(request);
     const card = transformPublicationToCard(publication);
@@ -69,14 +68,14 @@ export const toggleList = (request: ToggleListRequest): ThunkAction => {
     ]);
 
     logger.log('action: toggleListEnd');
-    dispatch(hideLoader());
+    dispatch(hideLoader(LOADER_TOGGLE_LIST));
   };
 };
 
 const toggle = (id: number, type: 'read' | 'favorite'): ThunkAction => {
   return async (dispatch: Dispatch<*>, getState: Function) => {
     let toggleFunc;
-    dispatch(showLoader());
+    dispatch(showLoader(LOADER_TOGGLE_LIST));
 
     switch (type) {
       case toggleTypes.READ: toggleFunc = postToggleRead; break;
@@ -108,7 +107,7 @@ const toggle = (id: number, type: 'read' | 'favorite'): ThunkAction => {
       ]);
     }
 
-    dispatch(hideLoader());
+    dispatch(hideLoader(LOADER_TOGGLE_LIST));
   };
 };
 

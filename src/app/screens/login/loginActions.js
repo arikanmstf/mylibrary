@@ -10,6 +10,7 @@ import { createAction } from 'redux-actions';
 import { showLoader, hideLoader } from 'ui/ModalLoader/actions';
 import storage, { LOGIN_STATE } from 'helpers/storage';
 import { UPDATE_LOGIN_STATE, UPDATE_INITIALIZE_STATE } from 'constants/actions/actionNames';
+import { LOADER_LOGIN } from 'constants/actions/loaderNames';
 
 import type { Dispatch } from 'redux';
 import type { Immutable } from 'store/ImmutableTypes';
@@ -34,7 +35,7 @@ export const fetchInitialState = (): ThunkAction => {
   return async (dispatch: Dispatch<*>) => {
     try {
       logger.log('action: fetchInitialStateStart');
-      dispatch(showLoader());
+      dispatch(showLoader(LOADER_LOGIN));
       const initial = await postInitialize(dispatch)();
       logger.log('action: fetchInitialState', initial);
       const loginState = initial ? await storage.load({ key: LOGIN_STATE }) : null;
@@ -50,21 +51,21 @@ export const fetchInitialState = (): ThunkAction => {
         dispatch(updateInitializeState(true)),
       ]);
     } finally {
-      dispatch(hideLoader());
+      dispatch(hideLoader(LOADER_LOGIN));
     }
   };
 };
 
 export const submitLoginForm = async (form: Immutable<SubmitLoginFormRequest>, dispatch: Dispatch<*>) => {
   logger.log('action: submitLoginFormStart');
-  dispatch(showLoader());
+  dispatch(showLoader(LOADER_LOGIN));
 
   const result = await postLogin(dispatch)(form.toJS());
   await saveLoginState(result);
   await dispatch(fetchInitialState());
 
   logger.log('action: submitLoginFormEnd');
-  dispatch(hideLoader());
+  dispatch(hideLoader(LOADER_LOGIN));
 };
 
 export const mapStateToProps = null;

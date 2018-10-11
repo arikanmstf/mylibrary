@@ -9,6 +9,7 @@ import {
   UPDATE_SEARCH_PENDING,
   UPDATE_LIST_TYPE,
 } from 'constants/actions/actionNames';
+import { LOADER_CARD_LIST } from 'constants/actions/loaderNames';
 import logger from 'helpers/logger';
 import { showLoader, hideLoader } from 'ui/ModalLoader/actions';
 import { showCenterLoader, hideCenterLoader } from 'ui/CenterLoader/actions';
@@ -30,7 +31,7 @@ export const fetchAndUpdateCards = (shouldShowLoader: boolean = true): ThunkActi
     try {
       const page = 1;
       if (shouldShowLoader) {
-        dispatch(showLoader());
+        dispatch(showLoader(LOADER_CARD_LIST));
       }
       logger.log('action: fetchAndUpdateCardsStart');
       const search = getState().toJS().card.searchQuery;
@@ -45,7 +46,7 @@ export const fetchAndUpdateCards = (shouldShowLoader: boolean = true): ThunkActi
 
       logger.log('action: fetchAndUpdateCardsEnd');
     } finally {
-      dispatch(hideLoader());
+      dispatch(hideLoader(LOADER_CARD_LIST));
     }
   };
 };

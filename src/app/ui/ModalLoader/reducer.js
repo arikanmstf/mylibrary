@@ -5,20 +5,21 @@
  */
 
 import { handleActions } from 'redux-actions';
+import { LOADER_DEFAULT } from 'constants/actions/loaderNames';
 import { showLoader, hideLoader } from './actions';
 
 const initialState = {
-  isVisible: false,
+  visible: [],
 };
 
 const reducer = new Map([
   [
     showLoader,
-    (state) => ({ ...state, isVisible: true }),
+    (state, action) => ({ ...state, visible: [...state.visible, action.payload || LOADER_DEFAULT] }),
   ],
   [
     hideLoader,
-    (state) => ({ ...state, isVisible: false }),
+    (state, action) => ({ ...state, visible: state.visible.filter((v) => v !== (action.payload || LOADER_DEFAULT)) }),
   ],
 ]);
 

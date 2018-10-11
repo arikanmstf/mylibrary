@@ -8,6 +8,7 @@
 
 import { createAction } from 'redux-actions';
 import { WRITER_UPDATE_CARD, WRITER_UPDATE_WRITER } from 'constants/actions/actionNames';
+import { LOADER_CARD_DETAIL } from 'constants/actions/loaderNames';
 import logger from 'helpers/logger';
 import { showLoader, hideLoader } from 'ui/ModalLoader/actions';
 import { transformWriterToCard } from 'helpers/data/transform';
@@ -22,7 +23,7 @@ export const updateWriterCard = createAction(WRITER_UPDATE_CARD);
 
 export const fetchWriter = (id: number): ThunkAction => {
   return async (dispatch: Dispatch<*>) => {
-    dispatch(showLoader());
+    dispatch(showLoader(LOADER_CARD_DETAIL));
 
     logger.log('action: fetchWriterStart');
 
@@ -36,6 +37,6 @@ export const fetchWriter = (id: number): ThunkAction => {
     ]);
 
     logger.log('action: fetchWriterEnd');
-    dispatch(hideLoader());
+    dispatch(hideLoader(LOADER_CARD_DETAIL));
   };
 };

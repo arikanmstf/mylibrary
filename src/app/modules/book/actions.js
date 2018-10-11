@@ -7,6 +7,7 @@
 // @flow
 import { createAction } from 'redux-actions';
 import { BOOK_UPDATE_BOOK, BOOK_UPDATE_CARD } from 'constants/actions/actionNames';
+import { LOADER_CARD_DETAIL } from 'constants/actions/loaderNames';
 import logger from 'helpers/logger';
 import { showLoader, hideLoader } from 'ui/ModalLoader/actions';
 import { transformBookToCard } from 'helpers/data/transform';
@@ -22,7 +23,7 @@ export const updateBookCard = createAction(BOOK_UPDATE_CARD);
 export const fetchBook = (id: number, shouldShowLoader: boolean = true): ThunkAction => {
   return async (dispatch: Dispatch<*>) => {
     if (shouldShowLoader) {
-      dispatch(showLoader());
+      dispatch(showLoader(LOADER_CARD_DETAIL));
     }
 
     logger.log('action: fetchBookStart');
@@ -37,6 +38,6 @@ export const fetchBook = (id: number, shouldShowLoader: boolean = true): ThunkAc
     ]);
 
     logger.log('action: fetchBookEnd');
-    dispatch(hideLoader());
+    dispatch(hideLoader(LOADER_CARD_DETAIL));
   };
 };

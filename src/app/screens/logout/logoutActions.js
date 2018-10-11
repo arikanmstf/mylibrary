@@ -12,12 +12,14 @@ import type { Dispatch } from 'redux';
 
 import { showLoader, hideLoader } from 'ui/ModalLoader/actions';
 import { updateLoginState, saveLoginState } from 'screens/login/loginActions';
+import { LOADER_LOGOUT } from 'constants/actions/loaderNames';
+
 import { getLogout } from './logoutServices';
 
 export const makeLogoutRequest = (): ThunkAction => {
   return async (dispatch: Dispatch<*>) => {
     logger.log('makeLogoutRequest');
-    dispatch(showLoader());
+    dispatch(showLoader(LOADER_LOGOUT));
     const logoutState = await getLogout(dispatch)();
     if (logoutState) {
       logger.log('logoutState', logoutState);
@@ -26,7 +28,7 @@ export const makeLogoutRequest = (): ThunkAction => {
         saveLoginState(logoutState),
       ]);
     }
-    dispatch(hideLoader());
+    dispatch(hideLoader(LOADER_LOGOUT));
   };
 };
 

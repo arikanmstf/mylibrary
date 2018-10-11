@@ -43,7 +43,7 @@ export type State = {|
     rows?: Array<Row>,
   |},
   loader: {|
-    isVisible?: boolean,
+    visible: Array<*>,
   |},
   login: {|
     isLoggedIn: boolean,
