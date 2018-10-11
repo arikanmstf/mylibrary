@@ -14,7 +14,7 @@ export default [
     icon: 'settings',
   },
   {
-    label: 'HEADER_MENU_FAVORITES',
+    label: 'HEADER_MENU_MY_FAVORITES',
     icon: 'star',
     listType: MY_FAVORITES,
     onPress: ({ updateListType }: SideNavigationProps) => {

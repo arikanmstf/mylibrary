@@ -92,7 +92,7 @@ export class CardList extends PureComponent<CardListProps> {
 
     return (
       <Chip
-        label={t.get(type)}
+        label={t.get(`HEADER_MENU_${type}`)}
         onDelete={() => { if (updateListType) { updateListType(null); } }}
       />
     );
