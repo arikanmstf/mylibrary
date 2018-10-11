@@ -11,7 +11,7 @@ import reducers from 'store/reducers';
 
 // Theme
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
-import { green500, white } from 'constants/theme/color';
+import { green500, green100, white } from 'constants/theme/color';
 
 // Routes
 import { Routes } from 'ui';
@@ -52,6 +52,13 @@ const theme = createMuiTheme({
       content: {
         height: '100%',
         overflow: 'hidden',
+      },
+    },
+    MuiMenuItem: {
+      root: {
+        '&$selected': {
+          backgroundColor: green100,
+        },
       },
     },
   },

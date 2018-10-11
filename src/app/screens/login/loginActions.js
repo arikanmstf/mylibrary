@@ -57,15 +57,18 @@ export const fetchInitialState = (): ThunkAction => {
 };
 
 export const submitLoginForm = async (form: Immutable<SubmitLoginFormRequest>, dispatch: Dispatch<*>) => {
-  logger.log('action: submitLoginFormStart');
-  dispatch(showLoader(LOADER_LOGIN));
+  try {
+    logger.log('action: submitLoginFormStart');
+    dispatch(showLoader(LOADER_LOGIN));
 
-  const result = await postLogin(dispatch)(form.toJS());
-  await saveLoginState(result);
-  await dispatch(fetchInitialState());
+    const result = await postLogin(dispatch)(form.toJS());
+    await saveLoginState(result);
+    await dispatch(fetchInitialState());
 
-  logger.log('action: submitLoginFormEnd');
-  dispatch(hideLoader(LOADER_LOGIN));
+    logger.log('action: submitLoginFormEnd');
+  } finally {
+    dispatch(hideLoader(LOADER_LOGIN));
+  }
 };
 
 export const mapStateToProps = null;

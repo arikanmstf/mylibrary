@@ -16,6 +16,7 @@ export default [
   {
     label: 'HEADER_MENU_FAVORITES',
     icon: 'star',
+    listType: MY_FAVORITES,
     onPress: ({ updateListType }: SideNavigationProps) => {
       updateListType(MY_FAVORITES);
     },
@@ -23,6 +24,7 @@ export default [
   {
     label: 'HEADER_MENU_BOOKS_I_READ',
     icon: 'book',
+    listType: BOOKS_I_READ,
     onPress: ({ updateListType }: SideNavigationProps) => {
       updateListType(BOOKS_I_READ);
     },

@@ -19,4 +19,5 @@ export type SideNavigationItem = {
   icon?: ?string,
   to?: string,
   onPress?: Function,
+  listType?: string,
 };

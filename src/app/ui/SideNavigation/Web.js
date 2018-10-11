@@ -20,7 +20,7 @@ import BookIcon from '@material-ui/icons/Book';
 import ProfileIcon from '@material-ui/icons/SettingsApplications';
 import LogoutIcon from '@material-ui/icons/ExitToApp';
 import routes from './sideNavigationItems';
-import { mapDispatchToProps } from './actions';
+import { mapStateToProps, mapDispatchToProps } from './actions';
 
 import type { SideNavigationProps, SideNavigationItem } from './types';
 
@@ -41,6 +41,7 @@ class SideNavigation extends PureComponent<SideNavigationProps> {
   };
 
   mapSideNavigationItems() {
+    const { listType } = this.props;
     return routes.map((route: SideNavigationItem) => {
       let Icon;
 
@@ -65,6 +66,7 @@ class SideNavigation extends PureComponent<SideNavigationProps> {
         <MenuItem
           key={route.label}
           onClick={() => { this.handleItemClick(route); }}
+          selected={listType && (listType === route.listType)}
         >
           { Icon ? (
             <ListItemIcon>
@@ -86,4 +88,4 @@ class SideNavigation extends PureComponent<SideNavigationProps> {
   }
 }
 
-export default connect(null, mapDispatchToProps)(withRouter(SideNavigation));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SideNavigation));
