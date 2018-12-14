@@ -5,6 +5,7 @@
     "version": "3.0.0-alpha.1",
     "slug": "mylibrary",
     "sdkVersion": "27.0.0",
+    "privacy": "unlisted",
     "ios": {
       "bundleIdentifier": "com.arikanmstf.mylibrary"
     },

@@ -1,11 +1,13 @@
 {
-  "presets": ["env", "react", "flow", "babel-preset-expo"],
+  "presets": [
+    ["@babel/env", { "useBuiltIns": "usage" }], "@babel/preset-react", "@babel/preset-flow"
+  ],
   "plugins": [
-    ["transform-runtime", { "helpers": false, "polyfill": false, "regenerator": true, "moduleName": "babel-runtime" }]
+    ["@babel/transform-runtime", { "helpers": false, "regenerator": true }]
   ],
   "env": {
     "development": {
-      "plugins": ["transform-react-jsx-source"]
+      "plugins": ["@babel/transform-react-jsx-source"]
     }
   }
 }
