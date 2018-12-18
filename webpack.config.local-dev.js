@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const common = require('webpack-config-arikanmstf');
+const path = require('path');
 
 const definePlugin = new webpack.DefinePlugin({
   // DEVELOPMENT and PRODUCTION for debugging
@@ -16,5 +17,9 @@ const definePlugin = new webpack.DefinePlugin({
 
 common.plugins.push(definePlugin);
 common.output.publicPath = '/';
+common.entry = [
+  '@babel/polyfill',
+  path.resolve(__dirname, `src/app/web/index.js`),
+];
 
 module.exports = common;

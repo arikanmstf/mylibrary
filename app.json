@@ -2,9 +2,9 @@
   "expo": {
     "name": "MyLibrary",
     "icon": "./static/img/favicon-180x180.png",
-    "version": "3.0.0-alpha.1",
+    "version": "3.0.0-alpha.2",
     "slug": "mylibrary",
-    "sdkVersion": "27.0.0",
+    "sdkVersion": "31.0.0",
     "privacy": "unlisted",
     "ios": {
       "bundleIdentifier": "com.arikanmstf.mylibrary"
