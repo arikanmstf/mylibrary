@@ -21,5 +21,6 @@ common.entry = [
   '@babel/polyfill',
   path.resolve(__dirname, `src/app/web/index.js`),
 ];
+common.devServer.port = 3000;
 
 module.exports = common;

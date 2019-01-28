@@ -2,7 +2,7 @@
   "expo": {
     "name": "MyLibrary",
     "icon": "./static/img/favicon-180x180.png",
-    "version": "3.0.0-alpha.2",
+    "version": "3.0.0-alpha.3",
     "slug": "mylibrary",
     "sdkVersion": "31.0.0",
     "privacy": "unlisted",

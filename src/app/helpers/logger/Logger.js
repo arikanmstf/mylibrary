@@ -2,9 +2,9 @@
 import { isDevelopment } from 'helpers/env';
 
 class Logger {
-  static log(...args: *) {
+  static log() {
     if (isDevelopment()) {
-      console.log(...args); // eslint-disable-line no-console
+      // console.log(...args); // eslint-disable-line no-console
     }
   }
 

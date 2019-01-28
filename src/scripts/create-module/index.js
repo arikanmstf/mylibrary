@@ -209,7 +209,7 @@ const p = require('path');
       default: console.error('page type not found');
     }
 
-    console.log(enterText);
+    // console.log(enterText);
     prompt.get(['name'], (err, result) => {
       const name = firstLetterLower(result.name);
       validateInput(name);
@@ -218,7 +218,7 @@ const p = require('path');
     });
   };
 
-  console.log('Press "s" for Screen, "c"  for Component, "m" for Module :');
+  // console.log('Press "s" for Screen, "c"  for Component, "m" for Module :');
 
   prompt.get(['pageType'], (err, result) => {
     let pageType = result && result.pageType ? result.pageType.replace(' ', '') : '';
