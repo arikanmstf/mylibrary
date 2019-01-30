@@ -13,11 +13,11 @@ import type { Node } from 'react';
 import type { LoaderProps } from './types';
 import { mapStateToProps } from './actions';
 
-const Loader = ({ isVisible, ...other }: LoaderProps): Node => {
+const Loader = ({ visible, ...other }: LoaderProps): Node => {
   return (
     <Spinner
       {...other}
-      visible={isVisible}
+      visible={visible.length > 0}
     />
   );
 };
