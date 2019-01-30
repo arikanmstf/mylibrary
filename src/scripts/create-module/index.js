@@ -1,7 +1,7 @@
 /**
  * Create Module - App file creator
  * @author arikanmstf
- * @version 1.1.0
+ * @version 1.2.0
  *
  */
 
@@ -10,6 +10,8 @@
 const prompt = require('prompt');
 const fs = require('file-system');
 const p = require('path');
+
+const VERSION = '1.2.0';
 
 (function () { // eslint-disable-line func-names
   const firstLetterUpper = (str) => {
@@ -61,8 +63,8 @@ const p = require('path');
         templates = {
           screen: 'templates/screen/Screen.template',
           actions: 'templates/screen/screenActions.template',
-          native: 'templates/screen/ScreenNativeContainer.template',
-          web: 'templates/screen/ScreenWebContainer.template',
+          native: 'templates/screen/ScreenContainer.native.template',
+          web: 'templates/screen/ScreenContainer.template',
           types: 'templates/screen/ScreenTypes.template',
           reducer: 'templates/screen/screenReducer.template',
           index: 'templates/screen/index.template',
@@ -71,11 +73,11 @@ const p = require('path');
         break;
       case PAGE_TYPE_COMPONENT:
         templates = {
-          native: 'templates/component/Native.template',
-          web: 'templates/component/Web.template',
+          native: 'templates/component/Component.native.template',
+          web: 'templates/component/Component.template',
           types: 'templates/component/types.template',
-          test: 'templates/component/Web.test.template',
-          test_native: 'templates/component/Native.test.template',
+          test: 'templates/component/Component.test.template',
+          test_native: 'templates/component/Component.native.test.template',
         };
         break;
       case PAGE_TYPE_MODULE:
@@ -120,6 +122,7 @@ const p = require('path');
     let path = '';
     let result = '';
     const testP = getTestPath();
+    const className = firstLetterUpper(this.name);
 
     switch (this.pageType) {
       case PAGE_TYPE_SCREEN:
@@ -128,8 +131,8 @@ const p = require('path');
         switch (templateType) {
           case 'screen': result = `${path}/${firstLetterUpper(this.name)}.js`; break;
           case 'actions': result = `${path}/${firstLetterLower(this.name)}Actions.js`; break;
-          case 'native': result = `${path}/${firstLetterUpper(this.name)}NativeContainer.js`; break;
-          case 'web': result = `${path}/${firstLetterUpper(this.name)}WebContainer.js`; break;
+          case 'native': result = `${path}/${firstLetterUpper(this.name)}Container.native.js`; break;
+          case 'web': result = `${path}/${firstLetterUpper(this.name)}Container.js`; break;
           case 'types': result = `${path}/${firstLetterUpper(this.name)}Types.js`; break;
           case 'reducer': result = `${path}/${firstLetterLower(this.name)}Reducer.js`; break;
           case 'index': result = `${path}/index.js`; break;
@@ -138,14 +141,14 @@ const p = require('path');
         }
         break;
       case PAGE_TYPE_COMPONENT:
-        path = `src/app/ui/${firstLetterUpper(this.name)}`;
+        path = `src/app/ui/${className}`;
 
         switch (templateType) {
-          case 'native': result = `${path}/Native.js`; break;
-          case 'web': result = `${path}/Web.js`; break;
+          case 'native': result = `${path}/${className}.native.js`; break;
+          case 'web': result = `${path}/${className}.js`; break;
           case 'types': result = `${path}/types.js`; break;
-          case 'test': result = `${testP}/Web.test.js`; break;
-          case 'test_native': result = `${testP}/Native.test.js`; break;
+          case 'test': result = `${testP}/${className}.test.js`; break;
+          case 'test_native': result = `${testP}/${className}.native.test.js`; break;
           default: console.error(`Component template type not found: ${templateType}`);
         }
         break;
@@ -178,8 +181,8 @@ const p = require('path');
     keys.forEach((key) => {
       if (this.pageType === PAGE_TYPE_COMPONENT) {
         switch (key) {
-          case 'test': importFrom = `${srcPath}/Web`; break;
-          case 'test_native': importFrom = `${srcPath}/Native`; break;
+          case 'test': importFrom = `${srcPath}/${className}`; break;
+          case 'test_native': importFrom = `${srcPath}/${className}.native`; break;
           default: importFrom = '';
         }
       }
@@ -187,8 +190,8 @@ const p = require('path');
       readAndCreateFile(
         templates[key],
         createName(key),
-        ['className', 'screenName', 'testFileName', 'importFrom', 'componentName'],
-        [className, this.name, testFileName, importFrom, firstLetterUpper(this.name)]
+        ['className', 'screenName', 'testFileName', 'importFrom', 'componentName', 'version'],
+        [className, this.name, testFileName, importFrom, firstLetterUpper(this.name), VERSION]
       );
     });
   };

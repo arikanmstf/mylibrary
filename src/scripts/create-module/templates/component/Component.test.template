@@ -1,6 +1,6 @@
 /**
- * Native Component Test Template By => create-module script
- * @version 1.0.0
+ * Web Component Test Template By => create-module script
+ * @version #{version}
  *
  */
 

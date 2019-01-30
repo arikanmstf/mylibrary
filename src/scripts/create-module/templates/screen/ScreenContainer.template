@@ -1,6 +1,6 @@
 /**
- * Native Screen Template By => create-module script
- * @version 1.0.1
+ * Web Screen Template By => create-module script
+ * @version #{version}
  *
  */
 
@@ -11,7 +11,7 @@ import {
   Screen,
   Header,
   Page,
-} from 'ui/native';
+} from 'ui';
 import #{className}Screen from './#{className}';
 import { mapStateToProps, mapDispatchToProps } from './#{screenName}Actions';
 
