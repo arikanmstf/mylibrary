@@ -1,21 +1,21 @@
 /**
- * Native Screen Template By => create-module script
+ * Web Screen Template By => create-module script
  * @version 1.0.1
  *
  */
 
 import { connect } from 'react-redux';
-import { withNavigation } from 'react-navigation';
+
 import { connect as connectUi } from 'helpers/connect';
 import {
   RowList,
   Screen,
   Header,
   Page,
-} from 'ui/native';
+} from 'ui';
 import PublicationAddToListScreen from './PublicationAddToList';
 import { mapStateToProps, mapDispatchToProps } from './publicationAddToListActions';
-import PublicationAddToListForm from './publicationAddToListForm/PublicationAddToListFormNativeContainer';
+import PublicationAddToListForm from './publicationAddToListForm';
 
 const mapUiToProps = () => ({
   RowList,
@@ -25,6 +25,4 @@ const mapUiToProps = () => ({
   PublicationAddToListForm,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  connectUi(mapUiToProps)(withNavigation(PublicationAddToListScreen))
-);
+export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(PublicationAddToListScreen));

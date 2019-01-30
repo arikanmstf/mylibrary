@@ -20,15 +20,15 @@ import {
 import { CODE_404 } from 'ui/GeneralError/constants';
 
 // Screens
-import LoginScreen from 'screens/login/LoginWebContainer';
-import LogoutScreen from 'screens/logout/LogoutWebContainer';
-import RegisterScreen from 'screens/register/RegisterWebContainer';
-import HomeScreen from 'screens/home/HomeWebContainer';
-import PublicationDetailScreen from 'screens/publicationDetail/PublicationDetailWebContainer';
-import PublicationAddToListScreen from 'screens/publicationAddToList/PublicationAddToListWebContainer';
-import BookDetailScreen from 'screens/bookDetail/BookDetailWebContainer';
-import WriterDetailScreen from 'screens/writerDetail/WriterDetailWebContainer';
-import PublisherDetailScreen from 'screens/publisherDetail/PublisherDetailWebContainer';
+import LoginScreen from 'screens/login';
+import LogoutScreen from 'screens/logout';
+import RegisterScreen from 'screens/register';
+import HomeScreen from 'screens/home';
+import PublicationDetailScreen from 'screens/publicationDetail';
+import PublicationAddToListScreen from 'screens/publicationAddToList';
+import BookDetailScreen from 'screens/bookDetail';
+import WriterDetailScreen from 'screens/writerDetail';
+import PublisherDetailScreen from 'screens/publisherDetail';
 
 import PrivateRoute from './PrivateRouteWeb';
 import PublicRoute from './PublicRouteWeb';

@@ -4,5 +4,4 @@
  *
  */
 
-export { default as Web } from './PublisherDetailWebContainer';
-export { default as Native } from './PublisherDetailNativeContainer';
+export { default } from './PublisherDetailContainer';

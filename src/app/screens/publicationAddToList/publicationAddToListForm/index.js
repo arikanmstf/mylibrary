@@ -4,5 +4,4 @@
  *
  */
 
-export { default as Web } from './PublicationAddToListFormWebContainer';
-export { default as Native } from './PublicationAddToListFormNativeContainer';
+export { default } from './PublicationAddToListFormContainer';

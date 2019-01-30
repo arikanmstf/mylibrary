@@ -4,5 +4,4 @@
  *
  */
 
-export { default as Web } from './LoginWebContainer';
-export { default as Native } from './LoginNativeContainer';
+export { default } from './LoginContainer';

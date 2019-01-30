@@ -4,5 +4,4 @@
  *
  */
 
-export { default as Web } from './WriterDetailWebContainer';
-export { default as Native } from './WriterDetailNativeContainer';
+export { default } from './WriterDetailContainer';

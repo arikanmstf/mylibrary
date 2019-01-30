@@ -4,5 +4,4 @@
  *
  */
 
-export { default as Web } from './HomeWebContainer';
-export { default as Native } from './HomeNativeContainer';
+export { default } from './HomeContainer';

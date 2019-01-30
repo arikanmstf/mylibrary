@@ -4,5 +4,4 @@
  *
  */
 
-export { default as Web } from './RegisterWebContainer';
-export { default as Native } from './RegisterNativeContainer';
+export { default } from './RegisterContainer';

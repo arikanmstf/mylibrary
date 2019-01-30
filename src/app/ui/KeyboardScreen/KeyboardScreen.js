@@ -5,6 +5,6 @@
  */
 
 // @flow
-import Screen from 'ui/Screen/Web';
+import Screen from 'ui/Screen';
 
 export default Screen;

@@ -17,15 +17,15 @@ import {
 } from 'ui/native';
 
 // Screens
-import LoginScreen from 'screens/login/LoginNativeContainer';
-import LogoutScreen from 'screens/logout/LogoutNativeContainer';
-import RegisterScreen from 'screens/register/RegisterNativeContainer';
-import HomeScreen from 'screens/home/HomeNativeContainer';
-import PublicationDetailScreen from 'screens/publicationDetail/PublicationDetailNativeContainer';
-import PublicationAddToListScreen from 'screens/publicationAddToList/PublicationAddToListNativeContainer';
-import BookDetailScreen from 'screens/bookDetail/BookDetailNativeContainer';
-import WriterDetailScreen from 'screens/writerDetail/WriterDetailNativeContainer';
-import PublisherDetailScreen from 'screens/publisherDetail/PublisherDetailNativeContainer';
+import LoginScreen from 'screens/login';
+import LogoutScreen from 'screens/logout';
+import RegisterScreen from 'screens/register';
+import HomeScreen from 'screens/home';
+import PublicationDetailScreen from 'screens/publicationDetail';
+import PublicationAddToListScreen from 'screens/publicationAddToList';
+import BookDetailScreen from 'screens/bookDetail';
+import WriterDetailScreen from 'screens/writerDetail';
+import PublisherDetailScreen from 'screens/publisherDetail';
 
 import { mapStateToProps, mapDispatchToProps } from './actions';
 import type { RoutesProps } from './types';
