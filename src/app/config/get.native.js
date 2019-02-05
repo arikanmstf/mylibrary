@@ -1,9 +1,25 @@
-import { getEnv } from 'helpers/env';
+// @flow
+
 import configLocal from 'config/local.json';
 import configLive from 'config/live.json';
 
-const config = getEnv() === 'local' ? configLocal : configLive;
+const { API_ENV } = process.env;
 
-export default function () {
-  return { ...config, ...config.native };
-}
+const ENV = {
+  local: {
+    ...configLocal,
+  },
+  live: {
+    ...configLive,
+  },
+};
+
+const getEnvVars = () => {
+  if (API_ENV === null || API_ENV === undefined || API_ENV === '') {
+    return ENV.dev;
+  }
+
+  return ENV[API_ENV];
+};
+
+export default getEnvVars;

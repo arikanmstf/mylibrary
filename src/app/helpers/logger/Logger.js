@@ -1,16 +1,9 @@
 // @flow
-import { isDevelopment } from 'helpers/env';
 
 class Logger {
-  static log() {
-    if (isDevelopment()) {
-      // console.log(...args); // eslint-disable-line no-console
-    }
-  }
+  static log() {}
 
-  static error(...args: *) {
-    throw new Error(...args);
-  }
+  static error() {}
 }
 
 export default Logger;

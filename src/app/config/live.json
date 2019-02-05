@@ -2,8 +2,5 @@
   "baseURL":"http://mustafaarikan.net/mylibrary/api",
   "homeURL":"mylibrary",
   "productionURL":"http://mustafaarikan.net/mylibrary",
-  "staticFilesURL":"http://mustafaarikan.net/mylibrary/static",
-  "native": {
-    "baseURL": "http://mustafaarikan.net/mylibrary/api"
-  }
+  "staticFilesURL":"http://mustafaarikan.net/mylibrary/static"
 }

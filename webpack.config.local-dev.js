@@ -3,16 +3,8 @@ const common = require('webpack-config-arikanmstf');
 const path = require('path');
 
 const definePlugin = new webpack.DefinePlugin({
-  // DEVELOPMENT and PRODUCTION for debugging
-  IS_DEVELOPMENT: JSON.stringify(true),
-  IS_PRODUCTION: JSON.stringify(false),
-
-  // LOCAL and LIVE for env variables
-  IS_LOCAL: JSON.stringify(true),
-  IS_LIVE: JSON.stringify(false),
-
-  ENVIRONMENT: JSON.stringify('local'),
-  NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+  API_ENV: JSON.stringify('local'),
+  NODE_ENV: JSON.stringify('development'),
 });
 
 common.plugins.push(definePlugin);

@@ -53,7 +53,8 @@ class Api {
         return Api.fetch(response);
       } catch (e) {
         dispatch(updateModalError(e));
-        throw Api.error(e);
+        // console.log(Api.error(e)); // eslint-disable-line no-console
+        return null;
       }
     };
   }
@@ -67,7 +68,8 @@ class Api {
         return Api.fetch(response);
       } catch (e) {
         dispatch(updateModalError(e));
-        throw Api.error(e);
+        // console.log(Api.error(e)); // eslint-disable-line no-console
+        return null;
       }
     };
   }
