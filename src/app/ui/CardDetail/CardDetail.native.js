@@ -15,12 +15,11 @@ import {
   ScrollView,
   Linking,
 } from 'react-native';
-import { Image } from 'ui/native';
+import { Image, Icon } from 'ui/native';
 import {
   Card,
   CardItem,
   Text,
-  Icon,
   Left,
   Body,
   Right,

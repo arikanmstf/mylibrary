@@ -78,6 +78,7 @@ const VERSION = '1.2.0';
           types: 'templates/component/types.template',
           test: 'templates/component/Component.test.template',
           test_native: 'templates/component/Component.native.test.template',
+          index: 'templates/component/index.template',
         };
         break;
       case PAGE_TYPE_MODULE:
@@ -147,6 +148,7 @@ const VERSION = '1.2.0';
           case 'native': result = `${path}/${className}.native.js`; break;
           case 'web': result = `${path}/${className}.js`; break;
           case 'types': result = `${path}/types.js`; break;
+          case 'index': result = `${path}/index.js`; break;
           case 'test': result = `${testP}/${className}.test.js`; break;
           case 'test_native': result = `${testP}/${className}.native.test.js`; break;
           default: console.error(`Component template type not found: ${templateType}`);
@@ -212,7 +214,7 @@ const VERSION = '1.2.0';
       default: console.error('page type not found');
     }
 
-    // console.log(enterText);
+    console.log(enterText);
     prompt.get(['name'], (err, result) => {
       const name = firstLetterLower(result.name);
       validateInput(name);

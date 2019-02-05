@@ -17,10 +17,9 @@ import {
   Body,
   Left,
   Right,
-  Icon,
   Title,
 } from 'native-base';
-import { TextField } from 'ui/native';
+import { TextField, Icon } from 'ui/native';
 import t from 'helpers/i18n/Translate';
 import logger from 'helpers/logger';
 import fields, { SEARCH_FORM_KEY } from 'constants/forms/search';

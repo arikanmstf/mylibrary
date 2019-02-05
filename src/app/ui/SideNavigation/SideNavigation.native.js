@@ -5,13 +5,13 @@ import { connect } from 'react-redux';
 import { withNavigation } from 'react-navigation';
 import t from 'helpers/i18n/Translate';
 import {
-  Icon,
   ListItem,
   Text,
   List,
   Content,
 } from 'native-base';
 import { white } from 'constants/theme/color';
+import { Icon } from 'ui/native';
 import routes from './sideNavigationItems';
 import { mapDispatchToProps } from './actions';
 

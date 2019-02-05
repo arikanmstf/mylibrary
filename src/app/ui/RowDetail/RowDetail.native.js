@@ -10,11 +10,10 @@ import {
   ListItem,
   Left,
   Right,
-  Icon,
   Body,
 } from 'native-base';
 import logger from 'helpers/logger';
-import { Text, TextField } from 'ui/native';
+import { Text, TextField, Icon } from 'ui/native';
 import fields from 'constants/forms/addToList';
 
 import type { Item } from 'helpers/api/types';

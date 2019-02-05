@@ -36,6 +36,7 @@ const theme = createMuiTheme({
       root: {
         width: '36px',
         height: '36px',
+        padding: '0',
       },
     },
     MuiCard: {
