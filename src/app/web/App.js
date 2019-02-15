@@ -52,7 +52,7 @@ const theme = createMuiTheme({
       },
       content: {
         height: '100%',
-        overflow: 'hidden',
+        wordBreak: 'break-word',
       },
     },
     MuiMenuItem: {
