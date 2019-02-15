@@ -5,6 +5,7 @@
  */
 
 import { connect } from 'react-redux';
+import { reduxForm } from 'redux-form/immutable';
 
 import { connect as connectUi } from 'helpers/connect';
 import {
@@ -12,9 +13,10 @@ import {
   Screen,
   Header,
   Page,
+  TextField,
 } from 'ui';
 import PublicationAddToListScreen from './PublicationAddToList';
-import { mapStateToProps, mapDispatchToProps } from './publicationAddToListActions';
+import { mapStateToProps, mapDispatchToProps, formConfig } from './publicationAddToListActions';
 import PublicationAddToListForm from './publicationAddToListForm';
 
 const mapUiToProps = () => ({
@@ -23,6 +25,9 @@ const mapUiToProps = () => ({
   Header,
   Page,
   PublicationAddToListForm,
+  TextField,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(PublicationAddToListScreen));
+export default connect(mapStateToProps, mapDispatchToProps)(
+  reduxForm(formConfig)(connectUi(mapUiToProps)(PublicationAddToListScreen))
+);

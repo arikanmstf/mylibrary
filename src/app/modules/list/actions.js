@@ -10,14 +10,15 @@ import { updateRows } from 'modules/row/actions';
 
 import type { Dispatch } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
+import type { SubmitSearchListFormRequest } from 'screens/publicationAddToList/PublicationAddToListTypes';
 
 import { getMyLists } from './services';
 
-export const fetchLists = (): ThunkAction => {
+export const fetchLists = (params: SubmitSearchListFormRequest): ThunkAction => {
   return async (dispatch: Dispatch<*>) => {
     logger.log('action: fetchListsStart');
 
-    const result = await getMyLists(dispatch)();
+    const result = await getMyLists(dispatch)(params);
     logger.log('action: fetchLists', result);
 
     await dispatch(updateRows(result));

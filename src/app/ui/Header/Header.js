@@ -63,6 +63,18 @@ const styles = {
 };
 
 export class Header extends PureComponent<HeaderProps> {
+  constructor(props) {
+    super(props);
+
+    this.debounced = debounce(() => {
+      const { handleSubmit } = props;
+      handleSubmit(submitSearchForm)();
+    }, SEARCH_SUBMIT_TIMEOUT, {
+      leading: false,
+      trailing: true,
+    });
+  }
+
   toggleDrawer = () => {
     logger.log('toggleDrawer');
     const {
@@ -75,16 +87,6 @@ export class Header extends PureComponent<HeaderProps> {
       if (hideDrawer) hideDrawer();
     } else if (showDrawer) {
       showDrawer();
-    }
-  };
-
-  handleChange = () => {
-    const {
-      handleSubmit,
-    } = this.props;
-
-    if (handleSubmit) {
-      handleSubmit(submitSearchForm)();
     }
   };
 
@@ -112,7 +114,7 @@ export class Header extends PureComponent<HeaderProps> {
                 type="search"
                 className={classes && classes.search}
                 label={t.get('HEADER_SEARCH')}
-                onChange={debounce(this.handleChange, SEARCH_SUBMIT_TIMEOUT)}
+                onChange={this.debounced}
               />
             )}
             <IconButton

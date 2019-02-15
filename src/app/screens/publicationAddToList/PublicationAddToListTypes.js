@@ -26,3 +26,9 @@ export type PublicationAddToListProps = {
   fetchPublication: Function,
   match: Match,
 };
+
+export type SubmitSearchListFormRequest = {
+  search: string,
+};
+
+export const SEARCH_SUBMIT_TIMEOUT = 500;

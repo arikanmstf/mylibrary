@@ -12,8 +12,11 @@ import { transformItemListToRowList } from 'helpers/data/transform';
 import type { Item } from 'helpers/api/types';
 import type { Dispatch } from 'redux';
 import type { Row } from 'ui/RowList/types';
+import type { SubmitSearchListFormRequest } from 'screens/publicationAddToList/PublicationAddToListTypes';
 
-export const getMyLists = (dispatch: Dispatch<*>) => async (): Promise<Array<Row>> => {
-  const result: Array<Item> = await Api.get(dispatch)(LIST_MY);
+export const getMyLists = (dispatch: Dispatch<*>) => async (
+  params: SubmitSearchListFormRequest
+): Promise<Array<Row>> => {
+  const result: Array<Item> = await Api.get(dispatch)(LIST_MY, params);
   return transformItemListToRowList(result);
 };
