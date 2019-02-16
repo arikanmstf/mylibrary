@@ -15,5 +15,6 @@ common.entry = [
 ];
 common.devServer.port = 3000;
 common.devtool = 'source-map';
+common.mode = 'development';
 
 module.exports = common;

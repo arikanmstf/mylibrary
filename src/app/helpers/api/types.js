@@ -17,6 +17,11 @@ export type Item = {|
   id: number,
   orderNo?: number,
   code?: string,
+  subItems: Array<{|
+    id: number,
+    name: string,
+    orderNo?: number,
+  |}>,
 |}
 
 export type PublicationDetail = {|

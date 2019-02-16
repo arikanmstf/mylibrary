@@ -8,5 +8,6 @@ const definePlugin = new webpack.DefinePlugin({
 
 common.plugins.push(definePlugin);
 common.output.publicPath = '/mylibrary/';
+common.mode = 'development';
 
 module.exports = common;

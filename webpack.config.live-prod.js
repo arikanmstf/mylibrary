@@ -10,5 +10,6 @@ const definePlugin = new webpack.DefinePlugin({
 common.plugins.push(new UglifyJSPlugin());
 common.plugins.push(definePlugin);
 common.output.publicPath = '/mylibrary/';
+common.mode = 'production';
 
 module.exports = common;

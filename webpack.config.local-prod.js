@@ -11,5 +11,6 @@ common.plugins.push(new UglifyJSPlugin());
 common.plugins.push(definePlugin);
 common.output.publicPath = '/';
 common.devServer.port = 3000;
+common.mode = 'production';
 
 module.exports = common;

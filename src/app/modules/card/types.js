@@ -1,5 +1,5 @@
 // @flow
-import type { PublisherDetail, WriterDetail } from 'helpers/api/types';
+import type { PublisherDetail, WriterDetail, Item } from 'helpers/api/types';
 
 export type CardItem = {|
   title: string,
@@ -13,4 +13,5 @@ export type CardItem = {|
   downloadUrl?: string,
   publisher?: PublisherDetail,
   writers?: Array<WriterDetail>,
+  lists?: Array<Item>,
 |}

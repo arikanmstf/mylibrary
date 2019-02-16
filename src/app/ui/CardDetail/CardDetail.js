@@ -20,10 +20,16 @@ import DownloadIcon from '@material-ui/icons/CloudDownload';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import ListItemText from '@material-ui/core/ListItemText';
+import Collapse from '@material-ui/core/Collapse';
 
 import IconButton from '@material-ui/core/IconButton';
 
-import { green500 } from 'constants/theme/color';
+import { green500, lime100 } from 'constants/theme/color';
+import { publicationDetailUrl } from 'constants/routes/createUrl';
 import t from 'helpers/i18n/Translate';
 import logger from 'helpers/logger';
 import type { Node } from 'react';
@@ -38,6 +44,7 @@ export class CardDetail extends PureComponent<CardDetailProps, CardDetailState> 
 
   state = {
     anchorElRenderMore: null,
+    openListId: null,
   };
 
   getDetailUrl: Function;
@@ -82,6 +89,17 @@ export class CardDetail extends PureComponent<CardDetailProps, CardDetailState> 
     }
   };
 
+  goToPublication = (id: number) => {
+    const { history } = this.props;
+
+    logger.log('goToPublication');
+    const url = publicationDetailUrl(id);
+
+    if (history) {
+      history.push(url);
+    }
+  };
+
   handleRenderMoreClick = (event: { currentTarget: HTMLElement }) => {
     this.setState({ anchorElRenderMore: event.currentTarget });
   };
@@ -89,6 +107,21 @@ export class CardDetail extends PureComponent<CardDetailProps, CardDetailState> 
   handleRenderMoreClose = () => {
     this.setState({ anchorElRenderMore: null });
   };
+
+  handleListItemClick(id: number) {
+    const { openListId } = this.state;
+
+    if (id === openListId) {
+      this.setState({ openListId: null });
+    } else {
+      this.setState({ openListId: id });
+    }
+  }
+
+  isListOpen(id: number) {
+    const { openListId } = this.state;
+    return openListId === id;
+  }
 
   moreOptions: Array<Option>;
 
@@ -108,6 +141,44 @@ export class CardDetail extends PureComponent<CardDetailProps, CardDetailState> 
     if (toggleRead) {
       toggleRead(id);
     }
+  }
+
+  renderList() {
+    const { isDetailed, card } = this.props;
+    const activeStyle = { backgroundColor: lime100 };
+
+    return isDetailed && card.lists && card.lists.map((list) => (
+      <div key={list.id}>
+        <ListItem
+          onClick={() => { this.handleListItemClick(list.id); }}
+          button
+          divider
+        >
+          <ListItemText primary={list.name} />
+          <ListItemSecondaryAction style={{ paddingRight: 20 }}>
+            {list.orderNo}
+          </ListItemSecondaryAction>
+        </ListItem>
+        <Collapse in={this.isListOpen(list.id)} unmountOnExit>
+          <List component="div" disablePadding>
+            { list.subItems.map((subItem) => (
+              <ListItem
+                dense
+                button
+                key={subItem.id}
+                style={(subItem.id === card.id) ? activeStyle : undefined}
+                onClick={() => { this.goToPublication(subItem.id); }}
+              >
+                <ListItemText inset primary={subItem.name} />
+                <ListItemSecondaryAction style={{ paddingRight: 20 }}>
+                  {subItem.orderNo}
+                </ListItemSecondaryAction>
+              </ListItem>
+            ))}
+          </List>
+        </Collapse>
+      </div>
+    ));
   }
 
   renderMoreOptions(): Node {
@@ -217,6 +288,9 @@ export class CardDetail extends PureComponent<CardDetailProps, CardDetailState> 
             </IconButton>
           ) : null }
         </CardActions>
+        <List>
+          {this.renderList()}
+        </List>
       </Card>
     );
   }

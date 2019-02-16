@@ -36,6 +36,7 @@ export const transformPublicationToCard = (publication?: PublicationDetail): Car
     downloadUrl: publication.downloadUrl && publication.downloadUrl.length > 0 ? publication.downloadUrl : undefined,
     publisher: publication.publisher,
     writers: publication.writers,
+    lists: publication.lists || [],
   };
 };
 
