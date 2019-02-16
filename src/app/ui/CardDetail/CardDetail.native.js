@@ -15,7 +15,7 @@ import {
   ScrollView,
   Linking,
 } from 'react-native';
-import { Image, Icon } from 'ui/native';
+import { Image, Icon, Div } from 'ui/native';
 import {
   Card,
   CardItem,
@@ -24,8 +24,10 @@ import {
   Body,
   Right,
   ActionSheet,
+  List,
+  ListItem,
 } from 'native-base';
-import { production } from 'constants/routes/createUrl';
+import { production, publicationDetailUrl } from 'constants/routes/createUrl';
 import logger from 'helpers/logger';
 
 import { setCardType, defaultProps } from './helpers';
@@ -33,6 +35,10 @@ import type { CardDetailProps, Option } from './types';
 
 export class CardDetail extends PureComponent<CardDetailProps> {
   static defaultProps = defaultProps;
+
+  state = {
+    openListId: null,
+  };
 
   getDetailUrl: Function;
 
@@ -95,6 +101,17 @@ export class CardDetail extends PureComponent<CardDetailProps> {
     }
   };
 
+  goToPublication = (id: number) => {
+    const { navigation } = this.props;
+
+    logger.log('goToPublication');
+    const url = publicationDetailUrl(id);
+
+    if (navigation) {
+      navigation.navigate(url, { id });
+    }
+  };
+
   handleRenderMoreClick = () => {
     const options = this.moreOptions.map((option) => (option.label));
     ActionSheet.show(
@@ -109,6 +126,21 @@ export class CardDetail extends PureComponent<CardDetailProps> {
       }
     );
   };
+
+  handleListItemClick(id: number) {
+    const { openListId } = this.state;
+
+    if (id === openListId) {
+      this.setState({ openListId: null });
+    } else {
+      this.setState({ openListId: id });
+    }
+  }
+
+  isListOpen(id: number) {
+    const { openListId } = this.state;
+    return openListId === id;
+  }
 
   moreOptions: Array<Option>;
 
@@ -128,6 +160,41 @@ export class CardDetail extends PureComponent<CardDetailProps> {
     if (toggleRead) {
       toggleRead(id);
     }
+  }
+
+  renderList() {
+    const { isDetailed, card } = this.props;
+
+    return isDetailed && card.lists && card.lists.map((list) => (
+      <Div>
+        <ListItem
+          key={list.id}
+          itemDivider
+          onPress={() => { this.handleListItemClick(list.id); }}
+        >
+          <Left>
+            <Text>{list.name}</Text>
+          </Left>
+          <Right>
+            <Text>#{list.orderNo}</Text>
+          </Right>
+        </ListItem>
+        { this.isListOpen(list.id) ? list.subItems.map((subItem) => (
+          <ListItem
+            key={subItem.id}
+            selected={subItem.id === card.id}
+            onPress={() => { this.goToPublication(subItem.id); }}
+          >
+            <Left>
+              <Text>{subItem.name}</Text>
+            </Left>
+            <Right>
+              <Text style={{ paddingRight: 20 }}>#{subItem.orderNo}</Text>
+            </Right>
+          </ListItem>
+        )) : null }
+      </Div>
+    ));
   }
 
   render() {
@@ -243,6 +310,9 @@ export class CardDetail extends PureComponent<CardDetailProps> {
               ) : null }
             </Right>
           </CardItem>
+          <List>
+            {this.renderList()}
+          </List>
         </Card>
       </ScrollView>
     );

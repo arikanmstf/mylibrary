@@ -156,7 +156,7 @@ export class CardDetail extends PureComponent<CardDetailProps, CardDetailState> 
         >
           <ListItemText primary={list.name} />
           <ListItemSecondaryAction style={{ paddingRight: 20 }}>
-            {list.orderNo}
+            #{list.orderNo}
           </ListItemSecondaryAction>
         </ListItem>
         <Collapse in={this.isListOpen(list.id)} unmountOnExit>
@@ -171,7 +171,7 @@ export class CardDetail extends PureComponent<CardDetailProps, CardDetailState> 
               >
                 <ListItemText inset primary={subItem.name} />
                 <ListItemSecondaryAction style={{ paddingRight: 20 }}>
-                  {subItem.orderNo}
+                  #{subItem.orderNo}
                 </ListItemSecondaryAction>
               </ListItem>
             ))}
