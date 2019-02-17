@@ -2,6 +2,7 @@
 import { showDrawer, hideDrawer } from 'ui/Screen/actions';
 import { fetchAndUpdateCards, updateSearchQuery } from 'modules/card/actions';
 import logger from 'helpers/logger';
+import fields from 'constants/forms/search';
 
 import type { Dispatch } from 'redux';
 import type { Immutable } from 'store/ImmutableTypes';
@@ -22,4 +23,5 @@ export const submitSearchForm = async (form: Immutable<SubmitSearchFormRequest>,
 
 export const mapStateToProps = (state: Immutable<State>) => ({
   isDrawerOpen: state.toJS().screen.isDrawerOpen,
+  initialValues: { [fields.SEARCH]: state.toJS().card.searchQuery },
 });

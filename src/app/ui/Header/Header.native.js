@@ -33,6 +33,11 @@ export class Header extends PureComponent<HeaderProps, HeaderState> {
     isSearchFocus: false,
   };
 
+  componentDidMount() {
+    const { initialValues, initialize } = this.props;
+    initialize(initialValues);
+  }
+
   handleMenuButtonPress = () => {
     const { showDrawer } = this.props;
     if (showDrawer) {

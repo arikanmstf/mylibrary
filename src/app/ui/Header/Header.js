@@ -75,6 +75,11 @@ export class Header extends PureComponent<HeaderProps> {
     });
   }
 
+  componentDidMount() {
+    const { initialValues, initialize } = this.props;
+    initialize(initialValues);
+  }
+
   toggleDrawer = () => {
     logger.log('toggleDrawer');
     const {
