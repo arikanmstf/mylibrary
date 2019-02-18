@@ -1,31 +1,26 @@
 /**
  * Web Screen Template By => create-module script
- * @version 1.0.1
+ * @version 1.2.0
  *
  */
 
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form/immutable';
-
 import { connect as connectUi } from 'helpers/connect';
 import {
-  RowList,
-  Screen,
-  Header,
-  Page,
+  Col,
   TextField,
+  Button,
 } from 'ui';
-import PublicationAddToListScreen from './PublicationAddToList';
-import { mapStateToProps, mapDispatchToProps, formConfig } from './publicationAddToListActions';
+import AddListFormScreen from './AddListForm';
+import { mapStateToProps, mapDispatchToProps, formConfig } from './addListFormActions';
 
 const mapUiToProps = () => ({
-  RowList,
-  Screen,
-  Header,
-  Page,
+  Col,
   TextField,
+  Button,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  reduxForm(formConfig)(connectUi(mapUiToProps)(PublicationAddToListScreen))
+  reduxForm(formConfig)(connectUi(mapUiToProps)(AddListFormScreen))
 );

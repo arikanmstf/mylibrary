@@ -10,6 +10,9 @@ import debounce from 'lodash.debounce';
 import logger from 'helpers/logger';
 import t from 'helpers/i18n/Translate';
 import fields from 'constants/forms/searchList';
+
+import PublicationAddToListForm from './publicationAddToListForm';
+import AddListForm from './addListForm';
 import { SEARCH_SUBMIT_TIMEOUT } from './PublicationAddToListTypes';
 import { submitSearchForm } from './publicationAddToListActions';
 
@@ -30,20 +33,14 @@ class PublicationAddToList extends PureComponent<PublicationAddToListProps> {
 
   componentDidMount() {
     const {
-      // fetchLists,
       fetchPublication,
       match,
       publication,
-      // rows,
     } = this.props;
 
     if (!publication) {
       fetchPublication(match.params.id);
     }
-
-    // if (!rows) {
-    //   fetchLists();
-    // }
   }
 
   static getDerivedStateFromProps(props: PublicationAddToListProps) {
@@ -67,7 +64,6 @@ class PublicationAddToList extends PureComponent<PublicationAddToListProps> {
       Header,
       Page,
       RowList,
-      PublicationAddToListForm,
       TextField,
       rows,
       publication,
@@ -90,6 +86,7 @@ class PublicationAddToList extends PureComponent<PublicationAddToListProps> {
             addToListId={publication ? publication.id : 0}
             detailComponent={PublicationAddToListForm}
           />
+          <AddListForm />
         </Page>
       </Screen>
     );

@@ -29,6 +29,5 @@ export const mapStateToProps = (state: Immutable<State>) => ({
 });
 
 export const mapDispatchToProps = {
-  fetchLists,
   fetchPublication,
 };

@@ -15,17 +15,11 @@ class Home extends Component<HomeProps, HomeState> {
   componentDidMount() {
     const {
       fetchPublications,
-      fetchLists,
       cards,
-      rows,
     } = this.props;
 
     if (!cards) {
       fetchPublications();
-    }
-
-    if (!rows) {
-      fetchLists();
     }
   }
 

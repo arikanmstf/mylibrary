@@ -44,7 +44,7 @@ class RowDetail extends PureComponent<RowDetailProps> {
     }
   }
 
-  componentDidUpdate(prevProps: RowDetailProps) {
+  componentDidUpdate(prevProps: RowDetailProps): void {
     const {
       row,
       form,
