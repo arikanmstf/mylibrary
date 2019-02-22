@@ -66,12 +66,12 @@ export const transformItemToRow = (item: Item): Row => {
   };
 };
 
-export const transformItemListToRowList = (result: Array<Item>): Array<Row> => {
+export const transformItemListToRowList = (result: Pagination<Item>): Array<Row> => {
   if (!result) {
     return result;
   }
 
-  return result.map(transformItemToRow);
+  return result.content.map(transformItemToRow);
 };
 
 export const transformBookToCard = (book: BookDetail): CardItem => {

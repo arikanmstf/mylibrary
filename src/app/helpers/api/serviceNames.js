@@ -7,7 +7,6 @@ export const PUBLICATION_DETAIL = 'publication/{id}';
 export const PUBLICATION_TOGGLE_FAVORITE = 'publication/{id}/favorite';
 export const PUBLICATION_TOGGLE_READ = 'publication/{id}/read';
 export const PUBLICATION_TOGGLE_LIST = 'publication/{id}/toggle-list';
-export const LIST_MY = 'list/my';
 export const LIST = 'list';
 export const BOOK_DETAIL = 'book/{id}';
 export const WRITER_DETAIL = 'writer/{id}';

@@ -6,7 +6,7 @@
 
 // @flow
 
-import Api, { LIST_MY, LIST } from 'helpers/api';
+import Api, { LIST } from 'helpers/api';
 import { transformItemListToRowList, transformItemToRow } from 'helpers/data/transform';
 
 import type { Item } from 'helpers/api/types';
@@ -14,11 +14,12 @@ import type { Dispatch } from 'redux';
 import type { Row } from 'ui/RowList/types';
 import type { SubmitSearchListFormRequest } from 'screens/publicationAddToList/PublicationAddToListTypes';
 import type { AddListFormRequest } from 'screens/publicationAddToList/addListForm/AddListFormTypes';
+import type { Pagination } from 'ui/CardList/types';
 
-export const getMyLists = (dispatch: Dispatch<*>) => async (
+export const getLists = (dispatch: Dispatch<*>) => async (
   params: SubmitSearchListFormRequest
-): Promise<Array<Row>> => {
-  const result: Array<Item> = await Api.get(dispatch)(LIST_MY, params);
+): Promise<Pagination<Row>> => {
+  const result: Array<Item> = await Api.get(dispatch)(LIST, params);
   return transformItemListToRowList(result);
 };
 
