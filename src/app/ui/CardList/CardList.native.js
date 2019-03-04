@@ -84,7 +84,7 @@ export class CardList extends PureComponent<CardListProps> {
         onPress={() => { if (updateListType) { updateListType(null); } }}
         light
       >
-        <Text>{t.get(type)}</Text>
+        <Text>{t.get(`HEADER_MENU_${type}`)}</Text>
         <Icon name="close" />
       </Button>
     );

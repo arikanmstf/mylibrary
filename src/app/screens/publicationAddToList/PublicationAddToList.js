@@ -80,13 +80,13 @@ class PublicationAddToList extends PureComponent<PublicationAddToListProps> {
             label={t.get('HEADER_SEARCH')}
             onChange={this.debounced}
           />
+          <AddListForm />
           <RowList
             rows={rows}
             compareRows={publication ? publication.lists : []}
             addToListId={publication ? publication.id : 0}
             detailComponent={PublicationAddToListForm}
           />
-          <AddListForm />
         </Page>
       </Screen>
     );

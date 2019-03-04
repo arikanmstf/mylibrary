@@ -5,21 +5,22 @@
  */
 
 import { connect } from 'react-redux';
+import { reduxForm } from 'redux-form/immutable';
 import { connect as connectUi } from 'helpers/connect';
 import {
-  Text,
-  Screen,
-  Header,
-  Page,
-} from 'ui/native';
+  Col,
+  TextField,
+  Button,
+} from 'ui';
 import AddListFormScreen from './AddListForm';
-import { mapStateToProps, mapDispatchToProps } from './addListFormActions';
+import { mapStateToProps, mapDispatchToProps, formConfig } from './addListFormActions';
 
 const mapUiToProps = () => ({
-  Text,
-  Screen,
-  Header,
-  Page,
+  Col,
+  TextField,
+  Button,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(AddListFormScreen));
+export default connect(mapStateToProps, mapDispatchToProps)(
+  reduxForm(formConfig)(connectUi(mapUiToProps)(AddListFormScreen))
+);

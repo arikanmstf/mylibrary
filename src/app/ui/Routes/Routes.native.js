@@ -9,12 +9,11 @@ import React, { PureComponent } from 'react';
 import { createStackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
 import * as routeNames from 'constants/routes/routeNames';
-import {
-  ModalLoader,
-  Div,
-  GeneralError,
-  ModalError,
-} from 'ui/native';
+
+import Div from 'ui/Div';
+import GeneralError from 'ui/GeneralError';
+import ModalError from 'ui/ModalError';
+import ModalLoader from 'ui/ModalLoader';
 
 // Screens
 import LoginScreen from 'screens/login';
