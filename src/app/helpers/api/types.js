@@ -4,6 +4,11 @@ export type WriterDetail = {|
   id: number,
   name: string,
   description: string,
+  subItems: Array<{|
+    id: number,
+    name: string,
+    orderNo?: number,
+  |}>,
 |}
 
 export type PublisherDetail = {|

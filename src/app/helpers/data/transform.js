@@ -6,6 +6,7 @@ import {
   CARD_TYPE_PUBLISHER,
 } from 'modules/card/constants';
 import { BOOKS_I_READ, MY_FAVORITES } from 'modules/publication/constants';
+import t from 'helpers/i18n/Translate';
 
 import type { CardItem } from 'modules/card/types';
 import type { Pagination } from 'ui/CardList/types';
@@ -102,6 +103,11 @@ export const transformWriterToCard = (writer: WriterDetail): CardItem => {
     id: writer.id,
     description: writer.description,
     type: CARD_TYPE_WRITER,
+    lists: [{
+      id: 0,
+      name: t.get('WRITER_DETAIL_PUBLICATIONS_OF_WRITER'),
+      subItems: writer.subItems,
+    }],
   };
 };
 
