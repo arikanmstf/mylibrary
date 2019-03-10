@@ -38,6 +38,16 @@ export const transformPublicationToCard = (publication?: PublicationDetail): Car
     publisher: publication.publisher,
     writers: publication.writers,
     lists: publication.lists || [],
+    additionalData: [
+      {
+        key: 'pageNumber',
+        value: publication.pageNumber,
+      },
+      {
+        key: 'ISBN',
+        value: publication.isbn,
+      },
+    ],
   };
 };
 

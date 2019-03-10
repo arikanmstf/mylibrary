@@ -30,6 +30,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 import { green500, lime100 } from 'constants/theme/color';
 import { publicationDetailUrl } from 'constants/routes/createUrl';
+import { CARD_TYPE_PUBLICATION } from 'modules/card/constants';
 import t from 'helpers/i18n/Translate';
 import logger from 'helpers/logger';
 import type { Node } from 'react';
@@ -143,6 +144,18 @@ export class CardDetail extends PureComponent<CardDetailProps, CardDetailState> 
     }
   }
 
+  renderData() {
+    const { isDetailed, card } = this.props;
+
+    return isDetailed && card.additionalData && card.additionalData.map((data) => (
+      <div key={data.key}>
+        <ListItem>
+          <ListItemText primary={`${t.get(`PUBLICATION_DETAIL_${data.key}`)}: ${data.value}`} />
+        </ListItem>
+      </div>
+    ));
+  }
+
   renderList() {
     const { isDetailed, card } = this.props;
     const activeStyle = { backgroundColor: lime100 };
@@ -166,7 +179,7 @@ export class CardDetail extends PureComponent<CardDetailProps, CardDetailState> 
                 dense
                 button
                 key={subItem.id}
-                style={(subItem.id === card.id) ? activeStyle : undefined}
+                style={(subItem.id === card.id && card.type === CARD_TYPE_PUBLICATION) ? activeStyle : undefined}
                 onClick={() => { this.goToPublication(subItem.id); }}
               >
                 <ListItemText inset primary={subItem.name} />
@@ -288,6 +301,9 @@ export class CardDetail extends PureComponent<CardDetailProps, CardDetailState> 
             </IconButton>
           ) : null }
         </CardActions>
+        <List>
+          {this.renderData()}
+        </List>
         <List>
           {this.renderList()}
         </List>

@@ -1,6 +1,11 @@
 // @flow
 import type { PublisherDetail, WriterDetail, Item } from 'helpers/api/types';
 
+type CardData = {
+  key: string,
+  value: any,
+}
+
 export type CardItem = {|
   title: string,
   id: number,
@@ -14,4 +19,5 @@ export type CardItem = {|
   publisher?: PublisherDetail,
   writers?: Array<WriterDetail>,
   lists?: Array<Item>,
+  additionalData?: Array<CardData>,
 |}

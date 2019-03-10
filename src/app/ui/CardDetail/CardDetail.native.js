@@ -29,6 +29,8 @@ import {
 } from 'native-base';
 import { production, publicationDetailUrl } from 'constants/routes/createUrl';
 import logger from 'helpers/logger';
+import { CARD_TYPE_PUBLICATION } from 'modules/card/constants';
+import t from 'helpers/i18n/Translate';
 
 import { setCardType, defaultProps } from './helpers';
 import type { CardDetailProps, Option } from './types';
@@ -162,6 +164,23 @@ export class CardDetail extends PureComponent<CardDetailProps> {
     }
   }
 
+  renderData() {
+    const { isDetailed, card } = this.props;
+
+    return isDetailed && card.additionalData && card.additionalData.map((data) => (
+      <Div key={data.key}>
+        <ListItem>
+          <Left>
+            <Text>{`${t.get(`PUBLICATION_DETAIL_${data.key}`)}: ${data.value}`}</Text>
+          </Left>
+          <Right>
+            <Text />
+          </Right>
+        </ListItem>
+      </Div>
+    ));
+  }
+
   renderList() {
     const { isDetailed, card } = this.props;
 
@@ -182,7 +201,7 @@ export class CardDetail extends PureComponent<CardDetailProps> {
         { this.isListOpen(list.id) ? list.subItems.map((subItem) => (
           <ListItem
             key={subItem.id}
-            selected={subItem.id === card.id}
+            selected={subItem.id === card.id && card.type === CARD_TYPE_PUBLICATION}
             onPress={() => { this.goToPublication(subItem.id); }}
           >
             <Left>
@@ -310,6 +329,9 @@ export class CardDetail extends PureComponent<CardDetailProps> {
               ) : null }
             </Right>
           </CardItem>
+          <List>
+            {this.renderData()}
+          </List>
           <List>
             {this.renderList()}
           </List>

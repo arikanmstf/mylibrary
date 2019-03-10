@@ -41,7 +41,8 @@ export type PublicationDetail = {|
   pageNumber: number,
   coverNo: number,
   addedBy: string,
-  publisher: PublisherDetail
+  publisher: PublisherDetail,
+  isbn: string,
 |}
 
 export type BookDetail = {|
