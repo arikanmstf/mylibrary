@@ -51,7 +51,7 @@ class PublicationAddToList extends PureComponent<PublicationAddToListProps> {
     } = props;
     const { id } = match.params;
 
-    if (!publication || (publication && publication.id !== +id)) {
+    if (!publication || (publication && publication.id !== id)) {
       fetchPublication(id);
     }
 

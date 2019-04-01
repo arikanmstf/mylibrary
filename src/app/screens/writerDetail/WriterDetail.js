@@ -47,7 +47,7 @@ class WriterDetail extends PureComponent<WriterDetailProps> {
         || (
           card
           && (
-            card.id !== +id
+            card.id !== id
             || card.type !== CARD_TYPE_WRITER
           )
         )

@@ -47,7 +47,7 @@ class PublisherDetail extends PureComponent<PublisherDetailProps> {
         || (
           card
           && (
-            card.id !== +id
+            card.id !== id
             || card.type !== CARD_TYPE_PUBLISHER
           )
         )

@@ -46,7 +46,7 @@ class BookDetail extends PureComponent<BookDetailProps> {
         || (
           card
           && (
-            card.id !== +id
+            card.id !== id
             || card.type !== CARD_TYPE_BOOK
           )
         )

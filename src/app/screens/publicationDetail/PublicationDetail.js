@@ -47,7 +47,7 @@ class PublicationDetail extends PureComponent<PublicationDetailProps> {
         || (
           card
           && (
-            card.id !== +id
+            card.id !== id
             || card.type !== CARD_TYPE_PUBLICATION
           )
         )
