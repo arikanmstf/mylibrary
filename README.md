@@ -2,7 +2,7 @@
 React and React Native with Redux, Material UI and Flow.
 
 ### System Requirements:
-* nodejs: `v8.1.3`
+* nodejs: `v8.9.0`
 * yarn `1.7.0`
 
 ### Install
