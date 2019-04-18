@@ -4,7 +4,7 @@
     "icon": "./static/img/icon-no-alpha.png",
     "version": "3.0.0",
     "slug": "mylibrary",
-    "sdkVersion": "32.0.0",
+    "sdkVersion": "31.0.0",
     "privacy": "unlisted",
     "platforms": ["ios"],
     "githubUrl": "https://github.com/arikanmstf/mylibrary/",
