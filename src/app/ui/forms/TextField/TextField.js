@@ -28,6 +28,7 @@ const TextField = (props: TextFieldProps): Node => {
   const {
     style,
     name,
+    autoComplete,
     ...other
   } = props;
 
@@ -42,6 +43,7 @@ const TextField = (props: TextFieldProps): Node => {
       component={renderTextField}
       name={name}
       style={mergedStyle}
+      autoComplete={autoComplete || 'off'}
       {...other}
     />
   );
