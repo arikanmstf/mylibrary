@@ -9,6 +9,7 @@ type CardData = {
 export type CardItem = {|
   title: string,
   id: number,
+  bookId?: Array<CardData>,
   subHeader?: ?string,
   isFavorite: ?boolean,
   isRead: ?boolean,

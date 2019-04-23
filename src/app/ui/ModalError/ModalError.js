@@ -8,8 +8,9 @@ import type { ModalErrorProps } from './types';
 
 class ModalError extends PureComponent<ModalErrorProps> {
   handleModalClose = () => {
-    const { updateModalError } = this.props;
+    const { updateModalError, clearLoader } = this.props;
     updateModalError(null);
+    clearLoader();
   };
 
   render() {

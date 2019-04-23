@@ -29,6 +29,7 @@ export const transformPublicationToCard = (publication?: PublicationDetail): Car
   return {
     title: publication.title,
     id: publication.id,
+    bookId: publication.bookId,
     subHeader: `${writers}${publishers}`,
     isFavorite: publication.lists.some((list) => (list.code === MY_FAVORITES)),
     isRead: publication.lists.some((list) => (list.code === BOOKS_I_READ)),
@@ -91,15 +92,19 @@ export const transformBookToCard = (book: BookDetail): CardItem => {
   }
 
   const writers = book.writers.map((writer) => writer.name).join(', ');
-  const publishers = book.publishers.map((publisher) => publisher.name).join(', ');
 
   return {
     title: book.title,
     id: book.id,
-    subHeader: `${writers} - ${publishers}`,
+    subHeader: `${writers}`,
     type: CARD_TYPE_BOOK,
     description: book.description,
     writers: book.writers,
+    lists: [{
+      name: t.get('BOOK_DETAIL_PUBLICATIONS_OF_BOOK'),
+      id: 0,
+      subItems: book.publications || [],
+    }],
   };
 };
 

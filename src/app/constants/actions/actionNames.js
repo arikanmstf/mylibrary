@@ -1,5 +1,6 @@
 export const SHOW_LOADER = 'SHOW_LOADER';
 export const HIDE_LOADER = 'HIDE_LOADER';
+export const CLEAR_LOADER = 'CLEAR_LOADER';
 export const SHOW_DRAWER = 'SHOW_DRAWER';
 export const HIDE_DRAWER = 'HIDE_DRAWER';
 export const UPDATE_LOGIN_STATE = 'UPDATE_LOGIN_STATE';

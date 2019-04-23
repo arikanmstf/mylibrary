@@ -12,4 +12,5 @@ export type ModalError = {
 export type ModalErrorProps = {
   modalError?: ModalError,
   updateModalError: Function,
+  clearLoader: Function,
 };

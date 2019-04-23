@@ -52,5 +52,6 @@ export type BookDetail = {|
   writers: Array<WriterDetail>,
   publishers: Array<PublisherDetail>,
   tags: Array<Item>,
+  publications: Array<Item>,
   addedBy: string,
 |}

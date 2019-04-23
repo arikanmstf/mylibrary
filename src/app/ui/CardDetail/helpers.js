@@ -36,8 +36,8 @@ const createMoreOptions = (card: CardItem): Array<Option> => (
   {
     [CARD_TYPE_PUBLICATION]: [
       {
-        to: bookDetailUrl(card.id),
-        toId: card.id,
+        to: bookDetailUrl(card.bookId),
+        toId: card.bookId,
         label: t.get('CARD_DETAIL_BOOK_DETAIL'),
       },
       card.publisher
