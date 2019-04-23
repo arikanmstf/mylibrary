@@ -27,9 +27,9 @@ import {
   List,
   ListItem,
 } from 'native-base';
-import { production, publicationDetailUrl } from 'constants/routes/createUrl';
+import { production, publicationDetailUrl, bookDetailUrl } from 'constants/routes/createUrl';
 import logger from 'helpers/logger';
-import { CARD_TYPE_PUBLICATION } from 'modules/card/constants';
+import { CARD_TYPE_PUBLICATION, SUB_ITEM_TYPE_BOOK, SUB_ITEM_TYPE_PUBLICATION } from 'modules/card/constants';
 import t from 'helpers/i18n/Translate';
 
 import { setCardType, defaultProps } from './helpers';
@@ -114,6 +114,17 @@ export class CardDetail extends PureComponent<CardDetailProps> {
     }
   };
 
+  goToBook = (id: number) => {
+    const { navigation } = this.props;
+
+    logger.log('goToBook');
+    const url = bookDetailUrl(id);
+
+    if (navigation) {
+      navigation.navigate(url, { id });
+    }
+  };
+
   handleRenderMoreClick = () => {
     const options = this.moreOptions.map((option) => (option.label));
     ActionSheet.show(
@@ -127,6 +138,18 @@ export class CardDetail extends PureComponent<CardDetailProps> {
         this.goTo(option);
       }
     );
+  };
+
+  handleListSubItemClick = (subItem: Item) => {
+    let goTo;
+
+    switch (subItem.type) {
+      case SUB_ITEM_TYPE_BOOK: goTo = this.goToBook; break;
+      case SUB_ITEM_TYPE_PUBLICATION: goTo = this.goToPublication; break;
+      default: goTo = () => {};
+    }
+
+    goTo(subItem.id);
   };
 
   handleListItemClick(id: number) {
@@ -202,7 +225,7 @@ export class CardDetail extends PureComponent<CardDetailProps> {
           <ListItem
             key={subItem.id}
             selected={subItem.id === card.id && card.type === CARD_TYPE_PUBLICATION}
-            onPress={() => { this.goToPublication(subItem.id); }}
+            onPress={() => { this.handleListSubItemClick(subItem); }}
           >
             <Left>
               <Text>{subItem.name}</Text>

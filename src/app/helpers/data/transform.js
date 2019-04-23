@@ -120,8 +120,8 @@ export const transformWriterToCard = (writer: WriterDetail): CardItem => {
     type: CARD_TYPE_WRITER,
     lists: [{
       id: 0,
-      name: t.get('WRITER_DETAIL_PUBLICATIONS_OF_WRITER'),
-      subItems: writer.subItems,
+      name: t.get('WRITER_DETAIL_BOOKS_OF_WRITER'),
+      subItems: writer.books || [],
     }],
   };
 };

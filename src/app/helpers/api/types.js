@@ -1,32 +1,24 @@
 // @flow
 
-export type WriterDetail = {|
-  id: number,
-  name: string,
-  description: string,
-  subItems: Array<{|
-    id: number,
-    name: string,
-    orderNo?: number,
-  |}>,
-|}
-
 export type PublisherDetail = {|
   id: number,
   name: string,
 |}
 
 export type Item = {|
-  type: 'TAG' | 'LIST',
+  type: 'TAG' | 'LIST' | 'SUB_ITEM_TYPE_PUBLICATION' | 'SUB_ITEM_TYPE_BOOK',
   name: string,
   id: number,
   orderNo?: number,
   code?: string,
-  subItems: Array<{|
-    id: number,
-    name: string,
-    orderNo?: number,
-  |}>,
+  subItems: Array<Item>,
+|}
+
+export type WriterDetail = {|
+  id: number,
+  name: string,
+  description: string,
+  books: Array<Item>,
 |}
 
 export type PublicationDetail = {|

@@ -29,11 +29,12 @@ import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 
 import { green500, lime100 } from 'constants/theme/color';
-import { publicationDetailUrl } from 'constants/routes/createUrl';
-import { CARD_TYPE_PUBLICATION } from 'modules/card/constants';
+import { publicationDetailUrl, bookDetailUrl } from 'constants/routes/createUrl';
+import { CARD_TYPE_PUBLICATION, SUB_ITEM_TYPE_BOOK, SUB_ITEM_TYPE_PUBLICATION } from 'modules/card/constants';
 import t from 'helpers/i18n/Translate';
 import logger from 'helpers/logger';
 import type { Node } from 'react';
+import type { Item } from 'helpers/api/types';
 
 import { setCardType, defaultProps } from './helpers';
 import type { CardDetailProps, CardDetailState, Option } from './types';
@@ -101,12 +102,35 @@ export class CardDetail extends PureComponent<CardDetailProps, CardDetailState> 
     }
   };
 
+  goToBook = (id: number) => {
+    const { history } = this.props;
+
+    logger.log('goToBook');
+    const url = bookDetailUrl(id);
+
+    if (history) {
+      history.push(url);
+    }
+  };
+
   handleRenderMoreClick = (event: { currentTarget: HTMLElement }) => {
     this.setState({ anchorElRenderMore: event.currentTarget });
   };
 
   handleRenderMoreClose = () => {
     this.setState({ anchorElRenderMore: null });
+  };
+
+  handleListSubItemClick = (subItem: Item) => {
+    let goTo;
+
+    switch (subItem.type) {
+      case SUB_ITEM_TYPE_BOOK: goTo = this.goToBook; break;
+      case SUB_ITEM_TYPE_PUBLICATION: goTo = this.goToPublication; break;
+      default: goTo = () => {};
+    }
+
+    goTo(subItem.id);
   };
 
   handleListItemClick(id: number) {
@@ -180,7 +204,7 @@ export class CardDetail extends PureComponent<CardDetailProps, CardDetailState> 
                 button
                 key={subItem.id}
                 style={(subItem.id === card.id && card.type === CARD_TYPE_PUBLICATION) ? activeStyle : undefined}
-                onClick={() => { this.goToPublication(subItem.id); }}
+                onClick={() => { this.handleListSubItemClick(subItem); }}
               >
                 <ListItemText inset primary={subItem.name} />
                 <ListItemSecondaryAction style={{ paddingRight: 20 }}>
