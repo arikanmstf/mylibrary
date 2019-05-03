@@ -11,11 +11,11 @@ import { WRITER_UPDATE_CARD, WRITER_UPDATE_WRITER } from 'constants/actions/acti
 import { LOADER_CARD_DETAIL } from 'constants/actions/loaderNames';
 import logger from 'helpers/logger';
 import { showLoader, hideLoader } from 'ui/ModalLoader/actions';
-import { transformWriterToCard } from 'helpers/data/transform';
 
 import type { Dispatch } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
 
+import { transformWriterToCard } from './transformers';
 import { getWriterDetail } from './services';
 
 export const updateWriter = createAction(WRITER_UPDATE_WRITER);

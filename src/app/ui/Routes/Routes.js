@@ -29,6 +29,7 @@ import PublicationAddToListScreen from 'screens/publicationAddToList';
 import BookDetailScreen from 'screens/bookDetail';
 import WriterDetailScreen from 'screens/writerDetail';
 import PublisherDetailScreen from 'screens/publisherDetail';
+import ProfileScreen from 'screens/profile';
 
 import PrivateRoute from './PrivateRouteWeb';
 import PublicRoute from './PublicRouteWeb';
@@ -58,6 +59,7 @@ class Routes extends PureComponent<RoutesProps> {
           <Router basename={homeURL}>
             <Switch>
               <PrivateRoute exact path={routeNames.LOGOUT} component={LogoutScreen} />
+              <PrivateRoute exact path={routeNames.PROFILE} component={ProfileScreen} />
               <PrivateRoute exact path={routeNames.PUBLICATION_ADD_TO_LIST} component={PublicationAddToListScreen} />
               <PrivateRoute exact path={routeNames.PUBLICATION_DETAIL} component={PublicationDetailScreen} />
               <PrivateRoute exact path={routeNames.BOOK_DETAIL} component={BookDetailScreen} />

@@ -18,8 +18,13 @@ import { mapDispatchToProps } from './actions';
 import type { SideNavigationProps, SideNavigationItem } from './types';
 
 class SideNavigation extends PureComponent<SideNavigationProps> {
-  handleItemClick = (route: SideNavigationItem) => {
-    const { navigation } = this.props;
+  handleItemClick = async (route: SideNavigationItem) => {
+    const { navigation, hideDrawerAsync } = this.props;
+
+    if (hideDrawerAsync) {
+      await hideDrawerAsync();
+    }
+
     if (route.to && navigation) {
       navigation.navigate(route.to);
     }

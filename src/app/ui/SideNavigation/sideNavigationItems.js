@@ -1,5 +1,6 @@
 // @flow
 import {
+  HOME,
   PROFILE,
   LOGOUT,
 } from 'constants/routes/routeNames';
@@ -9,11 +10,12 @@ import type { SideNavigationProps } from './types';
 
 export default [
   {
-    label: 'HEADER_MENU_PROFILE',
     to: PROFILE,
+    label: 'HEADER_MENU_PROFILE',
     icon: 'settings',
   },
   {
+    to: HOME,
     label: 'HEADER_MENU_MY_FAVORITES',
     icon: 'star',
     listType: MY_FAVORITES,
@@ -22,6 +24,7 @@ export default [
     },
   },
   {
+    to: HOME,
     label: 'HEADER_MENU_BOOKS_I_READ',
     icon: 'book',
     listType: BOOKS_I_READ,
@@ -30,8 +33,8 @@ export default [
     },
   },
   {
-    label: 'HEADER_MENU_LOGOUT',
     to: LOGOUT,
+    label: 'HEADER_MENU_LOGOUT',
     icon: 'log-out',
   },
 ];

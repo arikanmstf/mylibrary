@@ -15,6 +15,7 @@ import {
   CARD_TYPE_PUBLICATION,
   CARD_TYPE_WRITER,
   CARD_TYPE_PUBLISHER,
+  CARD_TYPE_USER,
 } from 'modules/card/constants';
 import t from 'helpers/i18n/Translate';
 
@@ -51,6 +52,7 @@ const createMoreOptions = (card: CardItem): Array<Option> => (
     [CARD_TYPE_BOOK]: [],
     [CARD_TYPE_WRITER]: [],
     [CARD_TYPE_PUBLISHER]: [],
+    [CARD_TYPE_USER]: [],
   }[card.type]
     .filter((x) => x)
     .concat(writerOptions(card))

@@ -10,6 +10,6 @@ export const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
 });
 
 export const mapStateToProps = (state: Immutable<State>) => ({
-  isLoggedIn: state.toJS().login.isLoggedIn,
-  isInitialized: state.toJS().login.isInitialized,
+  isLoggedIn: state.toJS().user.isLoggedIn,
+  isInitialized: state.toJS().user.isInitialized,
 });

@@ -22,4 +22,6 @@ const mapUiToProps = () => ({
   Page,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(#{className}Screen));
+export default connect(mapStateToProps, mapDispatchToProps)(
+  connectUi(mapUiToProps)(#{className}Screen)
+);

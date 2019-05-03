@@ -1,6 +1,6 @@
 /**
  * Native Screen Template By => create-module script
- * @version 1.0.1
+ * @version 1.2.0
  *
  */
 
@@ -12,8 +12,8 @@ import {
   Page,
   CardDetail,
 } from 'ui/native';
-import BookDetailScreen from './BookDetail';
-import { mapStateToProps, mapDispatchToProps } from './bookDetailActions';
+import ProfileScreen from './Profile';
+import { mapStateToProps, mapDispatchToProps } from './profileActions';
 
 const mapUiToProps = () => ({
   Screen,
@@ -22,6 +22,4 @@ const mapUiToProps = () => ({
   CardDetail,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  connectUi(mapUiToProps)(BookDetailScreen)
-);
+export default connect(mapStateToProps, mapDispatchToProps)(connectUi(mapUiToProps)(ProfileScreen));

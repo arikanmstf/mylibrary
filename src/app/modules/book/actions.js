@@ -10,11 +10,11 @@ import { BOOK_UPDATE_BOOK, BOOK_UPDATE_CARD } from 'constants/actions/actionName
 import { LOADER_CARD_DETAIL } from 'constants/actions/loaderNames';
 import logger from 'helpers/logger';
 import { showLoader, hideLoader } from 'ui/ModalLoader/actions';
-import { transformBookToCard } from 'helpers/data/transform';
 
 import type { Dispatch } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
 
+import { transformBookToCard } from './transformers';
 import { getBookDetail } from './services';
 
 export const updateBook = createAction(BOOK_UPDATE_BOOK);

@@ -15,19 +15,6 @@ import type { ColProps } from 'ui/Col/types';
 import type { FormProps } from 'ui/Form/types';
 import type { ImageProps } from 'ui/Image/types';
 
-export type SubmitLoginFormRequest = {
-  email: string,
-  password: string,
-};
-
-export type SubmitLoginFormResponse = {
-  token: string,
-  user: {
-    name: string,
-    permissions: Array<string>,
-  },
-};
-
 export type LoginProps = {
   Text: ComponentType<TextProps>,
   TextField: ComponentType<TextFieldProps>,

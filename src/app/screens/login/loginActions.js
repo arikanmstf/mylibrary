@@ -6,21 +6,17 @@
 
 // @flow
 import logger from 'helpers/logger';
-import { createAction } from 'redux-actions';
 import { showLoader, hideLoader } from 'ui/ModalLoader/actions';
 import storage, { LOGIN_STATE } from 'helpers/storage';
-import { UPDATE_LOGIN_STATE, UPDATE_INITIALIZE_STATE } from 'constants/actions/actionNames';
 import { LOADER_LOGIN } from 'constants/actions/loaderNames';
+import { updateLoginState, updateInitializeState } from 'modules/user/actions';
 
 import type { Dispatch } from 'redux';
 import type { Immutable } from 'store/ImmutableTypes';
 import type { ThunkAction } from 'redux-thunk';
+import type { SubmitLoginFormRequest, SubmitLoginFormResponse } from 'modules/user/types';
 
-import { postLogin, postInitialize } from './loginServices';
-import type { SubmitLoginFormRequest, SubmitLoginFormResponse } from './LoginTypes';
-
-export const updateLoginState = createAction(UPDATE_LOGIN_STATE);
-export const updateInitializeState = createAction(UPDATE_INITIALIZE_STATE);
+import { postLogin, postInitialize } from 'modules/user/services';
 
 export const saveLoginState = async (data: ?SubmitLoginFormResponse) => {
   const save = {

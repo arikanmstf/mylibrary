@@ -7,15 +7,14 @@ import Api, {
   PUBLICATION_TOGGLE_READ,
   PUBLICATION_TOGGLE_FAVORITE,
 } from 'helpers/api';
-import { transformPublicationListToCardList } from 'helpers/data/transform';
 
 import type { Pagination } from 'ui/CardList/types';
 import type { CardItem } from 'modules/card/types';
-import type {
-  PublicationDetail,
-} from 'helpers/api/types';
+import type { PublicationDetail } from 'helpers/api/types';
 import type { SubmitSearchFormRequest } from 'ui/Header/types';
 import type { Dispatch } from 'redux';
+
+import { transformPublicationListToCardList } from './transformers';
 import type { GetPublicationDetailRequest, ToggleListRequest } from './types';
 
 export const getPublicationDetail = (

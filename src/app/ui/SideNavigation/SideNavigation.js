@@ -30,7 +30,11 @@ width: '250px'
 
 class SideNavigation extends PureComponent<SideNavigationProps> {
   handleItemClick = (route: SideNavigationItem) => {
-    const { history } = this.props;
+    const { history, hideDrawerAsync } = this.props;
+    if (hideDrawerAsync) {
+      hideDrawerAsync();
+    }
+
     if (route.to && history) {
       history.push(route.to);
     }

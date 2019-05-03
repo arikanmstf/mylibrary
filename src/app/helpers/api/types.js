@@ -47,3 +47,10 @@ export type BookDetail = {|
   publications: Array<Item>,
   addedBy: string,
 |}
+
+export type UserDetail = {|
+  name: string,
+  id: number,
+  display_name: string,
+  email: string,
+|}

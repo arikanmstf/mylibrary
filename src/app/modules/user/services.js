@@ -5,7 +5,7 @@ import storage, { LOGIN_STATE } from 'helpers/storage';
 import logger from 'helpers/logger';
 
 import type { Dispatch } from 'redux';
-import type { SubmitLoginFormRequest, SubmitLoginFormResponse } from './LoginTypes';
+import type { SubmitLoginFormRequest, SubmitLoginFormResponse } from './types';
 
 export const postLogin = (
   dispatch: Dispatch<*>

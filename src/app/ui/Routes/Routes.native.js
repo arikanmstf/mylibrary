@@ -25,6 +25,7 @@ import PublicationAddToListScreen from 'screens/publicationAddToList';
 import BookDetailScreen from 'screens/bookDetail';
 import WriterDetailScreen from 'screens/writerDetail';
 import PublisherDetailScreen from 'screens/publisherDetail';
+import ProfileScreen from 'screens/profile';
 
 import { mapStateToProps, mapDispatchToProps } from './actions';
 import type { RoutesProps } from './types';
@@ -38,6 +39,7 @@ const AppStack = createStackNavigator(
     [routeNames.BOOK_DETAIL]: BookDetailScreen,
     [routeNames.WRITER_DETAIL]: WriterDetailScreen,
     [routeNames.PUBLISHER_DETAIL]: PublisherDetailScreen,
+    [routeNames.PROFILE]: ProfileScreen,
   },
   {
     initialRouteName: routeNames.HOME,

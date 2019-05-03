@@ -4,5 +4,4 @@
  *
  */
 
-export { default as Web } from './#{className}Container';
-export { default as Native } from './#{className}Container';
+export { default } from './#{className}Container';

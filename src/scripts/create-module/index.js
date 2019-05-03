@@ -1,7 +1,7 @@
 /**
  * Create Module - App file creator
  * @author arikanmstf
- * @version 1.2.0
+ * @version 1.2.1
  *
  */
 
@@ -11,7 +11,7 @@ const prompt = require('prompt');
 const fs = require('file-system');
 const p = require('path');
 
-const VERSION = '1.2.0';
+const VERSION = '1.2.1';
 
 (function () { // eslint-disable-line func-names
   const firstLetterUpper = (str) => {

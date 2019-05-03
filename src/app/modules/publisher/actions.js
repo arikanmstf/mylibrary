@@ -11,11 +11,11 @@ import { PUBLISHER_UPDATE_CARD, PUBLISHER_UPDATE_PUBLISHER } from 'constants/act
 import { LOADER_CARD_DETAIL } from 'constants/actions/loaderNames';
 import logger from 'helpers/logger';
 import { showLoader, hideLoader } from 'ui/ModalLoader/actions';
-import { transformPublisherToCard } from 'helpers/data/transform';
 
 import type { Dispatch } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
 
+import { transformPublisherToCard } from './transformers';
 import { getPublisherDetail } from './services';
 
 export const updatePublisher = createAction(PUBLISHER_UPDATE_PUBLISHER);

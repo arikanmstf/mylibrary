@@ -12,6 +12,7 @@ export type SideNavigationProps = {
   updateListType: Function,
   history?: RouterHistory,
   navigation?: StackNavigator,
+  hideDrawerAsync: Function,
 };
 
 export type SideNavigationItem = {

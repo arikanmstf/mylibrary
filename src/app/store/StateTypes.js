@@ -45,9 +45,10 @@ export type State = {|
   loader: {|
     visible: Array<*>,
   |},
-  login: {|
+  user: {|
     isLoggedIn: boolean,
     isInitialized: boolean,
+    card?: CardItem,
   |},
   screen: {|
     isDrawerOpen?: boolean,

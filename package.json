@@ -1,6 +1,6 @@
 {
   "name": "mylibrary",
-  "version": "3.0.0-alpha.7",
+  "version": "3.0.0-alpha.8",
   "description": "MyLibrary is an online book library that you can manage and share your books.",
   "main": "src/app/native/index.js",
   "repository": "git@github.com:arikanmstf/mylibrary.git",
