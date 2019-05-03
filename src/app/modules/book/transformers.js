@@ -1,5 +1,6 @@
 // @flow
 import { CARD_TYPE_BOOK } from 'modules/card/constants';
+import t from 'helpers/i18n/Translate';
 
 import type { CardItem } from 'modules/card/types';
 import type { BookDetail } from 'helpers/api/types';
