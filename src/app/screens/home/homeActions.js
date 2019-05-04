@@ -13,6 +13,7 @@ import type { ImmutableState } from 'store/StateTypes';
 export const mapStateToProps = (state: ImmutableState) => ({
   cards: state.toJS().card.cards,
   listType: state.toJS().card.listType,
+  fetchedPublicationListType: state.toJS().card.fetchedPublicationListType,
 });
 
 export const mapDispatchToProps = {

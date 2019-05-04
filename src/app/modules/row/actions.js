@@ -6,6 +6,6 @@
 
 // @flow
 import { createAction } from 'redux-actions';
-import { UPDATE_ROWS } from 'constants/actions/actionNames';
+import { ROW_UPDATE_ROWS } from 'constants/actions/actionNames';
 
-export const updateRows = createAction(UPDATE_ROWS);
+export const updateRows = createAction(ROW_UPDATE_ROWS);

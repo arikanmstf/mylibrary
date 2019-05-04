@@ -13,6 +13,7 @@ import {
   updateSearchQuery,
   updateSearchPending,
   updateListType,
+  updateFetchedPublicationListType,
 } from './actions';
 
 const initialState = {
@@ -21,6 +22,7 @@ const initialState = {
   currentPage: 1,
   searchQuery: '',
   listType: undefined,
+  fetchedPublicationListType: undefined,
   isSearchPending: false,
 };
 
@@ -72,6 +74,13 @@ const reducer = new Map([
     (state, action) => ({
       ...state,
       listType: action.payload ? action.payload : initialState.listType,
+    }),
+  ],
+  [
+    updateFetchedPublicationListType,
+    (state, action) => ({
+      ...state,
+      fetchedPublicationListType: action.payload ? action.payload : initialState.fetchedPublicationListType,
     }),
   ],
 ]);

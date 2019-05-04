@@ -5,20 +5,20 @@
  */
 
 // @flow
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import logger from 'helpers/logger';
 import type { HomeProps, HomeState } from './HomeTypes';
 
-class Home extends Component<HomeProps, HomeState> {
-  state = {};
-
+class Home extends PureComponent<HomeProps, HomeState> {
   componentDidMount() {
     const {
       fetchPublications,
       cards,
+      fetchedPublicationListType,
+      listType,
     } = this.props;
 
-    if (!cards) {
+    if (!cards || listType !== fetchedPublicationListType) {
       fetchPublications();
     }
   }
@@ -32,16 +32,6 @@ class Home extends Component<HomeProps, HomeState> {
     if (listType !== prevProps.listType) {
       fetchPublications();
     }
-  }
-
-  static getDerivedStateFromProps(props: HomeProps, state: HomeState) {
-    if (props.listType !== state.listType) {
-      return {
-        listType: props.listType,
-      };
-    }
-
-    return null;
   }
 
   render() {

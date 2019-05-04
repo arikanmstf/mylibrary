@@ -1,13 +1,14 @@
 // @flow
 import { createAction } from 'redux-actions';
 import {
-  ADD_CARDS,
-  UPDATE_CARDS,
-  UPDATE_TOTAL_PAGES,
-  UPDATE_CURRENT_PAGE,
-  UPDATE_SEARCH_QUERY,
-  UPDATE_SEARCH_PENDING,
-  UPDATE_LIST_TYPE,
+  CARD_ADD_CARDS,
+  CARD_UPDATE_CARDS,
+  CARD_UPDATE_CURRENT_PAGE,
+  CARD_UPDATE_FETCHED_PUBLICATION_LIST_TYPE,
+  CARD_UPDATE_LIST_TYPE,
+  CARD_UPDATE_SEARCH_PENDING,
+  CARD_UPDATE_SEARCH_QUERY,
+  CARD_UPDATE_TOTAL_PAGES,
 } from 'constants/actions/actionNames';
 import { LOADER_CARD_LIST } from 'constants/actions/loaderNames';
 import logger from 'helpers/logger';
@@ -18,13 +19,14 @@ import { getPublicationList } from 'modules/publication/services';
 import type { Dispatch } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
 
-export const addCards = createAction(ADD_CARDS);
-export const updateCards = createAction(UPDATE_CARDS);
-export const updateTotalPages = createAction(UPDATE_TOTAL_PAGES);
-export const updateCurrentPage = createAction(UPDATE_CURRENT_PAGE);
-export const updateSearchQuery = createAction(UPDATE_SEARCH_QUERY);
-export const updateListType = createAction(UPDATE_LIST_TYPE);
-export const updateSearchPending = createAction(UPDATE_SEARCH_PENDING);
+export const addCards = createAction(CARD_ADD_CARDS);
+export const updateCards = createAction(CARD_UPDATE_CARDS);
+export const updateTotalPages = createAction(CARD_UPDATE_TOTAL_PAGES);
+export const updateCurrentPage = createAction(CARD_UPDATE_CURRENT_PAGE);
+export const updateFetchedPublicationListType = createAction(CARD_UPDATE_FETCHED_PUBLICATION_LIST_TYPE);
+export const updateSearchQuery = createAction(CARD_UPDATE_SEARCH_QUERY);
+export const updateListType = createAction(CARD_UPDATE_LIST_TYPE);
+export const updateSearchPending = createAction(CARD_UPDATE_SEARCH_PENDING);
 
 export const fetchAndUpdateCards = (shouldShowLoader: boolean = true): ThunkAction => {
   return async (dispatch: Dispatch<*>, getState: Function) => {
@@ -42,6 +44,7 @@ export const fetchAndUpdateCards = (shouldShowLoader: boolean = true): ThunkActi
         dispatch(updateCards(result.content)),
         dispatch(updateTotalPages(result.totalPages)),
         dispatch(updateCurrentPage(page)),
+        dispatch(updateFetchedPublicationListType(type)),
       ]);
 
       logger.log('action: fetchAndUpdateCardsEnd');

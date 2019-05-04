@@ -11,7 +11,6 @@ import type { GeneralError } from 'ui/GeneralError/types';
 import type { ModalError } from 'ui/ModalError/types';
 import type { Immutable } from 'store/ImmutableTypes';
 
-
 export type State = {|
   form: Object,
   book: {|
@@ -24,6 +23,7 @@ export type State = {|
     currentPage: number,
     searchQuery?: string,
     listType?: string,
+    fetchedPublicationListType?: string,
     isSearchPending: boolean,
   |},
   centerLoader: {|

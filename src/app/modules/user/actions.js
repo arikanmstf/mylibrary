@@ -7,7 +7,7 @@
 // @flow
 
 import { createAction } from 'redux-actions';
-import { UPDATE_LOGIN_STATE, UPDATE_INITIALIZE_STATE } from 'constants/actions/actionNames';
+import { USER_UPDATE_LOGIN_STATE, USER_UPDATE_INITIALIZE_STATE } from 'constants/actions/actionNames';
 
-export const updateLoginState = createAction(UPDATE_LOGIN_STATE);
-export const updateInitializeState = createAction(UPDATE_INITIALIZE_STATE);
+export const updateLoginState = createAction(USER_UPDATE_LOGIN_STATE);
+export const updateInitializeState = createAction(USER_UPDATE_INITIALIZE_STATE);

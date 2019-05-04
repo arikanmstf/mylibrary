@@ -1,12 +1,12 @@
 // @flow
 
 import { createAction } from 'redux-actions';
-import { SHOW_LOADER, HIDE_LOADER, CLEAR_LOADER } from 'constants/actions/actionNames';
+import { LOADER_SHOW, LOADER_HIDE, LOADER_CLEAR } from 'constants/actions/actionNames';
 import type { ImmutableState } from 'store/StateTypes';
 
-export const showLoader = createAction(SHOW_LOADER);
-export const hideLoader = createAction(HIDE_LOADER);
-export const clearLoader = createAction(CLEAR_LOADER);
+export const showLoader = createAction(LOADER_SHOW);
+export const hideLoader = createAction(LOADER_HIDE);
+export const clearLoader = createAction(LOADER_CLEAR);
 
 export const mapStateToProps = (state: ImmutableState) => ({
   visible: state.toJS().loader.visible,
