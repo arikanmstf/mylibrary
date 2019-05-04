@@ -72,12 +72,13 @@ export const fetchAndAddCards = (): ThunkAction => {
     await dispatch(updateSearchPending(true));
     const result = await getPublicationList(dispatch)({ page, search, type });
     logger.log('action: fetchAndAddCards');
+    await dispatch(updateSearchPending(false));
+
     await Promise.all([
       dispatch(addCards(result.content)),
       dispatch(updateTotalPages(result.totalPages)),
     ]);
 
-    dispatch(updateSearchPending(false));
     dispatch(updateCurrentPage(page));
     dispatch(hideCenterLoader());
     logger.log('action: fetchAndAddCardsEnd');

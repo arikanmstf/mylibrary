@@ -16,17 +16,13 @@ import {
   RefreshControl,
 } from 'react-native';
 import logger from 'helpers/logger';
+import { isCloseToBottom } from 'helpers/window';
 import { CardDetail, CenterLoader, Text } from 'ui/native';
 import t from 'helpers/i18n/Translate';
 
 import type { CardItem } from 'modules/card/types';
 import { mapStateToProps, mapDispatchToProps } from './actions';
 import type { CardListProps, RenderCardListItem } from './types';
-
-const isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
-  const paddingToBottom = 600;
-  return layoutMeasurement.height + contentOffset.y >= contentSize.height - paddingToBottom;
-};
 
 export class CardList extends PureComponent<CardListProps> {
   handleScroll = ({ nativeEvent }: SyntheticEvent) => {

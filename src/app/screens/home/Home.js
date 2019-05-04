@@ -58,7 +58,7 @@ class Home extends Component<HomeProps, HomeState> {
     return (
       <Screen>
         <Header />
-        <Page>
+        <Page id="homePage">
           <CardList
             toggleRead={toggleRead}
             toggleFavorite={toggleFavorite}

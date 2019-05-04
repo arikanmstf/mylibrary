@@ -13,6 +13,7 @@ import t from 'helpers/i18n/Translate';
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
 import logger from 'helpers/logger';
+import { isCloseToBottom, isPageNotFilled } from 'helpers/window';
 import { CardDetail, CenterLoader } from 'ui';
 
 import { mapStateToProps, mapDispatchToProps } from './actions';
@@ -30,20 +31,6 @@ const GridFour = styled.div`
 }
 `;
 
-const isCloseToBottom = () => {
-  const windowHeight = window.innerHeight
-    || (document.documentElement ? document.documentElement.offsetHeight : 0);
-
-  const docHeight = Math.max(
-    document.body ? document.body.scrollHeight : 0,
-    document.body ? document.body.offsetHeight : 0,
-    document.documentElement ? document.documentElement.clientHeight : 0,
-    document.documentElement ? document.documentElement.scrollHeight : 0,
-    document.documentElement ? document.documentElement.offsetHeight : 0
-  );
-  return windowHeight + window.pageYOffset + 600 >= docHeight;
-};
-
 export class CardList extends PureComponent<CardListProps> {
   componentDidMount() {
     this.handleScrollDebounce = debounce(this.handleScroll, 800, {
@@ -53,14 +40,21 @@ export class CardList extends PureComponent<CardListProps> {
     window.addEventListener('scroll', this.handleScrollDebounce);
   }
 
+  componentDidUpdate() {
+    const { addCards } = this.props;
+
+    if (isPageNotFilled() && addCards) {
+      addCards();
+      logger.log('addCards');
+    }
+  }
+
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScrollDebounce);
   }
 
   handleScroll = () => {
-    const {
-      addCards,
-    } = this.props;
+    const { addCards } = this.props;
 
     if (isCloseToBottom() && addCards) {
       addCards();

@@ -14,5 +14,5 @@ export const mapStateToProps = (state: Immutable<State>) => ({
   cards: state.toJS().card.cards,
   search: state.toJS().card.searchQuery,
   type: state.toJS().card.listType,
-  isLoaderVisible: state.toJS().loader.isVisible,
+  isLoaderVisible: state.toJS().loader.visible,
 });
