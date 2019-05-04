@@ -5,7 +5,7 @@
  */
 
 // @flow
-import type { State } from 'store/StateTypes';
+import type { ImmutableState } from 'store/StateTypes';
 import { fetchPublication } from 'modules/publication/actions';
 import { fetchLists } from 'modules/list/actions';
 import { SEARCH_LIST_FORM_KEY } from 'constants/forms/searchList';
@@ -23,7 +23,7 @@ export const formConfig = {
   onSubmit: submitSearchForm,
 };
 
-export const mapStateToProps = (state: Immutable<State>) => ({
+export const mapStateToProps = (state: ImmutableState) => ({
   rows: state.toJS().row.rows,
   publication: state.toJS().publication.publication,
 });

@@ -9,6 +9,8 @@ import type {
 } from 'helpers/api/types';
 import type { GeneralError } from 'ui/GeneralError/types';
 import type { ModalError } from 'ui/ModalError/types';
+import type { Immutable } from 'store/ImmutableTypes';
+
 
 export type State = {|
   form: Object,
@@ -58,3 +60,5 @@ export type State = {|
     card?: CardItem,
   |},
 |};
+
+export type ImmutableState = Immutable<State>;

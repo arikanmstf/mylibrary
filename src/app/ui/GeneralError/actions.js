@@ -5,13 +5,12 @@ import {
   ERROR_UPDATE_MODAL,
 } from 'constants/actions/actionNames';
 
-import type { Immutable } from 'store/ImmutableTypes';
-import type { State } from 'store/StateTypes';
+import type { ImmutableState } from 'store/StateTypes';
 
 export const updateGeneralError = createAction(ERROR_UPDATE_GENERAL);
 export const updateModalError = createAction(ERROR_UPDATE_MODAL);
 
-export const mapStateToProps = (state: Immutable<State>) => ({
+export const mapStateToProps = (state: ImmutableState) => ({
   generalError: state.toJS().error.generalError,
 });
 

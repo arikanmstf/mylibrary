@@ -6,7 +6,7 @@ import fields from 'constants/forms/search';
 
 import type { Dispatch } from 'redux';
 import type { Immutable } from 'store/ImmutableTypes';
-import type { State } from 'store/StateTypes';
+import type { ImmutableState } from 'store/StateTypes';
 import type { SubmitSearchFormRequest } from './types';
 
 export const mapDispatchToProps = {
@@ -21,7 +21,7 @@ export const submitSearchForm = async (form: Immutable<SubmitSearchFormRequest>,
   dispatch(fetchAndUpdateCards(false));
 };
 
-export const mapStateToProps = (state: Immutable<State>) => ({
+export const mapStateToProps = (state: ImmutableState) => ({
   isDrawerOpen: state.toJS().screen.isDrawerOpen,
   initialValues: { [fields.SEARCH]: state.toJS().card.searchQuery },
 });

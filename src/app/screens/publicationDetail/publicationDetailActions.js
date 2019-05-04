@@ -7,10 +7,9 @@
 // @flow
 import { fetchPublication, toggleFavorite, toggleRead } from 'modules/publication/actions';
 
-import type { Immutable } from 'store/ImmutableTypes';
-import type { State } from 'store/StateTypes';
+import type { ImmutableState } from 'store/StateTypes';
 
-export const mapStateToProps = (state: Immutable<State>) => ({
+export const mapStateToProps = (state: ImmutableState) => ({
   card: state.toJS().publication.card,
 });
 

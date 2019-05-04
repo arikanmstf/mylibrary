@@ -3,8 +3,7 @@ import { createAction } from 'redux-actions';
 import { SHOW_DRAWER, HIDE_DRAWER } from 'constants/actions/actionNames';
 import { sleep } from 'helpers/data/sleep';
 
-import type { Immutable } from 'store/ImmutableTypes';
-import type { State } from 'store/StateTypes';
+import type { ImmutableState } from 'store/StateTypes';
 import type { Dispatch } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
 
@@ -17,7 +16,7 @@ export const hideDrawerAsync = (): ThunkAction => {
     await sleep(250);
   };
 };
-export const mapStateToProps = (state: Immutable<State>) => ({
+export const mapStateToProps = (state: ImmutableState) => ({
   isDrawerOpen: state.toJS().screen.isDrawerOpen,
 });
 
