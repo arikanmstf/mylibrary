@@ -11,6 +11,7 @@ import { updateGeneralError } from 'ui/GeneralError/actions';
 
 import type { Dispatch } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
+import type { PublicationDetail } from 'helpers/api/types';
 
 import { transformPublicationToCard } from './transformers';
 import { getPublicationDetail, postToggleList } from './services';
@@ -21,8 +22,15 @@ const toggleTypes = {
   FAVORITE: 'favorite',
 };
 
-export const updatePublication = createAction(PUBLICATION_UPDATE_PUBLICATION);
-export const updatePublicationCard = createAction(PUBLICATION_UPDATE_CARD);
+export const updatePublicationAction = createAction(PUBLICATION_UPDATE_PUBLICATION);
+export const updatePublicationCardAction = createAction(PUBLICATION_UPDATE_CARD);
+
+export const updatePublication = (publication: PublicationDetail): ThunkAction => {
+  return (dispatch: Dispatch<*>) => {
+    dispatch(updatePublicationAction(publication));
+    dispatch(updatePublicationCardAction(transformPublicationToCard(publication)));
+  };
+};
 
 export const fetchPublication = (id: number): ThunkAction => {
   return async (dispatch: Dispatch<*>) => {
@@ -31,11 +39,9 @@ export const fetchPublication = (id: number): ThunkAction => {
     try {
       logger.log('action: fetchPublicationStart');
       const publication = await getPublicationDetail(dispatch)({ id });
-      const card = transformPublicationToCard(publication);
       logger.log('action: fetchPublication');
 
       await Promise.all([
-        dispatch(updatePublicationCard(card)),
         dispatch(updatePublication(publication)),
       ]);
 
@@ -64,7 +70,6 @@ export const toggleList = (request: ToggleListRequest): ThunkAction => {
     }
 
     await Promise.all([
-      dispatch(updatePublicationCard(card)),
       dispatch(updatePublication(publication)),
     ]);
 
@@ -100,10 +105,7 @@ const toggle = (id: number, type: 'read' | 'favorite'): ThunkAction => {
     }
 
     if (card) {
-      const newCard = transformPublicationToCard(result);
-
       await Promise.all([
-        dispatch(updatePublicationCard(newCard)),
         dispatch(updatePublication(result)),
       ]);
     }
@@ -112,5 +114,5 @@ const toggle = (id: number, type: 'read' | 'favorite'): ThunkAction => {
   };
 };
 
-export const toggleRead = (id: number) => (toggle(id, 'read'));
-export const toggleFavorite = (id: number) => (toggle(id, 'favorite'));
+export const toggleRead = (id: number) => (toggle(id, toggleTypes.READ));
+export const toggleFavorite = (id: number) => (toggle(id, toggleTypes.FAVORITE));

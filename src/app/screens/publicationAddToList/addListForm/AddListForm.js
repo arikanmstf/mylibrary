@@ -29,13 +29,13 @@ class AddListForm extends PureComponent<AddListFormProps> {
         <TextField
           name={fields.NAME}
           label={t.get('ADD_LIST_FORM_ADD_LIST')}
+          style={{ marginBottom: 20 }}
         />
         <Button
           primary
           raised
           onClick={() => { handleSubmit(submitAddListForm)(); }}
           text={t.get('ADD_LIST_FORM_SUBMIT')}
-          style={{ marginTop: 20 }}
         />
       </Col>
     );

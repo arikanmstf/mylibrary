@@ -31,4 +31,4 @@ export type SubmitSearchListFormRequest = {
   search: string,
 };
 
-export const SEARCH_SUBMIT_TIMEOUT = 500;
+export const SEARCH_SUBMIT_TIMEOUT = 700;

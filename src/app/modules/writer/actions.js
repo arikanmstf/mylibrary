@@ -14,12 +14,20 @@ import { showLoader, hideLoader } from 'ui/ModalLoader/actions';
 
 import type { Dispatch } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
+import type { WriterDetail } from 'helpers/api/types';
 
 import { transformWriterToCard } from './transformers';
 import { getWriterDetail } from './services';
 
-export const updateWriter = createAction(WRITER_UPDATE_WRITER);
-export const updateWriterCard = createAction(WRITER_UPDATE_CARD);
+export const updateWriterAction = createAction(WRITER_UPDATE_WRITER);
+export const updateWriterCardAction = createAction(WRITER_UPDATE_CARD);
+
+export const updateWriter = (writer: WriterDetail): ThunkAction => {
+  return (dispatch: Dispatch<*>) => {
+    dispatch(updateWriterAction(writer));
+    dispatch(updateWriterCardAction(transformWriterToCard(writer)));
+  };
+};
 
 export const fetchWriter = (id: number): ThunkAction => {
   return async (dispatch: Dispatch<*>) => {
@@ -28,11 +36,9 @@ export const fetchWriter = (id: number): ThunkAction => {
     logger.log('action: fetchWriterStart');
 
     const writer = await getWriterDetail(dispatch)({ id });
-    const card = transformWriterToCard(writer);
     logger.log('action: fetchWriter');
 
     await Promise.all([
-      dispatch(updateWriterCard(card)),
       dispatch(updateWriter(writer)),
     ]);
 

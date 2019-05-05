@@ -5,7 +5,7 @@
  */
 
 import { handleActions } from 'redux-actions';
-import { updateBook, updateBookCard } from './actions';
+import { updateBookAction, updateBookCardAction } from './actions';
 
 const initialState = {
   book: null,
@@ -14,14 +14,14 @@ const initialState = {
 
 const reducer = new Map([
   [
-    updateBook,
+    updateBookAction,
     (state, action) => ({
       ...state,
       publication: action.payload || state.book,
     }),
   ],
   [
-    updateBookCard,
+    updateBookCardAction,
     (state, action) => ({
       ...state,
       card: action.payload || state.book,

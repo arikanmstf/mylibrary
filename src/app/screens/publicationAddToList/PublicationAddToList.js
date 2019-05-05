@@ -34,28 +34,12 @@ class PublicationAddToList extends PureComponent<PublicationAddToListProps> {
   componentDidMount() {
     const {
       fetchPublication,
+      resetRows,
       match,
-      publication,
     } = this.props;
 
-    if (!publication) {
-      fetchPublication(match.params.id);
-    }
-  }
-
-  static getDerivedStateFromProps(props: PublicationAddToListProps) {
-    const {
-      fetchPublication,
-      match,
-      publication,
-    } = props;
-    const { id } = match.params;
-
-    if (!publication || (publication && publication.id !== id)) {
-      fetchPublication(id);
-    }
-
-    return null;
+    fetchPublication(match.params.id);
+    resetRows();
   }
 
   render() {

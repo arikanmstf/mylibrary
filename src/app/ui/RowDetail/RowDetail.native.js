@@ -71,7 +71,6 @@ class RowDetail extends PureComponent<RowDetailProps> {
     const { row, compareRows, handleSubmit } = this.props;
     const isSelected = compareRows.some(RowDetail.hasRowId(row.id));
     logger.log('render: RowDetail');
-    console.log({ isSelected });
 
     return (
       <ListItem

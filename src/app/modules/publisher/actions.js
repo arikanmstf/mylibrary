@@ -14,12 +14,20 @@ import { showLoader, hideLoader } from 'ui/ModalLoader/actions';
 
 import type { Dispatch } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
+import type { PublisherDetail } from 'helpers/api/types';
 
 import { transformPublisherToCard } from './transformers';
 import { getPublisherDetail } from './services';
 
-export const updatePublisher = createAction(PUBLISHER_UPDATE_PUBLISHER);
-export const updatePublisherCard = createAction(PUBLISHER_UPDATE_CARD);
+export const updatePublisherAction = createAction(PUBLISHER_UPDATE_PUBLISHER);
+export const updatePublisherCardAction = createAction(PUBLISHER_UPDATE_CARD);
+
+export const updatePublisher = (publisher: PublisherDetail): ThunkAction => {
+  return (dispatch: Dispatch<*>) => {
+    dispatch(updatePublisherAction(publisher));
+    dispatch(updatePublisherCardAction(transformPublisherToCard(publisher)));
+  };
+};
 
 export const fetchPublisher = (id: number): ThunkAction => {
   return async (dispatch: Dispatch<*>) => {
@@ -28,11 +36,9 @@ export const fetchPublisher = (id: number): ThunkAction => {
     logger.log('action: fetchPublisherStart');
 
     const publisher = await getPublisherDetail(dispatch)({ id });
-    const card = transformPublisherToCard(publisher);
     logger.log('action: fetchPublisher');
 
     await Promise.all([
-      dispatch(updatePublisherCard(card)),
       dispatch(updatePublisher(publisher)),
     ]);
 
