@@ -1,5 +1,5 @@
 // @flow
-import { showDrawer, hideDrawer, toggleDrawer } from 'ui/Screen/actions';
+import { toggleDrawer } from 'ui/Screen/actions';
 import { fetchAndUpdateCards, updateSearchQuery } from 'modules/card/actions';
 import logger from 'helpers/logger';
 import fields from 'constants/forms/search';
