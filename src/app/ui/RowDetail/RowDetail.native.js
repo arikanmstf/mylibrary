@@ -15,6 +15,7 @@ import {
 import logger from 'helpers/logger';
 import { Text, TextField, Icon } from 'ui/native';
 import fields from 'constants/forms/addToList';
+import { ICON_PLUS, ICON_CHECK } from 'constants/theme/icons';
 
 import type { Item } from 'helpers/api/types';
 import type { RowDetailProps } from './types';
@@ -70,6 +71,7 @@ class RowDetail extends PureComponent<RowDetailProps> {
     const { row, compareRows, handleSubmit } = this.props;
     const isSelected = compareRows.some(RowDetail.hasRowId(row.id));
     logger.log('render: RowDetail');
+    console.log({ isSelected });
 
     return (
       <ListItem
@@ -88,8 +90,8 @@ class RowDetail extends PureComponent<RowDetailProps> {
         </Body>
         <Right>
           <Icon
-            name={isSelected ? 'checkmark' : 'add'}
-            style={{ fontSize: 30 }}
+            name={isSelected ? ICON_CHECK : ICON_PLUS}
+            active={isSelected}
             onPress={handleSubmit}
           />
         </Right>

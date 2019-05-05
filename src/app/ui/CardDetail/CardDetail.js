@@ -7,17 +7,15 @@
 // @flow
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
+import { Icon } from 'ui';
+
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import StarIcon from '@material-ui/icons/Star';
-import BookIcon from '@material-ui/icons/Book';
-import AddIcon from '@material-ui/icons/Add';
-import DownloadIcon from '@material-ui/icons/CloudDownload';
-import MoreIcon from '@material-ui/icons/MoreVert';
+
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import List from '@material-ui/core/List';
@@ -28,7 +26,14 @@ import Collapse from '@material-ui/core/Collapse';
 
 import IconButton from '@material-ui/core/IconButton';
 
-import { green500, lime100 } from 'constants/theme/color';
+import { lime100 } from 'constants/theme/color';
+import {
+  ICON_BOOK,
+  ICON_FAVORITE,
+  ICON_PLUS,
+  ICON_DOWNLOAD,
+  ICON_MORE,
+} from 'constants/theme/icons';
 import { publicationDetailUrl, bookDetailUrl } from 'constants/routes/createUrl';
 import { CARD_TYPE_PUBLICATION, SUB_ITEM_TYPE_BOOK, SUB_ITEM_TYPE_PUBLICATION } from 'modules/card/constants';
 import t from 'helpers/i18n/Translate';
@@ -38,8 +43,6 @@ import type { Item } from 'helpers/api/types';
 
 import { setCardType, defaultProps } from './helpers';
 import type { CardDetailProps, CardDetailState, Option } from './types';
-
-const styleActive = { color: green500 };
 
 export class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
   static defaultProps = defaultProps;
@@ -243,7 +246,7 @@ export class CardDetail extends PureComponent<CardDetailProps, CardDetailState> 
         <IconButton
           onClick={this.handleRenderMoreClick}
         >
-          <MoreIcon />
+          <Icon name={ICON_MORE} />
         </IconButton>
         <Menu
           id="header-more-menu"
@@ -298,7 +301,7 @@ export class CardDetail extends PureComponent<CardDetailProps, CardDetailState> 
               aria-label={t.get('CARD_ADD_TO_FAVORITES')}
               onClick={() => { this.toggleFavorite(card.id); }}
             >
-              <StarIcon style={card.isFavorite ? styleActive : null} />
+              <Icon name={ICON_FAVORITE} active={card.isFavorite} />
             </IconButton>
           ) : null }
           { card.isRead !== undefined ? (
@@ -306,14 +309,14 @@ export class CardDetail extends PureComponent<CardDetailProps, CardDetailState> 
               aria-label={t.get('CARD_ADD_TO_BOOKS_I_READ')}
               onClick={() => { this.toggleRead(card.id); }}
             >
-              <BookIcon style={card.isRead ? styleActive : null} />
+              <Icon name={ICON_BOOK} active={card.isRead} />
             </IconButton>
           ) : null }
           { this.addToListUrl ? (
             <IconButton
               onClick={this.goToAddToList}
             >
-              <AddIcon />
+              <Icon name={ICON_PLUS} />
             </IconButton>
           ) : null }
           { card.downloadUrl ? (
@@ -321,7 +324,7 @@ export class CardDetail extends PureComponent<CardDetailProps, CardDetailState> 
               onClick={this.goToDownload}
               style={{ marginLeft: 'auto' }}
             >
-              <DownloadIcon />
+              <Icon name={ICON_DOWNLOAD} />
             </IconButton>
           ) : null }
         </CardActions>

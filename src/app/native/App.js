@@ -25,7 +25,7 @@ class App extends Component {
 
   async componentWillMount() {
     await Font.loadAsync({
-      Ionicons: require('native-base/Fonts/Ionicons.ttf'), // eslint-disable-line
+      'simple-line-icons': require('native-base/Fonts/SimpleLineIcons.ttf'), // eslint-disable-line
     });
     this.setState({ loading: false });
   }

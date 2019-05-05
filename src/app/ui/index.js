@@ -21,3 +21,4 @@ export { default as Link } from './Link';
 export { default as SideNavigation } from './SideNavigation';
 export { default as Modal } from './Modal';
 export { default as ModalError } from './ModalError';
+export { default as Icon } from './Icon';

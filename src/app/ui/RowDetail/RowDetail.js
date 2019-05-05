@@ -9,10 +9,9 @@ import React, { PureComponent } from 'react';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import IconButton from '@material-ui/core/IconButton';
-import CheckIcon from '@material-ui/icons/Check';
-import AddIcon from '@material-ui/icons/Add';
-import { TextField } from 'ui';
+import { TextField, Icon } from 'ui';
 import fields from 'constants/forms/addToList';
+import { ICON_PLUS, ICON_CHECK } from 'constants/theme/icons';
 
 import type { Item } from 'helpers/api/types';
 import type { RowDetailProps } from './types';
@@ -84,7 +83,11 @@ class RowDetail extends PureComponent<RowDetailProps> {
         <IconButton
           onClick={handleSubmit}
         >
-          {isSelected ? <CheckIcon color="primary" /> : <AddIcon />}
+          <Icon
+            name={isSelected ? ICON_CHECK : ICON_PLUS}
+            active={isSelected}
+            style={{ fontSize: 30 }}
+          />
         </IconButton>
       </ListItem>
     );

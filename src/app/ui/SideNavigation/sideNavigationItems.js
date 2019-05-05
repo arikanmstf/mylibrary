@@ -5,6 +5,9 @@ import {
   LOGOUT,
 } from 'constants/routes/routeNames';
 import { BOOKS_I_READ, MY_FAVORITES } from 'modules/publication/constants';
+import {
+  ICON_BOOK, ICON_FAVORITE, ICON_LOGOUT, ICON_SETTINGS,
+} from 'constants/theme/icons';
 
 import type { SideNavigationProps } from './types';
 
@@ -12,12 +15,12 @@ export default [
   {
     to: PROFILE,
     label: 'HEADER_MENU_PROFILE',
-    icon: 'settings',
+    icon: ICON_SETTINGS,
   },
   {
     to: HOME,
     label: 'HEADER_MENU_MY_FAVORITES',
-    icon: 'star',
+    icon: ICON_FAVORITE,
     listType: MY_FAVORITES,
     onPress: ({ updateListType }: SideNavigationProps) => {
       updateListType(MY_FAVORITES);
@@ -26,7 +29,7 @@ export default [
   {
     to: HOME,
     label: 'HEADER_MENU_BOOKS_I_READ',
-    icon: 'book',
+    icon: ICON_BOOK,
     listType: BOOKS_I_READ,
     onPress: ({ updateListType }: SideNavigationProps) => {
       updateListType(BOOKS_I_READ);
@@ -35,6 +38,6 @@ export default [
   {
     to: LOGOUT,
     label: 'HEADER_MENU_LOGOUT',
-    icon: 'log-out',
+    icon: ICON_LOGOUT,
   },
 ];

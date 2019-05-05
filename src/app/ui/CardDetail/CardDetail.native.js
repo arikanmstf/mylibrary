@@ -31,6 +31,16 @@ import { production, publicationDetailUrl, bookDetailUrl } from 'constants/route
 import logger from 'helpers/logger';
 import { CARD_TYPE_PUBLICATION, SUB_ITEM_TYPE_BOOK, SUB_ITEM_TYPE_PUBLICATION } from 'modules/card/constants';
 import t from 'helpers/i18n/Translate';
+import {
+  ICON_BOOK,
+  ICON_SHARE,
+  ICON_FAVORITE,
+  ICON_PLUS,
+  ICON_DOWNLOAD,
+  ICON_MORE,
+  WIDTH_OF_CARD_ICON,
+  CardMoreIconDefaultStyle,
+} from 'constants/theme/icons';
 
 import { setCardType, defaultProps } from './helpers';
 import type { CardDetailProps, Option } from './types';
@@ -271,9 +281,9 @@ export class CardDetail extends PureComponent<CardDetailProps> {
               { card && this.moreOptions.length > 1 ? (
                 <TouchableOpacity
                   onPress={this.handleRenderMoreClick}
-                  style={{ width: 40, flexShrink: 1, alignItems: 'flex-end' }}
+                  style={{ width: WIDTH_OF_CARD_ICON, flexShrink: 1, alignItems: 'flex-end' }}
                 >
-                  <Icon name="more" active />
+                  <Icon name={ICON_MORE} style={CardMoreIconDefaultStyle} />
                 </TouchableOpacity>
               ) : null }
             </Right>
@@ -303,26 +313,26 @@ export class CardDetail extends PureComponent<CardDetailProps> {
             <Left>
               { card.isFavorite !== undefined ? (
                 <TouchableOpacity
-                  style={{ width: 40 }}
+                  style={{ width: WIDTH_OF_CARD_ICON }}
                   onPress={() => { this.toggleFavorite(card.id); }}
                 >
-                  <Icon name="star" active={card.isFavorite} style={{ fontSize: 30 }} />
+                  <Icon name={ICON_FAVORITE} active={card.isFavorite} />
                 </TouchableOpacity>
               ) : null }
               { card.isRead !== undefined ? (
                 <TouchableOpacity
-                  style={{ width: 40, marginTop: 3 }}
+                  style={{ width: WIDTH_OF_CARD_ICON, marginTop: 4 }}
                   onPress={() => { this.toggleRead(card.id); }}
                 >
-                  <Icon name="book" active={card.isRead} style={{ fontSize: 30 }} />
+                  <Icon name={ICON_BOOK} active={card.isRead} />
                 </TouchableOpacity>
               ) : null }
               { this.addToListUrl ? (
                 <TouchableOpacity
-                  style={{ width: 40, marginTop: 3 }}
+                  style={{ width: WIDTH_OF_CARD_ICON, marginTop: 4 }}
                   onPress={goToAddToListDebounce}
                 >
-                  <Icon name="add" style={{ fontSize: 30 }} />
+                  <Icon name={ICON_PLUS} />
                 </TouchableOpacity>
               ) : null }
             </Left>
@@ -336,18 +346,18 @@ export class CardDetail extends PureComponent<CardDetailProps> {
             >
               { card.downloadUrl ? (
                 <TouchableOpacity
-                  style={{ width: 40 }}
+                  style={{ width: WIDTH_OF_CARD_ICON }}
                   onPress={goToDownloadDebounce}
                 >
-                  <Icon name="download" color="#000" style={{ fontSize: 30 }} />
+                  <Icon name={ICON_DOWNLOAD} />
                 </TouchableOpacity>
               ) : null }
               { this.getDetailUrl ? (
                 <TouchableOpacity
-                  style={{ width: 40, flexShrink: 1, alignItems: 'flex-end' }}
+                  style={{ width: WIDTH_OF_CARD_ICON, flexShrink: 1, alignItems: 'flex-end' }}
                   onPress={this.shareCard}
                 >
-                  <Icon name="share" color="#000" style={{ fontSize: 30 }} />
+                  <Icon name={ICON_SHARE} />
                 </TouchableOpacity>
               ) : null }
             </Right>

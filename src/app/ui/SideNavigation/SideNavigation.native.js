@@ -12,9 +12,10 @@ import {
 } from 'native-base';
 import { white } from 'constants/theme/color';
 import { Icon } from 'ui/native';
+import { SideNavigationIconDefaultStyle } from 'constants/theme/icons';
+
 import routes from './sideNavigationItems';
 import { mapDispatchToProps } from './actions';
-
 import type { SideNavigationProps, SideNavigationItem } from './types';
 
 class SideNavigation extends PureComponent<SideNavigationProps> {
@@ -40,7 +41,7 @@ class SideNavigation extends PureComponent<SideNavigationProps> {
         button
         onPress={() => { this.handleItemClick(route); }}
       >
-        <Icon name={route.icon} style={{ marginRight: 20 }} />
+        <Icon name={route.icon} style={SideNavigationIconDefaultStyle} />
         <Text>{t.get(route.label)}</Text>
       </ListItem>
     );

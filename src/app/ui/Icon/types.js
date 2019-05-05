@@ -7,5 +7,5 @@
 // @flow
 export type IconProps = {
   active: boolean,
-  style: Object,
+  style?: Object,
 };

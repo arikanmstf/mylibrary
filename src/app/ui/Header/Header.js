@@ -12,12 +12,12 @@ import { reduxForm } from 'redux-form/immutable';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from '@material-ui/core/Drawer';
 import { withStyles } from '@material-ui/core/styles';
 
 import logger from 'helpers/logger';
 import { white } from 'constants/theme/color';
+import { ICON_MENU } from 'constants/theme/icons';
 import Logo from 'assets/images/logo.png';
 import {
   Image,
@@ -25,6 +25,7 @@ import {
   Form,
   Text,
   SideNavigation,
+  Icon,
 } from 'ui';
 import t from 'helpers/i18n/Translate';
 import fields, { SEARCH_FORM_KEY } from 'constants/forms/search';
@@ -125,7 +126,7 @@ export class Header extends PureComponent<HeaderProps> {
             <IconButton
               onClick={this.toggleDrawer}
             >
-              <MenuIcon />
+              <Icon name={ICON_MENU} />
             </IconButton>
           </Toolbar>
         </Form>

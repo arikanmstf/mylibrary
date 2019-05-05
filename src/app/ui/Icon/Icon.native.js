@@ -6,14 +6,23 @@
 
 // @flow
 import React from 'react';
-import { Icon } from 'native-base';
+import Icon from 'react-native-vector-icons/dist/SimpleLineIcons';
 import platform from 'native-base-theme/variables/platform';
-
+import { DEFAULT_SIZE_OF_ICON } from 'constants/theme/icons';
 import type { Node } from 'react';
 import type { IconProps } from './types';
 
 const CustomIcon = ({ active, style, ...other }: IconProps): ?Node => {
-  return <Icon style={{ color: active ? platform.brandSuccess : platform.brandPrimary, ...style }} {...other} />;
+  return (
+    <Icon
+      style={{
+        color: active ? platform.brandSuccess : undefined,
+        fontSize: DEFAULT_SIZE_OF_ICON,
+        ...style,
+      }}
+      {...other}
+    />
+  );
 };
 
 export default CustomIcon;
