@@ -6,7 +6,6 @@
 
 // @flow
 import React, { PureComponent } from 'react';
-import debounce from 'lodash.debounce';
 import { Badge } from 'native-base';
 import { withNavigation } from 'react-navigation';
 import { connect } from 'react-redux';
@@ -16,29 +15,26 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import logger from 'helpers/logger';
-import { isCloseToBottom } from 'helpers/window';
 import {
-  CardDetail, CenterLoader, Text,
+  CardDetail, CenterLoader, Text, Div,
 } from 'ui/native';
 import t from 'helpers/i18n/Translate';
 import { grey300 } from 'constants/theme/color';
+import HeaderSearch from 'ui/Header/HeaderSearch';
 
-import type { SyntheticEvent } from 'react-native';
 import type { CardItem } from 'modules/card/types';
 import { mapStateToProps, mapDispatchToProps } from './actions';
 import type { CardListProps, RenderCardListItem } from './types';
 
 export class CardList extends PureComponent<CardListProps> {
-  handleScroll = ({ nativeEvent }: SyntheticEvent) => {
+  handleLoadMore = () => {
     const {
       addCards,
     } = this.props;
 
-    if (isCloseToBottom(nativeEvent)) {
-      if (addCards) {
-        addCards();
-        logger.log('addCards');
-      }
+    if (addCards) {
+      addCards();
+      logger.log('addCards');
     }
   };
 
@@ -71,31 +67,27 @@ export class CardList extends PureComponent<CardListProps> {
     };
   }
 
-  renderChips() {
+  renderListHeader() {
     const { type, updateListType } = this.props;
 
-    if (!type || type === '') {
-      return null;
-    }
-
     return (
-      <TouchableOpacity
-        onPress={() => { if (updateListType) { updateListType(null); } }}
-      >
-        <Badge style={{ backgroundColor: grey300 }}>
-          <Text>{t.get(`HEADER_MENU_${type}`)}</Text>
-        </Badge>
-      </TouchableOpacity>
+      <Div>
+        <HeaderSearch />
+        { type ? (
+          <TouchableOpacity
+            onPress={() => { if (updateListType) { updateListType(null); } }}
+          >
+            <Badge style={{ backgroundColor: grey300 }}>
+              <Text>{t.get(`HEADER_MENU_${type}`)}</Text>
+            </Badge>
+          </TouchableOpacity>
+        ) : null }
+      </Div>
     );
   }
 
   render() {
     const { cards } = this.props;
-    const handleScrollDebounce = ({ nativeEvent }) => {
-      debounce(this.handleScroll, 800, {
-        leading: true,
-      })({ nativeEvent });
-    };
 
     logger.log('render: CardList');
 
@@ -104,11 +96,12 @@ export class CardList extends PureComponent<CardListProps> {
         data={cards}
         extraData={this.props}
         renderItem={this.renderCardList()}
-        onScrollEndDrag={handleScrollDebounce}
         refreshControl={<RefreshControl refreshing={false} onRefresh={this.handleRefresh} />}
         keyExtractor={this.keyExtractor}
         ListFooterComponent={CenterLoader}
-        ListHeaderComponent={this.renderChips()}
+        ListHeaderComponent={this.renderListHeader()}
+        onEndReachedThreshold={0.5}
+        onEndReached={this.handleLoadMore}
       />
     );
   }

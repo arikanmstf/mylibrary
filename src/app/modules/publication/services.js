@@ -11,7 +11,7 @@ import Api, {
 import type { Pagination } from 'ui/CardList/types';
 import type { CardItem } from 'modules/card/types';
 import type { PublicationDetail } from 'helpers/api/types';
-import type { SubmitSearchFormRequest } from 'ui/Header/types';
+import type { SubmitSearchFormRequest } from 'ui/Header/HeaderSearch/types';
 import type { Dispatch } from 'redux';
 
 import { transformPublicationListToCardList } from './transformers';

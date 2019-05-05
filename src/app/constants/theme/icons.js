@@ -15,6 +15,6 @@ export const ICON_USER = 'user';
 export const WIDTH_OF_CARD_ICON = 36;
 export const DEFAULT_SIZE_OF_ICON = 23;
 
-export const SideNavigationIconDefaultStyle = { marginRight: 20 };
-export const HeaderIconDefaultStyle = { fontSize: 18 };
-export const CardMoreIconDefaultStyle = { fontSize: 16 };
+export const sideNavigationIconDefaultStyle = { marginRight: 20 };
+export const headerIconDefaultStyle = { fontSize: 18 };
+export const cardMoreIconDefaultStyle = { fontSize: 16 };

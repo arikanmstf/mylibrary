@@ -47,7 +47,7 @@ class Home extends PureComponent<HomeProps, HomeState> {
 
     return (
       <Screen>
-        <Header />
+        <Header home title="MyLibrary" />
         <Page id="homePage">
           <CardList
             toggleRead={toggleRead}

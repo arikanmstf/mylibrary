@@ -8,7 +8,6 @@
 import React, { PureComponent } from 'react';
 import debounce from 'lodash.debounce';
 import { connect } from 'react-redux';
-import { reduxForm } from 'redux-form/immutable';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -28,11 +27,10 @@ import {
   Icon,
 } from 'ui';
 import t from 'helpers/i18n/Translate';
-import fields, { SEARCH_FORM_KEY } from 'constants/forms/search';
+import fields from 'constants/forms/search';
 import { HOME } from 'constants/routes/routeNames';
-import { mapStateToProps, mapDispatchToProps, submitSearchForm } from './actions';
+import { mapStateToProps, mapDispatchToProps } from './actions';
 
-import { SEARCH_SUBMIT_TIMEOUT } from './types';
 import type { HeaderProps } from './types';
 
 const styles = {
@@ -64,18 +62,6 @@ const styles = {
 };
 
 export class Header extends PureComponent<HeaderProps> {
-  constructor(props) {
-    super(props);
-
-    this.debounced = debounce(() => {
-      const { handleSubmit } = props;
-      handleSubmit(submitSearchForm)();
-    }, SEARCH_SUBMIT_TIMEOUT, {
-      leading: false,
-      trailing: true,
-    });
-  }
-
   componentDidMount() {
     const { initialValues, initialize } = this.props;
     initialize(initialValues);
@@ -98,6 +84,7 @@ export class Header extends PureComponent<HeaderProps> {
       isDrawerOpen,
       handleSubmit,
       title,
+      home,
     } = this.props;
 
     return (
@@ -110,7 +97,7 @@ export class Header extends PureComponent<HeaderProps> {
               alt="mylibrary logo"
               to={HOME}
             />
-            { title ? (<Text className={classes && classes.flex}>{title}</Text>) : (
+            { !home ? (<Text className={classes && classes.flex}>{title}</Text>) : (
               <TextField
                 name={fields.SEARCH}
                 type="search"
@@ -139,9 +126,4 @@ export class Header extends PureComponent<HeaderProps> {
   }
 }
 
-export default reduxForm({
-  form: SEARCH_FORM_KEY,
-  onSubmit: submitSearchForm,
-})(
-  connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Header))
-);
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Header));

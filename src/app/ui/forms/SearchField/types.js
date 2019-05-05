@@ -5,9 +5,8 @@
  */
 
 // @flow
-export type TextFieldProps = {
-  label?: string,
+export type SearchFieldProps = {
+  placeholder?: string,
   name: string,
   type?: string,
-  style?: Object,
 };

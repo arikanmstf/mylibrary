@@ -11280,6 +11280,18 @@ react-native-scripts@1.14.0:
     rimraf "^2.6.1"
     xdl "48.1.4"
 
+react-native-search-bar@^3.4.2:
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/react-native-search-bar/-/react-native-search-bar-3.4.2.tgz#8606bb1d6b29a26dd5ee86cfae00f7253181736d"
+  dependencies:
+    prop-types "^15.5.10"
+
+react-native-search-box@0.0.19:
+  version "0.0.19"
+  resolved "https://registry.yarnpkg.com/react-native-search-box/-/react-native-search-box-0.0.19.tgz#19a7baef309341a507bee89802df90218d4cc0a4"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-storage@0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/react-native-storage/-/react-native-storage-0.2.2.tgz#4449197f122b2da0650e3704e1f050260ed58d9f"

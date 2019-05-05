@@ -39,7 +39,7 @@ import {
   ICON_DOWNLOAD,
   ICON_MORE,
   WIDTH_OF_CARD_ICON,
-  CardMoreIconDefaultStyle,
+  cardMoreIconDefaultStyle,
 } from 'constants/theme/icons';
 
 import { setCardType, defaultProps } from './helpers';
@@ -283,7 +283,7 @@ export class CardDetail extends PureComponent<CardDetailProps> {
                   onPress={this.handleRenderMoreClick}
                   style={{ width: WIDTH_OF_CARD_ICON, flexShrink: 1, alignItems: 'flex-end' }}
                 >
-                  <Icon name={ICON_MORE} style={CardMoreIconDefaultStyle} />
+                  <Icon name={ICON_MORE} style={cardMoreIconDefaultStyle} />
                 </TouchableOpacity>
               ) : null }
             </Right>

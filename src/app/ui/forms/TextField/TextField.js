@@ -10,7 +10,9 @@ import WebTextField from '@material-ui/core/TextField';
 import { Field } from 'redux-form/immutable';
 
 import type { Node } from 'react';
-import type { TextFieldProps, ReduxFieldProps } from './types';
+import type { TextFieldProps } from './types';
+import type { ReduxFieldProps } from '../types';
+
 import defaultStyle from './style.json';
 
 const renderTextField = ({

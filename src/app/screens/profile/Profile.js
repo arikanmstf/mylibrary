@@ -7,6 +7,8 @@
 // @flow
 import React, { PureComponent } from 'react';
 import logger from 'helpers/logger';
+import t from 'helpers/i18n/Translate';
+
 import type { ProfileProps } from './ProfileTypes';
 
 // eslint-disable-next-line react/prefer-stateless-function
@@ -23,7 +25,7 @@ class Profile extends PureComponent<ProfileProps> {
 
     return (
       <Screen>
-        <Header />
+        <Header title={t.get('PROFILE_HEADER')} />
         <Page>
           <CardDetail
             card={card}

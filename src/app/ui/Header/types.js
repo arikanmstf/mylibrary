@@ -23,17 +23,6 @@ export type HeaderProps = {
   toggleDrawer?: Function,
   handleSubmit?: Function,
   history?: RouterHistory,
+  home?: ?boolean,
   navigation?: StackNavigator,
 };
-
-export type HeaderState = {
-  isSearchFocus: boolean,
-}
-
-export type SubmitSearchFormRequest = {
-  page?: number,
-  search?: string,
-  type?: 'BOOKS_I_READ' | 'MY_FAVORITES' | '',
-};
-
-export const SEARCH_SUBMIT_TIMEOUT = 500;
