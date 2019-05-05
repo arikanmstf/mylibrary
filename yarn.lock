@@ -2641,16 +2641,7 @@ babel-jest@^23.6.0:
     babel-plugin-istanbul "^4.1.6"
     babel-preset-jest "^23.2.0"
 
-babel-loader@8.0.4:
-  version "8.0.4"
-  resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-8.0.4.tgz#7bbf20cbe4560629e2e41534147692d3fecbdce6"
-  dependencies:
-    find-cache-dir "^1.0.0"
-    loader-utils "^1.0.2"
-    mkdirp "^0.5.1"
-    util.promisify "^1.0.0"
-
-babel-loader@^8.0.5:
+babel-loader@^8.0.4, babel-loader@^8.0.5:
   version "8.0.5"
   resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-8.0.5.tgz#225322d7509c2157655840bba52e46b6c2f2fe33"
   dependencies:
@@ -4974,9 +4965,9 @@ eslint-import-resolver-node@^0.3.1:
     debug "^2.6.9"
     resolve "^1.5.0"
 
-eslint-loader@2.0.0:
-  version "2.0.0"
-  resolved "http://registry.npmjs.org/eslint-loader/-/eslint-loader-2.0.0.tgz#d136619b5c684e36531ffc28c60a56e404608f5d"
+eslint-loader@^2.0.0:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/eslint-loader/-/eslint-loader-2.1.2.tgz#453542a1230d6ffac90e4e7cb9cadba9d851be68"
   dependencies:
     loader-fs-cache "^1.0.0"
     loader-utils "^1.0.2"
@@ -5849,9 +5840,9 @@ file-entry-cache@^2.0.0:
     flat-cache "^1.2.1"
     object-assign "^4.0.1"
 
-file-loader@1.1.11:
+file-loader@^1.1.11:
   version "1.1.11"
-  resolved "http://registry.npmjs.org/file-loader/-/file-loader-1.1.11.tgz#6fe886449b0f2a936e43cabaac0cdbfb369506f8"
+  resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-1.1.11.tgz#6fe886449b0f2a936e43cabaac0cdbfb369506f8"
   dependencies:
     loader-utils "^1.0.2"
     schema-utils "^0.4.5"
@@ -11215,6 +11206,12 @@ react-native-gesture-handler@1.0.9:
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
+react-native-image-header-scroll-view@^0.10.2:
+  version "0.10.2"
+  resolved "https://registry.yarnpkg.com/react-native-image-header-scroll-view/-/react-native-image-header-scroll-view-0.10.2.tgz#a53ea9479c43c30af9dd6605b18f8d3e1991a2df"
+  dependencies:
+    prop-types "^15.6.0"
+
 react-native-iphone-x-helper@^1.0.3:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.2.0.tgz#9f8a376eb00bc712115abff4420318a0063fa796"
@@ -11279,12 +11276,6 @@ react-native-scripts@1.14.0:
     qrcode-terminal "^0.11.0"
     rimraf "^2.6.1"
     xdl "48.1.4"
-
-react-native-search-bar@^3.4.2:
-  version "3.4.2"
-  resolved "https://registry.yarnpkg.com/react-native-search-bar/-/react-native-search-bar-3.4.2.tgz#8606bb1d6b29a26dd5ee86cfae00f7253181736d"
-  dependencies:
-    prop-types "^15.5.10"
 
 react-native-search-box@0.0.19:
   version "0.0.19"
@@ -13787,11 +13778,14 @@ webpack-cli@3.0.8:
     v8-compile-cache "^2.0.0"
     yargs "^11.1.0"
 
-webpack-config-arikanmstf@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/webpack-config-arikanmstf/-/webpack-config-arikanmstf-1.0.2.tgz#b5a59fa8546d7e8c2dabda7865ddcc980b8c7c1b"
+webpack-config-arikanmstf@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/webpack-config-arikanmstf/-/webpack-config-arikanmstf-1.0.3.tgz#087915d2779372b9e9a16f135c92a05192bf3e18"
   dependencies:
+    babel-loader "^8.0.4"
     copy-webpack-plugin "4.5.2"
+    eslint-loader "^2.0.0"
+    file-loader "^1.1.11"
     html-webpack-plugin "3.2.0"
     path "^0.12.7"
 

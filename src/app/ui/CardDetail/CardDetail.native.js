@@ -8,6 +8,8 @@
 import React, { PureComponent } from 'react';
 import debounce from 'lodash.debounce';
 import { withNavigation } from 'react-navigation';
+import HeaderImageScrollView from 'react-native-image-header-scroll-view';
+
 import {
   Share,
   TouchableWithoutFeedback,
@@ -259,11 +261,16 @@ export class CardDetail extends PureComponent<CardDetailProps> {
     const goToDetailDebounce = debounce(this.goToDetail, 800, { leading: true, trailing: false });
     const goToAddToListDebounce = debounce(this.goToAddToList, 800, { leading: true, trailing: false });
     const goToDownloadDebounce = debounce(this.goToDownload, 800, { leading: true, trailing: false });
+    const ContainerView = isDetailed ? HeaderImageScrollView : ScrollView;
 
     logger.log('render: CardDetail');
 
     return (
-      <ScrollView>
+      <ContainerView
+        maxHeight={isDetailed ? 400 : undefined}
+        minHeight={isDetailed ? 60 : undefined}
+        headerImage={{ uri: this.imageUri }}
+      >
         <Card>
           <CardItem>
             <Body>
@@ -288,7 +295,7 @@ export class CardDetail extends PureComponent<CardDetailProps> {
               ) : null }
             </Right>
           </CardItem>
-          { this.imageUri ? (
+          { this.imageUri && !isDetailed ? (
             <TouchableWithoutFeedback
               onPress={goToDetailDebounce}
             >
@@ -369,7 +376,7 @@ export class CardDetail extends PureComponent<CardDetailProps> {
             {this.renderList()}
           </List>
         </Card>
-      </ScrollView>
+      </ContainerView>
     );
   }
 }

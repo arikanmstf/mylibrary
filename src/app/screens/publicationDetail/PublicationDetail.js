@@ -9,6 +9,7 @@ import React, { PureComponent } from 'react';
 import logger from 'helpers/logger';
 import { CARD_TYPE_PUBLICATION } from 'modules/card/constants';
 
+import defaultStyle from './style';
 import type { PublicationDetailProps } from './PublicationDetailTypes';
 
 class PublicationDetail extends PureComponent<PublicationDetailProps> {
@@ -71,7 +72,7 @@ class PublicationDetail extends PureComponent<PublicationDetailProps> {
     return (
       <Screen>
         <Header />
-        <Page>
+        <Page style={defaultStyle}>
           <CardDetail
             card={card}
             toggleFavorite={toggleFavorite}
