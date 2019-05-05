@@ -40,7 +40,7 @@ export class Screen extends PureComponent<ScreenProps> {
         side="right"
         open={isDrawerOpen}
         onClose={this.hideDrawer}
-        type="overlay"
+        type="displace"
       >
         <ScrollView
           contentContainerStyle={mergedStyles.container}

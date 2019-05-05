@@ -20,6 +20,7 @@ export type HeaderProps = {
   isDrawerOpen?: ?boolean,
   showDrawer?: Function,
   hideDrawer?: Function,
+  toggleDrawer?: Function,
   handleSubmit?: Function,
   history?: RouterHistory,
   navigation?: StackNavigator,

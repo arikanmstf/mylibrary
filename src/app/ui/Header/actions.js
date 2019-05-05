@@ -1,5 +1,5 @@
 // @flow
-import { showDrawer, hideDrawer } from 'ui/Screen/actions';
+import { showDrawer, hideDrawer, toggleDrawer } from 'ui/Screen/actions';
 import { fetchAndUpdateCards, updateSearchQuery } from 'modules/card/actions';
 import logger from 'helpers/logger';
 import fields from 'constants/forms/search';
@@ -10,8 +10,7 @@ import type { ImmutableState } from 'store/StateTypes';
 import type { SubmitSearchFormRequest } from './types';
 
 export const mapDispatchToProps = {
-  showDrawer,
-  hideDrawer,
+  toggleDrawer,
 };
 
 export const submitSearchForm = async (form: Immutable<SubmitSearchFormRequest>, dispatch: Dispatch<*>) => {

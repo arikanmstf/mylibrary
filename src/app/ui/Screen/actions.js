@@ -10,12 +10,26 @@ import type { ThunkAction } from 'redux-thunk';
 export const showDrawer = createAction(SCREEN_SHOW_DRAWER);
 export const hideDrawer = createAction(SCREEN_HIDE_DRAWER);
 
+export const toggleDrawer = (): ThunkAction => {
+  return async (dispatch: Dispatch<*>, getState: Function) => {
+    const state: ImmutableState = getState();
+    const { isDrawerOpen } = state.toJS().screen;
+
+    if (isDrawerOpen) {
+      dispatch(hideDrawer());
+    } else {
+      dispatch(showDrawer());
+    }
+  };
+};
+
 export const hideDrawerAsync = (): ThunkAction => {
   return async (dispatch: Dispatch<*>) => {
     dispatch(hideDrawer());
     await sleep(250);
   };
 };
+
 export const mapStateToProps = (state: ImmutableState) => ({
   isDrawerOpen: state.toJS().screen.isDrawerOpen,
 });

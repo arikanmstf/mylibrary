@@ -84,15 +84,11 @@ export class Header extends PureComponent<HeaderProps> {
   toggleDrawer = () => {
     logger.log('toggleDrawer');
     const {
-      isDrawerOpen,
-      hideDrawer,
-      showDrawer,
+      toggleDrawer,
     } = this.props;
 
-    if (isDrawerOpen) {
-      if (hideDrawer) hideDrawer();
-    } else if (showDrawer) {
-      showDrawer();
+    if (toggleDrawer) {
+      toggleDrawer();
     }
   };
 

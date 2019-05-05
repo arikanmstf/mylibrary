@@ -16,7 +16,6 @@ import {
   Item,
   Body,
   Left,
-  Right,
   Title,
 } from 'native-base';
 import { TextField, Icon } from 'ui/native';
@@ -24,9 +23,10 @@ import t from 'helpers/i18n/Translate';
 import logger from 'helpers/logger';
 import fields, { SEARCH_FORM_KEY } from 'constants/forms/search';
 import {
-  ICON_MENU, ICON_BACK, ICON_SEARCH, HeaderIconDefaultStyle
+  ICON_BACK, ICON_SEARCH, HeaderIconDefaultStyle,
 } from 'constants/theme/icons';
 
+import HeaderMenu from './HeaderMenu';
 import { mapDispatchToProps, submitSearchForm } from './actions';
 import { SEARCH_SUBMIT_TIMEOUT } from './types';
 
@@ -41,14 +41,6 @@ export class Header extends PureComponent<HeaderProps, HeaderState> {
     const { initialValues, initialize } = this.props;
     initialize(initialValues);
   }
-
-  handleMenuButtonPress = () => {
-    const { showDrawer } = this.props;
-    if (showDrawer) {
-      logger.log('showDrawer');
-      showDrawer();
-    }
-  };
 
   handleBackButtonPress = () => {
     const { navigation } = this.props;
@@ -80,19 +72,6 @@ export class Header extends PureComponent<HeaderProps, HeaderState> {
       isSearchFocus: false,
     });
   };
-
-  renderMenu() {
-    return (
-      <Right>
-        <TouchableOpacity
-          onPress={this.handleMenuButtonPress}
-          style={{ width: 70, flex: 1, alignItems: 'flex-end' }}
-        >
-          <Icon name={ICON_MENU} style={HeaderIconDefaultStyle}/>
-        </TouchableOpacity>
-      </Right>
-    );
-  }
 
   renderBackButton() {
     const { isSearchFocus } = this.state;
@@ -131,7 +110,7 @@ export class Header extends PureComponent<HeaderProps, HeaderState> {
       <HeaderNative searchBar rounded>
         {this.renderBackButton()}
         {this.renderCenter()}
-        {this.renderMenu()}
+        <HeaderMenu />
       </HeaderNative>
     );
   }
