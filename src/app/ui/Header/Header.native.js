@@ -22,7 +22,6 @@ import {
 } from 'constants/theme/icons';
 
 import HeaderMenu from './HeaderMenu';
-import HeaderSearch from './HeaderSearch';
 import { mapDispatchToProps } from './actions';
 
 import type { HeaderProps, HeaderState } from './types';

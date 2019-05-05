@@ -6,7 +6,6 @@
 
 // @flow
 import React, { PureComponent } from 'react';
-import debounce from 'lodash.debounce';
 import { connect } from 'react-redux';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -18,16 +17,13 @@ import logger from 'helpers/logger';
 import { white } from 'constants/theme/color';
 import { ICON_MENU } from 'constants/theme/icons';
 import Logo from 'assets/images/logo.png';
+import HeaderSearch from 'ui/Header/HeaderSearch';
 import {
   Image,
-  TextField,
-  Form,
   Text,
   SideNavigation,
   Icon,
 } from 'ui';
-import t from 'helpers/i18n/Translate';
-import fields from 'constants/forms/search';
 import { HOME } from 'constants/routes/routeNames';
 import { mapStateToProps, mapDispatchToProps } from './actions';
 
@@ -39,10 +35,6 @@ const styles = {
   },
   list: {
     width: '250px',
-  },
-  search: {
-    paddingTop: '14px',
-    margin: '0 20px',
   },
   flex: {
     flexGrow: 1,
@@ -62,11 +54,6 @@ const styles = {
 };
 
 export class Header extends PureComponent<HeaderProps> {
-  componentDidMount() {
-    const { initialValues, initialize } = this.props;
-    initialize(initialValues);
-  }
-
   toggleDrawer = () => {
     logger.log('toggleDrawer');
     const {
@@ -82,37 +69,28 @@ export class Header extends PureComponent<HeaderProps> {
     const {
       classes,
       isDrawerOpen,
-      handleSubmit,
       title,
       home,
     } = this.props;
 
     return (
       <AppBar className={classes && classes.container}>
-        <Form onSubmit={handleSubmit}>
-          <Toolbar>
-            <Image
-              source={Logo}
-              className={classes && classes.image}
-              alt="mylibrary logo"
-              to={HOME}
-            />
-            { !home ? (<Text className={classes && classes.flex}>{title}</Text>) : (
-              <TextField
-                name={fields.SEARCH}
-                type="search"
-                className={classes && classes.search}
-                label={t.get('HEADER_SEARCH')}
-                onChange={this.debounced}
-              />
-            )}
-            <IconButton
-              onClick={this.toggleDrawer}
-            >
-              <Icon name={ICON_MENU} />
-            </IconButton>
-          </Toolbar>
-        </Form>
+        <Toolbar>
+          <Image
+            source={Logo}
+            className={classes && classes.image}
+            alt="mylibrary logo"
+            to={HOME}
+          />
+          { !home ? (<Text className={classes && classes.flex}>{title}</Text>) : (
+            <HeaderSearch />
+          )}
+          <IconButton
+            onClick={this.toggleDrawer}
+          >
+            <Icon name={ICON_MENU} />
+          </IconButton>
+        </Toolbar>
         <Drawer anchor="right" open={!!isDrawerOpen} onClose={this.toggleDrawer}>
           <div
             tabIndex={0}
