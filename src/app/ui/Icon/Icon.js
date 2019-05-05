@@ -33,6 +33,7 @@ import {
   ICON_SETTINGS,
   ICON_SHARE,
   ICON_SEARCH,
+  ICON_USER,
 } from 'constants/theme/icons';
 
 import type { Node } from 'react';
@@ -81,6 +82,9 @@ const CustomIcon = (props: IconProps): Node => {
       break;
     case ICON_CHECK:
       Icon = CheckIcon;
+      break;
+    case ICON_USER:
+      Icon = ProfileIcon;
       break;
     default:
       Icon = null;

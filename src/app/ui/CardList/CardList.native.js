@@ -6,20 +6,24 @@
 
 // @flow
 import React, { PureComponent } from 'react';
-import type { SyntheticEvent } from 'react-native';
 import debounce from 'lodash.debounce';
-import { Button, Icon } from 'native-base';
+import { Badge } from 'native-base';
 import { withNavigation } from 'react-navigation';
 import { connect } from 'react-redux';
 import {
   FlatList,
   RefreshControl,
+  TouchableOpacity,
 } from 'react-native';
 import logger from 'helpers/logger';
 import { isCloseToBottom } from 'helpers/window';
-import { CardDetail, CenterLoader, Text } from 'ui/native';
+import {
+  CardDetail, CenterLoader, Text,
+} from 'ui/native';
 import t from 'helpers/i18n/Translate';
+import { grey300 } from 'constants/theme/color';
 
+import type { SyntheticEvent } from 'react-native';
 import type { CardItem } from 'modules/card/types';
 import { mapStateToProps, mapDispatchToProps } from './actions';
 import type { CardListProps, RenderCardListItem } from './types';
@@ -75,14 +79,13 @@ export class CardList extends PureComponent<CardListProps> {
     }
 
     return (
-      <Button
-        iconRight
+      <TouchableOpacity
         onPress={() => { if (updateListType) { updateListType(null); } }}
-        light
       >
-        <Text>{t.get(`HEADER_MENU_${type}`)}</Text>
-        <Icon name="close" />
-      </Button>
+        <Badge style={{ backgroundColor: grey300 }}>
+          <Text>{t.get(`HEADER_MENU_${type}`)}</Text>
+        </Badge>
+      </TouchableOpacity>
     );
   }
 

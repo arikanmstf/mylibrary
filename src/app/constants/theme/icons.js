@@ -11,6 +11,7 @@ export const ICON_PLUS = 'plus';
 export const ICON_SETTINGS = 'settings';
 export const ICON_SHARE = 'share';
 export const ICON_SEARCH = 'magnifier';
+export const ICON_USER = 'user';
 export const WIDTH_OF_CARD_ICON = 36;
 export const DEFAULT_SIZE_OF_ICON = 23;
 
