@@ -1,6 +1,11 @@
 // @flow
 import { createAction } from 'redux-actions';
-import { PUBLICATION_UPDATE_PUBLICATION, PUBLICATION_UPDATE_CARD } from 'constants/actions/actionNames';
+import {
+  PUBLICATION_UPDATE_PUBLICATION,
+  PUBLICATION_UPDATE_CARD,
+  PUBLICATION_CLEAR_CARD,
+  PUBLICATION_CLEAR_PUBLICATION,
+} from 'constants/actions/actionNames';
 import { LOADER_CARD_DETAIL, LOADER_TOGGLE_LIST } from 'constants/actions/loaderNames';
 import logger from 'helpers/logger';
 import { showLoader, hideLoader } from 'ui/ModalLoader/actions';
@@ -24,6 +29,8 @@ const toggleTypes = {
 
 export const updatePublicationAction = createAction(PUBLICATION_UPDATE_PUBLICATION);
 export const updatePublicationCardAction = createAction(PUBLICATION_UPDATE_CARD);
+export const clearPublicationAction = createAction(PUBLICATION_CLEAR_PUBLICATION);
+export const clearPublicationCardAction = createAction(PUBLICATION_CLEAR_CARD);
 
 export const updatePublication = (publication: PublicationDetail): ThunkAction => {
   return (dispatch: Dispatch<*>) => {
@@ -32,18 +39,24 @@ export const updatePublication = (publication: PublicationDetail): ThunkAction =
   };
 };
 
+export const clearPublication = (): ThunkAction => {
+  return (dispatch: Dispatch<*>) => {
+    dispatch(clearPublicationAction(null));
+    dispatch(clearPublicationCardAction(null));
+  };
+};
+
 export const fetchPublication = (id: number): ThunkAction => {
   return async (dispatch: Dispatch<*>) => {
     dispatch(showLoader(LOADER_CARD_DETAIL));
 
     try {
+      dispatch(clearPublication());
       logger.log('action: fetchPublicationStart');
       const publication = await getPublicationDetail(dispatch)({ id });
       logger.log('action: fetchPublication');
 
-      await Promise.all([
-        dispatch(updatePublication(publication)),
-      ]);
+      await dispatch(updatePublication(publication));
 
       logger.log('action: fetchPublicationEnd');
     } finally {

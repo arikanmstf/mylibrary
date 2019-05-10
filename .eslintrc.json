@@ -19,7 +19,8 @@
         "json": "always",
         "ttf": "always",
         "png": "always",
-        "gif": "always"
+        "gif": "always",
+        "jpg": "always"
       }
     ],
     "no-multiple-empty-lines": [

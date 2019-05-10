@@ -5,4 +5,6 @@ export type ImageProps = {
   } | string,
   alt?: ?string,
   to?: string,
+  onLoad?: Function,
+  onError?: Function,
 };

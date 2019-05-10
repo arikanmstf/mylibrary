@@ -20,7 +20,7 @@ export type PublicationDetailProps = {
   Header: ComponentType<HeaderProps>,
   Page: ComponentType<PageProps>,
   fetchPublication: Function,
-  card: CardItem,
+  card?: CardItem,
   match: Match,
   toggleFavorite?: Function,
   toggleRead?: Function,

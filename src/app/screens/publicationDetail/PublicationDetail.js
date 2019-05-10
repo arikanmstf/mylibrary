@@ -69,6 +69,10 @@ class PublicationDetail extends PureComponent<PublicationDetailProps> {
     } = this.props;
     logger.log('render: PublicationDetail');
 
+    if (!card) {
+      return null;
+    }
+
     return (
       <Screen>
         <Header />

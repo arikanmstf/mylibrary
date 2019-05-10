@@ -77,6 +77,7 @@ fabric.properties
 # *.iml
 # modules.xml
 
+.idea/*
 .idea/misc.xml
 .idea/modules.xml
 .idea/template-app.iml

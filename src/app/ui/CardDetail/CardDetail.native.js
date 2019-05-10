@@ -43,6 +43,7 @@ import {
   WIDTH_OF_CARD_ICON,
   cardMoreIconDefaultStyle,
 } from 'constants/theme/icons';
+import ImageScrollHeader from './ImageScrollHeader';
 
 import { setCardType, defaultProps } from './helpers';
 import type { CardDetailProps, Option } from './types';
@@ -52,6 +53,7 @@ export class CardDetail extends PureComponent<CardDetailProps> {
 
   state = {
     openListId: null,
+    isHeaderImageHasError: false,
   };
 
   getDetailUrl: Function;
@@ -164,6 +166,12 @@ export class CardDetail extends PureComponent<CardDetailProps> {
     goTo(subItem.id);
   };
 
+  handleHeaderImageError = () => {
+    this.setState({
+      isHeaderImageHasError: true,
+    });
+  };
+
   handleListItemClick(id: number) {
     const { openListId } = this.state;
 
@@ -181,7 +189,7 @@ export class CardDetail extends PureComponent<CardDetailProps> {
 
   moreOptions: Array<Option>;
 
-  imageUri: string;
+  imageUri: ?string;
 
   addToListUrl: Function;
 
@@ -253,6 +261,7 @@ export class CardDetail extends PureComponent<CardDetailProps> {
 
   render() {
     const { card, isDetailed } = this.props;
+    const { isHeaderImageHasError } = this.state;
 
     if (!card) {
       return null;
@@ -261,15 +270,27 @@ export class CardDetail extends PureComponent<CardDetailProps> {
     const goToDetailDebounce = debounce(this.goToDetail, 800, { leading: true, trailing: false });
     const goToAddToListDebounce = debounce(this.goToAddToList, 800, { leading: true, trailing: false });
     const goToDownloadDebounce = debounce(this.goToDownload, 800, { leading: true, trailing: false });
-    const ContainerView = isDetailed ? HeaderImageScrollView : ScrollView;
+    const ContainerView = isDetailed && !isHeaderImageHasError && this.imageUri ? HeaderImageScrollView : ScrollView;
+    const containerViewProps = isDetailed && !isHeaderImageHasError && this.imageUri
+      ? {
+        maxHeight: isDetailed ? 400 : undefined,
+        minHeight: isDetailed ? 60 : undefined,
+      } : null;
 
     logger.log('render: CardDetail');
 
     return (
       <ContainerView
-        maxHeight={isDetailed ? 400 : undefined}
-        minHeight={isDetailed ? 60 : undefined}
-        headerImage={{ uri: this.imageUri }}
+        {...containerViewProps}
+        renderHeader={
+          () => (
+            <ImageScrollHeader
+              uri={this.imageUri}
+              maxHeight={400}
+              onError={this.handleHeaderImageError}
+            />
+          )
+        }
       >
         <Card>
           <CardItem>
