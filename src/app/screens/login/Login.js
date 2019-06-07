@@ -16,7 +16,6 @@ import { submitLoginForm } from './loginActions';
 import validate from './loginValidations';
 import type { LoginProps } from './LoginTypes';
 
-// eslint-disable-next-line
 class Login extends PureComponent<LoginProps> {
   render() {
     const {

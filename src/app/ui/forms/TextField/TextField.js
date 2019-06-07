@@ -31,12 +31,14 @@ const TextField = (props: TextFieldProps): Node => {
     style,
     name,
     autoComplete,
+    multiline,
     ...other
   } = props;
 
   const mergedStyle = {
     ...defaultStyle,
     width: '100%',
+    maxHeight: multiline ? undefined : defaultStyle.maxHeight,
     ...style,
   };
 
@@ -46,6 +48,7 @@ const TextField = (props: TextFieldProps): Node => {
       name={name}
       style={mergedStyle}
       autoComplete={autoComplete || 'off'}
+      multiline={multiline}
       {...other}
     />
   );

@@ -6,8 +6,12 @@
 
 // @flow
 import React, { PureComponent } from 'react';
-import { withRouter } from 'react-router-dom';
-import { Icon } from 'ui';
+import {
+  Icon,
+  TextField,
+  Form,
+  Button,
+} from 'ui';
 
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -15,7 +19,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import List from '@material-ui/core/List';
@@ -23,10 +26,10 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
-
 import IconButton from '@material-ui/core/IconButton';
 
 import { lime100 } from 'constants/theme/color';
+import fields from 'constants/forms/card';
 import {
   ICON_BOOK,
   ICON_FAVORITE,
@@ -36,21 +39,40 @@ import {
 } from 'constants/theme/icons';
 import { publicationDetailUrl, bookDetailUrl } from 'constants/routes/createUrl';
 import { CARD_TYPE_PUBLICATION, SUB_ITEM_TYPE_BOOK, SUB_ITEM_TYPE_PUBLICATION } from 'modules/card/constants';
+import { ADDITIONAL_DATA_MAP_KEYS } from 'modules/publication/constants';
 import t from 'helpers/i18n/Translate';
 import logger from 'helpers/logger';
 import type { Node } from 'react';
 import type { Item } from 'helpers/api/types';
 
 import { setCardType, defaultProps } from './helpers';
+import AdditionalData from './AdditionalData';
 import type { CardDetailProps, CardDetailState, Option } from './types';
 
-export class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
+class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
   static defaultProps = defaultProps;
 
   state = {
     anchorElRenderMore: null,
     openListId: null,
   };
+
+  componentDidMount() {
+    const { card, initializeForm } = this.props;
+
+    if (card) {
+      initializeForm(card);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { card, initializeForm } = this.props;
+    const { card: prevCard } = prevProps;
+
+    if (card && card !== prevCard) {
+      initializeForm(card);
+    }
+  }
 
   getDetailUrl: Function;
 
@@ -171,13 +193,20 @@ export class CardDetail extends PureComponent<CardDetailProps, CardDetailState> 
     }
   }
 
-  renderData() {
-    const { isDetailed, card } = this.props;
+  renderAdditionalData() {
+    const { isDetailed, isEdit, card } = this.props;
+    const editable = isEdit && isDetailed;
 
-    return isDetailed && card.additionalData && card.additionalData.map((data) => (
-      <div key={data.key}>
+    if (!isDetailed || !card.additionalData) {
+      return null;
+    }
+
+    return editable ? (<AdditionalData name={fields.ADDITIONAL_DATA} />) : card.additionalData.map((data) => (
+      <div key={data[ADDITIONAL_DATA_MAP_KEYS.KEY]}>
         <ListItem>
-          <ListItemText primary={`${t.get(`PUBLICATION_DETAIL_${data.key}`)}: ${data.value}`} />
+          <ListItemText
+            primary={`${t.get(`CARD_DETAIL_ADDITIONAL_DATA_${data[ADDITIONAL_DATA_MAP_KEYS.KEY]}`)}: ${data[ADDITIONAL_DATA_MAP_KEYS.VALUE]}`}
+          />
         </ListItem>
       </div>
     ));
@@ -260,14 +289,44 @@ export class CardDetail extends PureComponent<CardDetailProps, CardDetailState> 
     );
   }
 
+  renderCardHeader() {
+    const { isEdit, isDetailed, card } = this.props;
+    const editable = isEdit && isDetailed;
+
+    return editable ? (
+      <TextField
+        required
+        name={fields.TITLE}
+        label={t.get('CARD_DETAIL_EDIT_TITLE_PLACEHOLDER')}
+      />
+    ) : card.title;
+  }
+
+  renderCardDescription() {
+    const { isEdit, isDetailed, card } = this.props;
+    const editable = isEdit && isDetailed;
+
+    return editable ? (
+      <TextField
+        required
+        name={fields.DESCRIPTION}
+        label={t.get('CARD_DETAIL_EDIT_DESCRIPTION_PLACEHOLDER')}
+        multiline
+      />
+    ) : <Typography component="p">{card.description}</Typography>;
+  }
+
   render() {
     const {
       card,
       style,
       isDetailed,
+      isEdit,
+      handleSubmit,
     } = this.props;
     this.setCardType();
     const linkStyle = this.getDetailUrl ? { cursor: 'pointer' } : {};
+    const editable = isEdit && isDetailed;
 
     if (!card) {
       return null;
@@ -276,67 +335,77 @@ export class CardDetail extends PureComponent<CardDetailProps, CardDetailState> 
     logger.log('render: CardDetail');
 
     return (
-      <Card style={{ maxWidth: '768px', margin: '0 auto', ...style }}>
-        <CardHeader
-          title={card.title}
-          subheader={card.subHeader}
-          action={this.renderMore()}
-        />
-        { this.imageUri ? (
-          <CardMedia
-            image={this.imageUri}
-            title={card.title}
-            onClick={this.goToDetail}
-            style={{ height: '200px', ...linkStyle }}
+      <Form onSubmit={handleSubmit}>
+        <Card style={{ maxWidth: '768px', margin: '0 auto', ...style }}>
+          <CardHeader
+            title={this.renderCardHeader()}
+            subheader={card.subHeader}
+            action={this.renderMore()}
           />
-        ) : null }
-        { isDetailed ? (
-          <CardContent>
-            <Typography component="p">{card.description}</Typography>
-          </CardContent>
-        ) : null }
-        <CardActions disableActionSpacing>
-          { card.isFavorite !== undefined ? (
-            <IconButton
-              aria-label={t.get('CARD_ADD_TO_FAVORITES')}
-              onClick={() => { this.toggleFavorite(card.id); }}
-            >
-              <Icon name={ICON_FAVORITE} active={card.isFavorite} />
-            </IconButton>
+          { this.imageUri ? (
+            <CardMedia
+              image={this.imageUri}
+              title={card.title}
+              onClick={this.goToDetail}
+              style={{ height: '200px', ...linkStyle }}
+            />
           ) : null }
-          { card.isRead !== undefined ? (
-            <IconButton
-              aria-label={t.get('CARD_ADD_TO_BOOKS_I_READ')}
-              onClick={() => { this.toggleRead(card.id); }}
-            >
-              <Icon name={ICON_BOOK} active={card.isRead} />
-            </IconButton>
+          { isDetailed ? (
+            <CardContent>
+              {this.renderCardDescription()}
+            </CardContent>
           ) : null }
-          { this.addToListUrl ? (
-            <IconButton
-              onClick={this.goToAddToList}
-            >
-              <Icon name={ICON_PLUS} />
-            </IconButton>
+          <CardActions disableActionSpacing>
+            { card.isFavorite !== undefined ? (
+              <IconButton
+                aria-label={t.get('CARD_ADD_TO_FAVORITES')}
+                onClick={() => { this.toggleFavorite(card.id); }}
+              >
+                <Icon name={ICON_FAVORITE} active={card.isFavorite} />
+              </IconButton>
+            ) : null }
+            { card.isRead !== undefined ? (
+              <IconButton
+                aria-label={t.get('CARD_ADD_TO_BOOKS_I_READ')}
+                onClick={() => { this.toggleRead(card.id); }}
+              >
+                <Icon name={ICON_BOOK} active={card.isRead} />
+              </IconButton>
+            ) : null }
+            { this.addToListUrl ? (
+              <IconButton
+                onClick={this.goToAddToList}
+              >
+                <Icon name={ICON_PLUS} />
+              </IconButton>
+            ) : null }
+            { card.downloadUrl ? (
+              <IconButton
+                onClick={this.goToDownload}
+                style={{ marginLeft: 'auto' }}
+              >
+                <Icon name={ICON_DOWNLOAD} />
+              </IconButton>
+            ) : null }
+          </CardActions>
+          <List>
+            {this.renderAdditionalData()}
+          </List>
+          { editable ? (
+            <Button
+              primary
+              raised
+              type="submit"
+              text={t.get('CARD_DETAIL_FORM_SUBMIT')}
+            />
           ) : null }
-          { card.downloadUrl ? (
-            <IconButton
-              onClick={this.goToDownload}
-              style={{ marginLeft: 'auto' }}
-            >
-              <Icon name={ICON_DOWNLOAD} />
-            </IconButton>
-          ) : null }
-        </CardActions>
-        <List>
-          {this.renderData()}
-        </List>
-        <List>
-          {this.renderList()}
-        </List>
-      </Card>
+          <List>
+            {this.renderList()}
+          </List>
+        </Card>
+      </Form>
     );
   }
 }
 
-export default withRouter(CardDetail);
+export default CardDetail;

@@ -1,6 +1,6 @@
 // @flow
 import { CARD_TYPE_PUBLICATION } from 'modules/card/constants';
-import { BOOKS_I_READ, MY_FAVORITES } from 'modules/publication/constants';
+import { BOOKS_I_READ, MY_FAVORITES, ADDITIONAL_DATA_MAP_KEYS } from 'modules/publication/constants';
 
 import type { CardItem } from 'modules/card/types';
 import type { Pagination } from 'ui/CardList/types';
@@ -28,12 +28,12 @@ export const transformPublicationToCard = (publication?: PublicationDetail): Car
     lists: publication.lists || [],
     additionalData: [
       {
-        key: 'pageNumber',
-        value: publication.pageNumber,
+        [ADDITIONAL_DATA_MAP_KEYS.KEY]: 'pageNumber',
+        [ADDITIONAL_DATA_MAP_KEYS.VALUE]: publication.pageNumber,
       },
       {
-        key: 'ISBN',
-        value: publication.isbn,
+        [ADDITIONAL_DATA_MAP_KEYS.KEY]: 'ISBN',
+        [ADDITIONAL_DATA_MAP_KEYS.VALUE]: publication.isbn,
       },
     ],
   };

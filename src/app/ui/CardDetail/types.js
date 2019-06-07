@@ -11,12 +11,15 @@ import type { StackNavigator } from 'react-navigation';
 
 export type CardDetailProps = {
   card: CardItem,
-  isDetailed: boolean,
+  isDetailed?: ?boolean,
+  isEdit?: ?boolean,
   toggleFavorite?: Function,
   toggleRead?: Function,
   history?: RouterHistory,
   navigation?: StackNavigator,
   style?: Object,
+  initializeForm: Function,
+  handleSubmit: Function,
 };
 
 export type CardDetailState = {

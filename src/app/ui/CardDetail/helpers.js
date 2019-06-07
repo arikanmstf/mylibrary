@@ -89,4 +89,5 @@ export function setCardType(card: CardItem, isDetailed: boolean) {
 
 export const defaultProps = {
   isDetailed: false,
+  isEdit: true,
 };
