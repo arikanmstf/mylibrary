@@ -18,6 +18,7 @@ import {
   CARD_TYPE_USER,
 } from 'modules/card/constants';
 import t from 'helpers/i18n/Translate';
+import { getBookList } from 'modules/book/services';
 
 import type { CardItem } from 'modules/card/types';
 import type { Option } from './types';
@@ -85,6 +86,21 @@ export function setCardType(card: CardItem, isDetailed: boolean) {
     }
     this.moreOptions = createMoreOptions(card);
   }
+}
+
+export function setFetchTitleMethodByType(card: CardItem) {
+  let fetchData = null;
+
+  if (card) {
+    switch (card.type) {
+      case CARD_TYPE_PUBLICATION:
+        fetchData = getBookList();
+        break;
+      default:
+    }
+  }
+
+  return fetchData;
 }
 
 export const defaultProps = {

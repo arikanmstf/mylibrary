@@ -32,7 +32,7 @@ class AdditionalData extends PureComponent<AdditionalDataProps> {
     const { fields } = props;
 
     return fields.map((data) => (
-      <ListItem>
+      <ListItem key={data}>
         <Field
           component={AdditionalData.renderDataItem}
           name={data}

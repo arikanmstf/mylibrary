@@ -15,6 +15,7 @@ export const transformPublicationToCard = (publication?: PublicationDetail): Car
 
   return {
     title: publication.title,
+    titleFromId: publication.bookId,
     id: publication.id,
     bookId: publication.bookId,
     subHeader: `${writers}${publishers}`,

@@ -22,3 +22,4 @@ export { default as SideNavigation } from './SideNavigation';
 export { default as Modal } from './Modal';
 export { default as ModalError } from './ModalError';
 export { default as Icon } from './Icon';
+export { default as SelectField } from './forms/SelectField';

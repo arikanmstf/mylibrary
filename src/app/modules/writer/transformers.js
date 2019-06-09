@@ -12,6 +12,7 @@ export const transformWriterToCard = (writer: WriterDetail): CardItem => {
 
   return {
     title: writer.name,
+    titleFromId: writer.id,
     id: writer.id,
     description: writer.description,
     type: CARD_TYPE_WRITER,

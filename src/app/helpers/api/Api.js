@@ -47,7 +47,7 @@ class Api {
     });
   }
 
-  static get(dispatch: Dispatch<*>) {
+  static get(dispatch?: ?Dispatch<*>) {
     return async (url: string, params: Object, ...other: *) => {
       if (typeof IS_MOCK !== 'undefined' && IS_MOCK) {
         logger.log('GET-MOCKED', url, params, ...other);
@@ -61,7 +61,9 @@ class Api {
         const response = await axios.get(url, { params }, ...other);
         return Api.fetch(response);
       } catch (e) {
-        dispatch(updateModalError(e));
+        if (dispatch) {
+          dispatch(updateModalError(e));
+        }
         throw Api.error(e);
       }
     };

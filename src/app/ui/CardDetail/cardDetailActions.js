@@ -18,6 +18,7 @@ export const submitCardDetailForm = async (form: Immutable<Object>, dispatch: Di
   try {
     logger.log('action: submitCardDetailFormStart');
     dispatch(showLoader(LOADER_CARD_DETAIL_EDIT));
+    console.log({ form: form.toJS() });
 
     logger.log('action: submitCardDetailFormEnd');
   } finally {

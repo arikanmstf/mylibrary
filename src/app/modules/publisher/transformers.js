@@ -11,6 +11,7 @@ export const transformPublisherToCard = (publisher: PublisherDetail): CardItem =
 
   return {
     title: publisher.name,
+    titleFromId: publisher.id,
     id: publisher.id,
     type: CARD_TYPE_PUBLISHER,
   };

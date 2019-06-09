@@ -9,6 +9,7 @@ import React, { PureComponent } from 'react';
 import {
   Icon,
   TextField,
+  SelectField,
   Form,
   Button,
 } from 'ui';
@@ -45,7 +46,7 @@ import logger from 'helpers/logger';
 import type { Node } from 'react';
 import type { Item } from 'helpers/api/types';
 
-import { setCardType, defaultProps } from './helpers';
+import { setCardType, defaultProps, setFetchTitleMethodByType } from './helpers';
 import AdditionalData from './AdditionalData';
 import type { CardDetailProps, CardDetailState, Option } from './types';
 
@@ -289,17 +290,42 @@ class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
     );
   }
 
-  renderCardHeader() {
-    const { isEdit, isDetailed, card } = this.props;
-    const editable = isEdit && isDetailed;
+  renderCardTitleEdit() {
+    const { card } = this.props;
+    const fetchData = setFetchTitleMethodByType(card);
 
-    return editable ? (
+    return fetchData ? (
+      <SelectField
+        required
+        name={fields.TITLE_FROM_ID}
+        label={t.get('CARD_DETAIL_EDIT_TITLE_PLACEHOLDER')}
+        title={card.title}
+        fetchData={fetchData}
+        async
+      />
+    ) : (
       <TextField
         required
         name={fields.TITLE}
         label={t.get('CARD_DETAIL_EDIT_TITLE_PLACEHOLDER')}
       />
-    ) : card.title;
+    );
+  }
+
+  renderCardHeader() {
+    const { isEdit, isDetailed, card } = this.props;
+    const editable = isEdit && isDetailed;
+
+    return editable ? this.renderCardTitleEdit() : card.title;
+  }
+
+  renderCardSubHeader() {
+    const { isEdit, isDetailed, card } = this.props;
+    const editable = isEdit && isDetailed;
+
+    return editable ? (
+      card.subHeader
+    ) : card.subHeader;
   }
 
   renderCardDescription() {
@@ -339,7 +365,7 @@ class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
         <Card style={{ maxWidth: '768px', margin: '0 auto', ...style }}>
           <CardHeader
             title={this.renderCardHeader()}
-            subheader={card.subHeader}
+            subheader={this.renderCardSubHeader()}
             action={this.renderMore()}
           />
           { this.imageUri ? (

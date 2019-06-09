@@ -11,6 +11,7 @@ export const transformUserToCard = (user: UserDetail): CardItem => {
 
   return {
     title: user.display_name,
+    titleFromId: user.id,
     id: user.id,
     description: user.email,
     type: CARD_TYPE_USER,
