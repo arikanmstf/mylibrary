@@ -140,7 +140,7 @@ export class CardDetail extends PureComponent<CardDetailProps> {
   };
 
   handleRenderMoreClick = () => {
-    const options = this.moreOptions.map((option) => (option.label));
+    const options = card.options.map((option) => (option.label));
     ActionSheet.show(
       {
         options,
@@ -148,7 +148,7 @@ export class CardDetail extends PureComponent<CardDetailProps> {
         destructiveButtonIndex: options.length - 1,
       },
       (buttonIndex) => {
-        const option = this.moreOptions[buttonIndex];
+        const option = card.options[buttonIndex];
         this.goTo(option);
       }
     );
@@ -186,10 +186,6 @@ export class CardDetail extends PureComponent<CardDetailProps> {
     const { openListId } = this.state;
     return openListId === id;
   }
-
-  moreOptions: Array<Option>;
-
-  imageUri: ?string;
 
   addToListUrl: Function;
 
@@ -270,8 +266,8 @@ export class CardDetail extends PureComponent<CardDetailProps> {
     const goToDetailDebounce = debounce(this.goToDetail, 800, { leading: true, trailing: false });
     const goToAddToListDebounce = debounce(this.goToAddToList, 800, { leading: true, trailing: false });
     const goToDownloadDebounce = debounce(this.goToDownload, 800, { leading: true, trailing: false });
-    const ContainerView = isDetailed && !isHeaderImageHasError && this.imageUri ? HeaderImageScrollView : ScrollView;
-    const containerViewProps = isDetailed && !isHeaderImageHasError && this.imageUri
+    const ContainerView = isDetailed && !isHeaderImageHasError && card.image ? HeaderImageScrollView : ScrollView;
+    const containerViewProps = isDetailed && !isHeaderImageHasError && card.image
       ? {
         maxHeight: isDetailed ? 400 : undefined,
         minHeight: isDetailed ? 60 : undefined,
@@ -285,7 +281,7 @@ export class CardDetail extends PureComponent<CardDetailProps> {
         renderHeader={
           () => (
             <ImageScrollHeader
-              uri={this.imageUri}
+              uri={card.image}
               maxHeight={400}
               onError={this.handleHeaderImageError}
             />
@@ -306,7 +302,7 @@ export class CardDetail extends PureComponent<CardDetailProps> {
                 justifyContent: 'flex-end',
               }}
             >
-              { card && this.moreOptions.length > 1 ? (
+              { card && card.options.length > 1 ? (
                 <TouchableOpacity
                   onPress={this.handleRenderMoreClick}
                   style={{ width: WIDTH_OF_CARD_ICON, flexShrink: 1, alignItems: 'flex-end' }}
@@ -316,7 +312,7 @@ export class CardDetail extends PureComponent<CardDetailProps> {
               ) : null }
             </Right>
           </CardItem>
-          { this.imageUri && !isDetailed ? (
+          { card.image && !isDetailed ? (
             <TouchableWithoutFeedback
               onPress={goToDetailDebounce}
             >
@@ -324,7 +320,7 @@ export class CardDetail extends PureComponent<CardDetailProps> {
                 cardBody
               >
                 <Image
-                  source={{ uri: this.imageUri }}
+                  source={{ uri: card.image }}
                   style={{ height: 200, flex: 1 }}
                 />
               </CardItem>

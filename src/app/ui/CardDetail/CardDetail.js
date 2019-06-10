@@ -43,12 +43,11 @@ import { CARD_TYPE_PUBLICATION, SUB_ITEM_TYPE_BOOK, SUB_ITEM_TYPE_PUBLICATION } 
 import { ADDITIONAL_DATA_MAP_KEYS } from 'modules/publication/constants';
 import t from 'helpers/i18n/Translate';
 import logger from 'helpers/logger';
-import type { Node } from 'react';
 import type { Item } from 'helpers/api/types';
 
 import { setCardType, defaultProps, setFetchTitleMethodByType } from './helpers';
 import AdditionalData from './AdditionalData';
-import type { CardDetailProps, CardDetailState, Option } from './types';
+import type { CardDetailProps, CardDetailState } from './types';
 
 class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
   static defaultProps = defaultProps;
@@ -174,10 +173,6 @@ class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
     return openListId === id;
   }
 
-  moreOptions: Array<Option>;
-
-  imageUri: string;
-
   addToListUrl: Function;
 
   toggleFavorite(id: number) {
@@ -251,25 +246,13 @@ class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
     ));
   }
 
-  renderMoreOptions(): Node {
-    return this.moreOptions.map((option) => (
-      <MenuItem
-        key={option.label}
-        onClick={() => {
-          this.handleRenderMoreClose();
-          this.goTo(option.to);
-        }}
-      >
-        {option.label}
-      </MenuItem>
-    ));
-  }
-
   renderMore() {
     const { anchorElRenderMore } = this.state;
-    if (this.moreOptions.length < 2) {
+    const { card } = this.props;
+    if (!card || !card.options || card.options.length < 2) {
       return null;
     }
+    const { options } = card;
 
     return (
       <div>
@@ -284,7 +267,17 @@ class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
           open={Boolean(anchorElRenderMore)}
           onClose={this.handleRenderMoreClose}
         >
-          {this.renderMoreOptions()}
+          {options.map((option) => (
+            <MenuItem
+              key={option.label}
+              onClick={() => {
+                this.handleRenderMoreClose();
+                this.goTo(option.to);
+              }}
+            >
+              {option.label}
+            </MenuItem>
+          ))}
         </Menu>
       </div>
     );
@@ -368,9 +361,9 @@ class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
             subheader={this.renderCardSubHeader()}
             action={this.renderMore()}
           />
-          { this.imageUri ? (
+          { card.image ? (
             <CardMedia
-              image={this.imageUri}
+              image={card.image}
               title={card.title}
               onClick={this.goToDetail}
               style={{ height: '200px', ...linkStyle }}

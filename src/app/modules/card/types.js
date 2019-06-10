@@ -1,25 +1,25 @@
 // @flow
-import type { PublisherDetail, WriterDetail, Item } from 'helpers/api/types';
+import type { Item } from 'helpers/api/types';
+import type { Option } from './helpers/types';
 
 type CardData = {
   key: string,
   value: any,
 }
 
+type SubCard = {}
+
 export type CardItem = {|
-  title: string,
-  titleFromId: number,
   id: number,
-  bookId?: Array<CardData>,
-  subHeader?: ?string,
-  isFavorite: ?boolean,
-  isRead: ?boolean,
+  title: string,
+  description: ?string,
   type: string,
-  description?: string,
-  image?: string,
+  lists: Array<Item>,
+  options: Array<Option>,
+  additionalData: Array<CardData>,
+  subCard: SubCard,
+  isRead?: ?boolean,
+  isFavorite?: ?boolean,
   downloadUrl?: string,
-  publisher?: PublisherDetail,
-  writers?: Array<WriterDetail>,
-  lists?: Array<Item>,
-  additionalData?: Array<CardData>,
+  image?: string,
 |}
