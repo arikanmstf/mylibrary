@@ -52,7 +52,9 @@ class Api {
         const response = await axios.get(url, { params }, ...other);
         return Api.fetch(response);
       } catch (e) {
-        dispatch(updateModalError(e));
+        if (dispatch) {
+          dispatch(updateModalError(e));
+        }
         // console.log(Api.error(e)); // eslint-disable-line no-console
         return null;
       }
@@ -67,7 +69,9 @@ class Api {
         const response = await axios.post(url, { ...data }, ...other);
         return Api.fetch(response);
       } catch (e) {
-        dispatch(updateModalError(e));
+        if (dispatch) {
+          dispatch(updateModalError(e));
+        }
         // console.log(Api.error(e)); // eslint-disable-line no-console
         return null;
       }

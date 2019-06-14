@@ -83,7 +83,9 @@ class Api {
         const response = await axios.post(url, { ...data }, ...other);
         return Api.fetch(response);
       } catch (e) {
-        dispatch(updateModalError(e));
+        if (dispatch) {
+          dispatch(updateModalError(e));
+        }
         throw Api.error(e);
       }
     };

@@ -10,16 +10,7 @@ export const transformBookToCard = (book: BookDetail): CardItem => {
     return book;
   }
 
-  // const writers = book.writers ? book.writers.map((writer) => writer.name).join(', ') : '';
-  const card = CardTypeSetter.createFromBook(book);
-  console.log({ card });
-
-  return card;
-
-  // return {
-  //   titleFromId: book.id,
-  //   subHeader: `${writers}`,
-  // };
+  return CardTypeSetter.createFromBook(book);
 };
 
 export const transformBookListToCardList = (result: Pagination<BookDetail>): Pagination<CardItem> => {

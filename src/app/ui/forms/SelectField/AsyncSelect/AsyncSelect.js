@@ -7,6 +7,7 @@
 // @flow
 import React from 'react';
 import Async from 'react-select/async';
+import AsyncCreatable from 'react-select/async-creatable';
 import debounce from 'debounce-promise';
 
 import type { AsyncSelectProps } from './types';
@@ -15,8 +16,13 @@ class AsyncSelect extends React.PureComponent<AsyncSelectProps> {
   constructor(props) {
     super(props);
 
-    const { fetchData } = this.props;
-    this.loadOptionsDebounced = debounce(this.loadOptions(fetchData), 500, { leading: false, trailing: true });
+    const { fetchData } = props;
+
+    if (!fetchData) {
+      throw new Error('fetchData is undefined or null');
+    }
+
+    this.fetchDataDebounced = debounce(fetchData, 500, { leading: false, trailing: true });
   }
 
   handleChange = (value) => {
@@ -33,17 +39,20 @@ class AsyncSelect extends React.PureComponent<AsyncSelectProps> {
     }
   };
 
-  loadOptions = (fetchData) => async (search, callback) => {
-    const books = await fetchData({ search });
-    callback(books.content.map((c) => ({ value: c.id, label: c.title })));
+  loadOptions = (search, callback) => {
+    this.fetchDataDebounced({ search }).then((books) => {
+      callback(books.content.map((c) => ({ value: c.id, label: c.title })));
+    });
   };
 
   render() {
-    const { title, ...other } = this.props;
+    const { title, creatable, ...other } = this.props;
+    const Component = creatable ? AsyncCreatable : Async;
 
     return (
-      <Async
-        loadOptions={this.loadOptionsDebounced}
+      <Component
+        cacheOptions
+        loadOptions={this.loadOptions}
         placeholder={title}
         onChange={this.handleChange}
         {...other}

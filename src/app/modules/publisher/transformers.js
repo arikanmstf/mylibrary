@@ -1,5 +1,5 @@
 // @flow
-import { CARD_TYPE_PUBLISHER } from 'modules/card/constants';
+import { CardTypeSetter } from 'modules/card/helpers/CardTypeSetter';
 
 import type { CardItem } from 'modules/card/types';
 import type { PublisherDetail } from 'helpers/api/types';
@@ -9,10 +9,5 @@ export const transformPublisherToCard = (publisher: PublisherDetail): CardItem =
     return publisher;
   }
 
-  return {
-    title: publisher.name,
-    titleFromId: publisher.id,
-    id: publisher.id,
-    type: CARD_TYPE_PUBLISHER,
-  };
+  return CardTypeSetter.createFromPublisher(publisher);
 };

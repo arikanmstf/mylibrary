@@ -6,4 +6,3 @@ export const ADDITIONAL_DATA_MAP_KEYS = {
   KEY: 'key',
   VALUE: 'value',
 };
-

@@ -9,11 +9,10 @@ import React, { PureComponent } from 'react';
 import {
   Icon,
   TextField,
-  SelectField,
   Form,
   Button,
 } from 'ui';
-
+import { Field } from 'redux-form/immutable';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -45,8 +44,9 @@ import t from 'helpers/i18n/Translate';
 import logger from 'helpers/logger';
 import type { Item } from 'helpers/api/types';
 
-import { setCardType, defaultProps, setFetchTitleMethodByType } from './helpers';
-import AdditionalData from './AdditionalData';
+import { setCardType, defaultProps } from './helpers';
+import AdditionalDataField from './AdditionalDataField';
+import SubCardSelectSearchField from './SubCardSelectSearchField';
 import type { CardDetailProps, CardDetailState } from './types';
 
 class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
@@ -197,7 +197,7 @@ class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
       return null;
     }
 
-    return editable ? (<AdditionalData name={fields.ADDITIONAL_DATA} />) : card.additionalData.map((data) => (
+    return editable ? (<AdditionalDataField name={fields.ADDITIONAL_DATA} />) : card.additionalData.map((data) => (
       <div key={data[ADDITIONAL_DATA_MAP_KEYS.KEY]}>
         <ListItem>
           <ListItemText
@@ -283,33 +283,17 @@ class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
     );
   }
 
-  renderCardTitleEdit() {
-    const { card } = this.props;
-    const fetchData = setFetchTitleMethodByType(card);
-
-    return fetchData ? (
-      <SelectField
-        required
-        name={fields.TITLE_FROM_ID}
-        label={t.get('CARD_DETAIL_EDIT_TITLE_PLACEHOLDER')}
-        title={card.title}
-        fetchData={fetchData}
-        async
-      />
-    ) : (
-      <TextField
-        required
-        name={fields.TITLE}
-        label={t.get('CARD_DETAIL_EDIT_TITLE_PLACEHOLDER')}
-      />
-    );
-  }
-
   renderCardHeader() {
     const { isEdit, isDetailed, card } = this.props;
     const editable = isEdit && isDetailed;
 
-    return editable ? this.renderCardTitleEdit() : card.title;
+    return editable ? (
+      <Field
+        component={SubCardSelectSearchField}
+        required
+        name={fields.SUB_CARD}
+      />
+    ) : card.title;
   }
 
   renderCardSubHeader() {
@@ -317,8 +301,8 @@ class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
     const editable = isEdit && isDetailed;
 
     return editable ? (
-      card.subHeader
-    ) : card.subHeader;
+      card.subTitle
+    ) : card.subTitle;
   }
 
   renderCardDescription() {
@@ -327,7 +311,6 @@ class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
 
     return editable ? (
       <TextField
-        required
         name={fields.DESCRIPTION}
         label={t.get('CARD_DETAIL_EDIT_DESCRIPTION_PLACEHOLDER')}
         multiline

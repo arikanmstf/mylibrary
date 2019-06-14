@@ -15,7 +15,7 @@ import { ADDITIONAL_DATA_MAP_KEYS } from 'modules/publication/constants';
 
 import type { AdditionalDataProps } from './types';
 
-class AdditionalData extends PureComponent<AdditionalDataProps> {
+class AdditionalDataField extends PureComponent<AdditionalDataProps> {
   static renderDataItem(props) {
     const { input: { name, value } } = props;
     const key = value.get(ADDITIONAL_DATA_MAP_KEYS.KEY);
@@ -34,7 +34,7 @@ class AdditionalData extends PureComponent<AdditionalDataProps> {
     return fields.map((data) => (
       <ListItem key={data}>
         <Field
-          component={AdditionalData.renderDataItem}
+          component={AdditionalDataField.renderDataItem}
           name={data}
         />
       </ListItem>
@@ -47,10 +47,10 @@ class AdditionalData extends PureComponent<AdditionalDataProps> {
     return (
       <FieldArray
         name={name}
-        component={AdditionalData.renderData}
+        component={AdditionalDataField.renderData}
       />
     );
   }
 }
 
-export default AdditionalData;
+export default AdditionalDataField;

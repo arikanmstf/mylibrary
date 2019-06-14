@@ -8,3 +8,8 @@
 export type GetBookDetailRequest = {
   id: number,
 };
+
+export type PostBookDetailInsertRequest = {
+  title: string,
+  description: string,
+};

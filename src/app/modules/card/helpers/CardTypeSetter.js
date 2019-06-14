@@ -1,5 +1,14 @@
 // @flow
-import { CARD_TYPE_BOOK, CARD_TYPE_PUBLICATION } from 'modules/card/constants';
+import {
+  CARD_TYPE_BOOK,
+  CARD_TYPE_PUBLICATION,
+  CARD_TYPE_ITEM,
+  CARD_TYPE_PUBLISHER,
+  CARD_TYPE_USER,
+  CARD_TYPE_WRITER,
+  SUB_CARD_DATA_MAP_KEYS,
+  SUB_CARD_TYPE_BOOK,
+} from 'modules/card/constants';
 import { BOOKS_I_READ, MY_FAVORITES, ADDITIONAL_DATA_MAP_KEYS } from 'modules/publication/constants';
 import t from 'helpers/i18n/Translate';
 import {
@@ -14,8 +23,11 @@ import type { CardItem } from 'modules/card/types';
 import type {
   BookDetail,
   PublicationDetail,
+  PublisherDetail,
+  UserDetail,
+  WriterDetail,
+  Item,
 } from 'helpers/api/types';
-import type { Option } from './types';
 
 const KEY_ID = '_id';
 const KEY_TITLE = '_title';
@@ -29,20 +41,28 @@ const KEY_ADDITIONAL_DATA = '_additionalData';
 const KEY_DOWNLOAD_URL = '_downloadUrl';
 const KEY_IMAGE = '_image';
 const KEY_SUB_CARD = '_subCard';
+const KEY_SUB_CARDS = '_subCards';
+const KEY_SUB_TITLE = '_subTitle';
 
 export class CardTypeSetter {
   [KEY_OPTIONS] = [];
 
   [KEY_ADDITIONAL_DATA] = [];
 
+  [KEY_SUB_CARDS] = [];
+
+  [KEY_SUB_CARD] = {};
+
+  [KEY_LISTS] = [];
+
   constructor(data: Object) {
     const { id, title, description } = data;
+    this.setTitle(title);
     this[KEY_ID] = id;
-    this[KEY_TITLE] = title;
     this[KEY_DESCRIPTION] = description;
   }
 
-  addAdditionalData(key: string, value: any): Array<Option> {
+  addAdditionalData(key: string, value: any): CardTypeSetter {
     const o = [
       {
         [ADDITIONAL_DATA_MAP_KEYS.KEY]: key,
@@ -54,7 +74,7 @@ export class CardTypeSetter {
     return this;
   }
 
-  addBookDetailToCardOptions(publication: PublicationDetail): Array<Option> {
+  addBookDetailToCardOptions(publication: PublicationDetail): CardTypeSetter {
     const o = [
       {
         to: bookDetailUrl(publication.bookId),
@@ -67,20 +87,20 @@ export class CardTypeSetter {
     return this;
   }
 
-  addPublisherDetailToCardOptions(publication: PublicationDetail): Array<Option> {
-    const o = [
+  addPublisherDetailToCardOptions(publication: PublicationDetail): CardTypeSetter {
+    const o = publication.publisher ? [
       {
         to: publisherDetailUrl(publication.publisher.id),
-        toId: publication.publisher ? publication.publisher.id : null,
+        toId: publication.publisher.id,
         label: t.get('CARD_DETAIL_PUBLISHER_DETAIL'),
       },
-    ];
+    ] : [];
 
     this[KEY_OPTIONS] = this[KEY_OPTIONS].concat(o);
     return this;
   }
 
-  addCancelToCardOptions(): Array<Option> {
+  addCancelToCardOptions(): CardTypeSetter {
     const o = [
       {
         label: t.get('GENERAL_CANCEL'),
@@ -91,14 +111,43 @@ export class CardTypeSetter {
     return this;
   }
 
-  addWritersToCardOptions(data): Array<Option> {
-    const o = data.writers.map((writer) => ({
+  addWritersToCardOptions(data): CardTypeSetter {
+    const o = data.writers ? data.writers.map((writer) => ({
       to: writerDetailUrl(writer.id),
       toId: writer ? writer.id : null,
       label: `${t.get('CARD_DETAIL_WRITER_DETAIL')}: ${writer.name}`,
-    }));
+    })) : [];
 
     this[KEY_OPTIONS] = this[KEY_OPTIONS].concat(o);
+    return this;
+  }
+
+  addToLists(data: Item): CardTypeSetter {
+    this[KEY_LISTS].push(data);
+    return this;
+  }
+
+  setType(type: string): CardTypeSetter {
+    this[KEY_TYPE] = type;
+    return this;
+  }
+
+  setTitle(title: string): CardTypeSetter {
+    this[KEY_TITLE] = title;
+    return this;
+  }
+
+  setSubCard(id: string, title: string, type: string): CardTypeSetter {
+    this[KEY_SUB_CARD][SUB_CARD_DATA_MAP_KEYS.ID] = id;
+    this[KEY_SUB_CARD][SUB_CARD_DATA_MAP_KEYS.TITLE] = title;
+    this[KEY_SUB_CARD][SUB_CARD_DATA_MAP_KEYS.TYPE] = type;
+
+    return this;
+  }
+
+  setSubTitle(title: string): CardTypeSetter {
+    this[KEY_SUB_TITLE] = title;
+
     return this;
   }
 
@@ -106,9 +155,11 @@ export class CardTypeSetter {
     return Object.freeze({
       id: this[KEY_ID],
       title: this[KEY_TITLE],
+      subTitle: this[KEY_SUB_TITLE],
       description: this[KEY_DESCRIPTION],
       type: this[KEY_TYPE],
       subCard: this[KEY_SUB_CARD],
+      subCards: this[KEY_SUB_CARDS],
       lists: this[KEY_LISTS],
       options: this[KEY_OPTIONS],
       isFavorite: this[KEY_IS_FAVORITE],
@@ -121,37 +172,86 @@ export class CardTypeSetter {
 
   static createFromBook(book: BookDetail): CardItem {
     const cardTypeSetter = new CardTypeSetter(book);
-    cardTypeSetter[KEY_TYPE] = CARD_TYPE_BOOK;
-    cardTypeSetter[KEY_LISTS] = [{
-      name: t.get('BOOK_DETAIL_PUBLICATIONS_OF_BOOK'),
+    const writers = book.writers ? book.writers.map((writer) => writer.name).join(', ') : '';
+    const list = {
       id: 0,
+      name: t.get('BOOK_DETAIL_PUBLICATIONS_OF_BOOK'),
       subItems: book.publications || [],
-    }];
+    };
 
     return cardTypeSetter
+      .setType(CARD_TYPE_BOOK)
+      .setSubTitle(writers)
       .addWritersToCardOptions(book)
       .addCancelToCardOptions()
+      .addToLists(list)
       .generateObject();
   }
 
   static createFromPublication(publication: PublicationDetail): CardItem {
     const cardTypeSetter = new CardTypeSetter(publication);
-    cardTypeSetter[KEY_TYPE] = CARD_TYPE_PUBLICATION;
+    const writers = publication.writers.map((writer) => writer.name).join(', ');
+    const publisher = publication.publisher.name ? ` - ${publication.publisher.name}` : '';
+
     cardTypeSetter[KEY_LISTS] = publication.lists || [];
     cardTypeSetter[KEY_IS_FAVORITE] = publication.lists.some((list) => (list.code === MY_FAVORITES));
     cardTypeSetter[KEY_IS_READ] = publication.lists.some((list) => (list.code === BOOKS_I_READ));
     cardTypeSetter[KEY_DOWNLOAD_URL] = publication.downloadUrl && publication.downloadUrl.length > 0
       ? publication.downloadUrl : undefined;
     cardTypeSetter[KEY_IMAGE] = staticFiles()(publicationCoverUrl(publication.id));
-    cardTypeSetter[KEY_SUB_CARD] = [];
 
     return cardTypeSetter
+      .setType(CARD_TYPE_PUBLICATION)
+      .setSubCard(publication.bookId, publication.title, SUB_CARD_TYPE_BOOK)
+      .setSubTitle(`${writers}${publisher}`)
       .addBookDetailToCardOptions(publication)
       .addPublisherDetailToCardOptions(publication)
       .addWritersToCardOptions(publication)
       .addCancelToCardOptions()
       .addAdditionalData('pageNumber', publication.pageNumber)
       .addAdditionalData('ISBN', publication.isbn)
+      .generateObject();
+  }
+
+  static createFromItem(item: Item): CardItem {
+    const cardTypeSetter = new CardTypeSetter(item);
+
+    return cardTypeSetter
+      .setTitle(item.name)
+      .setType(CARD_TYPE_ITEM)
+      .generateObject();
+  }
+
+  static createFromPublisher(publisher: PublisherDetail): CardItem {
+    const cardTypeSetter = new CardTypeSetter(publisher);
+
+    return cardTypeSetter
+      .setTitle(publisher.name)
+      .setType(CARD_TYPE_PUBLISHER)
+      .generateObject();
+  }
+
+  static createFromUser(user: UserDetail): CardItem {
+    const cardTypeSetter = new CardTypeSetter(user);
+
+    return cardTypeSetter
+      .setTitle(user.display_name)
+      .setType(CARD_TYPE_USER)
+      .generateObject();
+  }
+
+  static createFromWriter(writer: WriterDetail) {
+    const cardTypeSetter = new CardTypeSetter(writer);
+    const list = {
+      id: 0,
+      name: t.get('WRITER_DETAIL_BOOKS_OF_WRITER'),
+      subItems: writer.books || [],
+    };
+
+    return cardTypeSetter
+      .setTitle(writer.name)
+      .setType(CARD_TYPE_WRITER)
+      .addToLists(list)
       .generateObject();
   }
 }

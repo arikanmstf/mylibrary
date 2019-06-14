@@ -9,18 +9,8 @@ export const transformPublicationToCard = (publication?: PublicationDetail): Car
   if (!publication) {
     return publication;
   }
-  // const writers = publication.writers.map((writer) => writer.name).join(', ');
-  // const publishers = publication.publisher.name ? ` - ${publication.publisher.name}` : '';
 
-  const card = CardTypeSetter.createFromPublication(publication);
-  console.log({ card });
-
-  return card;
-
-  // return {
-  //   titleFromId: publication.bookId,
-  //   subHeader: `${writers}${publishers}`,
-  // };
+  return CardTypeSetter.createFromPublication(publication);
 };
 
 export const transformPublicationListToCardList = (result: Pagination<PublicationDetail>): Pagination<CardItem> => {

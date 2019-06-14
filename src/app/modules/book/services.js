@@ -15,7 +15,7 @@ import type { CardItem } from 'modules/card/types';
 import type { SubmitSearchFormRequest } from 'ui/Header/HeaderSearch/types';
 
 import { transformBookListToCardList } from './transformers';
-import type { GetBookDetailRequest } from './types';
+import type { GetBookDetailRequest, PostBookDetailInsertRequest } from './types';
 
 export const getBookDetail = (dispatch: Dispatch<*>) => async ({ id }: GetBookDetailRequest): Promise<BookDetail> => {
   return Api.get(dispatch)(BOOK_DETAIL.replace('{id}', id));
@@ -27,3 +27,10 @@ export const getBookList = (dispatch: Dispatch<*>) => async (
   const result: Pagination<BookDetail> = await Api.get(dispatch)(BOOK, { page, search, type });
   return transformBookListToCardList(result);
 };
+
+export const postBookDetailInsert = (
+  dispatch: Dispatch<*>
+) => async (data: PostBookDetailInsertRequest): Promise<BookDetail> => {
+  return Api.post(dispatch)(BOOK_DETAIL.replace('/{id}', ''), data);
+};
+
