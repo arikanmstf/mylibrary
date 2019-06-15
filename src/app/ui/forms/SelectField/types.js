@@ -6,6 +6,6 @@
 
 // @flow
 export type SelectFieldProps = {
+  name: string,
   async?: ?boolean,
-  title: string,
 };

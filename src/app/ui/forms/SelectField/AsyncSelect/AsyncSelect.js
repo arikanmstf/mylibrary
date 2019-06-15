@@ -23,6 +23,9 @@ class AsyncSelect extends React.PureComponent<AsyncSelectProps> {
     }
 
     this.fetchDataDebounced = debounce(fetchData, 500, { leading: false, trailing: true });
+    this.state = {
+      title: props.initialTitle,
+    };
   }
 
   handleChange = (value) => {
@@ -33,9 +36,23 @@ class AsyncSelect extends React.PureComponent<AsyncSelectProps> {
     }
 
     const { onChange } = input;
+    this.setState({
+      title: value.label,
+    });
 
     if (onChange) {
       onChange(value.value);
+    }
+  };
+
+  handleCreateOption = (title) => {
+    const { onCreateOption } = this.props;
+    this.setState({
+      title,
+    });
+
+    if (onCreateOption) {
+      onCreateOption(title);
     }
   };
 
@@ -46,16 +63,23 @@ class AsyncSelect extends React.PureComponent<AsyncSelectProps> {
   };
 
   render() {
-    const { title, creatable, ...other } = this.props;
+    const {
+      creatable, input: { value },
+    } = this.props;
+    const { title } = this.state;
     const Component = creatable ? AsyncCreatable : Async;
 
     return (
       <Component
         cacheOptions
         loadOptions={this.loadOptions}
-        placeholder={title}
         onChange={this.handleChange}
-        {...other}
+        onCreateOption={creatable ? this.handleCreateOption : undefined}
+        createOptionPosition={creatable ? 'first' : undefined}
+        value={{
+          value,
+          label: title,
+        }}
       />
     );
   }

@@ -6,6 +6,6 @@
 
 // @flow
 export type AsyncSelectProps = {
-  title: string,
+  initialTitle: string,
   fetchData: Function,
 };

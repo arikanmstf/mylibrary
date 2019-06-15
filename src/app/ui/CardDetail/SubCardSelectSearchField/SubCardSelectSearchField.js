@@ -31,6 +31,19 @@ class SubCardSelectSearchField extends PureComponent<SubCardSelectSearchFieldPro
     this.updateValueFromTitle(title).then();
   };
 
+  handleChange = (event, newId) => {
+    const { input: { value, onChange } } = this.props;
+    const type = value ? value.get(SUB_CARD_DATA_MAP_KEYS.TYPE) : '';
+
+    const newValue = new Map(
+      [
+        [SUB_CARD_DATA_MAP_KEYS.ID, newId],
+        [SUB_CARD_DATA_MAP_KEYS.TYPE, type],
+      ]
+    );
+    onChange(newValue);
+  };
+
   updateValueFromTitle = async (title) => {
     const { input: { value, onChange } } = this.props;
     const type = value ? value.get(SUB_CARD_DATA_MAP_KEYS.TYPE) : '';
@@ -58,12 +71,12 @@ class SubCardSelectSearchField extends PureComponent<SubCardSelectSearchFieldPro
       <SelectField
         required={required}
         name={`${name}.${SUB_CARD_DATA_MAP_KEYS.ID}`}
-        title={title}
         fetchData={fetchData}
-        createOptionPosition="first"
         async
         creatable
         onCreateOption={this.handleCreateOption}
+        onChange={this.handleChange}
+        initialTitle={title}
       />
     ) : (
       <TextField
