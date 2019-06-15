@@ -8,4 +8,5 @@
 export type SelectFieldProps = {
   name: string,
   async?: ?boolean,
+  isMulti?: boolean,
 };

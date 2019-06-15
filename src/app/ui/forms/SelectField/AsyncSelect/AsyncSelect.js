@@ -29,30 +29,47 @@ class AsyncSelect extends React.PureComponent<AsyncSelectProps> {
   }
 
   handleChange = (value) => {
-    const { input } = this.props;
+    const { input, isMulti } = this.props;
 
     if (!input) {
       return;
     }
 
     const { onChange } = input;
+
+    if (!value) {
+      this.setState({
+        title: '',
+      });
+      onChange(isMulti ? [] : null);
+      return;
+    }
+
     this.setState({
-      title: value.label,
+      title: isMulti ? (value.map((v) => v.label)) : value.label,
     });
 
     if (onChange) {
-      onChange(value.value);
+      onChange(isMulti ? (value.map((v) => v.value)) : value.value);
     }
   };
 
-  handleCreateOption = (title) => {
-    const { onCreateOption } = this.props;
+  handleCreateOption = (newTitle) => {
+    const { onCreateOption, isMulti } = this.props;
+    const { title } = this.state;
+    let titleList = [];
+
+    if (isMulti) {
+      titleList = title.push(newTitle);
+      titleList = titleList.toArray ? titleList.toArray() : titleList;
+    }
+
     this.setState({
-      title,
+      title: isMulti ? titleList : newTitle,
     });
 
     if (onCreateOption) {
-      onCreateOption(title);
+      onCreateOption(newTitle);
     }
   };
 
@@ -64,10 +81,21 @@ class AsyncSelect extends React.PureComponent<AsyncSelectProps> {
 
   render() {
     const {
-      creatable, input: { value },
+      creatable, input: { value }, isMulti,
     } = this.props;
     const { title } = this.state;
     const Component = creatable ? AsyncCreatable : Async;
+    let valueArray = [];
+
+    if (isMulti) {
+      valueArray = value.map((v, i) => ({ value: v, label: title.get ? title.get(i) : title[i] }));
+      valueArray = valueArray.toArray ? valueArray.toArray() : valueArray;
+    }
+
+    const newValue = isMulti ? valueArray : {
+      value,
+      label: title,
+    };
 
     return (
       <Component
@@ -76,10 +104,8 @@ class AsyncSelect extends React.PureComponent<AsyncSelectProps> {
         onChange={this.handleChange}
         onCreateOption={creatable ? this.handleCreateOption : undefined}
         createOptionPosition={creatable ? 'first' : undefined}
-        value={{
-          value,
-          label: title,
-        }}
+        isMulti={isMulti}
+        value={newValue}
       />
     );
   }

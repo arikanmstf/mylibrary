@@ -9,6 +9,7 @@ import {
   BASE_CARD_DATA_MAP_KEYS,
   BASE_CARD_TYPE_BOOK,
   BASE_CARD_TYPE_PUBLISHER,
+  BASE_CARD_TYPE_WRITER,
 } from 'modules/card/constants';
 import { BOOKS_I_READ, MY_FAVORITES, ADDITIONAL_DATA_MAP_KEYS } from 'modules/publication/constants';
 import t from 'helpers/i18n/Translate';
@@ -184,7 +185,9 @@ export class CardTypeSetter {
 
   static createFromBook(book: BookDetail): CardItem {
     const cardTypeSetter = new CardTypeSetter(book);
-    const writers = book.writers ? book.writers.map((writer) => writer.name).join(', ') : '';
+    const writerIds = book.writers ? book.writers.map((writer) => writer.id) : [];
+    const writerNames = book.writers ? book.writers.map((writer) => writer.name) : [];
+    const writers = writerNames.join(', ');
     const list = {
       id: 0,
       name: t.get('BOOK_DETAIL_PUBLICATIONS_OF_BOOK'),
@@ -193,6 +196,7 @@ export class CardTypeSetter {
 
     return cardTypeSetter
       .setType(CARD_TYPE_BOOK)
+      .setSubCard(writerIds, writerNames, BASE_CARD_TYPE_WRITER)
       .setSubTitle(writers)
       .addWritersToCardOptions(book)
       .addCancelToCardOptions()

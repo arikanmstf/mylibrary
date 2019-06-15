@@ -6,7 +6,7 @@
 
 // @flow
 import React, { PureComponent } from 'react';
-import { Map } from 'immutable';
+import { Map, List } from 'immutable';
 import { SelectField, TextField } from 'ui';
 import { BASE_CARD_DATA_MAP_KEYS } from 'modules/card/constants';
 import t from 'helpers/i18n/Translate';
@@ -20,12 +20,30 @@ class SubCardSelectSearchField extends PureComponent<SubCardSelectSearchFieldPro
 
     const type = value ? value.get(BASE_CARD_DATA_MAP_KEYS.TYPE) : '';
 
-    const newValue = new Map(
+    const v = new Map(
       [
+        [BASE_CARD_DATA_MAP_KEYS.ID, 0],
         [BASE_CARD_DATA_MAP_KEYS.TITLE, title],
         [BASE_CARD_DATA_MAP_KEYS.TYPE, type],
       ]
     );
+    const valueMultiple = value.toJS();
+
+    if (valueMultiple[BASE_CARD_DATA_MAP_KEYS.TITLE]) {
+      valueMultiple[BASE_CARD_DATA_MAP_KEYS.TITLE].push(title);
+    } else {
+      valueMultiple[BASE_CARD_DATA_MAP_KEYS.TITLE] = [title];
+    }
+
+    if (valueMultiple[BASE_CARD_DATA_MAP_KEYS.ID]) {
+      valueMultiple[BASE_CARD_DATA_MAP_KEYS.ID].push(0);
+    } else {
+      valueMultiple[BASE_CARD_DATA_MAP_KEYS.ID] = [0];
+    }
+
+    const valueMap = Map(valueMultiple);
+
+    const newValue = this.isMulti() ? valueMap : v;
 
     onChange(newValue);
     this.updateValueFromTitle(title).then();
@@ -50,15 +68,39 @@ class SubCardSelectSearchField extends PureComponent<SubCardSelectSearchFieldPro
     const addTitle = setAddMethodBySubCardType(type);
     const result = await addTitle({ title });
 
-    const newValue = new Map(
+    const v = new Map(
       [
         [BASE_CARD_DATA_MAP_KEYS.TITLE, result.title],
         [BASE_CARD_DATA_MAP_KEYS.TYPE, type],
         [BASE_CARD_DATA_MAP_KEYS.ID, result.id],
       ]
     );
+
+    const valueMultiple = value.toJS();
+
+    if (valueMultiple[BASE_CARD_DATA_MAP_KEYS.TITLE]) {
+      valueMultiple[BASE_CARD_DATA_MAP_KEYS.TITLE].push(result.title);
+    } else {
+      valueMultiple[BASE_CARD_DATA_MAP_KEYS.TITLE] = [result.title];
+    }
+
+    if (valueMultiple[BASE_CARD_DATA_MAP_KEYS.ID]) {
+      valueMultiple[BASE_CARD_DATA_MAP_KEYS.ID].push(result.id);
+    } else {
+      valueMultiple[BASE_CARD_DATA_MAP_KEYS.ID] = [result.id];
+    }
+
+    const valueMap = Map(valueMultiple);
+
+    const newValue = this.isMulti() ? valueMap : v;
     onChange(newValue);
   };
+
+  isMulti() {
+    const { input: { value } } = this.props;
+    const id = value ? value.get(BASE_CARD_DATA_MAP_KEYS.ID) : '';
+    return List.isList(id) || Array.isArray(id);
+  }
 
   render = () => {
     const { input: { name, value }, required } = this.props;
@@ -77,6 +119,7 @@ class SubCardSelectSearchField extends PureComponent<SubCardSelectSearchFieldPro
         onCreateOption={this.handleCreateOption}
         onChange={this.handleChange}
         initialTitle={title}
+        isMulti={this.isMulti()}
       />
     ) : (
       <TextField

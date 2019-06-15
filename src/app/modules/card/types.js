@@ -18,6 +18,12 @@ type BaseCard = {
   type: string,
 }
 
+type BaseCardMultiple = {
+  id?: Array<string>,
+  title?: Array<number>,
+  type: Array<string>,
+}
+
 export type CardItem = {|
   id: number,
   title: string,
@@ -28,7 +34,7 @@ export type CardItem = {|
   options: Array<Option>,
   additionalData: Array<CardData>,
   baseCard: BaseCard,
-  subCard: BaseCard,
+  subCard: BaseCard | BaseCardMultiple,
   isRead?: ?boolean,
   isFavorite?: ?boolean,
   downloadUrl?: string,

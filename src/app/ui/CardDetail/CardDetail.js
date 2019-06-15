@@ -305,7 +305,7 @@ class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
         component={SubCardSelectSearchField}
         name={fields.SUB_CARD}
       />
-    ) : card.subTitle;
+    ) : card.subCard.title;
   }
 
   renderCardDescription() {

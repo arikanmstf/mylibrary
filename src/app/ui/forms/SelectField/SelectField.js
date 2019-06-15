@@ -18,11 +18,15 @@ const SyncSelect = (props: SelectFieldProps) => (
 
 class SelectField extends React.PureComponent<SelectFieldProps> {
   render() {
-    const { async, name, ...other } = this.props;
+    const {
+      async, name, isMulti, ...other
+    } = this.props;
+
     return (
       <Field
         component={async ? AsyncSelect : SyncSelect}
         name={name}
+        isMulti={isMulti}
         {...other}
       />
     );
