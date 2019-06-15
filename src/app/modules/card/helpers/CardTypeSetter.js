@@ -6,8 +6,9 @@ import {
   CARD_TYPE_PUBLISHER,
   CARD_TYPE_USER,
   CARD_TYPE_WRITER,
-  SUB_CARD_DATA_MAP_KEYS,
-  SUB_CARD_TYPE_BOOK,
+  BASE_CARD_DATA_MAP_KEYS,
+  BASE_CARD_TYPE_BOOK,
+  BASE_CARD_TYPE_PUBLISHER,
 } from 'modules/card/constants';
 import { BOOKS_I_READ, MY_FAVORITES, ADDITIONAL_DATA_MAP_KEYS } from 'modules/publication/constants';
 import t from 'helpers/i18n/Translate';
@@ -40,8 +41,8 @@ const KEY_IS_READ = '_isRead';
 const KEY_ADDITIONAL_DATA = '_additionalData';
 const KEY_DOWNLOAD_URL = '_downloadUrl';
 const KEY_IMAGE = '_image';
+const KEY_BASE_CARD = '_baseCard';
 const KEY_SUB_CARD = '_subCard';
-const KEY_SUB_CARDS = '_subCards';
 const KEY_SUB_TITLE = '_subTitle';
 
 export class CardTypeSetter {
@@ -49,17 +50,20 @@ export class CardTypeSetter {
 
   [KEY_ADDITIONAL_DATA] = [];
 
-  [KEY_SUB_CARDS] = [];
+  [KEY_BASE_CARD] = {};
 
   [KEY_SUB_CARD] = {};
 
   [KEY_LISTS] = [];
 
   constructor(data: Object) {
-    const { id, title, description } = data;
-    this.setTitle(title);
+    const {
+      id, title, name, description,
+    } = data;
+    this.setTitle(title || name);
     this[KEY_ID] = id;
     this[KEY_DESCRIPTION] = description;
+    this.setBaseCard(id, title || name);
   }
 
   addAdditionalData(key: string, value: any): CardTypeSetter {
@@ -137,10 +141,18 @@ export class CardTypeSetter {
     return this;
   }
 
+  setBaseCard(id: string, title: string, type: string): CardTypeSetter {
+    this[KEY_BASE_CARD][BASE_CARD_DATA_MAP_KEYS.ID] = id;
+    this[KEY_BASE_CARD][BASE_CARD_DATA_MAP_KEYS.TITLE] = title;
+    this[KEY_BASE_CARD][BASE_CARD_DATA_MAP_KEYS.TYPE] = type;
+
+    return this;
+  }
+
   setSubCard(id: string, title: string, type: string): CardTypeSetter {
-    this[KEY_SUB_CARD][SUB_CARD_DATA_MAP_KEYS.ID] = id;
-    this[KEY_SUB_CARD][SUB_CARD_DATA_MAP_KEYS.TITLE] = title;
-    this[KEY_SUB_CARD][SUB_CARD_DATA_MAP_KEYS.TYPE] = type;
+    this[KEY_SUB_CARD][BASE_CARD_DATA_MAP_KEYS.ID] = id;
+    this[KEY_SUB_CARD][BASE_CARD_DATA_MAP_KEYS.TITLE] = title;
+    this[KEY_SUB_CARD][BASE_CARD_DATA_MAP_KEYS.TYPE] = type;
 
     return this;
   }
@@ -158,8 +170,8 @@ export class CardTypeSetter {
       subTitle: this[KEY_SUB_TITLE],
       description: this[KEY_DESCRIPTION],
       type: this[KEY_TYPE],
+      baseCard: this[KEY_BASE_CARD],
       subCard: this[KEY_SUB_CARD],
-      subCards: this[KEY_SUB_CARDS],
       lists: this[KEY_LISTS],
       options: this[KEY_OPTIONS],
       isFavorite: this[KEY_IS_FAVORITE],
@@ -192,6 +204,8 @@ export class CardTypeSetter {
     const cardTypeSetter = new CardTypeSetter(publication);
     const writers = publication.writers.map((writer) => writer.name).join(', ');
     const publisher = publication.publisher.name ? ` - ${publication.publisher.name}` : '';
+    const publisherId = publication.publisher ? publication.publisher.id : '';
+    const publisherName = publication.publisher ? publication.publisher.name : '';
 
     cardTypeSetter[KEY_LISTS] = publication.lists || [];
     cardTypeSetter[KEY_IS_FAVORITE] = publication.lists.some((list) => (list.code === MY_FAVORITES));
@@ -202,7 +216,8 @@ export class CardTypeSetter {
 
     return cardTypeSetter
       .setType(CARD_TYPE_PUBLICATION)
-      .setSubCard(publication.bookId, publication.title, SUB_CARD_TYPE_BOOK)
+      .setBaseCard(publication.bookId, publication.title, BASE_CARD_TYPE_BOOK)
+      .setSubCard(publisherId, publisherName, BASE_CARD_TYPE_PUBLISHER)
       .setSubTitle(`${writers}${publisher}`)
       .addBookDetailToCardOptions(publication)
       .addPublisherDetailToCardOptions(publication)

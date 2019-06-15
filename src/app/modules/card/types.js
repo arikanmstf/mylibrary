@@ -12,10 +12,10 @@ type CardData = {
   value: any,
 }
 
-type SubCard = {
-  to?: string,
-  toId?: number,
-  label: string,
+type BaseCard = {
+  id?: string,
+  title?: number,
+  type: string,
 }
 
 export type CardItem = {|
@@ -27,8 +27,8 @@ export type CardItem = {|
   lists: Array<Item>,
   options: Array<Option>,
   additionalData: Array<CardData>,
-  subCard: SubCard,
-  subCards: Array<SubCard>,
+  baseCard: BaseCard,
+  subCard: BaseCard,
   isRead?: ?boolean,
   isFavorite?: ?boolean,
   downloadUrl?: string,

@@ -8,7 +8,7 @@
 import React, { PureComponent } from 'react';
 import { Map } from 'immutable';
 import { SelectField, TextField } from 'ui';
-import { SUB_CARD_DATA_MAP_KEYS } from 'modules/card/constants';
+import { BASE_CARD_DATA_MAP_KEYS } from 'modules/card/constants';
 import t from 'helpers/i18n/Translate';
 
 import { setAddMethodBySubCardType, setFetchTitleMethodBySubCardType } from './helpers';
@@ -18,12 +18,12 @@ class SubCardSelectSearchField extends PureComponent<SubCardSelectSearchFieldPro
   handleCreateOption = (title) => {
     const { input: { value, onChange } } = this.props;
 
-    const type = value ? value.get(SUB_CARD_DATA_MAP_KEYS.TYPE) : '';
+    const type = value ? value.get(BASE_CARD_DATA_MAP_KEYS.TYPE) : '';
 
     const newValue = new Map(
       [
-        [SUB_CARD_DATA_MAP_KEYS.TITLE, title],
-        [SUB_CARD_DATA_MAP_KEYS.TYPE, type],
+        [BASE_CARD_DATA_MAP_KEYS.TITLE, title],
+        [BASE_CARD_DATA_MAP_KEYS.TYPE, type],
       ]
     );
 
@@ -33,12 +33,12 @@ class SubCardSelectSearchField extends PureComponent<SubCardSelectSearchFieldPro
 
   handleChange = (event, newId) => {
     const { input: { value, onChange } } = this.props;
-    const type = value ? value.get(SUB_CARD_DATA_MAP_KEYS.TYPE) : '';
+    const type = value ? value.get(BASE_CARD_DATA_MAP_KEYS.TYPE) : '';
 
     const newValue = new Map(
       [
-        [SUB_CARD_DATA_MAP_KEYS.ID, newId],
-        [SUB_CARD_DATA_MAP_KEYS.TYPE, type],
+        [BASE_CARD_DATA_MAP_KEYS.ID, newId],
+        [BASE_CARD_DATA_MAP_KEYS.TYPE, type],
       ]
     );
     onChange(newValue);
@@ -46,15 +46,15 @@ class SubCardSelectSearchField extends PureComponent<SubCardSelectSearchFieldPro
 
   updateValueFromTitle = async (title) => {
     const { input: { value, onChange } } = this.props;
-    const type = value ? value.get(SUB_CARD_DATA_MAP_KEYS.TYPE) : '';
+    const type = value ? value.get(BASE_CARD_DATA_MAP_KEYS.TYPE) : '';
     const addTitle = setAddMethodBySubCardType(type);
     const result = await addTitle({ title });
 
     const newValue = new Map(
       [
-        [SUB_CARD_DATA_MAP_KEYS.TITLE, result.title],
-        [SUB_CARD_DATA_MAP_KEYS.TYPE, type],
-        [SUB_CARD_DATA_MAP_KEYS.ID, result.id],
+        [BASE_CARD_DATA_MAP_KEYS.TITLE, result.title],
+        [BASE_CARD_DATA_MAP_KEYS.TYPE, type],
+        [BASE_CARD_DATA_MAP_KEYS.ID, result.id],
       ]
     );
     onChange(newValue);
@@ -63,14 +63,14 @@ class SubCardSelectSearchField extends PureComponent<SubCardSelectSearchFieldPro
   render = () => {
     const { input: { name, value }, required } = this.props;
 
-    const title = value ? value.get(SUB_CARD_DATA_MAP_KEYS.TITLE) : '';
-    const type = value ? value.get(SUB_CARD_DATA_MAP_KEYS.TYPE) : '';
+    const title = value ? value.get(BASE_CARD_DATA_MAP_KEYS.TITLE) : '';
+    const type = value ? value.get(BASE_CARD_DATA_MAP_KEYS.TYPE) : '';
     const fetchData = setFetchTitleMethodBySubCardType(type);
 
     return fetchData ? (
       <SelectField
         required={required}
-        name={`${name}.${SUB_CARD_DATA_MAP_KEYS.ID}`}
+        name={`${name}.${BASE_CARD_DATA_MAP_KEYS.ID}`}
         fetchData={fetchData}
         async
         creatable
@@ -81,7 +81,7 @@ class SubCardSelectSearchField extends PureComponent<SubCardSelectSearchFieldPro
     ) : (
       <TextField
         required={required}
-        name={SUB_CARD_DATA_MAP_KEYS.TITLE}
+        name={`${name}.${BASE_CARD_DATA_MAP_KEYS.TITLE}`}
         label={t.get('GENERAL_TITLE')}
       />
     );

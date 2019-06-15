@@ -10,5 +10,7 @@ export const PUBLICATION_TOGGLE_LIST = 'publication/{id}/toggle-list';
 export const LIST = 'list';
 export const BOOK = 'book';
 export const BOOK_DETAIL = 'book/{id}';
+export const WRITER = 'writer';
 export const WRITER_DETAIL = 'writer/{id}';
+export const PUBLISHER = 'publisher';
 export const PUBLISHER_DETAIL = 'publisher/{id}';

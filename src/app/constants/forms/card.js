@@ -5,6 +5,7 @@ export default {
   TITLE: 'title',
   DESCRIPTION: 'description',
   ADDITIONAL_DATA: 'additionalData',
+  BASE_CARD: 'baseCard',
   SUB_CARD: 'subCard',
 };
 

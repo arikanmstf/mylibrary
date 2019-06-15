@@ -12,6 +12,8 @@ export {
   LIST,
   BOOK,
   BOOK_DETAIL,
+  WRITER,
   WRITER_DETAIL,
+  PUBLISHER,
   PUBLISHER_DETAIL,
 } from './serviceNames';

@@ -291,7 +291,7 @@ class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
       <Field
         component={SubCardSelectSearchField}
         required
-        name={fields.SUB_CARD}
+        name={fields.BASE_CARD}
       />
     ) : card.title;
   }
@@ -301,7 +301,10 @@ class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
     const editable = isEdit && isDetailed;
 
     return editable ? (
-      card.subTitle
+      <Field
+        component={SubCardSelectSearchField}
+        name={fields.SUB_CARD}
+      />
     ) : card.subTitle;
   }
 
