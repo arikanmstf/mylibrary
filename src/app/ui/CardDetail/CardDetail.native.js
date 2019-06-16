@@ -210,7 +210,7 @@ export class CardDetail extends PureComponent<CardDetailProps> {
       <Div key={data.key}>
         <ListItem>
           <Left>
-            <Text>{`${t.get(`PUBLICATION_DETAIL_${data.key}`)}: ${data.value}`}</Text>
+            <Text>{`${t.get(`CARD_DETAIL_ADDITIONAL_DATA_${data.key}`)}: ${data.value}`}</Text>
           </Left>
           <Right>
             <Text />
