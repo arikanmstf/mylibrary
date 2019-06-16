@@ -14,7 +14,7 @@ common.entry = [
   path.resolve(__dirname, `src/app/web/index.js`),
 ];
 common.devServer.port = 3000;
-common.devtool = 'source-map';
+common.devtool = 'inline-source-map';
 common.mode = 'development';
 
 module.exports = common;
