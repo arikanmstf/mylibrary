@@ -28,6 +28,12 @@ export const getBookList = (dispatch: Dispatch<*>) => async (
   return transformBookListToCardList(result);
 };
 
+export const postBookDetail = (
+  dispatch: Dispatch<*>
+) => async (id: number, data): Promise<BookDetail> => {
+  return Api.post(dispatch)(BOOK_DETAIL.replace('{id}', id), data);
+};
+
 export const postBookDetailInsert = (
   dispatch: Dispatch<*>
 ) => async (data: PostBookDetailInsertRequest): Promise<BookDetail> => {

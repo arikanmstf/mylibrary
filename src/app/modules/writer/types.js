@@ -8,3 +8,8 @@
 export type GetWriterDetailRequest = {
   id: number,
 }
+
+export type PostWriterDetailInsertRequest = {
+  title: string,
+  description: string,
+}

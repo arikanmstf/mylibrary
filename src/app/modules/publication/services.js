@@ -23,6 +23,12 @@ export const getPublicationDetail = (
   return Api.get(dispatch)(PUBLICATION_DETAIL.replace('{id}', id));
 };
 
+export const postPublicationDetail = (
+  dispatch: Dispatch<*>
+) => async (id: number, data): Promise<PublicationDetail> => {
+  return Api.post(dispatch)(PUBLICATION_DETAIL.replace('{id}', id), data);
+};
+
 export const getPublicationList = (dispatch: Dispatch<*>) => async (
   { page, search, type }: SubmitSearchFormRequest = { page: 0, search: '', type: '' }
 ): Promise<Pagination<CardItem>> => {

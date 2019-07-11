@@ -6,7 +6,7 @@ import {
   BASE_CARD_TYPE_PUBLISHER,
 } from 'modules/card/constants';
 import { getBookList, postBookDetailInsert } from 'modules/book/services';
-import { getWriterList } from 'modules/writer/services';
+import { getWriterList, postWriterDetailInsert } from 'modules/writer/services';
 import { getPublisherList } from 'modules/publisher/services';
 
 export function setFetchTitleMethodBySubCardType(type: string) {
@@ -37,6 +37,9 @@ export function setAddMethodBySubCardType(type: string) {
     switch (type) {
       case BASE_CARD_TYPE_BOOK:
         addTitle = postBookDetailInsert();
+        break;
+      case BASE_CARD_TYPE_WRITER:
+        addTitle = postWriterDetailInsert();
         break;
       default:
     }

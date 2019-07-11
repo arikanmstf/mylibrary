@@ -15,7 +15,7 @@ import type { SubmitSearchFormRequest } from 'ui/Header/HeaderSearch/types';
 import type { CardItem } from 'modules/card/types';
 
 import { transformWriterListToCardList } from './transformers';
-import type { GetWriterDetailRequest } from './types';
+import type { GetWriterDetailRequest, PostWriterDetailInsertRequest } from './types';
 
 export const getWriterDetail = (
   dispatch: Dispatch<*>
@@ -28,4 +28,10 @@ export const getWriterList = (dispatch: Dispatch<*>) => async (
 ): Promise<Pagination<CardItem>> => {
   const result: Pagination<WriterDetail> = await Api.get(dispatch)(WRITER, { page, search, type });
   return transformWriterListToCardList(result);
+};
+
+export const postWriterDetailInsert = (
+  dispatch: Dispatch<*>
+) => async (data: PostWriterDetailInsertRequest): Promise<WriterDetail> => {
+  return Api.post(dispatch)(WRITER_DETAIL.replace('/{id}', ''), data);
 };

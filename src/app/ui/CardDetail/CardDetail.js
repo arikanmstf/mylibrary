@@ -6,6 +6,7 @@
 
 // @flow
 import React, { PureComponent } from 'react';
+import { withRouter } from 'react-router-dom';
 import {
   Icon,
   TextField,
@@ -413,4 +414,4 @@ class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
   }
 }
 
-export default CardDetail;
+export default withRouter(CardDetail);
