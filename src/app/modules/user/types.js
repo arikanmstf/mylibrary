@@ -17,3 +17,7 @@ export type SubmitLoginFormResponse = {
     permissions: Array<string>,
   },
 };
+
+export type Permission = {
+  code: string,
+};

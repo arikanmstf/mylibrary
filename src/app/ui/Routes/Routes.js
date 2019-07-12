@@ -62,6 +62,7 @@ class Routes extends PureComponent<RoutesProps> {
               <PrivateRoute exact path={routeNames.PROFILE} component={ProfileScreen} />
               <PrivateRoute exact path={routeNames.PUBLICATION_ADD_TO_LIST} component={PublicationAddToListScreen} />
               <PrivateRoute exact path={routeNames.PUBLICATION_DETAIL} component={PublicationDetailScreen} />
+              <PrivateRoute exact path={routeNames.PUBLICATION_EDIT} component={PublicationDetailScreen} isEditMode />
               <PrivateRoute exact path={routeNames.BOOK_DETAIL} component={BookDetailScreen} />
               <PrivateRoute exact path={routeNames.WRITER_DETAIL} component={WriterDetailScreen} />
               <PrivateRoute exact path={routeNames.PUBLISHER_DETAIL} component={PublisherDetailScreen} />

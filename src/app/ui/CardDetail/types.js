@@ -12,7 +12,7 @@ import type { StackNavigator } from 'react-navigation';
 export type CardDetailProps = {
   card: CardItem,
   isDetailed?: ?boolean,
-  isEdit?: ?boolean,
+  isEditMode?: ?boolean,
   toggleFavorite?: Function,
   toggleRead?: Function,
   history?: RouterHistory,
@@ -20,6 +20,10 @@ export type CardDetailProps = {
   style?: Object,
   initializeForm: Function,
   handleSubmit: Function,
+  hasEditPublicationPermission: boolean,
+  hasEditBookPermission: boolean,
+  hasEditWriterPermission: boolean,
+  hasEditPublisherPermission: boolean,
 };
 
 export type CardDetailState = {

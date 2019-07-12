@@ -7,7 +7,7 @@
 // @flow
 import React, { PureComponent } from 'react';
 import logger from 'helpers/logger';
-import { CARD_TYPE_PUBLICATION } from 'modules/card/constants';
+import { CARD_TYPES } from 'modules/card/constants';
 
 import defaultStyle from './style';
 import type { PublicationDetailProps } from './PublicationDetailTypes';
@@ -49,7 +49,7 @@ class PublicationDetail extends PureComponent<PublicationDetailProps> {
           card
           && (
             card.id !== id
-            || card.type !== CARD_TYPE_PUBLICATION
+            || card.type !== CARD_TYPES.PUBLICATION
           )
         )
       )
@@ -66,6 +66,7 @@ class PublicationDetail extends PureComponent<PublicationDetailProps> {
       card,
       toggleRead,
       toggleFavorite,
+      isEditMode,
     } = this.props;
     logger.log('render: PublicationDetail');
 
@@ -82,6 +83,7 @@ class PublicationDetail extends PureComponent<PublicationDetailProps> {
             toggleFavorite={toggleFavorite}
             toggleRead={toggleRead}
             isDetailed
+            isEditMode={isEditMode}
           />
         </Page>
       </Screen>

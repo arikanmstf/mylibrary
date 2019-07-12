@@ -31,7 +31,7 @@ import {
 } from 'native-base';
 import { production, publicationDetailUrl, bookDetailUrl } from 'constants/routes/createUrl';
 import logger from 'helpers/logger';
-import { CARD_TYPE_PUBLICATION, SUB_ITEM_TYPE_BOOK, SUB_ITEM_TYPE_PUBLICATION } from 'modules/card/constants';
+import { CARD_TYPES, SUB_ITEM_TYPE_BOOK, SUB_ITEM_TYPE_PUBLICATION } from 'modules/card/constants';
 import t from 'helpers/i18n/Translate';
 import {
   ICON_BOOK,
@@ -240,7 +240,7 @@ export class CardDetail extends PureComponent<CardDetailProps> {
         { this.isListOpen(list.id) ? list.subItems.map((subItem) => (
           <ListItem
             key={subItem.id}
-            selected={subItem.id === card.id && card.type === CARD_TYPE_PUBLICATION}
+            selected={subItem.id === card.id && card.type === CARD_TYPES.PUBLICATION}
             onPress={() => { this.handleListSubItemClick(subItem); }}
           >
             <Left>
@@ -376,7 +376,7 @@ export class CardDetail extends PureComponent<CardDetailProps> {
                   <Icon name={ICON_DOWNLOAD} />
                 </TouchableOpacity>
               ) : null }
-              { this.getDetailUrl ? (
+              { !isDetailed ? (
                 <TouchableOpacity
                   style={{ width: WIDTH_OF_CARD_ICON, flexShrink: 1, alignItems: 'flex-end' }}
                   onPress={this.shareCard}

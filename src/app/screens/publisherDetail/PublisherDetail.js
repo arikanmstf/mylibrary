@@ -7,7 +7,7 @@
 // @flow
 import React, { PureComponent } from 'react';
 import logger from 'helpers/logger';
-import { CARD_TYPE_PUBLISHER } from 'modules/card/constants';
+import { CARD_TYPES } from 'modules/card/constants';
 
 import type { PublisherDetailProps } from './PublisherDetailTypes';
 
@@ -48,7 +48,7 @@ class PublisherDetail extends PureComponent<PublisherDetailProps> {
           card
           && (
             card.id !== id
-            || card.type !== CARD_TYPE_PUBLISHER
+            || card.type !== CARD_TYPES.PUBLISHER
           )
         )
       )

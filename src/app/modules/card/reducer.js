@@ -24,6 +24,7 @@ const initialState = {
   listType: undefined,
   fetchedPublicationListType: undefined,
   isSearchPending: false,
+  isEditMode: false,
 };
 
 const reducer = new Map([

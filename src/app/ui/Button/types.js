@@ -6,4 +6,5 @@ export type ButtonProps = {
   raised?: boolean,
   style?: Object,
   to?: string,
+  color?: 'inherit' | 'primary' | 'secondary' | 'default',
 };

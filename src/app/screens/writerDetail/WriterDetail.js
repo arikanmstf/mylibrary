@@ -7,7 +7,7 @@
 // @flow
 import React, { PureComponent } from 'react';
 import logger from 'helpers/logger';
-import { CARD_TYPE_WRITER } from 'modules/card/constants';
+import { CARD_TYPES } from 'modules/card/constants';
 
 import type { WriterDetailProps } from './WriterDetailTypes';
 
@@ -48,7 +48,7 @@ class WriterDetail extends PureComponent<WriterDetailProps> {
           card
           && (
             card.id !== id
-            || card.type !== CARD_TYPE_WRITER
+            || card.type !== CARD_TYPES.WRITER
           )
         )
       )

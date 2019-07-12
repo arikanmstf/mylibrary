@@ -8,9 +8,9 @@ import type { ButtonProps } from './types';
 
 const Button = (props: ButtonProps): Node => {
   const {
-    text, primary, raised, style, to, ...other
+    text, primary, raised, style, to, color, ...other
   } = props;
-  const color = primary ? 'primary' : undefined;
+  const c = primary ? 'primary' : color;
   const contained = raised ? 'contained' : undefined;
   const mergedStyle = {
     width: '100%',
@@ -19,7 +19,7 @@ const Button = (props: ButtonProps): Node => {
 
   return (
     <WebButton
-      color={color}
+      color={c}
       variant={contained}
       style={mergedStyle}
       component={to ? Link : undefined}

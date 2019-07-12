@@ -2,13 +2,13 @@
 import {
   publicationDetailUrl,
   publicationAddToListUrl,
+  publicationEditUrl,
   bookDetailUrl,
   publicationDetailUrlWithId,
 } from 'constants/routes/createUrl';
 import logger from 'helpers/logger';
 import {
-  CARD_TYPE_BOOK,
-  CARD_TYPE_PUBLICATION,
+  CARD_TYPES,
 } from 'modules/card/constants';
 
 import type { CardItem } from 'modules/card/types';
@@ -16,13 +16,14 @@ import type { CardItem } from 'modules/card/types';
 export function setCardType(card: CardItem, isDetailed: boolean) {
   if (card) {
     switch (card.type) {
-      case CARD_TYPE_PUBLICATION:
-        this.getDetailUrl = isDetailed ? undefined : publicationDetailUrl;
+      case CARD_TYPES.PUBLICATION:
+        this.getDetailUrl = publicationDetailUrl;
         this.getDetailUrlWithId = isDetailed ? undefined : publicationDetailUrlWithId;
         this.addToListUrl = publicationAddToListUrl;
+        this.editUrl = publicationEditUrl;
         break;
-      case CARD_TYPE_BOOK:
-        this.getDetailUrl = isDetailed ? undefined : bookDetailUrl;
+      case CARD_TYPES.BOOK:
+        this.getDetailUrl = bookDetailUrl;
         this.addToListUrl = undefined;
         break;
       default:
@@ -35,5 +36,5 @@ export function setCardType(card: CardItem, isDetailed: boolean) {
 
 export const defaultProps = {
   isDetailed: false,
-  isEdit: true,
+  isEdit: false,
 };

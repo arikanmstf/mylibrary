@@ -39,7 +39,11 @@ import {
   ICON_MORE,
 } from 'constants/theme/icons';
 import { publicationDetailUrl, bookDetailUrl } from 'constants/routes/createUrl';
-import { CARD_TYPE_PUBLICATION, SUB_ITEM_TYPE_BOOK, SUB_ITEM_TYPE_PUBLICATION } from 'modules/card/constants';
+import {
+  CARD_TYPES,
+  SUB_ITEM_TYPE_BOOK,
+  SUB_ITEM_TYPE_PUBLICATION,
+} from 'modules/card/constants';
 import { ADDITIONAL_DATA_MAP_KEYS } from 'modules/publication/constants';
 import t from 'helpers/i18n/Translate';
 import logger from 'helpers/logger';
@@ -104,6 +108,17 @@ class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
 
     logger.log('goToAddToList');
     const url = this.addToListUrl(card.id);
+
+    if (history) {
+      history.push(url);
+    }
+  };
+
+  goToEdit = () => {
+    const { card, history } = this.props;
+
+    logger.log('goToEdit');
+    const url = this.editUrl(card.id);
 
     if (history) {
       history.push(url);
@@ -176,6 +191,8 @@ class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
 
   addToListUrl: Function;
 
+  editUrl: Function;
+
   toggleFavorite(id: number) {
     const { toggleFavorite } = this.props;
     if (toggleFavorite) {
@@ -191,8 +208,8 @@ class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
   }
 
   renderAdditionalData() {
-    const { isDetailed, isEdit, card } = this.props;
-    const editable = isEdit && isDetailed;
+    const { isDetailed, isEditMode, card } = this.props;
+    const editable = isEditMode && isDetailed;
 
     if (!isDetailed || !card.additionalData) {
       return null;
@@ -232,7 +249,7 @@ class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
                 dense
                 button
                 key={subItem.id}
-                style={(subItem.id === card.id && card.type === CARD_TYPE_PUBLICATION) ? activeStyle : undefined}
+                style={(subItem.id === card.id && card.type === CARD_TYPES.PUBLICATION) ? activeStyle : undefined}
                 onClick={() => { this.handleListSubItemClick(subItem); }}
               >
                 <ListItemText inset primary={subItem.name} />
@@ -247,12 +264,40 @@ class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
     ));
   }
 
+  renderEditButton() {
+    const {
+      hasEditPublicationPermission,
+      hasEditBookPermission,
+      hasEditPublisherPermission,
+      hasEditWriterPermission,
+      card,
+      isEditMode,
+    } = this.props;
+    let hasPermission = false;
+
+    switch (card.type) {
+      case CARD_TYPES.PUBLICATION: hasPermission = hasEditPublicationPermission; break;
+      case CARD_TYPES.BOOK: hasPermission = hasEditBookPermission; break;
+      case CARD_TYPES.PUBLISHER: hasPermission = hasEditPublisherPermission; break;
+      case CARD_TYPES.WRITER: hasPermission = hasEditWriterPermission; break;
+      default:
+    }
+
+    return hasPermission && !isEditMode && (
+      <MenuItem
+        onClick={() => {
+          this.handleRenderMoreClose();
+          this.goToEdit();
+        }}
+      >
+        {t.get('GENERAL_EDIT')}
+      </MenuItem>
+    );
+  }
+
   renderMore() {
     const { anchorElRenderMore } = this.state;
     const { card } = this.props;
-    if (!card || !card.options || card.options.length < 2) {
-      return null;
-    }
     const { options } = card;
 
     return (
@@ -268,6 +313,7 @@ class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
           open={Boolean(anchorElRenderMore)}
           onClose={this.handleRenderMoreClose}
         >
+          {this.renderEditButton()}
           {options.map((option) => (
             <MenuItem
               key={option.label}
@@ -285,8 +331,8 @@ class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
   }
 
   renderCardHeader() {
-    const { isEdit, isDetailed, card } = this.props;
-    const editable = isEdit && isDetailed;
+    const { isEditMode, isDetailed, card } = this.props;
+    const editable = isEditMode && isDetailed;
 
     return editable ? (
       <Field
@@ -298,8 +344,8 @@ class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
   }
 
   renderCardSubHeader() {
-    const { isEdit, isDetailed, card } = this.props;
-    const editable = isEdit && isDetailed;
+    const { isEditMode, isDetailed, card } = this.props;
+    const editable = isEditMode && isDetailed;
 
     return editable ? (
       <Field
@@ -310,8 +356,8 @@ class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
   }
 
   renderCardDescription() {
-    const { isEdit, isDetailed, card } = this.props;
-    const editable = isEdit && isDetailed;
+    const { isEditMode, isDetailed, card } = this.props;
+    const editable = isEditMode && isDetailed;
 
     return editable ? (
       <TextField
@@ -327,12 +373,12 @@ class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
       card,
       style,
       isDetailed,
-      isEdit,
+      isEditMode,
       handleSubmit,
     } = this.props;
     this.setCardType();
-    const linkStyle = this.getDetailUrl ? { cursor: 'pointer' } : {};
-    const editable = isEdit && isDetailed;
+    const linkStyle = !isDetailed ? { cursor: 'pointer' } : {};
+    const editable = isEditMode && isDetailed;
 
     if (!card) {
       return null;
@@ -403,6 +449,14 @@ class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
               raised
               type="submit"
               text={t.get('CARD_DETAIL_FORM_SUBMIT')}
+            />
+          ) : null }
+          { editable ? (
+            <Button
+              color="secondary"
+              raised
+              onClick={this.goToDetail}
+              text={t.get('CARD_DETAIL_FORM_CANCEL')}
             />
           ) : null }
           <List>

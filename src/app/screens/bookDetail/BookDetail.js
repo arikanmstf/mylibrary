@@ -7,7 +7,7 @@
 // @flow
 import React, { PureComponent } from 'react';
 import logger from 'helpers/logger';
-import { CARD_TYPE_BOOK } from 'modules/card/constants';
+import { CARD_TYPES } from 'modules/card/constants';
 import type { BookDetailProps } from './BookDetailTypes';
 
 class BookDetail extends PureComponent<BookDetailProps> {
@@ -47,7 +47,7 @@ class BookDetail extends PureComponent<BookDetailProps> {
           card
           && (
             card.id !== id
-            || card.type !== CARD_TYPE_BOOK
+            || card.type !== CARD_TYPES.BOOK
           )
         )
       )

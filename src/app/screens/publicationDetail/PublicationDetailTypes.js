@@ -25,4 +25,5 @@ export type PublicationDetailProps = {
   toggleFavorite?: Function,
   toggleRead?: Function,
   navigation: StackNavigator,
+  isEditMode: boolean,
 };

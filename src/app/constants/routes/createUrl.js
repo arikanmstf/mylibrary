@@ -3,6 +3,7 @@ import {
   BOOK_DETAIL,
   PUBLICATION_DETAIL,
   PUBLICATION_ADD_TO_LIST,
+  PUBLICATION_EDIT,
   WRITER_DETAIL,
   PUBLISHER_DETAIL,
 } from './routeNames';
@@ -29,6 +30,10 @@ export const publicationDetailUrl = (id: number) => {
 
 export const publicationAddToListUrl = (id: number) => {
   return PUBLICATION_ADD_TO_LIST.replace(':id', id);
+};
+
+export const publicationEditUrl = (id: number) => {
+  return PUBLICATION_EDIT.replace(':id', id);
 };
 
 export const bookDetailUrl = (id: number) => {

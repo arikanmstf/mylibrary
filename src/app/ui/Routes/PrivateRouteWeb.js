@@ -11,11 +11,13 @@ const PrivateRouteWeb = (
     component: Component,
     isLoggedIn,
     isInitialized,
+    isEditMode,
     ...rest
   }: {
     component: ComponentType<*>,
     isLoggedIn: boolean,
-    isInitialized: boolean
+    isInitialized: boolean,
+    isEditMode: boolean,
   }
 ) => {
   if (isInitialized === null) {
@@ -23,7 +25,7 @@ const PrivateRouteWeb = (
   }
 
   return isInitialized && isLoggedIn ? (
-    <Route {...rest} render={(props) => (<Component {...props} />)} />
+    <Route {...rest} render={(props) => (<Component {...props} isEditMode={isEditMode} />)} />
   ) : (
     <Redirect to={LOGIN} />
   );

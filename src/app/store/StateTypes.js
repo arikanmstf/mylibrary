@@ -1,5 +1,6 @@
 // @flow
 import type { CardItem } from 'modules/card/types';
+import type { Permission } from 'modules/user/types';
 import type { Row } from 'ui/RowList/types';
 import type {
   PublicationDetail,
@@ -25,6 +26,7 @@ export type State = {|
     listType?: string,
     fetchedPublicationListType?: string,
     isSearchPending: boolean,
+    isEditMode: boolean,
   |},
   centerLoader: {|
     isVisible: boolean,
@@ -51,6 +53,7 @@ export type State = {|
     isLoggedIn: boolean,
     isInitialized: boolean,
     card?: CardItem,
+    permissions: Array<Permission>,
   |},
   screen: {|
     isDrawerOpen?: boolean,

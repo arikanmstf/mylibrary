@@ -1,11 +1,6 @@
 // @flow
 import {
-  CARD_TYPE_BOOK,
-  CARD_TYPE_PUBLICATION,
-  CARD_TYPE_ITEM,
-  CARD_TYPE_PUBLISHER,
-  CARD_TYPE_USER,
-  CARD_TYPE_WRITER,
+  CARD_TYPES,
   BASE_CARD_DATA_MAP_KEYS,
   BASE_CARD_TYPE_BOOK,
   BASE_CARD_TYPE_PUBLISHER,
@@ -195,7 +190,7 @@ export class CardTypeSetter {
     };
 
     return cardTypeSetter
-      .setType(CARD_TYPE_BOOK)
+      .setType(CARD_TYPES.BOOK)
       .setSubCard(writerIds, writerNames, BASE_CARD_TYPE_WRITER)
       .setSubTitle(writers)
       .addWritersToCardOptions(book)
@@ -219,7 +214,7 @@ export class CardTypeSetter {
     cardTypeSetter[KEY_IMAGE] = staticFiles()(publicationCoverUrl(publication.id));
 
     return cardTypeSetter
-      .setType(CARD_TYPE_PUBLICATION)
+      .setType(CARD_TYPES.PUBLICATION)
       .setBaseCard(publication.bookId, publication.title, BASE_CARD_TYPE_BOOK)
       .setSubCard(publisherId, publisherName, BASE_CARD_TYPE_PUBLISHER)
       .setSubTitle(`${writers}${publisher}`)
@@ -237,7 +232,7 @@ export class CardTypeSetter {
 
     return cardTypeSetter
       .setTitle(item.name)
-      .setType(CARD_TYPE_ITEM)
+      .setType(CARD_TYPES.ITEM)
       .generateObject();
   }
 
@@ -246,7 +241,7 @@ export class CardTypeSetter {
 
     return cardTypeSetter
       .setTitle(publisher.name)
-      .setType(CARD_TYPE_PUBLISHER)
+      .setType(CARD_TYPES.PUBLISHER)
       .generateObject();
   }
 
@@ -255,7 +250,7 @@ export class CardTypeSetter {
 
     return cardTypeSetter
       .setTitle(user.display_name)
-      .setType(CARD_TYPE_USER)
+      .setType(CARD_TYPES.USER)
       .generateObject();
   }
 
@@ -269,7 +264,7 @@ export class CardTypeSetter {
 
     return cardTypeSetter
       .setTitle(writer.name)
-      .setType(CARD_TYPE_WRITER)
+      .setType(CARD_TYPES.WRITER)
       .addToLists(list)
       .generateObject();
   }

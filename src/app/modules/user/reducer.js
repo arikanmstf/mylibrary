@@ -13,6 +13,7 @@ const initialState = {
   isInitialized: null,
   card: null,
   token: null,
+  permissions: [],
 };
 
 const reducer = new Map([
@@ -23,6 +24,7 @@ const reducer = new Map([
       isLoggedIn: !!(action.payload && action.payload.user),
       card: action.payload ? transformUserToCard(action.payload.user) : initialState.user,
       token: action.payload ? action.payload.token : initialState.token,
+      permissions: action.payload ? action.payload.permissions : initialState.permissions,
     }),
   ],
   [
@@ -31,6 +33,7 @@ const reducer = new Map([
       ...state,
       isInitialized: !!(action.payload && action.payload.user),
       card: action.payload ? transformUserToCard(action.payload.user) : initialState.card,
+      permissions: action.payload ? action.payload.permissions : initialState.permissions,
     }),
   ],
 ]);

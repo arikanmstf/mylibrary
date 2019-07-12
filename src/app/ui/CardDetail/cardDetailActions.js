@@ -10,16 +10,15 @@ import { initialize } from 'redux-form';
 import { showLoader, hideLoader } from 'ui/ModalLoader/actions';
 import { LOADER_CARD_DETAIL_EDIT } from 'constants/actions/loaderNames';
 import { CARD_DETAIL_FORM_KEY } from 'constants/forms/card';
-import {
-  CARD_TYPE_PUBLICATION,
-  CARD_TYPE_BOOK,
-  CARD_TYPE_PUBLISHER,
-} from 'modules/card/constants';
+import { CARD_TYPES } from 'modules/card/constants';
 import { postPublicationDetail } from 'modules/publication/services';
 import { postBookDetail } from 'modules/book/services';
+import { PERMISSIONS } from 'modules/user/constants';
+import { hasPermission } from 'modules/user/helpers';
 
 import type { Dispatch } from 'redux';
 import type { Immutable } from 'store/ImmutableTypes';
+import type { ImmutableState } from 'store/StateTypes';
 
 export const submitCardDetailForm = async (form: Immutable<Object>, dispatch: Dispatch<*>) => {
   try {
@@ -30,11 +29,11 @@ export const submitCardDetailForm = async (form: Immutable<Object>, dispatch: Di
     let service;
 
     switch (type) {
-      case CARD_TYPE_PUBLICATION: service = postPublicationDetail;
+      case CARD_TYPES.PUBLICATION: service = postPublicationDetail;
         break;
-      case CARD_TYPE_BOOK: service = postBookDetail;
+      case CARD_TYPES.BOOK: service = postBookDetail;
         break;
-      case CARD_TYPE_PUBLISHER: service = () => () => {};
+      case CARD_TYPES.PUBLISHER: service = () => () => {};
         break;
       default: throw new Error('Card type not found');
     }
@@ -49,6 +48,17 @@ export const submitCardDetailForm = async (form: Immutable<Object>, dispatch: Di
 
 export const initializeForm = (values) => (dispatch) => {
   dispatch(initialize(CARD_DETAIL_FORM_KEY, values));
+};
+
+export const mapStateToProps = (state: ImmutableState) => {
+  const { permissions } = state.toJS().user;
+
+  return {
+    hasEditPublicationPermission: hasPermission(PERMISSIONS.EDIT_PUBLICATION, permissions),
+    hasEditBookPermission: hasPermission(PERMISSIONS.EDIT_BOOK, permissions),
+    hasEditWriterPermission: hasPermission(PERMISSIONS.EDIT_WRITER, permissions),
+    hasEditPublisherPermission: hasPermission(PERMISSIONS.EDIT_PUBLISHER, permissions),
+  };
 };
 
 export const mapDispatchToProps = {

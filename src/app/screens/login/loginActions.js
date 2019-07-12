@@ -44,7 +44,7 @@ export const fetchInitialState = (): ThunkAction => {
       await Promise.all([
         saveLoginState(null),
         dispatch(updateLoginState(null)),
-        dispatch(updateInitializeState(true)),
+        dispatch(updateInitializeState(null)),
       ]);
     } finally {
       dispatch(hideLoader(LOADER_LOGIN));

@@ -35,6 +35,7 @@ const AppStack = createStackNavigator(
     [routeNames.HOME]: HomeScreen,
     [routeNames.LOGOUT]: LogoutScreen,
     [routeNames.PUBLICATION_DETAIL]: PublicationDetailScreen,
+    [routeNames.PUBLICATION_EDIT]: PublicationDetailScreen,
     [routeNames.PUBLICATION_ADD_TO_LIST]: PublicationAddToListScreen,
     [routeNames.BOOK_DETAIL]: BookDetailScreen,
     [routeNames.WRITER_DETAIL]: WriterDetailScreen,
