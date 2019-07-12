@@ -13,5 +13,5 @@ export const mapStateToProps = (state: ImmutableState) => ({
 });
 
 export const mapDispatchToProps = {
-  fetchWriter,
+  fetchData: fetchWriter,
 };

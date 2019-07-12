@@ -7,5 +7,6 @@ export const PUBLICATION_DETAIL = '/publication/:id';
 export const PUBLICATION_ADD_TO_LIST = '/publication/:id/add-to-list';
 export const PUBLICATION_EDIT = '/publication/:id/edit';
 export const BOOK_DETAIL = '/book/:id';
+export const BOOK_EDIT = '/book/:id/edit';
 export const WRITER_DETAIL = '/writer/:id';
 export const PUBLISHER_DETAIL = '/publisher/:id';

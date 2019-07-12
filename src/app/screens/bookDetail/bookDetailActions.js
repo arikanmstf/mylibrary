@@ -15,5 +15,5 @@ export const mapStateToProps = (state: ImmutableState) => ({
 });
 
 export const mapDispatchToProps = {
-  fetchBook,
+  fetchData: fetchBook,
 };

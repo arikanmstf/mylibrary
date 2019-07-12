@@ -1,5 +1,12 @@
 // @flow
 import type { Item } from 'helpers/api/types';
+import type { ComponentType } from 'react';
+import type { Match } from 'react-router';
+import type { StackNavigator } from 'react-navigation';
+import type { CardDetailProps } from 'ui/CardDetail/types';
+import type { ScreenProps } from 'ui/Screen/types';
+import type { HeaderProps } from 'ui/Header/types';
+import type { PageProps } from 'ui/Page/types';
 
 type Option = {
   to?: string,
@@ -40,3 +47,17 @@ export type CardItem = {|
   downloadUrl?: string,
   image?: string,
 |}
+
+export type CardDetailPageProps = {
+  CardDetail: ComponentType<CardDetailProps>,
+  Screen: ComponentType<ScreenProps>,
+  Header: ComponentType<HeaderProps>,
+  Page: ComponentType<PageProps>,
+  fetchData: Function,
+  card: CardItem,
+  match: Match,
+  navigation: StackNavigator,
+  isEditMode: boolean,
+  toggleFavorite?: Function,
+  toggleRead?: Function,
+};

@@ -4,6 +4,7 @@ import {
   publicationAddToListUrl,
   publicationEditUrl,
   bookDetailUrl,
+  bookEditUrl,
   publicationDetailUrlWithId,
 } from 'constants/routes/createUrl';
 import logger from 'helpers/logger';
@@ -25,6 +26,7 @@ export function setCardType(card: CardItem, isDetailed: boolean) {
       case CARD_TYPES.BOOK:
         this.getDetailUrl = bookDetailUrl;
         this.addToListUrl = undefined;
+        this.editUrl = bookEditUrl;
         break;
       default:
         logger.log(`card type not found: ${card.type}`);

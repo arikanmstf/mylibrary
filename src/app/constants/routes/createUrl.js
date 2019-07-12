@@ -1,6 +1,7 @@
 // @flow
 import {
   BOOK_DETAIL,
+  BOOK_EDIT,
   PUBLICATION_DETAIL,
   PUBLICATION_ADD_TO_LIST,
   PUBLICATION_EDIT,
@@ -38,6 +39,10 @@ export const publicationEditUrl = (id: number) => {
 
 export const bookDetailUrl = (id: number) => {
   return BOOK_DETAIL.replace(':id', id);
+};
+
+export const bookEditUrl = (id: number) => {
+  return BOOK_EDIT.replace(':id', id);
 };
 
 export const writerDetailUrl = (id: number) => {
