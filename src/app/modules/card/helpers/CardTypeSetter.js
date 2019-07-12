@@ -242,6 +242,8 @@ export class CardTypeSetter {
     return cardTypeSetter
       .setTitle(publisher.name)
       .setType(CARD_TYPES.PUBLISHER)
+      .addAdditionalData('phoneNo', publisher.phoneNo)
+      .addAdditionalData('address', publisher.address)
       .generateObject();
   }
 

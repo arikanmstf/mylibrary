@@ -3,6 +3,8 @@
 export type PublisherDetail = {|
   id: number,
   name: string,
+  address: string,
+  phoneNo: string,
 |}
 
 export type Item = {|
