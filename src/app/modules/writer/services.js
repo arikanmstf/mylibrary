@@ -23,6 +23,12 @@ export const getWriterDetail = (
   return Api.get(dispatch)(WRITER_DETAIL.replace('{id}', id));
 };
 
+export const postWriterDetail = (
+  dispatch: Dispatch<*>
+) => async (id: number, data): Promise<WriterDetail> => {
+  return Api.post(dispatch)(WRITER_DETAIL.replace('{id}', id), data);
+};
+
 export const getWriterList = (dispatch: Dispatch<*>) => async (
   { page, search, type }: SubmitSearchFormRequest = { page: 0, search: '', type: '' }
 ): Promise<Pagination<CardItem>> => {

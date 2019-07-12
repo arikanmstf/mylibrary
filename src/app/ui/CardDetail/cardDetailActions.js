@@ -24,6 +24,14 @@ import { postBookDetail } from 'modules/book/services';
 import { transformBookToCard } from 'modules/book/transformers';
 import { updateBookCardAction } from 'modules/book/actions';
 
+import { postWriterDetail } from 'modules/writer/services';
+import { transformWriterToCard } from 'modules/writer/transformers';
+import { updateWriterCardAction } from 'modules/writer/actions';
+
+import { postPublisherDetail } from 'modules/publisher/services';
+import { transformPublisherToCard } from 'modules/publisher/transformers';
+import { updatePublisherCardAction } from 'modules/publisher/actions';
+
 import type { Dispatch } from 'redux';
 import type { Immutable } from 'store/ImmutableTypes';
 import type { ImmutableState } from 'store/StateTypes';
@@ -34,8 +42,8 @@ export const submitCardDetailForm = async (form: Immutable<Object>, dispatch: Di
     dispatch(showLoader(LOADER_CARD_DETAIL_EDIT));
     const formData = form.toJS();
     const { type, id } = formData;
-    let service = () => {};
-    let transform = () => {};
+    let service = null;
+    let transform = null;
     let update = null;
 
     switch (type) {
@@ -49,7 +57,15 @@ export const submitCardDetailForm = async (form: Immutable<Object>, dispatch: Di
         transform = transformBookToCard;
         update = updateBookCardAction;
         break;
-      case CARD_TYPES.PUBLISHER: service = () => () => {};
+      case CARD_TYPES.WRITER:
+        service = postWriterDetail;
+        transform = transformWriterToCard;
+        update = updateWriterCardAction;
+        break;
+      case CARD_TYPES.PUBLISHER:
+        service = postPublisherDetail;
+        transform = transformPublisherToCard;
+        update = updatePublisherCardAction;
         break;
       default: throw new Error('Card type not found');
     }

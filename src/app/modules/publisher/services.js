@@ -22,6 +22,12 @@ export const getPublisherDetail = (
   return Api.get(dispatch)(PUBLISHER_DETAIL.replace('{id}', id));
 };
 
+export const postPublisherDetail = (
+  dispatch: Dispatch<*>
+) => async (id: number, data): Promise<PublisherDetail> => {
+  return Api.post(dispatch)(PUBLISHER_DETAIL.replace('{id}', id), data);
+};
+
 export const getPublisherList = (dispatch: Dispatch<*>) => async (
   { page, search, type }: SubmitSearchFormRequest = { page: 0, search: '', type: '' }
 ): Promise<Pagination<CardItem>> => {

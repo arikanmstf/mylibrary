@@ -5,6 +5,10 @@ import {
   publicationEditUrl,
   bookDetailUrl,
   bookEditUrl,
+  writerDetailUrl,
+  writerEditUrl,
+  publisherDetailUrl,
+  publisherEditUrl,
   publicationDetailUrlWithId,
 } from 'constants/routes/createUrl';
 import logger from 'helpers/logger';
@@ -27,6 +31,14 @@ export function setCardType(card: CardItem, isDetailed: boolean) {
         this.getDetailUrl = bookDetailUrl;
         this.addToListUrl = undefined;
         this.editUrl = bookEditUrl;
+        break;
+      case CARD_TYPES.WRITER:
+        this.getDetailUrl = writerDetailUrl;
+        this.editUrl = writerEditUrl;
+        break;
+      case CARD_TYPES.PUBLISHER:
+        this.getDetailUrl = publisherDetailUrl;
+        this.editUrl = publisherEditUrl;
         break;
       default:
         logger.log(`card type not found: ${card.type}`);

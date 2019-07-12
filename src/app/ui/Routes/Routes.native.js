@@ -40,7 +40,9 @@ const AppStack = createStackNavigator(
     [routeNames.BOOK_DETAIL]: BookDetailScreen,
     [routeNames.BOOK_EDIT]: BookDetailScreen,
     [routeNames.WRITER_DETAIL]: WriterDetailScreen,
+    [routeNames.WRITER_EDIT]: WriterDetailScreen,
     [routeNames.PUBLISHER_DETAIL]: PublisherDetailScreen,
+    [routeNames.PUBLISHER_EDIT]: PublisherDetailScreen,
     [routeNames.PROFILE]: ProfileScreen,
   },
   {
