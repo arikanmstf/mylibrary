@@ -224,6 +224,7 @@ export class CardTypeSetter {
       .addCancelToCardOptions()
       .addAdditionalData('pageNumber', publication.pageNumber)
       .addAdditionalData('ISBN', publication.isbn)
+      .addAdditionalData('downloadUrl', publication.downloadUrl)
       .generateObject();
   }
 

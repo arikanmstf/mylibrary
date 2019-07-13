@@ -219,7 +219,7 @@ class CardDetail extends PureComponent<CardDetailProps, CardDetailState> {
       <div key={data[ADDITIONAL_DATA_MAP_KEYS.KEY]}>
         <ListItem>
           <ListItemText
-            primary={`${t.get(`CARD_DETAIL_ADDITIONAL_DATA_${data[ADDITIONAL_DATA_MAP_KEYS.KEY]}`)}: ${data[ADDITIONAL_DATA_MAP_KEYS.VALUE]}`}
+            primary={`${t.get(`CARD_DETAIL_ADDITIONAL_DATA_${data[ADDITIONAL_DATA_MAP_KEYS.KEY]}`)}: ${data[ADDITIONAL_DATA_MAP_KEYS.VALUE] || ''}`}
           />
         </ListItem>
       </div>
