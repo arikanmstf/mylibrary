@@ -17,7 +17,7 @@ class Logout extends PureComponent<LogoutProps> {
 
   render() {
     logger.log('render: Logout');
-    return 'Wait for redirection...';
+    return null;
   }
 }
 

@@ -140,6 +140,7 @@ export class CardDetail extends PureComponent<CardDetailProps> {
   };
 
   handleRenderMoreClick = () => {
+    const { card } = this.props;
     const options = card.options.map((option) => (option.label));
     ActionSheet.show(
       {

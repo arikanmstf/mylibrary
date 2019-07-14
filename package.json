@@ -18,6 +18,7 @@
     "deploy-web:local": "(docker container stop mylibrary-container & docker container rm mylibrary-container | docker rmi mylibrary-image | yarn build-web:local-prod) && docker build -t mylibrary-image . && docker run -p 8082:80 -d --name mylibrary-container mylibrary-image",
     "start-native": "yarn run start-native:local-dev",
     "start-native:local-dev": "API_ENV=local react-native-scripts start",
+    "build-ios": "yarn run build-ios:live-prod",
     "build-ios:local-dev": "API_ENV=live expo build:ios",
     "build-ios:live-prod": "API_ENV=live expo build:ios",
     "test": "jest",
