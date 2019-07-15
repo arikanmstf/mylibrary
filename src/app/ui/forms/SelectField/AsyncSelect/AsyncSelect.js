@@ -28,6 +28,15 @@ class AsyncSelect extends React.PureComponent<AsyncSelectProps> {
     };
   }
 
+  componentDidUpdate(prevProps: AsyncSelectProps) {
+    const { initialTitle } = this.props;
+    const { initialTitle: prevInitialTitle } = prevProps;
+
+    if (initialTitle !== prevInitialTitle) {
+      this.setState({ title: initialTitle }); // eslint-disable-line react/no-did-update-set-state
+    }
+  }
+
   handleChange = (value) => {
     const { input, isMulti } = this.props;
 
