@@ -13,6 +13,28 @@ export const transformPublicationToCard = (publication?: PublicationDetail): Car
   return CardTypeSetter.createFromPublication(publication);
 };
 
+export const transformCardToPublication = (card?: CardItem): PublicationDetail => {
+  if (!card) {
+    return card;
+  }
+
+  return {
+    title: card.title,
+    id: card.id,
+    bookId: card.baseCard.id,
+    downloadUrl: card.downloadUrl,
+    writers: [],
+    lists: card.lists,
+    tags: [],
+    description: card.description,
+    pageNumber: null,
+    coverNo: null,
+    addedBy: null,
+    publisher: card.subCard.id,
+    isbn: null,
+  };
+};
+
 export const transformPublicationListToCardList = (result: Pagination<PublicationDetail>): Pagination<CardItem> => {
   if (!result) {
     return result;

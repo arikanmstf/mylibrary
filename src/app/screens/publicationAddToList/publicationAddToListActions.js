@@ -6,7 +6,7 @@
 
 // @flow
 import type { ImmutableState } from 'store/StateTypes';
-import { fetchPublication, updatePublication } from 'modules/publication/actions';
+import { fetchPublication, updatePublicationFromCard } from 'modules/publication/actions';
 import { updateRows } from 'modules/row/actions';
 import { fetchLists } from 'modules/list/actions';
 import { SEARCH_LIST_FORM_KEY } from 'constants/forms/searchList';
@@ -42,10 +42,11 @@ export const getPublication = (publicationId: number): ThunkAction => {
     const { cards } = state.toJS().card;
 
     const foundPublication = (cards || []).find((p) => p.id === publicationId);
+
     if (!foundPublication) {
       dispatch(fetchPublication(publicationId));
     } else {
-      dispatch(updatePublication(foundPublication));
+      dispatch(updatePublicationFromCard(foundPublication));
     }
   };
 };

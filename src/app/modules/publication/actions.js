@@ -17,8 +17,9 @@ import { updateGeneralError } from 'ui/GeneralError/actions';
 import type { Dispatch } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
 import type { PublicationDetail } from 'helpers/api/types';
+import type { CardItem } from 'modules/card/types';
 
-import { transformPublicationToCard } from './transformers';
+import { transformPublicationToCard, transformCardToPublication } from './transformers';
 import { getPublicationDetail, postToggleList } from './services';
 import type { ToggleListRequest } from './types';
 
@@ -36,6 +37,13 @@ export const updatePublication = (publication: PublicationDetail): ThunkAction =
   return (dispatch: Dispatch<*>) => {
     dispatch(updatePublicationAction(publication));
     dispatch(updatePublicationCardAction(transformPublicationToCard(publication)));
+  };
+};
+
+export const updatePublicationFromCard = (card: CardItem): ThunkAction => {
+  return (dispatch: Dispatch<*>) => {
+    dispatch(updatePublicationAction(transformCardToPublication(card)));
+    dispatch(updatePublicationCardAction(card));
   };
 };
 
