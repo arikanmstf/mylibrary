@@ -293,7 +293,7 @@ export class CardDetail extends PureComponent<CardDetailProps> {
           <CardItem>
             <Body>
               <Text>{card.title}</Text>
-              <Text note>{card.subCard.title}</Text>
+              <Text note>{card.subTitle}</Text>
             </Body>
             <Right
               style={{
