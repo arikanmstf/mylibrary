@@ -2,8 +2,8 @@
   "baseURL":"http://localhost:8081",
   "homeURL":"",
   "productionURL":"http://mustafaarikan.net/mylibrary",
-  "staticFilesURL":"http://192.168.1.219/ml-test/static",
+  "staticFilesURL":"http://192.168.0.17/ml-test/static",
   "native": {
-    "baseURL": "http://192.168.1.219:8081"
+    "baseURL": "http://192.168.0.17:8081"
   }
 }
