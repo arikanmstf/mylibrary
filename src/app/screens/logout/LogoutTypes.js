@@ -5,7 +5,7 @@
  */
 
 // @flow
-import type { Router } from 'react-router';
+import type { Router } from 'react-router-dom';
 
 export type LogoutProps = {
   makeLogoutRequest: Function,

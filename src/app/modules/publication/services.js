@@ -14,7 +14,6 @@ import type { PublicationDetail } from 'helpers/api/types';
 import type { SubmitSearchFormRequest } from 'ui/Header/HeaderSearch/types';
 import type { Dispatch } from 'redux';
 
-import { transformPublicationListToCardList } from './transformers';
 import type { GetPublicationDetailRequest, ToggleListRequest } from './types';
 
 export const getPublicationDetail = (
@@ -29,11 +28,10 @@ export const postPublicationDetail = (
   return Api.post(dispatch)(PUBLICATION_DETAIL.replace('{id}', id), data);
 };
 
-export const getPublicationList = (dispatch: Dispatch<*>) => async (
+export const getPublicationList = (dispatch: Dispatch<*>): Promise<Pagination<PublicationDetail>> => async (
   { page, search, type }: SubmitSearchFormRequest = { page: 0, search: '', type: '' }
 ): Promise<Pagination<CardItem>> => {
-  const result: Pagination<PublicationDetail> = await Api.get(dispatch)(PUBLICATION, { page, search, type });
-  return transformPublicationListToCardList(result);
+  return Api.get(dispatch)(PUBLICATION, { page, search, type });
 };
 
 export const postToggleFavorite = (dispatch: Dispatch<*>) => async (id: number): Promise<PublicationDetail> => {

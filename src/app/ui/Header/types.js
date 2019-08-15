@@ -4,7 +4,7 @@
  *
  */
 // @flow
-import type { RouterHistory } from 'react-router';
+import type { RouterHistory } from 'react-router-dom';
 import type { StackNavigator } from 'react-navigation';
 
 export type HeaderProps = {

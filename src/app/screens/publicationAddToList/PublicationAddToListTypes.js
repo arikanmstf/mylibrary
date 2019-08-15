@@ -6,7 +6,7 @@
 
 // @flow
 import type { ComponentType } from 'react';
-import type { Match } from 'react-router';
+import type { Match } from 'react-router-dom';
 
 import type { RowListProps, Row } from 'ui/RowList/types';
 import type { ScreenProps } from 'ui/Screen/types';

@@ -5,16 +5,19 @@
  */
 
 import { handleActions } from 'redux-actions';
+import Storage, { PUBLICATION_LIST_CACHE_STATE } from 'helpers/storage';
 import {
   updatePublicationAction,
   updatePublicationCardAction,
   clearPublicationCardAction,
   clearPublicationAction,
+  updatePublicationListCacheAction,
 } from './actions';
 
 const initialState = {
   publication: null,
   card: null,
+  cache: Storage.load({ key: PUBLICATION_LIST_CACHE_STATE }),
 };
 
 const reducer = new Map([
@@ -44,6 +47,13 @@ const reducer = new Map([
     (state) => ({
       ...state,
       card: null,
+    }),
+  ],
+  [
+    updatePublicationListCacheAction,
+    (state, action) => ({
+      ...state,
+      cache: action.payload,
     }),
   ],
 ]);

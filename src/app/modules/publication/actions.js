@@ -5,6 +5,7 @@ import {
   PUBLICATION_UPDATE_CARD,
   PUBLICATION_CLEAR_CARD,
   PUBLICATION_CLEAR_PUBLICATION,
+  PUBLICATION_UPDATE_PUBLICATION_LIST_CACHE,
 } from 'constants/actions/actionNames';
 import { LOADER_CARD_DETAIL, LOADER_TOGGLE_LIST } from 'constants/actions/loaderNames';
 import logger from 'helpers/logger';
@@ -30,6 +31,7 @@ const toggleTypes = {
 
 export const updatePublicationAction = createAction(PUBLICATION_UPDATE_PUBLICATION);
 export const updatePublicationCardAction = createAction(PUBLICATION_UPDATE_CARD);
+export const updatePublicationListCacheAction = createAction(PUBLICATION_UPDATE_PUBLICATION_LIST_CACHE);
 export const clearPublicationAction = createAction(PUBLICATION_CLEAR_PUBLICATION);
 export const clearPublicationCardAction = createAction(PUBLICATION_CLEAR_CARD);
 
@@ -55,13 +57,16 @@ export const clearPublication = (): ThunkAction => {
 };
 
 export const fetchPublication = (id: number): ThunkAction => {
-  return async (dispatch: Dispatch<*>) => {
+  return async (dispatch: Dispatch<*>, getState) => {
     dispatch(showLoader(LOADER_CARD_DETAIL));
 
     try {
       dispatch(clearPublication());
       logger.log('action: fetchPublicationStart');
-      const publication = await getPublicationDetail(dispatch)({ id });
+      const { cache } = getState().toJS().publication;
+      console.log({ cache });
+
+      const publication = cache && cache[id] ? cache[id] : await getPublicationDetail(dispatch)({ id });
       logger.log('action: fetchPublication');
 
       await dispatch(updatePublication(publication));

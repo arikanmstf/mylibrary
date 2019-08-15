@@ -15,6 +15,9 @@ import logger from 'helpers/logger';
 import { showLoader, hideLoader } from 'ui/ModalLoader/actions';
 import { showCenterLoader, hideCenterLoader } from 'ui/CenterLoader/actions';
 import { getPublicationList } from 'modules/publication/services';
+import { updatePublicationListCacheAction } from 'modules/publication/actions';
+import { transformPublicationListToCardList } from 'modules/publication/transformers';
+import Storage, { PUBLICATION_LIST_CACHE_STATE } from 'helpers/storage';
 
 import type { Dispatch } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
@@ -28,6 +31,25 @@ export const updateSearchQuery = createAction(CARD_UPDATE_SEARCH_QUERY);
 export const updateListType = createAction(CARD_UPDATE_LIST_TYPE);
 export const updateSearchPending = createAction(CARD_UPDATE_SEARCH_PENDING);
 
+const savePublicationCache = (publications) => {
+  return async (dispatch: Dispatch<*>, getState: Function) => {
+    const cache = getState().toJS().publication.cache || {};
+
+    if (publications.content && publications.content.forEach) {
+      publications.content.forEach((publication) => {
+        cache[publication.id] = publication;
+      });
+    }
+
+    await Storage.save({
+      key: PUBLICATION_LIST_CACHE_STATE,
+      data: cache,
+      expires: (1000 * 60 * 60) * 24,
+    });
+    await dispatch(updatePublicationListCacheAction(cache));
+  };
+};
+
 export const fetchAndUpdateCards = (shouldShowLoader: boolean = true): ThunkAction => {
   return async (dispatch: Dispatch<*>, getState: Function) => {
     try {
@@ -38,10 +60,13 @@ export const fetchAndUpdateCards = (shouldShowLoader: boolean = true): ThunkActi
       logger.log('action: fetchAndUpdateCardsStart');
       const search = getState().toJS().card.searchQuery;
       const type = getState().toJS().card.listType;
-      const result = await getPublicationList(dispatch)({ page, search, type });
+      const publications = await getPublicationList(dispatch)({ page, search, type });
+      const result = transformPublicationListToCardList(publications);
+
       logger.log('action: fetchAndUpdateCards');
       await Promise.all([
         dispatch(updateCards(result.content)),
+        dispatch(savePublicationCache(publications)),
         dispatch(updateTotalPages(result.totalPages)),
         dispatch(updateCurrentPage(page)),
         dispatch(updateFetchedPublicationListType(type)),
@@ -68,17 +93,19 @@ export const fetchAndAddCards = (): ThunkAction => {
       logger.log('page is too big');
       return false;
     }
-    const search = getState().toJS().card.searchQuery;
-    const type = getState().toJS().card.listType;
+    const state = getState().toJS();
+    const search = state.card.searchQuery;
+    const type = state.card.listType;
 
     dispatch(showCenterLoader());
     await dispatch(updateSearchPending(true));
-    const result = await getPublicationList(dispatch)({ page, search, type });
+    const publications = await getPublicationList(dispatch)({ page, search, type });
+    const result = transformPublicationListToCardList(publications);
     logger.log('action: fetchAndAddCards');
     await dispatch(updateSearchPending(false));
-
     await Promise.all([
       dispatch(addCards(result.content)),
+      dispatch(savePublicationCache(publications)),
       dispatch(updateTotalPages(result.totalPages)),
     ]);
 

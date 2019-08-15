@@ -1,7 +1,7 @@
 // @flow
 import type { Item } from 'helpers/api/types';
 import type { ComponentType } from 'react';
-import type { Match } from 'react-router';
+import type { Match } from 'react-router-dom';
 import type { StackNavigator } from 'react-navigation';
 import type { CardDetailProps } from 'ui/CardDetail/types';
 import type { ScreenProps } from 'ui/Screen/types';

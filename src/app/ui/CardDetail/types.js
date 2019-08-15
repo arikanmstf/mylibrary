@@ -6,7 +6,7 @@
 
 // @flow
 import type { CardItem } from 'modules/card/types';
-import type { RouterHistory } from 'react-router';
+import type { RouterHistory } from 'react-router-dom';
 import type { StackNavigator } from 'react-navigation';
 
 export type CardDetailProps = {
