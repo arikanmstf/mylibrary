@@ -1,6 +1,7 @@
 // @flow
-import React, { Component } from 'react';
-import { Font } from 'expo';
+import React, { Component, Fragment } from 'react';
+import * as Font from 'expo-font';
+import { Text } from 'react-native';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -15,6 +16,7 @@ import platform from 'native-base-theme/variables/platform';
 
 // Routes
 import { Routes } from 'ui/native';
+import p from '../../../package.json';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
@@ -23,23 +25,26 @@ class App extends Component {
     loading: true,
   };
 
-  async componentWillMount() {
-    await Font.loadAsync({
-      'simple-line-icons': require('native-base/Fonts/SimpleLineIcons.ttf'), // eslint-disable-line
-    });
-    this.setState({ loading: false });
-  }
+  // async componentWillMount() {
+  //   await Font.loadAsync({
+  //     'simple-line-icons': require('native-base/Fonts/SimpleLineIcons.ttf'), // eslint-disable-line
+  //   });
+  //   this.setState({ loading: false });
+  // }
 
   render() {
     const { loading } = this.state;
 
-    return !loading && (
+    return (
       <Provider store={createStoreWithMiddleware(reducers)}>
-        <StyleProvider style={getTheme(platform)}>
-          <Root>
-            <Routes />
-          </Root>
-        </StyleProvider>
+        <Fragment>
+          <StyleProvider style={getTheme(platform)}>
+            <Root>
+              <Routes />
+            </Root>
+          </StyleProvider>
+          <Text>{`Version: ${p ? p.version : 'not found'}`}</Text>
+        </Fragment>
       </Provider>
     );
   }

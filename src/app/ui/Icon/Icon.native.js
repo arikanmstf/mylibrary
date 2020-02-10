@@ -6,7 +6,7 @@
 
 // @flow
 import React from 'react';
-import Icon from 'react-native-vector-icons/dist/SimpleLineIcons';
+import { SimpleLineIcons as Icon } from '@expo/vector-icons';
 import platform from 'native-base-theme/variables/platform';
 import { DEFAULT_SIZE_OF_ICON } from 'constants/theme/icons';
 import type { Node } from 'react';

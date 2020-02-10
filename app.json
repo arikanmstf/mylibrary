@@ -2,12 +2,14 @@
   "expo": {
     "name": "MyLibrary",
     "version": "3.0.0",
+    "orientation": "portrait",
     "slug": "mylibrary",
-    "sdkVersion": "31.0.0",
+    "sdkVersion": "36.0.0",
     "privacy": "unlisted",
     "platforms": ["ios"],
     "githubUrl": "https://github.com/arikanmstf/mylibrary/",
     "ios": {
+      "supportsTablet": true,
       "bundleIdentifier": "com.arikanmstf.mylibrary"
     },
     "android": {
